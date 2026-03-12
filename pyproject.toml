@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nlp-re-dataset-model-base"
+version = "0.2.0"
+description = "SAE-RE evaluation pipeline: identify Reflective Listening features in Llama-3.1-8B via Sparse Autoencoders."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy",
+  "safetensors",
+  "sentencepiece",
+  "torch",
+  "transformers",
+  "scipy",
+  "scikit-learn",
+  "huggingface-hub",
+  "tqdm",
+  "pandas",
+  "matplotlib",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

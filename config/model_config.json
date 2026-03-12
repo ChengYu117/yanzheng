@@ -1,0 +1,6 @@
+{
+  "model_name": "Meta-Llama-3.1-8B",
+  "model_path": "D:/project/NLP_explaination_archive/20260306_refactor/NLP_data/Llama-3.1-8B",
+  "torch_dtype": "float16",
+  "device_map": "auto"
+}
