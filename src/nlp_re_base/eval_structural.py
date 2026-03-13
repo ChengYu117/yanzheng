@@ -363,7 +363,8 @@ def compute_ce_kl_with_intervention(
     hook_point: str = "blocks.19.hook_resid_post",
     max_seq_len: int = 128,
     batch_size: int = 4,
-) -> dict[str, float]:
+    max_texts: int | None = None,
+) -> dict[str, float | int]:
     """Compute CE loss delta and KL divergence by replacing activations with SAE reconstructions.
 
     Runs the model twice per batch:
@@ -372,7 +373,9 @@ def compute_ce_kl_with_intervention(
 
     Returns:
         {'ce_loss_orig': float, 'ce_loss_sae': float,
-         'ce_loss_delta': float, 'kl_divergence': float}
+         'ce_loss_delta': float, 'kl_divergence': float,
+         'n_eval_texts': int, 'n_eval_pred_tokens': int,
+         'ce_kl_batch_size': int}
     """
     from .activations import _parse_hook_point
 
@@ -380,6 +383,7 @@ def compute_ce_kl_with_intervention(
     target_layer = model.model.layers[layer_idx]
     device = next(model.parameters()).device
     sae_device = next(sae.parameters()).device
+    eval_texts = texts[:max_texts] if max_texts is not None else texts
 
     total_ce_orig = 0.0
     total_ce_sae = 0.0
@@ -387,11 +391,11 @@ def compute_ce_kl_with_intervention(
     total_tokens = 0
 
     for start in tqdm(
-        range(0, len(texts), batch_size),
+        range(0, len(eval_texts), batch_size),
         desc="CE/KL evaluation",
         unit="batch",
     ):
-        batch_texts = texts[start : start + batch_size]
+        batch_texts = eval_texts[start : start + batch_size]
         encoded = tokenizer(
             batch_texts,
             padding=True,
@@ -441,17 +445,28 @@ def compute_ce_kl_with_intervention(
         logits_sae = out_sae.logits
         ce_sae = out_sae.loss.item()
 
-        # KL divergence: KL(p_orig || p_sae)
-        mask_flat = encoded["attention_mask"].bool().reshape(-1)
-        log_probs_orig = F.log_softmax(logits_orig.reshape(-1, logits_orig.size(-1)), dim=-1)
-        log_probs_sae = F.log_softmax(logits_sae.reshape(-1, logits_sae.size(-1)), dim=-1)
+        # Match CE/KL to the next-token positions used by causal LM loss.
+        pred_mask = labels[:, 1:] != -100
+        n_tokens = int(pred_mask.sum().item())
+        if n_tokens == 0:
+            continue
+
+        logits_orig_shifted = logits_orig[:, :-1, :]
+        logits_sae_shifted = logits_sae[:, :-1, :]
+        log_probs_orig = F.log_softmax(
+            logits_orig_shifted.reshape(-1, logits_orig_shifted.size(-1)),
+            dim=-1,
+        )
+        log_probs_sae = F.log_softmax(
+            logits_sae_shifted.reshape(-1, logits_sae_shifted.size(-1)),
+            dim=-1,
+        )
         probs_orig = log_probs_orig.exp()
 
         kl_per_token = F.kl_div(log_probs_sae, probs_orig, reduction="none", log_target=False)
         kl_per_token = kl_per_token.sum(dim=-1)  # sum over vocab
-        kl_masked = kl_per_token[mask_flat]
+        kl_masked = kl_per_token[pred_mask.reshape(-1)]
 
-        n_tokens = mask_flat.sum().item()
         total_ce_orig += ce_orig * n_tokens
         total_ce_sae += ce_sae * n_tokens
         total_kl += kl_masked.sum().item()
@@ -465,6 +480,9 @@ def compute_ce_kl_with_intervention(
         "ce_loss_sae": avg_ce_sae,
         "ce_loss_delta": avg_ce_sae - avg_ce_orig,
         "kl_divergence": total_kl / max(total_tokens, 1),
+        "n_eval_texts": len(eval_texts),
+        "n_eval_pred_tokens": total_tokens,
+        "ce_kl_batch_size": batch_size,
     }
 
 
@@ -476,7 +494,7 @@ def run_structural_evaluation(
     reconstructed: torch.Tensor,
     latents: torch.Tensor,
     attention_mask: torch.Tensor,
-    ce_kl_results: dict[str, float] | None = None,
+    ce_kl_results: dict[str, float | int] | None = None,
     output_dir: str | Path = "outputs/sae_eval",
 ) -> dict[str, Any]:
     """Run all structural metrics and save results.
@@ -492,7 +510,7 @@ def run_structural_evaluation(
     Returns:
         Dictionary of all structural metrics.
     """
-    print("\n═══ Structural Evaluation ═══")
+    print("\n=== Structural Evaluation ===")
 
     mse = compute_mse(activations, reconstructed, attention_mask)
     print(f"  MSE:               {mse:.6f}")
@@ -505,8 +523,8 @@ def run_structural_evaluation(
     print(f"  FVU:               {ev_result['fvu']:.6f}")
 
     l0_result = compute_l0_sparsity(latents, attention_mask)
-    print(f"  L₀ Mean:           {l0_result['l0_mean']:.1f}")
-    print(f"  L₀ Std:            {l0_result['l0_std']:.1f}")
+    print(f"  L0 Mean:           {l0_result['l0_mean']:.1f}")
+    print(f"  L0 Std:            {l0_result['l0_std']:.1f}")
 
     ff_result = compute_firing_frequency(latents, attention_mask)
     print(f"  Dead Features:     {ff_result['dead_count']} / {ff_result['dead_count'] + ff_result['alive_count']}"
@@ -543,5 +561,14 @@ def run_structural_evaluation(
     with open(save_path, "w", encoding="utf-8") as f:
         json.dump(serializable, f, indent=2, ensure_ascii=False)
 
-    print(f"\n  ✓ Saved to {save_path}")
+    if ce_kl_results is not None:
+        ce_kl_path = out_path / "metrics_ce_kl.json"
+        ce_kl_serializable = {
+            k: v for k, v in ce_kl_results.items()
+            if not isinstance(v, torch.Tensor)
+        }
+        with open(ce_kl_path, "w", encoding="utf-8") as f:
+            json.dump(ce_kl_serializable, f, indent=2, ensure_ascii=False)
+
+    print(f"\n  Saved to {save_path}")
     return metrics

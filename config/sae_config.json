@@ -11,6 +11,8 @@
     "dataset_average_activation_norm_in": 17.125,
     "max_seq_len": 128,
     "batch_size": 8,
+    "ce_kl_batch_size": 2,
+    "ce_kl_max_texts": null,
     "aggregation": "max",
     "fdr_alpha": 0.05,
     "probe_k_values": [

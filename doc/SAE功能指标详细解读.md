@@ -1,0 +1,792 @@
+# SAE 功能指标详细解读
+
+这份文档专门解释本项目里的 **SAE 功能性评估指标**。
+
+目标不是堆术语，而是回答四个问题：
+
+1. 每个指标到底在看什么。
+2. 这个指标是怎么计算出来的。
+3. 为什么项目要这样设计。
+4. 这个指标能说明什么，不能说明什么。
+
+全文以当前仓库的真实实现为准，核心代码在 `src/nlp_re_base/eval_functional.py`。
+
+---
+
+## 1. 先说结论：什么叫“功能指标”
+
+在这个项目里，结构指标主要回答：
+
+> SAE 重建得像不像，稀疏不稀疏。
+
+功能指标主要回答：
+
+> SAE 拆出来的 latent，能不能真的帮助我们发现和 RE 有关的特征。
+
+所以功能指标关注的不是“重建误差”，而是：
+
+- 哪些 latent 和 RE / NonRE 区分有关
+- 这些 latent 是不是有实际预测价值
+- 这些 latent 看起来是不是像一个可解释的概念
+- 这些 latent 之间是不是互相重复
+- 拿掉某个 latent 之后，判断能力会不会明显下降
+
+简单说：
+
+> 结构指标看 SAE 像不像一个合格的压缩器；功能指标看 SAE 像不像一个有研究价值的特征发现器。
+
+---
+
+## 2. 这些指标吃的是什么输入
+
+在功能评估开始前，项目已经把每句话变成了两个句子级向量：
+
+- `utterance_features`，形状是 `[N, d_sae]`
+  - 每一行代表一句话
+  - 每一列代表一个 SAE latent
+  - 这是功能评估最核心的输入
+- `utterance_activations`，形状是 `[N, d_model]`
+  - 这是原始激活的句子级版本
+  - 主要用来做 dense probe baseline
+
+这里最关键的一步是：
+
+> 原本 SAE 是对每个 token 产生 latent，项目通过 pooling 把 token 级 latent 聚合成句子级特征。
+
+当前默认使用 `max pooling`。也就是说：
+
+> 对一句话里的某个 latent，只要有一个 token 激活很强，就把这个最大值当作这句话的该 latent 强度。
+
+所以后面的所有功能指标，本质上都是围绕这个句子级矩阵 `[N, d_sae]` 展开的。
+
+---
+
+## 3. 整个功能评估流程是什么顺序
+
+当前实现的顺序是：
+
+1. 单 latent 统计筛选
+2. sparse probing
+3. dense probe baseline
+4. diffmean baseline
+5. MaxAct analysis
+6. feature absorption
+7. feature geometry
+8. TPP
+
+你可以把它理解成三层：
+
+- 第一层：先筛人
+  - 找出哪些 latent 最值得看
+- 第二层：再比赛
+  - 看这些 latent 对分类有没有用
+- 第三层：最后做解释和干预
+  - 看这些 latent 像不像概念、会不会冗余、拿掉后会不会出问题
+
+---
+
+## 4. 指标 1：单 latent 统计筛选
+
+这是整个功能评估的入口，也是 `candidate_latents.csv` 的来源。
+
+### 4.1 它在看什么
+
+它在问：
+
+> 对某一个 latent 来说，RE 句子和 NonRE 句子在这个 latent 上的值，差得大不大？
+
+如果差得明显，说明这个 latent 可能和 RE 有关。
+
+### 4.2 为什么先做这一步
+
+因为 SAE 有 `32768` 个 latent，不可能一开始就逐个人工看。
+
+所以先用统计方法做一次宽筛：
+
+- 把明显没信号的 latent 排除掉
+- 把最有区分力的 latent 排到前面
+
+这一步的作用不是“下最终结论”，而是“生成候选名单”。
+
+### 4.3 它具体怎么算
+
+对每个 latent，项目会算 4 个量：
+
+- `Cohen's d`
+- `AUC`
+- `p_value`
+- `significant_fdr`
+
+#### 4.3.1 Cohen's d
+
+它衡量的是：
+
+> RE 组均值和 NonRE 组均值，差了多少个“标准差单位”。
+
+直觉上：
+
+- `d > 0`
+  - 这个 latent 在 RE 里更强
+- `d < 0`
+  - 这个 latent 在 NonRE 里更强
+- `|d|` 越大
+  - 两组分得越开
+
+为什么用它：
+
+- 它不只告诉你“有差异”
+- 还告诉你“差异有多大”
+
+这比只看均值差更稳，因为不同 latent 的数值尺度可能不一样。
+
+#### 4.3.2 AUC
+
+AUC 可以理解成：
+
+> 只看这一个 latent，能把 RE 和 NonRE 分开的能力有多强。
+
+直觉上：
+
+- `AUC = 0.5`
+  - 基本没区分力
+- `AUC > 0.5`
+  - 正向区分
+- `AUC < 0.5`
+  - 反向区分
+
+比如一个 latent 在 NonRE 上更强，那么它的 AUC 可能低于 `0.5`，但这不代表它没用，只代表方向是反的。
+
+为什么要加 AUC：
+
+- `Cohen's d` 看组间差距
+- `AUC` 看排序式区分能力
+
+两个一起看，比只看一个更稳。
+
+#### 4.3.3 p-value
+
+它在问：
+
+> 这个差异会不会只是随机波动？
+
+项目这里用的是两组独立样本的 `t-test`。
+
+为什么需要它：
+
+- 有的 latent 差值看上去不小，但可能不稳定
+- p-value 给出统计显著性参考
+
+#### 4.3.4 FDR 校正
+
+因为这里不是只检验 1 个 latent，而是一次检验 `32768` 个 latent。
+
+如果不做多重比较校正，就会出现很多“假阳性”。
+
+所以项目用了 `Benjamini-Hochberg FDR`：
+
+> 在控制整体假发现率的前提下，筛出显著 latent。
+
+最终 `significant_fdr=True` 的 latent，就是统计上更可信的候选。
+
+### 4.4 输出是什么
+
+这一步会输出 [candidate_latents.csv](D:/project/NLP_re_dataset_model_base/outputs/sae_eval_full_max/candidate_latents.csv)。
+
+你可以把它看成：
+
+> 一份按“RE 相关可能性”排序的候选特征名单。
+
+### 4.5 它能说明什么
+
+- 哪些 latent 和 RE / NonRE 显著相关
+- 哪些 latent 值得进入下一步分析
+
+### 4.6 它不能说明什么
+
+- 不能证明这个 latent 就是“RE 概念”
+- 不能证明它有因果作用
+- 不能证明它不是词汇或句式触发器
+
+所以这一步是“筛选”，不是“定性解释完成”。
+
+---
+
+## 5. 指标 2：Sparse Probing
+
+### 5.1 它在看什么
+
+它在问：
+
+> 如果我只拿少量最强 latent，当作输入特征，能不能把 RE 和 NonRE 分出来？
+
+这一步是为了测试：
+
+> SAE 的稀疏特征是不是已经把有用信息集中出来了。
+
+### 5.2 为什么这样设计
+
+如果 top-k latent 就能把任务做得不错，说明：
+
+- SAE 不是只学到了一堆分散噪声
+- 它确实把和任务有关的信息压缩进了少量特征
+
+这和“解释性研究”很契合，因为研究更喜欢少量、集中、可检查的特征。
+
+### 5.3 它具体怎么算
+
+项目会把 `candidate_latents.csv` 按 `|Cohen's d|` 排序，然后分别取：
+
+- top-1
+- top-5
+- xxxxxxxxxx graph TD    A[训练 SAE] --> B{结构性评估}    B --> B1[MSE / Cosine Sim]    B --> B2[L₀ / Dead Features]    B --> B3[CE Loss / KL Div]    B1 --> C{通过阈值?}    B2 --> C    B3 --> C    C -->|是| D{功能性评估}    C -->|否| E[调整超参数重训]    D --> D1[Sparse Probing on RE]    D --> D2[MaxAct 特征解释]    D --> D3[Feature Absorption]    D1 --> F[综合评估报告]    D2 --> F    D3 --> F    E --> Amermaid#mermaidChart2{font-family:sans-serif;font-size:16px;fill:#333;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mermaidChart2 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mermaidChart2 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mermaidChart2 .error-icon{fill:#552222;}#mermaidChart2 .error-text{fill:#552222;stroke:#552222;}#mermaidChart2 .edge-thickness-normal{stroke-width:1px;}#mermaidChart2 .edge-thickness-thick{stroke-width:3.5px;}#mermaidChart2 .edge-pattern-solid{stroke-dasharray:0;}#mermaidChart2 .edge-thickness-invisible{stroke-width:0;fill:none;}#mermaidChart2 .edge-pattern-dashed{stroke-dasharray:3;}#mermaidChart2 .edge-pattern-dotted{stroke-dasharray:2;}#mermaidChart2 .marker{fill:#333333;stroke:#333333;}#mermaidChart2 .marker.cross{stroke:#333333;}#mermaidChart2 svg{font-family:sans-serif;font-size:16px;}#mermaidChart2 p{margin:0;}#mermaidChart2 .label{font-family:sans-serif;color:#333;}#mermaidChart2 .cluster-label text{fill:#333;}#mermaidChart2 .cluster-label span{color:#333;}#mermaidChart2 .cluster-label span p{background-color:transparent;}#mermaidChart2 .label text,#mermaidChart2 span{fill:#333;color:#333;}#mermaidChart2 .node rect,#mermaidChart2 .node circle,#mermaidChart2 .node ellipse,#mermaidChart2 .node polygon,#mermaidChart2 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaidChart2 .rough-node .label text,#mermaidChart2 .node .label text,#mermaidChart2 .image-shape .label,#mermaidChart2 .icon-shape .label{text-anchor:middle;}#mermaidChart2 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mermaidChart2 .rough-node .label,#mermaidChart2 .node .label,#mermaidChart2 .image-shape .label,#mermaidChart2 .icon-shape .label{text-align:center;}#mermaidChart2 .node.clickable{cursor:pointer;}#mermaidChart2 .root .anchor path{fill:#333333!important;stroke-width:0;stroke:#333333;}#mermaidChart2 .arrowheadPath{fill:#333333;}#mermaidChart2 .edgePath .path{stroke:#333333;stroke-width:2.0px;}#mermaidChart2 .flowchart-link{stroke:#333333;fill:none;}#mermaidChart2 .edgeLabel{background-color:rgba(232,232,232, 0.8);text-align:center;}#mermaidChart2 .edgeLabel p{background-color:rgba(232,232,232, 0.8);}#mermaidChart2 .edgeLabel rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#mermaidChart2 .labelBkg{background-color:rgba(232, 232, 232, 0.5);}#mermaidChart2 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaidChart2 .cluster text{fill:#333;}#mermaidChart2 .cluster span{color:#333;}#mermaidChart2 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:sans-serif;font-size:12px;background:hsl(80, 100%, 96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaidChart2 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#333;}#mermaidChart2 rect.text{fill:none;stroke-width:0;}#mermaidChart2 .icon-shape,#mermaidChart2 .image-shape{background-color:rgba(232,232,232, 0.8);text-align:center;}#mermaidChart2 .icon-shape p,#mermaidChart2 .image-shape p{background-color:rgba(232,232,232, 0.8);padding:2px;}#mermaidChart2 .icon-shape rect,#mermaidChart2 .image-shape rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#mermaidChart2 .label-icon{display:inline-block;height:1em;overflow:visible;vertical-align:-0.125em;}#mermaidChart2 .node .label-icon path{fill:currentColor;stroke:revert;stroke-width:revert;}#mermaidChart2 :root{--mermaid-alt-font-family:sans-serif;}是否训练 SAE结构性评估MSE / Cosine SimL₀ / Dead FeaturesCE Loss / KL Div通过阈值?功能性评估调整超参数重训Sparse Probing on REMaxAct 特征解释Feature Absorption综合评估报告
+
+把这些 latent 作为输入特征，训练一个线性 probe。
+
+当前实现虽然注释里还写着 logistic regression，但实际代码是：
+
+> 一个用 `torch.nn.Linear` 实现的二分类线性 probe。
+
+训练时使用：
+
+- 5 折分层交叉验证
+- 标准化
+- AdamW
+- BCEWithLogitsLoss
+
+最后报告：
+
+- `accuracy`
+- `f1`
+- `auc`
+
+### 5.4 这些输出怎么理解
+
+如果 `sparse_probe_k20` 明显比 `sparse_probe_k1` 和 `k5` 更强，说明：
+
+- RE 信号不是完全压在一个 latent 上
+- 而是分布在一小组 latent 上
+
+如果 top-20 已经很强，说明：
+
+- 少量 SAE 特征就能带出主要区分能力
+
+### 5.5 为什么不用更复杂模型
+
+因为这里的目的不是刷最高分，而是看：
+
+> 少量 latent 本身有没有清晰的信息量。
+
+如果一开始就上大模型或复杂 MLP，性能可能更高，但解释性更差。
+
+线性 probe 的好处是：
+
+- 它简单
+- 它可解释
+- 它更适合测试“这些 latent 自身有没有区分力”
+
+### 5.6 它能说明什么
+
+- SAE latent 是否对任务有实际预测价值
+- RE 信息是否集中在少量 latent 上
+
+### 5.7 它不能说明什么
+
+- 不能直接证明 latent 是语义概念
+- 不能证明模型是“靠这些 latent 因果地”完成任务
+
+它说明的是“有用”，不等于“已解释”。
+
+---
+
+## 6. 指标 3：Dense Probe Baseline
+
+### 6.1 它在看什么
+
+它在问：
+
+> 如果不用 SAE latent，而直接用原始句子级激活做分类，会有多强？
+
+### 6.2 为什么要设计这个 baseline
+
+没有 baseline，就不知道 SAE 的表现到底是好还是差。
+
+如果 dense probe 远远强于 sparse probe，说明：
+
+- 原始激活里当然有更多信息
+- SAE 把很多信息压掉了
+
+如果 sparse probe 已经接近 dense probe，说明：
+
+- SAE 用更少、更稀疏的特征保留了主要任务信息
+
+### 6.3 它具体怎么算
+
+输入不是 `utterance_features`，而是：
+
+- `re_activations`
+- `nonre_activations`
+
+也就是句子级的原始激活 `[N, d_model]`。
+
+其余训练方式和 sparse probe 一样，也是线性 probe + 交叉验证。
+
+### 6.4 它能说明什么
+
+- 原始激活的上限参考值
+- SAE 特征压缩后损失了多少任务信息
+
+### 6.5 它不能说明什么
+
+- 不能说明 dense 激活比 SAE 更“可解释”
+- 只能说明 dense 激活更“信息充足”
+
+所以 dense probe 是性能基线，不是解释性基线。
+
+---
+
+## 7. 指标 4：DiffMean Baseline
+
+### 7.1 它在看什么
+
+它在问：
+
+> 如果我根本不训练复杂 probe，只是取 RE 平均向量和 NonRE 平均向量的差方向，效果会怎样？
+
+### 7.2 为什么设计它
+
+这是一个非常朴素的 baseline。
+
+如果连这种最简单的方法都已经很强，那么说明：
+
+- RE 和 NonRE 的整体均值方向本来就差很多
+
+如果 sparse probe 比它明显更强，说明：
+
+- SAE 候选 latent 不只是“沿一个平均方向有差异”
+- 而是存在更细粒度、更结构化的信息
+
+### 7.3 它具体怎么算
+
+步骤很简单：
+
+1. 计算 RE 的平均句向量
+2. 计算 NonRE 的平均句向量
+3. 两者相减，得到一个“差方向”
+4. 把每个样本都投影到这个方向上
+5. 用这一维分数做分类
+
+所以它本质上是一个：
+
+> 单方向、单分数、极简版分类器
+
+### 7.4 它能说明什么
+
+- 任务是否主要靠一个整体方向就能分开
+- sparse probe 是否真的学到了更细的结构
+
+### 7.5 它不能说明什么
+
+- 不能定位具体 latent 的语义
+- 不能做细粒度解释
+
+---
+
+## 8. 指标 5：MaxAct Analysis
+
+### 8.1 它在看什么
+
+它在问：
+
+> 一个 latent 最喜欢在哪些句子上被强烈激活？
+
+这是最接近人工解释的一步。
+
+### 8.2 为什么这样设计
+
+统计指标告诉你“它有用”，但不能告诉你“它像什么”。
+
+要理解某个 latent 的含义，最直接的方法就是看：
+
+> 它在什么句子上最强。
+
+如果这些高激活句子表现出稳定共性，那么这个 latent 就更像一个真实概念。
+
+### 8.3 它具体怎么算
+
+对每个候选 latent：
+
+1. 取该 latent 在所有句子上的激活值
+2. 找出 top-N 最高激活句子
+3. 把文本、标签、激活值整理成一张卡片
+
+当前项目默认：
+
+- 取前 `50` 个候选 latent
+- 每个 latent 看 top-`10` 个句子
+
+输出是：
+
+- `latent_cards/*.md`
+- `avg_re_purity`
+
+### 8.4 什么是 RE purity
+
+比如一个 latent 的 top-10 句子里：
+
+- 7 条是 RE
+- 3 条是 NonRE
+
+那它的 `RE purity` 就是 `70%`。
+
+这可以粗略理解成：
+
+> 这个 latent 的高激活样本里，有多大比例偏向 RE。
+
+### 8.5 它能说明什么
+
+- 一个 latent 的高激活上下文长什么样
+- 它是偏向 RE 还是偏向 NonRE
+- 它更像语义特征、情感特征，还是模板特征
+
+### 8.6 它不能说明什么
+
+- purity 高，不代表一定是“RE 概念”
+- 它也可能只是某个固定句式、常见词或局部话术
+
+所以 MaxAct 是非常重要的“人工审查接口”，但不是自动真理机。
+
+---
+
+## 9. 指标 6：Feature Absorption
+
+### 9.1 它在看什么
+
+它在问：
+
+> 当某个目标 latent 没激活时，是不是总有一堆很像它的邻居 latent 代替它激活？
+
+如果是，就说明：
+
+> 这个概念可能不是由一个干净的 latent 单独表示，而是被多个 latent 分担了。
+
+### 9.2 为什么设计它
+
+SAE 的理想状态是：
+
+> 一个 latent 代表一个比较独立的特征。
+
+但现实里很可能出现：
+
+- 一个概念被拆成多个相近 latent
+- 或者多个 latent 互相重叠
+
+这会影响解释性，因为你很难说“这一个 latent 就是某概念”。
+
+### 9.3 它具体怎么算
+
+对每个目标 latent：
+
+1. 计算它和所有其他 latent 的相关性
+2. 找到最相关的 top-k 邻居
+3. 看在目标 latent 关闭时，这些邻居是否会亮起来
+
+当前输出两个核心量：
+
+- `mean_absorption`
+  - 目标 latent 关闭时，至少有一个邻居激活的比例
+- `full_absorption`
+  - 更极端的版本，表示目标 latent 完全不工作但邻居还在工作
+
+### 9.4 怎么理解结果
+
+- `mean_absorption` 高
+  - 说明冗余大，特征容易被邻居接管
+- `mean_absorption` 低
+  - 说明这个 latent 更独立
+
+### 9.5 为什么它重要
+
+因为解释性研究不只关心“有没有信号”，还关心：
+
+> 这个信号是不是被一个清晰特征承载，而不是散成一团。
+
+### 9.6 它的局限
+
+这个指标基于相关性，不是严格因果分析。
+
+所以它更像是在看：
+
+> “像不像重叠编码”
+
+而不是直接证明：
+
+> “一定存在功能替代”
+
+---
+
+## 10. 指标 7：Feature Geometry
+
+### 10.1 它在看什么
+
+它在问：
+
+> 候选 latent 在 decoder 空间里的方向，是不是彼此很像？
+
+这里看的不是激活值本身，而是 SAE decoder 权重方向。
+
+### 10.2 为什么这样设计
+
+如果两个 latent 的 decoder 向量几乎同方向，说明：
+
+- 它们把信息写回原空间时很像
+- 它们可能不是两个真正独立的特征
+
+也就是说，这一步在检查：
+
+> 候选 latent 之间有没有“几何上的重复编码”。
+
+### 10.3 它具体怎么算
+
+对候选 latent：
+
+1. 取出对应 decoder 列向量
+2. 做归一化
+3. 两两计算 cosine similarity
+
+输出包括：
+
+- `mean_cosine`
+- `max_cosine`
+- `top_pairs`
+
+### 10.4 怎么理解
+
+- `mean_cosine` 高
+  - 候选整体更拥挤、更相似
+- `max_cosine` 很高
+  - 至少有一对 latent 很像，可能在重复编码
+
+### 10.5 它能说明什么
+
+- 候选特征之间是否几何冗余
+- 哪些 latent 对最值得合并审查
+
+### 10.6 它不能说明什么
+
+- 不能单独证明语义相同
+- 因为几何相近不一定等于功能完全一样
+
+它更像“结构相似性提示”。
+
+---
+
+## 11. 指标 8：TPP
+
+TPP 是 `Targeted Probe Perturbation`，可以翻成：
+
+> 针对候选 latent 的定向扰动测试
+
+### 11.1 它在看什么
+
+它在问：
+
+> 如果我把某个候选 latent 单独置零，probe 的判断能力会不会下降？
+
+如果会下降，说明这个 latent 对当前任务可能有真实贡献。
+
+### 11.2 为什么这样设计
+
+前面的很多指标都只是“相关性”：
+
+- 它和 RE 很相关
+- 它能帮助分类
+
+但相关不等于因果。
+
+TPP 试图更进一步问：
+
+> 这个 latent 只是和 RE 一起出现，还是它真的在帮助 RE 判断？
+
+### 11.3 它具体怎么算
+
+当前实现是：
+
+1. 先取 top-k 候选 latent
+2. 用这些 latent 训练一个 probe
+3. 得到 baseline accuracy
+4. 然后逐个把某个 latent 列置零
+5. 重新跑 probe 预测
+6. 看 accuracy 掉了多少
+
+输出包括：
+
+- `baseline_accuracy`
+- 每个 latent 的 `accuracy_drop`
+
+### 11.4 怎么理解
+
+- `accuracy_drop` 大
+  - 这个 latent 更重要
+- `accuracy_drop` 接近 0
+  - 它可能可替代，或者本身不关键
+- `accuracy_drop` 为负
+  - 去掉它反而更好，说明它可能带来噪声或冗余
+
+### 11.5 它为什么有价值
+
+因为它比单纯 AUC 更接近：
+
+> “拿掉这个 latent，会不会出事？”
+
+这正是局部因果证据的味道。
+
+### 11.6 它的局限很重要
+
+当前实现有一个必须讲清楚的边界：
+
+> 现在的 TPP 是在同一批数据上训练 probe，再在同一批数据上做扰动。
+
+这意味着它更像：
+
+> 训练集上的局部依赖度测试
+
+而不是严格的 held-out 因果验证。
+
+所以现在的 TPP 可以写成：
+
+- 初步因果提示
+
+但不应该写成：
+
+- 强因果结论
+
+---
+
+## 12. 这些指标为什么要组合使用
+
+单个指标永远不够。
+
+如果只看 AUC，会有问题：
+
+- 也许这个 latent 只是某个关键词触发器
+
+如果只看 MaxAct，也会有问题：
+
+- 看起来像概念，不代表真能帮助任务
+
+如果只看 TPP，也会有问题：
+
+- 某个 latent 被拿掉不受影响，可能只是因为有冗余邻居
+
+所以这套设计是互补的：
+
+- 单 latent 统计筛选
+  - 找候选
+- sparse / dense / diffmean
+  - 看任务价值
+- MaxAct
+  - 看语义样子
+- absorption / geometry
+  - 看冗余和重叠
+- TPP
+  - 看局部重要性
+
+你可以把它理解成一个“审查链条”：
+
+> 先证明它相关，再证明它有用，再证明它像个概念，再检查它是不是冗余，最后再看它拿掉后会不会影响判断。
+
+---
+
+## 13. 用当前项目结果举个例子
+
+以最新正式运行结果 [metrics_functional.json](D:/project/NLP_re_dataset_model_base/outputs/sae_eval_full_max/metrics_functional.json) 为例：
+
+- `1540` 个 latent 通过 FDR
+  - 说明不是只有极少数 latent 和 RE 有关
+- `sparse_probe_k20` 的 `AUC=0.913`
+  - 说明 top-20 latent 已经带出很强任务信息
+- `dense_probe` 的 `AUC=0.968`
+  - 说明原始激活仍然保留更多信息，SAE 是有压缩损失的
+- `avg_re_purity=0.576`
+  - 说明候选 latent 平均并不算特别“纯”
+  - 这意味着里面有相当一部分还需要人工甄别
+- `overall_mean_absorption=0.546`
+  - 说明冗余并不低
+  - 很多特征可能不是单独编码
+
+这组结果最稳妥的解释是：
+
+> 项目已经找到了很多和 RE 显著相关、并且对任务有帮助的候选 latent，但还不能把它们全部直接叫作“典型 RE 语义特征”。
+
+---
+
+## 14. 小白最容易混淆的几点
+
+### 14.1 AUC 高，是不是就说明解释成功了
+
+不是。
+
+AUC 高只说明：
+
+> 这个 latent 或这组 latent 很会区分 RE / NonRE。
+
+它不自动等于：
+
+> 我们已经知道它到底代表什么。
+
+### 14.2 MaxAct 看起来很像 RE，是不是就够了
+
+也不够。
+
+它可能只是：
+
+- 某个高频短语
+- 某个特定句式
+- 某个礼貌表达
+
+而不是真正的 RE 概念。
+
+### 14.3 TPP 掉点大，是不是就证明因果了
+
+只能说更接近因果证据，但还不是最强版本。
+
+因为当前实现还是 in-sample 的。
+
+### 14.4 冗余高，是不是说明 SAE 失败了
+
+不一定。
+
+它只说明：
+
+> 这个概念可能没有被一个完全干净的单特征承载，而是分布在多条相近通道里。
+
+这在真实大模型里很常见。
+
+---
+
+## 15. 这份功能指标设计的总体优点
+
+- 它不是只给一个总分，而是给一整套证据
+- 它把“统计相关”“任务有用”“人工可解释”“是否冗余”“局部干预”分开看
+- 它很适合做候选 latent 发现
+- 它已经足够支持研究第一阶段：从大批 latent 中筛出值得重点审查的 RE 候选
+
+---
+
+## 16. 当前实现的边界
+
+为了避免误读，这几点要明确写出来：
+
+1. 当前功能评估是基于句子级 pooling 之后的特征，不是原始 token 级概念分析。
+2. 当前默认 `max pooling` 可能偏向局部强触发器。
+3. 当前 TPP 还是 in-sample，不是严格 held-out 因果验证。
+4. 当前 feature absorption 用的是相关性邻居，不是严格机制替代证明。
+5. 当前 MaxAct 仍然需要人工阅读，不能全自动宣布“这就是 RE 特征”。
+
+---
+
+## 17. 最后一句话总结
+
+如果你只记住一句话，请记住：
+
+> 本项目的功能指标不是为了证明“SAE 很厉害”，而是为了用多种角度检查：哪些 latent 真的和 RE 有关、有没有任务价值、看起来像不像概念、是不是彼此重叠，以及拿掉以后会不会影响判断。

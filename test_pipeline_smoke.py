@@ -127,6 +127,103 @@ def test_structural_metrics():
     print("  ✓ test_structural_metrics")
 
 
+def test_ce_kl_intervention():
+    """Test CE/KL intervention metrics with a toy causal LM."""
+    import torch.nn as nn
+    import torch.nn.functional as F
+    from types import SimpleNamespace
+
+    from nlp_re_base.eval_structural import compute_ce_kl_with_intervention
+
+    class ToyTokenizer:
+        pad_token_id = 0
+
+        def __call__(
+            self,
+            texts,
+            padding=True,
+            truncation=True,
+            max_length=128,
+            return_tensors="pt",
+        ):
+            token_lists = []
+            for text in texts:
+                ids = [int(tok) for tok in text.split()][:max_length]
+                token_lists.append(ids)
+
+            max_len = max(len(ids) for ids in token_lists)
+            padded = []
+            masks = []
+            for ids in token_lists:
+                pad_len = max_len - len(ids)
+                padded.append(ids + [self.pad_token_id] * pad_len)
+                masks.append([1] * len(ids) + [0] * pad_len)
+
+            return {
+                "input_ids": torch.tensor(padded, dtype=torch.long),
+                "attention_mask": torch.tensor(masks, dtype=torch.long),
+            }
+
+    class ToyLM(nn.Module):
+        def __init__(self, vocab_size=10, d_model=8):
+            super().__init__()
+            self.embed = nn.Embedding(vocab_size, d_model)
+            self.model = nn.Module()
+            self.model.layers = nn.ModuleList([nn.Linear(d_model, d_model)])
+            self.lm_head = nn.Linear(d_model, vocab_size, bias=False)
+
+        def forward(self, input_ids, attention_mask=None, labels=None):
+            hidden = self.embed(input_ids)
+            hidden = self.model.layers[0](hidden)
+            logits = self.lm_head(hidden)
+
+            loss = None
+            if labels is not None:
+                shift_logits = logits[:, :-1, :].contiguous()
+                shift_labels = labels[:, 1:].contiguous()
+                loss = F.cross_entropy(
+                    shift_logits.view(-1, shift_logits.size(-1)),
+                    shift_labels.view(-1),
+                    ignore_index=-100,
+                )
+
+            return SimpleNamespace(logits=logits, loss=loss)
+
+    class ToySAE(nn.Module):
+        def __init__(self, d_model=8):
+            super().__init__()
+            self.scale = nn.Parameter(torch.full((d_model,), 0.5))
+            self.sae_dtype = torch.float32
+
+        def forward(self, x):
+            recon = x * self.scale
+            latents = torch.zeros(*x.shape[:-1], 1, dtype=x.dtype, device=x.device)
+            return recon, latents
+
+    torch.manual_seed(0)
+    model = ToyLM()
+    tokenizer = ToyTokenizer()
+    sae = ToySAE()
+
+    results = compute_ce_kl_with_intervention(
+        model=model,
+        tokenizer=tokenizer,
+        texts=["1 2 3 4", "2 3 4"],
+        sae=sae,
+        hook_point="blocks.0.hook_resid_post",
+        max_seq_len=16,
+        batch_size=2,
+    )
+
+    assert results["n_eval_texts"] == 2
+    assert results["n_eval_pred_tokens"] == 5, results
+    assert results["ce_kl_batch_size"] == 2
+    assert results["ce_loss_sae"] != results["ce_loss_orig"], results
+    assert results["kl_divergence"] >= 0.0, results
+
+    print("  PASS test_ce_kl_intervention")
+
+
 def test_univariate_analysis():
     """Test univariate analysis with synthetic data."""
     from nlp_re_base.eval_functional import univariate_analysis
@@ -298,6 +395,7 @@ def main():
         ("SAE dtype Alignment", test_sae_dtype_alignment),
         ("Token→Utterance Aggregation", test_aggregation),
         ("Structural Metrics", test_structural_metrics),
+        ("CE/KL Intervention", test_ce_kl_intervention),
         ("Univariate Analysis", test_univariate_analysis),
         ("Sparse Probing", test_sparse_probing),
         ("MaxAct Cards", test_maxact),

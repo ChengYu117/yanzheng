@@ -35,7 +35,7 @@ NLP_re_dataset_model_base/
   run_sae_evaluation.py       # End-to-end pipeline runner
   test_pipeline_smoke.py      # CPU smoke tests
   doc/
-    sae_evaluation_metrics.md # Evaluation framework reference
+    SAE评估指标说明.md        # Evaluation framework reference
 ```
 
 ## Setup

@@ -3,7 +3,7 @@
 这份速查版适合你快速回看，不适合第一次深入学习。  
 如果你第一次看这个项目，先看：
 
-- [小白总文档](D:/project/NLP_re_dataset_model_base/doc/sae_re_beginner_guide.md)
+- [小白总文档](D:/project/NLP_re_dataset_model_base/doc/SAE-RE小白入门指南.md)
 
 ---
 

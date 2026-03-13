@@ -443,7 +443,7 @@ def maxact_analysis(
         with open(card_path, "w", encoding="utf-8") as f:
             f.write("\n".join(md_lines))
 
-    print(f"  ✓ Generated {len(cards)} MaxAct cards in {out_path}")
+    print(f"  Generated {len(cards)} MaxAct cards in {out_path}")
     return cards
 
 
@@ -666,7 +666,7 @@ def run_functional_evaluation(
         Dictionary with univariate results, probe results, MaxAct summaries,
         feature absorption, feature geometry, and TPP results.
     """
-    print("\n═══ Functional Evaluation ═══")
+    print("\n=== Functional Evaluation ===")
 
     # Convert to numpy
     if isinstance(re_features, torch.Tensor):
@@ -689,7 +689,7 @@ def run_functional_evaluation(
     # Save candidate latents CSV
     csv_path = out_path / "candidate_latents.csv"
     candidate_df.to_csv(csv_path, index=False)
-    print(f"  ✓ Saved candidate latents to {csv_path}")
+    print(f"  Saved candidate latents to {csv_path}")
 
     # ── Step 2: Sparse probing ──
     probe_results = sparse_probing(
@@ -763,6 +763,6 @@ def run_functional_evaluation(
     json_path = out_path / "metrics_functional.json"
     with open(json_path, "w", encoding="utf-8") as f:
         json.dump(functional_metrics, f, indent=2, ensure_ascii=False, default=str)
-    print(f"  ✓ Saved functional metrics to {json_path}")
+    print(f"  Saved functional metrics to {json_path}")
 
     return functional_metrics

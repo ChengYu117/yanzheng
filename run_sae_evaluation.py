@@ -8,7 +8,10 @@ the SAE, and aggregated batch-by-batch. Only utterance-level features
 Usage:
     python run_sae_evaluation.py [--output-dir DIR] [--batch-size N]
                                  [--max-seq-len N] [--device DEVICE]
-                                 [--skip-ce-kl] [--aggregation max|mean]
+                                 [--skip-ce-kl]
+                                 [--ce-kl-batch-size N]
+                                 [--ce-kl-max-texts N]
+                                 [--aggregation max|mean]
                                  [--compare-mean]
 """
 
@@ -69,7 +72,19 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--skip-ce-kl",
         action="store_true",
-        help="Skip CE/KL computation (requires 2x forward passes, slow).",
+        help="Skip CE/KL computation even though it is part of the default fidelity evaluation.",
+    )
+    parser.add_argument(
+        "--ce-kl-batch-size",
+        type=int,
+        default=None,
+        help="Override batch size used by CE/KL intervention evaluation.",
+    )
+    parser.add_argument(
+        "--ce-kl-max-texts",
+        type=int,
+        default=None,
+        help="Optionally limit the number of texts used for CE/KL evaluation.",
     )
     parser.add_argument(
         "--sae-config",
@@ -157,6 +172,7 @@ def _run_single_aggregation(
     batch_size: int,
     device: torch.device,
     allow_partial_functional: bool = False,
+    cached_ce_kl_results: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     print("\n" + "=" * 60)
     print(f"  Aggregation Mode: {aggregation}")
@@ -171,7 +187,7 @@ def _run_single_aggregation(
     # Create optional online accumulator for full-dataset structural metrics
     accumulator = OnlineStructuralAccumulator() if args.full_structural else None
     if accumulator:
-        print("  [full-structural] Online accumulator enabled — metrics computed over ALL tokens.")
+        print("  [full-structural] Online accumulator enabled - metrics computed over ALL tokens.")
 
     result = extract_and_process_streaming(
         model=model,
@@ -199,9 +215,25 @@ def _run_single_aggregation(
     print(f"  RE features: {re_features.shape}, NonRE features: {nonre_features.shape}")
 
     print("\n[6/7] Running structural evaluation...")
-    ce_kl_results = None
-    if not args.skip_ce_kl:
-        print("  Computing CE/KL (this may take a while)...")
+    ce_kl_results = cached_ce_kl_results
+    ce_kl_batch_size = args.ce_kl_batch_size or sae_config.get(
+        "ce_kl_batch_size",
+        max(1, batch_size // 2),
+    )
+    ce_kl_max_texts = (
+        args.ce_kl_max_texts
+        if args.ce_kl_max_texts is not None
+        else sae_config.get("ce_kl_max_texts")
+    )
+    if ce_kl_max_texts is not None and ce_kl_max_texts <= 0:
+        ce_kl_max_texts = None
+
+    if not args.skip_ce_kl and ce_kl_results is None:
+        scope = f"{ce_kl_max_texts} texts" if ce_kl_max_texts is not None else "all texts"
+        print(
+            "  Computing CE/KL "
+            f"(batch_size={ce_kl_batch_size}, scope={scope}; this may take a while)..."
+        )
         ce_kl_results = compute_ce_kl_with_intervention(
             model=model,
             tokenizer=tokenizer,
@@ -209,8 +241,11 @@ def _run_single_aggregation(
             sae=sae,
             hook_point=hook_point,
             max_seq_len=max_seq_len,
-            batch_size=max(1, batch_size // 2),
+            batch_size=ce_kl_batch_size,
+            max_texts=ce_kl_max_texts,
         )
+    elif ce_kl_results is not None:
+        print("  Reusing cached CE/KL results for this aggregation.")
 
     structural_metrics = run_structural_evaluation(
         activations=result["sample_activations"],
@@ -270,6 +305,7 @@ def _run_single_aggregation(
         "utterance_features_shape": list(utterance_features.shape),
         "utterance_activations_shape": list(utterance_activations.shape),
         "structural_metrics": structural_metrics,
+        "ce_kl_results": ce_kl_results,
         "functional_metrics": functional_metrics,
         "functional_error": functional_error,
     }
@@ -338,6 +374,7 @@ def main() -> None:
     )
 
     comparison_records = []
+    cached_ce_kl_results: dict[str, Any] | None = None
     for aggregation in aggregations:
         run_output_dir = (
             base_output_dir / aggregation
@@ -360,16 +397,20 @@ def main() -> None:
             batch_size=batch_size,
             device=device,
             allow_partial_functional=len(aggregations) > 1,
+            cached_ce_kl_results=cached_ce_kl_results,
         )
         comparison_records.append(record)
+        if cached_ce_kl_results is None and record["ce_kl_results"] is not None:
+            cached_ce_kl_results = record["ce_kl_results"]
 
     if len(aggregations) > 1:
         comparison_payload = {
             "aggregations": aggregations,
             "base_aggregation": base_aggregation,
             "note": (
-                "Structural metrics should match across aggregation modes because "
-                "aggregation only changes utterance-level features used in functional evaluation."
+                "Structural metrics and CE/KL should match across aggregation modes "
+                "because aggregation only changes utterance-level features used in "
+                "functional evaluation."
             ),
             "results": [
                 {
