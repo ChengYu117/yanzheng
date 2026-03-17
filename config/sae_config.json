@@ -1,0 +1,24 @@
+{
+    "sae_repo_id": "OpenMOSS-Team/Llama3_1-8B-Base-LXR-8x",
+    "sae_subfolder": "Llama3_1-8B-Base-L19R-8x",
+    "hook_point": "blocks.19.hook_resid_post",
+    "d_model": 4096,
+    "d_sae": 32768,
+    "act_fn": "jumprelu",
+    "jump_relu_threshold": 0.52734375,
+    "use_decoder_bias": true,
+    "norm_activation": "dataset-wise",
+    "dataset_average_activation_norm_in": 17.125,
+    "max_seq_len": 128,
+    "batch_size": 8,
+    "ce_kl_batch_size": 2,
+    "ce_kl_max_texts": null,
+    "aggregation": "max",
+    "fdr_alpha": 0.05,
+    "probe_k_values": [
+        1,
+        5,
+        20
+    ],
+    "top_k_candidates": 50
+}
