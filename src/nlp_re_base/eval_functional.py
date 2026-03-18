@@ -23,6 +23,8 @@ from sklearn.metrics import accuracy_score, f1_score, roc_auc_score
 from sklearn.model_selection import StratifiedKFold
 from tqdm import tqdm
 
+from .ai_re_judge import export_judge_bundle
+
 
 # ──────────────────────── Univariate Analysis ────────────────────────────────
 
@@ -271,6 +273,35 @@ def _predict_torch_probe(
     probs = 1.0 / (1.0 + np.exp(-logits))
     preds = (probs >= 0.5).astype(np.int64)
     return preds, probs
+
+
+def _extract_probe_weights(probe_state: dict[str, Any]) -> np.ndarray:
+    """Extract the fitted linear probe weights as a 1D numpy array."""
+    with torch.no_grad():
+        weight = probe_state["model"].weight.detach().cpu().numpy().reshape(-1)
+    return np.asarray(weight, dtype=np.float32)
+
+
+def _build_judge_group_weights(
+    all_features: np.ndarray,
+    labels: np.ndarray,
+    candidate_indices: list[int],
+) -> dict[str, list[float]]:
+    """Fit full-data probes for G1/G5/G20 and export normalized absolute weights."""
+    group_weights: dict[str, list[float]] = {}
+    for group_name, k in (("G1", 1), ("G5", 5), ("G20", 20)):
+        sel_indices = candidate_indices[:k]
+        if not sel_indices:
+            continue
+        X_group = np.ascontiguousarray(all_features[:, sel_indices], dtype=np.float32)
+        probe_state = _fit_torch_probe(X_group, labels)
+        weights = np.abs(_extract_probe_weights(probe_state))
+        total = float(weights.sum())
+        if total <= 1e-12:
+            group_weights[group_name] = [1.0 / len(sel_indices)] * len(sel_indices)
+        else:
+            group_weights[group_name] = (weights / total).astype(np.float32).tolist()
+    return group_weights
 
 
 def _safe_l2_norm(
@@ -652,12 +683,22 @@ def run_functional_evaluation(
     nonre_features: torch.Tensor | np.ndarray,
     all_texts: list[str],
     all_labels: list[int],
+    all_records: list[dict[str, Any]] | None = None,
     re_activations: torch.Tensor | np.ndarray | None = None,
     nonre_activations: torch.Tensor | np.ndarray | None = None,
     sae_decoder_weight: torch.Tensor | np.ndarray | None = None,
     fdr_alpha: float = 0.05,
     k_values: list[int] | None = None,
     top_k_candidates: int = 50,
+    aggregation: str = "max",
+    hook_point: str | None = None,
+    model_name: str | None = None,
+    sae_repo_id: str | None = None,
+    sae_subfolder: str | None = None,
+    judge_top_latents: int = 20,
+    judge_top_n: int = 10,
+    judge_control_n: int = 5,
+    judge_bundle_only: bool = False,
     output_dir: str | Path = "outputs/sae_eval",
 ) -> dict[str, Any]:
     """Run complete functional evaluation pipeline.
@@ -691,7 +732,67 @@ def run_functional_evaluation(
     candidate_df.to_csv(csv_path, index=False)
     print(f"  Saved candidate latents to {csv_path}")
 
+    labels = np.ascontiguousarray(
+        np.concatenate([np.ones(len(re_features)), np.zeros(len(nonre_features))]),
+        dtype=np.int64,
+    )
+    all_features = np.ascontiguousarray(
+        np.concatenate([re_features, nonre_features], axis=0),
+        dtype=np.float32,
+    )
+
     # ── Step 2: Sparse probing ──
+    top_candidates = candidate_df["latent_idx"].values[:top_k_candidates].tolist()
+    group_weights = _build_judge_group_weights(
+        all_features=all_features,
+        labels=labels,
+        candidate_indices=top_candidates,
+    )
+    bundle_path = export_judge_bundle(
+        output_dir=out_path,
+        candidate_df=candidate_df,
+        utterance_features=all_features,
+        texts=all_texts,
+        labels=all_labels,
+        records=all_records,
+        aggregation=aggregation,
+        hook_point=hook_point,
+        model_name=model_name,
+        sae_repo_id=sae_repo_id,
+        sae_subfolder=sae_subfolder,
+        group_weights=group_weights,
+        top_latents=judge_top_latents,
+        top_n=judge_top_n,
+        control_n=judge_control_n,
+    )
+    print(f"  Exported judge bundle to {bundle_path}")
+    univariate_summary = {
+        "total_latents": int(candidate_df.shape[0]),
+        "significant_fdr": int(candidate_df["significant_fdr"].sum()),
+        "fdr_alpha": fdr_alpha,
+        "top10_latents": candidate_df.head(10)[
+            ["latent_idx", "cohens_d", "auc", "p_value", "significant_fdr"]
+        ].to_dict("records"),
+    }
+    judge_bundle_info = {
+        "path": str(bundle_path),
+        "top_latents": judge_top_latents,
+        "top_n": judge_top_n,
+        "control_n": judge_control_n,
+        "group_names": ["G1", "G5", "G20"],
+    }
+    if judge_bundle_only:
+        functional_metrics = {
+            "mode": "judge_bundle_only",
+            "univariate_summary": univariate_summary,
+            "judge_bundle": judge_bundle_info,
+        }
+        json_path = out_path / "metrics_functional.json"
+        with open(json_path, "w", encoding="utf-8") as f:
+            json.dump(functional_metrics, f, indent=2, ensure_ascii=False, default=str)
+        print(f"  Saved functional metrics to {json_path}")
+        return functional_metrics
+
     probe_results = sparse_probing(
         re_features,
         nonre_features,
@@ -702,9 +803,6 @@ def run_functional_evaluation(
     )
 
     # ── Step 3: MaxAct analysis ──
-    top_candidates = candidate_df["latent_idx"].values[:top_k_candidates].tolist()
-    all_features = np.concatenate([re_features, nonre_features], axis=0)
-
     maxact_cards = maxact_analysis(
         utterance_features=all_features,
         texts=all_texts,
@@ -738,14 +836,7 @@ def run_functional_evaluation(
 
     # ── Assemble results ──
     functional_metrics = {
-        "univariate_summary": {
-            "total_latents": int(candidate_df.shape[0]),
-            "significant_fdr": int(candidate_df["significant_fdr"].sum()),
-            "fdr_alpha": fdr_alpha,
-            "top10_latents": candidate_df.head(10)[
-                ["latent_idx", "cohens_d", "auc", "p_value", "significant_fdr"]
-            ].to_dict("records"),
-        },
+        "univariate_summary": univariate_summary,
         "probe_results": probe_results,
         "maxact_summary": {
             "n_candidates": len(top_candidates),
@@ -755,6 +846,7 @@ def run_functional_evaluation(
         },
         "feature_absorption": absorption_results,
         "tpp": tpp_results,
+        "judge_bundle": judge_bundle_info,
     }
     if geometry_results is not None:
         functional_metrics["feature_geometry"] = geometry_results

@@ -1,0 +1,144 @@
+{
+  "pooling_method": "max",
+  "binarized_threshold": 0.0,
+  "config": {
+    "max_samples": 16,
+    "max_new_tokens": 24,
+    "lambda": 1.0,
+    "modes": [
+      "cond_token",
+      "direction"
+    ],
+    "aggregation": "max",
+    "binarized_threshold": 0.0
+  },
+  "baseline_generation_quality": {
+    "mean_ttr": 0.6808555532720335,
+    "mean_length": 18.0625,
+    "mean_bigram_repetition": 0.2134928627551499
+  },
+  "groups": {
+    "G1": {
+      "mode": "cond_token",
+      "quality": {
+        "mean_ttr": 0.6808555532720335,
+        "mean_length": 18.0625,
+        "mean_bigram_repetition": 0.2134928627551499,
+        "mean_ttr_intervened": 0.6808555532720335,
+        "mean_length_intervened": 18.0625,
+        "mean_bigram_repetition_intervened": 0.2134928627551499,
+        "delta_ttr": 0.0,
+        "delta_length": 0.0,
+        "delta_bigram_repetition": 0.0,
+        "mean_content_retention": 1.0
+      },
+      "mean_generated_re_logit": -0.7297069430351257,
+      "mean_generated_re_logit_delta": 0.0,
+      "sample_outputs": [
+        "naturally, you're going to have a stroke, you're concerned about having a heart attack, you're concerned about",
+        ":// I'm pretty sure you're pretty sure you're pretty sure you're pretty sure you're pretty sure you're",
+        "nobodyknows\nI'm not the same water\nand you're not sure if you're still alive\nand",
+        ". you are a very loving person and you are always there for your loved ones. you are a very loyal person and",
+        "://ve been a lot of the time, you've got to be able to get out and about and meet people"
+      ]
+    },
+    "G5": {
+      "mode": "cond_token",
+      "quality": {
+        "mean_ttr": 0.6808555532720335,
+        "mean_length": 18.0625,
+        "mean_bigram_repetition": 0.2134928627551499,
+        "mean_ttr_intervened": 0.6873958200704524,
+        "mean_length_intervened": 18.0625,
+        "mean_bigram_repetition_intervened": 0.21119307920536634,
+        "delta_ttr": 0.006540266798418903,
+        "delta_length": 0.0,
+        "delta_bigram_repetition": -0.0022997835497835517,
+        "mean_content_retention": 0.9479166666666666
+      },
+      "mean_generated_re_logit": -0.6979660391807556,
+      "mean_generated_re_logit_delta": 0.03174087032675743,
+      "sample_outputs": [
+        "naturally, you're going to have a stroke, you're concerned about having a heart attack, you're concerned about",
+        ":// I'm pretty sure you're pretty sure you're pretty sure you're pretty sure you're pretty sure you're",
+        "nobodyknows\nI'm not the same water\nand you're not sure if you're still alive\nand",
+        ". you are a very loving person. you are very loyal to your friends and family. you are a very caring person",
+        "://ve been a lot of the time, you've got to be able to get out and about and meet people"
+      ]
+    },
+    "G20": {
+      "mode": "cond_token",
+      "quality": {
+        "mean_ttr": 0.6808555532720335,
+        "mean_length": 18.0625,
+        "mean_bigram_repetition": 0.2134928627551499,
+        "mean_ttr_intervened": 0.6808555532720335,
+        "mean_length_intervened": 18.0625,
+        "mean_bigram_repetition_intervened": 0.2134928627551499,
+        "delta_ttr": 0.0,
+        "delta_length": 0.0,
+        "delta_bigram_repetition": 0.0,
+        "mean_content_retention": 1.0
+      },
+      "mean_generated_re_logit": -0.7297069430351257,
+      "mean_generated_re_logit_delta": 0.0,
+      "sample_outputs": [
+        "naturally, you're going to have a stroke, you're concerned about having a heart attack, you're concerned about",
+        ":// I'm pretty sure you're pretty sure you're pretty sure you're pretty sure you're pretty sure you're",
+        "nobodyknows\nI'm not the same water\nand you're not sure if you're still alive\nand",
+        ". you are a very loving person and you are always there for your loved ones. you are a very loyal person and",
+        "://ve been a lot of the time, you've got to be able to get out and about and meet people"
+      ]
+    }
+  },
+  "controls": {
+    "Orthogonal": {
+      "mode": "direction",
+      "quality": {
+        "mean_ttr": 0.6808555532720335,
+        "mean_length": 18.0625,
+        "mean_bigram_repetition": 0.2134928627551499,
+        "mean_ttr_intervened": 0.6698565884687209,
+        "mean_length_intervened": 17.9375,
+        "mean_bigram_repetition_intervened": 0.22428831730060445,
+        "delta_ttr": -0.010998964803312639,
+        "delta_length": -0.125,
+        "delta_bigram_repetition": 0.010795454545454553,
+        "mean_content_retention": 0.9583333333333333
+      },
+      "mean_generated_re_logit": -0.8004757165908813,
+      "mean_generated_re_logit_delta": -0.0707687959074974,
+      "sample_outputs": [
+        "naturally, you're going to have a stroke, you're concerned about having a heart attack, you're concerned about",
+        ":// I'm pretty sure you're pretty sure you're pretty sure you're pretty sure you're pretty sure you're",
+        "nobodyknows\nI'm not the same water\nand you're not sure if you're still alive\nand",
+        ". you are a very caring person. you are a very good friend. you are a very good husband. you are",
+        "://ve been a lot of the time, you've got to be able to get out and about and meet people"
+      ]
+    },
+    "Random_dir": {
+      "mode": "direction",
+      "quality": {
+        "mean_ttr": 0.6808555532720335,
+        "mean_length": 18.0625,
+        "mean_bigram_repetition": 0.2134928627551499,
+        "mean_ttr_intervened": 0.6665479552328177,
+        "mean_length_intervened": 18.375,
+        "mean_bigram_repetition_intervened": 0.22390952942181655,
+        "delta_ttr": -0.014307598039215774,
+        "delta_length": 0.3125,
+        "delta_bigram_repetition": 0.010416666666666657,
+        "mean_content_retention": 0.9288690476190476
+      },
+      "mean_generated_re_logit": -0.8678274750709534,
+      "mean_generated_re_logit_delta": -0.13812053203582764,
+      "sample_outputs": [
+        "naturally, you're going to have a stroke, you're concerned about having a heart attack, you're concerned about",
+        ":// you're\nyou're pretty fed up\nyou're pretty fed up with\nyou're pretty fed up with",
+        "nobodyknows\nI'm not the same water\nand you're not sure if you're still alive\nand",
+        ". you are a very loving person and you are always there for your loved ones. you are a very loyal person and",
+        "://ve been a lot of the time, you've got to be able to get out and about and meet people"
+      ]
+    }
+  }
+}

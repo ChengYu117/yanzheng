@@ -1,0 +1,9 @@
+{
+  "ce_loss_orig": 4.071297621367826,
+  "ce_loss_sae": 6.434753391636032,
+  "ce_loss_delta": 2.3634557702682057,
+  "kl_divergence": 2.9416910853150005,
+  "n_eval_texts": 1598,
+  "n_eval_pred_tokens": 26619,
+  "ce_kl_batch_size": 2
+}

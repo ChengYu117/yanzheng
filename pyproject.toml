@@ -14,6 +14,7 @@ dependencies = [
   "sentencepiece",
   "torch",
   "transformers",
+  "accelerate",
   "scipy",
   "scikit-learn",
   "huggingface-hub",

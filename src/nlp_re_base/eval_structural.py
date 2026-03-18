@@ -41,6 +41,7 @@ class OnlineStructuralAccumulator:
         # MSE accumulator
         self._n_tokens: int = 0
         self._mse_sum: float = 0.0
+        self._d_model: int | None = None
 
         # Cosine similarity accumulator
         self._cos_sum: float = 0.0
@@ -83,6 +84,8 @@ class OnlineStructuralAccumulator:
             return
 
         d = z_flat.shape[1]
+        if self._d_model is None:
+            self._d_model = d
 
         # ── MSE ──
         self._mse_sum += float((r_flat ** 2).sum())
@@ -132,7 +135,7 @@ class OnlineStructuralAccumulator:
         if n == 0:
             return {}
 
-        mse    = self._mse_sum / n
+        mse    = self._mse_sum / (n * max(self._d_model or 1, 1))
         cos    = self._cos_sum / n
         l0_mean = self._l0_sum / n
         l0_std  = float(
@@ -268,6 +271,19 @@ def compute_explained_variance(
     fvu = residual_var / total_var
     ev = 1.0 - fvu
     return {"explained_variance": ev, "fvu": fvu}
+
+
+def compute_reconstruction_metrics(
+    z: torch.Tensor,
+    z_hat: torch.Tensor,
+    mask: torch.Tensor | None = None,
+) -> dict[str, float]:
+    """Bundle the reconstruction-space metrics used in structural evaluation."""
+    return {
+        "mse": compute_mse(z, z_hat, mask),
+        "cosine_similarity": compute_cosine_similarity(z, z_hat, mask),
+        **compute_explained_variance(z, z_hat, mask),
+    }
 
 
 # ──────────────────────────── Sparsity metrics ───────────────────────────────
@@ -429,7 +445,11 @@ def compute_ce_kl_with_intervention(
         sae_dtype = getattr(sae, "sae_dtype", next(sae.parameters()).dtype)
         sae_hidden = original_hidden.to(device=sae_device, dtype=sae_dtype)
         with torch.inference_mode():
-            recon, _ = sae(sae_hidden)
+            if hasattr(sae, "forward_with_details"):
+                sae_outputs = sae.forward_with_details(sae_hidden)
+                recon = sae_outputs["reconstructed_raw"]
+            else:
+                recon, _ = sae(sae_hidden)
         recon = recon.to(device=device, dtype=original_hidden.dtype)
 
         def _replace_hook(module, input, output):
@@ -492,6 +512,8 @@ def compute_ce_kl_with_intervention(
 def run_structural_evaluation(
     activations: torch.Tensor,
     reconstructed: torch.Tensor,
+    normalized_activations: torch.Tensor | None,
+    normalized_reconstructed: torch.Tensor | None,
     latents: torch.Tensor,
     attention_mask: torch.Tensor,
     ce_kl_results: dict[str, float | int] | None = None,
@@ -501,7 +523,9 @@ def run_structural_evaluation(
 
     Args:
         activations: Original activations [N, T, d_model].
-        reconstructed: SAE-reconstructed activations [N, T, d_model].
+        reconstructed: SAE raw-space reconstructed activations [N, T, d_model].
+        normalized_activations: Normalized SAE inputs [N, T, d_model].
+        normalized_reconstructed: Normalized-space reconstructions [N, T, d_model].
         latents: SAE latent activations [N, T, d_sae].
         attention_mask: [N, T] binary mask.
         ce_kl_results: Pre-computed CE/KL results (optional).
@@ -512,15 +536,25 @@ def run_structural_evaluation(
     """
     print("\n=== Structural Evaluation ===")
 
-    mse = compute_mse(activations, reconstructed, attention_mask)
-    print(f"  MSE:               {mse:.6f}")
+    raw_metrics = compute_reconstruction_metrics(activations, reconstructed, attention_mask)
+    print("  Raw-space metrics:")
+    print(f"    MSE:               {raw_metrics['mse']:.6f}")
+    print(f"    Cosine Similarity: {raw_metrics['cosine_similarity']:.6f}")
+    print(f"    Explained Variance:{raw_metrics['explained_variance']:.6f}")
+    print(f"    FVU:               {raw_metrics['fvu']:.6f}")
 
-    cosine = compute_cosine_similarity(activations, reconstructed, attention_mask)
-    print(f"  Cosine Similarity: {cosine:.6f}")
-
-    ev_result = compute_explained_variance(activations, reconstructed, attention_mask)
-    print(f"  Explained Variance:{ev_result['explained_variance']:.6f}")
-    print(f"  FVU:               {ev_result['fvu']:.6f}")
+    normalized_metrics: dict[str, float] | None = None
+    if normalized_activations is not None and normalized_reconstructed is not None:
+        normalized_metrics = compute_reconstruction_metrics(
+            normalized_activations,
+            normalized_reconstructed,
+            attention_mask,
+        )
+        print("  Normalized-space metrics:")
+        print(f"    MSE:               {normalized_metrics['mse']:.6f}")
+        print(f"    Cosine Similarity: {normalized_metrics['cosine_similarity']:.6f}")
+        print(f"    Explained Variance:{normalized_metrics['explained_variance']:.6f}")
+        print(f"    FVU:               {normalized_metrics['fvu']:.6f}")
 
     l0_result = compute_l0_sparsity(latents, attention_mask)
     print(f"  L0 Mean:           {l0_result['l0_mean']:.1f}")
@@ -532,14 +566,16 @@ def run_structural_evaluation(
     print(f"  Alive Features:    {ff_result['alive_count']}")
 
     metrics = {
-        "mse": mse,
-        "cosine_similarity": cosine,
-        **ev_result,
+        **raw_metrics,
         **l0_result,
         "dead_count": ff_result["dead_count"],
         "dead_ratio": ff_result["dead_ratio"],
         "alive_count": ff_result["alive_count"],
         "top10_freq_indices": ff_result["top10_freq_indices"],
+        "space_metrics": {
+            "raw": raw_metrics,
+            "normalized": normalized_metrics,
+        },
     }
 
     if ce_kl_results is not None:

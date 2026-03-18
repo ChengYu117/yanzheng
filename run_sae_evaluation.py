@@ -31,6 +31,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
 from nlp_re_base.activations import extract_and_process_streaming
+from nlp_re_base.config import resolve_output_dir
 from nlp_re_base.data import load_jsonl
 from nlp_re_base.eval_functional import run_functional_evaluation
 from nlp_re_base.eval_structural import (
@@ -49,8 +50,8 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--output-dir",
-        default="outputs/sae_eval",
-        help="Directory for evaluation outputs.",
+        default=None,
+        help="Directory for evaluation outputs. Falls back to OUTPUT_ROOT/sae_eval if set.",
     )
     parser.add_argument(
         "--batch-size",
@@ -97,6 +98,11 @@ def parse_args() -> argparse.Namespace:
         help="Path to model_config.json.",
     )
     parser.add_argument(
+        "--model-dir",
+        default=None,
+        help="Override the local model directory. Takes precedence over MODEL_DIR and model_config.json.",
+    )
+    parser.add_argument(
         "--data-dir",
         default="data/mi_re",
         help="Directory containing re_dataset.jsonl and nonre_dataset.jsonl.",
@@ -117,6 +123,11 @@ def parse_args() -> argparse.Namespace:
         "--compare-mean",
         action="store_true",
         help="Run both max and mean aggregation and save a comparison summary.",
+    )
+    parser.add_argument(
+        "--judge-bundle-only",
+        action="store_true",
+        help="Run univariate analysis and export judge_bundle only, skipping the slower late functional evaluation stages.",
     )
     return parser.parse_args()
 
@@ -163,9 +174,11 @@ def _run_single_aggregation(
     sae_config: dict[str, Any],
     all_texts: list[str],
     all_labels: list[int],
+    all_records: list[dict[str, Any]],
     n_re: int,
     model: Any,
     tokenizer: Any,
+    model_cfg: dict[str, Any] | None,
     sae: Any,
     hook_point: str,
     max_seq_len: int,
@@ -185,8 +198,12 @@ def _run_single_aggregation(
         f"  batch_size={batch_size}, max_seq_len={max_seq_len}, aggregation={aggregation}"
     )
     # Create optional online accumulator for full-dataset structural metrics
-    accumulator = OnlineStructuralAccumulator() if args.full_structural else None
-    if accumulator:
+    accumulator = None
+    if args.full_structural:
+        accumulator = {
+            "raw": OnlineStructuralAccumulator(),
+            "normalized": OnlineStructuralAccumulator(),
+        }
         print("  [full-structural] Online accumulator enabled - metrics computed over ALL tokens.")
 
     result = extract_and_process_streaming(
@@ -250,6 +267,8 @@ def _run_single_aggregation(
     structural_metrics = run_structural_evaluation(
         activations=result["sample_activations"],
         reconstructed=result["sample_reconstructed"],
+        normalized_activations=result["sample_activations_normalized"],
+        normalized_reconstructed=result["sample_reconstructed_normalized"],
         latents=result["sample_latents"],
         attention_mask=result["sample_mask"],
         ce_kl_results=ce_kl_results,
@@ -258,12 +277,31 @@ def _run_single_aggregation(
 
     # If the online accumulator was used, overwrite with full-data metrics
     if accumulator is not None:
-        full_metrics = accumulator.result()
-        print(f"  [full-structural] n_tokens={full_metrics.get('n_tokens')}, "
-              f"EV={full_metrics.get('explained_variance', float('nan')):.4f}, "
-              f"FVU={full_metrics.get('fvu', float('nan')):.4f}, "
-              f"MSE={full_metrics.get('mse', float('nan')):.4f}")
-        structural_metrics.update(full_metrics)
+        raw_full_metrics = accumulator["raw"].result()
+        norm_full_metrics = accumulator["normalized"].result()
+        print(
+            "  [full-structural][raw] "
+            f"n_tokens={raw_full_metrics.get('n_tokens')}, "
+            f"EV={raw_full_metrics.get('explained_variance', float('nan')):.4f}, "
+            f"FVU={raw_full_metrics.get('fvu', float('nan')):.4f}, "
+            f"MSE={raw_full_metrics.get('mse', float('nan')):.4f}"
+        )
+        print(
+            "  [full-structural][normalized] "
+            f"n_tokens={norm_full_metrics.get('n_tokens')}, "
+            f"EV={norm_full_metrics.get('explained_variance', float('nan')):.4f}, "
+            f"FVU={norm_full_metrics.get('fvu', float('nan')):.4f}, "
+            f"MSE={norm_full_metrics.get('mse', float('nan')):.4f}"
+        )
+        structural_metrics.update(raw_full_metrics)
+        structural_metrics["space_metrics"]["raw"] = {
+            k: v for k, v in raw_full_metrics.items()
+            if k in {"mse", "cosine_similarity", "explained_variance", "fvu", "n_tokens"}
+        }
+        structural_metrics["space_metrics"]["normalized"] = {
+            k: v for k, v in norm_full_metrics.items()
+            if k in {"mse", "cosine_similarity", "explained_variance", "fvu", "n_tokens"}
+        }
         # Re-save the merged structural metrics JSON
         import json
         struct_path = output_dir / "metrics_structural.json"
@@ -282,12 +320,19 @@ def _run_single_aggregation(
             nonre_features=nonre_features,
             all_texts=all_texts,
             all_labels=all_labels,
+            all_records=all_records,
             re_activations=re_activations,
             nonre_activations=nonre_activations,
             sae_decoder_weight=sae_decoder_weight,
             fdr_alpha=sae_config.get("fdr_alpha", 0.05),
             k_values=sae_config.get("probe_k_values", [1, 5, 20]),
             top_k_candidates=sae_config.get("top_k_candidates", 50),
+            aggregation=aggregation,
+            hook_point=hook_point,
+            model_name=(model_cfg or {}).get("base_model_path"),
+            sae_repo_id=sae_config.get("sae_repo_id"),
+            sae_subfolder=sae_config.get("sae_subfolder"),
+            judge_bundle_only=args.judge_bundle_only,
             output_dir=output_dir,
         )
     except Exception as exc:
@@ -315,7 +360,7 @@ def main() -> None:
     args = parse_args()
     start_time = time.time()
 
-    base_output_dir = Path(args.output_dir)
+    base_output_dir = resolve_output_dir(args.output_dir, default_subdir="sae_eval")
     base_output_dir.mkdir(parents=True, exist_ok=True)
 
     sae_config_path = Path(args.sae_config)
@@ -345,6 +390,7 @@ def main() -> None:
 
     re_texts = [record["unit_text"] for record in re_records]
     nonre_texts = [record["unit_text"] for record in nonre_records]
+    all_records = re_records + nonre_records
     all_texts = re_texts + nonre_texts
     all_labels = [1] * len(re_texts) + [0] * len(nonre_texts)
 
@@ -361,9 +407,15 @@ def main() -> None:
         device = torch.device("cpu")
     print(f"  Device:        {device}")
     print(f"  Aggregations:  {', '.join(aggregations)}")
+    if args.model_dir:
+        print(f"  Model dir:     {args.model_dir}")
 
     print("\n[1/7] Loading base model...")
-    model, tokenizer, _model_cfg = load_local_model_and_tokenizer(args.model_config)
+    model, tokenizer, _model_cfg = load_local_model_and_tokenizer(
+        args.model_config,
+        model_dir=args.model_dir,
+        device=device,
+    )
 
     print("\n[2/7] Loading SAE from HuggingFace Hub...")
     sae = load_sae_from_hub(
@@ -388,9 +440,11 @@ def main() -> None:
             sae_config=sae_config,
             all_texts=all_texts,
             all_labels=all_labels,
+            all_records=all_records,
             n_re=n_re,
             model=model,
             tokenizer=tokenizer,
+            model_cfg=_model_cfg,
             sae=sae,
             hook_point=hook_point,
             max_seq_len=max_seq_len,

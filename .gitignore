@@ -26,6 +26,8 @@ env/
 ENV/
 .conda/
 .python-version
+deploy/gce/.env
+deploy/local/*.env
 
 # Jupyter
 .ipynb_checkpoints/

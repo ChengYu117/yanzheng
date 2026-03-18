@@ -144,6 +144,22 @@ def _type_token_ratio(text: str) -> float:
     return len(set(words)) / len(words)
 
 
+def _bigram_repetition_rate(text: str) -> float:
+    words = text.lower().split()
+    if len(words) < 2:
+        return 0.0
+    bigrams = list(zip(words[:-1], words[1:]))
+    return float(len(bigrams) - len(set(bigrams))) / float(len(bigrams))
+
+
+def _content_retention_ratio(source_text: str, compared_text: str) -> float:
+    source_tokens = set(source_text.lower().split())
+    compared_tokens = set(compared_text.lower().split())
+    if not source_tokens:
+        return 0.0
+    return float(len(source_tokens & compared_tokens)) / float(len(source_tokens))
+
+
 def eval_text_quality(
     original_texts: list[str],
     intervened_texts: list[str] | None = None,
@@ -154,20 +170,30 @@ def eval_text_quality(
     """
     ttrs = [_type_token_ratio(t) for t in original_texts]
     lengths = [len(t.split()) for t in original_texts]
+    repetitions = [_bigram_repetition_rate(t) for t in original_texts]
 
     result: dict[str, float] = {
         "mean_ttr":     float(np.mean(ttrs)),
         "mean_length":  float(np.mean(lengths)),
+        "mean_bigram_repetition": float(np.mean(repetitions)),
     }
 
     if intervened_texts is not None:
         ttrs_i   = [_type_token_ratio(t) for t in intervened_texts]
         lengths_i = [len(t.split()) for t in intervened_texts]
+        repetitions_i = [_bigram_repetition_rate(t) for t in intervened_texts]
+        retention = [
+            _content_retention_ratio(src, dst)
+            for src, dst in zip(original_texts, intervened_texts)
+        ]
         result.update({
             "mean_ttr_intervened":    float(np.mean(ttrs_i)),
             "mean_length_intervened": float(np.mean(lengths_i)),
+            "mean_bigram_repetition_intervened": float(np.mean(repetitions_i)),
             "delta_ttr":              float(np.mean(ttrs_i) - np.mean(ttrs)),
             "delta_length":           float(np.mean(lengths_i) - np.mean(lengths)),
+            "delta_bigram_repetition": float(np.mean(repetitions_i) - np.mean(repetitions)),
+            "mean_content_retention": float(np.mean(retention)),
         })
 
     return result

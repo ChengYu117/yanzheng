@@ -37,12 +37,20 @@ def test_sae_forward():
 
     x = torch.randn(4, 10, d_model)  # [batch, seq_len, d_model]
     x_hat, latents = sae(x)
+    details = sae.forward_with_details(x)
 
     assert x_hat.shape == x.shape, f"x_hat shape {x_hat.shape} != input shape {x.shape}"
     assert latents.shape == (4, 10, d_sae), f"latents shape {latents.shape} wrong"
     assert (latents >= 0).all(), "JumpReLU should produce non-negative latents"
+    assert details["reconstructed_raw"].shape == x.shape
+    assert details["reconstructed_normalized"].shape == x.shape
+    assert details["input_normalized"].shape == x.shape
+    assert not torch.allclose(
+        details["reconstructed_raw"],
+        details["reconstructed_normalized"],
+    ), "raw-space reconstruction should differ from normalized-space reconstruction"
 
-    print("  ✓ test_sae_forward")
+    print("  PASS test_sae_forward")
 
 
 def test_sae_dtype_alignment():
@@ -63,7 +71,7 @@ def test_sae_dtype_alignment():
     assert x_hat.dtype == torch.bfloat16, f"Expected bfloat16, got {x_hat.dtype}"
     assert latents.dtype == torch.bfloat16, f"Expected bfloat16, got {latents.dtype}"
 
-    print("  ✓ test_sae_dtype_alignment")
+    print("  PASS test_sae_dtype_alignment")
 
 
 def test_aggregation():
@@ -88,7 +96,7 @@ def test_aggregation():
     assert torch.allclose(result_mean, expected_mean, atol=1e-5), \
         f"Mean aggregation: {result_mean} != {expected_mean}"
 
-    print("  ✓ test_aggregation")
+    print("  PASS test_aggregation")
 
 
 def test_structural_metrics():
@@ -99,6 +107,7 @@ def test_structural_metrics():
         compute_explained_variance,
         compute_l0_sparsity,
         compute_firing_frequency,
+        OnlineStructuralAccumulator,
     )
 
     z = torch.randn(10, 5, 64)
@@ -124,7 +133,12 @@ def test_structural_metrics():
     assert ff["dead_count"] >= 0
     assert ff["dead_count"] + ff["alive_count"] == 256
 
-    print("  ✓ test_structural_metrics")
+    acc = OnlineStructuralAccumulator()
+    acc.update(z, z_hat, latents, mask)
+    online = acc.result()
+    assert abs(online["mse"] - mse) < 1e-6, (online["mse"], mse)
+
+    print("  PASS test_structural_metrics")
 
 
 def test_ce_kl_intervention():
@@ -248,7 +262,7 @@ def test_univariate_analysis():
     top5 = df.head(5)["latent_idx"].tolist()
     assert 0 in top5, f"Latent 0 should be in top-5, got {top5}"
 
-    print("  ✓ test_univariate_analysis")
+    print("  PASS test_univariate_analysis")
 
 
 def test_sparse_probing():
@@ -278,7 +292,7 @@ def test_sparse_probing():
     assert results["sparse_probe_k1"]["accuracy"] > 0.6, \
         f"k=1 probe accuracy too low: {results['sparse_probe_k1']['accuracy']}"
 
-    print("  ✓ test_sparse_probing")
+    print("  PASS test_sparse_probing")
 
 
 def test_maxact():
@@ -308,7 +322,7 @@ def test_maxact():
     assert "re_purity_top_n" in cards[0]
     assert len(cards[0]["top_entries"]) == 5
 
-    print("  ✓ test_maxact")
+    print("  PASS test_maxact")
 
 
 def test_feature_absorption():
@@ -330,7 +344,7 @@ def test_feature_absorption():
     assert len(results["per_latent"]) == 3
     assert 0 <= results["overall_mean_absorption"] <= 1.0
 
-    print("  ✓ test_feature_absorption")
+    print("  PASS test_feature_absorption")
 
 
 def test_feature_geometry():
@@ -352,7 +366,7 @@ def test_feature_geometry():
     assert len(results["top_pairs"]) <= 5
     assert 0 <= results["mean_cosine"] <= 1.0
 
-    print("  ✓ test_feature_geometry")
+    print("  PASS test_feature_geometry")
 
 
 def test_tpp():
@@ -382,7 +396,66 @@ def test_tpp():
     drops = {r["latent_idx"]: r["accuracy_drop"] for r in results["perturbation_results"]}
     assert 0 in drops, "Latent 0 should be in perturbation results"
 
-    print("  ✓ test_tpp")
+    print("  PASS test_tpp")
+
+
+def test_judge_bundle_export():
+    """Test judge bundle export with synthetic utterance features."""
+    import tempfile
+
+    import pandas as pd
+
+    from nlp_re_base.ai_re_judge import export_judge_bundle
+
+    np.random.seed(42)
+    n, d_sae = 16, 24
+    features = np.random.randn(n, d_sae).clip(min=0)
+    texts = [f"example {i}" for i in range(n)]
+    labels = [1] * 8 + [0] * 8
+    records = [
+        {
+            "predicted_code": "RE" if label == 1 else "NonRE",
+            "predicted_subcode": "RES" if label == 1 else "QUC",
+            "rationale": f"why {i}",
+        }
+        for i, label in enumerate(labels)
+    ]
+    candidate_df = pd.DataFrame(
+        {
+            "latent_idx": list(range(d_sae)),
+            "cohens_d": np.linspace(2.0, 0.1, d_sae),
+            "abs_cohens_d": np.linspace(2.0, 0.1, d_sae),
+            "auc": np.linspace(0.9, 0.5, d_sae),
+            "p_value": np.linspace(0.001, 0.5, d_sae),
+            "significant_fdr": [True] * d_sae,
+        }
+    )
+
+    with tempfile.TemporaryDirectory() as tmpdir:
+        bundle_path = export_judge_bundle(
+            output_dir=tmpdir,
+            candidate_df=candidate_df,
+            utterance_features=features,
+            texts=texts,
+            labels=labels,
+            records=records,
+            aggregation="max",
+            hook_point="blocks.19.hook_resid_post",
+            model_name="dummy-model",
+            sae_repo_id="dummy/repo",
+            sae_subfolder="layer19",
+            group_weights={"G1": [1.0], "G5": [0.4, 0.2, 0.2, 0.1, 0.1]},
+            top_latents=5,
+            top_n=3,
+            control_n=2,
+        )
+
+        assert (bundle_path / "manifest.json").exists()
+        assert (bundle_path / "latent_examples.jsonl").exists()
+        assert (bundle_path / "group_examples.json").exists()
+        assert (bundle_path / "rubric_snapshot.json").exists()
+
+    print("  PASS test_judge_bundle_export")
 
 
 def main():
@@ -402,6 +475,7 @@ def main():
         ("Feature Absorption", test_feature_absorption),
         ("Feature Geometry", test_feature_geometry),
         ("TPP", test_tpp),
+        ("Judge Bundle Export", test_judge_bundle_export),
     ]
 
     passed = 0
@@ -412,7 +486,7 @@ def main():
             test_fn()
             passed += 1
         except Exception as e:
-            print(f"  ✗ {name}: {e}")
+            print(f"  FAIL {name}: {e}")
             traceback.print_exc()
             failed += 1
 

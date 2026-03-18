@@ -72,6 +72,7 @@ def extract_and_process_streaming(
     max_seq_len: int = 128,
     batch_size: int = 8,
     aggregation: str = "max",
+    binarized_threshold: float = 0.0,
     device: str | torch.device | None = None,
     collect_structural_samples: int = 5,
     structural_accumulator: Optional[Any] = None,
@@ -90,7 +91,8 @@ def extract_and_process_streaming(
         hook_point: e.g. 'blocks.19.hook_resid_post'.
         max_seq_len: Maximum token sequence length.
         batch_size: Batch size for inference.
-        aggregation: 'max' or 'mean' pooling.
+        aggregation: 'max', 'mean', 'sum', or 'binarized_sum' pooling.
+        binarized_threshold: Threshold used when aggregation='binarized_sum'.
         device: Device for model inference.
         collect_structural_samples: Number of batches to keep full
             token-level data for structural metric computation.
@@ -105,6 +107,8 @@ def extract_and_process_streaming(
             'utterance_activations': [N, d_model]  (aggregated raw activations)
             'sample_activations': [S, T, d_model]  (small sample for structural)
             'sample_reconstructed': [S, T, d_model]
+            'sample_activations_normalized': [S, T, d_model]
+            'sample_reconstructed_normalized': [S, T, d_model]
             'sample_latents': [S, T, d_sae]
             'sample_mask': [S, T]
     """
@@ -126,6 +130,8 @@ def extract_and_process_streaming(
     # Small sample of full token-level data for structural metrics
     sample_acts = []
     sample_recon = []
+    sample_acts_normed = []
+    sample_recon_normed = []
     sample_latents = []
     sample_masks = []
     samples_collected = 0
@@ -161,41 +167,69 @@ def extract_and_process_streaming(
             # ── Step 2: SAE forward (with dtype alignment) ──
             sae_input = batch_activations.to(device=sae_device, dtype=sae_dtype)
             with torch.inference_mode():
-                batch_recon, batch_latents = sae(sae_input)
+                sae_outputs = sae.forward_with_details(sae_input)
 
             # Move results to CPU immediately to free GPU memory
-            batch_latents_cpu = batch_latents.cpu().float()
-            batch_recon_cpu = batch_recon.cpu().float()
+            batch_latents_cpu = sae_outputs["latents"].cpu().float()
+            batch_recon_cpu = sae_outputs["reconstructed_raw"].cpu().float()
+            batch_recon_normed_cpu = sae_outputs["reconstructed_normalized"].cpu().float()
             batch_acts_cpu = batch_activations.cpu().float()
+            batch_acts_normed_cpu = sae_outputs["input_normalized"].cpu().float()
             batch_mask_cpu = batch_mask.cpu()
 
             # ── Step 3: Aggregate to utterance level ──
-            utt_features = _aggregate_batch(batch_latents_cpu, batch_mask_cpu, aggregation)
-            utt_activations = _aggregate_batch(batch_acts_cpu, batch_mask_cpu, aggregation)
+            utt_features = _aggregate_batch(
+                batch_latents_cpu,
+                batch_mask_cpu,
+                aggregation,
+                binarized_threshold=binarized_threshold,
+            )
+            utt_activations = _aggregate_batch(
+                batch_acts_cpu,
+                batch_mask_cpu,
+                aggregation,
+                binarized_threshold=binarized_threshold,
+            )
 
             all_utterance_features.append(utt_features)
             all_utterance_activations.append(utt_activations)
 
             # ── Step 4a: Feed the online accumulator (full-data structural) ──
             if structural_accumulator is not None:
-                structural_accumulator.update(
+                if isinstance(structural_accumulator, dict):
+                    raw_acc = structural_accumulator.get("raw")
+                    norm_acc = structural_accumulator.get("normalized")
+                else:
+                    raw_acc = structural_accumulator
+                    norm_acc = None
+                raw_acc.update(
                     z=batch_acts_cpu,
                     z_hat=batch_recon_cpu,
                     latents=batch_latents_cpu,
                     mask=batch_mask_cpu,
                 )
+                if norm_acc is not None:
+                    norm_acc.update(
+                        z=batch_acts_normed_cpu,
+                        z_hat=batch_recon_normed_cpu,
+                        latents=batch_latents_cpu,
+                        mask=batch_mask_cpu,
+                    )
 
             # ── Step 4b: Legacy sample collection (first N batches only) ──
             if samples_collected < collect_structural_samples:
                 sample_acts.append(batch_acts_cpu.clone())
                 sample_recon.append(batch_recon_cpu.clone())
+                sample_acts_normed.append(batch_acts_normed_cpu.clone())
+                sample_recon_normed.append(batch_recon_normed_cpu.clone())
                 sample_latents.append(batch_latents_cpu.clone())
                 sample_masks.append(batch_mask_cpu.clone())
                 samples_collected += 1
 
             # Explicitly free batch tensors
-            del batch_activations, sae_input, batch_recon, batch_latents
-            del batch_latents_cpu, batch_recon_cpu, batch_acts_cpu
+            del batch_activations, sae_input, sae_outputs
+            del batch_latents_cpu, batch_recon_cpu, batch_recon_normed_cpu
+            del batch_acts_cpu, batch_acts_normed_cpu
             if torch.cuda.is_available():
                 torch.cuda.empty_cache()
 
@@ -205,12 +239,16 @@ def extract_and_process_streaming(
     # ── Pad structural samples to uniform seq len and cat ──
     sample_activations, sample_reconstructed, sample_lat, sample_msk = \
         _pad_and_cat_samples(sample_acts, sample_recon, sample_latents, sample_masks)
+    sample_activations_normed = _pad_and_cat_tensor_list(sample_acts_normed)
+    sample_reconstructed_normed = _pad_and_cat_tensor_list(sample_recon_normed)
 
     return {
         "utterance_features": torch.cat(all_utterance_features, dim=0),       # [N, d_sae]
         "utterance_activations": torch.cat(all_utterance_activations, dim=0), # [N, d_model]
         "sample_activations": sample_activations,      # [S, T, d_model]
         "sample_reconstructed": sample_reconstructed,   # [S, T, d_model]
+        "sample_activations_normalized": sample_activations_normed,   # [S, T, d_model]
+        "sample_reconstructed_normalized": sample_reconstructed_normed,   # [S, T, d_model]
         "sample_latents": sample_lat,                   # [S, T, d_sae]
         "sample_mask": sample_msk,                      # [S, T]
     }
@@ -220,6 +258,7 @@ def _aggregate_batch(
     tensor: torch.Tensor,
     mask: torch.Tensor,
     method: str = "max",
+    binarized_threshold: float = 0.0,
 ) -> torch.Tensor:
     """Aggregate a [B, T, D] tensor to [B, D] using mask.
 
@@ -236,6 +275,11 @@ def _aggregate_batch(
         masked = tensor * mask_3d
         token_counts = mask_3d.sum(dim=1).clamp(min=1)
         result = masked.sum(dim=1) / token_counts
+    elif method == "sum":
+        result = (tensor * mask_3d).sum(dim=1)
+    elif method == "binarized_sum":
+        summed = (tensor * mask_3d).sum(dim=1)
+        result = (summed > binarized_threshold).to(tensor.dtype)
     else:
         raise ValueError(f"Unknown aggregation method: {method}")
 
@@ -272,6 +316,28 @@ def _pad_and_cat_samples(
     )
 
 
+def _pad_and_cat_tensor_list(
+    tensor_list: list[torch.Tensor],
+    pad_val: float = 0.0,
+) -> torch.Tensor:
+    """Pad a list of [B, T, ...] tensors to a common sequence length and cat."""
+    if not tensor_list:
+        return torch.empty(0)
+
+    max_t = max(t.shape[1] for t in tensor_list)
+    padded = []
+    for tensor in tensor_list:
+        bsz, seq_len, *rest = tensor.shape
+        if seq_len < max_t:
+            pad_shape = [bsz, max_t - seq_len] + rest
+            tensor = torch.cat(
+                [tensor, torch.full(pad_shape, pad_val, dtype=tensor.dtype)],
+                dim=1,
+            )
+        padded.append(tensor)
+    return torch.cat(padded, dim=0)
+
+
 # ────────────────────────────────────────────────────────────────
 # Legacy API (kept for backward compatibility with smoke tests)
 # ────────────────────────────────────────────────────────────────
@@ -280,15 +346,22 @@ def aggregate_to_utterance(
     latents: torch.Tensor,
     attention_mask: torch.Tensor,
     method: str = "max",
+    binarized_threshold: float = 0.0,
 ) -> torch.Tensor:
     """Aggregate token-level latent activations to utterance-level features.
 
     Args:
         latents: [N, T, d_sae] token-level latent activations.
         attention_mask: [N, T] binary mask (1 = real token, 0 = padding).
-        method: Aggregation method ('max' or 'mean').
+        method: Aggregation method ('max', 'mean', 'sum', or 'binarized_sum').
+        binarized_threshold: Threshold used when method='binarized_sum'.
 
     Returns:
         Utterance-level features: [N, d_sae]
     """
-    return _aggregate_batch(latents, attention_mask, method)
+    return _aggregate_batch(
+        latents,
+        attention_mask,
+        method,
+        binarized_threshold=binarized_threshold,
+    )

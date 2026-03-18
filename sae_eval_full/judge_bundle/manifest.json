@@ -1,0 +1,16 @@
+{
+  "bundle_version": "1.0",
+  "dataset_size": 1598,
+  "top_latents": 20,
+  "top_n": 10,
+  "control_n": 5,
+  "aggregation": "max",
+  "hook_point": "blocks.19.hook_resid_post",
+  "model_name": null,
+  "sae_repo_id": "OpenMOSS-Team/Llama3_1-8B-Base-LXR-8x",
+  "sae_subfolder": "Llama3_1-8B-Base-L19R-8x",
+  "method_positioning": {
+    "label": "automatic_interpretation_evidence",
+    "statement_zh": "该评审是自动解释/专家代理证据，不等于因果证明。如果要做因果结论，仍需和 ablation、steering、控制组结果联合报告。"
+  }
+}

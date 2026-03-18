@@ -69,13 +69,32 @@ class SparseAutoencoder(nn.Module):
         nn.init.kaiming_uniform_(self.W_enc)
         nn.init.kaiming_uniform_(self.W_dec)
 
-    def normalize(self, x: torch.Tensor) -> torch.Tensor:
-        """Apply dataset-wise normalization: rescale x to have L2 norm = norm_scale."""
+    def normalize_with_stats(
+        self,
+        x: torch.Tensor,
+    ) -> tuple[torch.Tensor, torch.Tensor | None]:
+        """Normalize x and keep the original token norms for inverse scaling."""
         if self.norm_scale is None:
-            return x
+            return x, None
         x_norm = torch.norm(x, dim=-1, keepdim=True)
         x_norm = torch.clamp(x_norm, min=1e-8)
-        return x * (self.norm_scale / x_norm)
+        x_normalized = x * (self.norm_scale / x_norm)
+        return x_normalized, x_norm
+
+    def normalize(self, x: torch.Tensor) -> torch.Tensor:
+        """Apply dataset-wise normalization: rescale x to have L2 norm = norm_scale."""
+        x_normalized, _ = self.normalize_with_stats(x)
+        return x_normalized
+
+    def denormalize_reconstruction(
+        self,
+        x_hat_normalized: torch.Tensor,
+        input_norm: torch.Tensor | None,
+    ) -> torch.Tensor:
+        """Map a normalized-space reconstruction back to the raw activation space."""
+        if self.norm_scale is None or input_norm is None:
+            return x_hat_normalized
+        return x_hat_normalized * (input_norm / self.norm_scale)
 
     def encode(self, x: torch.Tensor) -> torch.Tensor:
         """Encode activations to sparse latents.
@@ -86,7 +105,7 @@ class SparseAutoencoder(nn.Module):
         Returns:
             latents: Sparse feature activations [..., d_sae]
         """
-        x_normed = self.normalize(x)
+        x_normed, _ = self.normalize_with_stats(x)
         pre_activation = (x_normed - self.b_pre) @ self.W_enc.T + self.b_enc
         return self.activation(pre_activation)
 
@@ -101,21 +120,36 @@ class SparseAutoencoder(nn.Module):
         """
         return latents @ self.W_dec.T + self.b_dec
 
+    def forward_with_details(
+        self,
+        x: torch.Tensor,
+    ) -> dict[str, torch.Tensor]:
+        """Full SAE forward pass with both normalized- and raw-space reconstructions."""
+        x_normalized, input_norm = self.normalize_with_stats(x)
+        pre_activation = (x_normalized - self.b_pre) @ self.W_enc.T + self.b_enc
+        latents = self.activation(pre_activation)
+        reconstructed_normalized = self.decode(latents)
+        reconstructed_raw = self.denormalize_reconstruction(
+            reconstructed_normalized,
+            input_norm,
+        )
+        return {
+            "input_normalized": x_normalized,
+            "reconstructed_normalized": reconstructed_normalized,
+            "reconstructed_raw": reconstructed_raw,
+            "latents": latents,
+        }
+
     def forward(
         self, x: torch.Tensor
     ) -> tuple[torch.Tensor, torch.Tensor]:
         """Full SAE forward pass.
 
-        Args:
-            x: Input activations [..., d_model]
-
-        Returns:
-            x_hat: Reconstructed activations [..., d_model]
-            latents: Sparse feature activations [..., d_sae]
+        Returns the raw-space reconstruction so downstream metrics and
+        activation replacement operate in the model's original space.
         """
-        latents = self.encode(x)
-        x_hat = self.decode(latents)
-        return x_hat, latents
+        details = self.forward_with_details(x)
+        return details["reconstructed_raw"], details["latents"]
 
 
 def load_sae_from_hub(

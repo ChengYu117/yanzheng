@@ -29,11 +29,14 @@ NLP_re_dataset_model_base/
       model.py                # Llama model loader
       sae.py                  # SAE model + HuggingFace loading
       activations.py          # Streaming activation extraction + SAE forward
+      stage2_activation_extraction.py  # Per-layer hidden-state extraction + linear probes
       eval_structural.py      # Structural metrics
       eval_functional.py      # Functional metrics (probing, TPP, absorption, geometry)
       infer.py                # Basic text generation
   run_sae_evaluation.py       # End-to-end pipeline runner
+  run_stage2_activation_extraction.py  # Stage 2 activation extraction runner
   test_pipeline_smoke.py      # CPU smoke tests
+  test_stage2_smoke.py        # Stage 2 synthetic smoke tests
   doc/
     SAE评估指标说明.md        # Evaluation framework reference
 ```
@@ -56,6 +59,12 @@ python run_sae_evaluation.py --skip-ce-kl --output-dir outputs/sae_eval
 
 # CPU smoke tests (no model needed)
 python test_pipeline_smoke.py
+
+# Stage 2: extract hidden states from all layers, then train per-layer probes
+python run_stage2_activation_extraction.py --all --batch-size 4
+
+# Stage 2 smoke tests
+python test_stage2_smoke.py
 ```
 
 ## Output Files
@@ -67,13 +76,38 @@ python test_pipeline_smoke.py
 | `candidate_latents.csv` | Ranked latents with Cohen's d, AUC, p-value, FDR |
 | `latent_cards/` | Markdown reports for top candidate latents |
 
+Stage 2 outputs are written under `outputs/stage2_activation_extraction/` by default:
+
+| File | Contents |
+|------|----------|
+| `activations_*.npz` | Per-layer utterance representations and binary RE labels |
+| `activations_meta_*.json` | Extraction metadata (counts, model name, unit ids) |
+| `probe_results_*.json` | Per-layer probe metrics and best-layer summary |
+| `probe_results_*.csv` | CSV version of probe metrics |
+| `probe_results_plot.png` | Optional per-layer metric plot |
+
 ## Local Model
 
 Configured in `config/model_config.json`:
-- `D:/project/NLP_explaination_archive/20260306_refactor/NLP_data/Llama-3.1-8B`
+- default relative path: `models/Llama-3.1-8B`
+- can be overridden by:
+  - `--model-dir`
+  - `MODEL_DIR`
 
 ## Key Design Decisions
 
 - **Streaming pipeline**: Activations are processed batch-by-batch to avoid OOM (no full `[N, T, 32768]` tensor in memory)
 - **Strict SAE loading**: Hard-fails if critical weights (W_enc, W_dec, b_enc) are missing from checkpoint
 - **dtype alignment**: Activations are cast to SAE dtype (bfloat16) before forward pass
+
+## GCE Deployment
+
+This repo now includes a GCE deployment bundle:
+
+- `python package_project.py`
+- `deploy/gce/bootstrap.sh`
+- `deploy/gce/download_model.sh`
+- `deploy/gce/run_full_eval.sh`
+- `deploy/gce/run_causal.sh`
+
+See [GCE云GPU部署说明](doc/GCE云GPU部署说明.md) for the full Google Compute Engine workflow.

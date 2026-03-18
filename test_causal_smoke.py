@@ -2,11 +2,14 @@
 
 from __future__ import annotations
 import sys, os
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "src"))
 
 import numpy as np
 import torch
 import unittest
+from pathlib import Path
+from tempfile import TemporaryDirectory
+from unittest.mock import patch
 
 
 class TestIntervention(unittest.TestCase):
@@ -63,6 +66,12 @@ class TestIntervention(unittest.TestCase):
         out = cond_token_steer(self.z, self.resid, self.span_mask, self.lids, weights, self.W_dec, 1.0)
         self.assertEqual(out.shape, self.resid.shape)
 
+    def test_cond_input_steer_shape(self):
+        from causal.intervention import cond_input_steer
+        weights = [1.0 / len(self.lids)] * len(self.lids)
+        out = cond_input_steer(self.z, self.resid, self.span_mask, self.lids, weights, self.W_dec, 1.0)
+        self.assertEqual(out.shape, self.resid.shape)
+
     def test_orthogonal_direction(self):
         from causal.intervention import make_steering_direction, make_orthogonal_direction
         w = [1.0, 1.0, 1.0]
@@ -102,6 +111,8 @@ class TestSelection(unittest.TestCase):
         self.assertEqual(len(result["G1"]), 1)
         self.assertEqual(len(result["G5"]), 5)
         self.assertEqual(len(result["G20"]), 20)
+        self.assertIn("probe_weight_abs", result["ranked_df"].columns)
+        self.assertIn("influence_abs", result["ranked_df"].columns)
 
     def test_make_bottom_k(self):
         from causal.selection import rank_latents, make_bottom_k
@@ -123,6 +134,202 @@ class TestData(unittest.TestCase):
         self.assertEqual(mask.shape, attn.shape)
         self.assertTrue(mask[0, 2])
         self.assertFalse(mask[0, 3])
+
+
+class TestEvaluation(unittest.TestCase):
+    def test_eval_text_quality_intervention_fields(self):
+        from causal.evaluation import eval_text_quality
+
+        baseline = [
+            "I hear how difficult this feels for you",
+            "You are trying hard to keep going",
+        ]
+        intervened = [
+            "I hear how difficult this feels",
+            "You are trying hard to keep moving forward",
+        ]
+        result = eval_text_quality(baseline, intervened)
+        self.assertIn("mean_content_retention", result)
+        self.assertIn("delta_ttr", result)
+        self.assertIn("delta_bigram_repetition", result)
+
+    def test_generate_summary_tables_with_side_effects(self):
+        from causal.run_experiment import generate_summary_tables
+
+        necessity = {
+            "G1": {
+                "zero": {
+                    "mean_delta_re": -0.2,
+                    "mean_delta_nonre": -0.1,
+                    "fraction_improved": 0.3,
+                }
+            }
+        }
+        sufficiency = {
+            "G1": {
+                "cond_token": {
+                    "lam_1.0": {
+                        "mean_delta_re": 0.4,
+                        "mean_delta_nonre": 0.1,
+                        "fraction_improved": 0.7,
+                    }
+                }
+            }
+        }
+        group_structure = {
+            "cumulative_topk": [{"k": 1, "latent_idx": 1, "mean_delta_re": 0.4}],
+            "leave_one_out": [{"latent_idx": 1, "full_effect": 0.4, "loo_effect": 0.1, "delta_loo": 0.3}],
+            "add_one_in": [{"k": 1, "latent_idx": 1, "effect": 0.4, "delta_add": 0.4}],
+            "synergy": {"synergy_score": 0.1, "interpretation": "near-zero (additive)"},
+        }
+        side_effects = {
+            "groups": {
+                "G1": {
+                    "mode": "cond_token",
+                    "mean_generated_re_logit_delta": 0.2,
+                    "quality": {
+                        "mean_content_retention": 0.8,
+                        "delta_ttr": 0.01,
+                        "delta_bigram_repetition": -0.02,
+                    },
+                }
+            },
+            "controls": {},
+        }
+
+        with TemporaryDirectory() as tmpdir:
+            out_path = Path(tmpdir) / "summary.md"
+            generate_summary_tables(
+                necessity,
+                sufficiency,
+                group_structure,
+                side_effects,
+                out_path,
+            )
+            text = out_path.read_text(encoding="utf-8")
+            self.assertIn("Table 3: Selectivity / Side Effects", text)
+            self.assertIn("G1", text)
+
+    def test_pooling_comparison_report(self):
+        from causal.run_experiment import (
+            build_pooling_comparison_summary,
+            generate_pooling_comparison_report,
+        )
+
+        run_payloads = {
+            "max": {
+                "binarized_threshold": 0.0,
+                "selected_groups": {"G1": [1], "G5": [1, 2, 3, 4, 5], "G20": list(range(20))},
+                "probe_baseline": {"accuracy": 0.8, "auc": 0.9},
+                "necessity": {
+                    "G1": {"cond_token": {"mean_delta_re": -0.2}, "zero": {"mean_delta_re": -0.1}},
+                    "G5": {"cond_token": {"mean_delta_re": -0.3}, "zero": {"mean_delta_re": -0.2}},
+                    "G20": {"cond_token": {"mean_delta_re": -0.4}, "zero": {"mean_delta_re": -0.3}},
+                },
+                "sufficiency": {
+                    "G1": {"cond_token": {"lam_1.0": {"mean_delta_re": 0.2}}},
+                    "G5": {"cond_token": {"lam_1.0": {"mean_delta_re": 0.3}}},
+                    "G20": {"cond_token": {"lam_1.0": {"mean_delta_re": 0.4}}},
+                },
+                "side_effects": {
+                    "groups": {
+                        "G1": {"quality": {"mean_content_retention": 0.8, "delta_bigram_repetition": 0.02}},
+                        "G5": {"quality": {"mean_content_retention": 0.79, "delta_bigram_repetition": 0.03}},
+                        "G20": {"quality": {"mean_content_retention": 0.78, "delta_bigram_repetition": 0.04}},
+                    }
+                },
+                "group": {"synergy": {"synergy_score": 0.1}},
+            },
+            "sum": {
+                "binarized_threshold": 0.0,
+                "selected_groups": {"G1": [7], "G5": [7, 8, 9, 10, 11], "G20": list(range(20, 40))},
+                "probe_baseline": {"accuracy": 0.82, "auc": 0.91},
+                "necessity": {
+                    "G1": {"cond_token": {"mean_delta_re": -0.25}, "zero": {"mean_delta_re": -0.2}},
+                    "G5": {"cond_token": {"mean_delta_re": -0.35}, "zero": {"mean_delta_re": -0.3}},
+                    "G20": {"cond_token": {"mean_delta_re": -0.45}, "zero": {"mean_delta_re": -0.4}},
+                },
+                "sufficiency": {
+                    "G1": {"cond_token": {"lam_1.0": {"mean_delta_re": 0.25}}},
+                    "G5": {"cond_token": {"lam_1.0": {"mean_delta_re": 0.35}}},
+                    "G20": {"cond_token": {"lam_1.0": {"mean_delta_re": 0.45}}},
+                },
+                "side_effects": {
+                    "groups": {
+                        "G1": {"quality": {"mean_content_retention": 0.83, "delta_bigram_repetition": 0.01}},
+                        "G5": {"quality": {"mean_content_retention": 0.82, "delta_bigram_repetition": 0.02}},
+                        "G20": {"quality": {"mean_content_retention": 0.81, "delta_bigram_repetition": 0.02}},
+                    }
+                },
+                "group": {"synergy": {"synergy_score": 0.12}},
+            },
+            "binarized_sum": {
+                "binarized_threshold": 0.0,
+                "selected_groups": {"G1": [13], "G5": [13, 14, 15, 16, 17], "G20": list(range(40, 60))},
+                "probe_baseline": {"accuracy": 0.75, "auc": 0.84},
+                "necessity": {
+                    "G1": {"cond_token": {"mean_delta_re": -0.1}, "zero": {"mean_delta_re": -0.08}},
+                    "G5": {"cond_token": {"mean_delta_re": -0.15}, "zero": {"mean_delta_re": -0.1}},
+                    "G20": {"cond_token": {"mean_delta_re": -0.2}, "zero": {"mean_delta_re": -0.12}},
+                },
+                "sufficiency": {
+                    "G1": {"cond_token": {"lam_1.0": {"mean_delta_re": 0.1}}},
+                    "G5": {"cond_token": {"lam_1.0": {"mean_delta_re": 0.15}}},
+                    "G20": {"cond_token": {"lam_1.0": {"mean_delta_re": 0.2}}},
+                },
+                "side_effects": {"groups": {}},
+                "group": {"synergy": {"synergy_score": 0.05}},
+            },
+        }
+
+        comparison = build_pooling_comparison_summary(run_payloads)
+        self.assertEqual(comparison["best_probe_pooling"], "sum")
+        self.assertEqual(comparison["best_sufficiency_pooling"], "sum")
+
+        with TemporaryDirectory() as tmpdir:
+            out_path = Path(tmpdir) / "pooling.md"
+            generate_pooling_comparison_report(comparison, out_path)
+            text = out_path.read_text(encoding="utf-8")
+            self.assertIn("Pooling Comparison", text)
+            self.assertIn("sum", text)
+
+
+class TestPooling(unittest.TestCase):
+    def test_pool_features_variants(self):
+        from causal.run_experiment import _pool_features
+
+        z = torch.tensor([
+            [[1.0, -1.0], [2.0, 3.0], [10.0, 10.0]],
+        ])
+        mask = torch.tensor([[1, 1, 0]], dtype=torch.bool)
+
+        max_result = _pool_features(z, mask, method="max")
+        sum_result = _pool_features(z, mask, method="sum")
+        bin_result = _pool_features(z, mask, method="binarized_sum", threshold=0.0)
+
+        np.testing.assert_allclose(max_result, np.array([[2.0, 3.0]], dtype=np.float32))
+        np.testing.assert_allclose(sum_result, np.array([[3.0, 2.0]], dtype=np.float32))
+        np.testing.assert_allclose(bin_result, np.array([[1.0, 1.0]], dtype=np.float32))
+
+    def test_extract_utterance_features_passes_pooling(self):
+        from causal import run_experiment
+
+        with patch.object(run_experiment, "extract_and_process_streaming") as mock_extract:
+            mock_extract.return_value = {"utterance_features": torch.zeros(2, 3)}
+            out = run_experiment.extract_utterance_features(
+                model=object(),
+                tokenizer=object(),
+                sae=object(),
+                texts=["a", "b"],
+                hook_point="blocks.19.hook_resid_post",
+                device=torch.device("cpu"),
+                aggregation="binarized_sum",
+                binarized_threshold=0.0,
+            )
+
+        self.assertEqual(out.shape, (2, 3))
+        self.assertEqual(mock_extract.call_args.kwargs["aggregation"], "binarized_sum")
+        self.assertEqual(mock_extract.call_args.kwargs["binarized_threshold"], 0.0)
 
 
 if __name__ == "__main__":

@@ -153,6 +153,33 @@ def cond_token_steer(
     return resid_new
 
 
+def cond_input_steer(
+    z: torch.Tensor,            # [B, T, d_sae]
+    resid: torch.Tensor,        # [B, T, d_model]
+    span_mask: torch.Tensor,    # [B, T] bool
+    latent_ids: list[int],
+    weights: list[float],
+    W_dec: torch.Tensor,
+    strength: float = 1.0,
+    tau: float = 0.0,
+) -> torch.Tensor:
+    """Steer the full counselor span if any target latent fires in the input."""
+    resid_new = resid.clone()
+    vecs = _decoder_vectors(W_dec, latent_ids)    # [K, d_model]
+    alphas = torch.tensor(weights, dtype=resid.dtype, device=resid.device)
+    delta = (alphas.unsqueeze(-1) * vecs.to(resid.device, resid.dtype)).sum(dim=0)  # [d_model]
+
+    any_active = torch.zeros(z.shape[0], dtype=torch.bool, device=z.device)
+    for lid in latent_ids:
+        any_active = any_active | ((z[:, :, lid] > tau) & span_mask).any(dim=1)
+
+    for batch_idx in range(z.shape[0]):
+        if any_active[batch_idx]:
+            resid_new[batch_idx, span_mask[batch_idx]] += strength * delta.unsqueeze(0)
+
+    return resid_new
+
+
 # ─────────────────────────────────────────────────────────────────────────────
 # Control directions  (§6.1)
 # ─────────────────────────────────────────────────────────────────────────────
