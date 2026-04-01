@@ -13,7 +13,7 @@ DEFAULT_INCLUDE_DIRS = [
     "src",
     "causal",
     "config",
-    "data/mi_re",
+    "data/cactus",
     "deploy",
     "doc",
 ]

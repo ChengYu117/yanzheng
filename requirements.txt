@@ -7,6 +7,7 @@ sentencepiece
 scipy
 scikit-learn
 huggingface-hub
+datasets
 tqdm
 pandas
 matplotlib

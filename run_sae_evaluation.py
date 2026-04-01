@@ -32,7 +32,7 @@ sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
 from nlp_re_base.activations import extract_and_process_streaming
 from nlp_re_base.config import resolve_output_dir
-from nlp_re_base.data import load_jsonl
+from nlp_re_base.data import load_cactus_dataset, load_jsonl
 from nlp_re_base.eval_functional import run_functional_evaluation
 from nlp_re_base.eval_structural import (
     OnlineStructuralAccumulator,
@@ -104,8 +104,8 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--data-dir",
-        default="data/mi_re",
-        help="Directory containing re_dataset.jsonl and nonre_dataset.jsonl.",
+        default="data/cactus",
+        help="Directory containing CACTUS dataset (cactus_re_small_1500.jsonl) or legacy re_dataset.jsonl/nonre_dataset.jsonl.",
     )
     parser.add_argument(
         "--full-structural",
@@ -294,6 +294,7 @@ def _run_single_aggregation(
             f"MSE={norm_full_metrics.get('mse', float('nan')):.4f}"
         )
         structural_metrics.update(raw_full_metrics)
+        structural_metrics["structural_scope"] = "full_dataset"
         structural_metrics["space_metrics"]["raw"] = {
             k: v for k, v in raw_full_metrics.items()
             if k in {"mse", "cosine_similarity", "explained_variance", "fvu", "n_tokens"}
@@ -385,11 +386,10 @@ def main() -> None:
     if not data_dir.is_absolute():
         data_dir = PROJECT_ROOT / data_dir
 
-    re_records = load_jsonl(data_dir / "re_dataset.jsonl")
-    nonre_records = load_jsonl(data_dir / "nonre_dataset.jsonl")
+    re_records, nonre_records, _ = load_cactus_dataset(data_dir)
 
-    re_texts = [record["unit_text"] for record in re_records]
-    nonre_texts = [record["unit_text"] for record in nonre_records]
+    re_texts = [record.get("unit_text", record.get("formatted_text", "")) for record in re_records]
+    nonre_texts = [record.get("unit_text", record.get("formatted_text", "")) for record in nonre_records]
     all_records = re_records + nonre_records
     all_texts = re_texts + nonre_texts
     all_labels = [1] * len(re_texts) + [0] * len(nonre_texts)

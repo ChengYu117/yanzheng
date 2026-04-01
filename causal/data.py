@@ -1,19 +1,27 @@
-"""causal/data.py — Data loading with counselor-span awareness.
+"""causal/data.py — Data loading with therapist-span awareness for CACTUS dataset.
 
-Each record in our dataset (unit_text) IS the counselor utterance, so the
-counselor span covers all non-padding tokens. We also track an optional
-preceding client utterance when available in the JSONL (field: 'client_text').
+CACTUS samples contain `formatted_text` with <client>...<therapist>... template
+and explicit `therapist_char_start` / `therapist_char_end` for span tracking.
+
+The counselor (therapist) span covers only the therapist section tokens,
+not the client context tokens.
 """
 
 from __future__ import annotations
 
 import json
+import sys
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
 import torch
 from transformers import PreTrainedTokenizerBase
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(PROJECT_ROOT / "src"))
+
+from nlp_re_base.data import load_cactus_dataset
 
 
 @dataclass
@@ -22,42 +30,33 @@ class CausalBatch:
 
     input_ids: torch.Tensor          # [B, T]
     attention_mask: torch.Tensor     # [B, T]
-    counselor_span_mask: torch.Tensor  # [B, T]  1 = counselor token
+    counselor_span_mask: torch.Tensor  # [B, T]  1 = therapist token
     labels: torch.Tensor             # [B]  1=RE, 0=NonRE
-    texts: list[str]                 # raw counselor strings
+    texts: list[str]                 # raw formatted_text strings
     indices: list[int]               # global indices into the dataset
 
 
-def load_jsonl(path: str | Path) -> list[dict[str, Any]]:
-    path = Path(path)
-    records = []
-    with open(path, "r", encoding="utf-8") as f:
-        for line in f:
-            line = line.strip()
-            if line:
-                records.append(json.loads(line))
-    return records
-
-
 def build_dataset(
-    re_path: str | Path,
-    nonre_path: str | Path,
+    data_dir: str | Path,
 ) -> tuple[list[str], list[int], list[dict]]:
-    """Return (texts, labels, records) for the full dataset."""
-    re_records = load_jsonl(re_path)
-    nonre_records = load_jsonl(nonre_path)
+    """Return (texts, labels, records) for the full dataset.
+
+    Uses CACTUS unified JSONL via load_cactus_dataset().
+    Texts are `formatted_text` (containing <client>...<therapist>... template).
+    """
+    re_records, nonre_records, _ = load_cactus_dataset(data_dir)
 
     texts: list[str] = []
     labels: list[int] = []
     records: list[dict] = []
 
     for r in re_records:
-        texts.append(r["unit_text"])
+        texts.append(r.get("formatted_text", r.get("unit_text", "")))
         labels.append(1)
         records.append(r)
 
     for r in nonre_records:
-        texts.append(r["unit_text"])
+        texts.append(r.get("formatted_text", r.get("unit_text", "")))
         labels.append(0)
         records.append(r)
 
@@ -83,10 +82,72 @@ def tokenize_batch(
     return enc
 
 
+def _get_therapist_token_mask(
+    tokenizer: PreTrainedTokenizerBase,
+    text: str,
+    record: dict,
+    max_seq_len: int,
+) -> list[bool]:
+    """Compute per-token therapist mask using char offsets from record.
+
+    If the record has therapist_char_start/end (CACTUS format), uses precise
+    offset mapping. Falls back to masking all non-padding tokens (legacy).
+    """
+    char_start = record.get("therapist_char_start")
+    char_end   = record.get("therapist_char_end")
+
+    if char_start is not None and char_end is not None:
+        enc = tokenizer(
+            text,
+            return_offsets_mapping=True,
+            truncation=True,
+            max_length=max_seq_len,
+        )
+        offsets = enc["offset_mapping"]
+        mask = []
+        for cs, ce in offsets:
+            if cs == 0 and ce == 0:
+                mask.append(False)  # special token
+            elif ce <= char_start or cs >= char_end:
+                mask.append(False)  # outside therapist span
+            else:
+                mask.append(True)   # overlaps with therapist span
+        return mask
+    else:
+        # Legacy: all real tokens are therapist
+        enc = tokenizer(text, truncation=True, max_length=max_seq_len)
+        return [True] * len(enc["input_ids"])
+
+
+def make_counselor_span_mask_batch(
+    tokenizer: PreTrainedTokenizerBase,
+    texts: list[str],
+    records: list[dict],
+    attention_mask: torch.Tensor,
+    max_seq_len: int,
+) -> torch.Tensor:
+    """Build a [B, T] bool mask where 1 = therapist token.
+
+    Combines per-sample therapist char-span detection with attention_mask.
+    """
+    B, T = attention_mask.shape
+    device = attention_mask.device
+    mask = torch.zeros(B, T, dtype=torch.bool, device=device)
+
+    for i, (text, record) in enumerate(zip(texts, records)):
+        tok_mask = _get_therapist_token_mask(tokenizer, text, record, max_seq_len)
+        length = min(len(tok_mask), T)
+        for j in range(length):
+            if tok_mask[j] and attention_mask[i, j]:
+                mask[i, j] = True
+
+    return mask
+
+
 def make_counselor_span_mask(
     attention_mask: torch.Tensor,
 ) -> torch.Tensor:
-    """For our dataset each utterance IS the counselor sentence.
+    """Legacy: for datasets where each utterance IS the counselor sentence.
     Counselor span = all real (non-padding) tokens.
     Returns a bool tensor of the same shape as attention_mask.
     """
@@ -96,12 +157,43 @@ def make_counselor_span_mask(
 def iter_batches(
     texts: list[str],
     labels: list[int],
-    tokenizer: PreTrainedTokenizerBase,
+    records: list[dict] | None = None,
+    *,
+    tokenizer: PreTrainedTokenizerBase | None = None,
     batch_size: int = 8,
     max_seq_len: int = 128,
     device: torch.device | None = None,
 ) -> list[CausalBatch]:
-    """Yield CausalBatch objects over the full dataset."""
+    """Build CausalBatch objects over the full dataset.
+
+    If records are provided (CACTUS format), uses therapist char-span
+    for precise counselor span masking. Otherwise falls back to masking
+    all non-padding tokens (legacy behavior).
+
+    Supports both positional and keyword calling conventions for tokenizer:
+        iter_batches(texts, labels, tokenizer, ...)       # legacy positional
+        iter_batches(texts, labels, records, tokenizer=tokenizer, ...)  # new
+    """
+    # Handle backward-compatible positional calling:
+    # iter_batches(texts, labels, tokenizer, ...) where 3rd arg is a tokenizer
+    actual_tokenizer = tokenizer
+    actual_records = records
+
+    if records is not None and not isinstance(records, list):
+        # 3rd positional arg is actually the tokenizer (legacy call pattern)
+        actual_tokenizer = records  # type: ignore
+        actual_records = None
+    elif records is not None and len(records) > 0 and isinstance(records[0], dict):
+        # 3rd arg is actually records, tokenizer must be keyword
+        actual_records = records
+    elif records is not None and hasattr(records, '__call__'):
+        # 3rd arg is tokenizer (PreTrainedTokenizerBase)
+        actual_tokenizer = records  # type: ignore
+        actual_records = None
+
+    if actual_tokenizer is None:
+        raise ValueError("tokenizer must be provided")
+
     batches: list[CausalBatch] = []
     n = len(texts)
     for start in range(0, n, batch_size):
@@ -109,8 +201,16 @@ def iter_batches(
         batch_texts = texts[start:end]
         batch_labels = labels[start:end]
 
-        enc = tokenize_batch(batch_texts, tokenizer, max_seq_len, device)
-        span_mask = make_counselor_span_mask(enc["attention_mask"])
+        enc = tokenize_batch(batch_texts, actual_tokenizer, max_seq_len, device)
+
+        if actual_records is not None:
+            batch_records = actual_records[start:end]
+            span_mask = make_counselor_span_mask_batch(
+                actual_tokenizer, batch_texts, batch_records,
+                enc["attention_mask"], max_seq_len
+            )
+        else:
+            span_mask = make_counselor_span_mask(enc["attention_mask"])
 
         batches.append(CausalBatch(
             input_ids=enc["input_ids"],

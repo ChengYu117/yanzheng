@@ -43,11 +43,13 @@ class SparseAutoencoder(nn.Module):
         jump_relu_threshold: float = 0.52734375,
         use_decoder_bias: bool = True,
         norm_scale: float | None = None,
+        top_k: int | None = None,
     ):
         super().__init__()
         self.d_model = d_model
         self.d_sae = d_sae
         self.norm_scale = norm_scale
+        self.top_k = top_k
 
         # Encoder: d_model -> d_sae
         self.W_enc = nn.Parameter(torch.empty(d_sae, d_model))
@@ -68,6 +70,17 @@ class SparseAutoencoder(nn.Module):
         # Initialize weights
         nn.init.kaiming_uniform_(self.W_enc)
         nn.init.kaiming_uniform_(self.W_dec)
+
+    def _apply_sparse_activation(self, pre_activation: torch.Tensor) -> torch.Tensor:
+        """Apply JumpReLU followed by optional per-token top-k truncation."""
+        latents = self.activation(pre_activation)
+        if self.top_k is None or self.top_k <= 0 or self.top_k >= latents.shape[-1]:
+            return latents
+
+        topk_indices = latents.topk(self.top_k, dim=-1).indices
+        keep_mask = torch.zeros_like(latents, dtype=torch.bool)
+        keep_mask.scatter_(-1, topk_indices, True)
+        return latents * keep_mask.to(latents.dtype)
 
     def normalize_with_stats(
         self,
@@ -107,7 +120,7 @@ class SparseAutoencoder(nn.Module):
         """
         x_normed, _ = self.normalize_with_stats(x)
         pre_activation = (x_normed - self.b_pre) @ self.W_enc.T + self.b_enc
-        return self.activation(pre_activation)
+        return self._apply_sparse_activation(pre_activation)
 
     def decode(self, latents: torch.Tensor) -> torch.Tensor:
         """Decode sparse latents back to activation space.
@@ -127,7 +140,7 @@ class SparseAutoencoder(nn.Module):
         """Full SAE forward pass with both normalized- and raw-space reconstructions."""
         x_normalized, input_norm = self.normalize_with_stats(x)
         pre_activation = (x_normalized - self.b_pre) @ self.W_enc.T + self.b_enc
-        latents = self.activation(pre_activation)
+        latents = self._apply_sparse_activation(pre_activation)
         reconstructed_normalized = self.decode(latents)
         reconstructed_raw = self.denormalize_reconstruction(
             reconstructed_normalized,
@@ -180,9 +193,10 @@ def load_sae_from_hub(
     use_decoder_bias = hyperparams.get("use_decoder_bias", True)
     norm_info = hyperparams.get("dataset_average_activation_norm", {})
     norm_scale = norm_info.get("in", None)
+    top_k = hyperparams.get("top_k")
 
     print(f"SAE config: d_model={d_model}, d_sae={d_sae}, "
-          f"threshold={threshold}, norm_scale={norm_scale}")
+          f"threshold={threshold}, norm_scale={norm_scale}, top_k={top_k}")
 
     sae = SparseAutoencoder(
         d_model=d_model,
@@ -190,6 +204,7 @@ def load_sae_from_hub(
         jump_relu_threshold=threshold,
         use_decoder_bias=use_decoder_bias,
         norm_scale=norm_scale,
+        top_k=top_k,
     )
 
     # Download checkpoint files

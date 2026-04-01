@@ -1,0 +1,63 @@
+{
+  "total": 1500,
+  "per_label": {
+    "NonTech_Process": {
+      "count": 500,
+      "mean_words": 30.3,
+      "question_ratio": 0.31
+    },
+    "RE": {
+      "count": 500,
+      "mean_words": 28.0,
+      "question_ratio": 0.0
+    },
+    "NonRE_CBT": {
+      "count": 500,
+      "mean_words": 36.0,
+      "question_ratio": 0.138
+    }
+  },
+  "subtype_distribution": {
+    "NonTech_Process": {
+      "information_gathering": 150,
+      "general_support": 150,
+      "closing_transition": 150,
+      "opening": 50
+    },
+    "RE": {
+      "summary_reflection": 393,
+      "feeling_reflection": 54,
+      "impact_reflection": 27,
+      "self_view_reflection": 26
+    },
+    "NonRE_CBT": {
+      "homework_planning": 200,
+      "reframe": 100,
+      "evidence_check": 100,
+      "guided_discovery": 50,
+      "psychoeducation": 50
+    }
+  },
+  "technique_distribution": {
+    "Reality Testing": 376,
+    "Alternative Perspective": 376,
+    "Behavior Experiment": 305,
+    "Decatastrophizing": 187,
+    "Efficiency Evaluation": 88,
+    "Changing Rules to Wishes": 69,
+    "Problem-Solving Skills Training": 49,
+    "Activity Scheduling": 12,
+    "Evidence-Based Questioning": 11,
+    "Pros and Cons Analysis": 10,
+    "Self-Assertiveness Training": 5,
+    "Behavioral Experiment": 3,
+    "Thought Experiment": 2,
+    "Continuum Technique": 1,
+    "-Decatastrophizing -Alternative Perspective -Thought Experiment": 1,
+    "Systematic Exposure": 1,
+    "Chaging Rule to Wishes": 1,
+    "Practice of Assertive Conversation Skills": 1,
+    "Problem-solving Skills Training": 1,
+    "Positive Reframing": 1
+  }
+}

@@ -9,7 +9,7 @@ This module is the project-compatible version of the user's Stage 2 idea:
 
 Unlike the original draft, this implementation:
 - uses the project's local model loader instead of a hard-coded HF model
-- uses `data/mi_re` by default instead of an external directory
+- uses `data/cactus` by default (CACTUS dataset)
 - writes outputs under `outputs/` (or `OUTPUT_ROOT`) consistently
 - can be imported as a normal module or run via a root CLI wrapper
 """
@@ -33,47 +33,38 @@ from .config import resolve_output_dir
 from .data import load_jsonl
 from .model import load_local_model_and_tokenizer
 
-DEFAULT_DATA_DIR = Path("data/mi_re")
+DEFAULT_DATA_DIR = Path("data/cactus")
 DEFAULT_OUTPUT_SUBDIR = "stage2_activation_extraction"
 
 
 def load_stage2_dataset(data_dir: str | Path = DEFAULT_DATA_DIR) -> list[dict[str, Any]]:
-    """Load RE and NonRE utterances into a binary classification dataset."""
-    root = Path(data_dir)
-    re_path = root / "re_dataset.jsonl"
-    nonre_path = root / "nonre_dataset.jsonl"
+    """Load RE and NonRE utterances into a binary classification dataset.
+
+    Supports CACTUS unified JSONL and legacy MI-RE split format.
+    """
+    from .data import load_cactus_dataset
+
+    re_records, nonre_records, _ = load_cactus_dataset(data_dir)
 
     dataset: list[dict[str, Any]] = []
-
-    re_records = load_jsonl(re_path)
     for record in re_records:
-        dataset.append(
-            {
-                "unit_id": f"{record['file_id']}_{record.get('predicted_subcode', 'RE')}",
-                "unit_text": record["unit_text"],
-                "code": record["predicted_code"],
-                "subcode": record.get("predicted_subcode"),
-                "confidence": record.get("confidence", 0.0),
-                "label_re": 1,
-            }
-        )
-
-    nonre_records = load_jsonl(nonre_path)
+        dataset.append({
+            "unit_id": record.get("sample_id", record.get("file_id", "")),
+            "unit_text": record.get("unit_text", record.get("formatted_text", "")),
+            "code": record.get("label", "RE"),
+            "subcode": record.get("subtype", record.get("predicted_subcode")),
+            "confidence": record.get("confidence", 0.0),
+            "label_re": 1,
+        })
     for record in nonre_records:
-        dataset.append(
-            {
-                "unit_id": (
-                    f"{record['file_id']}_"
-                    f"{record.get('predicted_subcode', record['predicted_code'])}"
-                ),
-                "unit_text": record["unit_text"],
-                "code": record["predicted_code"],
-                "subcode": record.get("predicted_subcode"),
-                "confidence": record.get("confidence", 0.0),
-                "label_re": 0,
-            }
-        )
-
+        dataset.append({
+            "unit_id": record.get("sample_id", record.get("file_id", "")),
+            "unit_text": record.get("unit_text", record.get("formatted_text", "")),
+            "code": record.get("label", "NonRE"),
+            "subcode": record.get("subtype", record.get("predicted_subcode")),
+            "confidence": record.get("confidence", 0.0),
+            "label_re": 0,
+        })
     return dataset
 
 

@@ -38,7 +38,7 @@ class OnlineStructuralAccumulator:
     """
 
     def __init__(self) -> None:
-        # MSE accumulator
+        # SSE accumulator: Σ(z - z_hat)² — used for both MSE and FVU
         self._n_tokens: int = 0
         self._mse_sum: float = 0.0
         self._d_model: int | None = None
@@ -51,8 +51,6 @@ class OnlineStructuralAccumulator:
         self._count_w: int = 0
         self._mean_z: torch.Tensor | None = None     # (d_model,)
         self._M2_z: torch.Tensor | None = None       # (d_model,)
-        self._mean_r: torch.Tensor | None = None     # (d_model,)
-        self._M2_r: torch.Tensor | None = None       # (d_model,)
 
         # L0 accumulator
         self._l0_sum: float = 0.0
@@ -101,21 +99,14 @@ class OnlineStructuralAccumulator:
         if self._mean_z is None:
             self._mean_z = torch.zeros(d, dtype=torch.float64)
             self._M2_z   = torch.zeros(d, dtype=torch.float64)
-            self._mean_r = torch.zeros(d, dtype=torch.float64)
-            self._M2_r   = torch.zeros(d, dtype=torch.float64)
 
         for i in range(m):
             self._count_w += 1
-            # Welford update for z
+            # Welford update for z (needed for SST = M2_z)
             delta_z = z_flat[i] - self._mean_z
             self._mean_z += delta_z / self._count_w
             delta2_z = z_flat[i] - self._mean_z
             self._M2_z  += delta_z * delta2_z
-            # Welford update for residual
-            delta_r = r_flat[i] - self._mean_r
-            self._mean_r += delta_r / self._count_w
-            delta2_r = r_flat[i] - self._mean_r
-            self._M2_r   += delta_r * delta2_r
 
         # ── L0 sparsity ──
         active = (lat_flat.abs() > 1e-8)
@@ -142,21 +133,16 @@ class OnlineStructuralAccumulator:
             (self._l0_sq_sum / n - (self._l0_sum / n) ** 2) ** 0.5
         ) if n > 1 else 0.0
 
-        # Variance from Welford accumulators
-        if self._count_w > 1 and self._M2_z is not None:
-            var_z = self._M2_z / (self._count_w - 1)
-            var_r = self._M2_r / (self._count_w - 1)
-        else:
-            var_z = torch.ones(1)
-            var_r = torch.zeros(1)
+        # FVU = SSE / SST_centered (standard R²-based definition)
+        # SSE = _mse_sum = Σ(z - z_hat)² across all tokens and dims
+        # SST = M2_z.sum() = Σⱼ Σᵢ (zᵢⱼ - z̄ⱼ)² (Welford final result)
+        sse = self._mse_sum
+        sst = float(self._M2_z.sum()) if (self._count_w > 1 and self._M2_z is not None) else 0.0
 
-        total_var_z  = float(var_z.mean())
-        total_var_r  = float(var_r.mean())
-
-        if total_var_z < 1e-12:
-            ev, fvu = 1.0, 0.0
+        if sst < 1e-12:
+            ev, fvu = (1.0, 0.0) if sse < 1e-12 else (0.0, 1.0)
         else:
-            fvu = total_var_r / total_var_z
+            fvu = sse / sst
             ev  = 1.0 - fvu
 
         # Firing frequency
@@ -249,7 +235,14 @@ def compute_explained_variance(
     z_hat: torch.Tensor,
     mask: torch.Tensor | None = None,
 ) -> dict[str, float]:
-    """Explained Variance and Fraction of Variance Unexplained (FVU).
+    """Explained Variance (1 - FVU) and Fraction of Variance Unexplained.
+
+    Uses the SSE/SST_centered definition:
+        FVU = Σ(z - z_hat)² / Σ(z - mean(z))²
+        EV  = 1 - FVU
+
+    This correctly penalizes systematic bias (constant offset) in
+    reconstruction, unlike Var(residual)/Var(z) which would miss it.
 
     Returns:
         {'explained_variance': float, 'fvu': float}
@@ -262,13 +255,19 @@ def compute_explained_variance(
         z_flat = z.reshape(-1, z.shape[-1])
         z_hat_flat = z_hat.reshape(-1, z_hat.shape[-1])
 
-    residual_var = (z_flat - z_hat_flat).var(dim=0).mean().item()
-    total_var = z_flat.var(dim=0).mean().item()
+    # SSE per dimension: Σᵢ (zᵢⱼ - ẑᵢⱼ)²
+    sse_per_dim = ((z_flat - z_hat_flat) ** 2).sum(dim=0)  # [d]
+    # SST per dimension: Σᵢ (zᵢⱼ - z̄ⱼ)²
+    z_mean = z_flat.mean(dim=0, keepdim=True)
+    sst_per_dim = ((z_flat - z_mean) ** 2).sum(dim=0)  # [d]
 
-    if total_var < 1e-12:
-        return {"explained_variance": 1.0, "fvu": 0.0}
+    total_sst = sst_per_dim.sum().item()
+    if total_sst < 1e-12:
+        if sse_per_dim.sum().item() < 1e-12:
+            return {"explained_variance": 1.0, "fvu": 0.0}
+        return {"explained_variance": 0.0, "fvu": 1.0}
 
-    fvu = residual_var / total_var
+    fvu = sse_per_dim.sum().item() / total_sst
     ev = 1.0 - fvu
     return {"explained_variance": ev, "fvu": fvu}
 
@@ -565,7 +564,12 @@ def run_structural_evaluation(
           f" ({ff_result['dead_ratio']:.2%})")
     print(f"  Alive Features:    {ff_result['alive_count']}")
 
+    sample_n_tokens = int(attention_mask.sum().item())
+
     metrics = {
+        "metric_definition_version": 2,
+        "structural_scope": "sample_batches",
+        "n_tokens": sample_n_tokens,
         **raw_metrics,
         **l0_result,
         "dead_count": ff_result["dead_count"],
@@ -573,8 +577,12 @@ def run_structural_evaluation(
         "alive_count": ff_result["alive_count"],
         "top10_freq_indices": ff_result["top10_freq_indices"],
         "space_metrics": {
-            "raw": raw_metrics,
-            "normalized": normalized_metrics,
+            "raw": {**raw_metrics, "n_tokens": sample_n_tokens},
+            "normalized": (
+                {**normalized_metrics, "n_tokens": sample_n_tokens}
+                if normalized_metrics is not None
+                else None
+            ),
         },
     }
 

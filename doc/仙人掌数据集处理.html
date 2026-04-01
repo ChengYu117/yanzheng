@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>CACTUS &#x6570;&#x636e;&#x96c6;&#x66ff;&#x6362; Pipeline &#x6587;&#x6863;&#xff08;&#x7528;&#x4e8e; SAE-RE &#x6982;&#x5ff5;&#x53d1;&#x73b0;&#x9a8c;&#x8bc1;&#xff09;</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <h1 id="cactus-数据集替换-pipeline-文档用于-sae-re-概念发现验证">CACTUS 数据集替换 Pipeline 文档（用于 SAE-RE 概念发现验证）</h1>
+<p>你现在要替换现有数据集，改用 CACTUS（Cactus: Towards Psychological Counseling Conversations using Cognitive Behavioral Theory）作为新的数据来源，目标是为 SAE 概念发现任务构造一个小规模、可验证、可复现实验集。</p>
+<hr>
+<h2 id="1-数据集来源">1. 数据集来源</h2>
+<p>优先使用以下官方来源之一下载：</p>
+<h3 id="官方-github">官方 GitHub</h3>
+<ul>
+<li>Repo: <code>https://github.com/coding-groot/cactus</code></li>
+</ul>
+<h3 id="官方-hugging-face">官方 Hugging Face</h3>
+<ul>
+<li>Dataset: <code>https://huggingface.co/datasets/LangAGI-Lab/cactus</code></li>
+</ul>
+<p>优先选择 Hugging Face 版本进行加载，因为更容易直接读取结构化字段。</p>
+<p>推荐加载方式：</p>
+<pre><code class="language-python"><span class="hljs-keyword">from</span> datasets <span class="hljs-keyword">import</span> load_dataset
+ds = load_dataset(<span class="hljs-string">&quot;LangAGI-Lab/cactus&quot;</span>, split=<span class="hljs-string">&quot;train&quot;</span>)
+</code></pre>
+<hr>
+<h2 id="2-任务目标">2. 任务目标</h2>
+<p>构造一个用于 SAE 可解释性验证的小规模替换数据集，目标不是复现整套训练，而是先验证以下链路是否跑通：</p>
+<ol>
+<li>
+<p>从 CACTUS 多轮对话中切分出回合级样本</p>
+</li>
+<li>
+<p>构造三类样本：</p>
+<ul>
+<li><code>RE</code></li>
+<li><code>NonRE_CBT</code></li>
+<li><code>NonTech_Process</code></li>
+</ul>
+</li>
+<li>
+<p>总样本规模控制在 1500 条</p>
+<ul>
+<li>每类 500 条</li>
+</ul>
+</li>
+<li>
+<p>使用统一输入模板：</p>
+<pre><code class="language-text">&lt;client&gt; ... &lt;/client&gt;
+&lt;therapist&gt; ... &lt;/therapist&gt;
+</code></pre>
+</li>
+<li>
+<p>输入整个序列到原模型</p>
+</li>
+<li>
+<p>在 <code>blocks.19.hook_resid_post</code> 上取 SAE 编码</p>
+</li>
+<li>
+<p><strong>只在 <code>&lt;therapist&gt; ... &lt;/therapist&gt;</code> 这一段 token 上聚合 latent activation</strong></p>
+</li>
+<li>
+<p>产出可直接用于后续 SAE 分析的 JSONL 文件</p>
+</li>
+</ol>
+<hr>
+<h2 id="3-关键原则">3. 关键原则</h2>
+<h3 id="31-最小充分上下文">3.1 最小充分上下文</h3>
+<p>只使用：</p>
+<ul>
+<li>前一轮 <code>client</code> 发言</li>
+<li>当前轮 <code>therapist</code> 发言</li>
+</ul>
+<p>不要一开始引入：</p>
+<ul>
+<li>全对话历史</li>
+<li>intake_form</li>
+<li>cbt_plan</li>
+<li>persona</li>
+<li>过长窗口</li>
+</ul>
+<p>默认样本单位定义为：</p>
+<pre><code class="language-text">(client_{t-1}, therapist_t)
+</code></pre>
+<p>即：</p>
+<ul>
+<li><code>client_prev</code></li>
+<li><code>therapist_curr</code></li>
+</ul>
+<h3 id="32-上下文作为条件不作为读取目标">3.2 上下文作为条件，不作为读取目标</h3>
+<p>要把 client 文本作为“判断 therapist 当前句是否体现 RE 技能”的条件信息，
+但 <strong>最终的 SAE latent 统计只能发生在 therapist span 上</strong>。</p>
+<p>换句话说：</p>
+<ul>
+<li>输入序列包含 client + therapist</li>
+<li>但只在 therapist token 范围上做 latent pooling</li>
+</ul>
+<h3 id="33-第一版不要追求全量准确只追求跑通">3.3 第一版不要追求全量准确，只追求跑通</h3>
+<p>优先构造：</p>
+<ul>
+<li>较干净的 RE 样本</li>
+<li>较干净的 NonRE_CBT 样本</li>
+<li>较干净的 NonTech_Process 样本</li>
+</ul>
+<p>第一版允许部分边界例丢弃，不要强行标注混合样本。</p>
+<hr>
+<h2 id="4-数据切分与回合级构造">4. 数据切分与回合级构造</h2>
+<h3 id="41-原始输入">4.1 原始输入</h3>
+<p>CACTUS 的一条样本通常包含：</p>
+<ul>
+<li><code>dialogue</code></li>
+<li><code>cbt_technique</code></li>
+<li><code>cbt_plan</code></li>
+<li>其他辅助字段</li>
+</ul>
+<p>重点使用 <code>dialogue</code> 字段。</p>
+<h3 id="42-解析-dialogue">4.2 解析 dialogue</h3>
+<p>需要写一个解析器，把一段多轮对话切成 speaker turn 序列。</p>
+<p>目标输出格式类似：</p>
+<pre><code class="language-python">[
+  {<span class="hljs-string">&quot;speaker&quot;</span>: <span class="hljs-string">&quot;client&quot;</span>, <span class="hljs-string">&quot;text&quot;</span>: <span class="hljs-string">&quot;...&quot;</span>},
+  {<span class="hljs-string">&quot;speaker&quot;</span>: <span class="hljs-string">&quot;therapist&quot;</span>, <span class="hljs-string">&quot;text&quot;</span>: <span class="hljs-string">&quot;...&quot;</span>},
+  {<span class="hljs-string">&quot;speaker&quot;</span>: <span class="hljs-string">&quot;client&quot;</span>, <span class="hljs-string">&quot;text&quot;</span>: <span class="hljs-string">&quot;...&quot;</span>},
+  {<span class="hljs-string">&quot;speaker&quot;</span>: <span class="hljs-string">&quot;therapist&quot;</span>, <span class="hljs-string">&quot;text&quot;</span>: <span class="hljs-string">&quot;...&quot;</span>},
+]
+</code></pre>
+<h3 id="43-构造回合级-therapist-response-样本">4.3 构造回合级 therapist-response 样本</h3>
+<p>仅保留 therapist turn，配对最近一条 client turn：</p>
+<pre><code class="language-python">{
+  <span class="hljs-string">&quot;dialogue_id&quot;</span>: ...,
+  <span class="hljs-string">&quot;turn_index&quot;</span>: ...,
+  <span class="hljs-string">&quot;client_prev&quot;</span>: <span class="hljs-string">&quot;...&quot;</span>,
+  <span class="hljs-string">&quot;therapist_curr&quot;</span>: <span class="hljs-string">&quot;...&quot;</span>,
+  <span class="hljs-string">&quot;cbt_technique&quot;</span>: <span class="hljs-string">&quot;...&quot;</span>,
+  <span class="hljs-string">&quot;cbt_plan&quot;</span>: <span class="hljs-string">&quot;...&quot;</span>,
+}
+</code></pre>
+<h3 id="44-过滤规则">4.4 过滤规则</h3>
+<p>丢弃以下情况：</p>
+<ul>
+<li>缺少紧邻前一条 client turn</li>
+<li>therapist 句子过短（例如少于 5 个词）</li>
+<li>client 或 therapist 文本明显损坏</li>
+<li>therapist 当前回合混合多个功能且难以判定主标签</li>
+<li>重复样本</li>
+<li>明显模板化、完全重复的 boilerplate 句子</li>
+</ul>
+<hr>
+<h2 id="5-三类标签定义">5. 三类标签定义</h2>
+<p>注意：CACTUS 原始数据<strong>没有现成的这三类回合级标签</strong>，需要你基于 <code>(client_prev, therapist_curr)</code> 自行构造。</p>
+<hr>
+<h3 id="51-re">5.1 RE</h3>
+<p>定义：
+当前 therapist 回应的主要功能是对 client 刚才表达的内容、情绪、意义、冲突、担忧进行反映、复述、提炼、镜映，而不是推进新的技术动作。</p>
+<p>判定标准（满足 2 条即可）：</p>
+<ol>
+<li>明显紧贴前一句 client 内容</li>
+<li>therapist 主要在“描述/反映” client 体验</li>
+<li>句子主要功能不是提问、建议、教育、任务推进</li>
+</ol>
+<p>典型例子：</p>
+<ul>
+<li>“听起来你一到那个场景，就会马上觉得自己会被否定。”</li>
+<li>“你其实不是不想尝试，而是很怕失败之后更失望。”</li>
+</ul>
+<p>保留：</p>
+<ul>
+<li>simple reflection</li>
+<li>complex reflection</li>
+<li>feeling reflection</li>
+<li>meaning reflection</li>
+</ul>
+<p>剔除：</p>
+<ul>
+<li>reflection + question 混合句</li>
+<li>reflection + CBT intervention 混合句</li>
+</ul>
+<hr>
+<h3 id="52-nonre_cbt">5.2 NonRE_CBT</h3>
+<p>定义：
+当前 therapist 回应的主要功能是推进 CBT 技术动作，而不是反映 client。</p>
+<p>包括但不限于：</p>
+<ul>
+<li>evidence checking</li>
+<li>reality testing</li>
+<li>reframe / cognitive restructuring</li>
+<li>psychoeducation</li>
+<li>guided discovery</li>
+<li>behavioral planning</li>
+<li>homework suggestion</li>
+<li>decatastrophizing</li>
+<li>alternative perspective</li>
+</ul>
+<p>典型例子：</p>
+<ul>
+<li>“我们来看看有哪些证据支持这个想法，又有哪些证据不支持它。”</li>
+<li>“你愿不愿意这周做个小实验，记录一下当时的自动想法？”</li>
+</ul>
+<p>必须排除：</p>
+<ul>
+<li>只是一般性提问但没有 CBT 技术意图的句子</li>
+<li>明显的流程话语</li>
+<li>混合 RE + 技术推进的句子</li>
+</ul>
+<hr>
+<h3 id="53-nontech_process">5.3 NonTech_Process</h3>
+<p>定义：
+当前 therapist 回应不是 RE，也不是核心 CBT 技术动作，而是流程管理、会谈组织、寒暄、过渡、一般支持或信息性探查。</p>
+<p>包括：</p>
+<ul>
+<li>greeting</li>
+<li>naming / self-introduction</li>
+<li>opening / closing</li>
+<li>transition</li>
+<li>session management</li>
+<li>general support</li>
+<li>non-technical information-gathering question</li>
+</ul>
+<p>典型例子：</p>
+<ul>
+<li>“在开始之前，我先确认一下你希望我怎么称呼你。”</li>
+<li>“谢谢你今天愿意分享这些。”</li>
+<li>“我们今天先聊到这里，下次再继续。”</li>
+</ul>
+<p>注意：</p>
+<ul>
+<li>此类样本不要过度使用疑问句模板</li>
+<li>避免让整个负类退化成 question detection</li>
+</ul>
+<hr>
+<h2 id="6-抽样目标">6. 抽样目标</h2>
+<p>最终只保留总计 1500 条样本：</p>
+<ul>
+<li><code>RE</code>: 500</li>
+<li><code>NonRE_CBT</code>: 500</li>
+<li><code>NonTech_Process</code>: 500</li>
+</ul>
+<h3 id="61-抽样优先级">6.1 抽样优先级</h3>
+<p>优先保证“纯度”，其次才是“覆盖面”。</p>
+<h4 id="re-组要求">RE 组要求</h4>
+<p>优先选择：</p>
+<ul>
+<li>therapist 功能单一</li>
+<li>高度依赖 client_prev</li>
+<li>不包含 question 尾巴</li>
+<li>不包含技术推进动作</li>
+<li>不是总结式混合句</li>
+</ul>
+<h4 id="nonre_cbt-组要求">NonRE_CBT 组要求</h4>
+<p>优先选择：</p>
+<ul>
+<li>技术意图明显</li>
+<li>不是单纯一般问句</li>
+<li>不是支持性寒暄</li>
+<li>尽量覆盖多个 CBT 子类型，不要只集中一种</li>
+</ul>
+<h4 id="nontech_process-组要求">NonTech_Process 组要求</h4>
+<p>优先选择：</p>
+<ul>
+<li>流程/寒暄/一般支持/过渡句</li>
+<li>少量信息收集问题可以保留</li>
+<li>不要让 “问句” 占比过高</li>
+<li>不要混入实际 CBT 技术动作</li>
+</ul>
+<h3 id="62-去重与平衡">6.2 去重与平衡</h3>
+<p>必须去重：</p>
+<ul>
+<li>近似重复 therapist 句子</li>
+<li>模板化几乎相同的 response</li>
+</ul>
+<p>建议额外统计：</p>
+<ul>
+<li>平均 therapist token 长度</li>
+<li>问句占比</li>
+<li>不同 <code>cbt_technique</code> 来源分布</li>
+<li>不同对话来源分布</li>
+</ul>
+<p>尽量避免某一类只来自极少数技术或少量 dialogue。</p>
+<hr>
+<h2 id="7-输入模板">7. 输入模板</h2>
+<p>每条最终样本必须被格式化成：</p>
+<pre><code class="language-text">&lt;client&gt;
+{client_prev}
+&lt;/client&gt;
+&lt;therapist&gt;
+{therapist_curr}
+&lt;/therapist&gt;
+</code></pre>
+<p>不要使用：</p>
+<ul>
+<li><code>[CLIENT]</code></li>
+<li><code>[THERAPIST]</code></li>
+<li>chat template role token</li>
+<li>system prompt</li>
+</ul>
+<p>第一版固定使用上述 XML 风格模板。</p>
+<hr>
+<h2 id="8-token-span-对齐要求非常重要">8. Token span 对齐要求（非常重要）</h2>
+<p>后续 SAE 分析只在 therapist span 上聚合 latent activation，因此你必须在数据预处理中保留 therapist token 的准确边界。</p>
+<h3 id="必须输出">必须输出：</h3>
+<ul>
+<li><code>formatted_text</code></li>
+<li><code>therapist_text</code></li>
+<li><code>client_text</code></li>
+<li><code>therapist_char_start</code></li>
+<li><code>therapist_char_end</code></li>
+</ul>
+<p>如果后续 tokenizer 可直接返回 offset mapping，则还应支持推导：</p>
+<ul>
+<li><code>therapist_token_start</code></li>
+<li><code>therapist_token_end</code></li>
+</ul>
+<p>建议做法：</p>
+<ol>
+<li>先生成完整 <code>formatted_text</code></li>
+<li>用字符串匹配定位 <code>&lt;therapist&gt;\n</code> 后 therapist 内容在完整字符串中的字符区间</li>
+<li>后续模型 tokenize 时用 offset mapping 找到 therapist 对应 token span</li>
+</ol>
+<hr>
+<h2 id="9-后续-sae-读取规范">9. 后续 SAE 读取规范</h2>
+<h3 id="固定要求">固定要求</h3>
+<ul>
+<li>输入整个 <code>formatted_text</code> 到原模型</li>
+<li>在 <code>blocks.19.hook_resid_post</code> 读取残差流激活</li>
+<li>用已加载的 Llama Scope SAE 对该层激活进行编码</li>
+<li><strong>只对 therapist span 范围内 token 的 SAE feature activation 做聚合</strong></li>
+</ul>
+<h3 id="第一版需要同时支持的-pooling">第一版需要同时支持的 pooling</h3>
+<p>不要只做 max，至少同时实现：</p>
+<ul>
+<li><code>mean</code></li>
+<li><code>sum</code></li>
+<li><code>max</code></li>
+</ul>
+<p>输出时分别保存：</p>
+<ul>
+<li><code>latent_mean</code></li>
+<li><code>latent_sum</code></li>
+<li><code>latent_max</code></li>
+</ul>
+<p>如果内存太大，可只保存 therapist span 上非零 feature 统计，或按样本逐条在线计算。</p>
+<hr>
+<h2 id="10-推荐输出文件">10. 推荐输出文件</h2>
+<h3 id="101-标注后的主数据文件">10.1 标注后的主数据文件</h3>
+<p><code>cactus_re_small_1500.jsonl</code></p>
+<p>每行格式建议如下：</p>
+<pre><code class="language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;sample_id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;cactus_000123_t08&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;dialogue_id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;cactus_000123&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;turn_index&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">8</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;label&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;RE&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;subtype&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;meaning_reflection&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;client_prev&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;...&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;therapist_curr&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;...&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;formatted_text&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;&lt;client&gt;\n...\n&lt;/client&gt;\n&lt;therapist&gt;\n...\n&lt;/therapist&gt;&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;therapist_char_start&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">42</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;therapist_char_end&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">118</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;source_cbt_technique&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Reality Testing&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;source_cbt_plan&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;...&quot;</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<h3 id="102-统计报告">10.2 统计报告</h3>
+<p><code>cactus_re_small_1500_stats.json</code></p>
+<p>至少包含：</p>
+<ul>
+<li>每类样本数</li>
+<li>每类平均长度</li>
+<li>问句占比</li>
+<li>不同来源 technique 分布</li>
+<li>重复率检查结果</li>
+</ul>
+<h3 id="103-可人工抽查文件">10.3 可人工抽查文件</h3>
+<p><code>cactus_re_small_1500_preview.csv</code></p>
+<p>字段建议：</p>
+<ul>
+<li>sample_id</li>
+<li>label</li>
+<li>client_prev</li>
+<li>therapist_curr</li>
+<li>source_cbt_technique</li>
+</ul>
+<hr>
+<h2 id="11-推荐实现策略">11. 推荐实现策略</h2>
+<h3 id="111-第一阶段规则筛选">11.1 第一阶段：规则筛选</h3>
+<p>先用启发式规则拿到较干净的候选池：</p>
+<h4 id="re-候选规则示例">RE 候选规则（示例）</h4>
+<p>匹配 therapist_curr 中的反映式模式：</p>
+<ul>
+<li><code>听起来</code></li>
+<li><code>你觉得</code></li>
+<li><code>你会觉得</code></li>
+<li><code>好像</code></li>
+<li><code>对你来说</code></li>
+<li><code>你其实是在</code></li>
+<li><code>你担心的是</code></li>
+</ul>
+<p>同时排除：</p>
+<ul>
+<li>结尾带明显问号的句子</li>
+<li>包含“我们来看看”“我们试试”“这周你可以”等技术推进短语</li>
+</ul>
+<h4 id="nonre_cbt-候选规则示例">NonRE_CBT 候选规则（示例）</h4>
+<p>匹配：</p>
+<ul>
+<li><code>我们来看看</code></li>
+<li><code>有哪些证据</code></li>
+<li><code>有没有另一种解释</code></li>
+<li><code>这周你可以</code></li>
+<li><code>记录一下</code></li>
+<li><code>练习</code></li>
+<li><code>实验</code></li>
+<li><code>重构</code></li>
+<li><code>重新看待</code></li>
+<li><code>挑战这个想法</code></li>
+</ul>
+<h4 id="nontech_process-候选规则示例">NonTech_Process 候选规则（示例）</h4>
+<p>匹配：</p>
+<ul>
+<li><code>你好</code></li>
+<li><code>怎么称呼</code></li>
+<li><code>谢谢你分享</code></li>
+<li><code>今天先到这里</code></li>
+<li><code>下次我们继续</code></li>
+<li><code>我想先了解</code></li>
+<li><code>能和我说说</code></li>
+</ul>
+<h3 id="112-第二阶段人工或-llm-复核">11.2 第二阶段：人工或 LLM 复核</h3>
+<p>对规则筛出的候选池做二次复核，目标是保证 1500 条最终样本纯度够高。</p>
+<p>如果实现 LLM 复核，输出仍然只能保留最终三类之一：</p>
+<ul>
+<li>RE</li>
+<li>NonRE_CBT</li>
+<li>NonTech_Process</li>
+</ul>
+<p>不确定样本直接丢弃。</p>
+<hr>
+<h2 id="12-质量门槛">12. 质量门槛</h2>
+<p>只有满足以下条件，才算 pipeline 通过：</p>
+<ol>
+<li>成功下载并加载 CACTUS</li>
+<li>成功解析多轮 dialogue 为回合级 turn</li>
+<li>成功构造 1500 条样本</li>
+<li>三类各 500 条</li>
+<li>每条有完整 <code>formatted_text</code></li>
+<li>每条能正确定位 therapist span</li>
+<li>后续程序能把 <code>formatted_text</code> 输入模型</li>
+<li>能在 <code>blocks.19.hook_resid_post</code> 取到激活</li>
+<li>能只对 therapist span 聚合 latent activation</li>
+<li>至少能输出一版 <code>mean / sum / max</code> pooling 结果</li>
+</ol>
+<hr>
+<h2 id="13-额外提醒">13. 额外提醒</h2>
+<h3 id="不要做的事">不要做的事</h3>
+<ul>
+<li>不要把整段对话全部作为一个样本</li>
+<li>不要把 client token 与 therapist token 混在一起聚合 latent</li>
+<li>不要把 CACTUS 的 <code>cbt_technique</code> 直接当作 RE 标签</li>
+<li>不要把所有疑问句都塞进 NonTech_Process</li>
+<li>不要引入过长上下文窗口</li>
+<li>不要在第一版加入复杂的多轮跨句推理</li>
+</ul>
+<h3 id="第一版的唯一目标">第一版的唯一目标</h3>
+<p>先验证：</p>
+<ul>
+<li>CACTUS 是否能被切成三类小规模样本</li>
+<li>therapist-span 限定的 SAE 读取链路是否能稳定跑通</li>
+</ul>
+<hr>
+<h2 id="14-交付要求">14. 交付要求</h2>
+<p>请完成以下交付物：</p>
+<ol>
+<li>
+<p>一个可执行 Python 脚本或 notebook：</p>
+<ul>
+<li>下载 / 加载 CACTUS</li>
+<li>解析 dialogue</li>
+<li>构造三类 1500 样本</li>
+<li>导出 JSONL / CSV / stats</li>
+</ul>
+</li>
+<li>
+<p>一个简短 README，写明：</p>
+<ul>
+<li>如何运行</li>
+<li>输出文件位置</li>
+<li>规则筛选逻辑</li>
+<li>therapist token span 如何定位</li>
+</ul>
+</li>
+<li>
+<p>一个最小验证脚本：</p>
+<ul>
+<li>读取 10 条样本</li>
+<li>输入原模型</li>
+<li>在 <code>blocks.19.hook_resid_post</code> 取激活</li>
+<li>用 SAE 编码</li>
+<li>仅 therapist span 聚合</li>
+<li>输出前若干个高激活 latent id 与数值</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="15-默认假设">15. 默认假设</h2>
+<p>如果原始数据中某些字段命名或格式与预期不一致，请：</p>
+<ul>
+<li>以实际字段为准</li>
+<li>但保持最终输出 schema 不变</li>
+</ul>
+<p>如果 dialogue 解析存在多种格式：</p>
+<ul>
+<li>优先实现最常见格式</li>
+<li>无法可靠解析的样本直接跳过</li>
+</ul>
+<p>如果三类候选不足：</p>
+<ul>
+<li>先扩大候选池</li>
+<li>仍不足时优先保证 RE 和 NonRE_CBT 的纯度</li>
+<li>不要为了凑数降低 RE 标签质量</li>
+</ul>
+<hr>
+<p>请严格按以上规范实现，不要擅自改动输入模板、span 读取逻辑和最终样本规模。</p>
+
+            
+            
+        </body>
+        </html>

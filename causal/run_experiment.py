@@ -31,7 +31,7 @@ sys.path.insert(0, str(PROJECT_ROOT))
 
 from nlp_re_base.activations import extract_and_process_streaming
 from nlp_re_base.config import resolve_output_dir, resolve_repo_path
-from nlp_re_base.data import load_jsonl
+from nlp_re_base.data import load_cactus_dataset, load_jsonl
 from nlp_re_base.model import load_local_model_and_tokenizer
 from nlp_re_base.sae import load_sae_from_hub
 
@@ -1220,7 +1220,7 @@ def generate_summary_tables(
 def parse_args():
     p = argparse.ArgumentParser(description="SAE-RE Causal Validation")
     p.add_argument("--candidate-csv", default="outputs/sae_eval/candidate_latents.csv")
-    p.add_argument("--data-dir", default="data/mi_re")
+    p.add_argument("--data-dir", default="data/cactus")
     p.add_argument(
         "--output-dir",
         default=None,
@@ -1279,10 +1279,7 @@ def main():
     data_dir = Path(args.data_dir)
     if not data_dir.is_absolute():
         data_dir = PROJECT_ROOT / data_dir
-    texts, labels, _ = build_dataset(
-        data_dir / "re_dataset.jsonl",
-        data_dir / "nonre_dataset.jsonl",
-    )
+    texts, labels, records = build_dataset(data_dir)
     true_labels = np.array(labels)
     n_re = sum(labels)
 
@@ -1367,7 +1364,7 @@ def main():
 
     # ── Build batches for intervention ──
     batches = iter_batches(
-        texts, labels, tokenizer,
+        texts, labels, records, tokenizer=tokenizer,
         batch_size=args.batch_size,
         max_seq_len=args.max_seq_len,
         device=device,
@@ -1753,7 +1750,7 @@ def _run_single_pooling_experiment(
     }
 
     batches = iter_batches(
-        texts, labels, tokenizer,
+        texts, labels, records, tokenizer=tokenizer,
         batch_size=args.batch_size,
         max_seq_len=args.max_seq_len,
         device=device,
@@ -1875,7 +1872,7 @@ def _run_single_pooling_experiment(
 def parse_args():
     p = argparse.ArgumentParser(description="SAE-RE Causal Validation")
     p.add_argument("--candidate-csv", default="outputs/sae_eval/candidate_latents.csv")
-    p.add_argument("--data-dir", default="data/mi_re")
+    p.add_argument("--data-dir", default="data/cactus")
     p.add_argument(
         "--output-dir",
         default=None,
@@ -1937,10 +1934,7 @@ def main():
 
     print("[3/8] Loading dataset...")
     data_dir = resolve_repo_path(args.data_dir)
-    texts, labels, _ = build_dataset(
-        data_dir / "re_dataset.jsonl",
-        data_dir / "nonre_dataset.jsonl",
-    )
+    texts, labels, records = build_dataset(data_dir)
     candidate_df = pd.read_csv(resolve_repo_path(args.candidate_csv))
 
     if args.compare_pooling:
