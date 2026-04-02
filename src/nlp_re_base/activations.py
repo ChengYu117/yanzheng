@@ -53,6 +53,82 @@ def _tokenize_batch(
     )
 
 
+def _build_pooling_mask(
+    batch_texts: list[str],
+    batch_records: list[dict[str, Any]] | None,
+    batch_mask: torch.Tensor,
+    tokenizer: PreTrainedTokenizerBase,
+    max_seq_len: int,
+    pooling_scope: str,
+) -> torch.Tensor:
+    """Build the token mask used for utterance-level pooling.
+
+    `full_sequence` uses the attention mask directly.
+    `therapist_span` uses therapist_char_start/end when available and falls back
+    to the full sequence for records without span metadata.
+    """
+    scope = pooling_scope
+    if scope == "auto":
+        has_span = bool(batch_records) and any(
+            isinstance(record, dict)
+            and record.get("therapist_char_start") is not None
+            and record.get("therapist_char_end") is not None
+            for record in batch_records
+        )
+        scope = "therapist_span" if has_span else "full_sequence"
+
+    if scope == "full_sequence" or not batch_records:
+        return batch_mask.bool()
+
+    if scope != "therapist_span":
+        raise ValueError(f"Unknown pooling_scope: {pooling_scope}")
+
+    encoded = tokenizer(
+        batch_texts,
+        padding=True,
+        truncation=True,
+        max_length=max_seq_len,
+        return_offsets_mapping=True,
+        return_tensors="pt",
+    )
+    offsets = encoded["offset_mapping"]  # [B, T, 2]
+    pooling_mask = torch.zeros_like(batch_mask, dtype=torch.bool)
+
+    for row_idx, record in enumerate(batch_records):
+        char_start = record.get("therapist_char_start")
+        char_end = record.get("therapist_char_end")
+        if char_start is None or char_end is None:
+            pooling_mask[row_idx] = batch_mask[row_idx].bool()
+            continue
+
+        for token_idx, (cs, ce) in enumerate(offsets[row_idx].tolist()):
+            if not batch_mask[row_idx, token_idx]:
+                continue
+            if cs == 0 and ce == 0:
+                continue
+            if ce <= int(char_start) or cs >= int(char_end):
+                continue
+            pooling_mask[row_idx, token_idx] = True
+
+        # Safety fallback: if truncation or offsets yield an empty span, use the
+        # full real-token sequence instead of silently zeroing the sample.
+        if not pooling_mask[row_idx].any():
+            pooling_mask[row_idx] = batch_mask[row_idx].bool()
+
+    return pooling_mask
+
+
+def _make_position_weights(
+    mask: torch.Tensor,
+    scheme: str = "position_linear",
+) -> torch.Tensor:
+    """Return per-token weights for weighted mean pooling."""
+    if scheme != "position_linear":
+        raise ValueError(f"Unknown weighted_mean_scheme: {scheme}")
+    positions = torch.arange(1, mask.shape[1] + 1, device=mask.device, dtype=torch.float32)
+    return positions.unsqueeze(0).expand(mask.shape[0], -1)
+
+
 # ────────────────────────────────────────────────────────────────
 # STREAMING PIPELINE
 #   Processes data batch by batch. Each batch:
@@ -73,6 +149,9 @@ def extract_and_process_streaming(
     batch_size: int = 8,
     aggregation: str = "max",
     binarized_threshold: float = 0.0,
+    records: list[dict[str, Any]] | None = None,
+    pooling_scope: str = "full_sequence",
+    weighted_mean_scheme: str = "position_linear",
     device: str | torch.device | None = None,
     collect_structural_samples: int = 5,
     structural_accumulator: Optional[Any] = None,
@@ -91,8 +170,12 @@ def extract_and_process_streaming(
         hook_point: e.g. 'blocks.19.hook_resid_post'.
         max_seq_len: Maximum token sequence length.
         batch_size: Batch size for inference.
-        aggregation: 'max', 'mean', 'sum', or 'binarized_sum' pooling.
+        aggregation: 'max', 'mean', 'sum', 'binarized_sum', 'last_token',
+            or 'weighted_mean' pooling.
         binarized_threshold: Threshold used when aggregation='binarized_sum'.
+        records: Optional list of dataset records aligned with `texts`.
+        pooling_scope: 'auto', 'full_sequence', or 'therapist_span'.
+        weighted_mean_scheme: Weighting scheme for aggregation='weighted_mean'.
         device: Device for model inference.
         collect_structural_samples: Number of batches to keep full
             token-level data for structural metric computation.
@@ -153,9 +236,18 @@ def extract_and_process_streaming(
             unit="batch",
         ):
             batch_texts = texts[start_idx : start_idx + batch_size]
+            batch_records = records[start_idx : start_idx + batch_size] if records is not None else None
             encoded = _tokenize_batch(batch_texts, tokenizer, max_seq_len)
             encoded = {k: v.to(device) for k, v in encoded.items()}
             batch_mask = encoded["attention_mask"]
+            batch_pooling_mask_cpu = _build_pooling_mask(
+                batch_texts=batch_texts,
+                batch_records=batch_records,
+                batch_mask=batch_mask.cpu(),
+                tokenizer=tokenizer,
+                max_seq_len=max_seq_len,
+                pooling_scope=pooling_scope,
+            )
 
             # ── Step 1: Extract activations ──
             with torch.inference_mode():
@@ -180,15 +272,17 @@ def extract_and_process_streaming(
             # ── Step 3: Aggregate to utterance level ──
             utt_features = _aggregate_batch(
                 batch_latents_cpu,
-                batch_mask_cpu,
+                batch_pooling_mask_cpu,
                 aggregation,
                 binarized_threshold=binarized_threshold,
+                weighted_mean_scheme=weighted_mean_scheme,
             )
             utt_activations = _aggregate_batch(
                 batch_acts_cpu,
-                batch_mask_cpu,
+                batch_pooling_mask_cpu,
                 aggregation,
                 binarized_threshold=binarized_threshold,
+                weighted_mean_scheme=weighted_mean_scheme,
             )
 
             all_utterance_features.append(utt_features)
@@ -259,6 +353,7 @@ def _aggregate_batch(
     mask: torch.Tensor,
     method: str = "max",
     binarized_threshold: float = 0.0,
+    weighted_mean_scheme: str = "position_linear",
 ) -> torch.Tensor:
     """Aggregate a [B, T, D] tensor to [B, D] using mask.
 
@@ -280,6 +375,18 @@ def _aggregate_batch(
     elif method == "binarized_sum":
         summed = (tensor * mask_3d).sum(dim=1)
         result = (summed > binarized_threshold).to(tensor.dtype)
+    elif method == "last_token":
+        result = torch.zeros(tensor.shape[0], tensor.shape[-1], dtype=tensor.dtype)
+        for row_idx in range(tensor.shape[0]):
+            valid = torch.nonzero(mask[row_idx], as_tuple=False).flatten()
+            if valid.numel() > 0:
+                result[row_idx] = tensor[row_idx, valid[-1]]
+    elif method == "weighted_mean":
+        weights = _make_position_weights(mask, scheme=weighted_mean_scheme).to(tensor.device)
+        weights = weights * mask.float().to(tensor.device)
+        weight_sums = weights.sum(dim=1, keepdim=True).clamp(min=1e-8)
+        normalized_weights = (weights / weight_sums).unsqueeze(-1)
+        result = (tensor * normalized_weights).sum(dim=1)
     else:
         raise ValueError(f"Unknown aggregation method: {method}")
 
@@ -347,13 +454,15 @@ def aggregate_to_utterance(
     attention_mask: torch.Tensor,
     method: str = "max",
     binarized_threshold: float = 0.0,
+    weighted_mean_scheme: str = "position_linear",
 ) -> torch.Tensor:
     """Aggregate token-level latent activations to utterance-level features.
 
     Args:
         latents: [N, T, d_sae] token-level latent activations.
         attention_mask: [N, T] binary mask (1 = real token, 0 = padding).
-        method: Aggregation method ('max', 'mean', 'sum', or 'binarized_sum').
+        method: Aggregation method ('max', 'mean', 'sum', 'binarized_sum',
+            'last_token', or 'weighted_mean').
         binarized_threshold: Threshold used when method='binarized_sum'.
 
     Returns:
@@ -364,4 +473,5 @@ def aggregate_to_utterance(
         attention_mask,
         method,
         binarized_threshold=binarized_threshold,
+        weighted_mean_scheme=weighted_mean_scheme,
     )

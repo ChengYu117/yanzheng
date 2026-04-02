@@ -11,8 +11,9 @@ Usage:
                                  [--skip-ce-kl]
                                  [--ce-kl-batch-size N]
                                  [--ce-kl-max-texts N]
-                                 [--aggregation max|mean]
+                                 [--aggregation max|mean|sum|binarized_sum|last_token|weighted_mean]
                                  [--compare-mean]
+                                 [--compare-pooling]
 """
 
 from __future__ import annotations
@@ -25,6 +26,7 @@ from pathlib import Path
 from typing import Any
 
 import torch
+import numpy as np
 
 # Add project root to path
 PROJECT_ROOT = Path(__file__).resolve().parent
@@ -41,6 +43,16 @@ from nlp_re_base.eval_structural import (
 )
 from nlp_re_base.model import load_local_model_and_tokenizer
 from nlp_re_base.sae import load_sae_from_hub
+
+
+POOLING_COMPARE_METHODS = [
+    "max",
+    "mean",
+    "sum",
+    "binarized_sum",
+    "last_token",
+    "weighted_mean",
+]
 
 
 def parse_args() -> argparse.Namespace:
@@ -115,7 +127,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--aggregation",
-        choices=["max", "mean"],
+        choices=POOLING_COMPARE_METHODS,
         default=None,
         help="Override the utterance aggregation method from the SAE config.",
     )
@@ -123,6 +135,29 @@ def parse_args() -> argparse.Namespace:
         "--compare-mean",
         action="store_true",
         help="Run both max and mean aggregation and save a comparison summary.",
+    )
+    parser.add_argument(
+        "--compare-pooling",
+        action="store_true",
+        help="Run the full default pooling comparison set and save a summary.",
+    )
+    parser.add_argument(
+        "--pooling-scope",
+        choices=["auto", "therapist_span", "full_sequence"],
+        default="auto",
+        help="Token range used for utterance-level pooling.",
+    )
+    parser.add_argument(
+        "--binarized-threshold",
+        type=float,
+        default=0.0,
+        help="Threshold used when aggregation=binarized_sum.",
+    )
+    parser.add_argument(
+        "--weighted-mean-scheme",
+        choices=["position_linear"],
+        default="position_linear",
+        help="Weighting scheme used when aggregation=weighted_mean.",
     )
     parser.add_argument(
         "--judge-bundle-only",
@@ -166,6 +201,25 @@ def _print_banner() -> None:
     print("=" * 38 + "\n")
 
 
+def _top_latent_overlap(
+    functional_metrics_a: dict[str, Any] | None,
+    functional_metrics_b: dict[str, Any] | None,
+    k: int = 20,
+) -> float | None:
+    if functional_metrics_a is None or functional_metrics_b is None:
+        return None
+    top_a = functional_metrics_a.get("univariate_summary", {}).get("top10_latents", [])
+    top_b = functional_metrics_b.get("univariate_summary", {}).get("top10_latents", [])
+    if not top_a or not top_b:
+        return None
+    ids_a = {int(item["latent_idx"]) for item in top_a[:k]}
+    ids_b = {int(item["latent_idx"]) for item in top_b[:k]}
+    union = ids_a | ids_b
+    if not union:
+        return None
+    return len(ids_a & ids_b) / len(union)
+
+
 def _run_single_aggregation(
     *,
     aggregation: str,
@@ -184,6 +238,9 @@ def _run_single_aggregation(
     max_seq_len: int,
     batch_size: int,
     device: torch.device,
+    pooling_scope: str,
+    binarized_threshold: float,
+    weighted_mean_scheme: str,
     allow_partial_functional: bool = False,
     cached_ce_kl_results: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
@@ -215,6 +272,10 @@ def _run_single_aggregation(
         max_seq_len=max_seq_len,
         batch_size=batch_size,
         aggregation=aggregation,
+        records=all_records,
+        pooling_scope=pooling_scope,
+        binarized_threshold=binarized_threshold,
+        weighted_mean_scheme=weighted_mean_scheme,
         device=device,
         collect_structural_samples=5,
         structural_accumulator=accumulator,
@@ -347,6 +408,9 @@ def _run_single_aggregation(
 
     return {
         "aggregation": aggregation,
+        "pooling_scope": pooling_scope,
+        "binarized_threshold": binarized_threshold,
+        "weighted_mean_scheme": weighted_mean_scheme,
         "output_dir": str(output_dir),
         "utterance_features_shape": list(utterance_features.shape),
         "utterance_activations_shape": list(utterance_activations.shape),
@@ -374,11 +438,12 @@ def main() -> None:
     max_seq_len = args.max_seq_len
     batch_size = args.batch_size
     base_aggregation = args.aggregation or sae_config.get("aggregation", "max")
-    aggregations = (
-        _unique_ordered([base_aggregation, "max", "mean"])
-        if args.compare_mean
-        else [base_aggregation]
-    )
+    if args.compare_pooling:
+        aggregations = _unique_ordered([base_aggregation] + POOLING_COMPARE_METHODS)
+    elif args.compare_mean:
+        aggregations = _unique_ordered([base_aggregation, "max", "mean"])
+    else:
+        aggregations = [base_aggregation]
 
     _print_banner()
 
@@ -407,6 +472,7 @@ def main() -> None:
         device = torch.device("cpu")
     print(f"  Device:        {device}")
     print(f"  Aggregations:  {', '.join(aggregations)}")
+    print(f"  Pooling scope: {args.pooling_scope}")
     if args.model_dir:
         print(f"  Model dir:     {args.model_dir}")
 
@@ -450,6 +516,9 @@ def main() -> None:
             max_seq_len=max_seq_len,
             batch_size=batch_size,
             device=device,
+            pooling_scope=args.pooling_scope,
+            binarized_threshold=args.binarized_threshold,
+            weighted_mean_scheme=args.weighted_mean_scheme,
             allow_partial_functional=len(aggregations) > 1,
             cached_ce_kl_results=cached_ce_kl_results,
         )
@@ -458,9 +527,13 @@ def main() -> None:
             cached_ce_kl_results = record["ce_kl_results"]
 
     if len(aggregations) > 1:
+        anchor_record = next((record for record in comparison_records if record["functional_metrics"] is not None), None)
         comparison_payload = {
             "aggregations": aggregations,
             "base_aggregation": base_aggregation,
+            "pooling_scope": args.pooling_scope,
+            "binarized_threshold": args.binarized_threshold,
+            "weighted_mean_scheme": args.weighted_mean_scheme,
             "note": (
                 "Structural metrics and CE/KL should match across aggregation modes "
                 "because aggregation only changes utterance-level features used in "
@@ -469,6 +542,7 @@ def main() -> None:
             "results": [
                 {
                     "aggregation": record["aggregation"],
+                    "pooling_scope": record["pooling_scope"],
                     "output_dir": record["output_dir"],
                     "utterance_features_shape": record["utterance_features_shape"],
                     "utterance_activations_shape": record["utterance_activations_shape"],
@@ -476,15 +550,45 @@ def main() -> None:
                     "functional_summary": _summarize_functional_metrics(
                         record["functional_metrics"]
                     ),
+                    "judge_bundle_exported": bool((Path(record["output_dir"]) / "judge_bundle").exists()),
+                    "top10_jaccard_vs_anchor": (
+                        _top_latent_overlap(anchor_record["functional_metrics"], record["functional_metrics"], k=10)
+                        if anchor_record is not None
+                        else None
+                    ),
                     "functional_error": record["functional_error"],
                 }
                 for record in comparison_records
             ],
         }
-        comparison_path = base_output_dir / "aggregation_comparison.json"
+        comparison_path = base_output_dir / "pooling_comparison.json"
         with open(comparison_path, "w", encoding="utf-8") as f:
             json.dump(comparison_payload, f, indent=2, ensure_ascii=False)
         print(f"\nSaved aggregation comparison to {comparison_path}")
+
+        comparison_md = base_output_dir / "pooling_comparison.md"
+        lines = ["# Pooling Comparison", ""]
+        lines.append("| Pooling | Scope | Probe AUC | RE Purity | Top-10 Jaccard | Judge Bundle |")
+        lines.append("| --- | --- | --- | --- | --- | --- |")
+        for record in comparison_payload["results"]:
+            probe_auc = (((record.get("functional_summary") or {}).get("probe_results") or {}).get("sparse_probe_k20") or {}).get("auc")
+            re_purity = ((record.get("functional_summary") or {}).get("maxact_summary") or {}).get("avg_re_purity")
+            jaccard = record.get("top10_jaccard_vs_anchor")
+            lines.append(
+                "| "
+                + " | ".join([
+                    str(record["aggregation"]),
+                    str(record["pooling_scope"]),
+                    f"{float(probe_auc):.3f}" if isinstance(probe_auc, (int, float)) else "n/a",
+                    f"{float(re_purity):.3f}" if isinstance(re_purity, (int, float)) else "n/a",
+                    f"{float(jaccard):.3f}" if isinstance(jaccard, (int, float)) else "n/a",
+                    "yes" if record.get("judge_bundle_exported") else "no",
+                ])
+                + " |"
+            )
+        with open(comparison_md, "w", encoding="utf-8") as f:
+            f.write("\n".join(lines))
+        print(f"Saved pooling comparison report to {comparison_md}")
 
     elapsed = time.time() - start_time
     print("\n" + "=" * 50)

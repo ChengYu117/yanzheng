@@ -29,7 +29,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(PROJECT_ROOT / "src"))
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from nlp_re_base.activations import extract_and_process_streaming
+from nlp_re_base.activations import aggregate_to_utterance, extract_and_process_streaming
 from nlp_re_base.config import resolve_output_dir, resolve_repo_path
 from nlp_re_base.data import load_cactus_dataset, load_jsonl
 from nlp_re_base.model import load_local_model_and_tokenizer
@@ -483,9 +483,12 @@ class CausalRunner:
 
 def extract_utterance_features(
     model, tokenizer, sae, texts, hook_point, device,
+    records: list[dict[str, Any]] | None = None,
     batch_size=4, max_seq_len=128,
     aggregation: str = "max",
     binarized_threshold: float = 0.0,
+    pooling_scope: str = "auto",
+    weighted_mean_scheme: str = "position_linear",
 ) -> np.ndarray:
     """Extract utterance-level SAE features [N, d_sae] for scoring."""
     result = extract_and_process_streaming(
@@ -494,6 +497,9 @@ def extract_utterance_features(
         batch_size=batch_size,
         aggregation=aggregation,
         binarized_threshold=binarized_threshold,
+        records=records,
+        pooling_scope=pooling_scope,
+        weighted_mean_scheme=weighted_mean_scheme,
         device=device, collect_structural_samples=0,
     )
     return result["utterance_features"].numpy()
@@ -575,11 +581,13 @@ def run_necessity_experiment(
     groups: dict[str, list[int]],
     controls: dict[str, list[int]],
     true_labels: np.ndarray,
+    baseline_logits: np.ndarray | None,
     model, tokenizer, sae, hook_point, device,
     batch_size: int = 4,
     max_seq_len: int = 128,
     aggregation: str = "max",
     binarized_threshold: float = 0.0,
+    weighted_mean_scheme: str = "position_linear",
 ) -> dict[str, Any]:
     """Run zero/mean/cond_token ablation for all G groups and controls.
 
@@ -592,15 +600,17 @@ def run_necessity_experiment(
     ]}, **controls}
 
     # First get baseline scores (no intervention)
-    print("  [Necessity] Computing baseline features...")
-    all_texts = [t for b in batches for t in b.texts]
-    baseline_feats = extract_utterance_features(
-        model, tokenizer, sae, all_texts, hook_point, device,
-        batch_size=batch_size, max_seq_len=max_seq_len,
-        aggregation=aggregation,
-        binarized_threshold=binarized_threshold,
-    )
-    baseline_logits = probe.score_features(baseline_feats)
+    if baseline_logits is None:
+        print("  [Necessity] Computing baseline features...")
+        all_texts = [t for b in batches for t in b.texts]
+        baseline_feats = extract_utterance_features(
+            model, tokenizer, sae, all_texts, hook_point, device,
+            batch_size=batch_size, max_seq_len=max_seq_len,
+            aggregation=aggregation,
+            binarized_threshold=binarized_threshold,
+            weighted_mean_scheme=weighted_mean_scheme,
+        )
+        baseline_logits = probe.score_features(baseline_feats)
 
     for group_name, latent_ids in all_groups.items():
         results[group_name] = {}
@@ -633,6 +643,7 @@ def run_necessity_experiment(
                         batch.counselor_span_mask.bool(),
                         method=aggregation,
                         threshold=binarized_threshold,
+                        weighted_mean_scheme=weighted_mean_scheme,
                     )
                     intervened_feats_list.append(feat)
 
@@ -655,12 +666,14 @@ def run_sufficiency_experiment(
     probe_weights: dict[str, list[float]],
     controls_directions: dict[str, torch.Tensor],
     true_labels: np.ndarray,
+    baseline_logits: np.ndarray | None,
     model, tokenizer, sae, hook_point, device,
     lambdas: list[float] | None = None,
     batch_size: int = 4,
     max_seq_len: int = 128,
     aggregation: str = "max",
     binarized_threshold: float = 0.0,
+    weighted_mean_scheme: str = "position_linear",
 ) -> dict[str, Any]:
     """Run constant / cond_input / cond_token steering for G groups and controls."""
     if lambdas is None:
@@ -668,15 +681,17 @@ def run_sufficiency_experiment(
 
     results: dict[str, Any] = {}
 
-    all_texts = [t for b in batches for t in b.texts]
-    print("  [Sufficiency] Computing baseline features...")
-    baseline_feats = extract_utterance_features(
-        model, tokenizer, sae, all_texts, hook_point, device,
-        batch_size=batch_size, max_seq_len=max_seq_len,
-        aggregation=aggregation,
-        binarized_threshold=binarized_threshold,
-    )
-    baseline_logits = probe.score_features(baseline_feats)
+    if baseline_logits is None:
+        all_texts = [t for b in batches for t in b.texts]
+        print("  [Sufficiency] Computing baseline features...")
+        baseline_feats = extract_utterance_features(
+            model, tokenizer, sae, all_texts, hook_point, device,
+            batch_size=batch_size, max_seq_len=max_seq_len,
+            aggregation=aggregation,
+            binarized_threshold=binarized_threshold,
+            weighted_mean_scheme=weighted_mean_scheme,
+        )
+        baseline_logits = probe.score_features(baseline_feats)
 
     for gname in ["G1", "G5", "G20"]:
         latent_ids = groups[gname]
@@ -715,6 +730,7 @@ def run_sufficiency_experiment(
                             batch.counselor_span_mask.bool(),
                             method=aggregation,
                             threshold=binarized_threshold,
+                            weighted_mean_scheme=weighted_mean_scheme,
                         ))
 
                 if feats_list:
@@ -741,6 +757,7 @@ def run_sufficiency_experiment(
                         batch.counselor_span_mask.bool(),
                         method=aggregation,
                         threshold=binarized_threshold,
+                        weighted_mean_scheme=weighted_mean_scheme,
                     ))
 
             if feats_list:
@@ -772,6 +789,7 @@ def run_side_effect_evaluation(
     lambda_value: float = 1.0,
     aggregation: str = "max",
     binarized_threshold: float = 0.0,
+    weighted_mean_scheme: str = "position_linear",
 ) -> dict[str, Any]:
     """Generate continuations under steering and compute lightweight side-effect proxies."""
     subset_texts, subset_labels = _select_side_effect_subset(texts, labels, max_samples=max_samples)
@@ -802,6 +820,7 @@ def run_side_effect_evaluation(
         batch_size=batch_size, max_seq_len=max_seq_len,
         aggregation=aggregation,
         binarized_threshold=binarized_threshold,
+        weighted_mean_scheme=weighted_mean_scheme,
     )
     baseline_logits = probe.score_features(baseline_features)
 
@@ -840,6 +859,7 @@ def run_side_effect_evaluation(
             batch_size=batch_size, max_seq_len=max_seq_len,
             aggregation=aggregation,
             binarized_threshold=binarized_threshold,
+            weighted_mean_scheme=weighted_mean_scheme,
         )
         logits = probe.score_features(feats)
         results["groups"][gname] = {
@@ -868,6 +888,7 @@ def run_side_effect_evaluation(
             batch_size=batch_size, max_seq_len=max_seq_len,
             aggregation=aggregation,
             binarized_threshold=binarized_threshold,
+            weighted_mean_scheme=weighted_mean_scheme,
         )
         logits = probe.score_features(feats)
         results["controls"][ctrl_name] = {
@@ -888,12 +909,14 @@ def run_group_structure_experiment(
     ranked_latents: list[int],  # full top-20 in ranked order
     probe_weights_full: list[float],
     true_labels: np.ndarray,
+    baseline_logits: np.ndarray | None,
     model, tokenizer, sae, hook_point, device,
     strength: float = 1.0,
     batch_size: int = 4,
     max_seq_len: int = 128,
     aggregation: str = "max",
     binarized_threshold: float = 0.0,
+    weighted_mean_scheme: str = "position_linear",
 ) -> dict[str, Any]:
     """Cumulative top-K curve, Leave-One-Out, Add-One-In, Synergy. (§7)"""
     results: dict[str, Any] = {
@@ -903,14 +926,16 @@ def run_group_structure_experiment(
         "synergy": {},
     }
 
-    all_texts = [t for b in batches for t in b.texts]
-    baseline_feats = extract_utterance_features(
-        model, tokenizer, sae, all_texts, hook_point, device,
-        batch_size=batch_size, max_seq_len=max_seq_len,
-        aggregation=aggregation,
-        binarized_threshold=binarized_threshold,
-    )
-    baseline_logits = probe.score_features(baseline_feats)
+    if baseline_logits is None:
+        all_texts = [t for b in batches for t in b.texts]
+        baseline_feats = extract_utterance_features(
+            model, tokenizer, sae, all_texts, hook_point, device,
+            batch_size=batch_size, max_seq_len=max_seq_len,
+            aggregation=aggregation,
+            binarized_threshold=binarized_threshold,
+            weighted_mean_scheme=weighted_mean_scheme,
+        )
+        baseline_logits = probe.score_features(baseline_feats)
 
     def _steer_and_score(latent_ids, weights, lam=strength):
         feats_list = []
@@ -926,6 +951,7 @@ def run_group_structure_experiment(
                     batch.counselor_span_mask.bool(),
                     method=aggregation,
                     threshold=binarized_threshold,
+                    weighted_mean_scheme=weighted_mean_scheme,
                 ))
         if not feats_list:
             return float("nan")
@@ -1031,23 +1057,17 @@ def _pool_features(
     mask: torch.Tensor,
     method: str = "max",
     threshold: float = 0.0,
+    weighted_mean_scheme: str = "position_linear",
 ) -> np.ndarray:
     """Pool token-level latents [B, T, d_sae] to [B, d_sae]."""
-    z = z.float()
-    mask_bool = mask.bool().to(z.device)
-    mask3d = mask_bool.unsqueeze(-1).float()
-
-    if method == "max":
-        z_masked = z + (1 - mask3d) * (-1e9)
-        pooled = z_masked.max(dim=1).values
-        pooled[pooled < -1e8] = 0.0
-        return pooled.cpu().numpy()
-    if method == "sum":
-        return (z * mask3d).sum(dim=1).cpu().numpy()
-    if method == "binarized_sum":
-        summed = (z * mask3d).sum(dim=1)
-        return (summed > threshold).to(z.dtype).cpu().numpy()
-    raise ValueError(f"Unknown pooling method: {method}")
+    pooled = aggregate_to_utterance(
+        z.float(),
+        mask.bool().to(z.device),
+        method=method,
+        binarized_threshold=threshold,
+        weighted_mean_scheme=weighted_mean_scheme,
+    )
+    return pooled.cpu().numpy()
 
 
 def _normalise_probe_weights(
@@ -1452,7 +1472,14 @@ def main():
     print(f"\n  DONE — {elapsed:.1f}s  |  Output: {output_dir}")
 
 
-POOLING_COMPARE_METHODS = ["max", "sum", "binarized_sum"]
+POOLING_COMPARE_METHODS = [
+    "max",
+    "mean",
+    "sum",
+    "binarized_sum",
+    "last_token",
+    "weighted_mean",
+]
 
 
 def _save_json(path: Path, obj: dict[str, Any]) -> None:
@@ -1663,6 +1690,7 @@ def _run_single_pooling_experiment(
     candidate_df: pd.DataFrame,
     texts: list[str],
     labels: list[int],
+    records: list[dict[str, Any]],
     hook_point: str,
     device: torch.device,
     sae_config: dict[str, Any],
@@ -1679,10 +1707,13 @@ def _run_single_pooling_experiment(
     print("[4/8] Extracting utterance features for probe training...")
     all_feats = extract_utterance_features(
         model, tokenizer, sae, texts, hook_point, device,
+        records=records,
         batch_size=args.batch_size,
         max_seq_len=args.max_seq_len,
         aggregation=pooling_method,
         binarized_threshold=binarized_threshold,
+        pooling_scope=args.pooling_scope,
+        weighted_mean_scheme=args.weighted_mean_scheme,
     )
     re_feats = all_feats[:n_re]
     nonre_feats = all_feats[n_re:]
@@ -1721,6 +1752,7 @@ def _run_single_pooling_experiment(
     print("[6/8] Training RE probe...")
     probe = REProbeScorer.fit(re_feats, nonre_feats, candidate_indices=G20)
     baseline_eval = probe.evaluate(all_feats, true_labels)
+    baseline_logits = probe.score_features(all_feats)
     print(f"  Probe baseline: acc={baseline_eval['accuracy']:.3f}, auc={baseline_eval['auc']:.3f}")
 
     W_dec = sae.W_dec.detach().cpu()
@@ -1762,12 +1794,13 @@ def _run_single_pooling_experiment(
 
     print("[7/8] Running necessity experiments...")
     necessity_results = run_necessity_experiment(
-        runner, batches, probe, groups, necessity_controls, true_labels,
+        runner, batches, probe, groups, necessity_controls, true_labels, baseline_logits,
         model, tokenizer, sae, hook_point, device,
         batch_size=args.batch_size,
         max_seq_len=args.max_seq_len,
         aggregation=pooling_method,
         binarized_threshold=binarized_threshold,
+        weighted_mean_scheme=args.weighted_mean_scheme,
     )
 
     print("[7b/8] Running sufficiency experiments...")
@@ -1778,12 +1811,14 @@ def _run_single_pooling_experiment(
     }
     sufficiency_results = run_sufficiency_experiment(
         runner, batches, probe, groups, probe_weights, sufficiency_controls,
-        true_labels, model, tokenizer, sae, hook_point, device,
+        true_labels, baseline_logits,
+        model, tokenizer, sae, hook_point, device,
         lambdas=args.lambdas,
         batch_size=args.batch_size,
         max_seq_len=args.max_seq_len,
         aggregation=pooling_method,
         binarized_threshold=binarized_threshold,
+        weighted_mean_scheme=args.weighted_mean_scheme,
     )
 
     side_effect_results = {}
@@ -1799,6 +1834,7 @@ def _run_single_pooling_experiment(
             lambda_value=args.side_effect_lambda,
             aggregation=pooling_method,
             binarized_threshold=binarized_threshold,
+            weighted_mean_scheme=args.weighted_mean_scheme,
         )
 
     group_results = {}
@@ -1808,17 +1844,20 @@ def _run_single_pooling_experiment(
         all_weights = _normalise_probe_weights(probe, ranked_latents[:20])
         group_results = run_group_structure_experiment(
             runner, batches, probe, ranked_latents[:20], all_weights,
-            true_labels, model, tokenizer, sae, hook_point, device,
+            true_labels, baseline_logits, model, tokenizer, sae, hook_point, device,
             strength=1.0,
             batch_size=args.batch_size,
             max_seq_len=args.max_seq_len,
             aggregation=pooling_method,
             binarized_threshold=binarized_threshold,
+            weighted_mean_scheme=args.weighted_mean_scheme,
         )
 
     print("[8/8] Saving results...")
     selected_payload = {
         "pooling_method": pooling_method,
+        "pooling_scope": args.pooling_scope,
+        "weighted_mean_scheme": args.weighted_mean_scheme,
         "binarized_threshold": binarized_threshold,
         "G1": G1,
         "G5": G5,
@@ -1830,21 +1869,29 @@ def _run_single_pooling_experiment(
     _save_json(output_dir / "selected_groups.json", selected_payload)
     _save_json(output_dir / "results_necessity.json", {
         "pooling_method": pooling_method,
+        "pooling_scope": args.pooling_scope,
+        "weighted_mean_scheme": args.weighted_mean_scheme,
         "binarized_threshold": binarized_threshold,
         **necessity_results,
     })
     _save_json(output_dir / "results_sufficiency.json", {
         "pooling_method": pooling_method,
+        "pooling_scope": args.pooling_scope,
+        "weighted_mean_scheme": args.weighted_mean_scheme,
         "binarized_threshold": binarized_threshold,
         **sufficiency_results,
     })
     _save_json(output_dir / "results_selectivity.json", {
         "pooling_method": pooling_method,
+        "pooling_scope": args.pooling_scope,
+        "weighted_mean_scheme": args.weighted_mean_scheme,
         "binarized_threshold": binarized_threshold,
         **side_effect_results,
     })
     _save_json(output_dir / "results_group.json", {
         "pooling_method": pooling_method,
+        "pooling_scope": args.pooling_scope,
+        "weighted_mean_scheme": args.weighted_mean_scheme,
         "binarized_threshold": binarized_threshold,
         **group_results,
     })
@@ -1859,6 +1906,8 @@ def _run_single_pooling_experiment(
 
     return {
         "pooling_method": pooling_method,
+        "pooling_scope": args.pooling_scope,
+        "weighted_mean_scheme": args.weighted_mean_scheme,
         "binarized_threshold": binarized_threshold,
         "selected_groups": selected_payload,
         "probe_baseline": baseline_eval,
@@ -1867,6 +1916,173 @@ def _run_single_pooling_experiment(
         "side_effects": side_effect_results,
         "group": group_results,
     }
+
+
+def build_pooling_comparison_summary(
+    run_payloads: dict[str, dict[str, Any]],
+    target_lambda: float = 1.0,
+) -> dict[str, Any]:
+    """Build a compact multi-pooling summary for the causal comparison report."""
+    summary_runs: dict[str, Any] = {}
+
+    for pooling_method, payload in run_payloads.items():
+        selected = payload["selected_groups"]
+        necessity = payload["necessity"]
+        sufficiency = payload["sufficiency"]
+        side_effects = payload["side_effects"]
+        group_results = payload["group"]
+
+        lambda_key = None
+        for group_name in ["G1", "G5", "G20"]:
+            lambda_key = _nearest_lambda_key(
+                sufficiency.get(group_name, {}).get("cond_token", {}),
+                target_lambda=target_lambda,
+            )
+            if lambda_key is not None:
+                break
+
+        summary_runs[pooling_method] = {
+            "pooling_method": pooling_method,
+            "pooling_scope": payload.get("pooling_scope"),
+            "weighted_mean_scheme": payload.get("weighted_mean_scheme"),
+            "binarized_threshold": payload["binarized_threshold"],
+            "probe_baseline": {
+                "accuracy": payload["probe_baseline"].get("accuracy"),
+                "auc": payload["probe_baseline"].get("auc"),
+            },
+            "selected_groups": {
+                "G1": selected.get("G1", []),
+                "G5": selected.get("G5", []),
+                "G20": selected.get("G20", []),
+            },
+            "necessity": {
+                group_name: {
+                    "zero": necessity.get(group_name, {}).get("zero", {}),
+                    "cond_token": necessity.get(group_name, {}).get("cond_token", {}),
+                }
+                for group_name in ["G1", "G5", "G20"]
+            },
+            "sufficiency": {
+                group_name: {
+                    "lambda_key": lambda_key,
+                    "delta": sufficiency.get(group_name, {}).get("cond_token", {}).get(lambda_key, {}) if lambda_key else {},
+                }
+                for group_name in ["G1", "G5", "G20"]
+            },
+            "selectivity": {
+                "groups": {
+                    group_name: {
+                        "mean_generated_re_logit_delta": side_effects.get("groups", {}).get(group_name, {}).get("mean_generated_re_logit_delta"),
+                        "quality": {
+                            "mean_content_retention": side_effects.get("groups", {}).get(group_name, {}).get("quality", {}).get("mean_content_retention"),
+                            "delta_bigram_repetition": side_effects.get("groups", {}).get(group_name, {}).get("quality", {}).get("delta_bigram_repetition"),
+                        },
+                    }
+                    for group_name in ["G1", "G5", "G20"]
+                }
+            },
+            "group": {
+                "synergy": {
+                    "synergy_score": group_results.get("synergy", {}).get("synergy_score"),
+                }
+            },
+        }
+
+    def _necessity_strength(item: dict[str, Any]) -> float:
+        vals = []
+        for group_name in ["G1", "G5", "G20"]:
+            val = item["necessity"][group_name]["cond_token"].get("mean_delta_re")
+            if isinstance(val, (int, float)):
+                vals.append(abs(float(val)))
+        return float(np.mean(vals)) if vals else float("-inf")
+
+    def _sufficiency_strength(item: dict[str, Any]) -> float:
+        vals = []
+        for group_name in ["G1", "G5", "G20"]:
+            val = item["sufficiency"][group_name]["delta"].get("mean_delta_re")
+            if isinstance(val, (int, float)):
+                vals.append(float(val))
+        return float(np.mean(vals)) if vals else float("-inf")
+
+    def _side_effect_score(item: dict[str, Any]) -> tuple[float, float]:
+        retentions = []
+        repeat_shifts = []
+        for group_name in ["G1", "G5", "G20"]:
+            quality = item["selectivity"]["groups"][group_name]["quality"]
+            retention = quality.get("mean_content_retention")
+            repeat_shift = quality.get("delta_bigram_repetition")
+            if isinstance(retention, (int, float)):
+                retentions.append(float(retention))
+            if isinstance(repeat_shift, (int, float)):
+                repeat_shifts.append(abs(float(repeat_shift)))
+        retention_score = float(np.mean(retentions)) if retentions else float("-inf")
+        repeat_penalty = float(np.mean(repeat_shifts)) if repeat_shifts else float("inf")
+        return retention_score, repeat_penalty
+
+    best_probe = max(summary_runs, key=lambda name: summary_runs[name]["probe_baseline"].get("auc", float("-inf"))) if summary_runs else None
+    best_necessity = max(summary_runs, key=lambda name: _necessity_strength(summary_runs[name])) if summary_runs else None
+    best_sufficiency = max(summary_runs, key=lambda name: _sufficiency_strength(summary_runs[name])) if summary_runs else None
+
+    side_candidates = [
+        name for name, item in summary_runs.items()
+        if _side_effect_score(item)[0] != float("-inf")
+    ]
+    best_side_effect = (
+        max(side_candidates, key=lambda name: (_side_effect_score(summary_runs[name])[0], -_side_effect_score(summary_runs[name])[1]))
+        if side_candidates else None
+    )
+
+    return {
+        "pooling_order": list(run_payloads.keys()),
+        "target_lambda": target_lambda,
+        "runs": summary_runs,
+        "best_probe_pooling": best_probe,
+        "best_necessity_pooling": best_necessity,
+        "best_sufficiency_pooling": best_sufficiency,
+        "lightest_side_effect_pooling": best_side_effect,
+    }
+
+
+def generate_pooling_comparison_report(
+    comparison: dict[str, Any],
+    output_path: Path,
+) -> None:
+    lines = ["# Pooling Comparison", "", "## Overview", ""]
+    lines.append("| Pooling | Scope | Probe AUC | Necessity (G20 cond-token) | Sufficiency (G20 cond-token) | Retention | Synergy |")
+    lines.append("| --- | --- | --- | --- | --- | --- | --- |")
+
+    for pooling_method in comparison.get("pooling_order", []):
+        run = comparison["runs"][pooling_method]
+        necessity_g20 = run["necessity"]["G20"]["cond_token"].get("mean_delta_re")
+        sufficiency_g20 = run["sufficiency"]["G20"]["delta"].get("mean_delta_re")
+        retention_g20 = run["selectivity"]["groups"]["G20"]["quality"].get("mean_content_retention")
+        synergy = run["group"]["synergy"].get("synergy_score")
+        lines.append(
+            "| "
+            + " | ".join([
+                pooling_method,
+                str(run.get("pooling_scope", "n/a")),
+                f"{run['probe_baseline'].get('auc', float('nan')):.3f}",
+                f"{float(necessity_g20):+.3f}" if isinstance(necessity_g20, (int, float)) else "n/a",
+                f"{float(sufficiency_g20):+.3f}" if isinstance(sufficiency_g20, (int, float)) else "n/a",
+                f"{float(retention_g20):.3f}" if isinstance(retention_g20, (int, float)) else "n/a",
+                f"{float(synergy):+.3f}" if isinstance(synergy, (int, float)) else "n/a",
+            ])
+            + " |"
+        )
+
+    lines.extend([
+        "",
+        "## Key Answers",
+        "",
+        f"- Best probe pooling: `{comparison.get('best_probe_pooling') or 'n/a'}`",
+        f"- Strongest necessity / sufficiency: `{comparison.get('best_necessity_pooling') or 'n/a'}` / `{comparison.get('best_sufficiency_pooling') or 'n/a'}`",
+        f"- Lightest side-effect pooling: `{comparison.get('lightest_side_effect_pooling') or 'n/a (side effects skipped)'}`",
+    ])
+
+    with open(output_path, "w", encoding="utf-8") as f:
+        f.write("\n".join(lines))
+    print(f"  Saved {output_path}")
 
 
 def parse_args():
@@ -1891,7 +2107,9 @@ def parse_args():
     p.add_argument("--lambdas", nargs="+", type=float, default=[0.5, 1.0, 1.5, 2.0])
     p.add_argument("--sentence-pooling", choices=POOLING_COMPARE_METHODS, default="max")
     p.add_argument("--compare-pooling", action="store_true")
+    p.add_argument("--pooling-scope", choices=["auto", "therapist_span", "full_sequence"], default="auto")
     p.add_argument("--binarized-threshold", type=float, default=0.0)
+    p.add_argument("--weighted-mean-scheme", choices=["position_linear"], default="position_linear")
     p.add_argument("--skip-group-structure", action="store_true")
     p.add_argument("--skip-side-effects", action="store_true")
     p.add_argument("--side-effect-max-samples", type=int, default=16)
@@ -1948,6 +2166,7 @@ def main():
                 candidate_df,
                 texts,
                 labels,
+                records,
                 hook_point,
                 device,
                 sae_config,
@@ -1974,6 +2193,7 @@ def main():
             candidate_df,
             texts,
             labels,
+            records,
             hook_point,
             device,
             sae_config,

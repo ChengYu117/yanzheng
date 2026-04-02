@@ -96,7 +96,82 @@ def test_aggregation():
     assert torch.allclose(result_mean, expected_mean, atol=1e-5), \
         f"Mean aggregation: {result_mean} != {expected_mean}"
 
+    # Sum aggregation
+    result_sum = aggregate_to_utterance(latents, mask, method="sum")
+    expected_sum = torch.tensor([[4.0, 2.5, 1.0], [0.5, 1.0, 2.0]])
+    assert torch.allclose(result_sum, expected_sum, atol=1e-5), \
+        f"Sum aggregation: {result_sum} != {expected_sum}"
+
+    # Binarized sum
+    result_bin = aggregate_to_utterance(latents, mask, method="binarized_sum", binarized_threshold=0.0)
+    expected_bin = torch.tensor([[1.0, 1.0, 1.0], [1.0, 1.0, 1.0]])
+    assert torch.allclose(result_bin, expected_bin, atol=1e-5), \
+        f"Binarized sum aggregation: {result_bin} != {expected_bin}"
+
+    # Last-token pooling
+    result_last = aggregate_to_utterance(latents, mask, method="last_token")
+    expected_last = torch.tensor([[3.0, 0.5, 1.0], [0.5, 1.0, 2.0]])
+    assert torch.allclose(result_last, expected_last, atol=1e-5), \
+        f"Last-token aggregation: {result_last} != {expected_last}"
+
+    # Weighted mean pooling (later tokens get larger weights)
+    result_weighted = aggregate_to_utterance(latents, mask, method="weighted_mean")
+    expected_weighted = torch.tensor([
+        [(1.0 * 1 + 3.0 * 2) / 3, (2.0 * 1 + 0.5 * 2) / 3, (0.0 * 1 + 1.0 * 2) / 3],
+        [0.5, 1.0, 2.0],
+    ])
+    assert torch.allclose(result_weighted, expected_weighted, atol=1e-5), \
+        f"Weighted-mean aggregation: {result_weighted} != {expected_weighted}"
+
     print("  PASS test_aggregation")
+
+
+def test_pooling_scope_mask():
+    """Therapist-span pooling mask should only include therapist tokens."""
+    from nlp_re_base.activations import _build_pooling_mask
+
+    class DummyTokenizer:
+        def __call__(
+            self,
+            texts,
+            padding=True,
+            truncation=True,
+            max_length=128,
+            return_offsets_mapping=False,
+            return_tensors=None,
+        ):
+            offsets = []
+            for text in texts:
+                rows = []
+                for idx, chunk in enumerate(text.split(" ")):
+                    start = text.find(chunk, rows[-1][1] if rows else 0)
+                    end = start + len(chunk)
+                    rows.append((start, end))
+                offsets.append(rows)
+            max_len = max(len(row) for row in offsets)
+            padded = []
+            for row in offsets:
+                padded.append(row + [(0, 0)] * (max_len - len(row)))
+            return {"offset_mapping": torch.tensor(padded, dtype=torch.long)}
+
+    text = "client therapist response"
+    record = {
+        "therapist_char_start": text.find("therapist"),
+        "therapist_char_end": len(text),
+    }
+    batch_mask = torch.tensor([[1, 1, 1]], dtype=torch.long)
+    pooling_mask = _build_pooling_mask(
+        batch_texts=[text],
+        batch_records=[record],
+        batch_mask=batch_mask,
+        tokenizer=DummyTokenizer(),
+        max_seq_len=16,
+        pooling_scope="therapist_span",
+    )
+    expected = torch.tensor([[False, True, True]])
+    assert torch.equal(pooling_mask, expected), f"Unexpected therapist-span pooling mask: {pooling_mask}"
+
+    print("  PASS test_pooling_scope_mask")
 
 
 def test_structural_metrics():
@@ -611,6 +686,7 @@ def main():
         ("SAE Forward Pass", test_sae_forward),
         ("SAE dtype Alignment", test_sae_dtype_alignment),
         ("Token→Utterance Aggregation", test_aggregation),
+        ("Pooling Scope Mask", test_pooling_scope_mask),
         ("Structural Metrics", test_structural_metrics),
         ("FVU Constant-Offset Regression", test_fvu_constant_offset_regression),
         ("SAE top_k Enforcement", test_sae_top_k),

@@ -304,12 +304,18 @@ class TestPooling(unittest.TestCase):
         mask = torch.tensor([[1, 1, 0]], dtype=torch.bool)
 
         max_result = _pool_features(z, mask, method="max")
+        mean_result = _pool_features(z, mask, method="mean")
         sum_result = _pool_features(z, mask, method="sum")
         bin_result = _pool_features(z, mask, method="binarized_sum", threshold=0.0)
+        last_result = _pool_features(z, mask, method="last_token")
+        weighted_result = _pool_features(z, mask, method="weighted_mean")
 
         np.testing.assert_allclose(max_result, np.array([[2.0, 3.0]], dtype=np.float32))
+        np.testing.assert_allclose(mean_result, np.array([[1.5, 1.0]], dtype=np.float32))
         np.testing.assert_allclose(sum_result, np.array([[3.0, 2.0]], dtype=np.float32))
         np.testing.assert_allclose(bin_result, np.array([[1.0, 1.0]], dtype=np.float32))
+        np.testing.assert_allclose(last_result, np.array([[2.0, 3.0]], dtype=np.float32))
+        np.testing.assert_allclose(weighted_result, np.array([[5.0 / 3.0, 5.0 / 3.0]], dtype=np.float32))
 
     def test_extract_utterance_features_passes_pooling(self):
         from causal import run_experiment
@@ -325,11 +331,24 @@ class TestPooling(unittest.TestCase):
                 device=torch.device("cpu"),
                 aggregation="binarized_sum",
                 binarized_threshold=0.0,
+                records=[{"therapist_char_start": 0, "therapist_char_end": 1}, {"therapist_char_start": 0, "therapist_char_end": 1}],
+                pooling_scope="therapist_span",
+                weighted_mean_scheme="position_linear",
             )
 
         self.assertEqual(out.shape, (2, 3))
         self.assertEqual(mock_extract.call_args.kwargs["aggregation"], "binarized_sum")
         self.assertEqual(mock_extract.call_args.kwargs["binarized_threshold"], 0.0)
+        self.assertEqual(mock_extract.call_args.kwargs["pooling_scope"], "therapist_span")
+        self.assertEqual(mock_extract.call_args.kwargs["weighted_mean_scheme"], "position_linear")
+
+    def test_compare_pooling_methods_complete(self):
+        from causal.run_experiment import POOLING_COMPARE_METHODS
+
+        self.assertEqual(
+            POOLING_COMPARE_METHODS,
+            ["max", "mean", "sum", "binarized_sum", "last_token", "weighted_mean"],
+        )
 
 
 if __name__ == "__main__":
