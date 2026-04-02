@@ -32,7 +32,7 @@ sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
 from nlp_re_base.activations import extract_and_process_streaming
 from nlp_re_base.config import resolve_output_dir
-from nlp_re_base.data import load_cactus_dataset, load_jsonl
+from nlp_re_base.data import load_cactus_dataset
 from nlp_re_base.eval_functional import run_functional_evaluation
 from nlp_re_base.eval_structural import (
     OnlineStructuralAccumulator,
@@ -104,8 +104,8 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--data-dir",
-        default="data/cactus",
-        help="Directory containing CACTUS dataset (cactus_re_small_1500.jsonl) or legacy re_dataset.jsonl/nonre_dataset.jsonl.",
+        default="data/mi_re",
+        help="Directory containing the legacy MI-RE split (re_dataset.jsonl/nonre_dataset.jsonl). CACTUS unified JSONL remains supported as a compatibility fallback.",
     )
     parser.add_argument(
         "--full-structural",

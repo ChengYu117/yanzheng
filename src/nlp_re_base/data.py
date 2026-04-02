@@ -1,7 +1,7 @@
 """Core data loading utilities.
 
-Supports both CACTUS (unified JSONL) and legacy MI-RE (split JSONL) formats.
-Default data source: data/cactus/cactus_re_small_1500.jsonl
+Supports both legacy MI-RE (split JSONL) and CACTUS (unified JSONL) formats.
+Default data source: data/mi_re
 """
 from __future__ import annotations
 
@@ -11,7 +11,7 @@ from typing import Any
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
-DEFAULT_DATA_DIR = PROJECT_ROOT / "data" / "cactus"
+DEFAULT_DATA_DIR = PROJECT_ROOT / "data" / "mi_re"
 CACTUS_JSONL = "cactus_re_small_1500.jsonl"
 
 
@@ -29,21 +29,23 @@ def load_jsonl(path: str | Path) -> list[dict]:
 def load_cactus_dataset(
     data_dir: str | Path | None = None,
 ) -> tuple[list[dict], list[dict], list[dict]]:
-    """Load CACTUS unified JSONL and split by label.
+    """Load the default legacy MI-RE split or a compatible CACTUS JSONL.
 
     Returns:
         (re_records, nonre_records, all_records)
-        - re_records: samples with label='RE'
-        - nonre_records: samples with label!='RE' (NonRE_CBT + NonTech_Process)
+        - re_records: RE samples
+        - nonre_records: non-RE samples
         - all_records: all samples
-    Each record has a 'unit_text' key mapped from 'formatted_text' for
-    backward compatibility with the rest of the pipeline.
+    If a CACTUS unified JSONL is present, it is loaded and adapted for backward
+    compatibility by mapping ``formatted_text`` to ``unit_text``. Otherwise the
+    loader falls back to the legacy ``re_dataset.jsonl`` / ``nonre_dataset.jsonl``
+    split used by the original RE experiments.
     """
     root = Path(data_dir) if data_dir else DEFAULT_DATA_DIR
     jsonl_path = root / CACTUS_JSONL
 
     if not jsonl_path.exists():
-        # Fallback to legacy format
+        # Default path for the current branch: legacy MI-RE split format.
         return _load_legacy_split(root)
 
     raw = load_jsonl(jsonl_path)

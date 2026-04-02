@@ -5,11 +5,13 @@ import sys, os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "src"))
 
 import numpy as np
+import json
 import torch
 import unittest
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from unittest.mock import patch
+from types import SimpleNamespace
 
 
 class TestIntervention(unittest.TestCase):
@@ -330,6 +332,64 @@ class TestPooling(unittest.TestCase):
         self.assertEqual(out.shape, (2, 3))
         self.assertEqual(mock_extract.call_args.kwargs["aggregation"], "binarized_sum")
         self.assertEqual(mock_extract.call_args.kwargs["binarized_threshold"], 0.0)
+
+    def test_main_passes_records_to_single_pooling_experiment(self):
+        from causal import run_experiment
+        import pandas as pd
+
+        with TemporaryDirectory() as tmpdir:
+            tmp = Path(tmpdir)
+            sae_config_path = tmp / "sae_config.json"
+            candidate_csv_path = tmp / "candidate_latents.csv"
+            sae_config_path.write_text(
+                json.dumps(
+                    {
+                        "hook_point": "blocks.19.hook_resid_post",
+                        "sae_repo_id": "dummy/repo",
+                        "sae_subfolder": "dummy-subfolder",
+                    }
+                ),
+                encoding="utf-8",
+            )
+            pd.DataFrame({"latent_idx": [1], "abs_cohens_d": [1.0]}).to_csv(
+                candidate_csv_path,
+                index=False,
+            )
+
+            args = SimpleNamespace(
+                output_dir=str(tmp / "out"),
+                sae_config=str(sae_config_path),
+                model_config=None,
+                model_dir=None,
+                batch_size=2,
+                max_seq_len=16,
+                device="cpu",
+                lambdas=[0.5, 1.0],
+                sentence_pooling="max",
+                compare_pooling=False,
+                binarized_threshold=0.0,
+                skip_group_structure=False,
+                skip_side_effects=False,
+                side_effect_max_samples=4,
+                side_effect_max_new_tokens=8,
+                side_effect_lambda=1.0,
+                n_bootstrap=0,
+                data_dir="data/mi_re",
+                candidate_csv=str(candidate_csv_path),
+            )
+            expected_records = [{"unit_text": "a"}, {"unit_text": "b"}]
+
+            with patch.object(run_experiment, "parse_args", return_value=args), \
+                 patch.object(run_experiment, "resolve_output_dir", return_value=tmp / "out"), \
+                 patch.object(run_experiment, "resolve_repo_path", side_effect=lambda value: Path(value)), \
+                 patch.object(run_experiment, "load_local_model_and_tokenizer", return_value=(object(), object(), {})), \
+                 patch.object(run_experiment, "load_sae_from_hub", return_value=object()), \
+                 patch.object(run_experiment, "build_dataset", return_value=(["a", "b"], [1, 0], expected_records)), \
+                 patch.object(run_experiment, "_run_single_pooling_experiment", return_value={}) as mock_run:
+                run_experiment.main()
+
+            self.assertEqual(mock_run.call_count, 1)
+            self.assertIs(mock_run.call_args.args[6], expected_records)
 
 
 if __name__ == "__main__":
