@@ -41,6 +41,7 @@ class OnlineStructuralAccumulator:
         # MSE accumulator
         self._n_tokens: int = 0
         self._mse_sum: float = 0.0
+        self._feature_dim: int = 0
 
         # Cosine similarity accumulator
         self._cos_sum: float = 0.0
@@ -83,6 +84,7 @@ class OnlineStructuralAccumulator:
             return
 
         d = z_flat.shape[1]
+        self._feature_dim = d
 
         # ── MSE ──
         self._mse_sum += float((r_flat ** 2).sum())
@@ -132,7 +134,8 @@ class OnlineStructuralAccumulator:
         if n == 0:
             return {}
 
-        mse    = self._mse_sum / n
+        denom = max(n * max(self._feature_dim, 1), 1)
+        mse    = self._mse_sum / denom
         cos    = self._cos_sum / n
         l0_mean = self._l0_sum / n
         l0_std  = float(
@@ -429,7 +432,7 @@ def compute_ce_kl_with_intervention(
         sae_dtype = getattr(sae, "sae_dtype", next(sae.parameters()).dtype)
         sae_hidden = original_hidden.to(device=sae_device, dtype=sae_dtype)
         with torch.inference_mode():
-            recon, _ = sae(sae_hidden)
+            recon, _ = sae.forward_raw(sae_hidden)
         recon = recon.to(device=device, dtype=original_hidden.dtype)
 
         def _replace_hook(module, input, output):
@@ -496,6 +499,8 @@ def run_structural_evaluation(
     attention_mask: torch.Tensor,
     ce_kl_results: dict[str, float | int] | None = None,
     output_dir: str | Path = "outputs/sae_eval",
+    save: bool = True,
+    heading: str = "Structural Evaluation",
 ) -> dict[str, Any]:
     """Run all structural metrics and save results.
 
@@ -510,7 +515,7 @@ def run_structural_evaluation(
     Returns:
         Dictionary of all structural metrics.
     """
-    print("\n=== Structural Evaluation ===")
+    print(f"\n=== {heading} ===")
 
     mse = compute_mse(activations, reconstructed, attention_mask)
     print(f"  MSE:               {mse:.6f}")
@@ -549,26 +554,26 @@ def run_structural_evaluation(
         print(f"  CE Loss Delta:     {ce_kl_results['ce_loss_delta']:.4f}")
         print(f"  KL Divergence:     {ce_kl_results['kl_divergence']:.6f}")
 
-    # Save to JSON
-    out_path = Path(output_dir)
-    out_path.mkdir(parents=True, exist_ok=True)
-    save_path = out_path / "metrics_structural.json"
+    if save:
+        out_path = Path(output_dir)
+        out_path.mkdir(parents=True, exist_ok=True)
+        save_path = out_path / "metrics_structural.json"
 
-    serializable = {
-        k: v for k, v in metrics.items()
-        if not isinstance(v, torch.Tensor)
-    }
-    with open(save_path, "w", encoding="utf-8") as f:
-        json.dump(serializable, f, indent=2, ensure_ascii=False)
-
-    if ce_kl_results is not None:
-        ce_kl_path = out_path / "metrics_ce_kl.json"
-        ce_kl_serializable = {
-            k: v for k, v in ce_kl_results.items()
+        serializable = {
+            k: v for k, v in metrics.items()
             if not isinstance(v, torch.Tensor)
         }
-        with open(ce_kl_path, "w", encoding="utf-8") as f:
-            json.dump(ce_kl_serializable, f, indent=2, ensure_ascii=False)
+        with open(save_path, "w", encoding="utf-8") as f:
+            json.dump(serializable, f, indent=2, ensure_ascii=False)
 
-    print(f"\n  Saved to {save_path}")
+        if ce_kl_results is not None:
+            ce_kl_path = out_path / "metrics_ce_kl.json"
+            ce_kl_serializable = {
+                k: v for k, v in ce_kl_results.items()
+                if not isinstance(v, torch.Tensor)
+            }
+            with open(ce_kl_path, "w", encoding="utf-8") as f:
+                json.dump(ce_kl_serializable, f, indent=2, ensure_ascii=False)
+
+        print(f"\n  Saved to {save_path}")
     return metrics

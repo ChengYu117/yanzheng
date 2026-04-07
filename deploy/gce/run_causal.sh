@@ -26,6 +26,9 @@ cmd=(
   --output-dir "${CAUSAL_OUTPUT_DIR}"
   --batch-size "${CAUSAL_BATCH_SIZE}"
   --max-seq-len "${CAUSAL_MAX_SEQ_LEN}"
+  --sae-inference-mode "${SAE_INFERENCE_MODE}"
+  --n-bootstrap "${CAUSAL_N_BOOTSTRAP}"
+  --side-effect-max-samples "${CAUSAL_SIDE_EFFECT_MAX_SAMPLES}"
 )
 
 if [[ -n "${CAUSAL_LAMBDAS:-}" ]]; then

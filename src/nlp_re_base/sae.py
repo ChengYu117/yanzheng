@@ -7,7 +7,9 @@ Reference model: Llama3_1-8B-Base-L19R-8x
 from __future__ import annotations
 
 import json
+import math
 from pathlib import Path
+from typing import Literal
 
 import torch
 import torch.nn as nn
@@ -43,11 +45,17 @@ class SparseAutoencoder(nn.Module):
         jump_relu_threshold: float = 0.52734375,
         use_decoder_bias: bool = True,
         norm_scale: float | None = None,
+        output_norm_scale: float | None = None,
+        sparsity_include_decoder_norm: bool = False,
+        runtime_inference_mode: Literal["legacy", "aligned_datasetwise"] = "legacy",
     ):
         super().__init__()
         self.d_model = d_model
         self.d_sae = d_sae
         self.norm_scale = norm_scale
+        self.output_norm_scale = output_norm_scale if output_norm_scale is not None else norm_scale
+        self.sparsity_include_decoder_norm = sparsity_include_decoder_norm
+        self.runtime_inference_mode = runtime_inference_mode
 
         # Encoder: d_model -> d_sae
         self.W_enc = nn.Parameter(torch.empty(d_sae, d_model))
@@ -69,13 +77,72 @@ class SparseAutoencoder(nn.Module):
         nn.init.kaiming_uniform_(self.W_enc)
         nn.init.kaiming_uniform_(self.W_dec)
 
-    def normalize(self, x: torch.Tensor) -> torch.Tensor:
-        """Apply dataset-wise normalization: rescale x to have L2 norm = norm_scale."""
+    def _legacy_normalize(self, x: torch.Tensor) -> torch.Tensor:
+        """Legacy per-token normalization used by the original local implementation."""
         if self.norm_scale is None:
             return x
         x_norm = torch.norm(x, dim=-1, keepdim=True)
         x_norm = torch.clamp(x_norm, min=1e-8)
         return x * (self.norm_scale / x_norm)
+
+    def _datasetwise_input_factor(self, *, device: torch.device, dtype: torch.dtype) -> torch.Tensor:
+        if self.norm_scale is None:
+            return torch.tensor(1.0, device=device, dtype=dtype)
+        return torch.tensor(
+            math.sqrt(self.d_model) / self.norm_scale,
+            device=device,
+            dtype=dtype,
+        )
+
+    def _datasetwise_output_factor(self, *, device: torch.device, dtype: torch.dtype) -> torch.Tensor:
+        if self.output_norm_scale is None:
+            return torch.tensor(1.0, device=device, dtype=dtype)
+        return torch.tensor(
+            math.sqrt(self.d_model) / self.output_norm_scale,
+            device=device,
+            dtype=dtype,
+        )
+
+    def normalize_model_input(self, x: torch.Tensor) -> torch.Tensor:
+        """Normalize model-space activations according to the runtime inference mode."""
+        if self.runtime_inference_mode == "aligned_datasetwise":
+            factor = self._datasetwise_input_factor(device=x.device, dtype=x.dtype)
+            return x * factor
+        return self._legacy_normalize(x)
+
+    def denormalize_model_output(self, x_hat: torch.Tensor) -> torch.Tensor:
+        """Project a normalized reconstruction back to raw residual space."""
+        if self.runtime_inference_mode != "aligned_datasetwise":
+            return x_hat
+        factor = self._datasetwise_output_factor(device=x_hat.device, dtype=x_hat.dtype)
+        return x_hat / factor
+
+    def decoder_norm(self) -> torch.Tensor:
+        """Return decoder column norms [d_sae]."""
+        return torch.norm(self.W_dec, dim=0).clamp(min=1e-8)
+
+    def decoder_vectors(self, latent_ids: list[int]) -> torch.Tensor:
+        """Return decoder column vectors [K, d_model] in normalized output space."""
+        return self.W_dec[:, latent_ids].T
+
+    def decoder_vectors_raw(self, latent_ids: list[int]) -> torch.Tensor:
+        """Return decoder column vectors [K, d_model] in raw residual space."""
+        vecs = self.decoder_vectors(latent_ids)
+        return self.denormalize_model_output(vecs)
+
+    def decode_delta_raw(self, delta_z: torch.Tensor) -> torch.Tensor:
+        """Project latent deltas to raw residual space."""
+        delta_norm = delta_z @ self.W_dec.T
+        return self.denormalize_model_output(delta_norm)
+
+    def _encode_from_normalized(self, x_normed: torch.Tensor) -> torch.Tensor:
+        pre_activation = (x_normed - self.b_pre) @ self.W_enc.T + self.b_enc
+        if self.runtime_inference_mode == "aligned_datasetwise" and self.sparsity_include_decoder_norm:
+            decoder_norm = self.decoder_norm().to(device=pre_activation.device, dtype=pre_activation.dtype)
+            scaled_pre_activation = pre_activation * decoder_norm
+            feature_acts = self.activation(scaled_pre_activation) / decoder_norm
+            return feature_acts
+        return self.activation(pre_activation)
 
     def encode(self, x: torch.Tensor) -> torch.Tensor:
         """Encode activations to sparse latents.
@@ -86,9 +153,8 @@ class SparseAutoencoder(nn.Module):
         Returns:
             latents: Sparse feature activations [..., d_sae]
         """
-        x_normed = self.normalize(x)
-        pre_activation = (x_normed - self.b_pre) @ self.W_enc.T + self.b_enc
-        return self.activation(pre_activation)
+        x_normed = self.normalize_model_input(x)
+        return self._encode_from_normalized(x_normed)
 
     def decode(self, latents: torch.Tensor) -> torch.Tensor:
         """Decode sparse latents back to activation space.
@@ -100,6 +166,38 @@ class SparseAutoencoder(nn.Module):
             x_hat: Reconstructed activations [..., d_model]
         """
         return latents @ self.W_dec.T + self.b_dec
+
+    def forward_normalized(
+        self,
+        x_normalized: torch.Tensor,
+    ) -> tuple[torch.Tensor, torch.Tensor]:
+        """Forward pass on already-normalized activations."""
+        latents = self._encode_from_normalized(x_normalized)
+        x_hat_normalized = self.decode(latents)
+        return x_hat_normalized, latents
+
+    def forward_raw(
+        self,
+        x: torch.Tensor,
+    ) -> tuple[torch.Tensor, torch.Tensor]:
+        """Forward pass from raw model activations to raw-space reconstruction."""
+        x_normalized = self.normalize_model_input(x)
+        x_hat_normalized, latents = self.forward_normalized(x_normalized)
+        x_hat_raw = self.denormalize_model_output(x_hat_normalized)
+        return x_hat_raw, latents
+
+    def forward_with_details(self, x: torch.Tensor) -> dict[str, torch.Tensor]:
+        """Return raw + normalized reconstructions plus latent activations."""
+        x_normalized = self.normalize_model_input(x)
+        x_hat_normalized, latents = self.forward_normalized(x_normalized)
+        x_hat_raw = self.denormalize_model_output(x_hat_normalized)
+        return {
+            "input_raw": x,
+            "input_normalized": x_normalized,
+            "reconstructed_normalized": x_hat_normalized,
+            "reconstructed_raw": x_hat_raw,
+            "latents": latents,
+        }
 
     def forward(
         self, x: torch.Tensor
@@ -113,6 +211,8 @@ class SparseAutoencoder(nn.Module):
             x_hat: Reconstructed activations [..., d_model]
             latents: Sparse feature activations [..., d_sae]
         """
+        if self.runtime_inference_mode == "aligned_datasetwise":
+            return self.forward_raw(x)
         latents = self.encode(x)
         x_hat = self.decode(latents)
         return x_hat, latents
@@ -123,6 +223,7 @@ def load_sae_from_hub(
     subfolder: str = "Llama3_1-8B-Base-L19R-8x",
     device: str | torch.device = "cpu",
     dtype: torch.dtype = torch.bfloat16,
+    runtime_inference_mode: Literal["legacy", "aligned_datasetwise"] = "legacy",
 ) -> SparseAutoencoder:
     """Download and load a pre-trained SAE from HuggingFace Hub.
 
@@ -146,9 +247,11 @@ def load_sae_from_hub(
     use_decoder_bias = hyperparams.get("use_decoder_bias", True)
     norm_info = hyperparams.get("dataset_average_activation_norm", {})
     norm_scale = norm_info.get("in", None)
+    output_norm_scale = norm_info.get("out", norm_scale)
+    sparsity_include_decoder_norm = hyperparams.get("sparsity_include_decoder_norm", False)
 
     print(f"SAE config: d_model={d_model}, d_sae={d_sae}, "
-          f"threshold={threshold}, norm_scale={norm_scale}")
+          f"threshold={threshold}, norm_scale={norm_scale}, mode={runtime_inference_mode}")
 
     sae = SparseAutoencoder(
         d_model=d_model,
@@ -156,6 +259,9 @@ def load_sae_from_hub(
         jump_relu_threshold=threshold,
         use_decoder_bias=use_decoder_bias,
         norm_scale=norm_scale,
+        output_norm_scale=output_norm_scale,
+        sparsity_include_decoder_norm=sparsity_include_decoder_norm,
+        runtime_inference_mode=runtime_inference_mode,
     )
 
     # Download checkpoint files

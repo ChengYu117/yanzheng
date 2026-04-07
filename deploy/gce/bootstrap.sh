@@ -43,5 +43,5 @@ python run_ai_re_judge.py --help > /dev/null
 echo
 echo "Bootstrap completed successfully."
 echo "Next steps:"
-echo "  1. Copy deploy/gce/env.example to deploy/gce/.env and set HF_TOKEN if you have not done so."
+echo "  1. Run deploy/gce/configure_env.sh first if .env has not been generated."
 echo "  2. Run: bash deploy/gce/download_model.sh"

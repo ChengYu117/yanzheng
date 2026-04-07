@@ -238,7 +238,7 @@ AUC 可以理解成：
 
 - top-1
 - top-5
--
+-top 20
 把这些 latent 作为输入特征，训练一个线性 probe。
 
 当前实现虽然注释里还写着 logistic regression，但实际代码是：
@@ -306,6 +306,7 @@ AUC 可以理解成：
 > 如果不用 SAE latent，而直接用原始句子级激活做分类，会有多强？
 
 ### 6.2 为什么要设计这个 baseline
+
 即把原来的整个sae空间的latent来训练这个dense probe分类探针，看能否很好的实现这个
 二分类任务
 

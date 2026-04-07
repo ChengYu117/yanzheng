@@ -124,6 +124,12 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Run both max and mean aggregation and save a comparison summary.",
     )
+    parser.add_argument(
+        "--sae-inference-mode",
+        choices=["legacy", "aligned_datasetwise"],
+        default=None,
+        help="Override the SAE runtime inference mode.",
+    )
     return parser.parse_args()
 
 
@@ -153,6 +159,31 @@ def _summarize_functional_metrics(
         "probe_results": functional_metrics.get("probe_results"),
         "maxact_summary": functional_metrics.get("maxact_summary"),
     }
+
+
+def _serializable_metrics(metrics: dict[str, Any] | None) -> dict[str, Any] | None:
+    if metrics is None:
+        return None
+    return {
+        k: v for k, v in metrics.items()
+        if not isinstance(v, torch.Tensor)
+    }
+
+
+def _space_metric_subset(metrics: dict[str, Any] | None) -> dict[str, Any] | None:
+    if metrics is None:
+        return None
+    subset = {
+        key: metrics[key]
+        for key in ("mse", "cosine_similarity", "explained_variance", "fvu", "n_tokens")
+        if key in metrics
+    }
+    return subset or None
+
+
+def _write_json(path: Path, payload: dict[str, Any]) -> None:
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(payload, f, indent=2, ensure_ascii=False)
 
 
 def _print_banner() -> None:
@@ -192,8 +223,13 @@ def _run_single_aggregation(
     print(
         f"  batch_size={batch_size}, max_seq_len={max_seq_len}, aggregation={aggregation}"
     )
-    # Create optional online accumulator for full-dataset structural metrics
+    # Create optional online accumulators for full-dataset structural metrics
     accumulator = OnlineStructuralAccumulator() if args.full_structural else None
+    normalized_accumulator = (
+        OnlineStructuralAccumulator()
+        if args.full_structural and getattr(sae, "runtime_inference_mode", "legacy") == "aligned_datasetwise"
+        else None
+    )
     if accumulator:
         print("  [full-structural] Online accumulator enabled - metrics computed over ALL tokens.")
 
@@ -209,6 +245,7 @@ def _run_single_aggregation(
         device=device,
         collect_structural_samples=5,
         structural_accumulator=accumulator,
+        normalized_structural_accumulator=normalized_accumulator,
     )
 
     utterance_features = result["utterance_features"]
@@ -255,29 +292,76 @@ def _run_single_aggregation(
     elif ce_kl_results is not None:
         print("  Reusing cached CE/KL results for this aggregation.")
 
-    structural_metrics = run_structural_evaluation(
+    sample_structural_metrics = run_structural_evaluation(
         activations=result["sample_activations"],
         reconstructed=result["sample_reconstructed"],
         latents=result["sample_latents"],
         attention_mask=result["sample_mask"],
-        ce_kl_results=ce_kl_results,
+        ce_kl_results=None,
         output_dir=output_dir,
+        save=False,
+        heading="Structural Sample Preview (raw space)",
     )
+    sample_normalized_metrics = None
+    if getattr(sae, "runtime_inference_mode", "legacy") == "aligned_datasetwise":
+        sample_normalized_metrics = run_structural_evaluation(
+            activations=result["sample_activations_normalized"],
+            reconstructed=result["sample_reconstructed_normalized"],
+            latents=result["sample_latents"],
+            attention_mask=result["sample_mask"],
+            ce_kl_results=None,
+            output_dir=output_dir,
+            save=False,
+            heading="Structural Sample Preview (normalized space)",
+        )
 
-    # If the online accumulator was used, overwrite with full-data metrics
+    # Use full-data metrics when available; otherwise the sample preview is authoritative.
+    structural_scope = "sample_preview"
+    structural_metrics = sample_structural_metrics
+    normalized_structural_metrics = sample_normalized_metrics
     if accumulator is not None:
-        full_metrics = accumulator.result()
-        print(f"  [full-structural] n_tokens={full_metrics.get('n_tokens')}, "
-              f"EV={full_metrics.get('explained_variance', float('nan')):.4f}, "
-              f"FVU={full_metrics.get('fvu', float('nan')):.4f}, "
-              f"MSE={full_metrics.get('mse', float('nan')):.4f}")
-        structural_metrics.update(full_metrics)
-        # Re-save the merged structural metrics JSON
-        import json
-        struct_path = output_dir / "metrics_structural.json"
-        with open(struct_path, "w", encoding="utf-8") as _f:
-            json.dump(structural_metrics, _f, indent=2, ensure_ascii=False)
-        print(f"  [full-structural] Updated {struct_path}")
+        structural_scope = "full_dataset"
+        structural_metrics = accumulator.result()
+        print(
+            f"  [full-structural][raw] n_tokens={structural_metrics.get('n_tokens')}, "
+            f"EV={structural_metrics.get('explained_variance', float('nan')):.4f}, "
+            f"FVU={structural_metrics.get('fvu', float('nan')):.4f}, "
+            f"MSE={structural_metrics.get('mse', float('nan')):.4f}"
+        )
+        if normalized_accumulator is not None:
+            normalized_structural_metrics = normalized_accumulator.result()
+            print(
+                f"  [full-structural][normalized] n_tokens={normalized_structural_metrics.get('n_tokens')}, "
+                f"EV={normalized_structural_metrics.get('explained_variance', float('nan')):.4f}, "
+                f"FVU={normalized_structural_metrics.get('fvu', float('nan')):.4f}, "
+                f"MSE={normalized_structural_metrics.get('mse', float('nan')):.4f}"
+            )
+
+    structural_payload = {
+        "metric_definition_version": 3,
+        "structural_scope": structural_scope,
+        "sae_inference_mode": getattr(sae, "runtime_inference_mode", "legacy"),
+        **_serializable_metrics(structural_metrics),
+        "space_metrics": {
+            "raw": _space_metric_subset(structural_metrics),
+        },
+    }
+    if normalized_structural_metrics is not None:
+        structural_payload["space_metrics"]["normalized"] = _space_metric_subset(normalized_structural_metrics)
+    if ce_kl_results is not None:
+        structural_payload.update(_serializable_metrics(ce_kl_results) or {})
+    if accumulator is not None:
+        structural_payload["sample_preview"] = {
+            "raw": _serializable_metrics(sample_structural_metrics),
+        }
+        if sample_normalized_metrics is not None:
+            structural_payload["sample_preview"]["normalized"] = _serializable_metrics(sample_normalized_metrics)
+
+    struct_path = output_dir / "metrics_structural.json"
+    _write_json(struct_path, structural_payload)
+    if ce_kl_results is not None:
+        _write_json(output_dir / "metrics_ce_kl.json", _serializable_metrics(ce_kl_results) or {})
+    print(f"  Saved authoritative structural metrics to {struct_path}")
 
     print("\n[7/7] Running functional evaluation...")
     sae_decoder_weight = sae.W_dec.detach().cpu()
@@ -318,7 +402,7 @@ def _run_single_aggregation(
         "output_dir": str(output_dir),
         "utterance_features_shape": list(utterance_features.shape),
         "utterance_activations_shape": list(utterance_activations.shape),
-        "structural_metrics": structural_metrics,
+        "structural_metrics": structural_payload,
         "ce_kl_results": ce_kl_results,
         "functional_metrics": functional_metrics,
         "functional_error": functional_error,
@@ -339,6 +423,7 @@ def main() -> None:
         sae_config = json.load(f)
 
     hook_point = sae_config["hook_point"]
+    sae_inference_mode = args.sae_inference_mode or sae_config.get("sae_inference_mode", "legacy")
     max_seq_len = args.max_seq_len
     batch_size = args.batch_size
     base_aggregation = args.aggregation or sae_config.get("aggregation", "max")
@@ -376,6 +461,7 @@ def main() -> None:
         device = torch.device("cpu")
     print(f"  Device:        {device}")
     print(f"  Aggregations:  {', '.join(aggregations)}")
+    print(f"  SAE mode:      {sae_inference_mode}")
     if args.model_dir:
         print(f"  Model dir:     {args.model_dir}")
 
@@ -391,6 +477,7 @@ def main() -> None:
         subfolder=sae_config["sae_subfolder"],
         device=device,
         dtype=torch.bfloat16,
+        runtime_inference_mode=sae_inference_mode,
     )
 
     comparison_records = []

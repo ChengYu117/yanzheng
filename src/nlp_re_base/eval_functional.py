@@ -287,9 +287,9 @@ def _build_judge_group_weights(
     labels: np.ndarray,
     candidate_indices: list[int],
 ) -> dict[str, list[float]]:
-    """Fit full-data probes for G1/G5/G20 and export normalized absolute weights."""
+    """Fit full-data probes for G1/G5/G10/G20 and export normalized absolute weights."""
     group_weights: dict[str, list[float]] = {}
-    for group_name, k in (("G1", 1), ("G5", 5), ("G20", 20)):
+    for group_name, k in (("G1", 1), ("G5", 5), ("G10", 10), ("G20", 20)):
         sel_indices = candidate_indices[:k]
         if not sel_indices:
             continue
@@ -841,7 +841,7 @@ def run_functional_evaluation(
         "top_latents": judge_top_latents,
         "top_n": judge_top_n,
         "control_n": judge_control_n,
-        "group_names": ["G1", "G5", "G20"],
+        "group_names": ["G1", "G5", "G10", "G20"],
     }
     with open(json_path, "w", encoding="utf-8") as f:
         json.dump(functional_metrics, f, indent=2, ensure_ascii=False, default=str)

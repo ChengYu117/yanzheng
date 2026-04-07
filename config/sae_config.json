@@ -9,6 +9,7 @@
     "use_decoder_bias": true,
     "norm_activation": "dataset-wise",
     "dataset_average_activation_norm_in": 17.125,
+    "sae_inference_mode": "legacy",
     "max_seq_len": 128,
     "batch_size": 8,
     "ce_kl_batch_size": 2,

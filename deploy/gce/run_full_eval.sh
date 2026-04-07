@@ -18,8 +18,13 @@ cmd=(
   --output-dir "${SAE_OUTPUT_DIR}"
   --batch-size "${SAE_BATCH_SIZE}"
   --max-seq-len "${SAE_MAX_SEQ_LEN}"
+  --sae-inference-mode "${SAE_INFERENCE_MODE}"
   --full-structural
 )
+
+if [[ "${SAE_COMPARE_MEAN:-0}" == "1" ]]; then
+  cmd+=(--compare-mean)
+fi
 
 if [[ "$#" -gt 0 ]]; then
   cmd+=("$@")

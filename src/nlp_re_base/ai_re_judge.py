@@ -16,7 +16,7 @@ from sklearn.metrics import accuracy_score, cohen_kappa_score, confusion_matrix,
 from .re_judge_rubric import RE_JUDGE_RUBRIC, get_rubric_snapshot
 
 JUDGE_BUNDLE_VERSION = "1.0"
-DEFAULT_GROUP_NAMES = ("G1", "G5", "G20")
+DEFAULT_GROUP_NAMES = ("G1", "G5", "G10", "G20")
 REVIEW_SCORE_MAP = {"yes": 1.0, "partial": 0.5, "no": 0.0}
 UTTERANCE_REVIEW_ENUMS = {
     "has_clear_re_feature": {"yes", "partial", "no"},
@@ -194,6 +194,7 @@ def export_judge_bundle(
     groups = {
         "G1": top_latent_ids[:1],
         "G5": top_latent_ids[:5],
+        "G10": top_latent_ids[:10],
         "G20": top_latent_ids[:20],
     }
     group_weights = group_weights or {}

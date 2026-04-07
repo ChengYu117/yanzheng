@@ -1,7 +1,7 @@
 """causal/run_experiment.py — End-to-end causal validation orchestrator.
 
 Runs necessity (ablation) and sufficiency (steering) experiments for
-G1/G5/G20 latent groups, with random/Bottom-K/orthogonal controls.
+G1/G5/G10/G20 latent groups, with random/Bottom-K/orthogonal controls.
 Also runs group-structure analysis (cumulative top-K, LOO, synergy).
 
 Usage:
@@ -39,7 +39,7 @@ try:
     from .data import iter_batches, build_dataset
     from .evaluation import REProbeScorer, score_delta, eval_text_quality
     from .intervention import (
-        zero_ablate, mean_ablate, cond_token_ablate, decode_delta,
+        zero_ablate, mean_ablate, cond_token_ablate,
         constant_steer, cond_input_steer, cond_token_steer,
         make_steering_direction, make_orthogonal_direction, make_random_direction,
         steer_with_direction,
@@ -49,12 +49,15 @@ except ImportError:
     from causal.data import iter_batches, build_dataset
     from causal.evaluation import REProbeScorer, score_delta, eval_text_quality
     from causal.intervention import (
-        zero_ablate, mean_ablate, cond_token_ablate, decode_delta,
+        zero_ablate, mean_ablate, cond_token_ablate,
         constant_steer, cond_input_steer, cond_token_steer,
         make_steering_direction, make_orthogonal_direction, make_random_direction,
         steer_with_direction,
     )
     from causal.selection import rank_latents, bootstrap_stability, make_bottom_k, make_random_control
+
+GROUP_NAMES = ("G1", "G5", "G10", "G20")
+PRIMARY_GROUP_NAME = "G10"
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -105,8 +108,7 @@ class CausalRunner:
         self._ref_mean = ref_mean.to(device="cpu")
 
     def _default_ref_mean(self) -> torch.Tensor:
-        d_sae = self.sae.W_dec.shape[1] if self.sae.W_dec.shape[0] < self.sae.W_dec.shape[1] else self.sae.W_dec.shape[0]
-        return torch.zeros(d_sae, dtype=torch.float32)
+        return torch.zeros(self.sae.d_sae, dtype=torch.float32)
 
     def _run_forward_with_hook(
         self,
@@ -147,7 +149,9 @@ class CausalRunner:
             # Run SAE
             sae_input = h.to(device=self.sae_device, dtype=self.sae_dtype)
             with torch.no_grad():
-                z_hat, z = self.sae(sae_input)
+                sae_details = self.sae.forward_with_details(sae_input)
+            z_hat = sae_details["reconstructed_raw"]
+            z = sae_details["latents"]
 
             # Apply intervention
             h_new = intervention_fn(
@@ -162,7 +166,7 @@ class CausalRunner:
 
             sae_input_new = h_new.to(device=self.sae_device, dtype=self.sae_dtype)
             with torch.no_grad():
-                z_hat_new, z_new = self.sae(sae_input_new)
+                z_hat_new, z_new = self.sae.forward_raw(sae_input_new)
             captured["z_hat"] = z_hat_new.detach().cpu().float()
             captured["z"] = z_new.detach().cpu().float()
 
@@ -218,7 +222,7 @@ class CausalRunner:
 
             sae_input = h.to(device=self.sae_device, dtype=self.sae_dtype)
             with torch.no_grad():
-                z_hat, z = self.sae(sae_input)
+                z_hat, z = self.sae.forward_raw(sae_input)
 
             h_new = intervention_fn(
                 h=h,
@@ -268,8 +272,8 @@ class CausalRunner:
     ) -> dict[str, torch.Tensor]:
         def ablate_fn(h, z, z_hat, span_mask):
             z_new = zero_ablate(z.cpu().float(), span_mask.cpu(), latent_ids)
-            delta_z = (z_new - z.cpu().float()).to(h.dtype).to(h.device)
-            h_new = h + decode_delta(delta_z.to(h.device), self.sae.W_dec.to(h.device, h.dtype))
+            delta_z = (z_new - z.cpu().float()).to(device=self.sae_device, dtype=self.sae_dtype)
+            h_new = h + self.sae.decode_delta_raw(delta_z).to(h.device, h.dtype)
             return h_new
 
         return self._run_forward_with_hook(
@@ -287,8 +291,8 @@ class CausalRunner:
 
         def ablate_fn(h, z, z_hat, span_mask):
             z_new = mean_ablate(z.cpu().float(), span_mask.cpu(), latent_ids, ref_mean)
-            delta_z = (z_new - z.cpu().float()).to(h.dtype).to(h.device)
-            h_new = h + decode_delta(delta_z.to(h.device), self.sae.W_dec.to(h.device, h.dtype))
+            delta_z = (z_new - z.cpu().float()).to(device=self.sae_device, dtype=self.sae_dtype)
+            h_new = h + self.sae.decode_delta_raw(delta_z).to(h.device, h.dtype)
             return h_new
 
         return self._run_forward_with_hook(
@@ -305,8 +309,8 @@ class CausalRunner:
     ) -> dict[str, torch.Tensor]:
         def ablate_fn(h, z, z_hat, span_mask):
             z_new = cond_token_ablate(z.cpu().float(), span_mask.cpu(), latent_ids, tau=tau)
-            delta_z = (z_new - z.cpu().float()).to(h.dtype).to(h.device)
-            h_new = h + decode_delta(delta_z.to(h.device), self.sae.W_dec.to(h.device, h.dtype))
+            delta_z = (z_new - z.cpu().float()).to(device=self.sae_device, dtype=self.sae_dtype)
+            h_new = h + self.sae.decode_delta_raw(delta_z).to(h.device, h.dtype)
             return h_new
 
         return self._run_forward_with_hook(
@@ -322,15 +326,14 @@ class CausalRunner:
         weights: list[float],
         strength: float,
     ) -> dict[str, torch.Tensor]:
-        W_dec = self.sae.W_dec.detach().cpu()
+        decoder_vectors = self.sae.decoder_vectors_raw(latent_ids).detach().cpu()
 
         def steer_fn(h, z, z_hat, span_mask):
             h_new = constant_steer(
                 resid=h.cpu().float(),
                 span_mask=span_mask.cpu(),
-                latent_ids=latent_ids,
+                decoder_vectors=decoder_vectors,
                 weights=weights,
-                W_dec=W_dec,
                 strength=strength,
             )
             return h_new.to(h.dtype).to(h.device)
@@ -349,7 +352,7 @@ class CausalRunner:
         strength: float,
         tau: float = 0.0,
     ) -> dict[str, torch.Tensor]:
-        W_dec = self.sae.W_dec.detach().cpu()
+        decoder_vectors = self.sae.decoder_vectors_raw(latent_ids).detach().cpu()
 
         def steer_fn(h, z, z_hat, span_mask):
             h_new = cond_input_steer(
@@ -357,8 +360,8 @@ class CausalRunner:
                 resid=h.cpu().float(),
                 span_mask=span_mask.cpu(),
                 latent_ids=latent_ids,
+                decoder_vectors=decoder_vectors,
                 weights=weights,
-                W_dec=W_dec,
                 strength=strength,
                 tau=tau,
             )
@@ -378,7 +381,7 @@ class CausalRunner:
         strength: float,
         tau: float = 0.0,
     ) -> dict[str, torch.Tensor]:
-        W_dec = self.sae.W_dec.detach().cpu()
+        decoder_vectors = self.sae.decoder_vectors_raw(latent_ids).detach().cpu()
 
         def steer_fn(h, z, z_hat, span_mask):
             h_new = cond_token_steer(
@@ -386,8 +389,8 @@ class CausalRunner:
                 resid=h.cpu().float(),
                 span_mask=span_mask.cpu(),
                 latent_ids=latent_ids,
+                decoder_vectors=decoder_vectors,
                 weights=weights,
-                W_dec=W_dec,
                 strength=strength,
                 tau=tau,
             )
@@ -440,7 +443,7 @@ class CausalRunner:
         max_new_tokens: int,
         tau: float = 0.0,
     ) -> torch.Tensor:
-        W_dec = self.sae.W_dec.detach().cpu()
+        decoder_vectors = self.sae.decoder_vectors_raw(latent_ids).detach().cpu()
 
         def steer_fn(h, z, z_hat, span_mask):
             h_new = cond_token_steer(
@@ -448,8 +451,8 @@ class CausalRunner:
                 resid=h.cpu().float(),
                 span_mask=span_mask.cpu(),
                 latent_ids=latent_ids,
+                decoder_vectors=decoder_vectors,
                 weights=weights,
-                W_dec=W_dec,
                 strength=strength,
                 tau=tau,
             )
@@ -587,9 +590,10 @@ def run_necessity_experiment(
     """
     results: dict[str, Any] = {}
 
-    all_groups = {**{f"G{k}": v for k, v in [
-        ("1", groups["G1"]), ("5", groups["G5"]), ("20", groups["G20"])
-    ]}, **controls}
+    all_groups = {
+        **{group_name: groups[group_name] for group_name in GROUP_NAMES if group_name in groups},
+        **controls,
+    }
 
     # First get baseline scores (no intervention)
     print("  [Necessity] Computing baseline features...")
@@ -678,7 +682,7 @@ def run_sufficiency_experiment(
     )
     baseline_logits = probe.score_features(baseline_feats)
 
-    for gname in ["G1", "G5", "G20"]:
+    for gname in GROUP_NAMES:
         latent_ids = groups[gname]
         weights = probe_weights.get(gname, [1.0 / len(latent_ids)] * len(latent_ids))
         results[gname] = {
@@ -819,7 +823,7 @@ def run_side_effect_evaluation(
         "controls": {},
     }
 
-    for gname in ["G1", "G5", "G20"]:
+    for gname in GROUP_NAMES:
         latent_ids = groups[gname]
         weights = probe_weights.get(gname, [1.0 / len(latent_ids)] * len(latent_ids))
         generated_texts: list[str] = []
@@ -1296,12 +1300,13 @@ def main():
     nonre_feats = all_feats[n_re:]
 
     # ── Latent selection ──
-    print("[5/8] Ranking latents (G1/G5/G20)...")
+    print("[5/8] Ranking latents (G1/G5/G10/G20)...")
     candidate_df = pd.read_csv(Path(args.candidate_csv))
     ranking = rank_latents(candidate_df, re_feats, nonre_feats, top_k=20)
-    G1, G5, G20 = ranking["G1"], ranking["G5"], ranking["G20"]
+    G1, G5, G10, G20 = ranking["G1"], ranking["G5"], ranking["G10"], ranking["G20"]
     ranked_df   = ranking["ranked_df"]
     print(f"  G1={G1}  G5={G5}")
+    print(f"  G10={G10}")
     print(f"  G20={G20}")
 
     # Bootstrap stability (optional)
@@ -1312,21 +1317,27 @@ def main():
             re_feats, nonre_feats, candidate_df, n_seeds=args.n_bootstrap
         )
         print(f"  Stable G5:  {stability['stable_G5']}")
+        print(f"  Stable G10: {stability['stable_G10']}")
         print(f"  Stable G20: {stability['stable_G20']}")
 
-    groups = {"G1": G1, "G5": G5, "G20": G20}
+    groups = {"G1": G1, "G5": G5, "G10": G10, "G20": G20}
     if stability:
         ranked_latents_full = ranked_df["latent_idx"].astype(int).tolist()
         if stability.get("stable_G5"):
             groups["G5"] = _stabilize_group(ranked_latents_full, stability["stable_G5"], 5)
+        if stability.get("stable_G10"):
+            groups["G10"] = _stabilize_group(ranked_latents_full, stability["stable_G10"], 10)
         if stability.get("stable_G20"):
             groups["G20"] = _stabilize_group(ranked_latents_full, stability["stable_G20"], 20)
         if groups["G1"] and groups["G1"][0] not in groups["G5"]:
             groups["G5"] = _stabilize_group(ranked_latents_full, groups["G1"] + groups["G5"], 5)
-        if groups["G1"] and groups["G1"][0] not in groups["G20"]:
-            groups["G20"] = _stabilize_group(ranked_latents_full, groups["G1"] + groups["G20"], 20)
-        G1, G5, G20 = groups["G1"], groups["G5"], groups["G20"]
+        if any(lid not in groups["G10"] for lid in groups["G5"]):
+            groups["G10"] = _stabilize_group(ranked_latents_full, groups["G5"] + groups["G10"], 10)
+        if any(lid not in groups["G20"] for lid in groups["G10"]):
+            groups["G20"] = _stabilize_group(ranked_latents_full, groups["G10"] + groups["G20"], 20)
+        G1, G5, G10, G20 = groups["G1"], groups["G5"], groups["G10"], groups["G20"]
         print(f"  Using stabilized groups -> G5={G5}")
+        print(f"  Using stabilized groups -> G10={G10}")
         print(f"  Using stabilized groups -> G20={G20}")
 
     # ── Train RE probe ──
@@ -1337,9 +1348,9 @@ def main():
           f"auc={baseline_eval['auc']:.3f}")
 
     # ── Build controls ──
-    W_dec = sae.W_dec.detach().cpu()
+    g20_decoder_vectors = sae.decoder_vectors_raw(G20).detach().cpu()
     g20_weights = _normalise_probe_weights(probe, G20)
-    steering_dir = make_steering_direction(W_dec, G20, g20_weights)
+    steering_dir = make_steering_direction(g20_decoder_vectors, g20_weights)
 
     orth_dir   = make_orthogonal_direction(steering_dir)
     random_dir = make_random_direction(steering_dir.shape[0], steering_dir.dtype, steering_dir.device)
@@ -1391,6 +1402,7 @@ def main():
     probe_weights = {
         "G1":  _normalise_probe_weights(probe, G1),
         "G5":  _normalise_probe_weights(probe, G5),
+        "G10": _normalise_probe_weights(probe, G10),
         "G20": g20_weights,
     }
     sufficiency_results = run_sufficiency_experiment(
@@ -1435,7 +1447,7 @@ def main():
         print(f"  Saved {p}")
 
     _save({
-        "G1": G1, "G5": G5, "G20": G20,
+        "G1": G1, "G5": G5, "G10": G10, "G20": G20,
         "stability": stability,
         "ranked_latents": ranked_df["latent_idx"].tolist(),
         "probe_baseline": baseline_eval,
@@ -1494,7 +1506,7 @@ def build_pooling_comparison_summary(
         group_results = payload["group"]
 
         lambda_key = None
-        for group_name in ["G1", "G5", "G20"]:
+        for group_name in GROUP_NAMES:
             lambda_key = _nearest_lambda_key(
                 sufficiency.get(group_name, {}).get("cond_token", {}),
                 target_lambda=target_lambda,
@@ -1503,7 +1515,7 @@ def build_pooling_comparison_summary(
                 break
 
         necessity_groups = {}
-        for group_name in ["G1", "G5", "G20"]:
+        for group_name in GROUP_NAMES:
             group_payload = necessity.get(group_name, {})
             necessity_groups[group_name] = {
                 "zero": group_payload.get("zero", {}),
@@ -1511,7 +1523,7 @@ def build_pooling_comparison_summary(
             }
 
         sufficiency_groups = {}
-        for group_name in ["G1", "G5", "G20"]:
+        for group_name in GROUP_NAMES:
             group_payload = sufficiency.get(group_name, {}).get("cond_token", {})
             sufficiency_groups[group_name] = {
                 "lambda_key": lambda_key,
@@ -1519,7 +1531,7 @@ def build_pooling_comparison_summary(
             }
 
         selectivity_groups = {}
-        for group_name in ["G1", "G5", "G20"]:
+        for group_name in GROUP_NAMES:
             group_payload = side_effects.get("groups", {}).get(group_name, {})
             selectivity_groups[group_name] = {
                 "mean_generated_re_logit_delta": group_payload.get("mean_generated_re_logit_delta"),
@@ -1537,9 +1549,7 @@ def build_pooling_comparison_summary(
                 "auc": payload["probe_baseline"].get("auc"),
             },
             "selected_groups": {
-                "G1": selected.get("G1", []),
-                "G5": selected.get("G5", []),
-                "G20": selected.get("G20", []),
+                **{group_name: selected.get(group_name, []) for group_name in GROUP_NAMES},
             },
             "necessity": necessity_groups,
             "sufficiency": sufficiency_groups,
@@ -1553,7 +1563,7 @@ def build_pooling_comparison_summary(
 
     def _necessity_strength(item: dict[str, Any]) -> float:
         vals = []
-        for group_name in ["G1", "G5", "G20"]:
+        for group_name in GROUP_NAMES:
             val = item["necessity"][group_name]["cond_token"].get("mean_delta_re")
             if isinstance(val, (int, float)):
                 vals.append(abs(float(val)))
@@ -1561,7 +1571,7 @@ def build_pooling_comparison_summary(
 
     def _sufficiency_strength(item: dict[str, Any]) -> float:
         vals = []
-        for group_name in ["G1", "G5", "G20"]:
+        for group_name in GROUP_NAMES:
             val = item["sufficiency"][group_name]["delta"].get("mean_delta_re")
             if isinstance(val, (int, float)):
                 vals.append(float(val))
@@ -1570,7 +1580,7 @@ def build_pooling_comparison_summary(
     def _side_effect_score(item: dict[str, Any]) -> tuple[float, float]:
         retentions = []
         repeat_shifts = []
-        for group_name in ["G1", "G5", "G20"]:
+        for group_name in GROUP_NAMES:
             quality = item["selectivity"]["groups"][group_name]["quality"]
             retention = quality.get("mean_content_retention")
             repeat_shift = quality.get("delta_bigram_repetition")
@@ -1623,14 +1633,15 @@ def generate_pooling_comparison_report(
     lines = ["# Pooling Comparison", ""]
     lines.append("## Overview")
     lines.append("")
-    lines.append("| Pooling | Probe AUC | Necessity (G20 cond-token) | Sufficiency (G20 cond-token) | Retention | Synergy |")
+    lines.append(f"| Pooling | Probe AUC | Necessity ({PRIMARY_GROUP_NAME} cond-token) | Sufficiency ({PRIMARY_GROUP_NAME} cond-token) | Retention | Synergy |")
     lines.append("| --- | --- | --- | --- | --- | --- |")
 
     for pooling_method in comparison.get("pooling_order", []):
         run = comparison["runs"][pooling_method]
-        necessity_g20 = run["necessity"]["G20"]["cond_token"].get("mean_delta_re")
-        sufficiency_g20 = run["sufficiency"]["G20"]["delta"].get("mean_delta_re")
-        retention_g20 = run["selectivity"]["groups"]["G20"]["quality"].get("mean_content_retention")
+        summary_group = PRIMARY_GROUP_NAME if PRIMARY_GROUP_NAME in run["necessity"] else "G20"
+        necessity_g20 = run["necessity"][summary_group]["cond_token"].get("mean_delta_re")
+        sufficiency_g20 = run["sufficiency"][summary_group]["delta"].get("mean_delta_re")
+        retention_g20 = run["selectivity"]["groups"][summary_group]["quality"].get("mean_content_retention")
         synergy = run["group"]["synergy"].get("synergy_score")
         lines.append(
             "| "
@@ -1690,11 +1701,12 @@ def _run_single_pooling_experiment(
     re_feats = all_feats[:n_re]
     nonre_feats = all_feats[n_re:]
 
-    print("[5/8] Ranking latents (G1/G5/G20)...")
+    print("[5/8] Ranking latents (G1/G5/G10/G20)...")
     ranking = rank_latents(candidate_df, re_feats, nonre_feats, top_k=20)
-    G1, G5, G20 = ranking["G1"], ranking["G5"], ranking["G20"]
+    G1, G5, G10, G20 = ranking["G1"], ranking["G5"], ranking["G10"], ranking["G20"]
     ranked_df = ranking["ranked_df"]
     print(f"  G1={G1}  G5={G5}")
+    print(f"  G10={G10}")
     print(f"  G20={G20}")
 
     stability = {}
@@ -1704,21 +1716,27 @@ def _run_single_pooling_experiment(
             re_feats, nonre_feats, candidate_df, n_seeds=args.n_bootstrap
         )
         print(f"  Stable G5:  {stability['stable_G5']}")
+        print(f"  Stable G10: {stability['stable_G10']}")
         print(f"  Stable G20: {stability['stable_G20']}")
 
-    groups = {"G1": G1, "G5": G5, "G20": G20}
+    groups = {"G1": G1, "G5": G5, "G10": G10, "G20": G20}
     if stability:
         ranked_latents_full = ranked_df["latent_idx"].astype(int).tolist()
         if stability.get("stable_G5"):
             groups["G5"] = _stabilize_group(ranked_latents_full, stability["stable_G5"], 5)
+        if stability.get("stable_G10"):
+            groups["G10"] = _stabilize_group(ranked_latents_full, stability["stable_G10"], 10)
         if stability.get("stable_G20"):
             groups["G20"] = _stabilize_group(ranked_latents_full, stability["stable_G20"], 20)
         if groups["G1"] and groups["G1"][0] not in groups["G5"]:
             groups["G5"] = _stabilize_group(ranked_latents_full, groups["G1"] + groups["G5"], 5)
-        if groups["G1"] and groups["G1"][0] not in groups["G20"]:
-            groups["G20"] = _stabilize_group(ranked_latents_full, groups["G1"] + groups["G20"], 20)
-        G1, G5, G20 = groups["G1"], groups["G5"], groups["G20"]
+        if any(lid not in groups["G10"] for lid in groups["G5"]):
+            groups["G10"] = _stabilize_group(ranked_latents_full, groups["G5"] + groups["G10"], 10)
+        if any(lid not in groups["G20"] for lid in groups["G10"]):
+            groups["G20"] = _stabilize_group(ranked_latents_full, groups["G10"] + groups["G20"], 20)
+        G1, G5, G10, G20 = groups["G1"], groups["G5"], groups["G10"], groups["G20"]
         print(f"  Using stabilized groups -> G5={G5}")
+        print(f"  Using stabilized groups -> G10={G10}")
         print(f"  Using stabilized groups -> G20={G20}")
 
     print("[6/8] Training RE probe...")
@@ -1726,9 +1744,9 @@ def _run_single_pooling_experiment(
     baseline_eval = probe.evaluate(all_feats, true_labels)
     print(f"  Probe baseline: acc={baseline_eval['accuracy']:.3f}, auc={baseline_eval['auc']:.3f}")
 
-    W_dec = sae.W_dec.detach().cpu()
+    g20_decoder_vectors = sae.decoder_vectors_raw(G20).detach().cpu()
     g20_weights = _normalise_probe_weights(probe, G20)
-    steering_dir = make_steering_direction(W_dec, G20, g20_weights)
+    steering_dir = make_steering_direction(g20_decoder_vectors, g20_weights)
     orth_dir = make_orthogonal_direction(steering_dir)
     random_dir = make_random_direction(steering_dir.shape[0], steering_dir.dtype, steering_dir.device)
     orth_dir = orth_dir / (orth_dir.norm() + 1e-8) * steering_dir.norm()
@@ -1777,6 +1795,7 @@ def _run_single_pooling_experiment(
     probe_weights = {
         "G1": _normalise_probe_weights(probe, G1),
         "G5": _normalise_probe_weights(probe, G5),
+        "G10": _normalise_probe_weights(probe, G10),
         "G20": g20_weights,
     }
     sufficiency_results = run_sufficiency_experiment(
@@ -1823,8 +1842,10 @@ def _run_single_pooling_experiment(
     selected_payload = {
         "pooling_method": pooling_method,
         "binarized_threshold": binarized_threshold,
+        "sae_inference_mode": getattr(sae, "runtime_inference_mode", "legacy"),
         "G1": G1,
         "G5": G5,
+        "G10": G10,
         "G20": G20,
         "stability": stability,
         "ranked_latents": ranked_df["latent_idx"].tolist(),
@@ -1834,21 +1855,25 @@ def _run_single_pooling_experiment(
     _save_json(output_dir / "results_necessity.json", {
         "pooling_method": pooling_method,
         "binarized_threshold": binarized_threshold,
+        "sae_inference_mode": getattr(sae, "runtime_inference_mode", "legacy"),
         **necessity_results,
     })
     _save_json(output_dir / "results_sufficiency.json", {
         "pooling_method": pooling_method,
         "binarized_threshold": binarized_threshold,
+        "sae_inference_mode": getattr(sae, "runtime_inference_mode", "legacy"),
         **sufficiency_results,
     })
     _save_json(output_dir / "results_selectivity.json", {
         "pooling_method": pooling_method,
         "binarized_threshold": binarized_threshold,
+        "sae_inference_mode": getattr(sae, "runtime_inference_mode", "legacy"),
         **side_effect_results,
     })
     _save_json(output_dir / "results_group.json", {
         "pooling_method": pooling_method,
         "binarized_threshold": binarized_threshold,
+        "sae_inference_mode": getattr(sae, "runtime_inference_mode", "legacy"),
         **group_results,
     })
 
@@ -1863,6 +1888,7 @@ def _run_single_pooling_experiment(
     return {
         "pooling_method": pooling_method,
         "binarized_threshold": binarized_threshold,
+        "sae_inference_mode": getattr(sae, "runtime_inference_mode", "legacy"),
         "selected_groups": selected_payload,
         "probe_baseline": baseline_eval,
         "necessity": necessity_results,
@@ -1895,6 +1921,12 @@ def parse_args():
     p.add_argument("--sentence-pooling", choices=POOLING_COMPARE_METHODS, default="max")
     p.add_argument("--compare-pooling", action="store_true")
     p.add_argument("--binarized-threshold", type=float, default=0.0)
+    p.add_argument(
+        "--sae-inference-mode",
+        choices=["legacy", "aligned_datasetwise"],
+        default=None,
+        help="Override the SAE runtime inference mode.",
+    )
     p.add_argument("--skip-group-structure", action="store_true")
     p.add_argument("--skip-side-effects", action="store_true")
     p.add_argument("--side-effect-max-samples", type=int, default=16)
@@ -1916,6 +1948,7 @@ def main():
     with open(sae_config_path, "r", encoding="utf-8") as f:
         sae_config = json.load(f)
     hook_point = sae_config["hook_point"]
+    sae_inference_mode = args.sae_inference_mode or sae_config.get("sae_inference_mode", "legacy")
 
     device = torch.device(args.device) if args.device else (
         torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
@@ -1932,6 +1965,7 @@ def main():
         repo_id=sae_config["sae_repo_id"],
         subfolder=sae_config["sae_subfolder"],
         device=device, dtype=torch.bfloat16,
+        runtime_inference_mode=sae_inference_mode,
     )
 
     print("[3/8] Loading dataset...")

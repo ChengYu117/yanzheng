@@ -76,6 +76,7 @@ def extract_and_process_streaming(
     device: str | torch.device | None = None,
     collect_structural_samples: int = 5,
     structural_accumulator: Optional[Any] = None,
+    normalized_structural_accumulator: Optional[Any] = None,
 ) -> dict[str, Any]:
     """Extract activations, run SAE, and aggregate — all in streaming fashion.
 
@@ -100,6 +101,8 @@ def extract_and_process_streaming(
             eval_structural. When provided, receives every batch's token-level
             data and computes metrics over the full dataset at O(1) memory.
             When None, falls back to legacy sample-based approach.
+        normalized_structural_accumulator: Optional OnlineStructuralAccumulator
+            used for normalized-space structural metrics.
 
     Returns:
         Dictionary with:
@@ -107,6 +110,8 @@ def extract_and_process_streaming(
             'utterance_activations': [N, d_model]  (aggregated raw activations)
             'sample_activations': [S, T, d_model]  (small sample for structural)
             'sample_reconstructed': [S, T, d_model]
+            'sample_activations_normalized': [S, T, d_model]
+            'sample_reconstructed_normalized': [S, T, d_model]
             'sample_latents': [S, T, d_sae]
             'sample_mask': [S, T]
     """
@@ -128,6 +133,8 @@ def extract_and_process_streaming(
     # Small sample of full token-level data for structural metrics
     sample_acts = []
     sample_recon = []
+    sample_acts_normalized = []
+    sample_recon_normalized = []
     sample_latents = []
     sample_masks = []
     samples_collected = 0
@@ -163,11 +170,13 @@ def extract_and_process_streaming(
             # ── Step 2: SAE forward (with dtype alignment) ──
             sae_input = batch_activations.to(device=sae_device, dtype=sae_dtype)
             with torch.inference_mode():
-                batch_recon, batch_latents = sae(sae_input)
+                sae_details = sae.forward_with_details(sae_input)
 
             # Move results to CPU immediately to free GPU memory
-            batch_latents_cpu = batch_latents.cpu().float()
-            batch_recon_cpu = batch_recon.cpu().float()
+            batch_latents_cpu = sae_details["latents"].cpu().float()
+            batch_recon_cpu = sae_details["reconstructed_raw"].cpu().float()
+            batch_acts_normalized_cpu = sae_details["input_normalized"].cpu().float()
+            batch_recon_normalized_cpu = sae_details["reconstructed_normalized"].cpu().float()
             batch_acts_cpu = batch_activations.cpu().float()
             batch_mask_cpu = batch_mask.cpu()
 
@@ -196,18 +205,28 @@ def extract_and_process_streaming(
                     latents=batch_latents_cpu,
                     mask=batch_mask_cpu,
                 )
+            if normalized_structural_accumulator is not None:
+                normalized_structural_accumulator.update(
+                    z=batch_acts_normalized_cpu,
+                    z_hat=batch_recon_normalized_cpu,
+                    latents=batch_latents_cpu,
+                    mask=batch_mask_cpu,
+                )
 
             # ── Step 4b: Legacy sample collection (first N batches only) ──
             if samples_collected < collect_structural_samples:
                 sample_acts.append(batch_acts_cpu.clone())
                 sample_recon.append(batch_recon_cpu.clone())
+                sample_acts_normalized.append(batch_acts_normalized_cpu.clone())
+                sample_recon_normalized.append(batch_recon_normalized_cpu.clone())
                 sample_latents.append(batch_latents_cpu.clone())
                 sample_masks.append(batch_mask_cpu.clone())
                 samples_collected += 1
 
             # Explicitly free batch tensors
-            del batch_activations, sae_input, batch_recon, batch_latents
+            del batch_activations, sae_input, sae_details
             del batch_latents_cpu, batch_recon_cpu, batch_acts_cpu
+            del batch_acts_normalized_cpu, batch_recon_normalized_cpu
             if torch.cuda.is_available():
                 torch.cuda.empty_cache()
 
@@ -217,12 +236,21 @@ def extract_and_process_streaming(
     # ── Pad structural samples to uniform seq len and cat ──
     sample_activations, sample_reconstructed, sample_lat, sample_msk = \
         _pad_and_cat_samples(sample_acts, sample_recon, sample_latents, sample_masks)
+    sample_activations_normalized, sample_reconstructed_normalized, _, _ = \
+        _pad_and_cat_samples(
+            sample_acts_normalized,
+            sample_recon_normalized,
+            sample_latents,
+            sample_masks,
+        )
 
     return {
         "utterance_features": torch.cat(all_utterance_features, dim=0),       # [N, d_sae]
         "utterance_activations": torch.cat(all_utterance_activations, dim=0), # [N, d_model]
         "sample_activations": sample_activations,      # [S, T, d_model]
         "sample_reconstructed": sample_reconstructed,   # [S, T, d_model]
+        "sample_activations_normalized": sample_activations_normalized,      # [S, T, d_model]
+        "sample_reconstructed_normalized": sample_reconstructed_normalized,   # [S, T, d_model]
         "sample_latents": sample_lat,                   # [S, T, d_sae]
         "sample_mask": sample_msk,                      # [S, T]
     }

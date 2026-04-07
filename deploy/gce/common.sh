@@ -8,7 +8,7 @@ ENV_FILE="${ENV_FILE:-${SCRIPT_DIR}/.env}"
 load_gce_env() {
   if [[ ! -f "${ENV_FILE}" ]]; then
     echo "Missing environment file: ${ENV_FILE}" >&2
-    echo "Copy deploy/gce/env.example to deploy/gce/.env and fill in your values." >&2
+    echo "Run: bash deploy/gce/configure_env.sh --hf-token <YOUR_TOKEN>" >&2
     exit 1
   fi
 
@@ -30,13 +30,19 @@ load_gce_env() {
   : "${CAUSAL_OUTPUT_DIR:=${OUTPUT_ROOT}/causal_validation_full}"
   : "${SAE_BATCH_SIZE:=4}"
   : "${SAE_MAX_SEQ_LEN:=128}"
+  : "${SAE_INFERENCE_MODE:=legacy}"
+  : "${SAE_COMPARE_MEAN:=0}"
   : "${CAUSAL_BATCH_SIZE:=4}"
   : "${CAUSAL_MAX_SEQ_LEN:=128}"
+  : "${CAUSAL_N_BOOTSTRAP:=10}"
+  : "${CAUSAL_SIDE_EFFECT_MAX_SAMPLES:=16}"
 
   export SCRIPT_DIR PROJECT_ROOT DATA_ROOT MODEL_DIR HF_HOME OUTPUT_ROOT
   export VENV_DIR PYTHON_BIN PYTORCH_INDEX_URL MODEL_HF_REPO_ID MODEL_REVISION
   export SAE_OUTPUT_DIR CAUSAL_OUTPUT_DIR SAE_BATCH_SIZE SAE_MAX_SEQ_LEN
-  export CAUSAL_BATCH_SIZE CAUSAL_MAX_SEQ_LEN
+  export SAE_INFERENCE_MODE SAE_COMPARE_MEAN
+  export CAUSAL_BATCH_SIZE CAUSAL_MAX_SEQ_LEN CAUSAL_N_BOOTSTRAP
+  export CAUSAL_SIDE_EFFECT_MAX_SAMPLES
 }
 
 activate_venv() {
