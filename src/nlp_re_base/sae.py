@@ -104,16 +104,21 @@ class SparseAutoencoder(nn.Module):
         )
 
     def normalize_model_input(self, x: torch.Tensor) -> torch.Tensor:
-        """Normalize model-space activations according to the runtime inference mode."""
-        if self.runtime_inference_mode == "aligned_datasetwise":
-            factor = self._datasetwise_input_factor(device=x.device, dtype=x.dtype)
-            return x * factor
-        return self._legacy_normalize(x)
+        """Normalize model-space activations using dataset-wise normalization.
+
+        Always uses dataset-wise normalization (fixed scalar factor) to match
+        the normalization used during SAE training.  The previous per-token
+        legacy normalization was incorrect for OpenMOSS LXR checkpoints.
+        """
+        factor = self._datasetwise_input_factor(device=x.device, dtype=x.dtype)
+        return x * factor
 
     def denormalize_model_output(self, x_hat: torch.Tensor) -> torch.Tensor:
-        """Project a normalized reconstruction back to raw residual space."""
-        if self.runtime_inference_mode != "aligned_datasetwise":
-            return x_hat
+        """Project a normalized reconstruction back to raw residual space.
+
+        Always applies denormalization so that the output is in the same
+        coordinate space as the original model activations.
+        """
         factor = self._datasetwise_output_factor(device=x_hat.device, dtype=x_hat.dtype)
         return x_hat / factor
 
@@ -137,7 +142,7 @@ class SparseAutoencoder(nn.Module):
 
     def _encode_from_normalized(self, x_normed: torch.Tensor) -> torch.Tensor:
         pre_activation = (x_normed - self.b_pre) @ self.W_enc.T + self.b_enc
-        if self.runtime_inference_mode == "aligned_datasetwise" and self.sparsity_include_decoder_norm:
+        if self.sparsity_include_decoder_norm:
             decoder_norm = self.decoder_norm().to(device=pre_activation.device, dtype=pre_activation.dtype)
             scaled_pre_activation = pre_activation * decoder_norm
             feature_acts = self.activation(scaled_pre_activation) / decoder_norm
@@ -208,14 +213,10 @@ class SparseAutoencoder(nn.Module):
             x: Input activations [..., d_model]
 
         Returns:
-            x_hat: Reconstructed activations [..., d_model]
+            x_hat: Reconstructed activations [..., d_model] (raw space)
             latents: Sparse feature activations [..., d_sae]
         """
-        if self.runtime_inference_mode == "aligned_datasetwise":
-            return self.forward_raw(x)
-        latents = self.encode(x)
-        x_hat = self.decode(latents)
-        return x_hat, latents
+        return self.forward_raw(x)
 
 
 def load_sae_from_hub(
