@@ -19,6 +19,7 @@ import torch
 from tqdm import tqdm
 from transformers import PreTrainedModel, PreTrainedTokenizerBase
 
+from .model import is_transformer_lens_model
 from .sae import SparseAutoencoder
 
 
@@ -76,6 +77,7 @@ def extract_and_process_streaming(
     device: str | torch.device | None = None,
     collect_structural_samples: int = 5,
     structural_accumulator: Optional[Any] = None,
+    debug_collectors: Optional[dict[str, Any]] = None,
 ) -> dict[str, Any]:
     """Extract activations, run SAE, and aggregate — all in streaming fashion.
 
@@ -117,8 +119,6 @@ def extract_and_process_streaming(
     if device is None:
         device = next(model.parameters()).device
 
-    target_layer = model.model.layers[layer_idx]
-
     # Determine SAE dtype for alignment
     sae_dtype = getattr(sae, "sae_dtype", next(sae.parameters()).dtype)
     sae_device = next(sae.parameters()).device
@@ -137,14 +137,17 @@ def extract_and_process_streaming(
     samples_collected = 0
 
     captured: dict[str, Any] = {}
+    handle = None
+    if not is_transformer_lens_model(model):
+        target_layer = model.model.layers[layer_idx]
 
-    def _hook_fn(module, input, output):
-        if isinstance(output, tuple):
-            captured["hidden_states"] = output[0].detach()
-        else:
-            captured["hidden_states"] = output.detach()
+        def _hook_fn(module, input, output):
+            if isinstance(output, tuple):
+                captured["hidden_states"] = output[0].detach()
+            else:
+                captured["hidden_states"] = output.detach()
 
-    handle = target_layer.register_forward_hook(_hook_fn)
+        handle = target_layer.register_forward_hook(_hook_fn)
 
     try:
         for start_idx in tqdm(
@@ -158,11 +161,20 @@ def extract_and_process_streaming(
             batch_mask = encoded["attention_mask"]
 
             # ── Step 1: Extract activations ──
-            with torch.inference_mode():
-                _ = model(**encoded)
-
-            # hidden_states is [B, T, d_model] on model device
-            batch_activations = captured["hidden_states"]  # keep on device
+            if is_transformer_lens_model(model):
+                with torch.inference_mode():
+                    _, cache = model.run_with_cache(
+                        encoded["input_ids"],
+                        attention_mask=batch_mask,
+                        return_type="logits",
+                        return_cache_object=False,
+                        names_filter=lambda name: name == hook_point,
+                    )
+                batch_activations = cache[hook_point].detach()
+            else:
+                with torch.inference_mode():
+                    _ = model(**encoded)
+                batch_activations = captured["hidden_states"]
 
             # ── Step 2: SAE forward (with dtype alignment) ──
             sae_input = batch_activations.to(device=sae_device, dtype=sae_dtype)
@@ -176,6 +188,9 @@ def extract_and_process_streaming(
             batch_acts_cpu = batch_activations.cpu().float()
             batch_acts_normed_cpu = sae_outputs["input_normalized"].cpu().float()
             batch_mask_cpu = batch_mask.cpu()
+            batch_scale_cpu = sae_outputs.get("input_scale_factor")
+            if batch_scale_cpu is not None:
+                batch_scale_cpu = batch_scale_cpu.detach().cpu().float()
 
             # ── Step 3: Aggregate to utterance level ──
             utt_features = _aggregate_batch(
@@ -199,9 +214,11 @@ def extract_and_process_streaming(
                 if isinstance(structural_accumulator, dict):
                     raw_acc = structural_accumulator.get("raw")
                     norm_acc = structural_accumulator.get("normalized")
+                    official_acc = structural_accumulator.get("official")
                 else:
                     raw_acc = structural_accumulator
                     norm_acc = None
+                    official_acc = None
                 raw_acc.update(
                     z=batch_acts_cpu,
                     z_hat=batch_recon_cpu,
@@ -214,6 +231,34 @@ def extract_and_process_streaming(
                         z_hat=batch_recon_normed_cpu,
                         latents=batch_latents_cpu,
                         mask=batch_mask_cpu,
+                    )
+                if official_acc is not None:
+                    official_acc.update(
+                        z=batch_acts_cpu,
+                        z_hat=batch_recon_cpu,
+                        latents=batch_latents_cpu,
+                        mask=batch_mask_cpu,
+                    )
+
+            if debug_collectors is not None:
+                raw_debug = debug_collectors.get("raw")
+                if raw_debug is not None:
+                    raw_debug.update(
+                        batch_index=start_idx // batch_size,
+                        z=batch_acts_cpu,
+                        z_hat=batch_recon_cpu,
+                        mask=batch_mask_cpu,
+                        input_scale_factor=batch_scale_cpu,
+                        normalized_reference=batch_acts_normed_cpu,
+                    )
+                norm_debug = debug_collectors.get("normalized")
+                if norm_debug is not None:
+                    norm_debug.update(
+                        batch_index=start_idx // batch_size,
+                        z=batch_acts_normed_cpu,
+                        z_hat=batch_recon_normed_cpu,
+                        mask=batch_mask_cpu,
+                        input_scale_factor=batch_scale_cpu,
                     )
 
             # ── Step 4b: Legacy sample collection (first N batches only) ──
@@ -234,7 +279,8 @@ def extract_and_process_streaming(
                 torch.cuda.empty_cache()
 
     finally:
-        handle.remove()
+        if handle is not None:
+            handle.remove()
 
     # ── Pad structural samples to uniform seq len and cat ──
     sample_activations, sample_reconstructed, sample_lat, sample_msk = \

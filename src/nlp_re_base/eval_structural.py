@@ -20,6 +20,7 @@ import torch.nn.functional as F
 from tqdm import tqdm
 from transformers import PreTrainedModel, PreTrainedTokenizerBase
 
+from .model import is_transformer_lens_model
 from .sae import SparseAutoencoder
 
 
@@ -51,6 +52,7 @@ class OnlineStructuralAccumulator:
         self._count_w: int = 0
         self._mean_z: torch.Tensor | None = None     # (d_model,)
         self._M2_z: torch.Tensor | None = None       # (d_model,)
+        self._energy_sum: float = 0.0
 
         # L0 accumulator
         self._l0_sum: float = 0.0
@@ -87,6 +89,7 @@ class OnlineStructuralAccumulator:
 
         # ── MSE ──
         self._mse_sum += float((r_flat ** 2).sum())
+        self._energy_sum += float((z_flat ** 2).sum())
         self._n_tokens += m
 
         # ── Cosine similarity ──
@@ -145,6 +148,12 @@ class OnlineStructuralAccumulator:
             fvu = sse / sst
             ev  = 1.0 - fvu
 
+        total_energy = self._energy_sum
+        if total_energy < 1e-12:
+            paper_ev = 1.0 if sse < 1e-12 else 0.0
+        else:
+            paper_ev = 1.0 - (sse / total_energy)
+
         # Firing frequency
         freq_result: dict = {}
         if self._freq_sum is not None and self._freq_token_count > 0:
@@ -164,7 +173,11 @@ class OnlineStructuralAccumulator:
             "mse":                mse,
             "cosine_similarity":  cos,
             "explained_variance": ev,
+            "explained_variance_openmoss": ev,
+            "explained_variance_openmoss_legacy": None,
             "fvu":                fvu,
+            "explained_variance_paper": paper_ev,
+            "paper_ev_denominator_energy": total_energy,
             "l0_mean":            l0_mean,
             "l0_std":             l0_std,
             "n_tokens":           n,
@@ -172,7 +185,202 @@ class OnlineStructuralAccumulator:
         }
 
 
+class BatchEnergyDebugCollector:
+    """Collect per-batch reconstruction-energy diagnostics for space alignment."""
+
+    def __init__(self, *, space_id: str) -> None:
+        self.space_id = space_id
+        self.entries: list[dict[str, Any]] = []
+
+    def update(
+        self,
+        *,
+        batch_index: int,
+        z: torch.Tensor,
+        z_hat: torch.Tensor,
+        mask: torch.Tensor,
+        input_scale_factor: torch.Tensor | None = None,
+        normalized_reference: torch.Tensor | None = None,
+    ) -> None:
+        z_flat, z_hat_flat = _flatten_valid_tokens(z, z_hat, mask)
+        if z_flat.numel() == 0:
+            return
+
+        residual = z_flat - z_hat_flat
+        sse = float((residual ** 2).sum().item())
+        z_mean = z_flat.mean(dim=0, keepdim=True)
+        sst_centered = float(((z_flat - z_mean) ** 2).sum().item())
+        total_energy = float((z_flat ** 2).sum().item())
+        token_norm = z_flat.norm(p=2, dim=-1)
+
+        entry: dict[str, Any] = {
+            "batch_index": batch_index,
+            "space_id": self.space_id,
+            "n_tokens": int(z_flat.shape[0]),
+            "sse": sse,
+            "sst_centered": sst_centered,
+            "sum_x2": total_energy,
+            "openmoss_explained_variance": (
+                None if sst_centered < 1e-12 else 1.0 - (sse / sst_centered)
+            ),
+            "paper_explained_variance": (
+                None if total_energy < 1e-12 else 1.0 - (sse / total_energy)
+            ),
+            "mean_token_norm": float(token_norm.mean().item()),
+            "std_token_norm": float(token_norm.std(unbiased=False).item()),
+            "min_token_norm": float(token_norm.min().item()),
+            "max_token_norm": float(token_norm.max().item()),
+        }
+
+        if input_scale_factor is not None:
+            flat_mask = mask.bool().reshape(-1)
+            if input_scale_factor.ndim == 0:
+                scale_valid = input_scale_factor.expand(int(flat_mask.sum().item())).reshape(-1, 1)
+            elif input_scale_factor.ndim == 1:
+                scale_valid = input_scale_factor.reshape(-1, 1)
+            else:
+                flat_scale = input_scale_factor.reshape(-1, input_scale_factor.shape[-1])
+                scale_valid = flat_scale[flat_mask]
+            entry.update(
+                {
+                    "input_scale_factor_mean": float(scale_valid.mean().item()),
+                    "input_scale_factor_std": float(scale_valid.std(unbiased=False).item()),
+                    "input_scale_factor_min": float(scale_valid.min().item()),
+                    "input_scale_factor_max": float(scale_valid.max().item()),
+                }
+            )
+
+        if normalized_reference is not None:
+            z_norm_flat, _ = _flatten_valid_tokens(normalized_reference, normalized_reference, mask)
+            entry["mean_abs_x_minus_x_norm"] = float((z_flat - z_norm_flat).abs().mean().item())
+
+        self.entries.append(entry)
+
+    def result(self) -> list[dict[str, Any]]:
+        return self.entries
+
+
+class OfficialMetricsAccumulator:
+    """Approximate the official lm_saes evaluator aggregation protocol."""
+
+    def __init__(self) -> None:
+        self._explained_variance_sum = 0.0
+        self._explained_variance_batches = 0
+        self._explained_variance_legacy_sum = 0.0
+        self._explained_variance_legacy_batches = 0
+        self._l2_norm_error_sum = 0.0
+        self._l2_norm_error_batches = 0
+        self._l2_norm_error_ratio_sum = 0.0
+        self._l2_norm_error_ratio_batches = 0
+        self._mean_feature_act_sum = 0.0
+        self._mean_feature_act_batches = 0
+        self._l0_sum = 0.0
+        self._l0_weight = 0
+        self._act_freq_sum: torch.Tensor | None = None
+        self._act_freq_weight = 0
+
+    def update(
+        self,
+        *,
+        z: torch.Tensor,
+        z_hat: torch.Tensor,
+        latents: torch.Tensor,
+        mask: torch.Tensor,
+    ) -> None:
+        z_flat, z_hat_flat = _flatten_valid_tokens(z, z_hat, mask)
+        lat_flat = latents.reshape(-1, latents.shape[-1]).float()[mask.bool().reshape(-1)]
+        if z_flat.numel() == 0:
+            return
+
+        label_mean = z_flat.mean(dim=0, keepdim=True)
+        per_token_l2_loss = (z_hat_flat - z_flat).pow(2).sum(dim=-1)
+        total_variance = (z_flat - label_mean).pow(2).sum(dim=-1)
+
+        l2_loss_mean = float(per_token_l2_loss.mean().item())
+        total_variance_mean = float(total_variance.mean().item())
+        if total_variance_mean < 1e-12:
+            ev = 1.0 if l2_loss_mean < 1e-12 else 0.0
+        else:
+            ev = 1.0 - (l2_loss_mean / total_variance_mean)
+        legacy_ratio = torch.where(
+            total_variance > 1e-12,
+            1.0 - (per_token_l2_loss / total_variance),
+            torch.where(per_token_l2_loss < 1e-12, torch.ones_like(per_token_l2_loss), torch.zeros_like(per_token_l2_loss)),
+        )
+        ev_legacy = float(legacy_ratio.mean().item())
+        self._explained_variance_sum += ev
+        self._explained_variance_batches += 1
+        self._explained_variance_legacy_sum += ev_legacy
+        self._explained_variance_legacy_batches += 1
+
+        l2_norm_error = float((z_hat_flat - z_flat).pow(2).sum(dim=-1).sqrt().mean().item())
+        label_norm = float(z_flat.norm(p=2, dim=-1).mean().item())
+        self._l2_norm_error_sum += l2_norm_error
+        self._l2_norm_error_batches += 1
+        self._l2_norm_error_ratio_sum += (l2_norm_error / label_norm) if label_norm > 1e-12 else 0.0
+        self._l2_norm_error_ratio_batches += 1
+
+        positive = lat_flat[lat_flat > 0]
+        mean_feature_act = float(positive.mean().item()) if positive.numel() > 0 else 0.0
+        self._mean_feature_act_sum += mean_feature_act
+        self._mean_feature_act_batches += 1
+
+        l0 = float((lat_flat > 0).float().sum(dim=-1).mean().item())
+        n_tokens = int(z_flat.shape[0])
+        self._l0_sum += l0 * n_tokens
+        self._l0_weight += n_tokens
+
+        act_freq_scores = (lat_flat > 0).float().sum(dim=0)
+        if self._act_freq_sum is None:
+            self._act_freq_sum = torch.zeros_like(act_freq_scores, dtype=torch.float64)
+        self._act_freq_sum += act_freq_scores.to(torch.float64)
+        self._act_freq_weight += n_tokens
+
+    def result(self) -> dict[str, Any]:
+        if self._explained_variance_batches == 0:
+            return {}
+
+        freq = (
+            self._act_freq_sum / max(self._act_freq_weight, 1)
+            if self._act_freq_sum is not None
+            else torch.empty(0, dtype=torch.float64)
+        )
+        return {
+            "metrics/explained_variance": self._explained_variance_sum / max(self._explained_variance_batches, 1),
+            "metrics/explained_variance_legacy": self._explained_variance_legacy_sum / max(self._explained_variance_legacy_batches, 1),
+            "metrics/l2_norm_error": self._l2_norm_error_sum / max(self._l2_norm_error_batches, 1),
+            "metrics/l2_norm_error_ratio": self._l2_norm_error_ratio_sum / max(self._l2_norm_error_ratio_batches, 1),
+            "metrics/mean_feature_act": self._mean_feature_act_sum / max(self._mean_feature_act_batches, 1),
+            "metrics/l0": self._l0_sum / max(self._l0_weight, 1),
+            "sparsity/above_1e-1": int((freq > 1e-1).sum().item()),
+            "sparsity/above_1e-2": int((freq > 1e-2).sum().item()),
+            "sparsity/below_1e-5": int((freq < 1e-5).sum().item()),
+            "sparsity/below_1e-6": int((freq < 1e-6).sum().item()),
+            "sparsity/below_1e-7": int((freq < 1e-7).sum().item()),
+        }
+
+
 # ──────────────────────────── Token-level metrics ────────────────────────────
+
+def _flatten_valid_tokens(
+    z: torch.Tensor,
+    z_hat: torch.Tensor,
+    mask: torch.Tensor | None = None,
+) -> tuple[torch.Tensor, torch.Tensor]:
+    """Flatten activations to [M, d_model], respecting an optional token mask."""
+    if z.dim() == 3:
+        if mask is not None:
+            flat_mask = mask.bool().reshape(-1)
+            z_flat = z.reshape(-1, z.shape[-1])[flat_mask]
+            z_hat_flat = z_hat.reshape(-1, z_hat.shape[-1])[flat_mask]
+        else:
+            z_flat = z.reshape(-1, z.shape[-1])
+            z_hat_flat = z_hat.reshape(-1, z_hat.shape[-1])
+    else:
+        z_flat = z.reshape(-1, z.shape[-1])
+        z_hat_flat = z_hat.reshape(-1, z_hat.shape[-1])
+    return z_flat, z_hat_flat
+
 
 def compute_mse(
     z: torch.Tensor,
@@ -247,13 +455,7 @@ def compute_explained_variance(
     Returns:
         {'explained_variance': float, 'fvu': float}
     """
-    if z.dim() == 3 and mask is not None:
-        flat_mask = mask.bool().reshape(-1)
-        z_flat = z.reshape(-1, z.shape[-1])[flat_mask]
-        z_hat_flat = z_hat.reshape(-1, z_hat.shape[-1])[flat_mask]
-    else:
-        z_flat = z.reshape(-1, z.shape[-1])
-        z_hat_flat = z_hat.reshape(-1, z_hat.shape[-1])
+    z_flat, z_hat_flat = _flatten_valid_tokens(z, z_hat, mask)
 
     # SSE per dimension: Σᵢ (zᵢⱼ - ẑᵢⱼ)²
     sse_per_dim = ((z_flat - z_hat_flat) ** 2).sum(dim=0)  # [d]
@@ -272,6 +474,68 @@ def compute_explained_variance(
     return {"explained_variance": ev, "fvu": fvu}
 
 
+def compute_explained_variance_openmoss(
+    z: torch.Tensor,
+    z_hat: torch.Tensor,
+    mask: torch.Tensor | None = None,
+) -> dict[str, float]:
+    """OpenMOSS lm-saes EV implementation.
+
+    Official metric:
+      explained_variance = 1 - mean(per_token_l2_loss) / mean(total_variance)
+
+    Official legacy metric:
+      explained_variance_legacy = mean(1 - per_token_l2_loss / total_variance)
+    """
+    z_flat, z_hat_flat = _flatten_valid_tokens(z, z_hat, mask)
+    if z_flat.shape[0] == 0:
+        return {
+            "explained_variance_openmoss": 0.0,
+            "explained_variance_openmoss_legacy": 0.0,
+        }
+
+    label_mean = z_flat.mean(dim=0, keepdim=True)
+    per_token_l2_loss = (z_hat_flat - z_flat).pow(2).sum(dim=-1)
+    total_variance = (z_flat - label_mean).pow(2).sum(dim=-1)
+
+    l2_loss_mean = per_token_l2_loss.mean()
+    total_variance_mean = total_variance.mean()
+    if float(total_variance_mean.item()) < 1e-12:
+        explained_variance = 1.0 if float(l2_loss_mean.item()) < 1e-12 else 0.0
+    else:
+        explained_variance = 1.0 - float((l2_loss_mean / total_variance_mean).item())
+
+    safe_ratio = torch.where(
+        total_variance > 1e-12,
+        1.0 - (per_token_l2_loss / total_variance),
+        torch.where(per_token_l2_loss < 1e-12, torch.ones_like(per_token_l2_loss), torch.zeros_like(per_token_l2_loss)),
+    )
+    explained_variance_legacy = float(safe_ratio.mean().item())
+    return {
+        "explained_variance_openmoss": explained_variance,
+        "explained_variance_openmoss_legacy": explained_variance_legacy,
+    }
+
+
+def compute_explained_variance_paper(
+    z: torch.Tensor,
+    z_hat: torch.Tensor,
+    mask: torch.Tensor | None = None,
+) -> dict[str, float]:
+    """Llama Scope paper EV: 1 - sum((z - z_hat)^2) / sum(z^2)."""
+    z_flat, z_hat_flat = _flatten_valid_tokens(z, z_hat, mask)
+    sse = ((z_flat - z_hat_flat) ** 2).sum().item()
+    total_energy = (z_flat ** 2).sum().item()
+    if total_energy < 1e-12:
+        ev = 1.0 if sse < 1e-12 else 0.0
+    else:
+        ev = 1.0 - (sse / total_energy)
+    return {
+        "explained_variance_paper": ev,
+        "paper_ev_denominator_energy": total_energy,
+    }
+
+
 def compute_reconstruction_metrics(
     z: torch.Tensor,
     z_hat: torch.Tensor,
@@ -282,6 +546,8 @@ def compute_reconstruction_metrics(
         "mse": compute_mse(z, z_hat, mask),
         "cosine_similarity": compute_cosine_similarity(z, z_hat, mask),
         **compute_explained_variance(z, z_hat, mask),
+        **compute_explained_variance_openmoss(z, z_hat, mask),
+        **compute_explained_variance_paper(z, z_hat, mask),
     }
 
 
@@ -394,15 +660,16 @@ def compute_ce_kl_with_intervention(
     """
     from .activations import _parse_hook_point
 
-    layer_idx = _parse_hook_point(hook_point)
-    target_layer = model.model.layers[layer_idx]
     device = next(model.parameters()).device
     sae_device = next(sae.parameters()).device
     eval_texts = texts[:max_texts] if max_texts is not None else texts
 
     total_ce_orig = 0.0
     total_ce_sae = 0.0
+    total_ce_ablated = 0.0
     total_kl = 0.0
+    total_downstream_ratio = 0.0
+    downstream_ratio_batches = 0
     total_tokens = 0
 
     for start in tqdm(
@@ -423,22 +690,34 @@ def compute_ce_kl_with_intervention(
         labels[encoded["attention_mask"] == 0] = -100
 
         # ── Pass 1: Original ──
-        captured = {}
+        if is_transformer_lens_model(model):
+            with torch.inference_mode():
+                logits_orig, cache = model.run_with_cache(
+                    encoded["input_ids"],
+                    attention_mask=encoded["attention_mask"],
+                    return_type="logits",
+                    return_cache_object=False,
+                    names_filter=lambda name: name == hook_point,
+                )
+            original_hidden = cache[hook_point]
+        else:
+            layer_idx = _parse_hook_point(hook_point)
+            target_layer = model.model.layers[layer_idx]
+            captured = {}
 
-        def _capture_hook(module, input, output):
-            if isinstance(output, tuple):
-                captured["hidden"] = output[0]
-            else:
-                captured["hidden"] = output
+            def _capture_hook(module, input, output):
+                if isinstance(output, tuple):
+                    captured["hidden"] = output[0]
+                else:
+                    captured["hidden"] = output
 
-        handle = target_layer.register_forward_hook(_capture_hook)
-        with torch.inference_mode():
-            out_orig = model(**encoded, labels=labels)
-        handle.remove()
+            handle = target_layer.register_forward_hook(_capture_hook)
+            with torch.inference_mode():
+                out_orig = model(**encoded, labels=labels)
+            handle.remove()
 
-        logits_orig = out_orig.logits
-        ce_orig = out_orig.loss.item()
-        original_hidden = captured["hidden"]
+            logits_orig = out_orig.logits
+            original_hidden = captured["hidden"]
 
         # ── Pass 2: SAE intervention ──
         sae_dtype = getattr(sae, "sae_dtype", next(sae.parameters()).dtype)
@@ -451,24 +730,75 @@ def compute_ce_kl_with_intervention(
                 recon, _ = sae(sae_hidden)
         recon = recon.to(device=device, dtype=original_hidden.dtype)
 
-        def _replace_hook(module, input, output):
-            if isinstance(output, tuple):
-                return (recon,) + output[1:]
-            return recon
+        if is_transformer_lens_model(model):
+            def _replace_hook(activation, hook):
+                return recon
 
-        handle = target_layer.register_forward_hook(_replace_hook)
-        with torch.inference_mode():
-            out_sae = model(**encoded, labels=labels)
-        handle.remove()
+            with torch.inference_mode():
+                logits_sae = model.run_with_hooks(
+                    encoded["input_ids"],
+                    attention_mask=encoded["attention_mask"],
+                    return_type="logits",
+                    fwd_hooks=[(hook_point, _replace_hook)],
+                )
+            def _zero_hook(activation, hook):
+                return torch.zeros_like(activation)
+            with torch.inference_mode():
+                logits_ablated = model.run_with_hooks(
+                    encoded["input_ids"],
+                    attention_mask=encoded["attention_mask"],
+                    return_type="logits",
+                    fwd_hooks=[(hook_point, _zero_hook)],
+                )
+        else:
+            def _replace_hook(module, input, output):
+                if isinstance(output, tuple):
+                    return (recon,) + output[1:]
+                return recon
 
-        logits_sae = out_sae.logits
-        ce_sae = out_sae.loss.item()
+            handle = target_layer.register_forward_hook(_replace_hook)
+            with torch.inference_mode():
+                out_sae = model(**encoded, labels=labels)
+            handle.remove()
+
+            logits_sae = out_sae.logits
+
+            def _zero_hook(module, input, output):
+                zero = torch.zeros_like(output[0] if isinstance(output, tuple) else output)
+                if isinstance(output, tuple):
+                    return (zero,) + output[1:]
+                return zero
+
+            handle = target_layer.register_forward_hook(_zero_hook)
+            with torch.inference_mode():
+                out_ablated = model(**encoded, labels=labels)
+            handle.remove()
+            logits_ablated = out_ablated.logits
 
         # Match CE/KL to the next-token positions used by causal LM loss.
         pred_mask = labels[:, 1:] != -100
         n_tokens = int(pred_mask.sum().item())
         if n_tokens == 0:
             continue
+
+        ce_orig = F.cross_entropy(
+            logits_orig[:, :-1, :].reshape(-1, logits_orig.size(-1)),
+            labels[:, 1:].reshape(-1),
+            ignore_index=-100,
+            reduction="sum",
+        ).item() / n_tokens
+        ce_sae = F.cross_entropy(
+            logits_sae[:, :-1, :].reshape(-1, logits_sae.size(-1)),
+            labels[:, 1:].reshape(-1),
+            ignore_index=-100,
+            reduction="sum",
+        ).item() / n_tokens
+        ce_ablated = F.cross_entropy(
+            logits_ablated[:, :-1, :].reshape(-1, logits_ablated.size(-1)),
+            labels[:, 1:].reshape(-1),
+            ignore_index=-100,
+            reduction="sum",
+        ).item() / n_tokens
 
         logits_orig_shifted = logits_orig[:, :-1, :]
         logits_sae_shifted = logits_sae[:, :-1, :]
@@ -488,16 +818,31 @@ def compute_ce_kl_with_intervention(
 
         total_ce_orig += ce_orig * n_tokens
         total_ce_sae += ce_sae * n_tokens
+        total_ce_ablated += ce_ablated * n_tokens
         total_kl += kl_masked.sum().item()
         total_tokens += n_tokens
+        denom = ce_ablated - ce_sae
+        if abs(denom) > 1e-12:
+            total_downstream_ratio += (ce_ablated - ce_orig) / denom
+            downstream_ratio_batches += 1
 
     avg_ce_orig = total_ce_orig / max(total_tokens, 1)
     avg_ce_sae = total_ce_sae / max(total_tokens, 1)
+    avg_ce_ablated = total_ce_ablated / max(total_tokens, 1)
 
     return {
         "ce_loss_orig": avg_ce_orig,
         "ce_loss_sae": avg_ce_sae,
         "ce_loss_delta": avg_ce_sae - avg_ce_orig,
+        "delta_lm_loss": avg_ce_sae - avg_ce_orig,
+        "downstream_loss_original": avg_ce_orig,
+        "downstream_loss_reconstructed": avg_ce_sae,
+        "downstream_loss_ablated": avg_ce_ablated,
+        "downstream_loss_ratio": (
+            total_downstream_ratio / downstream_ratio_batches
+            if downstream_ratio_batches > 0
+            else None
+        ),
         "kl_divergence": total_kl / max(total_tokens, 1),
         "n_eval_texts": len(eval_texts),
         "n_eval_pred_tokens": total_tokens,
@@ -539,8 +884,9 @@ def run_structural_evaluation(
     print("  Raw-space metrics:")
     print(f"    MSE:               {raw_metrics['mse']:.6f}")
     print(f"    Cosine Similarity: {raw_metrics['cosine_similarity']:.6f}")
-    print(f"    Explained Variance:{raw_metrics['explained_variance']:.6f}")
-    print(f"    FVU:               {raw_metrics['fvu']:.6f}")
+    print(f"    EV (centered):     {raw_metrics['explained_variance']:.6f}")
+    print(f"    FVU (centered):    {raw_metrics['fvu']:.6f}")
+    print(f"    EV (paper):        {raw_metrics['explained_variance_paper']:.6f}")
 
     normalized_metrics: dict[str, float] | None = None
     if normalized_activations is not None and normalized_reconstructed is not None:
@@ -552,8 +898,9 @@ def run_structural_evaluation(
         print("  Normalized-space metrics:")
         print(f"    MSE:               {normalized_metrics['mse']:.6f}")
         print(f"    Cosine Similarity: {normalized_metrics['cosine_similarity']:.6f}")
-        print(f"    Explained Variance:{normalized_metrics['explained_variance']:.6f}")
-        print(f"    FVU:               {normalized_metrics['fvu']:.6f}")
+        print(f"    EV (centered):     {normalized_metrics['explained_variance']:.6f}")
+        print(f"    FVU (centered):    {normalized_metrics['fvu']:.6f}")
+        print(f"    EV (paper):        {normalized_metrics['explained_variance_paper']:.6f}")
 
     l0_result = compute_l0_sparsity(latents, attention_mask)
     print(f"  L0 Mean:           {l0_result['l0_mean']:.1f}")
@@ -567,24 +914,61 @@ def run_structural_evaluation(
     sample_n_tokens = int(attention_mask.sum().item())
 
     metrics = {
-        "metric_definition_version": 2,
+        "metric_definition_version": 3,
         "structural_scope": "sample_batches",
         "n_tokens": sample_n_tokens,
         **raw_metrics,
+        "explained_variance_centered_raw": raw_metrics["explained_variance"],
+        "fvu_centered_raw": raw_metrics["fvu"],
+        "explained_variance_paper_raw": raw_metrics["explained_variance_paper"],
+        "paper_ev_denominator_energy_raw": raw_metrics["paper_ev_denominator_energy"],
         **l0_result,
         "dead_count": ff_result["dead_count"],
         "dead_ratio": ff_result["dead_ratio"],
         "alive_count": ff_result["alive_count"],
         "top10_freq_indices": ff_result["top10_freq_indices"],
+        "metric_primary": "ev_openmoss_legacy",
+        "metric_primary_status": "preferred",
+        "metric_primary_note": (
+            "Use official legacy EV as the primary literature-facing metric for now. "
+            "Negative EV variants are retained only as auxiliary diagnostics."
+        ),
+        "paper_metric_primary": "ev_openmoss_legacy",
+        "paper_metric_formula": "mean(1 - per_token_l2_loss / total_variance)",
+        "metric_source_ref": "lm_saes.metrics.ExplainedVarianceMetric.legacy",
         "space_metrics": {
-            "raw": {**raw_metrics, "n_tokens": sample_n_tokens},
+            "raw": {
+                **raw_metrics,
+                "explained_variance_centered": raw_metrics["explained_variance"],
+                "fvu_centered": raw_metrics["fvu"],
+                "n_tokens": sample_n_tokens,
+            },
             "normalized": (
-                {**normalized_metrics, "n_tokens": sample_n_tokens}
+                {
+                    **normalized_metrics,
+                    "explained_variance_centered": normalized_metrics["explained_variance"],
+                    "fvu_centered": normalized_metrics["fvu"],
+                    "n_tokens": sample_n_tokens,
+                }
                 if normalized_metrics is not None
                 else None
             ),
         },
     }
+
+    if normalized_metrics is not None:
+        metrics.update(
+            {
+                "explained_variance_centered_normalized": normalized_metrics["explained_variance"],
+                "fvu_centered_normalized": normalized_metrics["fvu"],
+                "explained_variance_paper_normalized": normalized_metrics[
+                    "explained_variance_paper"
+                ],
+                "paper_ev_denominator_energy_normalized": normalized_metrics[
+                    "paper_ev_denominator_energy"
+                ],
+            }
+        )
 
     if ce_kl_results is not None:
         metrics.update(ce_kl_results)

@@ -11,3 +11,6 @@ datasets
 tqdm
 pandas
 matplotlib
+zstandard
+lm-saes; python_version >= "3.11"
+transformer-lens; python_version >= "3.11"
