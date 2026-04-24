@@ -1,7 +1,7 @@
 """causal/run_experiment.py — End-to-end causal validation orchestrator.
 
 Runs necessity (ablation) and sufficiency (steering) experiments for
-G1/G5/G20 latent groups, with random/Bottom-K/orthogonal controls.
+G1/G5/G10/G20 latent groups, with random/Bottom-K/orthogonal controls.
 Also runs group-structure analysis (cumulative top-K, LOO, synergy).
 
 Usage:
@@ -15,9 +15,14 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import contextlib
+import datetime as _dt
+import faulthandler
 import json
+import math
 import sys
 import time
+import traceback
 from pathlib import Path
 from typing import Any
 
@@ -55,6 +60,227 @@ except ImportError:
         steer_with_direction,
     )
     from causal.selection import rank_latents, bootstrap_stability, make_bottom_k, make_random_control
+
+GROUP_SPECS: list[tuple[str, int]] = [("G1", 1), ("G5", 5), ("G10", 10), ("G20", 20)]
+GROUP_NAMES: list[str] = [name for name, _ in GROUP_SPECS]
+
+
+class _TeeStream:
+    def __init__(self, *streams):
+        self._streams = streams
+
+    def write(self, data: str) -> int:
+        for stream in self._streams:
+            stream.write(data)
+            stream.flush()
+        return len(data)
+
+    def flush(self) -> None:
+        for stream in self._streams:
+            stream.flush()
+
+
+@contextlib.contextmanager
+def _capture_run_logs(output_dir: Path):
+    output_dir.mkdir(parents=True, exist_ok=True)
+    log_path = output_dir / "causal_run.log"
+    fault_path = output_dir / "fatal_traceback.log"
+    old_stdout, old_stderr = sys.stdout, sys.stderr
+    with open(log_path, "a", encoding="utf-8", buffering=1) as log_file, open(
+        fault_path, "a", encoding="utf-8", buffering=1
+    ) as fault_file:
+        sys.stdout = _TeeStream(old_stdout, log_file)
+        sys.stderr = _TeeStream(old_stderr, log_file)
+        try:
+            faulthandler.enable(file=fault_file, all_threads=True)
+            yield log_path, fault_path
+        finally:
+            with contextlib.suppress(Exception):
+                faulthandler.disable()
+            sys.stdout = old_stdout
+            sys.stderr = old_stderr
+
+
+class RunMonitor:
+    """Persist long-running causal validation status and exceptions."""
+
+    def __init__(self, output_dir: Path, args: argparse.Namespace, log_path: Path, fault_path: Path):
+        self.output_dir = output_dir
+        self.log_path = log_path
+        self.fault_path = fault_path
+        self.status_path = output_dir / "run_status.json"
+        self.events_path = output_dir / "run_events.jsonl"
+        self.started_at = time.time()
+        self.current_stage = "initializing"
+        self.args = vars(args)
+
+    def _timestamp(self) -> str:
+        return _dt.datetime.now().astimezone().isoformat(timespec="seconds")
+
+    def _elapsed(self) -> float:
+        return time.time() - self.started_at
+
+    def _write_status(self, payload: dict[str, Any]) -> None:
+        payload = {
+            "updated_at": self._timestamp(),
+            "elapsed_seconds": round(self._elapsed(), 3),
+            "elapsed": _format_elapsed(self._elapsed()),
+            "current_stage": self.current_stage,
+            "log_file": str(self.log_path),
+            "fatal_traceback_file": str(self.fault_path),
+            **payload,
+        }
+        tmp_path = self.status_path.with_suffix(".json.tmp")
+        with open(tmp_path, "w", encoding="utf-8") as f:
+            json.dump(payload, f, indent=2, ensure_ascii=False, default=str)
+        tmp_path.replace(self.status_path)
+
+    def event(
+        self,
+        event: str,
+        stage: str,
+        message: str = "",
+        *,
+        status: str = "running",
+        **extra: Any,
+    ) -> None:
+        record = {
+            "time": self._timestamp(),
+            "elapsed_seconds": round(self._elapsed(), 3),
+            "event": event,
+            "stage": stage,
+            "message": message,
+            **extra,
+        }
+        with open(self.events_path, "a", encoding="utf-8") as f:
+            f.write(json.dumps(record, ensure_ascii=False, default=str) + "\n")
+        self.current_stage = stage
+        self._write_status({
+            "status": status,
+            "event": event,
+            "message": message,
+            "args": self.args,
+            **extra,
+        })
+
+    @contextlib.contextmanager
+    def stage(self, name: str, message: str = ""):
+        started = time.time()
+        self.event("stage_start", name, message)
+        print(f"[stage:start] {name} | {message}".rstrip())
+        try:
+            yield
+        except Exception as exc:
+            tb = traceback.format_exc()
+            self.current_stage = name
+            self._write_status({
+                "status": "failed",
+                "failed_stage": name,
+                "exception_type": type(exc).__name__,
+                "exception": str(exc),
+                "traceback": tb,
+                "args": self.args,
+            })
+            self.event(
+                "stage_failed",
+                name,
+                str(exc),
+                status="failed",
+                exception_type=type(exc).__name__,
+                traceback=tb,
+            )
+            print(f"[stage:failed] {name} | {type(exc).__name__}: {exc}")
+            print(tb)
+            raise
+        else:
+            elapsed = time.time() - started
+            self.event("stage_done", name, f"elapsed={_format_elapsed(elapsed)}")
+            print(f"[stage:done] {name} | elapsed {_format_elapsed(elapsed)}")
+
+    def complete(self) -> None:
+        self.current_stage = "completed"
+        self._write_status({
+            "status": "completed",
+            "message": "causal validation completed",
+            "args": self.args,
+        })
+        self.event("run_completed", "completed", "causal validation completed", status="completed")
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Progress helpers
+# ─────────────────────────────────────────────────────────────────────────────
+
+def _format_elapsed(seconds: float) -> str:
+    if seconds < 60:
+        return f"{seconds:.1f}s"
+    total_seconds = int(round(seconds))
+    minutes, sec = divmod(total_seconds, 60)
+    if minutes < 60:
+        return f"{minutes}m{sec:02d}s"
+    hours, minutes = divmod(minutes, 60)
+    return f"{hours}h{minutes:02d}m{sec:02d}s"
+
+
+def _progress_checkpoints(total: int, segments: int = 4) -> set[int]:
+    if total <= 0:
+        return set()
+    if total <= segments + 1:
+        return set(range(1, total + 1))
+    step = max(1, math.ceil(total / segments))
+    points = {1, total}
+    points.update(range(step, total, step))
+    return points
+
+
+def _print_batch_progress(
+    label: str,
+    completed: int,
+    total: int,
+    *,
+    started_at: float,
+) -> None:
+    if total <= 0:
+        return
+    pct = completed * 100.0 / total
+    print(
+        f"    [{label}] batch {completed}/{total} ({pct:.0f}%)"
+        f" | elapsed {_format_elapsed(time.time() - started_at)}"
+    )
+
+
+def _summarize_delta(delta: dict[str, Any]) -> str:
+    if not isinstance(delta, dict):
+        return str(delta)
+    if "error" in delta:
+        return str(delta["error"])
+    if "mean_delta_re" not in delta:
+        return "no delta summary"
+    mean_delta_nonre = delta.get("mean_delta_nonre")
+    fraction_improved = delta.get("fraction_improved")
+    parts = [f"mean_delta_re={float(delta['mean_delta_re']):+.3f}"]
+    if isinstance(mean_delta_nonre, (int, float)):
+        parts.append(f"mean_delta_nonre={float(mean_delta_nonre):+.3f}")
+    if isinstance(fraction_improved, (int, float)):
+        parts.append(f"fraction_improved={float(fraction_improved):.3f}")
+    return ", ".join(parts)
+
+
+def _summarize_side_effect_payload(payload: dict[str, Any]) -> str:
+    if not isinstance(payload, dict):
+        return str(payload)
+    quality = payload.get("quality", {})
+    parts: list[str] = []
+    delta_re = payload.get("mean_generated_re_logit_delta")
+    if isinstance(delta_re, (int, float)):
+        parts.append(f"delta_re_logit={float(delta_re):+.3f}")
+    retention = quality.get("mean_content_retention")
+    if isinstance(retention, (int, float)):
+        parts.append(f"retention={float(retention):.3f}")
+    delta_repeat = quality.get("delta_bigram_repetition")
+    if isinstance(delta_repeat, (int, float)):
+        parts.append(f"delta_repeat={float(delta_repeat):+.3f}")
+    return ", ".join(parts) if parts else "no side-effect summary"
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -506,8 +732,11 @@ def compute_reference_latent_mean(
     """Compute token-level latent reference mean over the counselor span."""
     running_sum: torch.Tensor | None = None
     token_count = 0
+    total_batches = len(batches)
+    checkpoints = _progress_checkpoints(total_batches)
+    started_at = time.time()
 
-    for batch in batches:
+    for batch_idx, batch in enumerate(batches, start=1):
         cap = runner.run_baseline(
             batch.input_ids,
             batch.attention_mask,
@@ -516,17 +745,30 @@ def compute_reference_latent_mean(
         z_tokens = cap["z"]  # post-hook SAE latents [B, T, d_sae]
         span_mask = batch.counselor_span_mask.cpu()
         masked = z_tokens[span_mask]
-        if masked.numel() == 0:
-            continue
-        if running_sum is None:
-            running_sum = masked.sum(dim=0)
-        else:
-            running_sum += masked.sum(dim=0)
-        token_count += masked.shape[0]
+        if masked.numel() != 0:
+            if running_sum is None:
+                running_sum = masked.sum(dim=0)
+            else:
+                running_sum += masked.sum(dim=0)
+            token_count += masked.shape[0]
+
+        if batch_idx in checkpoints:
+            _print_batch_progress(
+                "Reference Mean",
+                batch_idx,
+                total_batches,
+                started_at=started_at,
+            )
 
     if running_sum is None or token_count == 0:
         raise ValueError("Failed to compute token-level reference latent mean.")
 
+    print(
+        "  [Reference Mean] Done"
+        f" | batches={total_batches}"
+        f" | counselor_tokens={token_count}"
+        f" | elapsed {_format_elapsed(time.time() - started_at)}"
+    )
     return running_sum / float(token_count)
 
 
@@ -587,9 +829,7 @@ def run_necessity_experiment(
     """
     results: dict[str, Any] = {}
 
-    all_groups = {**{f"G{k}": v for k, v in [
-        ("1", groups["G1"]), ("5", groups["G5"]), ("20", groups["G20"])
-    ]}, **controls}
+    all_groups = {**{name: groups[name] for name in GROUP_NAMES}, **controls}
 
     # First get baseline scores (no intervention)
     print("  [Necessity] Computing baseline features...")
@@ -602,13 +842,24 @@ def run_necessity_experiment(
     )
     baseline_logits = probe.score_features(baseline_feats)
 
+    total_jobs = len(all_groups) * 3
+    total_batches = len(batches)
+    job_index = 0
+
     for group_name, latent_ids in all_groups.items():
         results[group_name] = {}
         for mode in ["zero", "mean", "cond_token"]:
-            print(f"  [Necessity] {group_name} / {mode} ablation ({len(latent_ids)} latents)...")
+            job_index += 1
+            job_label = f"Necessity {job_index}/{total_jobs}"
+            print(
+                f"  [{job_label}] {group_name} / {mode} ablation"
+                f" ({len(latent_ids)} latents, {total_batches} batches)..."
+            )
             intervened_feats_list = []
+            job_started_at = time.time()
+            checkpoints = _progress_checkpoints(total_batches)
 
-            for batch in batches:
+            for batch_idx, batch in enumerate(batches, start=1):
                 if mode == "zero":
                     cap = runner.run_zero_ablation(
                         batch.input_ids, batch.attention_mask,
@@ -636,6 +887,14 @@ def run_necessity_experiment(
                     )
                     intervened_feats_list.append(feat)
 
+                if batch_idx in checkpoints:
+                    _print_batch_progress(
+                        job_label,
+                        batch_idx,
+                        total_batches,
+                        started_at=job_started_at,
+                    )
+
             if intervened_feats_list:
                 intervened_feats = np.concatenate(intervened_feats_list, axis=0)
                 intervened_logits = probe.score_features(intervened_feats)
@@ -643,6 +902,10 @@ def run_necessity_experiment(
                 results[group_name][mode] = delta
             else:
                 results[group_name][mode] = {"error": "no features collected"}
+            print(
+                f"  [{job_label}] Done in {_format_elapsed(time.time() - job_started_at)}"
+                f" | {_summarize_delta(results[group_name][mode])}"
+            )
 
     return results
 
@@ -678,7 +941,11 @@ def run_sufficiency_experiment(
     )
     baseline_logits = probe.score_features(baseline_feats)
 
-    for gname in ["G1", "G5", "G20"]:
+    total_jobs = len(GROUP_NAMES) * 3 * len(lambdas) + len(controls_directions) * len(lambdas)
+    total_batches = len(batches)
+    job_index = 0
+
+    for gname in GROUP_NAMES:
         latent_ids = groups[gname]
         weights = probe_weights.get(gname, [1.0 / len(latent_ids)] * len(latent_ids))
         results[gname] = {
@@ -689,9 +956,16 @@ def run_sufficiency_experiment(
 
         for mode in ["constant", "cond_input", "cond_token"]:
             for lam in lambdas:
-                print(f"  [Sufficiency] {gname} {mode} steer λ={lam}...")
+                job_index += 1
+                job_label = f"Sufficiency {job_index}/{total_jobs}"
+                print(
+                    f"  [{job_label}] {gname} {mode} steer λ={lam}"
+                    f" ({len(latent_ids)} latents, {total_batches} batches)..."
+                )
                 feats_list = []
-                for batch in batches:
+                job_started_at = time.time()
+                checkpoints = _progress_checkpoints(total_batches)
+                for batch_idx, batch in enumerate(batches, start=1):
                     if mode == "constant":
                         cap = runner.run_constant_steer(
                             batch.input_ids, batch.attention_mask,
@@ -717,19 +991,40 @@ def run_sufficiency_experiment(
                             threshold=binarized_threshold,
                         ))
 
+                    if batch_idx in checkpoints:
+                        _print_batch_progress(
+                            job_label,
+                            batch_idx,
+                            total_batches,
+                            started_at=job_started_at,
+                        )
+
                 if feats_list:
                     feats = np.concatenate(feats_list, axis=0)
                     logits = probe.score_features(feats)
                     results[gname][mode][f"lam_{lam}"] = score_delta(
                         baseline_logits, logits, true_labels
                     )
+                else:
+                    results[gname][mode][f"lam_{lam}"] = {"error": "no features collected"}
+                print(
+                    f"  [{job_label}] Done in {_format_elapsed(time.time() - job_started_at)}"
+                    f" | {_summarize_delta(results[gname][mode][f'lam_{lam}'])}"
+                )
 
     for ctrl_name, direction in controls_directions.items():
         results[ctrl_name] = {"direction": {}}
         for lam in lambdas:
-            print(f"  [Sufficiency] {ctrl_name} control direction λ={lam}...")
+            job_index += 1
+            job_label = f"Sufficiency {job_index}/{total_jobs}"
+            print(
+                f"  [{job_label}] {ctrl_name} control direction λ={lam}"
+                f" ({total_batches} batches)..."
+            )
             feats_list = []
-            for batch in batches:
+            job_started_at = time.time()
+            checkpoints = _progress_checkpoints(total_batches)
+            for batch_idx, batch in enumerate(batches, start=1):
                 cap = runner.run_direction_steer(
                     batch.input_ids, batch.attention_mask,
                     batch.counselor_span_mask, direction, lam,
@@ -743,12 +1038,26 @@ def run_sufficiency_experiment(
                         threshold=binarized_threshold,
                     ))
 
+                if batch_idx in checkpoints:
+                    _print_batch_progress(
+                        job_label,
+                        batch_idx,
+                        total_batches,
+                        started_at=job_started_at,
+                    )
+
             if feats_list:
                 feats = np.concatenate(feats_list, axis=0)
                 logits = probe.score_features(feats)
                 results[ctrl_name]["direction"][f"lam_{lam}"] = score_delta(
                     baseline_logits, logits, true_labels
                 )
+            else:
+                results[ctrl_name]["direction"][f"lam_{lam}"] = {"error": "no features collected"}
+            print(
+                f"  [{job_label}] Done in {_format_elapsed(time.time() - job_started_at)}"
+                f" | {_summarize_delta(results[ctrl_name]['direction'][f'lam_{lam}'])}"
+            )
 
     return results
 
@@ -788,7 +1097,16 @@ def run_side_effect_evaluation(
     )
 
     baseline_outputs: list[str] = []
-    for batch in batches:
+    total_jobs = 1 + len(GROUP_NAMES) + len(controls_directions)
+    total_batches = len(batches)
+    job_index = 1
+    baseline_started_at = time.time()
+    print(
+        f"  [Selectivity {job_index}/{total_jobs}] Baseline generation"
+        f" ({len(subset_texts)} prompts, {total_batches} batches)..."
+    )
+    checkpoints = _progress_checkpoints(total_batches)
+    for batch_idx, batch in enumerate(batches, start=1):
         generated = runner.generate_baseline(
             batch.input_ids,
             batch.attention_mask,
@@ -796,6 +1114,17 @@ def run_side_effect_evaluation(
             max_new_tokens=max_new_tokens,
         )
         baseline_outputs.extend(_decode_continuations(tokenizer, generated.cpu(), batch.attention_mask.cpu()))
+        if batch_idx in checkpoints:
+            _print_batch_progress(
+                f"Selectivity {job_index}/{total_jobs}",
+                batch_idx,
+                total_batches,
+                started_at=baseline_started_at,
+            )
+    print(
+        f"  [Selectivity {job_index}/{total_jobs}] Done in {_format_elapsed(time.time() - baseline_started_at)}"
+        f" | generated={len(baseline_outputs)}"
+    )
 
     baseline_features = extract_utterance_features(
         runner.model, tokenizer, sae, baseline_outputs, hook_point, device,
@@ -819,11 +1148,19 @@ def run_side_effect_evaluation(
         "controls": {},
     }
 
-    for gname in ["G1", "G5", "G20"]:
+    for gname in GROUP_NAMES:
+        job_index += 1
         latent_ids = groups[gname]
         weights = probe_weights.get(gname, [1.0 / len(latent_ids)] * len(latent_ids))
         generated_texts: list[str] = []
-        for batch in batches:
+        job_label = f"Selectivity {job_index}/{total_jobs}"
+        job_started_at = time.time()
+        checkpoints = _progress_checkpoints(total_batches)
+        print(
+            f"  [{job_label}] {gname} cond_token generation"
+            f" ({len(latent_ids)} latents, {total_batches} batches)..."
+        )
+        for batch_idx, batch in enumerate(batches, start=1):
             generated = runner.generate_cond_token_steer(
                 batch.input_ids,
                 batch.attention_mask,
@@ -834,6 +1171,13 @@ def run_side_effect_evaluation(
                 max_new_tokens=max_new_tokens,
             )
             generated_texts.extend(_decode_continuations(tokenizer, generated.cpu(), batch.attention_mask.cpu()))
+            if batch_idx in checkpoints:
+                _print_batch_progress(
+                    job_label,
+                    batch_idx,
+                    total_batches,
+                    started_at=job_started_at,
+                )
 
         feats = extract_utterance_features(
             runner.model, tokenizer, sae, generated_texts, hook_point, device,
@@ -849,10 +1193,22 @@ def run_side_effect_evaluation(
             "mean_generated_re_logit_delta": float(np.mean(logits - baseline_logits)),
             "sample_outputs": generated_texts[:5],
         }
+        print(
+            f"  [{job_label}] Done in {_format_elapsed(time.time() - job_started_at)}"
+            f" | {_summarize_side_effect_payload(results['groups'][gname])}"
+        )
 
     for ctrl_name, direction in controls_directions.items():
+        job_index += 1
         generated_texts = []
-        for batch in batches:
+        job_label = f"Selectivity {job_index}/{total_jobs}"
+        job_started_at = time.time()
+        checkpoints = _progress_checkpoints(total_batches)
+        print(
+            f"  [{job_label}] {ctrl_name} direction generation"
+            f" ({total_batches} batches)..."
+        )
+        for batch_idx, batch in enumerate(batches, start=1):
             generated = runner.generate_direction_steer(
                 batch.input_ids,
                 batch.attention_mask,
@@ -862,6 +1218,13 @@ def run_side_effect_evaluation(
                 max_new_tokens=max_new_tokens,
             )
             generated_texts.extend(_decode_continuations(tokenizer, generated.cpu(), batch.attention_mask.cpu()))
+            if batch_idx in checkpoints:
+                _print_batch_progress(
+                    job_label,
+                    batch_idx,
+                    total_batches,
+                    started_at=job_started_at,
+                )
 
         feats = extract_utterance_features(
             runner.model, tokenizer, sae, generated_texts, hook_point, device,
@@ -877,6 +1240,10 @@ def run_side_effect_evaluation(
             "mean_generated_re_logit_delta": float(np.mean(logits - baseline_logits)),
             "sample_outputs": generated_texts[:5],
         }
+        print(
+            f"  [{job_label}] Done in {_format_elapsed(time.time() - job_started_at)}"
+            f" | {_summarize_side_effect_payload(results['controls'][ctrl_name])}"
+        )
 
     return results
 
@@ -935,6 +1302,7 @@ def run_group_structure_experiment(
         return delta["mean_delta_re"]
 
     max_k = min(len(ranked_latents), 20)
+    group_started_at = time.time()
 
     # ── Cumulative top-K ──
     print("  [Group Structure] Cumulative top-K curve...")
@@ -946,6 +1314,12 @@ def run_group_structure_experiment(
         w_norm = [x / (sum(w) + 1e-12) for x in w]
         effect = _steer_and_score(lids, w_norm)
         cum_effects.append({"k": k, "latent_idx": lids[-1], "mean_delta_re": effect})
+        if k in _progress_checkpoints(max_k):
+            print(
+                f"    [Group Structure top-k] {k}/{max_k}"
+                f" | latest_effect={effect:+.3f}"
+                f" | elapsed {_format_elapsed(time.time() - group_started_at)}"
+            )
 
         # Individual effect for each latent (for synergy)
         ind = _steer_and_score([lids[-1]], [1.0])
@@ -976,6 +1350,14 @@ def run_group_structure_experiment(
             "loo_effect":  loo_effect,
             "delta_loo":   full_effect - loo_effect,  # contribution of latent i
         })
+        loo_step = i + 1
+        if loo_step in _progress_checkpoints(loo_k):
+            print(
+                f"    [Group Structure LOO] {loo_step}/{loo_k}"
+                f" | latent={lid}"
+                f" | delta_loo={full_effect - loo_effect:+.3f}"
+                f" | elapsed {_format_elapsed(time.time() - group_started_at)}"
+            )
     results["leave_one_out"] = loo_results
 
     print("  [Group Structure] Add-one-in...")
@@ -993,6 +1375,13 @@ def run_group_structure_experiment(
             "delta_add": effect if prev_effect is None else effect - prev_effect,
         })
         prev_effect = effect
+        if k in _progress_checkpoints(loo_k):
+            print(
+                f"    [Group Structure Add-One-In] {k}/{loo_k}"
+                f" | latent={lids[-1]}"
+                f" | effect={effect:+.3f}"
+                f" | elapsed {_format_elapsed(time.time() - group_started_at)}"
+            )
     results["add_one_in"] = add_one_in
 
     # ── Synergy (§7.4) ──
@@ -1008,6 +1397,11 @@ def run_group_structure_experiment(
             "negative (redundant)"
         ),
     }
+    print(
+        "  [Group Structure] Done"
+        f" | synergy={synergy:+.3f}"
+        f" | elapsed {_format_elapsed(time.time() - group_started_at)}"
+    )
 
     return results
 
@@ -1244,6 +1638,15 @@ def parse_args():
     p.add_argument("--side-effect-lambda", type=float, default=1.0)
     p.add_argument("--n-bootstrap", type=int, default=10,
                    help="Bootstrap seeds for latent stability (0 to skip).")
+    p.add_argument(
+        "--checkpoint-topk-semantics",
+        choices=("disabled", "hard"),
+        default="hard",
+        help=(
+            "Whether to enforce an extra hard top-k after JumpReLU when running "
+            "the public checkpoint. 'hard' matches the currently selected main experimental path."
+        ),
+    )
     return p.parse_args()
 
 
@@ -1272,6 +1675,7 @@ def main():
         repo_id=sae_config["sae_repo_id"],
         subfolder=sae_config["sae_subfolder"],
         device=device, dtype=torch.bfloat16,
+        checkpoint_topk_semantics=args.checkpoint_topk_semantics,
     )
 
     # ── Load dataset ──
@@ -1293,12 +1697,12 @@ def main():
     nonre_feats = all_feats[n_re:]
 
     # ── Latent selection ──
-    print("[5/8] Ranking latents (G1/G5/G20)...")
+    print("[5/8] Ranking latents (G1/G5/G10/G20)...")
     candidate_df = pd.read_csv(Path(args.candidate_csv))
     ranking = rank_latents(candidate_df, re_feats, nonre_feats, top_k=20)
-    G1, G5, G20 = ranking["G1"], ranking["G5"], ranking["G20"]
+    G1, G5, G10, G20 = ranking["G1"], ranking["G5"], ranking["G10"], ranking["G20"]
     ranked_df   = ranking["ranked_df"]
-    print(f"  G1={G1}  G5={G5}")
+    print(f"  G1={G1}  G5={G5}  G10={G10}")
     print(f"  G20={G20}")
 
     # Bootstrap stability (optional)
@@ -1309,21 +1713,27 @@ def main():
             re_feats, nonre_feats, candidate_df, n_seeds=args.n_bootstrap
         )
         print(f"  Stable G5:  {stability['stable_G5']}")
+        print(f"  Stable G10: {stability.get('stable_G10', [])}")
         print(f"  Stable G20: {stability['stable_G20']}")
 
-    groups = {"G1": G1, "G5": G5, "G20": G20}
+    groups = {"G1": G1, "G5": G5, "G10": G10, "G20": G20}
     if stability:
         ranked_latents_full = ranked_df["latent_idx"].astype(int).tolist()
         if stability.get("stable_G5"):
             groups["G5"] = _stabilize_group(ranked_latents_full, stability["stable_G5"], 5)
+        if stability.get("stable_G10"):
+            groups["G10"] = _stabilize_group(ranked_latents_full, stability["stable_G10"], 10)
         if stability.get("stable_G20"):
             groups["G20"] = _stabilize_group(ranked_latents_full, stability["stable_G20"], 20)
         if groups["G1"] and groups["G1"][0] not in groups["G5"]:
             groups["G5"] = _stabilize_group(ranked_latents_full, groups["G1"] + groups["G5"], 5)
+        if groups["G1"] and groups["G1"][0] not in groups["G10"]:
+            groups["G10"] = _stabilize_group(ranked_latents_full, groups["G1"] + groups["G10"], 10)
         if groups["G1"] and groups["G1"][0] not in groups["G20"]:
             groups["G20"] = _stabilize_group(ranked_latents_full, groups["G1"] + groups["G20"], 20)
-        G1, G5, G20 = groups["G1"], groups["G5"], groups["G20"]
+        G1, G5, G10, G20 = groups["G1"], groups["G5"], groups["G10"], groups["G20"]
         print(f"  Using stabilized groups -> G5={G5}")
+        print(f"  Using stabilized groups -> G10={G10}")
         print(f"  Using stabilized groups -> G20={G20}")
 
     # ── Train RE probe ──
@@ -1369,9 +1779,15 @@ def main():
         max_seq_len=args.max_seq_len,
         device=device,
     )
+    print(
+        f"  Intervention batches: {len(batches)}"
+        f" | samples={len(texts)}"
+        f" | batch_size={args.batch_size}"
+    )
 
     # ── Compute reference mean for mean-ablation ──
     runner = CausalRunner(model, tokenizer, sae, hook_point, device, sae_config)
+    print("[6b/8] Computing reference latent mean...")
     ref_mean = compute_reference_latent_mean(runner, batches)
     runner.set_ref_mean(ref_mean)
 
@@ -1388,6 +1804,7 @@ def main():
     probe_weights = {
         "G1":  _normalise_probe_weights(probe, G1),
         "G5":  _normalise_probe_weights(probe, G5),
+        "G10": _normalise_probe_weights(probe, G10),
         "G20": g20_weights,
     }
     sufficiency_results = run_sufficiency_experiment(
@@ -1432,7 +1849,7 @@ def main():
         print(f"  Saved {p}")
 
     _save({
-        "G1": G1, "G5": G5, "G20": G20,
+        "G1": G1, "G5": G5, "G10": G10, "G20": G20,
         "stability": stability,
         "ranked_latents": ranked_df["latent_idx"].tolist(),
         "probe_baseline": baseline_eval,
@@ -1491,7 +1908,7 @@ def build_pooling_comparison_summary(
         group_results = payload["group"]
 
         lambda_key = None
-        for group_name in ["G1", "G5", "G20"]:
+        for group_name in GROUP_NAMES:
             lambda_key = _nearest_lambda_key(
                 sufficiency.get(group_name, {}).get("cond_token", {}),
                 target_lambda=target_lambda,
@@ -1500,7 +1917,7 @@ def build_pooling_comparison_summary(
                 break
 
         necessity_groups = {}
-        for group_name in ["G1", "G5", "G20"]:
+        for group_name in GROUP_NAMES:
             group_payload = necessity.get(group_name, {})
             necessity_groups[group_name] = {
                 "zero": group_payload.get("zero", {}),
@@ -1508,7 +1925,7 @@ def build_pooling_comparison_summary(
             }
 
         sufficiency_groups = {}
-        for group_name in ["G1", "G5", "G20"]:
+        for group_name in GROUP_NAMES:
             group_payload = sufficiency.get(group_name, {}).get("cond_token", {})
             sufficiency_groups[group_name] = {
                 "lambda_key": lambda_key,
@@ -1516,7 +1933,7 @@ def build_pooling_comparison_summary(
             }
 
         selectivity_groups = {}
-        for group_name in ["G1", "G5", "G20"]:
+        for group_name in GROUP_NAMES:
             group_payload = side_effects.get("groups", {}).get(group_name, {})
             selectivity_groups[group_name] = {
                 "mean_generated_re_logit_delta": group_payload.get("mean_generated_re_logit_delta"),
@@ -1536,6 +1953,7 @@ def build_pooling_comparison_summary(
             "selected_groups": {
                 "G1": selected.get("G1", []),
                 "G5": selected.get("G5", []),
+                "G10": selected.get("G10", []),
                 "G20": selected.get("G20", []),
             },
             "necessity": necessity_groups,
@@ -1550,7 +1968,7 @@ def build_pooling_comparison_summary(
 
     def _necessity_strength(item: dict[str, Any]) -> float:
         vals = []
-        for group_name in ["G1", "G5", "G20"]:
+        for group_name in GROUP_NAMES:
             val = item["necessity"][group_name]["cond_token"].get("mean_delta_re")
             if isinstance(val, (int, float)):
                 vals.append(abs(float(val)))
@@ -1558,7 +1976,7 @@ def build_pooling_comparison_summary(
 
     def _sufficiency_strength(item: dict[str, Any]) -> float:
         vals = []
-        for group_name in ["G1", "G5", "G20"]:
+        for group_name in GROUP_NAMES:
             val = item["sufficiency"][group_name]["delta"].get("mean_delta_re")
             if isinstance(val, (int, float)):
                 vals.append(float(val))
@@ -1567,7 +1985,7 @@ def build_pooling_comparison_summary(
     def _side_effect_score(item: dict[str, Any]) -> tuple[float, float]:
         retentions = []
         repeat_shifts = []
-        for group_name in ["G1", "G5", "G20"]:
+        for group_name in GROUP_NAMES:
             quality = item["selectivity"]["groups"][group_name]["quality"]
             retention = quality.get("mean_content_retention")
             repeat_shift = quality.get("delta_bigram_repetition")
@@ -1671,58 +2089,83 @@ def _run_single_pooling_experiment(
     output_dir: Path,
     pooling_method: str,
     binarized_threshold: float,
+    monitor: RunMonitor | None = None,
 ) -> dict[str, Any]:
     true_labels = np.array(labels)
     n_re = sum(labels)
     output_dir.mkdir(parents=True, exist_ok=True)
+    stage_prefix = f"pooling:{pooling_method}"
 
     print(f"\n=== Pooling: {pooling_method} ===")
     print("[4/8] Extracting utterance features for probe training...")
-    all_feats = extract_utterance_features(
-        model, tokenizer, sae, texts, hook_point, device,
-        batch_size=args.batch_size,
-        max_seq_len=args.max_seq_len,
-        aggregation=pooling_method,
-        binarized_threshold=binarized_threshold,
-    )
+    with (monitor.stage(f"{stage_prefix}:extract_features", "Extract utterance SAE features") if monitor else contextlib.nullcontext()):
+        all_feats = extract_utterance_features(
+            model, tokenizer, sae, texts, hook_point, device,
+            batch_size=args.batch_size,
+            max_seq_len=args.max_seq_len,
+            aggregation=pooling_method,
+            binarized_threshold=binarized_threshold,
+        )
     re_feats = all_feats[:n_re]
     nonre_feats = all_feats[n_re:]
 
-    print("[5/8] Ranking latents (G1/G5/G20)...")
-    ranking = rank_latents(candidate_df, re_feats, nonre_feats, top_k=20)
-    G1, G5, G20 = ranking["G1"], ranking["G5"], ranking["G20"]
-    ranked_df = ranking["ranked_df"]
-    print(f"  G1={G1}  G5={G5}")
+    print("[5/8] Ranking latents (G1/G5/G10/G20)...")
+    with (monitor.stage(f"{stage_prefix}:rank_latents", "Rank candidate latents and select G groups") if monitor else contextlib.nullcontext()):
+        ranking = rank_latents(candidate_df, re_feats, nonre_feats, top_k=20)
+        G1, G5, G10, G20 = ranking["G1"], ranking["G5"], ranking["G10"], ranking["G20"]
+        ranked_df = ranking["ranked_df"]
+    print(f"  G1={G1}  G5={G5}  G10={G10}")
     print(f"  G20={G20}")
 
     stability = {}
     if args.n_bootstrap > 0:
         print(f"  Bootstrap stability ({args.n_bootstrap} seeds)...")
-        stability = bootstrap_stability(
-            re_feats, nonre_feats, candidate_df, n_seeds=args.n_bootstrap
-        )
+        with (monitor.stage(f"{stage_prefix}:bootstrap_stability", f"{args.n_bootstrap} bootstrap seeds") if monitor else contextlib.nullcontext()):
+            stability = bootstrap_stability(
+                re_feats, nonre_feats, candidate_df, n_seeds=args.n_bootstrap
+            )
         print(f"  Stable G5:  {stability['stable_G5']}")
+        print(f"  Stable G10: {stability.get('stable_G10', [])}")
         print(f"  Stable G20: {stability['stable_G20']}")
 
-    groups = {"G1": G1, "G5": G5, "G20": G20}
+    groups = {"G1": G1, "G5": G5, "G10": G10, "G20": G20}
     if stability:
         ranked_latents_full = ranked_df["latent_idx"].astype(int).tolist()
         if stability.get("stable_G5"):
             groups["G5"] = _stabilize_group(ranked_latents_full, stability["stable_G5"], 5)
+        if stability.get("stable_G10"):
+            groups["G10"] = _stabilize_group(ranked_latents_full, stability["stable_G10"], 10)
         if stability.get("stable_G20"):
             groups["G20"] = _stabilize_group(ranked_latents_full, stability["stable_G20"], 20)
         if groups["G1"] and groups["G1"][0] not in groups["G5"]:
             groups["G5"] = _stabilize_group(ranked_latents_full, groups["G1"] + groups["G5"], 5)
+        if groups["G1"] and groups["G1"][0] not in groups["G10"]:
+            groups["G10"] = _stabilize_group(ranked_latents_full, groups["G1"] + groups["G10"], 10)
         if groups["G1"] and groups["G1"][0] not in groups["G20"]:
             groups["G20"] = _stabilize_group(ranked_latents_full, groups["G1"] + groups["G20"], 20)
-        G1, G5, G20 = groups["G1"], groups["G5"], groups["G20"]
+        G1, G5, G10, G20 = groups["G1"], groups["G5"], groups["G10"], groups["G20"]
         print(f"  Using stabilized groups -> G5={G5}")
+        print(f"  Using stabilized groups -> G10={G10}")
         print(f"  Using stabilized groups -> G20={G20}")
 
     print("[6/8] Training RE probe...")
-    probe = REProbeScorer.fit(re_feats, nonre_feats, candidate_indices=G20)
-    baseline_eval = probe.evaluate(all_feats, true_labels)
+    with (monitor.stage(f"{stage_prefix}:train_probe", "Train RE probe on G20") if monitor else contextlib.nullcontext()):
+        probe = REProbeScorer.fit(re_feats, nonre_feats, candidate_indices=G20)
+        baseline_eval = probe.evaluate(all_feats, true_labels)
     print(f"  Probe baseline: acc={baseline_eval['accuracy']:.3f}, auc={baseline_eval['auc']:.3f}")
+
+    selected_payload = {
+        "pooling_method": pooling_method,
+        "binarized_threshold": binarized_threshold,
+        "G1": G1,
+        "G5": G5,
+        "G10": G10,
+        "G20": G20,
+        "stability": stability,
+        "ranked_latents": ranked_df["latent_idx"].tolist(),
+        "probe_baseline": baseline_eval,
+    }
+    _save_json(output_dir / "selected_groups.json", selected_payload)
 
     W_dec = sae.W_dec.detach().cpu()
     g20_weights = _normalise_probe_weights(probe, G20)
@@ -1756,107 +2199,114 @@ def _run_single_pooling_experiment(
         max_seq_len=args.max_seq_len,
         device=device,
     )
+    print(
+        f"  Intervention batches: {len(batches)}"
+        f" | samples={len(texts)}"
+        f" | batch_size={args.batch_size}"
+    )
 
     runner = CausalRunner(model, tokenizer, sae, hook_point, device, sae_config)
-    ref_mean = compute_reference_latent_mean(runner, batches)
-    runner.set_ref_mean(ref_mean)
+    print("[6b/8] Computing reference latent mean...")
+    with (monitor.stage(f"{stage_prefix}:reference_mean", "Compute token-level reference latent mean") if monitor else contextlib.nullcontext()):
+        ref_mean = compute_reference_latent_mean(runner, batches)
+        runner.set_ref_mean(ref_mean)
 
     print("[7/8] Running necessity experiments...")
-    necessity_results = run_necessity_experiment(
-        runner, batches, probe, groups, necessity_controls, true_labels,
-        model, tokenizer, sae, hook_point, device,
-        batch_size=args.batch_size,
-        max_seq_len=args.max_seq_len,
-        aggregation=pooling_method,
-        binarized_threshold=binarized_threshold,
-    )
-
-    print("[7b/8] Running sufficiency experiments...")
-    probe_weights = {
-        "G1": _normalise_probe_weights(probe, G1),
-        "G5": _normalise_probe_weights(probe, G5),
-        "G20": g20_weights,
-    }
-    sufficiency_results = run_sufficiency_experiment(
-        runner, batches, probe, groups, probe_weights, sufficiency_controls,
-        true_labels, model, tokenizer, sae, hook_point, device,
-        lambdas=args.lambdas,
-        batch_size=args.batch_size,
-        max_seq_len=args.max_seq_len,
-        aggregation=pooling_method,
-        binarized_threshold=binarized_threshold,
-    )
-
-    side_effect_results = {}
-    if not args.skip_side_effects:
-        print("[7c/8] Running selectivity / side-effect evaluation...")
-        side_effect_results = run_side_effect_evaluation(
-            runner, probe, groups, probe_weights, sufficiency_controls,
-            texts, labels, tokenizer, sae, hook_point, device,
-            batch_size=args.batch_size,
-            max_seq_len=args.max_seq_len,
-            max_samples=args.side_effect_max_samples,
-            max_new_tokens=args.side_effect_max_new_tokens,
-            lambda_value=args.side_effect_lambda,
-            aggregation=pooling_method,
-            binarized_threshold=binarized_threshold,
-        )
-
-    group_results = {}
-    if not args.skip_group_structure:
-        print("[7d/8] Running group structure analysis...")
-        ranked_latents = ranked_df["latent_idx"].tolist()
-        all_weights = _normalise_probe_weights(probe, ranked_latents[:20])
-        group_results = run_group_structure_experiment(
-            runner, batches, probe, ranked_latents[:20], all_weights,
-            true_labels, model, tokenizer, sae, hook_point, device,
-            strength=1.0,
+    with (monitor.stage(f"{stage_prefix}:necessity", "Ablation experiments: G groups plus Bottom20/Random20 controls") if monitor else contextlib.nullcontext()):
+        necessity_results = run_necessity_experiment(
+            runner, batches, probe, groups, necessity_controls, true_labels,
+            model, tokenizer, sae, hook_point, device,
             batch_size=args.batch_size,
             max_seq_len=args.max_seq_len,
             aggregation=pooling_method,
             binarized_threshold=binarized_threshold,
         )
-
-    print("[8/8] Saving results...")
-    selected_payload = {
-        "pooling_method": pooling_method,
-        "binarized_threshold": binarized_threshold,
-        "G1": G1,
-        "G5": G5,
-        "G20": G20,
-        "stability": stability,
-        "ranked_latents": ranked_df["latent_idx"].tolist(),
-        "probe_baseline": baseline_eval,
-    }
-    _save_json(output_dir / "selected_groups.json", selected_payload)
     _save_json(output_dir / "results_necessity.json", {
         "pooling_method": pooling_method,
         "binarized_threshold": binarized_threshold,
         **necessity_results,
     })
+
+    print("[7b/8] Running sufficiency experiments...")
+    probe_weights = {
+        "G1": _normalise_probe_weights(probe, G1),
+        "G5": _normalise_probe_weights(probe, G5),
+        "G10": _normalise_probe_weights(probe, G10),
+        "G20": g20_weights,
+    }
+    with (monitor.stage(f"{stage_prefix}:sufficiency", f"Steering experiments for lambdas={args.lambdas}") if monitor else contextlib.nullcontext()):
+        sufficiency_results = run_sufficiency_experiment(
+            runner, batches, probe, groups, probe_weights, sufficiency_controls,
+            true_labels, model, tokenizer, sae, hook_point, device,
+            lambdas=args.lambdas,
+            batch_size=args.batch_size,
+            max_seq_len=args.max_seq_len,
+            aggregation=pooling_method,
+            binarized_threshold=binarized_threshold,
+        )
     _save_json(output_dir / "results_sufficiency.json", {
         "pooling_method": pooling_method,
         "binarized_threshold": binarized_threshold,
         **sufficiency_results,
     })
+
+    side_effect_results = {}
+    if not args.skip_side_effects:
+        print("[7c/8] Running selectivity / side-effect evaluation...")
+        with (monitor.stage(f"{stage_prefix}:selectivity", "Generation side-effect/selectivity evaluation") if monitor else contextlib.nullcontext()):
+            side_effect_results = run_side_effect_evaluation(
+                runner, probe, groups, probe_weights, sufficiency_controls,
+                texts, labels, tokenizer, sae, hook_point, device,
+                batch_size=args.batch_size,
+                max_seq_len=args.max_seq_len,
+                max_samples=args.side_effect_max_samples,
+                max_new_tokens=args.side_effect_max_new_tokens,
+                lambda_value=args.side_effect_lambda,
+                aggregation=pooling_method,
+                binarized_threshold=binarized_threshold,
+            )
     _save_json(output_dir / "results_selectivity.json", {
         "pooling_method": pooling_method,
         "binarized_threshold": binarized_threshold,
         **side_effect_results,
     })
+
+    group_results = {}
+    _save_json(output_dir / "results_group.json", {
+        "pooling_method": pooling_method,
+        "binarized_threshold": binarized_threshold,
+        "status": "pending",
+    })
+    if not args.skip_group_structure:
+        print("[7d/8] Running group structure analysis...")
+        ranked_latents = ranked_df["latent_idx"].tolist()
+        all_weights = _normalise_probe_weights(probe, ranked_latents[:20])
+        with (monitor.stage(f"{stage_prefix}:group_structure", "Cumulative top-K, leave-one-out, add-one-in, synergy") if monitor else contextlib.nullcontext()):
+            group_results = run_group_structure_experiment(
+                runner, batches, probe, ranked_latents[:20], all_weights,
+                true_labels, model, tokenizer, sae, hook_point, device,
+                strength=1.0,
+                batch_size=args.batch_size,
+                max_seq_len=args.max_seq_len,
+                aggregation=pooling_method,
+                binarized_threshold=binarized_threshold,
+            )
     _save_json(output_dir / "results_group.json", {
         "pooling_method": pooling_method,
         "binarized_threshold": binarized_threshold,
         **group_results,
     })
 
-    generate_summary_tables(
-        necessity_results,
-        sufficiency_results,
-        group_results,
-        side_effect_results,
-        output_dir / "summary_tables.md",
-    )
+    print("[8/8] Saving results...")
+
+    with (monitor.stage(f"{stage_prefix}:summary", "Generate markdown summary tables") if monitor else contextlib.nullcontext()):
+        generate_summary_tables(
+            necessity_results,
+            sufficiency_results,
+            group_results,
+            side_effect_results,
+            output_dir / "summary_tables.md",
+        )
 
     return {
         "pooling_method": pooling_method,
@@ -1900,6 +2350,15 @@ def parse_args():
     p.add_argument("--side-effect-lambda", type=float, default=1.0)
     p.add_argument("--n-bootstrap", type=int, default=10,
                    help="Bootstrap seeds for latent stability (0 to skip).")
+    p.add_argument(
+        "--checkpoint-topk-semantics",
+        choices=("disabled", "hard"),
+        default="hard",
+        help=(
+            "Whether to enforce an extra hard top-k after JumpReLU when running "
+            "the public checkpoint. 'hard' matches the currently selected main experimental path."
+        ),
+    )
     return p.parse_args()
 
 
@@ -1910,84 +2369,116 @@ def main():
     output_dir = resolve_output_dir(args.output_dir, default_subdir="causal_validation")
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    sae_config_path = resolve_repo_path(args.sae_config)
-    with open(sae_config_path, "r", encoding="utf-8") as f:
-        sae_config = json.load(f)
-    hook_point = sae_config["hook_point"]
+    with _capture_run_logs(output_dir) as (log_path, fault_path):
+        monitor = RunMonitor(output_dir, args, log_path, fault_path)
+        monitor.event("run_start", "initializing", "causal validation started")
+        print(f"[logging] stdout/stderr tee: {log_path}")
+        print(f"[logging] status: {monitor.status_path}")
+        print(f"[logging] events: {monitor.events_path}")
 
-    device = torch.device(args.device) if args.device else (
-        torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
-    )
+        try:
+            with monitor.stage("load_config", "Read SAE config and resolve device"):
+                sae_config_path = resolve_repo_path(args.sae_config)
+                with open(sae_config_path, "r", encoding="utf-8") as f:
+                    sae_config = json.load(f)
+                hook_point = sae_config["hook_point"]
 
-    print("[1/8] Loading model...")
-    model, tokenizer, _ = load_local_model_and_tokenizer(
-        args.model_config,
-        model_dir=args.model_dir,
-        device=device,
-    )
+                device = torch.device(args.device) if args.device else (
+                    torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
+                )
+                print(f"  device={device}")
 
-    print("[2/8] Loading SAE...")
-    sae = load_sae_from_hub(
-        repo_id=sae_config["sae_repo_id"],
-        subfolder=sae_config["sae_subfolder"],
-        device=device, dtype=torch.bfloat16,
-    )
+            print("[1/8] Loading model...")
+            with monitor.stage("load_model", "Load base model and tokenizer"):
+                model, tokenizer, _ = load_local_model_and_tokenizer(
+                    args.model_config,
+                    model_dir=args.model_dir,
+                    device=device,
+                )
 
-    print("[3/8] Loading dataset...")
-    data_dir = resolve_repo_path(args.data_dir)
-    texts, labels, records = build_dataset(data_dir)
-    candidate_df = pd.read_csv(resolve_repo_path(args.candidate_csv))
+            print("[2/8] Loading SAE...")
+            with monitor.stage("load_sae", "Load SAE checkpoint"):
+                sae = load_sae_from_hub(
+                    repo_id=sae_config["sae_repo_id"],
+                    subfolder=sae_config["sae_subfolder"],
+                    device=device, dtype=torch.bfloat16,
+                    checkpoint_topk_semantics=args.checkpoint_topk_semantics,
+                )
 
-    if args.compare_pooling:
-        run_payloads: dict[str, dict[str, Any]] = {}
-        for pooling_method in POOLING_COMPARE_METHODS:
-            child_output_dir = output_dir / f"pooling_{pooling_method}"
-            run_payloads[pooling_method] = _run_single_pooling_experiment(
-                model,
-                tokenizer,
-                sae,
-                candidate_df,
-                texts,
-                labels,
-                records,
-                hook_point,
-                device,
-                sae_config,
-                args,
-                child_output_dir,
-                pooling_method,
-                args.binarized_threshold,
+            print("[3/8] Loading dataset...")
+            with monitor.stage("load_dataset", "Load RE/NonRE dataset and candidate CSV"):
+                data_dir = resolve_repo_path(args.data_dir)
+                texts, labels, records = build_dataset(data_dir)
+                candidate_df = pd.read_csv(resolve_repo_path(args.candidate_csv))
+                print(
+                    f"  samples={len(texts)} | re={sum(labels)} | nonre={len(labels) - sum(labels)}"
+                    f" | candidate_latents={len(candidate_df)}"
+                )
+
+            if args.compare_pooling:
+                run_payloads: dict[str, dict[str, Any]] = {}
+                for pooling_method in POOLING_COMPARE_METHODS:
+                    child_output_dir = output_dir / f"pooling_{pooling_method}"
+                    run_payloads[pooling_method] = _run_single_pooling_experiment(
+                        model,
+                        tokenizer,
+                        sae,
+                        candidate_df,
+                        texts,
+                        labels,
+                        records,
+                        hook_point,
+                        device,
+                        sae_config,
+                        args,
+                        child_output_dir,
+                        pooling_method,
+                        args.binarized_threshold,
+                        monitor=monitor,
+                    )
+
+                with monitor.stage("pooling_comparison", "Build comparison report for pooling variants"):
+                    comparison = build_pooling_comparison_summary(
+                        run_payloads,
+                        target_lambda=1.0,
+                    )
+                    _save_json(output_dir / "pooling_comparison.json", comparison)
+                    generate_pooling_comparison_report(
+                        comparison,
+                        output_dir / "pooling_comparison.md",
+                    )
+            else:
+                _run_single_pooling_experiment(
+                    model,
+                    tokenizer,
+                    sae,
+                    candidate_df,
+                    texts,
+                    labels,
+                    records,
+                    hook_point,
+                    device,
+                    sae_config,
+                    args,
+                    output_dir,
+                    args.sentence_pooling,
+                    args.binarized_threshold,
+                    monitor=monitor,
+                )
+
+            elapsed = time.time() - start
+            monitor.complete()
+            print(f"\n  DONE - {elapsed:.1f}s  |  Output: {output_dir}")
+        except Exception as exc:
+            monitor.event(
+                "run_failed",
+                monitor.current_stage,
+                str(exc),
+                status="failed",
+                exception_type=type(exc).__name__,
+                traceback=traceback.format_exc(),
             )
-
-        comparison = build_pooling_comparison_summary(
-            run_payloads,
-            target_lambda=1.0,
-        )
-        _save_json(output_dir / "pooling_comparison.json", comparison)
-        generate_pooling_comparison_report(
-            comparison,
-            output_dir / "pooling_comparison.md",
-        )
-    else:
-        _run_single_pooling_experiment(
-            model,
-            tokenizer,
-            sae,
-            candidate_df,
-            texts,
-            labels,
-            records,
-            hook_point,
-            device,
-            sae_config,
-            args,
-            output_dir,
-            args.sentence_pooling,
-            args.binarized_threshold,
-        )
-
-    elapsed = time.time() - start
-    print(f"\n  DONE - {elapsed:.1f}s  |  Output: {output_dir}")
+            raise
 
 
 if __name__ == "__main__":

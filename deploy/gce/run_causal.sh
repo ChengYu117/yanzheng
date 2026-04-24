@@ -19,13 +19,15 @@ if [[ ! -f "${CANDIDATE_CSV}" ]]; then
 fi
 
 cmd=(
-  python causal/run_experiment.py
+  python -u causal/run_experiment.py
   --model-dir "${MODEL_DIR}"
+  --device "${DEVICE}"
   --candidate-csv "${CANDIDATE_CSV}"
-  --data-dir "data/mi_re"
+  --data-dir "${DATA_DIR}"
   --output-dir "${CAUSAL_OUTPUT_DIR}"
   --batch-size "${CAUSAL_BATCH_SIZE}"
   --max-seq-len "${CAUSAL_MAX_SEQ_LEN}"
+  --checkpoint-topk-semantics "${CHECKPOINT_TOPK_SEMANTICS}"
 )
 
 if [[ -n "${CAUSAL_LAMBDAS:-}" ]]; then
@@ -43,4 +45,4 @@ printf 'Running command:'
 printf ' %q' "${cmd[@]}"
 printf '\n'
 
-"${cmd[@]}" | tee "${CAUSAL_OUTPUT_DIR}/run.log"
+"${cmd[@]}" 2>&1 | tee "${CAUSAL_OUTPUT_DIR}/run.log"
