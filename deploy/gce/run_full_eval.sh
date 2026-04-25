@@ -10,14 +10,17 @@ activate_venv
 ensure_repo_root
 
 mkdir -p "${SAE_OUTPUT_DIR}"
+print_runtime_summary
 
 cmd=(
-  python run_sae_evaluation.py
+  python -u run_sae_evaluation.py
   --model-dir "${MODEL_DIR}"
-  --data-dir "data/mi_re"
+  --device "${DEVICE}"
+  --data-dir "${DATA_DIR}"
   --output-dir "${SAE_OUTPUT_DIR}"
   --batch-size "${SAE_BATCH_SIZE}"
   --max-seq-len "${SAE_MAX_SEQ_LEN}"
+  --checkpoint-topk-semantics "${CHECKPOINT_TOPK_SEMANTICS}"
   --full-structural
 )
 
@@ -29,4 +32,4 @@ printf 'Running command:'
 printf ' %q' "${cmd[@]}"
 printf '\n'
 
-"${cmd[@]}" | tee "${SAE_OUTPUT_DIR}/run.log"
+"${cmd[@]}" 2>&1 | tee "${SAE_OUTPUT_DIR}/run.log"

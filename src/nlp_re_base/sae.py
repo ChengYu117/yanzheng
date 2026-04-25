@@ -154,6 +154,24 @@ class OpenMossLmSaesAdapter(nn.Module):
         dataset_norm = getattr(backend_sae, "dataset_average_activation_norm", None)
         self.norm_scale = None if not dataset_norm else dataset_norm.get(hook_point)
 
+    @property
+    def W_dec(self) -> torch.Tensor:
+        """Compatibility view matching the legacy local SAE shape [d_model, d_sae]."""
+        return self.backend_sae.W_D.T
+
+    @property
+    def W_enc(self) -> torch.Tensor:
+        """Compatibility view matching the legacy local SAE shape [d_sae, d_model]."""
+        return self.backend_sae.W_E.T
+
+    @property
+    def b_dec(self) -> torch.Tensor:
+        return getattr(self.backend_sae, "b_D")
+
+    @property
+    def b_enc(self) -> torch.Tensor:
+        return getattr(self.backend_sae, "b_E")
+
     def _apply_topk_if_needed(self, latents: torch.Tensor) -> torch.Tensor:
         """Apply optional checkpoint-semantic hard top-k after the official backend."""
         if self.checkpoint_topk_semantics != "hard":

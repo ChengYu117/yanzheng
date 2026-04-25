@@ -53,7 +53,14 @@ def _load_hf_model_and_tokenizer(
     device_map: str | None,
     device: str | torch.device | None,
 ):
-    tokenizer = AutoTokenizer.from_pretrained(model_path)
+    try:
+        tokenizer = AutoTokenizer.from_pretrained(model_path, use_fast=True)
+    except ValueError as exc:
+        print(
+            "Fast tokenizer loading failed; retrying with use_fast=False. "
+            f"Original error: {exc}"
+        )
+        tokenizer = AutoTokenizer.from_pretrained(model_path, use_fast=False)
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
 
@@ -82,7 +89,14 @@ def _load_transformer_lens_model_and_tokenizer(
         model_path,
         dtype=torch_dtype,
     )
-    tokenizer = AutoTokenizer.from_pretrained(model_path)
+    try:
+        tokenizer = AutoTokenizer.from_pretrained(model_path, use_fast=True)
+    except ValueError as exc:
+        print(
+            "Fast tokenizer loading failed; retrying with use_fast=False. "
+            f"Original error: {exc}"
+        )
+        tokenizer = AutoTokenizer.from_pretrained(model_path, use_fast=False)
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
 

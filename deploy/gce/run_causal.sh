@@ -10,6 +10,7 @@ activate_venv
 ensure_repo_root
 
 mkdir -p "${CAUSAL_OUTPUT_DIR}"
+print_runtime_summary
 
 CANDIDATE_CSV="${CANDIDATE_CSV:-${SAE_OUTPUT_DIR}/candidate_latents.csv}"
 if [[ ! -f "${CANDIDATE_CSV}" ]]; then

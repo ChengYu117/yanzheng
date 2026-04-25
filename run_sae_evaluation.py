@@ -129,6 +129,15 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Run univariate analysis and export judge_bundle only, skipping the slower late functional evaluation stages.",
     )
+    parser.add_argument(
+        "--checkpoint-topk-semantics",
+        choices=["disabled", "hard"],
+        default="hard",
+        help=(
+            "Whether to enforce an extra hard top-k after JumpReLU when running "
+            "the public checkpoint. 'hard' matches the currently selected main experimental path."
+        ),
+    )
     return parser.parse_args()
 
 
@@ -423,6 +432,7 @@ def main() -> None:
         subfolder=sae_config["sae_subfolder"],
         device=device,
         dtype=torch.bfloat16,
+        checkpoint_topk_semantics=args.checkpoint_topk_semantics,
     )
 
     comparison_records = []
