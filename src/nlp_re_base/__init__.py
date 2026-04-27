@@ -24,6 +24,8 @@ __all__ = [
     "load_activations_bundle",
     "train_linear_probes",
     "summarize_probe_results",
+    "load_misc_annotation_records",
+    "run_misc_label_mapping",
 ]
 
 _LAZY_IMPORTS = {
@@ -44,6 +46,8 @@ _LAZY_IMPORTS = {
     "load_activations_bundle": (".stage2_activation_extraction", "load_activations_bundle"),
     "train_linear_probes": (".stage2_activation_extraction", "train_linear_probes"),
     "summarize_probe_results": (".stage2_activation_extraction", "summarize_probe_results"),
+    "load_misc_annotation_records": (".misc_label_mapping", "load_misc_annotation_records"),
+    "run_misc_label_mapping": (".misc_label_mapping", "run_misc_label_mapping"),
 }
 
 
