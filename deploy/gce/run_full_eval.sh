@@ -17,6 +17,8 @@ cmd=(
   --model-dir "${MODEL_DIR}"
   --device "${DEVICE}"
   --data-dir "${DATA_DIR}"
+  --data-format auto
+  --label-mode misc_multilabel
   --output-dir "${SAE_OUTPUT_DIR}"
   --batch-size "${SAE_BATCH_SIZE}"
   --max-seq-len "${SAE_MAX_SEQ_LEN}"

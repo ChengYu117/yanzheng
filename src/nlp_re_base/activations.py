@@ -77,6 +77,7 @@ def extract_and_process_streaming(
     device: str | torch.device | None = None,
     collect_structural_samples: int = 5,
     structural_accumulator: Optional[Any] = None,
+    structural_group_labels: Optional[list[set[str] | list[str] | tuple[str, ...]]] = None,
     debug_collectors: Optional[dict[str, Any]] = None,
 ) -> dict[str, Any]:
     """Extract activations, run SAE, and aggregate — all in streaming fashion.
@@ -102,6 +103,10 @@ def extract_and_process_streaming(
             eval_structural. When provided, receives every batch's token-level
             data and computes metrics over the full dataset at O(1) memory.
             When None, falls back to legacy sample-based approach.
+        structural_group_labels: Optional per-text label sets. When
+            structural_accumulator is a dict with a ``groups`` mapping, each
+            group accumulator receives only examples whose label set contains
+            that group.
 
     Returns:
         Dictionary with:
@@ -215,10 +220,12 @@ def extract_and_process_streaming(
                     raw_acc = structural_accumulator.get("raw")
                     norm_acc = structural_accumulator.get("normalized")
                     official_acc = structural_accumulator.get("official")
+                    group_accumulators = structural_accumulator.get("groups")
                 else:
                     raw_acc = structural_accumulator
                     norm_acc = None
                     official_acc = None
+                    group_accumulators = None
                 raw_acc.update(
                     z=batch_acts_cpu,
                     z_hat=batch_recon_cpu,
@@ -239,6 +246,32 @@ def extract_and_process_streaming(
                         latents=batch_latents_cpu,
                         mask=batch_mask_cpu,
                     )
+
+                if group_accumulators is not None and structural_group_labels is not None:
+                    batch_label_sets = structural_group_labels[
+                        start_idx : start_idx + len(batch_texts)
+                    ]
+                    for group_label, group_acc in group_accumulators.items():
+                        selected = [
+                            group_label in set(label_set)
+                            for label_set in batch_label_sets
+                        ]
+                        if not any(selected):
+                            continue
+                        selected_tensor = torch.tensor(selected, dtype=torch.bool)
+                        group_acc["raw"].update(
+                            z=batch_acts_cpu[selected_tensor],
+                            z_hat=batch_recon_cpu[selected_tensor],
+                            latents=batch_latents_cpu[selected_tensor],
+                            mask=batch_mask_cpu[selected_tensor],
+                        )
+                        if group_acc.get("normalized") is not None:
+                            group_acc["normalized"].update(
+                                z=batch_acts_normed_cpu[selected_tensor],
+                                z_hat=batch_recon_normed_cpu[selected_tensor],
+                                latents=batch_latents_cpu[selected_tensor],
+                                mask=batch_mask_cpu[selected_tensor],
+                            )
 
             if debug_collectors is not None:
                 raw_debug = debug_collectors.get("raw")

@@ -49,6 +49,13 @@ desktop.ini
 outputs/
 *.log
 
+# Local datasets and large research artifacts
+data/mi_quality_counseling_misc/
+*.whl
+*.docx
+*.pdf
+0.34
+
 # Local model and cache directories
 models/
 checkpoints/

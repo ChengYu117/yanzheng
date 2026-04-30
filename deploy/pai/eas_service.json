@@ -1,0 +1,54 @@
+{
+  "metadata": {
+    "name": "sae-re-job-service",
+    "type": "ScalableJobService",
+    "enable_webservice": true,
+    "instance": 1
+  },
+  "cloud": {
+    "region": "__REGION_ID__"
+  },
+  "storage": [
+    {
+      "name": "models",
+      "type": "oss",
+      "mount_path": "/mnt/pai/models",
+      "oss_path": "oss://__OSS_BUCKET__/models/"
+    },
+    {
+      "name": "outputs",
+      "type": "oss",
+      "mount_path": "/mnt/pai/outputs",
+      "oss_path": "oss://__OSS_BUCKET__/outputs/"
+    },
+    {
+      "name": "hf-cache",
+      "type": "oss",
+      "mount_path": "/mnt/pai/cache/hf",
+      "oss_path": "oss://__OSS_BUCKET__/hf-cache/"
+    },
+    {
+      "name": "data",
+      "type": "oss",
+      "mount_path": "/mnt/pai/data",
+      "oss_path": "oss://__OSS_BUCKET__/data/"
+    }
+  ],
+  "containers": [
+    {
+      "name": "job-worker",
+      "image": "__IMAGE_URI__",
+      "script": "export MODEL_DIR=/mnt/pai/models/Llama-3.1-8B OUTPUT_ROOT=/mnt/pai/outputs HF_HOME=/mnt/pai/cache/hf TRANSFORMERS_CACHE=/mnt/pai/cache/hf PYTHONUNBUFFERED=1 EAS_TASK_MODE=1; tail -f /dev/null",
+      "cpu": 8,
+      "memory": 32768,
+      "gpu": 1
+    }
+  ],
+  "front_end": {
+    "image": "__IMAGE_URI__",
+    "port": 8000,
+    "cpu": 4,
+    "memory": 16384,
+    "script": "export MODEL_DIR=/mnt/pai/models/Llama-3.1-8B OUTPUT_ROOT=/mnt/pai/outputs HF_HOME=/mnt/pai/cache/hf TRANSFORMERS_CACHE=/mnt/pai/cache/hf PYTHONUNBUFFERED=1 EAS_TASK_MODE=1; uvicorn nlp_re_base.pai.service_api:app --host 0.0.0.0 --port 8000"
+  }
+}

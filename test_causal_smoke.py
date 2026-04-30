@@ -112,6 +112,7 @@ class TestSelection(unittest.TestCase):
         result = rank_latents(self.df, self.re_feats, self.nonre_feats, top_k=20)
         self.assertEqual(len(result["G1"]), 1)
         self.assertEqual(len(result["G5"]), 5)
+        self.assertEqual(len(result["G10"]), 10)
         self.assertEqual(len(result["G20"]), 20)
         self.assertIn("probe_weight_abs", result["ranked_df"].columns)
         self.assertIn("influence_abs", result["ranked_df"].columns)
@@ -165,6 +166,13 @@ class TestEvaluation(unittest.TestCase):
                     "mean_delta_nonre": -0.1,
                     "fraction_improved": 0.3,
                 }
+            },
+            "G10": {
+                "zero": {
+                    "mean_delta_re": -0.35,
+                    "mean_delta_nonre": -0.15,
+                    "fraction_improved": 0.2,
+                }
             }
         }
         sufficiency = {
@@ -174,6 +182,15 @@ class TestEvaluation(unittest.TestCase):
                         "mean_delta_re": 0.4,
                         "mean_delta_nonre": 0.1,
                         "fraction_improved": 0.7,
+                    }
+                }
+            },
+            "G10": {
+                "cond_token": {
+                    "lam_1.0": {
+                        "mean_delta_re": 0.5,
+                        "mean_delta_nonre": 0.2,
+                        "fraction_improved": 0.75,
                     }
                 }
             }
@@ -194,7 +211,16 @@ class TestEvaluation(unittest.TestCase):
                         "delta_ttr": 0.01,
                         "delta_bigram_repetition": -0.02,
                     },
-                }
+                },
+                "G10": {
+                    "mode": "cond_token",
+                    "mean_generated_re_logit_delta": 0.3,
+                    "quality": {
+                        "mean_content_retention": 0.78,
+                        "delta_ttr": 0.02,
+                        "delta_bigram_repetition": -0.01,
+                    },
+                },
             },
             "controls": {},
         }
@@ -211,6 +237,7 @@ class TestEvaluation(unittest.TestCase):
             text = out_path.read_text(encoding="utf-8")
             self.assertIn("Table 3: Selectivity / Side Effects", text)
             self.assertIn("G1", text)
+            self.assertIn("G10", text)
 
     def test_pooling_comparison_report(self):
         from causal.run_experiment import (
@@ -221,22 +248,25 @@ class TestEvaluation(unittest.TestCase):
         run_payloads = {
             "max": {
                 "binarized_threshold": 0.0,
-                "selected_groups": {"G1": [1], "G5": [1, 2, 3, 4, 5], "G20": list(range(20))},
+                "selected_groups": {"G1": [1], "G5": [1, 2, 3, 4, 5], "G10": list(range(10)), "G20": list(range(20))},
                 "probe_baseline": {"accuracy": 0.8, "auc": 0.9},
                 "necessity": {
                     "G1": {"cond_token": {"mean_delta_re": -0.2}, "zero": {"mean_delta_re": -0.1}},
                     "G5": {"cond_token": {"mean_delta_re": -0.3}, "zero": {"mean_delta_re": -0.2}},
+                    "G10": {"cond_token": {"mean_delta_re": -0.35}, "zero": {"mean_delta_re": -0.25}},
                     "G20": {"cond_token": {"mean_delta_re": -0.4}, "zero": {"mean_delta_re": -0.3}},
                 },
                 "sufficiency": {
                     "G1": {"cond_token": {"lam_1.0": {"mean_delta_re": 0.2}}},
                     "G5": {"cond_token": {"lam_1.0": {"mean_delta_re": 0.3}}},
+                    "G10": {"cond_token": {"lam_1.0": {"mean_delta_re": 0.35}}},
                     "G20": {"cond_token": {"lam_1.0": {"mean_delta_re": 0.4}}},
                 },
                 "side_effects": {
                     "groups": {
                         "G1": {"quality": {"mean_content_retention": 0.8, "delta_bigram_repetition": 0.02}},
                         "G5": {"quality": {"mean_content_retention": 0.79, "delta_bigram_repetition": 0.03}},
+                        "G10": {"quality": {"mean_content_retention": 0.785, "delta_bigram_repetition": 0.025}},
                         "G20": {"quality": {"mean_content_retention": 0.78, "delta_bigram_repetition": 0.04}},
                     }
                 },
@@ -244,22 +274,25 @@ class TestEvaluation(unittest.TestCase):
             },
             "sum": {
                 "binarized_threshold": 0.0,
-                "selected_groups": {"G1": [7], "G5": [7, 8, 9, 10, 11], "G20": list(range(20, 40))},
+                "selected_groups": {"G1": [7], "G5": [7, 8, 9, 10, 11], "G10": list(range(20, 30)), "G20": list(range(20, 40))},
                 "probe_baseline": {"accuracy": 0.82, "auc": 0.91},
                 "necessity": {
                     "G1": {"cond_token": {"mean_delta_re": -0.25}, "zero": {"mean_delta_re": -0.2}},
                     "G5": {"cond_token": {"mean_delta_re": -0.35}, "zero": {"mean_delta_re": -0.3}},
+                    "G10": {"cond_token": {"mean_delta_re": -0.4}, "zero": {"mean_delta_re": -0.33}},
                     "G20": {"cond_token": {"mean_delta_re": -0.45}, "zero": {"mean_delta_re": -0.4}},
                 },
                 "sufficiency": {
                     "G1": {"cond_token": {"lam_1.0": {"mean_delta_re": 0.25}}},
                     "G5": {"cond_token": {"lam_1.0": {"mean_delta_re": 0.35}}},
+                    "G10": {"cond_token": {"lam_1.0": {"mean_delta_re": 0.4}}},
                     "G20": {"cond_token": {"lam_1.0": {"mean_delta_re": 0.45}}},
                 },
                 "side_effects": {
                     "groups": {
                         "G1": {"quality": {"mean_content_retention": 0.83, "delta_bigram_repetition": 0.01}},
                         "G5": {"quality": {"mean_content_retention": 0.82, "delta_bigram_repetition": 0.02}},
+                        "G10": {"quality": {"mean_content_retention": 0.815, "delta_bigram_repetition": 0.02}},
                         "G20": {"quality": {"mean_content_retention": 0.81, "delta_bigram_repetition": 0.02}},
                     }
                 },
@@ -267,19 +300,21 @@ class TestEvaluation(unittest.TestCase):
             },
             "binarized_sum": {
                 "binarized_threshold": 0.0,
-                "selected_groups": {"G1": [13], "G5": [13, 14, 15, 16, 17], "G20": list(range(40, 60))},
+                "selected_groups": {"G1": [13], "G5": [13, 14, 15, 16, 17], "G10": list(range(40, 50)), "G20": list(range(40, 60))},
                 "probe_baseline": {"accuracy": 0.75, "auc": 0.84},
                 "necessity": {
                     "G1": {"cond_token": {"mean_delta_re": -0.1}, "zero": {"mean_delta_re": -0.08}},
                     "G5": {"cond_token": {"mean_delta_re": -0.15}, "zero": {"mean_delta_re": -0.1}},
+                    "G10": {"cond_token": {"mean_delta_re": -0.18}, "zero": {"mean_delta_re": -0.12}},
                     "G20": {"cond_token": {"mean_delta_re": -0.2}, "zero": {"mean_delta_re": -0.12}},
                 },
                 "sufficiency": {
                     "G1": {"cond_token": {"lam_1.0": {"mean_delta_re": 0.1}}},
                     "G5": {"cond_token": {"lam_1.0": {"mean_delta_re": 0.15}}},
+                    "G10": {"cond_token": {"lam_1.0": {"mean_delta_re": 0.18}}},
                     "G20": {"cond_token": {"lam_1.0": {"mean_delta_re": 0.2}}},
                 },
-                "side_effects": {"groups": {}},
+                "side_effects": {"groups": {"G10": {"quality": {"mean_content_retention": 0.8, "delta_bigram_repetition": 0.01}}}},
                 "group": {"synergy": {"synergy_score": 0.05}},
             },
         }
@@ -297,6 +332,16 @@ class TestEvaluation(unittest.TestCase):
 
 
 class TestPooling(unittest.TestCase):
+    def test_progress_helpers(self):
+        from causal.run_experiment import _progress_checkpoints, _summarize_delta
+
+        self.assertEqual(_progress_checkpoints(0), set())
+        self.assertEqual(_progress_checkpoints(3), {1, 2, 3})
+        self.assertIn(1, _progress_checkpoints(20))
+        self.assertIn(20, _progress_checkpoints(20))
+        self.assertIn("mean_delta_re=+0.500", _summarize_delta({"mean_delta_re": 0.5}))
+        self.assertEqual(_summarize_delta({"error": "no features collected"}), "no features collected")
+
     def test_pool_features_variants(self):
         from causal.run_experiment import _pool_features
 
@@ -374,6 +419,7 @@ class TestPooling(unittest.TestCase):
                 side_effect_max_new_tokens=8,
                 side_effect_lambda=1.0,
                 n_bootstrap=0,
+                checkpoint_topk_semantics="hard",
                 data_dir="data/mi_re",
                 candidate_csv=str(candidate_csv_path),
             )

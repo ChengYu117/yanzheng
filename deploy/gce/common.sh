@@ -26,7 +26,7 @@ load_gce_env() {
   : "${PYTORCH_INDEX_URL:=https://download.pytorch.org/whl/cu124}"
   : "${CONDA_ENV_NAME:=}"
   : "${CONDA_BASE:=}"
-  : "${DATA_DIR:=data/mi_re}"
+  : "${DATA_DIR:=data/mi_quality_counseling_misc}"
   : "${DEVICE:=cuda}"
   : "${CHECKPOINT_TOPK_SEMANTICS:=hard}"
   : "${MODEL_HF_REPO_ID:=meta-llama/Llama-3.1-8B}"

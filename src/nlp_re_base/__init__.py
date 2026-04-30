@@ -12,6 +12,8 @@ from typing import Any
 __all__ = [
     "load_model_config",
     "dataset_summary",
+    "load_experiment_dataset",
+    "load_misc_full_records",
     "load_jsonl",
     "load_local_model_and_tokenizer",
     "SparseAutoencoder",
@@ -26,11 +28,16 @@ __all__ = [
     "summarize_probe_results",
     "load_misc_annotation_records",
     "run_misc_label_mapping",
+    "run_mapping_structure_analysis",
+    "run_followup_interpretability_analysis",
+    "export_misc_causal_candidates",
 ]
 
 _LAZY_IMPORTS = {
     "load_model_config": (".config", "load_model_config"),
     "dataset_summary": (".data", "dataset_summary"),
+    "load_experiment_dataset": (".data", "load_experiment_dataset"),
+    "load_misc_full_records": (".data", "load_misc_full_records"),
     "load_jsonl": (".data", "load_jsonl"),
     "load_local_model_and_tokenizer": (".model", "load_local_model_and_tokenizer"),
     "SparseAutoencoder": (".sae", "SparseAutoencoder"),
@@ -48,6 +55,18 @@ _LAZY_IMPORTS = {
     "summarize_probe_results": (".stage2_activation_extraction", "summarize_probe_results"),
     "load_misc_annotation_records": (".misc_label_mapping", "load_misc_annotation_records"),
     "run_misc_label_mapping": (".misc_label_mapping", "run_misc_label_mapping"),
+    "run_mapping_structure_analysis": (
+        ".mapping_structure",
+        "run_mapping_structure_analysis",
+    ),
+    "run_followup_interpretability_analysis": (
+        ".behavior_interpretability",
+        "run_followup_interpretability_analysis",
+    ),
+    "export_misc_causal_candidates": (
+        ".causal_candidates",
+        "export_misc_causal_candidates",
+    ),
 }
 
 

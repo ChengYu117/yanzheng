@@ -21,7 +21,7 @@ from transformers import PreTrainedTokenizerBase
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
-from nlp_re_base.data import load_cactus_dataset
+from nlp_re_base.data import load_experiment_dataset
 
 
 @dataclass
@@ -41,26 +41,12 @@ def build_dataset(
 ) -> tuple[list[str], list[int], list[dict]]:
     """Return (texts, labels, records) for the full dataset.
 
-    Uses CACTUS unified JSONL via load_cactus_dataset().
-    Texts are `formatted_text` (containing <client>...<therapist>... template).
+    Uses the unified experiment dataset loader. For the current MISC dataset,
+    texts are MISC `unit_text` behavior units and labels are binary RE/NonRE.
+    Legacy MI-RE and CACTUS remain supported through format auto-detection.
     """
-    re_records, nonre_records, _ = load_cactus_dataset(data_dir)
-
-    texts: list[str] = []
-    labels: list[int] = []
-    records: list[dict] = []
-
-    for r in re_records:
-        texts.append(r.get("formatted_text", r.get("unit_text", "")))
-        labels.append(1)
-        records.append(r)
-
-    for r in nonre_records:
-        texts.append(r.get("formatted_text", r.get("unit_text", "")))
-        labels.append(0)
-        records.append(r)
-
-    return texts, labels, records
+    dataset = load_experiment_dataset(data_dir, data_format="auto")
+    return dataset.texts, dataset.binary_labels, dataset.records
 
 
 def tokenize_batch(

@@ -48,6 +48,13 @@ conda activate qwen-env
 pip install -e .
 ```
 
+Official OpenMOSS integration:
+
+- Python `3.11+` can install `lm-saes` and `transformer-lens`.
+- Python `3.10` keeps using the legacy local SAE/HuggingFace fallback path.
+- SAE loading now prefers `lm-saes` when it is available.
+- `TransformerLens` is supported as an explicit model backend via `config/model_config.json -> backend = "transformer_lens"`, but it is not enabled by default because loading an 8B model through TL can temporarily duplicate weights and spike memory.
+
 ## Run Evaluation
 
 ```powershell
@@ -109,5 +116,17 @@ This repo now includes a GCE deployment bundle:
 - `deploy/gce/download_model.sh`
 - `deploy/gce/run_full_eval.sh`
 - `deploy/gce/run_causal.sh`
+
+## PAI-EAS Deployment
+
+This repo also includes an Aliyun PAI / ACR / EAS deployment bundle:
+
+- `deploy/pai/Dockerfile`
+- `deploy/pai/eas_service.json`
+- `deploy/pai/build_and_push.sh`
+- `deploy/pai/build_and_push.ps1`
+- `deploy/pai/README_pai.md`
+
+Use this path when you want to package the project into a Docker image, push it to ACR, and run it as a long-running job service on PAI-EAS with OSS-mounted model and output directories.
 
 See [GCE云GPU部署说明](doc/GCE云GPU部署说明.md) for the full Google Compute Engine workflow.

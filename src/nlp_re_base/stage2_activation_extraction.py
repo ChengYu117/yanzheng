@@ -30,40 +30,32 @@ from sklearn.model_selection import train_test_split
 from tqdm import tqdm
 
 from .config import resolve_output_dir
-from .data import load_jsonl
+from .data import DEFAULT_DATA_DIR
 from .model import load_local_model_and_tokenizer
 
-DEFAULT_DATA_DIR = Path("data/cactus")
 DEFAULT_OUTPUT_SUBDIR = "stage2_activation_extraction"
 
 
 def load_stage2_dataset(data_dir: str | Path = DEFAULT_DATA_DIR) -> list[dict[str, Any]]:
     """Load RE and NonRE utterances into a binary classification dataset.
 
-    Supports CACTUS unified JSONL and legacy MI-RE split format.
+    Supports current MISC full annotations, CACTUS unified JSONL, and legacy
+    MI-RE split format.
     """
-    from .data import load_cactus_dataset
+    from .data import load_experiment_dataset
 
-    re_records, nonre_records, _ = load_cactus_dataset(data_dir)
-
+    loaded = load_experiment_dataset(data_dir, data_format="auto")
     dataset: list[dict[str, Any]] = []
-    for record in re_records:
+    for record in loaded.records:
         dataset.append({
             "unit_id": record.get("sample_id", record.get("file_id", "")),
-            "unit_text": record.get("unit_text", record.get("formatted_text", "")),
-            "code": record.get("label", "RE"),
+            "unit_text": record.get("unit_text", record.get("text", "")),
+            "code": record.get("predicted_code", record.get("label")),
             "subcode": record.get("subtype", record.get("predicted_subcode")),
             "confidence": record.get("confidence", 0.0),
-            "label_re": 1,
-        })
-    for record in nonre_records:
-        dataset.append({
-            "unit_id": record.get("sample_id", record.get("file_id", "")),
-            "unit_text": record.get("unit_text", record.get("formatted_text", "")),
-            "code": record.get("label", "NonRE"),
-            "subcode": record.get("subtype", record.get("predicted_subcode")),
-            "confidence": record.get("confidence", 0.0),
-            "label_re": 0,
+            "label_re": int(record.get("label_re", 0)),
+            "labels": record.get("labels", []),
+            "quality_label": record.get("quality_label"),
         })
     return dataset
 

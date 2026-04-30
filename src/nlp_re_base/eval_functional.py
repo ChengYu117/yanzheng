@@ -711,15 +711,15 @@ def run_functional_evaluation(
 
     # Convert to numpy
     if isinstance(re_features, torch.Tensor):
-        re_features = re_features.float().numpy()
+        re_features = re_features.detach().cpu().float().numpy()
     if isinstance(nonre_features, torch.Tensor):
-        nonre_features = nonre_features.float().numpy()
+        nonre_features = nonre_features.detach().cpu().float().numpy()
     if isinstance(re_activations, torch.Tensor):
-        re_activations = re_activations.float().numpy()
+        re_activations = re_activations.detach().cpu().float().numpy()
     if isinstance(nonre_activations, torch.Tensor):
-        nonre_activations = nonre_activations.float().numpy()
+        nonre_activations = nonre_activations.detach().cpu().float().numpy()
     if isinstance(sae_decoder_weight, torch.Tensor):
-        sae_decoder_weight = sae_decoder_weight.float().numpy()
+        sae_decoder_weight = sae_decoder_weight.detach().cpu().float().numpy()
 
     out_path = Path(output_dir)
     out_path.mkdir(parents=True, exist_ok=True)

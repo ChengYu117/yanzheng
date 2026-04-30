@@ -18,21 +18,12 @@ import torch
 from scipy import stats
 from tqdm import tqdm
 
+from .data import (
+    PREFERRED_LABEL_ORDER,
+    load_misc_full_records,
+    misc_label_set,
+)
 from .eval_functional import benjamini_hochberg
-
-
-PREFERRED_LABEL_ORDER = [
-    "RE",
-    "RES",
-    "REC",
-    "QU",
-    "QUO",
-    "QUC",
-    "GI",
-    "SU",
-    "AF",
-    "OTHER",
-]
 
 
 def sanitize_label(label: str) -> str:
@@ -77,25 +68,7 @@ def iter_misc_annotation_files(data_dir: str | Path) -> list[Path]:
 
 def record_label_set(record: dict[str, Any]) -> set[str]:
     """Build hierarchical labels for one MISC annotation record."""
-    raw_code = str(record.get("predicted_code", "") or "").strip().upper()
-    raw_subcode = str(record.get("predicted_subcode", "") or "").strip().upper()
-
-    invalid = {"", "NONE", "NULL", "N/A", "NA", "NAN"}
-    labels: set[str] = set()
-
-    if raw_code in invalid:
-        labels.add("OTHER")
-    elif raw_code == "RE":
-        labels.add("RE")
-    elif raw_code == "QU":
-        labels.add("QU")
-    else:
-        labels.add(raw_code)
-
-    if raw_subcode not in invalid and raw_subcode not in labels:
-        labels.add(raw_subcode)
-
-    return labels or {"OTHER"}
+    return misc_label_set(record)
 
 
 def load_misc_annotation_records(
@@ -105,46 +78,11 @@ def load_misc_annotation_records(
     limit: int | None = None,
 ) -> list[dict[str, Any]]:
     """Load full MISC annotation records from high/low JSONL files."""
-    records: list[dict[str, Any]] = []
-    for path in iter_misc_annotation_files(data_dir):
-        split = path.parent.name if path.parent != _annotation_root(data_dir) else ""
-        with path.open("r", encoding="utf-8") as f:
-            for line_no, line in enumerate(f, start=1):
-                line = line.strip()
-                if not line:
-                    continue
-                rec = json.loads(line)
-                text = str(
-                    rec.get("unit_text")
-                    or rec.get("utterance")
-                    or rec.get("formatted_text")
-                    or ""
-                ).strip()
-                if not text:
-                    continue
-
-                confidence = _safe_float(rec.get("confidence"), default=None)
-                if (
-                    confidence_threshold is not None
-                    and (confidence is None or confidence < confidence_threshold)
-                ):
-                    continue
-
-                enriched = dict(rec)
-                enriched["unit_text"] = text
-                enriched["confidence"] = confidence
-                enriched["source_split"] = split
-                enriched["source_file"] = path.name
-                enriched["source_path"] = str(path)
-                enriched["source_line"] = line_no
-                enriched["labels"] = sorted(record_label_set(enriched))
-                enriched.setdefault("record_id", f"{path.stem}:{line_no}")
-                records.append(enriched)
-
-                if limit is not None and len(records) >= limit:
-                    return records
-
-    return records
+    return load_misc_full_records(
+        data_dir,
+        confidence_threshold=confidence_threshold,
+        limit=limit,
+    )
 
 
 def select_labels(

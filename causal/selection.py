@@ -1,7 +1,7 @@
 """causal/selection.py — Stabilised latent group selection.
 
 Combines Cohen's d rank from the prior run (candidate_latents.csv)
-with a GradSAE-style influence score to produce G1/G5/G20.
+with a GradSAE-style influence score to produce G1/G5/G10/G20.
 Bootstrap stability filtering is also provided.
 """
 
@@ -66,9 +66,9 @@ def rank_latents(
     nonre_features: np.ndarray,
     top_k: int = 20,
 ) -> dict[str, list[int]]:
-    """Combine |probe weight| rank + influence rank to select G1/G5/G20.
+    """Combine |probe weight| rank + influence rank to select G1/G5/G10/G20.
 
-    Returns {'G1': [...], 'G5': [...], 'G20': [...]}.
+    Returns {'G1': [...], 'G5': [...], 'G10': [...], 'G20': [...]}.
     Only considers latents already in candidate_df (BH-FDR significant).
     """
     df = candidate_df.copy()
@@ -104,6 +104,7 @@ def rank_latents(
     return {
         "G1":  ranked_indices[:1],
         "G5":  ranked_indices[:5],
+        "G10": ranked_indices[:10],
         "G20": ranked_indices[:top_k],
         "ranked_df": df_sorted,
     }
@@ -119,18 +120,21 @@ def bootstrap_stability(
     candidate_df: pd.DataFrame,
     n_seeds: int = 20,
     g5_k: int = 5,
+    g10_k: int = 10,
     g20_k: int = 20,
     g5_threshold: float = 0.60,
+    g10_threshold: float = 0.65,
     g20_threshold: float = 0.70,
 ) -> dict[str, Any]:
-    """Estimate how often each latent appears in G5/G20 across bootstrap resamples.
+    """Estimate how often each latent appears in G5/G10/G20 across bootstrap resamples.
 
-    Returns stabilised G5 and G20 index lists.
+    Returns stabilised G5, G10 and G20 index lists.
     """
     n_re    = len(re_features)
     n_nonre = len(nonre_features)
 
     g5_counts:  dict[int, int] = {}
+    g10_counts: dict[int, int] = {}
     g20_counts: dict[int, int] = {}
 
     for seed in range(n_seeds):
@@ -143,20 +147,26 @@ def bootstrap_stability(
         result = rank_latents(candidate_df, re_boot, nonre_boot, top_k=g20_k)
         for idx in result["G5"]:
             g5_counts[idx] = g5_counts.get(idx, 0) + 1
+        for idx in result["G10"][:g10_k]:
+            g10_counts[idx] = g10_counts.get(idx, 0) + 1
         for idx in result["G20"]:
             g20_counts[idx] = g20_counts.get(idx, 0) + 1
 
     stable_g5  = [i for i, c in g5_counts.items()  if c / n_seeds >= g5_threshold]
+    stable_g10 = [i for i, c in g10_counts.items() if c / n_seeds >= g10_threshold]
     stable_g20 = [i for i, c in g20_counts.items() if c / n_seeds >= g20_threshold]
 
     # Sort by count descending
     stable_g5  = sorted(stable_g5,  key=lambda i: -g5_counts[i])
+    stable_g10 = sorted(stable_g10, key=lambda i: -g10_counts[i])
     stable_g20 = sorted(stable_g20, key=lambda i: -g20_counts[i])
 
     return {
         "stable_G5":   stable_g5,
+        "stable_G10":  stable_g10,
         "stable_G20":  stable_g20,
         "g5_counts":   g5_counts,
+        "g10_counts":  g10_counts,
         "g20_counts":  g20_counts,
         "n_seeds":     n_seeds,
     }

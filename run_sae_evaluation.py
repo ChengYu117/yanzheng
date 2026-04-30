@@ -19,6 +19,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import shutil
 import sys
 import time
 from pathlib import Path
@@ -32,12 +33,20 @@ sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
 from nlp_re_base.activations import extract_and_process_streaming
 from nlp_re_base.config import resolve_output_dir
-from nlp_re_base.data import load_cactus_dataset
+from nlp_re_base.data import DEFAULT_DATA_DIR, ExperimentDataset, load_experiment_dataset
+from nlp_re_base.diagnostics import apply_full_structural_metrics
 from nlp_re_base.eval_functional import run_functional_evaluation
 from nlp_re_base.eval_structural import (
+    OfficialMetricsAccumulator,
     OnlineStructuralAccumulator,
     compute_ce_kl_with_intervention,
     run_structural_evaluation,
+)
+from nlp_re_base.misc_label_mapping import (
+    run_misc_label_mapping,
+    write_json,
+    write_jsonl,
+    write_label_indicator_csv,
 )
 from nlp_re_base.model import load_local_model_and_tokenizer
 from nlp_re_base.sae import load_sae_from_hub
@@ -45,7 +54,7 @@ from nlp_re_base.sae import load_sae_from_hub
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="SAE-RE Evaluation Pipeline",
+        description="SAE-MISC Evaluation Pipeline",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
     parser.add_argument(
@@ -104,8 +113,35 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--data-dir",
-        default="data/mi_re",
-        help="Directory containing the legacy MI-RE split (re_dataset.jsonl/nonre_dataset.jsonl). CACTUS unified JSONL remains supported as a compatibility fallback.",
+        default=str(DEFAULT_DATA_DIR.relative_to(PROJECT_ROOT)),
+        help=(
+            "Dataset root. Defaults to the full MISC dataset; legacy MI-RE split "
+            "and CACTUS remain supported through --data-format auto."
+        ),
+    )
+    parser.add_argument(
+        "--data-format",
+        choices=["auto", "misc_full", "legacy_re_nonre", "cactus"],
+        default="auto",
+        help="Dataset format override.",
+    )
+    parser.add_argument(
+        "--label-mode",
+        choices=["misc_multilabel", "binary_re"],
+        default="misc_multilabel",
+        help="Functional label analysis mode. binary_re skips the MISC Latent x Label matrix.",
+    )
+    parser.add_argument(
+        "--confidence-threshold",
+        type=float,
+        default=None,
+        help="Optional confidence filter for MISC annotation records.",
+    )
+    parser.add_argument(
+        "--max-samples",
+        type=int,
+        default=None,
+        help="Optional debug limit applied after dataset loading.",
     )
     parser.add_argument(
         "--full-structural",
@@ -128,6 +164,17 @@ def parse_args() -> argparse.Namespace:
         "--judge-bundle-only",
         action="store_true",
         help="Run univariate analysis and export judge_bundle only, skipping the slower late functional evaluation stages.",
+    )
+    parser.add_argument(
+        "--save-features",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="Save records, label matrix, utterance SAE features, and utterance activations.",
+    )
+    parser.add_argument(
+        "--save-token-topk",
+        action="store_true",
+        help="Reserved for token-level top-k latent activation export. Not enabled by default.",
     )
     parser.add_argument(
         "--checkpoint-topk-semantics",
@@ -171,8 +218,116 @@ def _summarize_functional_metrics(
 
 def _print_banner() -> None:
     print("\n" + "=" * 38)
-    print("  SAE-RE Evaluation Pipeline")
+    print("  SAE-MISC Evaluation Pipeline")
     print("=" * 38 + "\n")
+
+
+def _label_sets_for_records(records: list[dict[str, Any]]) -> list[set[str]]:
+    return [set(record.get("labels") or []) for record in records]
+
+
+def _save_feature_store(
+    *,
+    output_dir: Path,
+    dataset: ExperimentDataset,
+    utterance_features: torch.Tensor,
+    utterance_activations: torch.Tensor,
+    aggregation: str,
+    hook_point: str,
+    max_seq_len: int,
+    batch_size: int,
+    save_token_topk: bool,
+) -> dict[str, str]:
+    feature_dir = output_dir / "feature_store"
+    feature_dir.mkdir(parents=True, exist_ok=True)
+
+    records_path = output_dir / "records.jsonl"
+    label_matrix_path = output_dir / "label_matrix.csv"
+    features_path = feature_dir / "utterance_features.pt"
+    activations_path = feature_dir / "utterance_activations.pt"
+    metadata_path = feature_dir / "feature_metadata.json"
+
+    write_jsonl(records_path, dataset.records)
+    write_label_indicator_csv(
+        label_matrix_path,
+        dataset.records,
+        dataset.label_names,
+        torch.tensor(dataset.label_matrix, dtype=torch.int64).numpy(),
+    )
+    torch.save(
+        {
+            "utterance_features": utterance_features.detach().cpu().float(),
+            "aggregation": aggregation,
+            "hook_point": hook_point,
+            "data_format": dataset.data_format,
+        },
+        features_path,
+    )
+    torch.save(
+        {
+            "utterance_activations": utterance_activations.detach().cpu().float(),
+            "aggregation": aggregation,
+            "hook_point": hook_point,
+            "data_format": dataset.data_format,
+        },
+        activations_path,
+    )
+    metadata = {
+        "data_dir": str(dataset.data_dir),
+        "data_format": dataset.data_format,
+        "n_records": len(dataset.records),
+        "feature_shape": list(utterance_features.shape),
+        "activation_shape": list(utterance_activations.shape),
+        "label_names": dataset.label_names,
+        "aggregation": aggregation,
+        "hook_point": hook_point,
+        "max_seq_len": max_seq_len,
+        "batch_size": batch_size,
+        "save_token_topk": bool(save_token_topk),
+        "token_topk_note": (
+            "Full token-level latent export is intentionally disabled by default. "
+            "This run saved utterance-level SAE features and model activations."
+        ),
+    }
+    write_json(metadata_path, metadata)
+    return {
+        "records": str(records_path),
+        "label_matrix": str(label_matrix_path),
+        "utterance_features": str(features_path),
+        "utterance_activations": str(activations_path),
+        "feature_metadata": str(metadata_path),
+    }
+
+
+def _mirror_binary_functional_outputs(binary_dir: Path, output_dir: Path) -> None:
+    """Keep legacy root-level outputs available for causal and judge scripts."""
+    for filename in ("candidate_latents.csv", "metrics_functional.json"):
+        src = binary_dir / filename
+        if src.exists():
+            shutil.copy2(src, output_dir / filename)
+    for dirname in ("judge_bundle", "latent_cards"):
+        src_dir = binary_dir / dirname
+        dst_dir = output_dir / dirname
+        if src_dir.exists():
+            if dst_dir.exists():
+                shutil.rmtree(dst_dir)
+            shutil.copytree(src_dir, dst_dir)
+
+
+def _binary_reordered_metadata(
+    texts: list[str],
+    labels: list[int],
+    records: list[dict[str, Any]],
+) -> tuple[list[str], list[int], list[dict[str, Any]]]:
+    """Match legacy functional feature order: all RE rows, then all NonRE rows."""
+    re_indices = [idx for idx, label in enumerate(labels) if int(label) == 1]
+    nonre_indices = [idx for idx, label in enumerate(labels) if int(label) == 0]
+    order = re_indices + nonre_indices
+    return (
+        [texts[idx] for idx in order],
+        [labels[idx] for idx in order],
+        [records[idx] for idx in order],
+    )
 
 
 def _run_single_aggregation(
@@ -181,10 +336,7 @@ def _run_single_aggregation(
     output_dir: Path,
     args: argparse.Namespace,
     sae_config: dict[str, Any],
-    all_texts: list[str],
-    all_labels: list[int],
-    all_records: list[dict[str, Any]],
-    n_re: int,
+    dataset: ExperimentDataset,
     model: Any,
     tokenizer: Any,
     model_cfg: dict[str, Any] | None,
@@ -206,14 +358,29 @@ def _run_single_aggregation(
     print(
         f"  batch_size={batch_size}, max_seq_len={max_seq_len}, aggregation={aggregation}"
     )
+    all_texts = dataset.texts
+    all_labels = dataset.binary_labels
+    all_records = dataset.records
     # Create optional online accumulator for full-dataset structural metrics
     accumulator = None
     if args.full_structural:
+        group_accumulators = {
+            label: {
+                "raw": OnlineStructuralAccumulator(),
+                "normalized": OnlineStructuralAccumulator(),
+            }
+            for label in dataset.label_names
+        }
         accumulator = {
             "raw": OnlineStructuralAccumulator(),
             "normalized": OnlineStructuralAccumulator(),
+            "official": OfficialMetricsAccumulator(),
+            "groups": group_accumulators,
         }
-        print("  [full-structural] Online accumulator enabled - metrics computed over ALL tokens.")
+        print(
+            "  [full-structural] Online accumulator enabled - metrics computed over ALL tokens, "
+            "including official OpenMOSS legacy EV."
+        )
 
     result = extract_and_process_streaming(
         model=model,
@@ -227,18 +394,41 @@ def _run_single_aggregation(
         device=device,
         collect_structural_samples=5,
         structural_accumulator=accumulator,
+        structural_group_labels=_label_sets_for_records(dataset.records),
     )
 
     utterance_features = result["utterance_features"]
     utterance_activations = result["utterance_activations"]
 
-    re_features = utterance_features[:n_re]
-    nonre_features = utterance_features[n_re:]
-    re_activations = utterance_activations[:n_re]
-    nonre_activations = utterance_activations[n_re:]
+    binary_texts, binary_labels, binary_records = _binary_reordered_metadata(
+        all_texts,
+        all_labels,
+        all_records,
+    )
+
+    label_mask = torch.tensor(all_labels, dtype=torch.bool)
+    re_features = utterance_features[label_mask]
+    nonre_features = utterance_features[~label_mask]
+    re_activations = utterance_activations[label_mask]
+    nonre_activations = utterance_activations[~label_mask]
 
     print(f"  Utterance features shape: {utterance_features.shape}")
     print(f"  RE features: {re_features.shape}, NonRE features: {nonre_features.shape}")
+    if args.save_features:
+        feature_paths = _save_feature_store(
+            output_dir=output_dir,
+            dataset=dataset,
+            utterance_features=utterance_features,
+            utterance_activations=utterance_activations,
+            aggregation=aggregation,
+            hook_point=hook_point,
+            max_seq_len=max_seq_len,
+            batch_size=batch_size,
+            save_token_topk=args.save_token_topk,
+        )
+        print(f"  Saved feature store to {output_dir / 'feature_store'}")
+    else:
+        feature_paths = {}
 
     print("\n[6/7] Running structural evaluation...")
     ce_kl_results = cached_ce_kl_results
@@ -288,6 +478,7 @@ def _run_single_aggregation(
     if accumulator is not None:
         raw_full_metrics = accumulator["raw"].result()
         norm_full_metrics = accumulator["normalized"].result()
+        official_runtime_metrics = accumulator["official"].result()
         print(
             "  [full-structural][raw] "
             f"n_tokens={raw_full_metrics.get('n_tokens')}, "
@@ -302,35 +493,44 @@ def _run_single_aggregation(
             f"FVU={norm_full_metrics.get('fvu', float('nan')):.4f}, "
             f"MSE={norm_full_metrics.get('mse', float('nan')):.4f}"
         )
-        structural_metrics.update(raw_full_metrics)
-        structural_metrics["structural_scope"] = "full_dataset"
-        structural_metrics["space_metrics"]["raw"] = {
-            k: v for k, v in raw_full_metrics.items()
-            if k in {"mse", "cosine_similarity", "explained_variance", "fvu", "n_tokens"}
+        if official_runtime_metrics:
+            print(
+                "  [full-structural][official] "
+                f"EV={official_runtime_metrics.get('metrics/explained_variance', float('nan')):.4f}, "
+                f"legacy_EV={official_runtime_metrics.get('metrics/explained_variance_legacy', float('nan')):.4f}, "
+                f"L0={official_runtime_metrics.get('metrics/l0', float('nan')):.4f}"
+            )
+        structural_metrics = apply_full_structural_metrics(
+            structural_metrics,
+            raw_full_metrics=raw_full_metrics,
+            norm_full_metrics=norm_full_metrics,
+            official_runtime_metrics=official_runtime_metrics,
+            output_dir=output_dir,
+        )
+        structural_metrics["by_label"] = {
+            label: {
+                "raw": accs["raw"].result(),
+                "normalized": accs["normalized"].result(),
+            }
+            for label, accs in accumulator.get("groups", {}).items()
         }
-        structural_metrics["space_metrics"]["normalized"] = {
-            k: v for k, v in norm_full_metrics.items()
-            if k in {"mse", "cosine_similarity", "explained_variance", "fvu", "n_tokens"}
-        }
-        # Re-save the merged structural metrics JSON
-        import json
-        struct_path = output_dir / "metrics_structural.json"
-        with open(struct_path, "w", encoding="utf-8") as _f:
-            json.dump(structural_metrics, _f, indent=2, ensure_ascii=False)
-        print(f"  [full-structural] Updated {struct_path}")
+        with (output_dir / "metrics_structural.json").open("w", encoding="utf-8") as f:
+            json.dump(structural_metrics, f, indent=2, ensure_ascii=False, default=str)
+        print(f"  [full-structural] Updated {output_dir / 'metrics_structural.json'}")
 
     print("\n[7/7] Running functional evaluation...")
     sae_decoder_weight = sae.W_dec.detach().cpu()
 
     functional_metrics = None
     functional_error = None
+    binary_output_dir = output_dir / "functional" / "re_binary"
     try:
         functional_metrics = run_functional_evaluation(
             re_features=re_features,
             nonre_features=nonre_features,
-            all_texts=all_texts,
-            all_labels=all_labels,
-            all_records=all_records,
+            all_texts=binary_texts,
+            all_labels=binary_labels,
+            all_records=binary_records,
             re_activations=re_activations,
             nonre_activations=nonre_activations,
             sae_decoder_weight=sae_decoder_weight,
@@ -343,8 +543,9 @@ def _run_single_aggregation(
             sae_repo_id=sae_config.get("sae_repo_id"),
             sae_subfolder=sae_config.get("sae_subfolder"),
             judge_bundle_only=args.judge_bundle_only,
-            output_dir=output_dir,
+            output_dir=binary_output_dir,
         )
+        _mirror_binary_functional_outputs(binary_output_dir, output_dir)
     except Exception as exc:
         functional_error = f"{type(exc).__name__}: {exc}"
         if not allow_partial_functional:
@@ -354,14 +555,44 @@ def _run_single_aggregation(
             f"{functional_error}"
         )
 
+    misc_mapping_summary = None
+    if (
+        args.label_mode == "misc_multilabel"
+        and dataset.data_format == "misc_full"
+        and not args.judge_bundle_only
+    ):
+        print("\n[7/7] Running MISC multi-label latent mapping...")
+        misc_mapping_summary = run_misc_label_mapping(
+            records=all_records,
+            features=utterance_features,
+            output_dir=output_dir / "functional" / "misc_label_mapping",
+            labels=dataset.label_names,
+            fdr_alpha=sae_config.get("fdr_alpha", 0.05),
+            precision_k_values=sae_config.get("misc_precision_k_values", [10, 50]),
+            min_positive=sae_config.get("misc_min_positive", 10),
+            min_negative=sae_config.get("misc_min_negative", 10),
+            chunk_size=sae_config.get("misc_chunk_size", 512),
+            top_k_per_label=sae_config.get("misc_top_k_per_label", 50),
+            top_example_latents=sae_config.get("misc_top_example_latents", 5),
+            top_examples_per_latent=sae_config.get("misc_top_examples_per_latent", 10),
+        )
+        print(
+            "  Saved MISC label mapping to "
+            f"{output_dir / 'functional' / 'misc_label_mapping'}"
+        )
+    elif args.judge_bundle_only and args.label_mode == "misc_multilabel":
+        print("  Skipping MISC multi-label mapping because --judge-bundle-only is set.")
+
     return {
         "aggregation": aggregation,
         "output_dir": str(output_dir),
         "utterance_features_shape": list(utterance_features.shape),
         "utterance_activations_shape": list(utterance_activations.shape),
+        "feature_store": feature_paths,
         "structural_metrics": structural_metrics,
         "ce_kl_results": ce_kl_results,
         "functional_metrics": functional_metrics,
+        "misc_mapping_summary": misc_mapping_summary,
         "functional_error": functional_error,
     }
 
@@ -395,18 +626,27 @@ def main() -> None:
     if not data_dir.is_absolute():
         data_dir = PROJECT_ROOT / data_dir
 
-    re_records, nonre_records, _ = load_cactus_dataset(data_dir)
+    if args.save_token_topk:
+        print(
+            "  --save-token-topk requested, but token-level export is not part of "
+            "the default memory-safe path yet. This run will save utterance-level "
+            "feature and activation stores."
+        )
 
-    re_texts = [record.get("unit_text", record.get("formatted_text", "")) for record in re_records]
-    nonre_texts = [record.get("unit_text", record.get("formatted_text", "")) for record in nonre_records]
-    all_records = re_records + nonre_records
-    all_texts = re_texts + nonre_texts
-    all_labels = [1] * len(re_texts) + [0] * len(nonre_texts)
+    dataset = load_experiment_dataset(
+        data_dir,
+        data_format=args.data_format,
+        confidence_threshold=args.confidence_threshold,
+        limit=args.max_samples,
+    )
+    write_json(base_output_dir / "dataset_summary.json", dataset.summary)
 
-    n_re = len(re_texts)
-    print(f"  RE samples:    {n_re}")
-    print(f"  NonRE samples: {len(nonre_texts)}")
-    print(f"  Total:         {len(all_texts)}")
+    print(f"  Data format:   {dataset.data_format}")
+    print(f"  Data dir:      {dataset.data_dir}")
+    print(f"  RE samples:    {len(dataset.re_records)}")
+    print(f"  NonRE samples: {len(dataset.nonre_records)}")
+    print(f"  Total:         {len(dataset.texts)}")
+    print(f"  Labels:        {', '.join(dataset.label_names)}")
 
     if args.device:
         device = torch.device(args.device)
@@ -448,10 +688,7 @@ def main() -> None:
             output_dir=run_output_dir,
             args=args,
             sae_config=sae_config,
-            all_texts=all_texts,
-            all_labels=all_labels,
-            all_records=all_records,
-            n_re=n_re,
+            dataset=dataset,
             model=model,
             tokenizer=tokenizer,
             model_cfg=_model_cfg,
@@ -482,10 +719,12 @@ def main() -> None:
                     "output_dir": record["output_dir"],
                     "utterance_features_shape": record["utterance_features_shape"],
                     "utterance_activations_shape": record["utterance_activations_shape"],
+                    "feature_store": record["feature_store"],
                     "structural_metrics": record["structural_metrics"],
                     "functional_summary": _summarize_functional_metrics(
                         record["functional_metrics"]
                     ),
+                    "misc_mapping_summary": record["misc_mapping_summary"],
                     "functional_error": record["functional_error"],
                 }
                 for record in comparison_records
