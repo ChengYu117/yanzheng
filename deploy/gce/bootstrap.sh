@@ -86,6 +86,9 @@ for package_name, import_name in (
 PY
 
 python run_sae_evaluation.py --help > /dev/null
+python run_misc_mapping_structure_analysis.py --help > /dev/null
+python run_misc_interpretability_analysis.py --help > /dev/null
+python run_misc_causal_candidate_export.py --help > /dev/null
 python causal/run_experiment.py --help > /dev/null
 python run_ai_re_judge.py --help > /dev/null
 
@@ -94,3 +97,4 @@ echo "Bootstrap completed successfully."
 echo "Next steps:"
 echo "  1. Copy deploy/gce/env.example to deploy/gce/.env and set HF_TOKEN if you have not done so."
 echo "  2. Run: bash deploy/gce/download_model.sh"
+echo "  3. Run full MISC pipeline: bash deploy/gce/start_full_pipeline_tmux.sh"

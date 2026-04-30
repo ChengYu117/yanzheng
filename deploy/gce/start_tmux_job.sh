@@ -35,7 +35,7 @@ for arg in "$@"; do
   COMMAND_STRING+="$(printf '%q' "${arg}")"
 done
 
-RUNNER="source $(printf '%q' "${ENV_FILE}"); cd $(printf '%q' "${PROJECT_ROOT}"); ${COMMAND_STRING}"
+RUNNER="export ENV_FILE=$(printf '%q' "${ENV_FILE}"); export RUN_SAE=$(printf '%q' "${RUN_SAE}"); export RUN_INTERPRETABILITY=$(printf '%q' "${RUN_INTERPRETABILITY}"); export RUN_CAUSAL=$(printf '%q' "${RUN_CAUSAL}"); export RUN_AI_JUDGE=$(printf '%q' "${RUN_AI_JUDGE}"); export CAUSAL_LABEL=$(printf '%q' "${CAUSAL_LABEL}"); export CAUSAL_DATA_DIR=$(printf '%q' "${CAUSAL_DATA_DIR}"); export ALLOW_LEGACY_CAUSAL_DATA=$(printf '%q' "${ALLOW_LEGACY_CAUSAL_DATA}"); cd $(printf '%q' "${PROJECT_ROOT}"); ${COMMAND_STRING}"
 
 printf -v RUNNER_QUOTED '%q' "${RUNNER}"
 tmux new-session -d -s "${SESSION_NAME}" "bash -lc ${RUNNER_QUOTED}" >>"${LAUNCH_LOG}" 2>&1

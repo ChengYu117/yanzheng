@@ -12,10 +12,42 @@ load_gce_env() {
     exit 1
   fi
 
+  local override_run_sae_set="${RUN_SAE+x}"
+  local override_run_sae_value="${RUN_SAE:-}"
+  local override_run_interpretability_set="${RUN_INTERPRETABILITY+x}"
+  local override_run_interpretability_value="${RUN_INTERPRETABILITY:-}"
+  local override_run_causal_set="${RUN_CAUSAL+x}"
+  local override_run_causal_value="${RUN_CAUSAL:-}"
+  local override_run_ai_judge_set="${RUN_AI_JUDGE+x}"
+  local override_run_ai_judge_value="${RUN_AI_JUDGE:-}"
+  local override_causal_label_set="${CAUSAL_LABEL+x}"
+  local override_causal_label_value="${CAUSAL_LABEL:-}"
+  local override_causal_data_dir_set="${CAUSAL_DATA_DIR+x}"
+  local override_causal_data_dir_value="${CAUSAL_DATA_DIR:-}"
+
   set -a
   # shellcheck disable=SC1090
   source "${ENV_FILE}"
   set +a
+
+  if [[ -n "${override_run_sae_set}" ]]; then
+    RUN_SAE="${override_run_sae_value}"
+  fi
+  if [[ -n "${override_run_interpretability_set}" ]]; then
+    RUN_INTERPRETABILITY="${override_run_interpretability_value}"
+  fi
+  if [[ -n "${override_run_causal_set}" ]]; then
+    RUN_CAUSAL="${override_run_causal_value}"
+  fi
+  if [[ -n "${override_run_ai_judge_set}" ]]; then
+    RUN_AI_JUDGE="${override_run_ai_judge_value}"
+  fi
+  if [[ -n "${override_causal_label_set}" ]]; then
+    CAUSAL_LABEL="${override_causal_label_value}"
+  fi
+  if [[ -n "${override_causal_data_dir_set}" ]]; then
+    CAUSAL_DATA_DIR="${override_causal_data_dir_value}"
+  fi
 
   : "${DATA_ROOT:=/mnt/disks/data}"
   : "${MODEL_DIR:=${DATA_ROOT}/models/Llama-3.1-8B}"
@@ -27,6 +59,8 @@ load_gce_env() {
   : "${CONDA_ENV_NAME:=}"
   : "${CONDA_BASE:=}"
   : "${DATA_DIR:=data/mi_quality_counseling_misc}"
+  : "${CAUSAL_DATA_DIR:=${DATA_DIR}}"
+  : "${ALLOW_LEGACY_CAUSAL_DATA:=0}"
   : "${DEVICE:=cuda}"
   : "${CHECKPOINT_TOPK_SEMANTICS:=hard}"
   : "${MODEL_HF_REPO_ID:=meta-llama/Llama-3.1-8B}"
@@ -37,6 +71,15 @@ load_gce_env() {
   : "${HF_HUB_DOWNLOAD_MAX_WORKERS:=4}"
   : "${SAE_OUTPUT_DIR:=${OUTPUT_ROOT}/sae_eval_full}"
   : "${CAUSAL_OUTPUT_DIR:=${OUTPUT_ROOT}/causal_validation_full}"
+  : "${PIPELINE_OUTPUT_DIR:=${OUTPUT_ROOT}/misc_full_pipeline}"
+  : "${MAPPING_OUTPUT_DIR:=${SAE_OUTPUT_DIR}/interpretability/mapping_structure}"
+  : "${FOLLOWUP_OUTPUT_DIR:=${SAE_OUTPUT_DIR}/interpretability/followup_analysis}"
+  : "${CAUSAL_CANDIDATE_OUTPUT_DIR:=${SAE_OUTPUT_DIR}/interpretability/causal_candidates}"
+  : "${CAUSAL_LABEL:=RE}"
+  : "${RUN_SAE:=1}"
+  : "${RUN_INTERPRETABILITY:=1}"
+  : "${RUN_CAUSAL:=1}"
+  : "${RUN_AI_JUDGE:=0}"
   : "${SAE_BATCH_SIZE:=4}"
   : "${SAE_MAX_SEQ_LEN:=128}"
   : "${CAUSAL_BATCH_SIZE:=4}"
@@ -44,10 +87,13 @@ load_gce_env() {
 
   export SCRIPT_DIR PROJECT_ROOT DATA_ROOT MODEL_DIR HF_HOME OUTPUT_ROOT
   export VENV_DIR PYTHON_BIN PYTORCH_INDEX_URL CONDA_ENV_NAME CONDA_BASE
-  export DATA_DIR DEVICE CHECKPOINT_TOPK_SEMANTICS
+  export DATA_DIR CAUSAL_DATA_DIR ALLOW_LEGACY_CAUSAL_DATA DEVICE CHECKPOINT_TOPK_SEMANTICS
   export MODEL_HF_REPO_ID MODEL_REVISION HF_ENDPOINT
   export HF_HUB_DOWNLOAD_TIMEOUT HF_HUB_ETAG_TIMEOUT HF_HUB_DOWNLOAD_MAX_WORKERS
-  export SAE_OUTPUT_DIR CAUSAL_OUTPUT_DIR SAE_BATCH_SIZE SAE_MAX_SEQ_LEN
+  export SAE_OUTPUT_DIR CAUSAL_OUTPUT_DIR PIPELINE_OUTPUT_DIR
+  export MAPPING_OUTPUT_DIR FOLLOWUP_OUTPUT_DIR CAUSAL_CANDIDATE_OUTPUT_DIR
+  export CAUSAL_LABEL RUN_SAE RUN_INTERPRETABILITY RUN_CAUSAL RUN_AI_JUDGE
+  export SAE_BATCH_SIZE SAE_MAX_SEQ_LEN
   export CAUSAL_BATCH_SIZE CAUSAL_MAX_SEQ_LEN
 }
 

@@ -16,6 +16,21 @@ sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
 
 class TestDeployConfig(unittest.TestCase):
+    def test_cloud_causal_stage_defaults_to_full_misc_dataset(self):
+        common = (PROJECT_ROOT / "deploy" / "gce" / "common.sh").read_text(encoding="utf-8")
+        run_causal = (PROJECT_ROOT / "deploy" / "gce" / "run_causal.sh").read_text(encoding="utf-8")
+        env_example = (PROJECT_ROOT / "deploy" / "gce" / "env.example").read_text(encoding="utf-8")
+
+        self.assertIn(": \"${DATA_DIR:=data/mi_quality_counseling_misc}\"", common)
+        self.assertIn(": \"${CAUSAL_DATA_DIR:=${DATA_DIR}}\"", common)
+        self.assertIn(": \"${ALLOW_LEGACY_CAUSAL_DATA:=0}\"", common)
+        self.assertIn("CAUSAL_DATA_DIR=${DATA_DIR}", env_example)
+        self.assertIn("ALLOW_LEGACY_CAUSAL_DATA=0", env_example)
+        self.assertIn("--data-dir \"${CAUSAL_DATA_DIR}\"", run_causal)
+        self.assertIn("Do not pass --data-dir to deploy/gce/run_causal.sh", run_causal)
+        self.assertIn("Refusing to run causal validation on legacy/balanced data", run_causal)
+        self.assertIn("label_candidates/${CAUSAL_LABEL}_candidate_latents.csv", run_causal)
+
     def test_model_dir_precedence(self):
         from nlp_re_base.config import load_model_config
 
@@ -86,6 +101,7 @@ class TestPackaging(unittest.TestCase):
             (root / "causal").mkdir(parents=True)
             (root / "config").mkdir(parents=True)
             (root / "data" / "mi_re").mkdir(parents=True)
+            (root / "data" / "mi_quality_counseling_misc").mkdir(parents=True)
             (root / "deploy" / "gce").mkdir(parents=True)
             (root / "doc").mkdir(parents=True)
             (root / "outputs").mkdir(parents=True)
@@ -94,12 +110,18 @@ class TestPackaging(unittest.TestCase):
             (root / "causal" / "__init__.py").write_text("", encoding="utf-8")
             (root / "config" / "model_config.json").write_text("{}", encoding="utf-8")
             (root / "data" / "mi_re" / "re_dataset.jsonl").write_text("", encoding="utf-8")
+            (root / "data" / "mi_quality_counseling_misc" / "README.md").write_text("", encoding="utf-8")
             (root / "deploy" / "gce" / "bootstrap.sh").write_text("#!/usr/bin/env bash\n", encoding="utf-8")
+            (root / "deploy" / "gce" / "run_full_pipeline.sh").write_text("#!/usr/bin/env bash\n", encoding="utf-8")
             (root / "doc" / "readme.md").write_text("doc", encoding="utf-8")
             (root / "README.md").write_text("root", encoding="utf-8")
             (root / "requirements.txt").write_text("numpy\n", encoding="utf-8")
             (root / "pyproject.toml").write_text("[project]\nname='x'\n", encoding="utf-8")
             (root / "run_sae_evaluation.py").write_text("print('ok')\n", encoding="utf-8")
+            (root / "run_misc_mapping_structure_analysis.py").write_text("print('ok')\n", encoding="utf-8")
+            (root / "run_misc_interpretability_analysis.py").write_text("print('ok')\n", encoding="utf-8")
+            (root / "run_misc_causal_candidate_export.py").write_text("print('ok')\n", encoding="utf-8")
+            (root / "run_misc_label_mapping.py").write_text("print('ok')\n", encoding="utf-8")
             (root / "run_ai_re_judge.py").write_text("print('ok')\n", encoding="utf-8")
             (root / "run_inference.py").write_text("print('ok')\n", encoding="utf-8")
             (root / ".gitignore").write_text("outputs/\n", encoding="utf-8")
@@ -115,7 +137,14 @@ class TestPackaging(unittest.TestCase):
                 names = set(tar.getnames())
 
             self.assertIn("deploy/gce/bootstrap.sh", names)
+            self.assertIn("deploy/gce/run_full_pipeline.sh", names)
             self.assertIn("run_sae_evaluation.py", names)
+            self.assertIn("run_misc_mapping_structure_analysis.py", names)
+            self.assertIn("run_misc_interpretability_analysis.py", names)
+            self.assertIn("run_misc_causal_candidate_export.py", names)
+            self.assertIn("run_misc_label_mapping.py", names)
+            self.assertIn("data/mi_quality_counseling_misc/README.md", names)
+            self.assertIn("data/mi_re/re_dataset.jsonl", names)
             self.assertNotIn("outputs/should_not_ship.txt", names)
 
 
