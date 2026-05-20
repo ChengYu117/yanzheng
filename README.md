@@ -1,132 +1,169 @@
-# NLP RE Dataset + Model Base
+# MISC SAE Interpretability Pipeline
 
-A SAE-RE evaluation pipeline for identifying Reflective Listening (RE) features in Llama-3.1-8B using Sparse Autoencoders.
+本项目面向心理咨询 MISC 行为单元，使用 Llama-3.1-8B 的中间层 hidden states 和 Sparse Autoencoder（SAE）特征，分析人工行为标签与模型内部 latent 表征之间的结构关系。
 
-## What This Does
+当前主线问题不是训练分类器，而是回答：
 
-1. Loads a pre-trained SAE (`Llama3_1-8B-Base-L19R-8x`, JumpReLU, 32768 latents) from HuggingFace
-2. Loads a local Llama-3.1-8B base model
-3. Feeds RE and NonRE datasets through the model → extracts layer-19 residual activations → runs SAE forward pass
-4. Computes **structural metrics** (MSE, Cosine Sim, L₀, CE Loss, KL Divergence, Dead Features)
-5. Computes **functional metrics** (Cohen's d + BH-FDR, Sparse Probing, DiffMean, TPP, Feature Absorption, Feature Geometry, MaxAct cards)
-6. Identifies candidate RE-associated latents
+- MISC 行为标签是否对应模型内部的单个 SAE latent？
+- 不同行为标签是否由多个 latent 共同表达？
+- 同一个 latent 是否会同时参与多个行为标签？
+- `RE/RES/REC`、`QU/QUO/QUC` 等父子标签结构是否能在 SAE 空间中被部分恢复？
 
-## Project Layout
+## 当前主数据
+
+默认数据目录：
 
 ```text
-NLP_re_dataset_model_base/
-  config/
-    model_config.json         # Local Llama-3.1-8B path
-    sae_config.json           # SAE hyperparams & eval settings
-  data/
-    mi_re/
-      re_dataset.jsonl        # 800 RE utterances
-      nonre_dataset.jsonl     # 798 NonRE utterances
-  src/
-    nlp_re_base/
-      config.py               # Config loader
-      data.py                 # JSONL loader
-      model.py                # Llama model loader
-      sae.py                  # SAE model + HuggingFace loading
-      activations.py          # Streaming activation extraction + SAE forward
-      stage2_activation_extraction.py  # Per-layer hidden-state extraction + linear probes
-      eval_structural.py      # Structural metrics
-      eval_functional.py      # Functional metrics (probing, TPP, absorption, geometry)
-      infer.py                # Basic text generation
-  run_sae_evaluation.py       # End-to-end pipeline runner
-  run_stage2_activation_extraction.py  # Stage 2 activation extraction runner
-  test_pipeline_smoke.py      # CPU smoke tests
-  test_stage2_smoke.py        # Stage 2 synthetic smoke tests
-  doc/
-    SAE评估指标说明.md        # Evaluation framework reference
+data/mi_quality_counseling_misc/
+  misc_annotations/*/*.jsonl
+  metadata/labels.csv
 ```
 
-## Setup
+主流程以每条 `unit_text` 作为统一样本单位，并标准化为：
+
+- `sample_id`
+- `file_id`
+- `quality_label`
+- `text`
+- `predicted_code`
+- `predicted_subcode`
+- `label_re`
+- `label_family`
+- `confidence`
+- `rationale`
+
+标签口径：
+
+- 二分类：`RE` vs `NonRE`
+- MISC 多标签：`RE/RES/REC/QU/QUO/QUC/GI/SU/AF/OTHER`
+
+`data/mi_re` 仍作为 legacy 兼容数据保留，需通过参数显式指定。
+
+## 主要入口
+
+### 1. 全量 SAE 评估与矩阵生成
 
 ```powershell
-conda activate qwen-env
-pip install -e .
+python run_sae_evaluation.py `
+  --model-dir D:\project\NLP_v3\NLP_data\Llama-3.1-8B `
+  --device cuda `
+  --data-dir data/mi_quality_counseling_misc `
+  --data-format misc_full `
+  --label-mode misc_multilabel `
+  --batch-size 4 `
+  --max-seq-len 128 `
+  --full-structural `
+  --checkpoint-topk-semantics hard `
+  --output-dir outputs/misc_full_sae_eval
 ```
 
-Official OpenMOSS integration:
+关键输出：
 
-- Python `3.11+` can install `lm-saes` and `transformer-lens`.
-- Python `3.10` keeps using the legacy local SAE/HuggingFace fallback path.
-- SAE loading now prefers `lm-saes` when it is available.
-- `TransformerLens` is supported as an explicit model backend via `config/model_config.json -> backend = "transformer_lens"`, but it is not enabled by default because loading an 8B model through TL can temporarily duplicate weights and spike memory.
+```text
+outputs/misc_full_sae_eval/
+  dataset_summary.json
+  records.jsonl
+  label_matrix.csv
+  feature_store/
+    utterance_features.pt
+    utterance_activations.pt
+  functional/
+    misc_label_mapping/
+    re_binary/
+  metrics_structural.json
+  metrics_functional.json
+```
 
-## Run Evaluation
+### 2. Mapping Structure 分析
 
 ```powershell
-# Full evaluation (GPU recommended)
-python run_sae_evaluation.py --output-dir outputs/sae_eval --batch-size 4
-
-# Skip slow CE/KL computation
-python run_sae_evaluation.py --skip-ce-kl --output-dir outputs/sae_eval
-
-# CPU smoke tests (no model needed)
-python test_pipeline_smoke.py
-
-# Stage 2: extract hidden states from all layers, then train per-layer probes
-python run_stage2_activation_extraction.py --all --batch-size 4
-
-# Stage 2 smoke tests
-python test_stage2_smoke.py
+python run_misc_mapping_structure_analysis.py `
+  --mapping-dir outputs/misc_full_sae_eval/functional/misc_label_mapping `
+  --output-dir outputs/misc_full_sae_eval/interpretability/mapping_structure
 ```
 
-## Output Files
+关键输出：
 
-| File | Contents |
-|------|----------|
-| `metrics_structural.json` | MSE, cosine sim, L₀, CE/KL, dead features |
-| `metrics_functional.json` | Probe results, univariate stats, absorption, geometry, TPP |
-| `candidate_latents.csv` | Ranked latents with Cohen's d, AUC, p-value, FDR |
-| `latent_cards/` | Markdown reports for top candidate latents |
+```text
+outputs/misc_full_sae_eval/interpretability/mapping_structure/
+  mapping_structure_metrics.json
+  label_fragmentation_rank.csv
+  latent_overlap_distribution.csv
+  label_pair_similarity.csv
+  hierarchy_alignment.csv
+  latent_role_summary.csv
+  mapping_structure_report.md
+  figures/
+```
 
-Stage 2 outputs are written under `outputs/stage2_activation_extraction/` by default:
+### 3. 后续可解释性分析
 
-| File | Contents |
-|------|----------|
-| `activations_*.npz` | Per-layer utterance representations and binary RE labels |
-| `activations_meta_*.json` | Extraction metadata (counts, model name, unit ids) |
-| `probe_results_*.json` | Per-layer probe metrics and best-layer summary |
-| `probe_results_*.csv` | CSV version of probe metrics |
-| `probe_results_plot.png` | Optional per-layer metric plot |
+```powershell
+python run_misc_interpretability_analysis.py `
+  --eval-dir outputs/misc_full_sae_eval `
+  --output-dir outputs/misc_full_sae_eval/interpretability/followup
+```
 
-## Local Model
+### 4. 因果验证候选 latent 导出
 
-Configured in `config/model_config.json`:
-- default relative path: `models/Llama-3.1-8B`
-- can be overridden by:
-  - `--model-dir`
-  - `MODEL_DIR`
+```powershell
+python run_misc_causal_candidate_export.py `
+  --eval-dir outputs/misc_full_sae_eval `
+  --output-dir outputs/misc_full_sae_eval/causal_candidates
+```
 
-## Key Design Decisions
+## 关键代码结构
 
-- **Streaming pipeline**: Activations are processed batch-by-batch to avoid OOM (no full `[N, T, 32768]` tensor in memory)
-- **Strict SAE loading**: Hard-fails if critical weights (W_enc, W_dec, b_enc) are missing from checkpoint
-- **dtype alignment**: Activations are cast to SAE dtype (bfloat16) before forward pass
+```text
+src/nlp_re_base/
+  data.py                         # MISC/legacy 数据读取与标准化
+  model.py                        # 本地 Llama 模型与 tokenizer 加载
+  sae.py                          # SAE 加载与前向计算封装
+  activations.py                  # hidden states 抽取、SAE feature 聚合、特征保存
+  eval_structural.py              # 结构指标
+  eval_functional.py              # 二分类功能指标
+  misc_label_mapping.py           # latent × MISC label 矩阵
+  mapping_structure.py            # Mapping Structure 结构分析
+  behavior_interpretability.py    # 后续解释性统计
+  causal_candidates.py            # 因果验证候选 latent 导出
+```
 
-## GCE Deployment
+## 测试
 
-This repo now includes a GCE deployment bundle:
+轻量测试：
 
-- `python package_project.py`
-- `deploy/gce/bootstrap.sh`
-- `deploy/gce/download_model.sh`
-- `deploy/gce/run_full_eval.sh`
-- `deploy/gce/run_causal.sh`
+```powershell
+python test_dataset_loader_smoke.py
+python test_misc_label_mapping_smoke.py
+python test_mapping_structure_analysis.py
+python test_behavior_interpretability.py
+python test_causal_candidate_export.py
+python test_deploy_smoke.py
+```
 
-## PAI-EAS Deployment
+完整模型推理需要本地或云端 GPU 与 Llama-3.1-8B 权重。
 
-This repo also includes an Aliyun PAI / ACR / EAS deployment bundle:
+## 云端运行
 
-- `deploy/pai/Dockerfile`
-- `deploy/pai/eas_service.json`
-- `deploy/pai/build_and_push.sh`
-- `deploy/pai/build_and_push.ps1`
-- `deploy/pai/README_pai.md`
+GCE/云服务器脚本位于：
 
-Use this path when you want to package the project into a Docker image, push it to ACR, and run it as a long-running job service on PAI-EAS with OSS-mounted model and output directories.
+```text
+deploy/gce/
+  bootstrap.sh
+  download_model.sh
+  run_full_pipeline.sh
+  run_full_eval.sh
+  run_causal.sh
+```
 
-See [GCE云GPU部署说明](doc/GCE云GPU部署说明.md) for the full Google Compute Engine workflow.
+推荐先参考：
+
+```text
+doc/云服务器部署运行教程.md
+doc/本地实验运行说明.md
+docs/PROJECT_DOSSIER.md
+```
+
+## 当前清理状态
+
+早期 cactus 数据构建、基础文本生成 demo、Stage2 activation extraction 旧阶段入口已经从主代码中移除。当前仓库主线以 MISC 全量数据、SAE 特征矩阵、Mapping Structure 和后续可解释性分析为准。

@@ -24,7 +24,6 @@ COPY src /app/src
 COPY config /app/config
 COPY data /app/data
 COPY run_ai_re_judge.py /app/
-COPY run_inference.py /app/
 COPY run_llamascope_distribution_sanity.py /app/
 COPY run_llamascope_variant_audit.py /app/
 COPY run_sae_checkpoint_parity.py /app/

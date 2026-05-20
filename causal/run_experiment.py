@@ -1614,7 +1614,7 @@ def generate_summary_tables(
 def parse_args():
     p = argparse.ArgumentParser(description="SAE-RE Causal Validation")
     p.add_argument("--candidate-csv", default="outputs/sae_eval/candidate_latents.csv")
-    p.add_argument("--data-dir", default="data/cactus")
+    p.add_argument("--data-dir", default="data/mi_quality_counseling_misc")
     p.add_argument(
         "--output-dir",
         default=None,
@@ -2323,7 +2323,7 @@ def _run_single_pooling_experiment(
 def parse_args():
     p = argparse.ArgumentParser(description="SAE-RE Causal Validation")
     p.add_argument("--candidate-csv", default="outputs/sae_eval/candidate_latents.csv")
-    p.add_argument("--data-dir", default="data/cactus")
+    p.add_argument("--data-dir", default="data/mi_quality_counseling_misc")
     p.add_argument(
         "--output-dir",
         default=None,

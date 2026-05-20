@@ -123,7 +123,6 @@ class TestPackaging(unittest.TestCase):
             (root / "run_misc_causal_candidate_export.py").write_text("print('ok')\n", encoding="utf-8")
             (root / "run_misc_label_mapping.py").write_text("print('ok')\n", encoding="utf-8")
             (root / "run_ai_re_judge.py").write_text("print('ok')\n", encoding="utf-8")
-            (root / "run_inference.py").write_text("print('ok')\n", encoding="utf-8")
             (root / ".gitignore").write_text("outputs/\n", encoding="utf-8")
             (root / "outputs" / "should_not_ship.txt").write_text("nope", encoding="utf-8")
 

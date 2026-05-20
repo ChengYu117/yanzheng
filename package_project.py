@@ -13,7 +13,6 @@ DEFAULT_INCLUDE_DIRS = [
     "src",
     "causal",
     "config",
-    "data/cactus",
     "data/mi_quality_counseling_misc",
     "data/mi_re",
     "deploy",
@@ -26,13 +25,11 @@ DEFAULT_INCLUDE_FILES = [
     "requirements.txt",
     "pyproject.toml",
     "run_ai_re_judge.py",
-    "run_inference.py",
     "run_misc_causal_candidate_export.py",
     "run_misc_interpretability_analysis.py",
     "run_misc_label_mapping.py",
     "run_misc_mapping_structure_analysis.py",
     "run_sae_evaluation.py",
-    "run_stage2_activation_extraction.py",
 ]
 EXCLUDED_DIR_NAMES = {
     ".git",

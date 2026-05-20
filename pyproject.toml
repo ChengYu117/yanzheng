@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "nlp-re-dataset-model-base"
 version = "0.2.0"
-description = "SAE-RE evaluation pipeline: identify Reflective Listening features in Llama-3.1-8B via Sparse Autoencoders."
+description = "MISC SAE interpretability pipeline: analyze counseling behavior labels through Llama hidden states and Sparse Autoencoder latents."
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
