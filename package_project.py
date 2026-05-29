@@ -27,7 +27,6 @@ DEFAULT_INCLUDE_FILES = [
     "run_ai_re_judge.py",
     "run_misc_causal_candidate_export.py",
     "run_misc_interpretability_analysis.py",
-    "run_misc_label_mapping.py",
     "run_misc_mapping_structure_analysis.py",
     "run_sae_evaluation.py",
 ]

@@ -3,14 +3,12 @@
 from __future__ import annotations
 
 import json
-import subprocess
 import sys
 import tempfile
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
-import torch
 
 
 PROJECT_ROOT = Path(__file__).resolve().parent
@@ -115,62 +113,9 @@ def test_misc_label_mapping_module():
         assert top_rec == 3, top_rec
 
 
-def test_misc_label_mapping_cli_with_precomputed_features():
-    with tempfile.TemporaryDirectory() as tmp:
-        root = Path(tmp)
-        raw_records = _write_synthetic_misc_dataset(root)
-        features = _synthetic_features(len(raw_records))
-        features_path = root / "features.pt"
-        torch.save({"utterance_features": torch.from_numpy(features)}, features_path)
-
-        out_dir = root / "cli_out"
-        cmd = [
-            sys.executable,
-            str(PROJECT_ROOT / "run_misc_label_mapping.py"),
-            "--data-dir",
-            str(root),
-            "--features-path",
-            str(features_path),
-            "--output-dir",
-            str(out_dir),
-            "--labels",
-            "RE",
-            "QU",
-            "RES",
-            "REC",
-            "--min-positive",
-            "3",
-            "--min-negative",
-            "3",
-            "--precision-k",
-            "3",
-            "6",
-            "--chunk-size",
-            "4",
-            "--top-k-per-label",
-            "5",
-            "--top-example-latents",
-            "1",
-            "--top-examples-per-latent",
-            "2",
-        ]
-        result = subprocess.run(
-            cmd,
-            cwd=PROJECT_ROOT,
-            text=True,
-            capture_output=True,
-            timeout=120,
-        )
-        assert result.returncode == 0, result.stderr + result.stdout
-        assert (out_dir / "latent_label_matrix.csv").exists()
-        assert (out_dir / "run_config.json").exists()
-        assert (out_dir / "run_summary.json").exists()
-
-
 def main() -> int:
     tests = [
         test_misc_label_mapping_module,
-        test_misc_label_mapping_cli_with_precomputed_features,
     ]
     failures = 0
     for test in tests:

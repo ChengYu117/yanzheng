@@ -23,8 +23,6 @@ dependencies = [
   "pandas",
   "matplotlib",
   "zstandard",
-  "fastapi",
-  "uvicorn[standard]",
   "lm-saes; python_version >= '3.11'",
   "transformer-lens; python_version >= '3.11'",
 ]
