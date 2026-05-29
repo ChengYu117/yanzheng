@@ -25,6 +25,7 @@ __all__ = [
     "run_mapping_structure_analysis",
     "run_followup_interpretability_analysis",
     "export_misc_causal_candidates",
+    "run_latent_space_search_v2",
 ]
 
 _LAZY_IMPORTS = {
@@ -51,6 +52,10 @@ _LAZY_IMPORTS = {
     "export_misc_causal_candidates": (
         ".causal_candidates",
         "export_misc_causal_candidates",
+    ),
+    "run_latent_space_search_v2": (
+        ".latent_space_search_v2",
+        "run_latent_space_search_v2",
     ),
 }
 
