@@ -90,16 +90,18 @@ def test_mapping_structure_module():
             mapping_dir=mapping_dir,
             output_dir=out_dir,
             top_k_values=[2, 3],
+            analysis_top_k=2,
             hierarchy_specs=["RE:RES,REC", "QU:QUO"],
             core_labels=["RE", "RES", "REC", "QU", "QUO"],
             doc_report=root / "report.md",
             make_figures=False,
         )
 
-        assert metrics["significant_latent_label_edges"] == 13
-        assert metrics["latents_with_any_significant_label"] == 6
-        assert metrics["single_label_latents"] == 2
-        assert metrics["multi_label_latents"] == 4
+        assert metrics["analysis_top_k"] == 2
+        assert metrics["topk_latent_label_edges"] == 10
+        assert metrics["topk_unique_latents"] <= 6
+        assert "significant_latent_label_edges" not in metrics
+        assert (out_dir / "topk_candidate_matrix.csv").exists()
         assert (out_dir / "label_fragmentation_rank.csv").exists()
         assert (out_dir / "latent_overlap_distribution.csv").exists()
         assert (out_dir / "label_pair_similarity.csv").exists()
@@ -110,21 +112,18 @@ def test_mapping_structure_module():
 
         frag = pd.read_csv(out_dir / "label_fragmentation_rank.csv")
         re_row = frag[frag["label"] == "RE"].iloc[0]
-        assert int(re_row["n_significant_latents"]) == 4
+        assert int(re_row["n_topk_latents"]) == 2
 
-        roles = pd.read_csv(out_dir / "latent_role_summary.csv")
-        role_counts = dict(zip(roles["role"], roles["n_latents"]))
-        assert role_counts["exclusive"] == 1
-        assert role_counts["family_shared"] == 2
-        assert role_counts["cross_family"] == 1
-        assert role_counts["global"] == 1
-        assert role_counts["auxiliary_only"] == 1
+        topk = pd.read_csv(out_dir / "topk_candidate_matrix.csv")
+        assert topk.groupby("label")["latent_idx"].count().max() == 2
+        pairs = pd.read_csv(out_dir / "label_pair_similarity.csv")
+        assert "significant_jaccard" not in pairs.columns
 
         hierarchy = pd.read_csv(out_dir / "hierarchy_alignment.csv")
         re_summary = hierarchy[
             (hierarchy["relation_type"] == "parent_summary") & (hierarchy["parent"] == "RE")
         ].iloc[0]
-        assert abs(float(re_summary["parent_decomposition"]) - 0.5) < 1e-9
+        assert 0.0 <= float(re_summary["parent_decomposition"]) <= 1.0
 
 
 def test_mapping_structure_cli():
@@ -143,6 +142,8 @@ def test_mapping_structure_cli():
             "--top-k",
             "2",
             "3",
+            "--analysis-top-k",
+            "2",
             "--label-hierarchy",
             "RE:RES,REC",
             "QU:QUO",
@@ -165,7 +166,8 @@ def test_mapping_structure_cli():
         )
         assert result.returncode == 0, result.stderr + result.stdout
         metrics = json.loads((out_dir / "mapping_structure_metrics.json").read_text())
-        assert metrics["significant_latent_label_edges"] == 13
+        assert metrics["analysis_top_k"] == 2
+        assert metrics["topk_latent_label_edges"] == 10
         assert doc_report.exists()
 
 

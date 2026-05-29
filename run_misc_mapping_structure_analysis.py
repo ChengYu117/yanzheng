@@ -13,6 +13,7 @@ sys.path.insert(0, str(PROJECT_ROOT / "src"))
 from nlp_re_base.mapping_structure import (  # noqa: E402
     DEFAULT_CORE_LABELS,
     DEFAULT_HIERARCHY_SPECS,
+    DEFAULT_INTERPRETABILITY_TOP_K,
     DEFAULT_TOP_K_VALUES,
     run_mapping_structure_analysis,
 )
@@ -34,6 +35,12 @@ def parse_args() -> argparse.Namespace:
         help="Directory for mapping-structure outputs.",
     )
     parser.add_argument("--top-k", nargs="+", type=int, default=DEFAULT_TOP_K_VALUES)
+    parser.add_argument(
+        "--analysis-top-k",
+        type=int,
+        default=DEFAULT_INTERPRETABILITY_TOP_K,
+        help="Per-label TopK candidate scope for formal interpretability analysis.",
+    )
     parser.add_argument("--fdr-alpha", type=float, default=0.05)
     parser.add_argument(
         "--label-hierarchy",
@@ -67,6 +74,7 @@ def main() -> None:
         mapping_dir=args.mapping_dir,
         output_dir=args.output_dir,
         top_k_values=args.top_k,
+        analysis_top_k=args.analysis_top_k,
         hierarchy_specs=args.label_hierarchy,
         core_labels=args.core_labels,
         fdr_alpha=args.fdr_alpha,
@@ -78,10 +86,11 @@ def main() -> None:
     print(f"Report: {metrics['files']['mapping_structure_report']}")
     if metrics["files"].get("doc_report"):
         print(f"Doc report: {metrics['files']['doc_report']}")
-    print(f"Significant latent-label edges: {metrics['significant_latent_label_edges']}")
-    print(f"Latents with any significant label: {metrics['latents_with_any_significant_label']}")
-    print(f"Single-label latents: {metrics['single_label_latents']}")
-    print(f"Multi-label latents: {metrics['multi_label_latents']}")
+    print(f"Interpretability scope: Top-{metrics['analysis_top_k']} per label")
+    print(f"TopK latent-label edges: {metrics['topk_latent_label_edges']}")
+    print(f"TopK unique latents: {metrics['topk_unique_latents']}")
+    print(f"TopK single-label latents: {metrics['topk_single_label_latents']}")
+    print(f"TopK multi-label latents: {metrics['topk_multi_label_latents']}")
 
 
 if __name__ == "__main__":

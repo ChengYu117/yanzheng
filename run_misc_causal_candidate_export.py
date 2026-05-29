@@ -12,6 +12,7 @@ sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
 from nlp_re_base.causal_candidates import (  # noqa: E402
     DEFAULT_CAUSAL_CANDIDATE_OUTPUT,
+    DEFAULT_CANDIDATE_TOP_K,
     DEFAULT_GROUP_SIZES,
     export_misc_causal_candidates,
 )
@@ -30,6 +31,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--output-dir", default=DEFAULT_CAUSAL_CANDIDATE_OUTPUT)
     parser.add_argument("--labels", nargs="+", default=DEFAULT_CORE_LABELS)
     parser.add_argument("--group-sizes", nargs="+", type=int, default=list(DEFAULT_GROUP_SIZES))
+    parser.add_argument("--candidate-top-k", type=int, default=DEFAULT_CANDIDATE_TOP_K)
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument(
         "--doc-report",
@@ -49,6 +51,7 @@ def main() -> None:
         output_dir=args.output_dir,
         labels=args.labels,
         group_sizes=args.group_sizes,
+        candidate_top_k=args.candidate_top_k,
         seed=args.seed,
         doc_report=args.doc_report or None,
     )
@@ -56,6 +59,7 @@ def main() -> None:
     print(f"Output dir: {payload['output_dir']}")
     print(f"Groups: {payload['files']['causal_candidate_groups']}")
     print(f"Summary: {payload['files']['candidate_group_summary']}")
+    print(f"Candidate TopK: {payload['candidate_top_k']}")
     if payload["files"].get("doc_report"):
         print(f"Doc report: {payload['files']['doc_report']}")
 

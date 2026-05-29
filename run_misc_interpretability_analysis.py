@@ -15,6 +15,7 @@ from nlp_re_base.behavior_interpretability import (  # noqa: E402
     run_followup_interpretability_analysis,
 )
 from nlp_re_base.mapping_structure import DEFAULT_CORE_LABELS, DEFAULT_HIERARCHY_SPECS  # noqa: E402
+from nlp_re_base.mapping_structure import DEFAULT_INTERPRETABILITY_TOP_K  # noqa: E402
 
 
 def parse_args() -> argparse.Namespace:
@@ -26,7 +27,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--output-dir", default=DEFAULT_STAGE_OUTPUT)
     parser.add_argument("--labels", nargs="+", default=DEFAULT_CORE_LABELS)
     parser.add_argument("--label-hierarchy", nargs="+", default=DEFAULT_HIERARCHY_SPECS)
-    parser.add_argument("--top-latents-per-label", type=int, default=5)
+    parser.add_argument("--top-latents-per-label", type=int, default=DEFAULT_INTERPRETABILITY_TOP_K)
     parser.add_argument("--top-examples-per-latent", type=int, default=12)
     parser.add_argument(
         "--doc-report",

@@ -10,7 +10,8 @@ import numpy as np
 import pandas as pd
 
 
-DEFAULT_TOP_K_VALUES = [10, 20, 50, 100]
+DEFAULT_INTERPRETABILITY_TOP_K = 20
+DEFAULT_TOP_K_VALUES = [DEFAULT_INTERPRETABILITY_TOP_K]
 DEFAULT_HIERARCHY_SPECS = ["RE:RES,REC", "QU:QUO,QUC"]
 DEFAULT_CORE_LABELS = ["RE", "RES", "REC", "QU", "QUO", "QUC", "GI", "SU", "AF"]
 
@@ -83,6 +84,13 @@ def load_mapping_matrix(path: str | Path) -> pd.DataFrame:
     return matrix
 
 
+def _sort_candidate_rows(group: pd.DataFrame) -> pd.DataFrame:
+    return group.sort_values(
+        ["abs_cohens_d", "directional_auc", "latent_idx"],
+        ascending=[False, False, True],
+    )
+
+
 def load_json(path: str | Path, default: Any = None) -> Any:
     path = Path(path)
     if not path.exists():
@@ -107,51 +115,75 @@ def _top_effect_share(group: pd.DataFrame, k: int) -> float:
 
 
 def build_label_fragmentation_rank(
-    matrix: pd.DataFrame,
+    topk_matrix: pd.DataFrame,
     *,
     label_order: list[str] | None = None,
-    top_k_values: list[int] | None = None,
+    latent_profiles: pd.DataFrame | None = None,
 ) -> pd.DataFrame:
-    top_k_values = top_k_values or DEFAULT_TOP_K_VALUES
     rows: list[dict[str, Any]] = []
-    labels = label_order or list(matrix["label"].drop_duplicates())
-    total_latents = int(matrix["latent_idx"].nunique())
+    labels = label_order or list(topk_matrix["label"].drop_duplicates())
+    role_lookup: dict[tuple[str, int], str] = {}
+    if latent_profiles is not None and not latent_profiles.empty:
+        for _, profile in latent_profiles.iterrows():
+            latent_idx = int(profile["latent_idx"])
+            role = str(profile.get("role", ""))
+            labels_for_latent = [
+                part.strip()
+                for part in str(profile.get("labels", "")).split(",")
+                if part.strip()
+            ]
+            for label in labels_for_latent:
+                role_lookup[(label, latent_idx)] = role
 
     for label in labels:
-        group = matrix[matrix["label"] == label]
+        group = topk_matrix[topk_matrix["label"] == label]
         if group.empty:
             continue
-        sig = group[group["significant_fdr"]]
-        pos_sig = sig[sig["cohens_d"] > 0]
-        neg_sig = sig[sig["cohens_d"] < 0]
-        top = group.sort_values(["abs_cohens_d", "directional_auc"], ascending=False).iloc[0]
+        group = _sort_candidate_rows(group).copy()
+        pos = group[group["cohens_d"] > 0]
+        neg = group[group["cohens_d"] < 0]
+        significant = (
+            group[group["significant_fdr"]]
+            if "significant_fdr" in group.columns
+            else group.iloc[0:0]
+        )
+        top = group.iloc[0]
+        roles = [
+            role_lookup.get((label, int(latent_idx)), "")
+            for latent_idx in group["latent_idx"].astype(int)
+        ]
+        exclusive_count = sum(role == "exclusive" for role in roles)
+        shared_count = sum(role in {"family_shared", "cross_family", "global"} for role in roles)
         row: dict[str, Any] = {
             "label": label,
-            "n_tested_latents": int(group.shape[0]),
-            "n_significant_latents": int(sig.shape[0]),
-            "n_positive_effect_significant": int(pos_sig.shape[0]),
-            "n_negative_effect_significant": int(neg_sig.shape[0]),
-            "fragmentation_ratio": float(sig.shape[0] / max(total_latents, 1)),
-            "positive_effect_ratio": float(pos_sig.shape[0] / max(sig.shape[0], 1)),
-            "negative_effect_ratio": float(neg_sig.shape[0] / max(sig.shape[0], 1)),
+            "n_topk_latents": int(group.shape[0]),
+            "topk_positive_count": int(pos.shape[0]),
+            "topk_negative_count": int(neg.shape[0]),
+            "topk_significant_count": int(significant.shape[0]),
+            "topk_significant_share": float(significant.shape[0] / max(group.shape[0], 1)),
+            "topk_positive_ratio": float(pos.shape[0] / max(group.shape[0], 1)),
+            "topk_negative_ratio": float(neg.shape[0] / max(group.shape[0], 1)),
+            "topk_exclusive_count": int(exclusive_count),
+            "topk_shared_count": int(shared_count),
+            "topk_shared_ratio": float(shared_count / max(group.shape[0], 1)),
             "top_latent_idx": int(top["latent_idx"]),
             "top_abs_cohens_d": _safe_float(top.get("abs_cohens_d")),
             "top_directional_auc": _safe_float(top.get("directional_auc"), 0.5),
             "top_cohens_d": _safe_float(top.get("cohens_d")),
             "prevalence": _safe_float(group["prevalence"].iloc[0]) if "prevalence" in group else 0.0,
+            "topk_abs_effect_sum": float(group["abs_cohens_d"].sum()),
+            "topk_abs_effect_mean": float(group["abs_cohens_d"].mean()),
         }
-        for k in top_k_values:
-            row[f"top{k}_abs_effect_share"] = _top_effect_share(group, k)
-            row[f"top{k}_significant_share"] = float(min(k, sig.shape[0]) / max(sig.shape[0], 1))
+        for k in [10, 20, 50]:
             precision_col = f"precision_at_{k}"
             if precision_col in group.columns:
-                row[f"top{k}_max_precision"] = _safe_float(group[precision_col].max())
+                row[f"topk_max_precision_at_{k}"] = _safe_float(group[precision_col].max())
         rows.append(row)
 
     out = pd.DataFrame(rows)
     if not out.empty:
         out = out.sort_values(
-            ["n_significant_latents", "top_abs_cohens_d"],
+            ["topk_shared_count", "top_abs_cohens_d"],
             ascending=[False, False],
         ).reset_index(drop=True)
     return out
@@ -168,9 +200,70 @@ def _significant_sets(matrix: pd.DataFrame) -> dict[str, set[int]]:
 def _top_sets(matrix: pd.DataFrame, k: int) -> dict[str, set[int]]:
     sets: dict[str, set[int]] = {}
     for label, group in matrix.groupby("label", sort=False):
-        top = group.sort_values(["abs_cohens_d", "directional_auc"], ascending=False).head(k)
+        top = _sort_candidate_rows(group).head(k)
         sets[label] = set(top["latent_idx"].astype(int).tolist())
     return sets
+
+
+def _label_sets(matrix: pd.DataFrame) -> dict[str, set[int]]:
+    return {
+        label: set(group["latent_idx"].astype(int).tolist())
+        for label, group in matrix.groupby("label", sort=False)
+    }
+
+
+def load_topk_candidate_matrix(
+    *,
+    mapping_dir: str | Path,
+    source_matrix: pd.DataFrame,
+    labels: list[str],
+    top_k: int = DEFAULT_INTERPRETABILITY_TOP_K,
+) -> pd.DataFrame:
+    """Load or derive the per-label TopK candidate rows used for interpretation."""
+
+    mapping_path = Path(mapping_dir)
+    top_dir = mapping_path / "top_latents_by_label"
+    rows: list[pd.DataFrame] = []
+    for label in labels:
+        label = label.upper()
+        top_file = top_dir / f"{label}.csv"
+        if top_file.exists():
+            group = pd.read_csv(top_file)
+            group["label"] = group.get("label", label)
+            group["label"] = group["label"].astype(str).str.upper()
+            group = group[group["label"] == label].copy()
+        else:
+            group = source_matrix[source_matrix["label"] == label].copy()
+        if group.empty:
+            continue
+        for col in [
+            "latent_idx",
+            "cohens_d",
+            "abs_cohens_d",
+            "auc",
+            "directional_auc",
+            "p_value",
+            "prevalence",
+            "precision_at_10",
+            "precision_at_20",
+            "precision_at_50",
+            "precision_lift_at_10",
+            "precision_lift_at_20",
+            "precision_lift_at_50",
+        ]:
+            if col in group.columns:
+                group[col] = pd.to_numeric(group[col], errors="coerce").fillna(0.0)
+        if "significant_fdr" in group.columns:
+            group["significant_fdr"] = _bool_series(group["significant_fdr"])
+        group["latent_idx"] = group["latent_idx"].astype(int)
+        top = _sort_candidate_rows(group).head(top_k).copy()
+        top.insert(0, "topk_rank", np.arange(1, len(top) + 1))
+        top["selected_for_interpretability"] = True
+        top["interpretability_top_k"] = int(top_k)
+        rows.append(top)
+    if not rows:
+        return source_matrix.iloc[0:0].copy()
+    return pd.concat(rows, ignore_index=True)
 
 
 def build_latent_profiles(
@@ -179,8 +272,9 @@ def build_latent_profiles(
     hierarchy: dict[str, list[str]],
     core_labels: list[str],
     global_label_threshold: int = 5,
+    require_significant: bool = True,
 ) -> pd.DataFrame:
-    sig = matrix[matrix["significant_fdr"]].copy()
+    sig = matrix[matrix["significant_fdr"]].copy() if require_significant else matrix.copy()
     if sig.empty:
         return pd.DataFrame(
             columns=[
@@ -293,7 +387,6 @@ def build_label_pair_similarity(
     label_order: list[str],
     top_k_values: list[int],
 ) -> pd.DataFrame:
-    sig_sets = _significant_sets(matrix)
     pivot = (
         matrix.pivot_table(index="latent_idx", columns="label", values="cohens_d", aggfunc="first")
         .fillna(0.0)
@@ -310,15 +403,18 @@ def build_label_pair_similarity(
                 top_b = top_sets.get(label_b, set())
                 top_inter = top_a & top_b
                 top_union = top_a | top_b
-                sig_a = sig_sets.get(label_a, set())
-                sig_b = sig_sets.get(label_b, set())
-                sig_inter = sig_a & sig_b
-                sig_union = sig_a | sig_b
 
-                da = pivot[label_a]
-                db = pivot[label_b]
+                if top_union:
+                    da = pivot.reindex(sorted(top_union)).fillna(0.0)[label_a]
+                    db = pivot.reindex(sorted(top_union)).fillna(0.0)[label_b]
+                else:
+                    da = pivot[label_a].iloc[0:0]
+                    db = pivot[label_b].iloc[0:0]
                 pearson = da.corr(db, method="pearson")
-                spearman = da.corr(db, method="spearman")
+                spearman = da.rank(method="average").corr(
+                    db.rank(method="average"),
+                    method="pearson",
+                )
                 rows.append(
                     {
                         "label_a": label_a,
@@ -327,17 +423,12 @@ def build_label_pair_similarity(
                         "topk_intersection": int(len(top_inter)),
                         "topk_union": int(len(top_union)),
                         "topk_jaccard": float(len(top_inter) / len(top_union)) if top_union else 0.0,
-                        "significant_intersection": int(len(sig_inter)),
-                        "significant_union": int(len(sig_union)),
-                        "significant_jaccard": (
-                            float(len(sig_inter) / len(sig_union)) if sig_union else 0.0
-                        ),
                         "pearson_cohens_d": 0.0 if pd.isna(pearson) else float(pearson),
                         "spearman_cohens_d": 0.0 if pd.isna(spearman) else float(spearman),
                     }
                 )
     return pd.DataFrame(rows).sort_values(
-        ["top_k", "topk_jaccard", "significant_jaccard"],
+        ["top_k", "topk_jaccard", "pearson_cohens_d"],
         ascending=[True, False, False],
     ).reset_index(drop=True)
 
@@ -347,11 +438,11 @@ def build_hierarchy_alignment(
     *,
     hierarchy: dict[str, list[str]],
 ) -> pd.DataFrame:
-    sig_sets = _significant_sets(matrix)
+    label_sets = _label_sets(matrix)
     rows: list[dict[str, Any]] = []
     for parent, children in hierarchy.items():
-        parent_set = sig_sets.get(parent, set())
-        child_sets = [sig_sets.get(child, set()) for child in children]
+        parent_set = label_sets.get(parent, set())
+        child_sets = [label_sets.get(child, set()) for child in children]
         child_union = set().union(*child_sets) if child_sets else set()
         inter = parent_set & child_union
         union = parent_set | child_union
@@ -400,8 +491,8 @@ def build_hierarchy_alignment(
             )
         for i, child_a in enumerate(children):
             for child_b in children[i + 1 :]:
-                set_a = sig_sets.get(child_a, set())
-                set_b = sig_sets.get(child_b, set())
+                set_a = label_sets.get(child_a, set())
+                set_b = label_sets.get(child_b, set())
                 inter = set_a & set_b
                 union = set_a | set_b
                 jaccard = float(len(inter) / len(union)) if union else 0.0
@@ -426,7 +517,7 @@ def build_hierarchy_alignment(
 
 def build_metrics_payload(
     *,
-    matrix: pd.DataFrame,
+    topk_matrix: pd.DataFrame,
     label_fragmentation: pd.DataFrame,
     latent_profiles: pd.DataFrame,
     role_summary: pd.DataFrame,
@@ -435,27 +526,27 @@ def build_metrics_payload(
     top_k_values: list[int],
     hierarchy: dict[str, list[str]],
     core_labels: list[str],
+    analysis_top_k: int,
 ) -> dict[str, Any]:
-    sig = matrix[matrix["significant_fdr"]]
     single = int((latent_profiles["n_labels"] == 1).sum()) if not latent_profiles.empty else 0
     multi = int((latent_profiles["n_labels"] > 1).sum()) if not latent_profiles.empty else 0
-    top_k_ref = 50 if 50 in top_k_values else top_k_values[0]
+    top_k_ref = analysis_top_k
     top_pairs = label_pair_similarity[label_pair_similarity["top_k"] == top_k_ref].head(10)
     hierarchy_rows = hierarchy_alignment.to_dict("records") if not hierarchy_alignment.empty else []
     return {
-        "analysis_version": 1,
-        "n_labels": int(matrix["label"].nunique()),
-        "n_latents": int(matrix["latent_idx"].nunique()),
-        "n_latent_label_rows": int(matrix.shape[0]),
-        "significant_latent_label_edges": int(sig.shape[0]),
-        "latents_with_any_significant_label": int(latent_profiles.shape[0]),
-        "single_label_latents": single,
-        "multi_label_latents": multi,
-        "multi_label_latent_share": float(multi / max(latent_profiles.shape[0], 1)),
+        "analysis_version": 2,
+        "interpretability_scope": "per_label_top20_latents",
+        "analysis_top_k": int(analysis_top_k),
+        "n_labels": int(topk_matrix["label"].nunique()),
+        "topk_latent_label_edges": int(topk_matrix.shape[0]),
+        "topk_unique_latents": int(latent_profiles.shape[0]),
+        "topk_single_label_latents": single,
+        "topk_multi_label_latents": multi,
+        "topk_multi_label_latent_share": float(multi / max(latent_profiles.shape[0], 1)),
         "core_labels": core_labels,
         "hierarchy": hierarchy,
         "top_k_values": top_k_values,
-        "most_fragmented_labels": label_fragmentation.head(10).to_dict("records"),
+        "topk_fragmentation_labels": label_fragmentation.head(10).to_dict("records"),
         "latent_role_summary": role_summary.to_dict("records"),
         "top_label_pairs_at_reference_k": top_pairs.to_dict("records"),
         "hierarchy_alignment": hierarchy_rows,
@@ -468,6 +559,152 @@ def _fmt(value: Any, digits: int = 3) -> str:
             return ""
         return f"{float(value):.{digits}f}"
     return str(value)
+
+
+def write_top20_mapping_structure_report(
+    path: str | Path,
+    *,
+    metrics: dict[str, Any],
+    label_fragmentation: pd.DataFrame,
+    overlap_distribution: pd.DataFrame,
+    role_summary: pd.DataFrame,
+    label_pair_similarity: pd.DataFrame,
+    hierarchy_alignment: pd.DataFrame,
+    top_k_ref: int = DEFAULT_INTERPRETABILITY_TOP_K,
+) -> None:
+    """Write the paper-facing report using only the per-label TopK candidate space."""
+
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    lines = [
+        "# MISC Mapping Structure Top20 分析报告",
+        "",
+        f"> 正式评估对象：每个核心 MISC 标签下排名前 {metrics['analysis_top_k']} 的 SAE latents。全量矩阵只作为排序来源，不作为本报告的解释对象。",
+        "",
+        "## 1. 核心结论",
+        "",
+        (
+            "Top20 候选子空间显示：MISC 标签与 SAE latent 不是简单的一一对应。"
+            "一个标签的 Top20 会包含专属 latent、家族共享 latent 和跨家族共享 latent；"
+            "同一个 latent 也可能进入多个标签的 Top20，因此可解释性分析应围绕候选组结构，而不是单 latent 等价标签。"
+        ),
+        "",
+        "## 2. Top20 Many-to-many 证据",
+        "",
+        "| 指标 | 数值 |",
+        "|---|---:|",
+        f"| TopK | {metrics['analysis_top_k']} |",
+        f"| TopK latent-label 边 | {metrics['topk_latent_label_edges']} |",
+        f"| TopK 去重 latent 数 | {metrics['topk_unique_latents']} |",
+        f"| TopK 单标签 latent | {metrics['topk_single_label_latents']} |",
+        f"| TopK 多标签 latent | {metrics['topk_multi_label_latents']} |",
+        f"| TopK 多标签 latent 占比 | {_fmt(metrics['topk_multi_label_latent_share'])} |",
+        "",
+        "这些数值只统计每个标签的 Top20 候选，不包含 Top20 之外的 SAE latent。",
+        "",
+        "## 3. 标签 Top20 结构",
+        "",
+        "| Label | TopK | Pos. | Neg. | Shared | Exclusive | Shared Ratio | Top Latent | Top d | Top AUC |",
+        "|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|",
+    ]
+    for _, row in label_fragmentation.iterrows():
+        lines.append(
+            "| {label} | {n_topk} | {n_pos} | {n_neg} | {shared} | {exclusive} | {shared_ratio} | {top_latent} | {top_d} | {top_auc} |".format(
+                label=row["label"],
+                n_topk=int(row["n_topk_latents"]),
+                n_pos=int(row["topk_positive_count"]),
+                n_neg=int(row["topk_negative_count"]),
+                shared=int(row["topk_shared_count"]),
+                exclusive=int(row["topk_exclusive_count"]),
+                shared_ratio=_fmt(row["topk_shared_ratio"]),
+                top_latent=int(row["top_latent_idx"]),
+                top_d=_fmt(row["top_abs_cohens_d"]),
+                top_auc=_fmt(row["top_directional_auc"]),
+            )
+        )
+
+    lines.extend(
+        [
+            "",
+            "## 4. Top20 Latent Overlap 结构",
+            "",
+            "| Labels per latent | Latents | Positive-only | Negative-only | Mixed direction |",
+            "|---:|---:|---:|---:|---:|",
+        ]
+    )
+    for _, row in overlap_distribution.iterrows():
+        lines.append(
+            f"| {int(row['n_labels'])} | {int(row['n_latents'])} | "
+            f"{int(row['positive_only'])} | {int(row['negative_only'])} | "
+            f"{int(row['mixed_direction'])} |"
+        )
+
+    lines.extend(
+        [
+            "",
+            "## 5. Latent Role Taxonomy",
+            "",
+            "| Role | Latents | Share | Mean label count | Max d |",
+            "|---|---:|---:|---:|---:|",
+        ]
+    )
+    for _, row in role_summary.iterrows():
+        lines.append(
+            f"| {row['role']} | {int(row['n_latents'])} | {_fmt(row['share'])} | "
+            f"{_fmt(row['mean_n_labels'])} | {_fmt(row['max_abs_cohens_d'])} |"
+        )
+
+    lines.extend(
+        [
+            "",
+            f"## 6. Label Pair Similarity (Top-{top_k_ref})",
+            "",
+            "| Label A | Label B | Top-k Jaccard | Pearson d | Spearman d |",
+            "|---|---|---:|---:|---:|",
+        ]
+    )
+    pair_rows = label_pair_similarity[label_pair_similarity["top_k"] == top_k_ref].head(20)
+    for _, row in pair_rows.iterrows():
+        lines.append(
+            f"| {row['label_a']} | {row['label_b']} | {_fmt(row['topk_jaccard'])} | "
+            f"{_fmt(row['pearson_cohens_d'])} | {_fmt(row['spearman_cohens_d'])} |"
+        )
+
+    lines.extend(
+        [
+            "",
+            "## 7. 标签层级一致性",
+            "",
+            "| Type | Parent | Child A | Child B | Jaccard | Parent decomposition | Child coverage | Sibling separation |",
+            "|---|---|---|---|---:|---:|---:|---:|",
+        ]
+    )
+    for _, row in hierarchy_alignment.iterrows():
+        lines.append(
+            f"| {row['relation_type']} | {row['parent']} | {row['child_a']} | {row['child_b']} | "
+            f"{_fmt(row['jaccard'])} | {_fmt(row['parent_decomposition'])} | "
+            f"{_fmt(row['child_coverage_by_parent'])} | {_fmt(row['sibling_separation'])} |"
+        )
+
+    lines.extend(
+        [
+            "",
+            "## 8. 论文可用表述",
+            "",
+            (
+                "在每个标签的 Top20 候选 latent 中，标签边界与 SAE 表征边界并不重合。"
+                "这种不重合体现在标签候选组的共享 latent、父子标签候选重叠和跨行为家族 overlap 上。"
+                "因此，本研究的正式解释对象是 Top20 候选子空间，而不是整个 SAE latent space。"
+            ),
+            "",
+            "## 9. 限制",
+            "",
+            "- 本阶段只分析 Top20 mapping structure，不证明因果机制。",
+            "- Top20 候选不是最终语义命名，仍需 top examples、case cards 和人工审查。",
+            "- `OTHER` 不进入核心行为标签主结论。",
+        ]
+    )
+    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
 def write_mapping_structure_report(
@@ -639,11 +876,11 @@ def _try_write_figures(
         )
         return written
 
-    frag = label_fragmentation.sort_values("n_significant_latents", ascending=False)
+    frag = label_fragmentation.sort_values("topk_shared_count", ascending=False)
     fig, ax = plt.subplots(figsize=(9, 4.8))
-    ax.bar(frag["label"], frag["n_significant_latents"])
-    ax.set_title("Label fragmentation")
-    ax.set_ylabel("Significant latents")
+    ax.bar(frag["label"], frag["topk_shared_count"])
+    ax.set_title("TopK shared latent count")
+    ax.set_ylabel("Shared latents in TopK")
     ax.set_xlabel("MISC label")
     fig.tight_layout()
     path = figure_dir / "fragmentation_bar.png"
@@ -705,6 +942,7 @@ def run_mapping_structure_analysis(
     mapping_dir: str | Path,
     output_dir: str | Path,
     top_k_values: list[int] | None = None,
+    analysis_top_k: int = DEFAULT_INTERPRETABILITY_TOP_K,
     hierarchy_specs: list[str] | None = None,
     core_labels: list[str] | None = None,
     fdr_alpha: float = 0.05,
@@ -715,36 +953,52 @@ def run_mapping_structure_analysis(
     output_path = Path(output_dir)
     output_path.mkdir(parents=True, exist_ok=True)
 
-    top_k_values = sorted({int(k) for k in (top_k_values or DEFAULT_TOP_K_VALUES) if int(k) > 0})
+    analysis_top_k = int(analysis_top_k)
+    if analysis_top_k <= 0:
+        analysis_top_k = DEFAULT_INTERPRETABILITY_TOP_K
+    top_k_values = sorted(
+        {int(k) for k in (top_k_values or [analysis_top_k]) if int(k) > 0}
+    )
+    if analysis_top_k not in top_k_values:
+        top_k_values = sorted(set(top_k_values + [analysis_top_k]))
     hierarchy = parse_label_hierarchy(hierarchy_specs or DEFAULT_HIERARCHY_SPECS)
     core_labels = [label.upper() for label in (core_labels or DEFAULT_CORE_LABELS)]
 
     matrix = load_mapping_matrix(mapping_path / "latent_label_matrix.csv")
     label_summary = load_json(mapping_path / "label_summary.json", default={})
     run_summary = load_json(mapping_path / "run_summary.json", default={})
-    label_order = label_order_from_summary(label_summary, matrix)
-
-    label_fragmentation = build_label_fragmentation_rank(
-        matrix,
-        label_order=label_order,
-        top_k_values=top_k_values,
+    source_label_order = label_order_from_summary(label_summary, matrix)
+    label_order = [label for label in source_label_order if label in set(core_labels)]
+    label_order.extend(label for label in core_labels if label in set(matrix["label"]) and label not in label_order)
+    topk_matrix = load_topk_candidate_matrix(
+        mapping_dir=mapping_path,
+        source_matrix=matrix,
+        labels=label_order,
+        top_k=analysis_top_k,
     )
+
     latent_profiles = build_latent_profiles(
-        matrix,
+        topk_matrix,
         hierarchy=hierarchy,
         core_labels=core_labels,
+        require_significant=False,
+    )
+    label_fragmentation = build_label_fragmentation_rank(
+        topk_matrix,
+        label_order=label_order,
+        latent_profiles=latent_profiles,
     )
     overlap_distribution = build_latent_overlap_distribution(latent_profiles)
     role_summary = build_latent_role_summary(latent_profiles)
     label_pair_similarity = build_label_pair_similarity(
-        matrix,
+        topk_matrix,
         label_order=label_order,
         top_k_values=top_k_values,
     )
-    hierarchy_alignment = build_hierarchy_alignment(matrix, hierarchy=hierarchy)
+    hierarchy_alignment = build_hierarchy_alignment(topk_matrix, hierarchy=hierarchy)
 
     metrics = build_metrics_payload(
-        matrix=matrix,
+        topk_matrix=topk_matrix,
         label_fragmentation=label_fragmentation,
         latent_profiles=latent_profiles,
         role_summary=role_summary,
@@ -753,12 +1007,18 @@ def run_mapping_structure_analysis(
         top_k_values=top_k_values,
         hierarchy=hierarchy,
         core_labels=core_labels,
+        analysis_top_k=analysis_top_k,
     )
     metrics["mapping_dir"] = str(mapping_path)
     metrics["output_dir"] = str(output_path)
     metrics["fdr_alpha"] = fdr_alpha
-    metrics["source_run_summary"] = run_summary
+    metrics["source_run_summary"] = {
+        "note": "Full matrix is used only as an internal TopK ranking source.",
+        "n_records": run_summary.get("n_records"),
+        "labels": run_summary.get("labels"),
+    }
 
+    topk_matrix.to_csv(output_path / "topk_candidate_matrix.csv", index=False)
     label_fragmentation.to_csv(output_path / "label_fragmentation_rank.csv", index=False)
     overlap_distribution.to_csv(output_path / "latent_overlap_distribution.csv", index=False)
     label_pair_similarity.to_csv(output_path / "label_pair_similarity.csv", index=False)
@@ -767,9 +1027,9 @@ def run_mapping_structure_analysis(
     latent_profiles.to_csv(output_path / "latent_role_assignments.csv", index=False)
     write_json(output_path / "mapping_structure_metrics.json", metrics)
 
-    top_k_ref = 50 if 50 in top_k_values else top_k_values[0]
+    top_k_ref = analysis_top_k
     report_path = output_path / "mapping_structure_report.md"
-    write_mapping_structure_report(
+    write_top20_mapping_structure_report(
         report_path,
         metrics=metrics,
         label_fragmentation=label_fragmentation,
@@ -780,7 +1040,7 @@ def run_mapping_structure_analysis(
         top_k_ref=top_k_ref,
     )
     if doc_report:
-        write_mapping_structure_report(
+        write_top20_mapping_structure_report(
             doc_report,
             metrics=metrics,
             label_fragmentation=label_fragmentation,
@@ -803,6 +1063,7 @@ def run_mapping_structure_analysis(
         )
     metrics["files"] = {
         "mapping_structure_metrics": str(output_path / "mapping_structure_metrics.json"),
+        "topk_candidate_matrix": str(output_path / "topk_candidate_matrix.csv"),
         "label_fragmentation_rank": str(output_path / "label_fragmentation_rank.csv"),
         "latent_overlap_distribution": str(output_path / "latent_overlap_distribution.csv"),
         "label_pair_similarity": str(output_path / "label_pair_similarity.csv"),

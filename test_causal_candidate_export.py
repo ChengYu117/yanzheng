@@ -139,7 +139,9 @@ def test_causal_candidate_export_module() -> None:
         assert (output_dir / "causal_candidate_groups.json").exists()
         assert (output_dir / "candidate_group_summary.csv").exists()
         assert payload["groups"]["RE"]["candidate_groups"]["G20"][0] == 0
-        assert len(payload["groups"]["RE"]["controls"]["random"]) > 0
+        assert payload["groups"]["RE"]["n_candidates"] <= 20
+        re_candidates = pd.read_csv(output_dir / "label_candidates" / "RE_candidate_latents.csv")
+        assert len(re_candidates) <= 20
         assert not set(payload["groups"]["RE"]["controls"]["random"]) & set(
             payload["groups"]["RE"]["candidate_groups"]["G20"]
         )
@@ -169,6 +171,7 @@ def test_causal_candidate_export_cli() -> None:
         assert result.returncode == 0, result.stderr
         payload = json.loads((output_dir / "causal_candidate_groups.json").read_text(encoding="utf-8"))
         assert payload["groups"]["QU"]["candidate_groups"]["G5"][0] == 100
+        assert payload["candidate_top_k"] == 20
 
 
 def main() -> int:

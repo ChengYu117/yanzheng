@@ -394,7 +394,7 @@ Latent × MISC Label association matrix
 当前已经新增脚本：
 
 ```text
-run_misc_label_mapping.py
+run_sae_evaluation.py 集成的 MISC label mapping
 ```
 
 该脚本支持两种运行方式。
@@ -406,7 +406,7 @@ run_misc_label_mapping.py
 ```powershell
 conda activate qwen-env-py311; `
 $env:MODEL_DIR="D:\project\NLP_v3\NLP_data\Llama-3.1-8B"; `
-python run_misc_label_mapping.py `
+python run_sae_evaluation.py `
   --model-dir "$env:MODEL_DIR" `
   --device cuda `
   --data-dir data/mi_quality_counseling_misc `
@@ -421,7 +421,7 @@ python run_misc_label_mapping.py `
 适合调试、重复分析、调整标签阈值：
 
 ```powershell
-python run_misc_label_mapping.py `
+python run_sae_evaluation.py `
   --data-dir data/mi_quality_counseling_misc `
   --features-path outputs/misc_label_mapping_full/utterance_features.pt `
   --output-dir outputs/misc_label_mapping_full_reanalysis `

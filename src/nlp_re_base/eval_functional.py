@@ -209,11 +209,12 @@ def _fit_torch_probe(
     X_std, mean, std = _standardize_probe_features(X_train)
     y_train = np.ascontiguousarray(y_train, dtype=np.float32)
 
-    X_tensor = torch.from_numpy(X_std)
-    y_tensor = torch.from_numpy(y_train).unsqueeze(1)
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    X_tensor = torch.from_numpy(X_std).to(device)
+    y_tensor = torch.from_numpy(y_train).unsqueeze(1).to(device)
 
     torch.manual_seed(42)
-    model = torch.nn.Linear(X_tensor.shape[1], 1)
+    model = torch.nn.Linear(X_tensor.shape[1], 1).to(device)
     optimizer = torch.optim.AdamW(
         model.parameters(),
         lr=learning_rate,
@@ -222,7 +223,11 @@ def _fit_torch_probe(
 
     pos_count = float(y_train.sum())
     neg_count = float(len(y_train) - pos_count)
-    pos_weight = torch.tensor([neg_count / max(pos_count, 1.0)], dtype=torch.float32)
+    pos_weight = torch.tensor(
+        [neg_count / max(pos_count, 1.0)],
+        dtype=torch.float32,
+        device=device,
+    )
     loss_fn = torch.nn.BCEWithLogitsLoss(pos_weight=pos_weight)
 
     best_loss = float("inf")
@@ -264,10 +269,12 @@ def _predict_torch_probe(
         mean=probe_state["mean"],
         std=probe_state["std"],
     )
-    X_tensor = torch.from_numpy(X_std)
+    model = probe_state["model"]
+    device = next(model.parameters()).device
+    X_tensor = torch.from_numpy(X_std).to(device)
 
     with torch.no_grad():
-        logits = probe_state["model"](X_tensor).squeeze(1).detach().cpu().numpy()
+        logits = model(X_tensor).squeeze(1).detach().cpu().numpy()
 
     logits = np.clip(logits, -30.0, 30.0)
     probs = 1.0 / (1.0 + np.exp(-logits))

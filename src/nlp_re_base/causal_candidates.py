@@ -10,13 +10,20 @@ from typing import Any
 import numpy as np
 import pandas as pd
 
-from .mapping_structure import DEFAULT_CORE_LABELS, load_mapping_matrix, write_json
+from .mapping_structure import (
+    DEFAULT_CORE_LABELS,
+    DEFAULT_INTERPRETABILITY_TOP_K,
+    load_mapping_matrix,
+    load_topk_candidate_matrix,
+    write_json,
+)
 
 
 DEFAULT_CAUSAL_CANDIDATE_OUTPUT = (
     "outputs/misc_full_sae_eval/interpretability/causal_candidates"
 )
 DEFAULT_GROUP_SIZES = (1, 5, 10, 20)
+DEFAULT_CANDIDATE_TOP_K = DEFAULT_INTERPRETABILITY_TOP_K
 STATUS_SCORE = {
     "high_purity_candidate": 1.0,
     "mixed_but_label_relevant": 0.55,
@@ -78,13 +85,9 @@ def _build_label_pool(
     behavior_summary: pd.DataFrame,
 ) -> tuple[pd.DataFrame, str]:
     label = label.upper()
-    df = matrix[(matrix["label"] == label) & matrix["significant_fdr"]].copy()
-    direction = "positive"
-    positive = df[df["cohens_d"] > 0].copy()
-    if positive.empty:
-        positive = df.copy()
-        direction = "absolute_fallback"
-
+    df = matrix[matrix["label"] == label].copy()
+    direction = "top20"
+    positive = df.copy()
     if positive.empty:
         return positive, direction
 
@@ -127,7 +130,9 @@ def _build_label_pool(
     behavior = behavior_summary[behavior_summary["label"] == label]
     if not behavior.empty:
         behavior_row = behavior.iloc[0]
-        behavior_top = _split_ints(behavior_row.get("top_positive_latents"))
+        behavior_top = _split_ints(behavior_row.get("top_latents"))
+        if not behavior_top:
+            behavior_top = _split_ints(behavior_row.get("top_positive_latents"))
         behavior_rank = {latent_idx: rank for rank, latent_idx in enumerate(behavior_top, start=1)}
         positive["behavior_top_rank"] = positive["latent_idx"].map(behavior_rank)
         positive["behavior_pattern"] = behavior_row.get("pattern", "")
@@ -269,6 +274,64 @@ def _write_report(
     path.write_text(text, encoding="utf-8")
 
 
+def _write_top20_report(
+    *,
+    path: Path,
+    summary_rows: list[dict[str, Any]],
+    output_dir: Path,
+    group_sizes: list[int],
+    candidate_top_k: int,
+) -> None:
+    table_rows = []
+    for row in summary_rows:
+        table_rows.append(
+            {
+                "Label": row["label"],
+                "Pattern": row.get("behavior_pattern", ""),
+                "Direction": row.get("selection_direction", ""),
+                "Candidates": row.get("n_candidates", 0),
+                "G20": row.get("G20", ""),
+                "High-purity": row.get("n_high_purity_in_g20", 0),
+            }
+        )
+    text = "\n".join(
+        [
+            "# MISC Top20 因果验证候选组说明",
+            "",
+            f"本阶段只整理候选组，不执行模型干预。正式候选池限定为每个标签排名前 {candidate_top_k} 的 latent；`G20` 即该标签的 Top20 全集，`G1/G5/G10` 是其前缀子集。",
+            "",
+            "## 输出文件",
+            "",
+            f"- 候选目录：`{output_dir}`",
+            "- `causal_candidate_groups.json`：每个标签的 G1/G5/G10/G20 候选组和 control 组。",
+            "- `candidate_group_summary.csv`：每个标签的组摘要。",
+            "- `label_candidates/<LABEL>_candidate_latents.csv`：每个标签最多 20 行的候选池。",
+            "",
+            "## 选择口径",
+            "",
+            "- Top20 来自 `top_latents_by_label/<LABEL>.csv`，若不存在则从 `latent_label_matrix.csv` 排序生成。",
+            "- 排序综合候选得分、效应量、AUC、precision、case card 纯度和行为差异分析中的 Top20 排名。",
+            "- 候选组仍是可解释性与因果验证入口，不直接等价于因果结论。",
+            "",
+            "## 标签候选组摘要",
+            "",
+            _markdown_table(
+                table_rows,
+                ["Label", "Pattern", "Direction", "Candidates", "G20", "High-purity"],
+            ),
+            "",
+            "## 后续运行建议",
+            "",
+            "- 第一轮优先跑 `RE`，用于衔接已有 RE/NonRE 因果流程。",
+            "- 第二轮可跑 `QU` 或 `QUO`，作为更紧凑的对照标签。",
+            "- `AF/SU/RES` 更像边界信号，因果解释应重点区分 necessity 与 sufficiency。",
+            f"- 当前导出的组大小：`{', '.join(_group_name(size) for size in group_sizes)}`。",
+        ]
+    )
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(text, encoding="utf-8")
+
+
 def export_misc_causal_candidates(
     *,
     eval_dir: str | Path = "outputs/misc_full_sae_eval",
@@ -278,6 +341,7 @@ def export_misc_causal_candidates(
     output_dir: str | Path = DEFAULT_CAUSAL_CANDIDATE_OUTPUT,
     labels: list[str] | None = None,
     group_sizes: tuple[int, ...] | list[int] = DEFAULT_GROUP_SIZES,
+    candidate_top_k: int = DEFAULT_CANDIDATE_TOP_K,
     seed: int = 0,
     doc_report: str | Path | None = "doc/MISC因果验证候选组说明.md",
 ) -> dict[str, Any]:
@@ -302,8 +366,22 @@ def export_misc_causal_candidates(
     labels = [label.upper() for label in (labels or DEFAULT_CORE_LABELS)]
     group_sizes = sorted({int(size) for size in group_sizes if int(size) > 0})
     max_group = max(group_sizes) if group_sizes else 20
+    candidate_top_k = int(candidate_top_k)
+    if candidate_top_k <= 0:
+        candidate_top_k = DEFAULT_CANDIDATE_TOP_K
 
-    matrix = load_mapping_matrix(mapping_path / "latent_label_matrix.csv")
+    source_matrix = load_mapping_matrix(mapping_path / "latent_label_matrix.csv")
+    topk_path = structure_path / "topk_candidate_matrix.csv"
+    if topk_path.exists():
+        matrix = load_mapping_matrix(topk_path)
+        matrix = matrix[matrix["label"].isin(labels)].copy()
+    else:
+        matrix = load_topk_candidate_matrix(
+            mapping_dir=mapping_path,
+            source_matrix=source_matrix,
+            labels=labels,
+            top_k=candidate_top_k,
+        )
     case_summary = _read_csv_if_exists(followup_path / "latent_cases" / "latent_case_summary.csv")
     behavior_summary = _read_csv_if_exists(
         followup_path / "behavior_asymmetry" / "behavior_asymmetry_summary.csv"
@@ -329,6 +407,7 @@ def export_misc_causal_candidates(
                 "n_candidates": 0,
             }
             continue
+        pool = pool.head(candidate_top_k).copy()
 
         candidate_path = label_dir / f"{label}_candidate_latents.csv"
         pool.to_csv(candidate_path, index=False)
@@ -390,6 +469,7 @@ def export_misc_causal_candidates(
         "output_dir": str(output_path),
         "labels": labels,
         "group_sizes": group_sizes,
+        "candidate_top_k": candidate_top_k,
         "seed": seed,
         "groups": groups,
         "files": {
@@ -401,28 +481,31 @@ def export_misc_causal_candidates(
     write_json(groups_path, payload)
 
     report_path = output_path / "causal_candidate_report.md"
-    _write_report(
+    _write_top20_report(
         path=report_path,
         summary_rows=summary_rows,
         output_dir=output_path,
         group_sizes=group_sizes,
+        candidate_top_k=candidate_top_k,
     )
     payload["files"]["causal_candidate_groups"] = str(groups_path)
     payload["files"]["causal_candidate_report"] = str(report_path)
 
     if doc_report is not None:
         doc_path = Path(doc_report)
-        _write_report(
+        _write_top20_report(
             path=doc_path,
             summary_rows=summary_rows,
             output_dir=output_path,
             group_sizes=group_sizes,
+            candidate_top_k=candidate_top_k,
         )
         payload["files"]["doc_report"] = str(doc_path)
 
     metrics = {
         "n_labels": len(labels),
         "group_sizes": group_sizes,
+        "candidate_top_k": candidate_top_k,
         "summary": summary_rows,
         "files": payload["files"],
     }

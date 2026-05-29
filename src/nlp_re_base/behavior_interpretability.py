@@ -15,8 +15,10 @@ import pandas as pd
 from .mapping_structure import (
     DEFAULT_CORE_LABELS,
     DEFAULT_HIERARCHY_SPECS,
+    DEFAULT_INTERPRETABILITY_TOP_K,
     load_json,
     load_mapping_matrix,
+    load_topk_candidate_matrix,
     parse_label_hierarchy,
     write_json,
 )
@@ -132,7 +134,7 @@ def _select_latents(
     n: int,
     direction: str = "positive",
 ) -> pd.DataFrame:
-    group = matrix[(matrix["label"] == label.upper()) & matrix["significant_fdr"]].copy()
+    group = matrix[matrix["label"] == label.upper()].copy()
     if direction == "positive":
         selected = group[group["cohens_d"] > 0]
     elif direction == "negative":
@@ -141,7 +143,39 @@ def _select_latents(
         selected = group
     if selected.empty:
         selected = group
-    return selected.sort_values(["abs_cohens_d", "directional_auc"], ascending=False).head(n)
+    return selected.sort_values(
+        ["abs_cohens_d", "directional_auc", "latent_idx"],
+        ascending=[False, False, True],
+    ).head(n)
+
+
+def _load_topk_scope_matrix(
+    *,
+    mapping_path: Path,
+    structure_path: Path | None,
+    labels: list[str],
+    top_k: int,
+) -> pd.DataFrame:
+    topk_path = structure_path / "topk_candidate_matrix.csv" if structure_path else None
+    if topk_path and topk_path.exists():
+        matrix = load_mapping_matrix(topk_path)
+        matrix = matrix[matrix["label"].isin(labels)].copy()
+        return (
+            matrix.sort_values(
+                ["label", "abs_cohens_d", "directional_auc", "latent_idx"],
+                ascending=[True, False, False, True],
+            )
+            .groupby("label", sort=False)
+            .head(top_k)
+            .reset_index(drop=True)
+        )
+    source = load_mapping_matrix(mapping_path / "latent_label_matrix.csv")
+    return load_topk_candidate_matrix(
+        mapping_dir=mapping_path,
+        source_matrix=source,
+        labels=labels,
+        top_k=top_k,
+    )
 
 
 def _load_features(eval_dir: Path) -> np.ndarray:
@@ -181,7 +215,7 @@ def build_behavior_asymmetry(
     output_dir: str | Path,
     labels: list[str] | None = None,
     hierarchy_specs: list[str] | None = None,
-    top_latents_per_label: int = 20,
+    top_latents_per_label: int = DEFAULT_INTERPRETABILITY_TOP_K,
 ) -> dict[str, Any]:
     eval_path = Path(eval_dir)
     mapping_path = Path(mapping_dir)
@@ -191,7 +225,15 @@ def build_behavior_asymmetry(
 
     hierarchy = parse_label_hierarchy(hierarchy_specs or DEFAULT_HIERARCHY_SPECS)
     labels = [label.upper() for label in (labels or DEFAULT_CORE_LABELS)]
-    matrix = load_mapping_matrix(mapping_path / "latent_label_matrix.csv")
+    top_latents_per_label = int(top_latents_per_label)
+    if top_latents_per_label <= 0:
+        top_latents_per_label = DEFAULT_INTERPRETABILITY_TOP_K
+    matrix = _load_topk_scope_matrix(
+        mapping_path=mapping_path,
+        structure_path=structure_path,
+        labels=labels,
+        top_k=top_latents_per_label,
+    )
     records = read_jsonl(eval_path / "records.jsonl")
     features = _load_features(eval_path)
 
@@ -212,13 +254,13 @@ def build_behavior_asymmetry(
         if frag.empty:
             continue
         frag_row = frag.iloc[0].to_dict()
-        top_pos = _select_latents(
+        top_selected = _select_latents(
             matrix,
             label,
             n=top_latents_per_label,
-            direction="positive",
+            direction="all",
         )
-        top_latents = top_pos["latent_idx"].astype(int).tolist()
+        top_latents = top_selected["latent_idx"].astype(int).tolist()
         label_mask = _label_indicator(records, label)
         scores = features[:, top_latents].mean(axis=1) if top_latents else np.zeros(len(records))
 
@@ -231,8 +273,12 @@ def build_behavior_asymmetry(
 
         pair_ref = pair_similarity[
             ((pair_similarity["label_a"] == label) | (pair_similarity["label_b"] == label))
-            & (pair_similarity["top_k"] == 50)
+            & (pair_similarity["top_k"] == top_latents_per_label)
         ].copy()
+        if pair_ref.empty:
+            pair_ref = pair_similarity[
+                (pair_similarity["label_a"] == label) | (pair_similarity["label_b"] == label)
+            ].copy()
         pair_ref["other_label"] = pair_ref.apply(
             lambda row: row["label_b"] if row["label_a"] == label else row["label_a"],
             axis=1,
@@ -245,10 +291,10 @@ def build_behavior_asymmetry(
             )
         ]
         role_counts = role_hits["role"].value_counts().to_dict()
-        pos_ratio = float(frag_row.get("positive_effect_ratio", 0.0))
+        pos_ratio = float(frag_row.get("topk_positive_ratio", 0.0))
         top_auc = float(frag_row.get("top_directional_auc", 0.0))
-        frag_ratio = float(frag_row.get("fragmentation_ratio", 0.0))
-        if top_auc >= 0.75 and frag_ratio <= 0.13:
+        shared_ratio = float(frag_row.get("topk_shared_ratio", 0.0))
+        if top_auc >= 0.75 and shared_ratio <= 0.4:
             pattern = "compact_strong"
         elif pos_ratio <= 0.1:
             pattern = "negative_boundary"
@@ -262,10 +308,10 @@ def build_behavior_asymmetry(
                 "label": label,
                 "family": _label_family(label, hierarchy),
                 "pattern": pattern,
-                "n_significant_latents": int(frag_row["n_significant_latents"]),
-                "fragmentation_ratio": frag_ratio,
+                "n_topk_latents": int(frag_row["n_topk_latents"]),
+                "topk_shared_ratio": shared_ratio,
                 "positive_effect_ratio": pos_ratio,
-                "negative_effect_ratio": float(frag_row.get("negative_effect_ratio", 0.0)),
+                "negative_effect_ratio": float(frag_row.get("topk_negative_ratio", 0.0)),
                 "top_latent_idx": int(frag_row["top_latent_idx"]),
                 "top_abs_cohens_d": float(frag_row["top_abs_cohens_d"]),
                 "top_directional_auc": top_auc,
@@ -273,8 +319,8 @@ def build_behavior_asymmetry(
                 "family_shared_latents": int(role_counts.get("family_shared", 0)),
                 "cross_family_latents": int(role_counts.get("cross_family", 0)),
                 "global_latents": int(role_counts.get("global", 0)),
-                "nearest_labels_top50": ",".join(nearest["other_label"].astype(str).tolist()),
-                "nearest_jaccard_top50": ",".join(_fmt(v) for v in nearest["topk_jaccard"].tolist()),
+                "nearest_labels_topk": ",".join(nearest["other_label"].astype(str).tolist()),
+                "nearest_jaccard_topk": ",".join(_fmt(v) for v in nearest["topk_jaccard"].tolist()),
                 "group_score_pos_mean": float(np.mean(positive_scores)) if positive_scores.size else 0.0,
                 "group_score_neg_mean": float(np.mean(negative_scores)) if negative_scores.size else 0.0,
                 "group_score_label_cohens_d": _cohens_d(positive_scores, negative_scores),
@@ -288,6 +334,7 @@ def build_behavior_asymmetry(
                     float(np.mean(label_low_scores)) if label_low_scores.size else 0.0
                 ),
                 "within_label_high_low_d": _cohens_d(label_high_scores, label_low_scores),
+                "top_latents": ",".join(str(idx) for idx in top_latents),
                 "top_positive_latents": ",".join(str(idx) for idx in top_latents),
             }
         )
@@ -306,7 +353,7 @@ def build_behavior_asymmetry(
         )
 
     summary = pd.DataFrame(rows).sort_values(
-        ["pattern", "fragmentation_ratio"],
+        ["pattern", "topk_shared_ratio"],
         ascending=[True, False],
     )
     quality = pd.DataFrame(quality_rows)
@@ -314,8 +361,8 @@ def build_behavior_asymmetry(
         summary.groupby("family")
         .agg(
             n_labels=("label", "count"),
-            total_significant_latents=("n_significant_latents", "sum"),
-            mean_fragmentation_ratio=("fragmentation_ratio", "mean"),
+            total_topk_latents=("n_topk_latents", "sum"),
+            mean_topk_shared_ratio=("topk_shared_ratio", "mean"),
             mean_top_auc=("top_directional_auc", "mean"),
             mean_cross_family_latents=("cross_family_latents", "mean"),
             mean_global_latents=("global_latents", "mean"),
@@ -331,7 +378,7 @@ def build_behavior_asymmetry(
         "n_labels": int(summary.shape[0]),
         "top_latents_per_label": int(top_latents_per_label),
         "patterns": summary["pattern"].value_counts().to_dict(),
-        "most_fragmented": summary.sort_values("n_significant_latents", ascending=False)
+        "most_fragmented": summary.sort_values("topk_shared_ratio", ascending=False)
         .head(5)
         .to_dict("records"),
         "strongest_top_auc": summary.sort_values("top_directional_auc", ascending=False)
@@ -369,15 +416,15 @@ def write_behavior_asymmetry_report(
         "",
         "## 2. 标签差异总表",
         "",
-        "| Label | Pattern | Sig. Latents | Frag. Ratio | Pos. Ratio | Top Latent | Top AUC | Label d | Nearest Labels |",
+        "| Label | Pattern | TopK | Shared Ratio | Pos. Ratio | Top Latent | Top AUC | Label d | Nearest Labels |",
         "|---|---|---:|---:|---:|---:|---:|---:|---|",
     ]
     for _, row in summary.iterrows():
         lines.append(
-            f"| {row['label']} | {row['pattern']} | {int(row['n_significant_latents'])} | "
-            f"{_fmt(row['fragmentation_ratio'])} | {_fmt(row['positive_effect_ratio'])} | "
+            f"| {row['label']} | {row['pattern']} | {int(row['n_topk_latents'])} | "
+            f"{_fmt(row['topk_shared_ratio'])} | {_fmt(row['positive_effect_ratio'])} | "
             f"{int(row['top_latent_idx'])} | {_fmt(row['top_directional_auc'])} | "
-            f"{_fmt(row['group_score_label_cohens_d'])} | {row['nearest_labels_top50']} |"
+            f"{_fmt(row['group_score_label_cohens_d'])} | {row['nearest_labels_topk']} |"
         )
 
     lines.extend(
@@ -385,14 +432,14 @@ def write_behavior_asymmetry_report(
             "",
             "## 3. 行为家族差异",
             "",
-            "| Family | Labels | Total Sig. Latents | Mean Frag. | Mean Top AUC | Mean Cross-family | Mean Global |",
+            "| Family | Labels | Total TopK Latents | Mean Shared Ratio | Mean Top AUC | Mean Cross-family | Mean Global |",
             "|---|---:|---:|---:|---:|---:|---:|",
         ]
     )
     for _, row in family.iterrows():
         lines.append(
-            f"| {row['family']} | {int(row['n_labels'])} | {int(row['total_significant_latents'])} | "
-            f"{_fmt(row['mean_fragmentation_ratio'])} | {_fmt(row['mean_top_auc'])} | "
+            f"| {row['family']} | {int(row['n_labels'])} | {int(row['total_topk_latents'])} | "
+            f"{_fmt(row['mean_topk_shared_ratio'])} | {_fmt(row['mean_top_auc'])} | "
             f"{_fmt(row['mean_cross_family_latents'])} | {_fmt(row['mean_global_latents'])} |"
         )
 
@@ -440,7 +487,7 @@ def build_latent_case_analysis(
     mapping_dir: str | Path,
     output_dir: str | Path,
     labels: list[str] | None = None,
-    top_latents_per_label: int = 5,
+    top_latents_per_label: int = DEFAULT_INTERPRETABILITY_TOP_K,
     top_examples_per_latent: int = 12,
 ) -> dict[str, Any]:
     eval_path = Path(eval_dir)
@@ -451,7 +498,16 @@ def build_latent_case_analysis(
     card_dir.mkdir(parents=True, exist_ok=True)
 
     labels = [label.upper() for label in (labels or DEFAULT_CORE_LABELS)]
-    matrix = load_mapping_matrix(mapping_path / "latent_label_matrix.csv")
+    top_latents_per_label = int(top_latents_per_label)
+    if top_latents_per_label <= 0:
+        top_latents_per_label = DEFAULT_INTERPRETABILITY_TOP_K
+    structure_path = eval_path / "interpretability" / "mapping_structure"
+    matrix = _load_topk_scope_matrix(
+        mapping_path=mapping_path,
+        structure_path=structure_path,
+        labels=labels,
+        top_k=top_latents_per_label,
+    )
     records = read_jsonl(eval_path / "records.jsonl")
     features = _load_features(eval_path)
 
@@ -463,7 +519,7 @@ def build_latent_case_analysis(
             matrix,
             label,
             n=top_latents_per_label,
-            direction="positive",
+            direction="all",
         )
         target_mask = _label_indicator(records, label)
         for rank, (_, latent_row) in enumerate(selected.iterrows(), start=1):
@@ -684,13 +740,13 @@ def write_followup_stage_report(
         "",
         "最碎片化标签：",
         "",
-        "| Label | Sig. Latents | Frag. Ratio | Top AUC |",
+        "| Label | TopK | Shared Ratio | Top AUC |",
         "|---|---:|---:|---:|",
     ]
     for row in behavior_metrics.get("most_fragmented", [])[:5]:
         lines.append(
-            f"| {row['label']} | {int(row['n_significant_latents'])} | "
-            f"{_fmt(row['fragmentation_ratio'])} | {_fmt(row['top_directional_auc'])} |"
+            f"| {row['label']} | {int(row['n_topk_latents'])} | "
+            f"{_fmt(row['topk_shared_ratio'])} | {_fmt(row['top_directional_auc'])} |"
         )
     lines.extend(
         [
@@ -724,7 +780,7 @@ def run_followup_interpretability_analysis(
     output_dir: str | Path = DEFAULT_STAGE_OUTPUT,
     labels: list[str] | None = None,
     hierarchy_specs: list[str] | None = None,
-    top_latents_per_label: int = 5,
+    top_latents_per_label: int = DEFAULT_INTERPRETABILITY_TOP_K,
     top_examples_per_latent: int = 12,
     doc_report: str | Path | None = "doc/MISC后续可解释性阶段分析报告.md",
 ) -> dict[str, Any]:
@@ -741,7 +797,7 @@ def run_followup_interpretability_analysis(
         output_dir=output_path / "behavior_asymmetry",
         labels=labels,
         hierarchy_specs=hierarchy_specs,
-        top_latents_per_label=max(top_latents_per_label, 20),
+        top_latents_per_label=top_latents_per_label,
     )
     case_metrics = build_latent_case_analysis(
         eval_dir=eval_path,
