@@ -112,6 +112,85 @@ python run_misc_causal_candidate_export.py `
   --output-dir outputs/misc_full_sae_eval/causal_candidates
 ```
 
+### 5. Latent 空间搜索 v2
+
+```powershell
+python run_misc_latent_space_search_v2.py
+```
+
+该入口复用已经生成的 `outputs/misc_full_sae_eval` 特征和标签矩阵，不重新抽取模型 hidden states。它把旧 Top20 口径降级为人工可审查候选窗口，正式结论改用 thresholded set、weighted metrics、K-sensitivity、semantic review candidates 和 baseline comparison 支撑。
+
+默认输入：
+
+```text
+outputs/misc_full_sae_eval/functional/misc_label_mapping/latent_label_matrix.csv
+outputs/misc_full_sae_eval/feature_store/utterance_features.pt
+outputs/misc_full_sae_eval/label_matrix.csv
+outputs/misc_full_sae_eval/records.jsonl
+```
+
+关键输出：
+
+```text
+outputs/misc_full_sae_eval/interpretability/latent_space_search_v2/
+  latent_label_association_v2.csv
+  top20_candidate_set_v2.csv
+  thresholded_latent_sets_v2.csv
+  weighted_latent_label_matrix_v2.csv
+  fragmentation_v2.csv
+  overlap_thresholded_v2.csv
+  overlap_weighted_v2.csv
+  polysemanticity_v2.csv
+  hierarchy_recovery_v2.csv
+  k_sensitivity_summary_v2.csv
+  semantic_review_candidates_v2.csv
+  latent_space_search_report.md
+  figures/
+```
+
+正式阈值口径为 `directional_auc >= 0.70`、`abs_cohens_d >= 0.50`、`significant_fdr=True`，正向 support latent 额外要求 `precision_at_50 >= prevalence + 0.10`。负向 latent 只作为 `negative_boundary`，不写成正向语义证据。
+
+### 6. 最小充分 latent 子空间 v2
+
+```powershell
+python run_misc_minimal_sufficient_subspace_v2.py
+```
+
+该入口回答“每个 MISC 标签至少需要多少个 SAE latents 才能接近完整候选池的预测表现”。它不是因果充分性实验，而是 probe-space 的预测充分性实验；输出的 `S*` 用作后续 ablation / steering 的优先候选组。
+
+默认输入：
+
+```text
+outputs/misc_full_sae_eval/interpretability/latent_space_search_v2/latent_label_association_v2.csv
+outputs/misc_full_sae_eval/interpretability/latent_space_search_v2/thresholded_latent_sets_v2.csv
+outputs/misc_full_sae_eval/feature_store/utterance_features.pt
+outputs/misc_full_sae_eval/label_matrix.csv
+```
+
+方法口径：
+
+- 候选池优先使用 `stable_edge=True` 的 latents，再补充 `association_rank <= 100` 的备份候选。
+- 每个标签使用 `5-fold Stratified CV`。
+- 每折训练 full-candidate logistic probe，再用 full probe 的线性贡献做 additive greedy selection。
+- 最小充分 K 需同时满足 `AUC >= 0.70`、`AUC >= full_candidate_auc - 0.02`、`AUPRC >= full_candidate_auprc - 0.03`、`Precision@50 lift >= full_candidate_precision_lift_at_50 - 0.05`。
+- `RE/QU` 只作 parent-child consistency，不进入 leaf-label 主结论。
+
+关键输出：
+
+```text
+outputs/misc_full_sae_eval/interpretability/minimal_sufficient_subspace_v2/
+  minimal_sufficient_summary_v2.csv
+  minimal_sufficient_selected_latents_v2.csv
+  minimal_sufficient_fold_results_v2.csv
+  minimal_sufficient_selection_steps_v2.csv
+  minimal_sufficient_redundancy_audit_v2.csv
+  minimal_sufficient_curves_v2.csv
+  candidate_pool_v2.csv
+  minimal_sufficient_summary.json
+  minimal_sufficient_subspace_report.md
+  figures/
+```
+
 ## 关键代码结构
 
 ```text
@@ -126,6 +205,8 @@ src/nlp_re_base/
   mapping_structure.py            # Mapping Structure 结构分析
   behavior_interpretability.py    # 后续解释性统计
   causal_candidates.py            # 因果验证候选 latent 导出
+  latent_space_search_v2.py       # thresholded / weighted latent 空间搜索 v2
+  minimal_sufficient_subspace_v2.py # 最小充分 latent 子空间搜索 v2
 ```
 
 ## 测试
@@ -138,6 +219,8 @@ python test_misc_label_mapping_smoke.py
 python test_mapping_structure_analysis.py
 python test_behavior_interpretability.py
 python test_causal_candidate_export.py
+python test_latent_space_search_v2_smoke.py
+python test_minimal_sufficient_subspace_v2_smoke.py
 python test_deploy_smoke.py
 ```
 

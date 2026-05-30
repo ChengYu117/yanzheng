@@ -26,6 +26,7 @@ __all__ = [
     "run_followup_interpretability_analysis",
     "export_misc_causal_candidates",
     "run_latent_space_search_v2",
+    "run_minimal_sufficient_subspace_v2",
 ]
 
 _LAZY_IMPORTS = {
@@ -56,6 +57,10 @@ _LAZY_IMPORTS = {
     "run_latent_space_search_v2": (
         ".latent_space_search_v2",
         "run_latent_space_search_v2",
+    ),
+    "run_minimal_sufficient_subspace_v2": (
+        ".minimal_sufficient_subspace_v2",
+        "run_minimal_sufficient_subspace_v2",
     ),
 }
 
