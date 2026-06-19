@@ -25,12 +25,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--association-matrix",
         default="outputs/misc_full_sae_eval/interpretability/latent_space_search_v2/latent_label_association_v2.csv",
-        help="Latent-label association matrix from latent_space_search_v2.",
+        help="Legacy latent-label association matrix used as the minimal-subspace candidate source.",
     )
     parser.add_argument(
         "--thresholded-sets",
         default="outputs/misc_full_sae_eval/interpretability/latent_space_search_v2/thresholded_latent_sets_v2.csv",
-        help="Formal thresholded latent set table.",
+        help="Optional legacy candidate seed table; kept for compatibility, not current formal evidence.",
     )
     parser.add_argument(
         "--feature-store",
@@ -99,4 +99,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

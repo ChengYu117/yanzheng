@@ -164,7 +164,7 @@ def _build_candidate_pool(
         ["stable_edge", "association_rank", "abs_cohens_d", "directional_auc"],
         ascending=[False, True, False, False],
     ).drop_duplicates("latent_idx", keep="first")
-    pool["candidate_source"] = np.where(pool["stable_edge"], "stable_edge", "top100_backup")
+    pool["candidate_source"] = np.where(pool["stable_edge"], "legacy_seed", "top100_backup")
     pool["candidate_order"] = np.arange(1, len(pool) + 1)
     return pool.reset_index(drop=True)
 
@@ -811,14 +811,14 @@ def _write_report(output_dir: Path, summary: pd.DataFrame, config: MinimalSuffic
         "",
         "## Criteria",
         "",
-        f"- Candidate pool: stable latents plus association-rank Top{config.candidate_top_k} backup.",
+        f"- Candidate pool: legacy seed candidates plus association-rank Top{config.candidate_top_k} backup.",
         f"- Full-candidate recoverable if mean CV AUC >= {config.min_auc:.2f}.",
         f"- Minimal sufficient K must be within {config.auc_tolerance:.2f} AUC, {config.auprc_tolerance:.2f} AUPRC, and {config.precision_lift_tolerance:.2f} P@{config.precision_k} lift of the full-candidate probe.",
         "- Parent labels `RE` and `QU` are consistency-only rows.",
         "",
         "## Label summary",
         "",
-        "| Label | Role | Status | Class | Candidate pool | Stable candidates | Full AUC | Minimal K median | Stability Jaccard | Predictive redundancy | Selected latents |",
+        "| Label | Role | Status | Class | Candidate pool | Legacy seed candidates | Full AUC | Minimal K median | Stability Jaccard | Predictive redundancy | Selected latents |",
         "|---|---|---|---|---:|---:|---:|---:|---:|---:|---|",
     ]
     for _, row in summary.iterrows():

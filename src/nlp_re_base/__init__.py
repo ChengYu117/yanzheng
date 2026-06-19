@@ -25,8 +25,9 @@ __all__ = [
     "run_mapping_structure_analysis",
     "run_followup_interpretability_analysis",
     "export_misc_causal_candidates",
-    "run_latent_space_search_v2",
     "run_minimal_sufficient_subspace_v2",
+    "load_gemma_scope_sae",
+    "run_gemma_scope_sae_evaluation",
 ]
 
 _LAZY_IMPORTS = {
@@ -54,13 +55,17 @@ _LAZY_IMPORTS = {
         ".causal_candidates",
         "export_misc_causal_candidates",
     ),
-    "run_latent_space_search_v2": (
-        ".latent_space_search_v2",
-        "run_latent_space_search_v2",
-    ),
     "run_minimal_sufficient_subspace_v2": (
         ".minimal_sufficient_subspace_v2",
         "run_minimal_sufficient_subspace_v2",
+    ),
+    "load_gemma_scope_sae": (
+        ".gemma_scope_sae",
+        "load_gemma_scope_sae",
+    ),
+    "run_gemma_scope_sae_evaluation": (
+        ".gemma_scope_pipeline",
+        "run_gemma_scope_sae_evaluation",
     ),
 }
 

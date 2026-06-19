@@ -112,45 +112,7 @@ python run_misc_causal_candidate_export.py `
   --output-dir outputs/misc_full_sae_eval/causal_candidates
 ```
 
-### 5. Latent 空间搜索 v2
-
-```powershell
-python run_misc_latent_space_search_v2.py
-```
-
-该入口复用已经生成的 `outputs/misc_full_sae_eval` 特征和标签矩阵，不重新抽取模型 hidden states。它把旧 Top20 口径降级为人工可审查候选窗口，正式结论改用 thresholded set、weighted metrics、K-sensitivity、semantic review candidates 和 baseline comparison 支撑。
-
-默认输入：
-
-```text
-outputs/misc_full_sae_eval/functional/misc_label_mapping/latent_label_matrix.csv
-outputs/misc_full_sae_eval/feature_store/utterance_features.pt
-outputs/misc_full_sae_eval/label_matrix.csv
-outputs/misc_full_sae_eval/records.jsonl
-```
-
-关键输出：
-
-```text
-outputs/misc_full_sae_eval/interpretability/latent_space_search_v2/
-  latent_label_association_v2.csv
-  top20_candidate_set_v2.csv
-  thresholded_latent_sets_v2.csv
-  weighted_latent_label_matrix_v2.csv
-  fragmentation_v2.csv
-  overlap_thresholded_v2.csv
-  overlap_weighted_v2.csv
-  polysemanticity_v2.csv
-  hierarchy_recovery_v2.csv
-  k_sensitivity_summary_v2.csv
-  semantic_review_candidates_v2.csv
-  latent_space_search_report.md
-  figures/
-```
-
-正式阈值口径为 `directional_auc >= 0.70`、`abs_cohens_d >= 0.50`、`significant_fdr=True`，正向 support latent 额外要求 `precision_at_50 >= prevalence + 0.10`。负向 latent 只作为 `negative_boundary`，不写成正向语义证据。
-
-### 6. 最小充分 latent 子空间 v2
+### 5. 最小充分 latent 子空间 v2
 
 ```powershell
 python run_misc_minimal_sufficient_subspace_v2.py
@@ -158,18 +120,9 @@ python run_misc_minimal_sufficient_subspace_v2.py
 
 该入口回答“每个 MISC 标签至少需要多少个 SAE latents 才能接近完整候选池的预测表现”。它不是因果充分性实验，而是 probe-space 的预测充分性实验；输出的 `S*` 用作后续 ablation / steering 的优先候选组。
 
-默认输入：
-
-```text
-outputs/misc_full_sae_eval/interpretability/latent_space_search_v2/latent_label_association_v2.csv
-outputs/misc_full_sae_eval/interpretability/latent_space_search_v2/thresholded_latent_sets_v2.csv
-outputs/misc_full_sae_eval/feature_store/utterance_features.pt
-outputs/misc_full_sae_eval/label_matrix.csv
-```
-
 方法口径：
 
-- 候选池优先使用 `stable_edge=True` 的 latents，再补充 `association_rank <= 100` 的备份候选。
+- 候选池使用已配置的历史候选输入与 `association_rank <= 100` 的备份候选；字段名保持兼容，不作为当前结论口径展示。
 - 每个标签使用 `5-fold Stratified CV`。
 - 每折训练 full-candidate logistic probe，再用 full probe 的线性贡献做 additive greedy selection。
 - 最小充分 K 需同时满足 `AUC >= 0.70`、`AUC >= full_candidate_auc - 0.02`、`AUPRC >= full_candidate_auprc - 0.03`、`Precision@50 lift >= full_candidate_precision_lift_at_50 - 0.05`。
@@ -191,6 +144,61 @@ outputs/misc_full_sae_eval/interpretability/minimal_sufficient_subspace_v2/
   figures/
 ```
 
+### 6. Gemma3-4B + GemmaScope Layer-18 对照实验
+
+```powershell
+python run_gemma_scope_sae_evaluation.py `
+  --layer-idx 18 `
+  --output-dir outputs/gemma3_l18_gemmascope_sae_eval
+```
+
+该入口使用 Gemma3-4B 第 18 层 hidden states 和 GemmaScope SAE，构建独立于 Llama/OpenMOSS SAE 的对照实验主线。默认 checkpoint：
+
+```text
+google/gemma-scope-2-4b-pt/resid_post_all/layer_18_width_16k_l0_small
+```
+
+选择 `layer_idx=18` 的原因是：之前全量 MISC Gemma layer probe 中，父标签 `RE` 的最优层为 `18`；`QU` 的最优层为 `10`，因此本轮 `QU` 相关结论应读作 layer-18 主层下的稳健性观察。
+
+关键输出：
+
+```text
+outputs/gemma3_l18_gemmascope_sae_eval/
+  records.jsonl
+  label_matrix.csv
+  metrics_structural.json
+  gemma_scope_sae_report.md
+  feature_store/
+    utterance_features.pt
+    utterance_activations.pt
+  functional/misc_label_mapping/
+    latent_label_matrix.csv
+  interpretability/
+    minimal_sufficient_subspace_v2/
+    baseline_comparison_step6/
+    model_specificity_comparison/
+  validation/
+```
+
+下游闭环：
+
+```powershell
+python run_misc_minimal_sufficient_subspace_v2.py `
+  --feature-store outputs/gemma3_l18_gemmascope_sae_eval/feature_store/utterance_features.pt `
+  --label-matrix outputs/gemma3_l18_gemmascope_sae_eval/label_matrix.csv `
+  --output-dir outputs/gemma3_l18_gemmascope_sae_eval/interpretability/minimal_sufficient_subspace_v2
+
+python run_cross_model_sae_comparison.py `
+  --llama-root outputs/misc_full_sae_eval `
+  --gemma-root outputs/gemma3_l18_gemmascope_sae_eval `
+  --output-dir outputs/gemma3_l18_gemmascope_sae_eval/interpretability/model_specificity_comparison
+
+python run_gemma_scope_validation.py `
+  --root outputs/gemma3_l18_gemmascope_sae_eval
+```
+
+`run_gemma_scope_validation.py` 会检查 GemmaScope 主产物、下游结构分析、最小充分子空间、Step6 对照和跨模型汇总是否完整，并输出 `validation/gemma_scope_validation_summary.json` 与 `validation/gemma_scope_validation_report.md`。
+
 ## 关键代码结构
 
 ```text
@@ -205,8 +213,9 @@ src/nlp_re_base/
   mapping_structure.py            # Mapping Structure 结构分析
   behavior_interpretability.py    # 后续解释性统计
   causal_candidates.py            # 因果验证候选 latent 导出
-  latent_space_search_v2.py       # thresholded / weighted latent 空间搜索 v2
   minimal_sufficient_subspace_v2.py # 最小充分 latent 子空间搜索 v2
+  gemma_scope_sae.py              # GemmaScope JumpReLU SAE 加载与前向
+  gemma_scope_pipeline.py         # Gemma3 layer-18 + GemmaScope SAE 主评估
 ```
 
 ## 测试
@@ -219,8 +228,11 @@ python test_misc_label_mapping_smoke.py
 python test_mapping_structure_analysis.py
 python test_behavior_interpretability.py
 python test_causal_candidate_export.py
-python test_latent_space_search_v2_smoke.py
 python test_minimal_sufficient_subspace_v2_smoke.py
+python test_gemma_scope_sae_smoke.py
+python test_gemma_scope_pipeline_smoke.py
+python test_cross_model_sae_comparison_smoke.py
+python run_gemma_scope_validation.py
 python test_deploy_smoke.py
 ```
 
