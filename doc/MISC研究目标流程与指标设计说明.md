@@ -1,4 +1,4 @@
-# MISC 研究目标、实验流程与指标设计说明
+﻿# MISC 研究目标、实验流程与指标设计说明
 
 生成日期：2026-05-03
 对应项目：MISC 全量数据驱动的 SAE 表征映射与可解释性分析
@@ -237,7 +237,7 @@ feature_metadata.json
 | `n_tokens` | 93636 | 实际参与结构评估的 token 数 |
 | `mse` | 7.4456 | 重构误差 |
 | `cosine_similarity` | 0.8564 | 原 activation 与重构 activation 的方向一致性 |
-| `ev_openmoss_legacy` | 0.5080 | 当前论文口径优先参考的 official legacy EV |
+| `ev_openmoss_legacy` | 0.7635 | 当前论文口径优先参考的 official legacy EV，采用 2026-05-03 结构复跑结果 |
 | `l0_mean` | 42.94 | 平均每个 token 激活的 latent 数 |
 | `dead_ratio` | 0.3231 | 在该数据上几乎不激活的 latent 比例 |
 | `ce_loss_delta` | 1.3528 | SAE 重构后语言模型 loss 增量 |

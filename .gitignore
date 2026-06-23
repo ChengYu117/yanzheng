@@ -68,3 +68,7 @@ hf_cache/
 *.pt.trace.json
 *.nvvp
 *.nsys-rep
+
+# Git worktrees
+.worktrees/
+

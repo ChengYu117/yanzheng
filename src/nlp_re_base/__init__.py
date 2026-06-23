@@ -26,6 +26,7 @@ __all__ = [
     "run_followup_interpretability_analysis",
     "export_misc_causal_candidates",
     "run_minimal_sufficient_subspace_v2",
+    "run_full_representation_probe",
     "load_gemma_scope_sae",
     "run_gemma_scope_sae_evaluation",
 ]
@@ -58,6 +59,10 @@ _LAZY_IMPORTS = {
     "run_minimal_sufficient_subspace_v2": (
         ".minimal_sufficient_subspace_v2",
         "run_minimal_sufficient_subspace_v2",
+    ),
+    "run_full_representation_probe": (
+        ".full_representation_probe",
+        "run_full_representation_probe",
     ),
     "load_gemma_scope_sae": (
         ".gemma_scope_sae",
