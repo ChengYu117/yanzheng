@@ -9,6 +9,7 @@ from __future__ import annotations
 import json
 import math
 import re
+from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any, Iterable
 
@@ -24,6 +25,25 @@ from .data import (
     misc_label_set,
 )
 from .eval_functional import benjamini_hochberg
+
+
+@dataclass(frozen=True)
+class FeatureFilterConfig:
+    """Basic SAE latent quality filter before label association analysis."""
+
+    enabled: bool = True
+    activation_threshold: float = 1e-8
+    min_activation_rate: float = 0.001
+    min_active_count: int = 10
+    max_activation_rate: float = 0.995
+    min_std: float = 1e-8
+    min_outlier_active_count: int = 20
+    outlier_iqr_multiplier: float = 10.0
+    outlier_z_threshold: float = 8.0
+    max_outlier_fraction: float = 0.50
+    max_top1_activation_share: float = 0.80
+    max_top5_activation_share: float = 0.95
+    chunk_size: int = 512
 
 
 def sanitize_label(label: str) -> str:
@@ -148,6 +168,196 @@ def _as_numpy_features(features: torch.Tensor | np.ndarray) -> np.ndarray:
     return np.ascontiguousarray(features, dtype=np.float32)
 
 
+def _empty_feature_filter_audit(n_features: int, *, keep: bool = True) -> pd.DataFrame:
+    return pd.DataFrame(
+        {
+            "latent_idx": np.arange(n_features, dtype=np.int32),
+            "keep": bool(keep),
+            "drop_reasons": "",
+            "active_count": 0,
+            "activation_rate": 0.0,
+            "mean_activation": 0.0,
+            "std_activation": 0.0,
+            "active_mean": 0.0,
+            "active_median": 0.0,
+            "active_q95": 0.0,
+            "active_q99": 0.0,
+            "max_activation": 0.0,
+            "active_sum": 0.0,
+            "outlier_fraction": 0.0,
+            "top1_activation_share": 0.0,
+            "top5_activation_share": 0.0,
+            "nonfinite_count": 0,
+        }
+    )
+
+
+def build_feature_filter(
+    features: torch.Tensor | np.ndarray,
+    config: FeatureFilterConfig | None = None,
+) -> pd.DataFrame:
+    """Return one audit row per original latent with keep/drop decisions.
+
+    The filter is intentionally conservative. It removes dead/near-dead latents,
+    latents that are active on almost every row, and latents whose activation mass
+    is dominated by a tiny number of extreme rows.
+    """
+    cfg = config or FeatureFilterConfig()
+    features_np = _as_numpy_features(features)
+    if features_np.ndim != 2:
+        raise ValueError(f"features must be 2D, got shape {features_np.shape}")
+
+    n_samples, n_features = features_np.shape
+    if n_features == 0:
+        return _empty_feature_filter_audit(0, keep=False)
+    if n_samples == 0:
+        audit = _empty_feature_filter_audit(n_features, keep=False)
+        audit["drop_reasons"] = "no_samples"
+        return audit
+
+    rows: list[dict[str, Any]] = []
+    chunk_size = max(1, int(cfg.chunk_size))
+    threshold = float(cfg.activation_threshold)
+
+    for start in range(0, n_features, chunk_size):
+        end = min(start + chunk_size, n_features)
+        chunk = np.asarray(features_np[:, start:end], dtype=np.float32)
+        nonfinite = ~np.isfinite(chunk)
+        safe_chunk = np.nan_to_num(chunk, nan=0.0, posinf=0.0, neginf=0.0)
+        active_mask = safe_chunk > threshold
+        active_counts = active_mask.sum(axis=0).astype(np.int64)
+        means = safe_chunk.mean(axis=0)
+        stds = safe_chunk.std(axis=0)
+        maxes = safe_chunk.max(axis=0)
+        sums = safe_chunk.sum(axis=0)
+        nonfinite_counts = nonfinite.sum(axis=0).astype(np.int64)
+
+        for local_idx in range(end - start):
+            latent_idx = start + local_idx
+            active_count = int(active_counts[local_idx])
+            activation_rate = float(active_count / n_samples)
+            col = safe_chunk[:, local_idx]
+            active_vals = col[active_mask[:, local_idx]]
+
+            active_mean = 0.0
+            active_median = 0.0
+            active_q95 = 0.0
+            active_q99 = 0.0
+            outlier_fraction = 0.0
+            top1_share = 0.0
+            top5_share = 0.0
+            if active_count:
+                active_mean = float(active_vals.mean())
+                active_median = float(np.median(active_vals))
+                q25, q75, active_q95, active_q99 = np.quantile(
+                    active_vals,
+                    [0.25, 0.75, 0.95, 0.99],
+                )
+                iqr = float(q75 - q25)
+                if iqr > 0.0:
+                    iqr_upper = float(q75 + cfg.outlier_iqr_multiplier * iqr)
+                else:
+                    iqr_upper = float(q75 + max(threshold, 1e-12))
+                active_std = float(active_vals.std())
+                if active_std > 0.0:
+                    z_outliers = (active_vals - active_mean) > (
+                        cfg.outlier_z_threshold * active_std
+                    )
+                else:
+                    z_outliers = np.zeros(active_count, dtype=bool)
+                iqr_outliers = active_vals > iqr_upper
+                outlier_fraction = float(np.logical_or(iqr_outliers, z_outliers).mean())
+                active_sum = float(active_vals.sum())
+                if active_sum > 0.0:
+                    sorted_active = np.sort(active_vals)
+                    top1_share = float(sorted_active[-1] / active_sum)
+                    top5_share = float(sorted_active[-min(5, active_count) :].sum() / active_sum)
+
+            reasons: list[str] = []
+            if int(nonfinite_counts[local_idx]) > 0:
+                reasons.append("nonfinite_activation")
+            if active_count < int(cfg.min_active_count) or activation_rate < float(
+                cfg.min_activation_rate
+            ):
+                reasons.append("rarely_active")
+            if activation_rate > float(cfg.max_activation_rate):
+                reasons.append("almost_always_active")
+            if float(stds[local_idx]) <= float(cfg.min_std):
+                reasons.append("zero_or_near_zero_variance")
+            if active_count >= int(cfg.min_outlier_active_count):
+                if outlier_fraction > float(cfg.max_outlier_fraction):
+                    reasons.append("outlier_dominated")
+                if top1_share > float(cfg.max_top1_activation_share):
+                    reasons.append("top1_activation_mass_dominated")
+                if active_count > 5 and top5_share > float(cfg.max_top5_activation_share):
+                    reasons.append("top5_activation_mass_dominated")
+
+            keep = bool(cfg.enabled and not reasons) or not cfg.enabled
+            rows.append(
+                {
+                    "latent_idx": int(latent_idx),
+                    "keep": keep,
+                    "drop_reasons": "" if keep else ";".join(reasons),
+                    "active_count": active_count,
+                    "activation_rate": activation_rate,
+                    "mean_activation": float(means[local_idx]),
+                    "std_activation": float(stds[local_idx]),
+                    "active_mean": active_mean,
+                    "active_median": active_median,
+                    "active_q95": float(active_q95),
+                    "active_q99": float(active_q99),
+                    "max_activation": float(maxes[local_idx]),
+                    "active_sum": float(sums[local_idx]),
+                    "outlier_fraction": outlier_fraction,
+                    "top1_activation_share": top1_share,
+                    "top5_activation_share": top5_share,
+                    "nonfinite_count": int(nonfinite_counts[local_idx]),
+                }
+            )
+
+    return pd.DataFrame(rows)
+
+
+def summarize_feature_filter(
+    audit_df: pd.DataFrame,
+    config: FeatureFilterConfig | None = None,
+    *,
+    n_samples: int | None = None,
+) -> dict[str, Any]:
+    cfg = config or FeatureFilterConfig()
+    if audit_df.empty:
+        return {
+            "enabled": bool(cfg.enabled),
+            "config": asdict(cfg),
+            "n_samples": int(n_samples or 0),
+            "n_original_latents": 0,
+            "n_kept_latents": 0,
+            "n_dropped_latents": 0,
+            "keep_rate": 0.0,
+            "drop_reason_counts": {},
+        }
+
+    kept = audit_df["keep"].astype(bool)
+    reason_counts: dict[str, int] = {}
+    for value in audit_df.loc[~kept, "drop_reasons"].fillna(""):
+        for reason in str(value).split(";"):
+            if reason:
+                reason_counts[reason] = reason_counts.get(reason, 0) + 1
+
+    n_original = int(audit_df.shape[0])
+    n_kept = int(kept.sum())
+    return {
+        "enabled": bool(cfg.enabled),
+        "config": asdict(cfg),
+        "n_samples": int(n_samples or 0),
+        "n_original_latents": n_original,
+        "n_kept_latents": n_kept,
+        "n_dropped_latents": int(n_original - n_kept),
+        "keep_rate": float(n_kept / n_original) if n_original else 0.0,
+        "drop_reason_counts": dict(sorted(reason_counts.items())),
+    }
+
+
 def _chunked_auc_by_rank(
     features: np.ndarray,
     positive_mask: np.ndarray,
@@ -207,6 +417,7 @@ def compute_latent_label_associations(
     min_positive: int = 10,
     min_negative: int = 10,
     chunk_size: int = 512,
+    candidate_latent_indices: np.ndarray | list[int] | None = None,
 ) -> tuple[pd.DataFrame, list[dict[str, Any]]]:
     """Compute Latent x Label association rows in long format."""
     features_np = _as_numpy_features(features)
@@ -222,6 +433,40 @@ def compute_latent_label_associations(
     rows: list[pd.DataFrame] = []
     skipped: list[dict[str, Any]] = []
     d_sae = features_np.shape[1]
+    if candidate_latent_indices is None:
+        latent_indices = np.arange(d_sae, dtype=np.int32)
+    else:
+        latent_indices = np.asarray(candidate_latent_indices, dtype=np.int32)
+        if latent_indices.shape[0] != d_sae:
+            raise ValueError(
+                "candidate_latent_indices length must match feature columns: "
+                f"{latent_indices.shape[0]} != {d_sae}"
+            )
+
+    if d_sae == 0:
+        base_columns = [
+            "label",
+            "latent_idx",
+            "n_positive",
+            "n_negative",
+            "prevalence",
+            "pos_mean",
+            "neg_mean",
+            "mean_diff",
+            "cohens_d",
+            "abs_cohens_d",
+            "auc",
+            "directional_auc",
+            "auc_effect",
+            "p_value",
+            "significant_fdr",
+        ]
+        precision_columns = [
+            col
+            for k in precision_k_values
+            for col in (f"precision_at_{k}", f"precision_lift_at_{k}")
+        ]
+        return pd.DataFrame(columns=base_columns + precision_columns), skipped
 
     for label_idx, label in enumerate(tqdm(labels, desc="Labels", unit="label")):
         positive_mask = np.asarray(label_indicators[:, label_idx], dtype=bool)
@@ -268,7 +513,7 @@ def compute_latent_label_associations(
 
         payload: dict[str, Any] = {
             "label": label,
-            "latent_idx": np.arange(d_sae, dtype=np.int32),
+            "latent_idx": latent_indices,
             "n_positive": n_positive,
             "n_negative": n_negative,
             "prevalence": prevalence,
@@ -672,6 +917,7 @@ def run_misc_label_mapping(
     top_k_per_label: int = 50,
     top_example_latents: int = 5,
     top_examples_per_latent: int = 10,
+    feature_filter_config: FeatureFilterConfig | None = None,
 ) -> dict[str, Any]:
     """Run the full matrix analysis and persist all report files."""
     output_path = Path(output_dir)
@@ -684,8 +930,20 @@ def run_misc_label_mapping(
         )
 
     selected_labels, label_indicators = select_labels(records, labels=labels)
+    feature_filter_config = feature_filter_config or FeatureFilterConfig()
+    feature_filter_audit = build_feature_filter(features_np, feature_filter_config)
+    candidate_latent_indices = feature_filter_audit.loc[
+        feature_filter_audit["keep"].astype(bool),
+        "latent_idx",
+    ].to_numpy(dtype=np.int32)
+    feature_filter_summary = summarize_feature_filter(
+        feature_filter_audit,
+        feature_filter_config,
+        n_samples=features_np.shape[0],
+    )
+    association_features = features_np[:, candidate_latent_indices]
     matrix, skipped = compute_latent_label_associations(
-        features_np,
+        association_features,
         label_indicators,
         selected_labels,
         fdr_alpha=fdr_alpha,
@@ -693,16 +951,22 @@ def run_misc_label_mapping(
         min_positive=min_positive,
         min_negative=min_negative,
         chunk_size=chunk_size,
+        candidate_latent_indices=candidate_latent_indices,
     )
 
     matrix_path = output_path / "latent_label_matrix.csv"
+    feature_filter_audit_path = output_path / "feature_filter_audit.csv"
+    feature_filter_summary_path = output_path / "feature_filter_summary.json"
     matrix.to_csv(matrix_path, index=False)
+    feature_filter_audit.to_csv(feature_filter_audit_path, index=False)
+    write_json(feature_filter_summary_path, feature_filter_summary)
 
     label_summary = build_label_summary(
         selected_labels,
         label_indicators,
         skipped_labels=skipped,
     )
+    label_summary["feature_filter"] = feature_filter_summary
     fragmentation = build_label_fragmentation(
         matrix,
         top_k_per_label=top_k_per_label,
@@ -748,6 +1012,8 @@ def run_misc_label_mapping(
         "output_dir": str(output_path),
         "n_records": len(records),
         "feature_shape": list(features_np.shape),
+        "candidate_feature_shape": [int(features_np.shape[0]), int(candidate_latent_indices.shape[0])],
+        "feature_filter": feature_filter_summary,
         "labels": selected_labels,
         "fdr_alpha": fdr_alpha,
         "min_positive": min_positive,
@@ -755,6 +1021,8 @@ def run_misc_label_mapping(
         "precision_k_values": precision_k_values or [10, 50],
         "files": {
             "latent_label_matrix": str(matrix_path),
+            "feature_filter_audit": str(feature_filter_audit_path),
+            "feature_filter_summary": str(feature_filter_summary_path),
             "label_summary": str(output_path / "label_summary.json"),
             "label_fragmentation": str(output_path / "label_fragmentation.json"),
             "latent_overlap": str(output_path / "latent_overlap.json"),

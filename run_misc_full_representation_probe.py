@@ -91,6 +91,11 @@ def parse_args() -> argparse.Namespace:
         choices=list(DEFAULT_SAE_SUBSPACE_RANKINGS),
         help="Feature-ranking metrics for SAE top-n subspace probes.",
     )
+    parser.add_argument(
+        "--no-filter-sae-subspace-candidates",
+        action="store_true",
+        help="Disable the train-fold SAE feature quality filter before top-n ranking.",
+    )
     parser.add_argument("--quiet", action="store_true", help="Suppress per-label/fold progress logs.")
     return parser.parse_args()
 
@@ -128,6 +133,7 @@ def main() -> int:
         include_sae_ranked_subspaces=args.include_sae_ranked_subspaces,
         sae_subspace_top_ns=_build_subspace_top_ns(args.subspace_max_n, args.subspace_step),
         sae_subspace_rankings=tuple(args.subspace_rankings),
+        filter_sae_subspace_candidates=not args.no_filter_sae_subspace_candidates,
     )
 
     print(f"[load] SAE features: {args.sae_features}")

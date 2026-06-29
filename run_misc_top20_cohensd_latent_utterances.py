@@ -419,7 +419,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--association",
-        default="outputs/misc_full_sae_eval/functional/misc_label_mapping/latent_label_matrix.csv",
+        default="outputs/misc_full_sae_eval/functional/misc_label_mapping_filtered/latent_label_matrix.csv",
     )
     parser.add_argument("--feature-store", default="outputs/misc_full_sae_eval/feature_store/utterance_features.pt")
     parser.add_argument("--label-matrix", default="outputs/misc_full_sae_eval/label_matrix.csv")

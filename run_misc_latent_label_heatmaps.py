@@ -239,7 +239,7 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--matrix",
-        default="outputs/misc_full_sae_eval/functional/misc_label_mapping/latent_label_matrix.csv",
+        default="outputs/misc_full_sae_eval/functional/misc_label_mapping_filtered/latent_label_matrix.csv",
         help="Path to latent_label_matrix.csv.",
     )
     parser.add_argument(

@@ -3,8 +3,8 @@
 from __future__ import annotations
 
 import json
+import shutil
 import sys
-import tempfile
 from pathlib import Path
 
 import numpy as np
@@ -57,6 +57,12 @@ def _synthetic_features(n: int) -> np.ndarray:
     features[12:24, 1] += 3.0    # QU
     features[:6, 2] += 2.5       # RES
     features[6:12, 3] += 2.5     # REC
+
+    features[:, 4] = 0.0         # dead / never active
+    features[:, 5] = 1.0         # active on every row, no variance
+    features[:, 6] = 0.0
+    features[:20, 6] = 0.001
+    features[0, 6] = 1000.0      # activation mass dominated by one outlier
     return features
 
 
@@ -67,8 +73,11 @@ def test_misc_label_mapping_module():
         select_labels,
     )
 
-    with tempfile.TemporaryDirectory() as tmp:
-        root = Path(tmp)
+    root = PROJECT_ROOT / "outputs" / "_misc_mapping_smoke"
+    if root.exists():
+        shutil.rmtree(root)
+    root.mkdir(parents=True, exist_ok=True)
+    try:
         raw_records = _write_synthetic_misc_dataset(root)
         features = _synthetic_features(len(raw_records))
 
@@ -96,11 +105,22 @@ def test_misc_label_mapping_module():
 
         matrix = pd.read_csv(out_dir / "latent_label_matrix.csv")
         assert (out_dir / "label_summary.json").exists()
+        assert (out_dir / "feature_filter_audit.csv").exists()
+        assert (out_dir / "feature_filter_summary.json").exists()
         assert (out_dir / "label_fragmentation.json").exists()
         assert (out_dir / "latent_overlap.json").exists()
         assert (out_dir / "behavior_asymmetry.md").exists()
         assert (out_dir / "top_latents_by_label" / "RE.csv").exists()
         assert summary["feature_shape"] == [len(raw_records), 16]
+        assert summary["candidate_feature_shape"][0] == len(raw_records)
+
+        audit = pd.read_csv(out_dir / "feature_filter_audit.csv")
+        dropped = set(audit.loc[~audit["keep"].astype(bool), "latent_idx"].astype(int))
+        assert {4, 5, 6}.issubset(dropped)
+        assert {4, 5, 6}.isdisjoint(set(matrix["latent_idx"].astype(int)))
+        assert "rarely_active" in str(audit.loc[audit["latent_idx"] == 4, "drop_reasons"].iloc[0])
+        assert "almost_always_active" in str(audit.loc[audit["latent_idx"] == 5, "drop_reasons"].iloc[0])
+        assert "top1_activation_mass_dominated" in str(audit.loc[audit["latent_idx"] == 6, "drop_reasons"].iloc[0])
 
         top_re = int(matrix[matrix["label"] == "RE"].iloc[0]["latent_idx"])
         top_qu = int(matrix[matrix["label"] == "QU"].iloc[0]["latent_idx"])
@@ -111,6 +131,8 @@ def test_misc_label_mapping_module():
         assert top_qu == 1, top_qu
         assert top_res == 2, top_res
         assert top_rec == 3, top_rec
+    finally:
+        shutil.rmtree(root, ignore_errors=True)
 
 
 def main() -> int:

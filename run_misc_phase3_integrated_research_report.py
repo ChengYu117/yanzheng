@@ -323,19 +323,40 @@ def _phase2_status(function_dir: Path) -> dict[str, Any]:
     }
 
 
-def _claim_strength(evidence_label: pd.DataFrame, phase2: dict[str, Any]) -> list[dict[str, str]]:
+def _claim_strength(
+    evidence_label: pd.DataFrame,
+    phase2: dict[str, Any],
+    baseline_auc: dict[str, float],
+) -> list[dict[str, str]]:
     function_status = "未完成" if phase2["n_success"] == 0 else "部分完成" if phase2["n_success"] < phase2["n_reviews"] else "完成"
+    raw_auc = baseline_auc.get("raw_hidden", np.nan)
+    pca_auc = baseline_auc.get("pca_raw_hidden", np.nan)
+    sae_auc = baseline_auc.get("full_sae_latents", np.nan)
+    if pd.notna(raw_auc) and pd.notna(pca_auc) and abs(raw_auc - pca_auc) <= 0.02:
+        pca_claim = {
+            "claim": "Full PCA(raw hidden) 明显弱于 raw hidden",
+            "support": "不支持",
+            "reason": "修正后 full-rank PCA 是标准化 raw hidden 的正交旋转等价基线，AUC 应与 raw hidden 接近。",
+        }
+    elif pd.notna(sae_auc) and pd.notna(pca_auc) and sae_auc - pca_auc > 0.05:
+        pca_claim = {
+            "claim": "SAE 比 PCA 更适合当前标签识别",
+            "support": "强",
+            "reason": "Full SAE 与 top-n SAE macro AUC 明显高于当前 PCA 基线。",
+        }
+    else:
+        pca_claim = {
+            "claim": "SAE 比 PCA 更适合当前标签识别",
+            "support": "不确定",
+            "reason": "修正后 PCA 与 raw hidden 接近，PCA 不再是弱基线；应比较 SAE 的可解释性与稀疏性，而不是简单比较 full-rank AUC。",
+        }
     return [
         {
             "claim": "MISC 标签信息可从 SAE features 中线性读出",
             "support": "强",
             "reason": "Full SAE macro AUC 高，且 top-n SAE 子空间可接近或超过 full SAE。",
         },
-        {
-            "claim": "SAE 比 PCA 更适合当前标签识别",
-            "support": "强",
-            "reason": "Full SAE 与 top-n SAE macro AUC 明显高于 full PCA(raw hidden)。",
-        },
+        pca_claim,
         {
             "claim": "SAE 明显优于 raw hidden 的完整表征",
             "support": "不支持",
@@ -374,6 +395,7 @@ def write_report(
     raw_auc = float(baseline.loc[baseline["representation"] == "raw_hidden", "macro_auc"].iloc[0])
     sae_auc = float(baseline.loc[baseline["representation"] == "full_sae_latents", "macro_auc"].iloc[0])
     pca_auc = float(baseline.loc[baseline["representation"] == "pca_raw_hidden", "macro_auc"].iloc[0])
+    pca_equiv = abs(raw_auc - pca_auc) <= 0.02
     best_topn = overall_topn.loc[overall_topn["best_macro_auc"].idxmax()]
     directional = overall_topn[overall_topn["ranking"] == "directional_auc"]
     directional_text = ""
@@ -412,8 +434,12 @@ def write_report(
         "",
         (
             f"可以较有把握地回答：人工 MISC 标签**能够从 LLM 内部 SAE features 中被线性识别出来**。"
-            f"Full SAE latents 的 macro AUC={_fmt(sae_auc)}，接近 raw hidden 的 {_fmt(raw_auc)}，"
-            f"并明显高于 full PCA(raw hidden) 的 {_fmt(pca_auc)}。"
+            f"Full SAE latents 的 macro AUC={_fmt(sae_auc)}，接近 raw hidden 的 {_fmt(raw_auc)}。"
+            + (
+                f"修正后的 full PCA(raw hidden) 为 {_fmt(pca_auc)}，与 raw hidden 基本等价。"
+                if pca_equiv
+                else f"Full PCA(raw hidden) 为 {_fmt(pca_auc)}。"
+            )
         ),
         "",
         (
@@ -471,9 +497,14 @@ def write_report(
         "### Q2：SAE 相比 raw hidden 和 PCA 如何？",
         "",
         (
-            f"Raw hidden 仍是最强 full representation 基线之一，macro AUC={_fmt(raw_auc)}；"
-            f"Full SAE 略低 {_fmt(raw_auc - sae_auc)}，但非常接近。Full PCA(raw hidden)={_fmt(pca_auc)} 明显较弱，"
-            f"说明当前 MISC 标签判别方向不等同于最大方差方向。"
+            f"Raw hidden 是最强 full representation 基线之一，macro AUC={_fmt(raw_auc)}；"
+            f"Full SAE 略低 {_fmt(raw_auc - sae_auc)}，但非常接近。"
+            + (
+                f"修正后的 full PCA(raw hidden)={_fmt(pca_auc)}，与 raw hidden 的差值只有 {_fmt(raw_auc - pca_auc)}。"
+                "这符合 full-rank PCA 作为标准化 raw hidden 正交旋转的原理；因此不能再说 PCA 不适合该数据集。"
+                if pca_equiv
+                else f"Full PCA(raw hidden)={_fmt(pca_auc)}，低于 raw hidden。"
+            )
         ),
         "",
         "### Q3：需要多少 SAE latents 才能接近 full SAE？",
@@ -596,6 +627,13 @@ def write_report(
         "",
         "解释：AUC 看排序能力，F1 看固定阈值下的离散分类质量。Top-n 子空间 AUC 高，不代表阈值后的 F1 或真实机制也一定更强。",
         "",
+        (
+            "PCA 说明：这里的 full PCA 是修正后的公平基线，即训练折内先标准化 raw hidden，再使用 full-rank PCA 的正交旋转等价结果；"
+            "不再对 PCA 主成分做二次标准化。旧口径中的 PCA 后标准化会改变 L2 probe 的正则化几何，不能作为 raw hidden 的公平 full-rank PCA 对照。"
+            if pca_equiv
+            else "PCA 说明：该 PCA 结果来自训练折内拟合；解释时仍需注意 PCA 与 probe 标准化/正则化口径。"
+        ),
+        "",
         "## 4. 逐标签综合视图",
         "",
         _markdown_table(
@@ -696,7 +734,7 @@ def run_phase3_report(
     evidence_label = build_evidence_label_table(evidence_summary)
     integrated = build_label_integrated_table(by_label, label_topn, evidence_label)
     phase2 = _phase2_status(function_manifest_path.parent)
-    claims = _claim_strength(evidence_label, phase2)
+    claims = _claim_strength(evidence_label, phase2, baseline_auc)
 
     files = {
         "label_integrated_summary": output_path / "phase3_label_integrated_summary.csv",

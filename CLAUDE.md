@@ -23,6 +23,20 @@
 - 核心标签 9 个：`RE RES REC QU QUO QUC GI SU AF`；`OTHER` 不写入主结论。
 - `RE`、`QU` 是父标签，只作 MISC 层级一致性检查，不进 leaf 标签主结论。
 
+### 数据格式与分布模式（给后续 AI 的工作上下文）
+
+- 原始可用数据根目录是 `data/mi_quality_counseling_misc`，其中 `misc_annotations/high/*.jsonl` 和 `misc_annotations/low/*.jsonl` 是 LLM 分段后的 MISC 2.1 counselor utterance 标注；`counselor_utterances/*/*.jsonl` 是更早的 counselor-only 抽取输入。
+- 当前大多数分析不要重新扫原始 JSONL，优先使用已合并产物：`outputs/misc_full_sae_eval/records.jsonl` 与 `outputs/misc_full_sae_eval/label_matrix.csv`。二者行顺序与 `outputs/misc_full_sae_eval/feature_store/utterance_features.pt` 的第 0 维严格对齐。
+- `records.jsonl` 每行包含 `file_id`, `unit_text`, `predicted_code`, `predicted_subcode`, `rationale`, `confidence`, `record_id`, `quality_label`, `labels`, `source_split`, `source_file`, `source_line` 等字段。这里没有前一句 client utterance，不要为 RES/REC 推断上下文关系。
+- `label_matrix.csv` 形状为 `6194 × 19`，列为 `row_idx, record_id, file_id, source_split, source_file, predicted_code, predicted_subcode, confidence, unit_text, RE, RES, REC, QU, QUO, QUC, GI, SU, AF, OTHER`。
+- `label_matrix.csv` 的核心标签是多标签二值列，但层级导致多数“多标签”只是父子共现：`RE == RES OR REC`，`QU == QUO OR QUC`。每行核心标签激活数分布是 0 个: 1610，1 个: 1252，2 个: 3332。
+- 核心标签全量计数/占比：`QU 1974 / 31.9%`, `RE 1358 / 21.9%`, `QUO 1206 / 19.5%`, `REC 842 / 13.6%`, `QUC 768 / 12.4%`, `GI 681 / 11.0%`, `RES 516 / 8.3%`, `AF 349 / 5.6%`, `SU 222 / 3.6%`, `OTHER 1610 / 26.0%`。
+- `predicted_code` 中非核心标签会并入 `OTHER` 口径：`FA, ST, AD, FI, DI, NR, RC, CO, WA, EC, RF`。不要把这些列当作 9 个核心 MISC 标签直接建模。
+- `source_split` 是原会话质量来源，不是 train/test split：`high=4169` 条、`low=2025` 条；文件数为 `high=153`, `low=99`。高低质量会话标签分布不同，例如 high 中 `RE/REC/QUO/AF` 占比更高，low 中 `GI/QUC/OTHER` 相对更多。
+- 文本是 counselor 当前行为单元，`unit_text` 无空值；词数均值约 13.1，中位数 10，最大 50。规范化 exact duplicate 较多：6194 行中约 1214 行属于重复文本，唯一文本约 5392 条；top-activation 分析必须把重复视为潜在模板/artifact 证据。
+- 当前 Llama 主 SAE 特征文件：`outputs/misc_full_sae_eval/feature_store/utterance_features.pt`，形状 `[6194, 32768]`；raw hidden 聚合激活：`utterance_activations.pt`，形状 `[6194, 4096]`；hook 点为 `blocks.19.hook_resid_post`，utterance 聚合方式为 `max`，没有保存全 token-level latent。
+- 解释或报告时的安全表述：top activating examples 只用于候选解释生成；不能仅凭这些样例给 latent 命名，也不能声称因果机制。对 `RES/REC/RE` 尤其要说明缺少前文 client context。
+
 ## 方法论口径（关键，避免误写结论）
 
 - `minimal_sufficient_subspace_v2` = probe 空间预测充分性，回答"最少多少 latent 能接近完整候选池表现"。

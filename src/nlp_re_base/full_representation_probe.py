@@ -34,6 +34,11 @@ except ImportError:  # pragma: no cover - older sklearn fallback
     StratifiedGroupKFold = None  # type: ignore[assignment]
 
 from .baseline_comparison import load_matrix
+from .misc_label_mapping import (
+    FeatureFilterConfig,
+    build_feature_filter,
+    summarize_feature_filter,
+)
 
 
 DEFAULT_LABELS: tuple[str, ...] = (
@@ -68,6 +73,8 @@ class FullRepresentationProbeConfig:
     sae_subspace_top_ns: tuple[int, ...] = DEFAULT_SAE_SUBSPACE_TOP_NS
     sae_subspace_rankings: tuple[str, ...] = DEFAULT_SAE_SUBSPACE_RANKINGS
     association_chunk_size: int = 512
+    filter_sae_subspace_candidates: bool = True
+    sae_subspace_filter_config: FeatureFilterConfig | None = None
 
 
 def _json_default(value: Any) -> Any:
@@ -170,6 +177,33 @@ def _resolve_pca_components(
     return max(1, min(int(value), max_components))
 
 
+def _uses_full_rank_standardized_pca_equivalence(
+    raw_hidden: np.ndarray,
+    train_idx: np.ndarray,
+    config: FullRepresentationProbeConfig,
+) -> bool:
+    n_components = _resolve_pca_components(raw_hidden, train_idx, config)
+    return bool(config.standardize and n_components == raw_hidden.shape[1])
+
+
+def _full_rank_pca_equivalence_info(
+    raw_hidden: np.ndarray,
+    train_idx: np.ndarray,
+    config: FullRepresentationProbeConfig,
+) -> dict[str, Any]:
+    n_components = _resolve_pca_components(raw_hidden, train_idx, config)
+    max_components = min(raw_hidden.shape[1], len(train_idx))
+    return {
+        "n_components": int(n_components),
+        "max_components": int(max_components),
+        "explained_variance_ratio_sum": 1.0,
+        "svd_solver": "full_rank_equivalence",
+        "pre_standardized": True,
+        "post_standardized": False,
+        "equivalent_to_standardized_raw": True,
+    }
+
+
 def _fit_pca_fold(
     raw_hidden: np.ndarray,
     train_idx: np.ndarray,
@@ -182,6 +216,8 @@ def _fit_pca_fold(
     pca = PCA(n_components=n_components, svd_solver=solver, random_state=config.random_state)
     x_train = np.asarray(raw_hidden[train_idx], dtype=np.float32)
     x_test = np.asarray(raw_hidden[test_idx], dtype=np.float32)
+    if config.standardize:
+        x_train, x_test = _standardize_train_test(x_train, x_test)
     pca.fit(x_train)
     return (
         pca.transform(x_train).astype(np.float32),
@@ -191,6 +227,8 @@ def _fit_pca_fold(
             "max_components": int(max_components),
             "explained_variance_ratio_sum": float(np.sum(pca.explained_variance_ratio_)),
             "svd_solver": solver,
+            "pre_standardized": bool(config.standardize),
+            "post_standardized": False,
         },
     )
 
@@ -321,17 +359,20 @@ def _selected_latent_rows(
     order: np.ndarray,
     metrics: dict[str, np.ndarray],
     max_n: int,
+    latent_indices: np.ndarray | None = None,
 ) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
+    original_indices = None if latent_indices is None else np.asarray(latent_indices, dtype=np.int64)
     for rank, latent_idx in enumerate(order[:max_n], start=1):
         idx = int(latent_idx)
+        original_idx = idx if original_indices is None else int(original_indices[idx])
         rows.append(
             {
                 "label": label,
                 "fold": int(fold),
                 "subspace_ranking": ranking,
                 "rank": int(rank),
-                "latent_idx": idx,
+                "latent_idx": original_idx,
                 "cohens_d": float(metrics["cohens_d"][idx]),
                 "abs_cohens_d": float(metrics["abs_cohens_d"][idx]),
                 "auc": float(metrics["auc"][idx]),
@@ -433,12 +474,23 @@ def _summarize_by_label(fold_rows: pd.DataFrame) -> pd.DataFrame:
             "n_positive": int(group["test_positive"].sum()),
             "n_test": int(group["n_test"].sum()),
         }
-        for optional in ("subspace_ranking", "top_n", "source_representation"):
+        for optional in (
+            "subspace_ranking",
+            "top_n",
+            "source_representation",
+            "candidate_pool_size",
+            "candidate_filter_enabled",
+        ):
             if optional in group.columns:
                 values = group[optional].dropna()
                 if not values.empty:
                     value = values.iloc[0]
-                    row[optional] = int(value) if optional == "top_n" else str(value)
+                    if optional in {"top_n", "candidate_pool_size"}:
+                        row[optional] = int(value)
+                    elif optional == "candidate_filter_enabled":
+                        row[optional] = bool(value)
+                    else:
+                        row[optional] = str(value)
         for metric in metrics:
             row[f"{metric}_mean"] = float(group[metric].mean())
             row[f"{metric}_std"] = float(group[metric].std(ddof=0))
@@ -463,12 +515,23 @@ def _summarize_macro(by_label: pd.DataFrame) -> pd.DataFrame:
             "n_labels": int(len(group)),
             "mean_n_features": float(group["n_features_mean"].mean()),
         }
-        for optional in ("subspace_ranking", "top_n", "source_representation"):
+        for optional in (
+            "subspace_ranking",
+            "top_n",
+            "source_representation",
+            "candidate_pool_size",
+            "candidate_filter_enabled",
+        ):
             if optional in group.columns:
                 values = group[optional].dropna()
                 if not values.empty:
                     value = values.iloc[0]
-                    row[optional] = int(value) if optional == "top_n" else str(value)
+                    if optional in {"top_n", "candidate_pool_size"}:
+                        row[optional] = int(value)
+                    elif optional == "candidate_filter_enabled":
+                        row[optional] = bool(value)
+                    else:
+                        row[optional] = str(value)
         for metric in metrics:
             macro_name = "macro_" + metric.removeprefix("probe_").removesuffix("_mean")
             row[macro_name] = float(group[metric].mean())
@@ -683,6 +746,7 @@ def _write_report(
         f"- Include SAE ranked subspaces: `{config.include_sae_ranked_subspaces}`",
         f"- SAE subspace rankings: `{config.sae_subspace_rankings}`",
         f"- SAE subspace top-n grid: `{config.sae_subspace_top_ns}`",
+        f"- Filter SAE subspace candidates: `{config.filter_sae_subspace_candidates}`",
         "",
         "## Macro Summary",
         "",
@@ -746,6 +810,7 @@ def run_full_representation_probe(
 
     fold_records: list[dict[str, Any]] = []
     selected_latent_records: list[dict[str, Any]] = []
+    feature_filter_records: list[dict[str, Any]] = []
     warnings: list[str] = []
     for label in labels:
         y = label_df[label].astype(int).to_numpy()
@@ -791,8 +856,43 @@ def run_full_representation_probe(
             )
 
             if subspace_top_ns and len(np.unique(y_train)) >= 2:
+                candidate_indices = np.arange(sae_train.shape[1], dtype=np.int32)
+                if config.filter_sae_subspace_candidates:
+                    filter_config = config.sae_subspace_filter_config or FeatureFilterConfig()
+                    filter_audit = build_feature_filter(sae_features[train_idx], filter_config)
+                    candidate_indices = filter_audit.loc[
+                        filter_audit["keep"].astype(bool),
+                        "latent_idx",
+                    ].to_numpy(dtype=np.int32)
+                    filter_summary = summarize_feature_filter(
+                        filter_audit,
+                        filter_config,
+                        n_samples=len(train_idx),
+                    )
+                    feature_filter_records.append(
+                        {
+                            "label": label,
+                            "fold": int(fold_id),
+                            "enabled": bool(filter_summary["enabled"]),
+                            "n_samples": int(filter_summary["n_samples"]),
+                            "n_original_latents": int(filter_summary["n_original_latents"]),
+                            "n_kept_latents": int(filter_summary["n_kept_latents"]),
+                            "n_dropped_latents": int(filter_summary["n_dropped_latents"]),
+                            "keep_rate": float(filter_summary["keep_rate"]),
+                            "drop_reason_counts_json": json.dumps(
+                                filter_summary["drop_reason_counts"],
+                                ensure_ascii=False,
+                                sort_keys=True,
+                            ),
+                        }
+                    )
+                    if candidate_indices.size == 0:
+                        warnings.append(f"{label}: fold {fold_id} has no SAE subspace candidates after filtering")
+                        continue
+
+                candidate_train = np.ascontiguousarray(sae_train[:, candidate_indices], dtype=np.float32)
                 metrics = _chunked_sae_train_associations(
-                    sae_train,
+                    candidate_train,
                     y_train,
                     chunk_size=config.association_chunk_size,
                 )
@@ -806,15 +906,18 @@ def run_full_representation_probe(
                             order=order,
                             metrics=metrics,
                             max_n=max_subspace_n,
+                            latent_indices=candidate_indices,
                         )
                     )
                     selected = order[:max_subspace_n]
-                    sub_train = np.ascontiguousarray(sae_train[:, selected], dtype=np.float32)
-                    sub_test = np.ascontiguousarray(sae_test[:, selected], dtype=np.float32)
+                    selected_original = candidate_indices[selected]
+                    sub_train = np.ascontiguousarray(candidate_train[:, selected], dtype=np.float32)
+                    sub_test = np.ascontiguousarray(sae_test[:, selected_original], dtype=np.float32)
                     if config.verbose:
                         print(
                             f"[probe] {label} fold={fold_id}/{len(splits)} "
-                            f"ranking={ranking} top_n_grid={len(subspace_top_ns)} max_n={max_subspace_n}",
+                            f"ranking={ranking} candidates={candidate_indices.size} "
+                            f"top_n_grid={len(subspace_top_ns)} max_n={max_subspace_n}",
                             flush=True,
                         )
                     for top_n in subspace_top_ns:
@@ -834,6 +937,8 @@ def run_full_representation_probe(
                                     "subspace_ranking": ranking,
                                     "top_n": int(n),
                                     "source_representation": "full_sae_latents",
+                                    "candidate_pool_size": int(candidate_indices.size),
+                                    "candidate_filter_enabled": bool(config.filter_sae_subspace_candidates),
                                 },
                             )
                         )
@@ -850,46 +955,58 @@ def run_full_representation_probe(
                     f"features={raw_train.shape[1]}",
                     flush=True,
                 )
-            fold_records.append(
-                _score_probe(
-                    representation="raw_hidden",
-                    label=label,
-                    fold=fold_id,
-                    x_train=raw_train,
-                    x_test=raw_test,
-                    y_train=y_train,
-                    y_test=y_test,
-                    split_policy_used=split_policy_used,
-                    config=config,
-                )
+            raw_score = _score_probe(
+                representation="raw_hidden",
+                label=label,
+                fold=fold_id,
+                x_train=raw_train,
+                x_test=raw_test,
+                y_train=y_train,
+                y_test=y_test,
+                split_policy_used=split_policy_used,
+                config=config,
             )
+            fold_records.append(raw_score)
 
-            pca_train, pca_test, pca_info = _fit_pca_fold(raw_hidden, train_idx, test_idx, config)
-            if config.standardize:
-                pca_train, pca_test = _standardize_train_test(pca_train, pca_test)
+            if _uses_full_rank_standardized_pca_equivalence(raw_hidden, train_idx, config):
+                pca_info = _full_rank_pca_equivalence_info(raw_hidden, train_idx, config)
+                pca_score = {
+                    **raw_score,
+                    "representation": "pca_raw_hidden",
+                    "n_features": int(pca_info["n_components"]),
+                }
+                pca_score.update({f"pca_{key}": value for key, value in pca_info.items()})
+                if config.verbose:
+                    print(
+                        f"[probe] {label} fold={fold_id}/{len(splits)} representation=pca_raw_hidden "
+                        f"features={pca_score['n_features']} mode=full_rank_equivalence",
+                        flush=True,
+                    )
+                fold_records.append(pca_score)
             else:
+                pca_train, pca_test, pca_info = _fit_pca_fold(raw_hidden, train_idx, test_idx, config)
                 pca_train = np.ascontiguousarray(pca_train)
                 pca_test = np.ascontiguousarray(pca_test)
-            if config.verbose:
-                print(
-                    f"[probe] {label} fold={fold_id}/{len(splits)} representation=pca_raw_hidden "
-                    f"features={pca_train.shape[1]}",
-                    flush=True,
+                if config.verbose:
+                    print(
+                        f"[probe] {label} fold={fold_id}/{len(splits)} representation=pca_raw_hidden "
+                        f"features={pca_train.shape[1]}",
+                        flush=True,
+                    )
+                fold_records.append(
+                    _score_probe(
+                        representation="pca_raw_hidden",
+                        label=label,
+                        fold=fold_id,
+                        x_train=pca_train,
+                        x_test=pca_test,
+                        y_train=y_train,
+                        y_test=y_test,
+                        split_policy_used=split_policy_used,
+                        config=config,
+                        pca_info=pca_info,
+                    )
                 )
-            fold_records.append(
-                _score_probe(
-                    representation="pca_raw_hidden",
-                    label=label,
-                    fold=fold_id,
-                    x_train=pca_train,
-                    x_test=pca_test,
-                    y_train=y_train,
-                    y_test=y_test,
-                    split_policy_used=split_policy_used,
-                    config=config,
-                    pca_info=pca_info,
-                )
-            )
 
     fold_rows = pd.DataFrame(fold_records)
     by_label = _summarize_by_label(fold_rows)
@@ -909,12 +1026,30 @@ def run_full_representation_probe(
             "directional_auc",
         ],
     )
+    feature_filter_summary = pd.DataFrame(
+        feature_filter_records,
+        columns=[
+            "label",
+            "fold",
+            "enabled",
+            "n_samples",
+            "n_original_latents",
+            "n_kept_latents",
+            "n_dropped_latents",
+            "keep_rate",
+            "drop_reason_counts_json",
+        ],
+    )
 
     fold_rows.to_csv(output_path / "full_probe_by_label.csv", index=False)
     by_label.to_csv(output_path / "full_probe_by_label_summary.csv", index=False)
     summary.to_csv(output_path / "full_probe_summary.csv", index=False)
     convergence.to_csv(output_path / "ranked_sae_subspace_convergence.csv", index=False)
     selected_latents.to_csv(output_path / "ranked_sae_subspace_selected_latents.csv", index=False)
+    feature_filter_summary.to_csv(
+        output_path / "ranked_sae_subspace_feature_filter_summary.csv",
+        index=False,
+    )
     _write_report(
         output_dir=output_path,
         fold_rows=fold_rows,
@@ -946,6 +1081,7 @@ def run_full_representation_probe(
             "full_probe_summary": str(output_path / "full_probe_summary.csv"),
             "ranked_sae_subspace_convergence": str(output_path / "ranked_sae_subspace_convergence.csv"),
             "ranked_sae_subspace_selected_latents": str(output_path / "ranked_sae_subspace_selected_latents.csv"),
+            "ranked_sae_subspace_feature_filter_summary": str(output_path / "ranked_sae_subspace_feature_filter_summary.csv"),
             "full_probe_report": str(output_path / "full_probe_report.md"),
             "full_probe_comparison_report_zh": str(output_path / "full_probe_comparison_report_zh.md"),
         },
@@ -959,6 +1095,7 @@ def run_full_representation_probe(
         "summary": summary,
         "convergence": convergence,
         "selected_latents": selected_latents,
+        "feature_filter_summary": feature_filter_summary,
         "metadata": metadata,
     }
 

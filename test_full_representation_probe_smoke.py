@@ -52,6 +52,8 @@ def _synthetic_data() -> tuple[np.ndarray, np.ndarray, pd.DataFrame]:
     sae[:, 0] += re * 2.5
     sae[:, 1] += qu * 2.5
     sae[:, 2] += af * 2.5
+    sae[:, 30] = 0.0
+    sae[:, 31] = 1.0
 
     raw = rng.normal(0.0, 0.4, size=(n, raw_d)).astype(np.float32)
     raw[:, 0] += re * 1.0 + qu * 0.2
@@ -112,16 +114,27 @@ def test_full_representation_probe_module() -> None:
         assert (out / "full_probe_summary.csv").exists()
         assert (out / "ranked_sae_subspace_convergence.csv").exists()
         assert (out / "ranked_sae_subspace_selected_latents.csv").exists()
+        assert (out / "ranked_sae_subspace_feature_filter_summary.csv").exists()
         assert (out / "full_probe_summary.json").exists()
         assert (out / "full_probe_report.md").exists()
         assert (out / "full_probe_comparison_report_zh.md").exists()
         sae_row = summary[summary["representation"] == "full_sae_latents"].iloc[0]
+        raw_row = summary[summary["representation"] == "raw_hidden"].iloc[0]
+        pca_row = summary[summary["representation"] == "pca_raw_hidden"].iloc[0]
         top1_row = summary[summary["representation"] == "sae_top_abs_cohens_d_n001"].iloc[0]
         assert sae_row["macro_auc"] > 0.8
+        assert abs(float(raw_row["macro_auc"]) - float(pca_row["macro_auc"])) < 0.02
         assert top1_row["mean_n_features"] == 1.0
         assert top1_row["macro_auc"] > 0.8
         assert not result["convergence"].empty
         assert not result["selected_latents"].empty
+        assert not result["feature_filter_summary"].empty
+        assert {30, 31}.isdisjoint(set(result["selected_latents"]["latent_idx"].astype(int)))
+        assert set(result["summary"].loc[result["summary"]["subspace_ranking"].notna(), "candidate_filter_enabled"].dropna().astype(bool)) == {True}
+        fold_rows = result["fold_rows"]
+        pca_rows = fold_rows[fold_rows["representation"] == "pca_raw_hidden"]
+        assert set(pca_rows["pca_pre_standardized"].dropna().astype(bool)) == {True}
+        assert set(pca_rows["pca_post_standardized"].dropna().astype(bool)) == {False}
     finally:
         shutil.rmtree(out, ignore_errors=True)
 
