@@ -902,7 +902,28 @@ def cmd_task_b_merge(args):
     by_key = {}
     for p in existing:
         key = (p.get("packet_id", ""), p.get("task_type", ""), p.get("row_idx", 0))
-        by_key[key] = p
+        predicted = p.get("predicted", p.get("predicted_value", 0))
+        confidence = p.get("confidence", 0.5)
+        rationale_short = p.get("rationale_short", "")
+        packet_id = p.get("packet_id", "")
+        task_type = p.get("task_type", "")
+        row_idx = p.get("row_idx", 0)
+        target_label = p.get("target_label", "")
+        latent_idx = p.get("latent_idx", 0)
+        model = p.get("model", "historical")
+        
+        standard_record = {
+            "packet_id": packet_id,
+            "target_label": target_label,
+            "latent_idx": latent_idx,
+            "task_type": task_type,
+            "row_idx": row_idx,
+            "predicted": predicted,
+            "confidence": confidence,
+            "rationale_short": rationale_short,
+            "model": model,
+        }
+        by_key[key] = standard_record
 
     n_new = 0
     for bf in batch_outputs:
@@ -914,13 +935,14 @@ def cmd_task_b_merge(args):
                 tt = result.get("task_type", "")
                 for pred in result.get("predictions", []):
                     key = (pid, tt, pred.get("row_idx", 0))
+                    predicted = pred.get("predicted", pred.get("predicted_value", 0))
                     record = {
                         "packet_id": pid,
                         "target_label": result.get("target_label", ""),
                         "latent_idx": result.get("latent_idx", 0),
                         "task_type": tt,
                         "row_idx": pred.get("row_idx", 0),
-                        "predicted": pred.get("predicted", 0),
+                        "predicted": predicted,
                         "confidence": pred.get("confidence", 0.5),
                         "rationale_short": pred.get("rationale_short", ""),
                         "model": model,
@@ -1392,6 +1414,15 @@ def cmd_validate(args):
             "path": str(path),
         })
 
+    # Validate predictions schema
+    predictions = load_jsonl(PREDICTIONS_JSONL)
+    required_fields = {"predicted", "confidence", "packet_id", "task_type", "row_idx"}
+    bad_pred_count = 0
+    for p in predictions:
+        if not required_fields.issubset(p.keys()):
+            bad_pred_count += 1
+    pred_fields_ok = (bad_pred_count == 0)
+
     add_check(
         "task_a_explanations_count",
         progress["task_a"]["explanations"] == progress["task_a"]["prompts"] == 180,
@@ -1411,6 +1442,13 @@ def cmd_validate(args):
         progress["task_b"]["predictions"] == progress["task_b"]["expected_predictions"] == 5280,
         "5280 predictions for all scoring examples",
         f"{progress['task_b']['predictions']} / {progress['task_b']['expected_predictions']}",
+        PREDICTIONS_JSONL,
+    )
+    add_check(
+        "task_b_prediction_schema",
+        pred_fields_ok and len(predictions) == 5280,
+        "All 5280 predictions have correct schema fields",
+        f"Passed: {len(predictions) - bad_pred_count} / {len(predictions)}",
         PREDICTIONS_JSONL,
     )
     add_check(
