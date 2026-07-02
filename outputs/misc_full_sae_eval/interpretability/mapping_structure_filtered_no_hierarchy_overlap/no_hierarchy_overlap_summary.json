@@ -1,0 +1,262 @@
+{
+  "input_path": "outputs\\misc_full_sae_eval\\interpretability\\mapping_structure_filtered\\topk_candidate_matrix.csv",
+  "output_dir": "outputs\\misc_full_sae_eval\\interpretability\\mapping_structure_filtered_no_hierarchy_overlap",
+  "analysis_top_k": 20,
+  "labels": [
+    "RE",
+    "RES",
+    "REC",
+    "QU",
+    "QUO",
+    "QUC",
+    "GI",
+    "SU",
+    "AF"
+  ],
+  "excluded_parent_child_pairs": [
+    "RE-RES",
+    "RE-REC",
+    "QU-QUO",
+    "QU-QUC"
+  ],
+  "same_family_pairs_excluded_in_cross_family_only": [
+    "RE-RES",
+    "RE-REC",
+    "RES-REC",
+    "QU-QUO",
+    "QU-QUC",
+    "QUO-QUC"
+  ],
+  "all_pairs": 36,
+  "parent_child_pairs_excluded": 4,
+  "no_parent_child_pairs": 32,
+  "no_parent_child_pairs_with_overlap": 10,
+  "no_parent_child_overlap_rows": 35,
+  "cross_family_pairs": 30,
+  "cross_family_pairs_with_overlap": 8,
+  "cross_family_overlap_rows": 31,
+  "top_no_parent_child_pairs": [
+    {
+      "label_a": "RES",
+      "label_b": "QU",
+      "top_k": 20,
+      "topk_intersection": 6,
+      "topk_union": 34,
+      "topk_jaccard": 0.17647058823529413,
+      "is_parent_child_pair": false,
+      "is_same_family_pair": false,
+      "overlap_latents": "664;9959;10916;11660;13430;27061"
+    },
+    {
+      "label_a": "RES",
+      "label_b": "QUO",
+      "top_k": 20,
+      "topk_intersection": 6,
+      "topk_union": 34,
+      "topk_jaccard": 0.17647058823529413,
+      "is_parent_child_pair": false,
+      "is_same_family_pair": false,
+      "overlap_latents": "664;9959;10916;11660;13430;27061"
+    },
+    {
+      "label_a": "QU",
+      "label_b": "GI",
+      "top_k": 20,
+      "topk_intersection": 5,
+      "topk_union": 35,
+      "topk_jaccard": 0.14285714285714285,
+      "is_parent_child_pair": false,
+      "is_same_family_pair": false,
+      "overlap_latents": "664;9959;11660;13430;26485"
+    },
+    {
+      "label_a": "QUO",
+      "label_b": "GI",
+      "top_k": 20,
+      "topk_intersection": 5,
+      "topk_union": 35,
+      "topk_jaccard": 0.14285714285714285,
+      "is_parent_child_pair": false,
+      "is_same_family_pair": false,
+      "overlap_latents": "664;9959;11660;13430;26485"
+    },
+    {
+      "label_a": "RES",
+      "label_b": "GI",
+      "top_k": 20,
+      "topk_intersection": 4,
+      "topk_union": 36,
+      "topk_jaccard": 0.1111111111111111,
+      "is_parent_child_pair": false,
+      "is_same_family_pair": false,
+      "overlap_latents": "664;9959;11660;13430"
+    },
+    {
+      "label_a": "QUC",
+      "label_b": "GI",
+      "top_k": 20,
+      "topk_intersection": 2,
+      "topk_union": 38,
+      "topk_jaccard": 0.05263157894736842,
+      "is_parent_child_pair": false,
+      "is_same_family_pair": false,
+      "overlap_latents": "11660;13430"
+    },
+    {
+      "label_a": "QUO",
+      "label_b": "QUC",
+      "top_k": 20,
+      "topk_intersection": 2,
+      "topk_union": 38,
+      "topk_jaccard": 0.05263157894736842,
+      "is_parent_child_pair": false,
+      "is_same_family_pair": true,
+      "overlap_latents": "11660;13430"
+    },
+    {
+      "label_a": "RES",
+      "label_b": "QUC",
+      "top_k": 20,
+      "topk_intersection": 2,
+      "topk_union": 38,
+      "topk_jaccard": 0.05263157894736842,
+      "is_parent_child_pair": false,
+      "is_same_family_pair": false,
+      "overlap_latents": "11660;13430"
+    },
+    {
+      "label_a": "RES",
+      "label_b": "REC",
+      "top_k": 20,
+      "topk_intersection": 2,
+      "topk_union": 38,
+      "topk_jaccard": 0.05263157894736842,
+      "is_parent_child_pair": false,
+      "is_same_family_pair": true,
+      "overlap_latents": "19435;29759"
+    },
+    {
+      "label_a": "RE",
+      "label_b": "SU",
+      "top_k": 20,
+      "topk_intersection": 1,
+      "topk_union": 39,
+      "topk_jaccard": 0.02564102564102564,
+      "is_parent_child_pair": false,
+      "is_same_family_pair": false,
+      "overlap_latents": "2995"
+    }
+  ],
+  "top_cross_family_pairs": [
+    {
+      "label_a": "RES",
+      "label_b": "QU",
+      "top_k": 20,
+      "topk_intersection": 6,
+      "topk_union": 34,
+      "topk_jaccard": 0.17647058823529413,
+      "is_parent_child_pair": false,
+      "is_same_family_pair": false,
+      "overlap_latents": "664;9959;10916;11660;13430;27061"
+    },
+    {
+      "label_a": "RES",
+      "label_b": "QUO",
+      "top_k": 20,
+      "topk_intersection": 6,
+      "topk_union": 34,
+      "topk_jaccard": 0.17647058823529413,
+      "is_parent_child_pair": false,
+      "is_same_family_pair": false,
+      "overlap_latents": "664;9959;10916;11660;13430;27061"
+    },
+    {
+      "label_a": "QU",
+      "label_b": "GI",
+      "top_k": 20,
+      "topk_intersection": 5,
+      "topk_union": 35,
+      "topk_jaccard": 0.14285714285714285,
+      "is_parent_child_pair": false,
+      "is_same_family_pair": false,
+      "overlap_latents": "664;9959;11660;13430;26485"
+    },
+    {
+      "label_a": "QUO",
+      "label_b": "GI",
+      "top_k": 20,
+      "topk_intersection": 5,
+      "topk_union": 35,
+      "topk_jaccard": 0.14285714285714285,
+      "is_parent_child_pair": false,
+      "is_same_family_pair": false,
+      "overlap_latents": "664;9959;11660;13430;26485"
+    },
+    {
+      "label_a": "RES",
+      "label_b": "GI",
+      "top_k": 20,
+      "topk_intersection": 4,
+      "topk_union": 36,
+      "topk_jaccard": 0.1111111111111111,
+      "is_parent_child_pair": false,
+      "is_same_family_pair": false,
+      "overlap_latents": "664;9959;11660;13430"
+    },
+    {
+      "label_a": "QUC",
+      "label_b": "GI",
+      "top_k": 20,
+      "topk_intersection": 2,
+      "topk_union": 38,
+      "topk_jaccard": 0.05263157894736842,
+      "is_parent_child_pair": false,
+      "is_same_family_pair": false,
+      "overlap_latents": "11660;13430"
+    },
+    {
+      "label_a": "RES",
+      "label_b": "QUC",
+      "top_k": 20,
+      "topk_intersection": 2,
+      "topk_union": 38,
+      "topk_jaccard": 0.05263157894736842,
+      "is_parent_child_pair": false,
+      "is_same_family_pair": false,
+      "overlap_latents": "11660;13430"
+    },
+    {
+      "label_a": "RE",
+      "label_b": "SU",
+      "top_k": 20,
+      "topk_intersection": 1,
+      "topk_union": 39,
+      "topk_jaccard": 0.02564102564102564,
+      "is_parent_child_pair": false,
+      "is_same_family_pair": false,
+      "overlap_latents": "2995"
+    },
+    {
+      "label_a": "GI",
+      "label_b": "AF",
+      "top_k": 20,
+      "topk_intersection": 0,
+      "topk_union": 40,
+      "topk_jaccard": 0.0,
+      "is_parent_child_pair": false,
+      "is_same_family_pair": false,
+      "overlap_latents": ""
+    },
+    {
+      "label_a": "GI",
+      "label_b": "SU",
+      "top_k": 20,
+      "topk_intersection": 0,
+      "topk_union": 40,
+      "topk_jaccard": 0.0,
+      "is_parent_child_pair": false,
+      "is_same_family_pair": false,
+      "overlap_latents": ""
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+latent_idx,n_overlap_pairs,n_labels_touched,labels_touched,overlap_pairs,direction_notes_by_pair,max_abs_cohens_d_seen,max_directional_auc_seen,has_opposite_sign_pair,has_same_sign_pair
+13430,8,5,GI;QU;QUC;QUO;RES,RES-QU;RES-QUO;QU-GI;QUO-GI;RES-GI;QUC-GI;QUO-QUC;RES-QUC,RES:negative/QU:positive;RES:negative/QUO:positive;QU:positive/GI:negative;QUO:positive/GI:negative;RES:negative/GI:negative;QUC:positive/GI:negative;QUO:positive/QUC:positive;RES:negative/QUC:positive,2.584094,0.9245365,True,True
+11660,8,5,GI;QU;QUC;QUO;RES,RES-QU;RES-QUO;QU-GI;QUO-GI;RES-GI;QUC-GI;QUO-QUC;RES-QUC,RES:negative/QU:positive;RES:negative/QUO:positive;QU:positive/GI:negative;QUO:positive/GI:negative;RES:negative/GI:negative;QUC:positive/GI:negative;QUO:positive/QUC:positive;RES:negative/QUC:positive,1.4463559,0.75620186,True,True
+9959,5,4,GI;QU;QUO;RES,RES-QU;RES-QUO;QU-GI;QUO-GI;RES-GI,RES:negative/QU:positive;RES:negative/QUO:positive;QU:positive/GI:negative;QUO:positive/GI:negative;RES:negative/GI:negative,1.7623034,0.80001533,True,True
+664,5,4,GI;QU;QUO;RES,RES-QU;RES-QUO;QU-GI;QUO-GI;RES-GI,RES:negative/QU:positive;RES:negative/QUO:positive;QU:positive/GI:negative;QUO:positive/GI:negative;RES:negative/GI:negative,1.6974965,0.852674,True,True
+26485,2,3,GI;QU;QUO,QU-GI;QUO-GI,QU:positive/GI:negative;QUO:positive/GI:negative,1.3381729,0.7877557,True,False
+10916,2,3,QU;QUO;RES,RES-QU;RES-QUO,RES:negative/QU:positive;RES:negative/QUO:positive,1.2413949,0.762377,True,False
+27061,2,3,QU;QUO;RES,RES-QU;RES-QUO,RES:negative/QU:positive;RES:negative/QUO:positive,1.1748339,0.70712054,True,False
+19435,1,2,REC;RES,RES-REC,RES:positive/REC:positive,0.93838876,0.68136084,False,True
+29759,1,2,REC;RES,RES-REC,RES:positive/REC:positive,0.93792856,0.7105095,False,True
+2995,1,2,RE;SU,RE-SU,RE:positive/SU:positive,0.81569386,0.65964025,False,True

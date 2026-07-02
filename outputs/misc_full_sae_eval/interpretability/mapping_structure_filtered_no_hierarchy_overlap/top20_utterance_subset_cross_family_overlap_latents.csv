@@ -1,0 +1,361 @@
+label,latent_idx,latent_rank_within_label,utterance_rank,row_idx,activation,target_match,active_labels,record_id,file_id,source_line,predicted_code,predicted_subcode,confidence,unit_text
+RE,2995,17,1,2392,2.890625,0,GI,high_076:0121,high_076,121,GI,,0.83,I don't remember the exact timeframe but it's somewhere around there
+RE,2995,17,2,3753,2.875,0,SU,high_135:0020,high_135,20,SU,,0.88,this is a big stuff for you I know I'm it's hard to make a step like this
+RE,2995,17,3,3455,2.765625,1,"RE,REC",high_122:0023,high_122,23,RE,REC,0.78,um yeah I don't think you will so so so your pastor's home actually might be a physically safe place for you all to go
+RE,2995,17,4,2939,2.75,0,"QU,QUO",high_102:0002,high_102,2,QU,QUO,0.95,"I haven't look in your file, what brings you in today?"
+RE,2995,17,5,4371,2.703125,0,,low_011:0026,low_011,26,WA,,0.82,because this is something that that's very important not just for your overall physical health even your oral healt
+RE,2995,17,6,1128,2.671875,0,"QU,QUO",high_048:0017,high_048,17,QU,QUO,0.93,well I don't mean to be evasive about this but I just I want to know what do you think you should do in this situation
+RE,2995,17,7,3647,2.671875,0,SU,high_129:0019,high_129,19,SU,,0.82,I'm sure you could do it by yourself but a little assistance and some knowledge never hurts
+RE,2995,17,8,2348,2.59375,0,,high_076:0077,high_076,77,AD,ADW,0.9,exercise so maybe parking I don't know an exact distance but parking further away if you're going to the grocery store if you're going in and out of places just walking more in general
+RE,2995,17,9,4411,2.59375,0,GI,low_015:0002,low_015,2,GI,,0.86,yes yes yeah it's not that long since you were last here
+RE,2995,17,10,5365,2.59375,0,GI,low_061:0001,low_061,1,GI,,0.78,yes yes yeah it's not that long since you were last here
+RE,2995,17,11,3162,2.5625,1,"RE,REC",high_111:0004,high_111,4,RE,REC,0.9,so that group is really helpful to you not only just to kind of chill out and have a good time but also you actually had some exercise
+RE,2995,17,12,5783,2.515625,0,"QU,QUC",low_092:0029,low_092,29,QU,QUC,0.96,"Okay, um, so, um, off-topic, would you ever want to get together sometime?"
+RE,2995,17,13,3503,2.515625,0,"QU,QUC",high_123:0042,high_123,42,QU,QUC,0.93,and and you've spoken to this already a little bit i believe but I'll ask you again why and eight and not on a one or two
+RE,2995,17,14,4953,2.5,0,,low_033:0048,low_033,48,AD,ADW,0.93,I think just tell your friends you know you realize there's all these bad things about it and you don't want to do it anymore so you're just not going to okay
+RE,2995,17,15,5626,2.5,0,GI,low_084:0010,low_084,10,GI,,0.8,well ideally this is something to do every day this is kind of a minimum amount of physical activity
+RE,2995,17,16,1745,2.484375,0,"QU,QUC",high_065:0004,high_065,4,QU,QUC,0.72,um actually no not really I only live a couple hours away but my parents come here not frequently but enough that i get to see them so you say they play basketball
+RE,2995,17,17,2784,2.484375,0,,high_093:0022,high_093,22,NR,,0.7,I suppose I could replace it with low-calorie drink or drink more water
+RE,2995,17,18,6171,2.46875,0,SU,low_104:0097,low_104,97,SU,,0.65,"I might not know my name, you know."
+RE,2995,17,19,5795,2.40625,0,GI,low_093:0008,low_093,8,GI,,0.8,"coffee, tea yeah, and you've heard this before I'm sure"
+RE,2995,17,20,3670,2.40625,1,"RE,REC",high_131:0003,high_131,3,RE,REC,0.78,okay so taking out time out of your day and the money are obviously some big concerns that maybe we can look into you and we're gone
+QU,13430,1,1,5777,2.8125,1,"QU,QUC",low_092:0023,low_092,23,QU,QUC,0.97,Did you come here for a prescription for anti-depressants?
+QU,13430,1,2,1321,2.796875,1,"QU,QUC",high_055:0005,high_055,5,QU,QUC,0.96,doesn't that concern you
+QU,13430,1,3,3001,2.75,1,"QU,QUC",high_104:0033,high_104,33,QU,QUC,0.88,OK we've talked about the alcohol do you use any other drugs besides our whole you know like cannabis cocaine and veterinarians in
+QU,13430,1,4,1237,2.65625,0,,high_051:0050,high_051,50,AD,ADP,0.86,is that something you'd be willing to try next time
+QU,13430,1,5,3730,2.625,0,,high_134:0016,high_134,16,AD,ADP,0.95,is it okay if I share some thoughts with you as well
+QU,13430,1,6,4144,2.609375,1,"QU,QUO",high_154:0010,high_154,10,QU,QUO,0.97,why'd you say eight or nine rather than six or seven
+QU,13430,1,7,3886,2.609375,1,"QU,QUC",high_143:0028,high_143,28,QU,QUC,0.95,okay so how motivated would that make you feel on a scale of one to ten
+QU,13430,1,8,5532,2.59375,1,"QU,QUO",low_076:0001,low_076,1,QU,QUO,0.96,Have you had any major stressful events recently or any change in your work situation?
+QU,13430,1,9,358,2.59375,1,"QU,QUO",high_017:0016,high_017,16,QU,QUO,0.93,- why'd you say 8 or 9 rather than 6 or 7
+QU,13430,1,10,1090,2.59375,0,,high_046:0031,high_046,31,AD,ADP,0.9,would you consider including your children in your exercise routine
+QU,13430,1,11,58,2.578125,1,"QU,QUO",high_004:0011,high_004,11,QU,QUO,0.93,so are you ready for the challenge of quitting
+QU,13430,1,12,1236,2.578125,1,"QU,QUC",high_051:0049,high_051,49,QU,QUC,0.97,do you have your headphones with you at school
+QU,13430,1,13,402,2.578125,1,"QU,QUC",high_019:0012,high_019,12,QU,QUC,0.94,when you drink do you ever socialize at the same time
+QU,13430,1,14,2836,2.5625,1,"QU,QUC",high_098:0015,high_098,15,QU,QUC,0.99,when you're hanging out with friends is there ever alcohol involved
+QU,13430,1,15,525,2.5625,1,"QU,QUO",high_020:0061,high_020,61,QU,QUO,0.93,so if you want to do the absolute opposite of that what would that look like
+QU,13430,1,16,50,2.5625,1,"QU,QUO",high_004:0003,high_004,3,QU,QUO,0.9,but is it the hardest thing you've ever done
+QU,13430,1,17,4532,2.53125,1,"QU,QUO",low_020:0011,low_020,11,QU,QUO,0.88,so what kind of a career are you looking for it at 56
+QU,13430,1,18,2733,2.515625,1,"QU,QUC",high_091:0007,high_091,7,QU,QUC,0.9,ok so how motivated are you today start like a rigorous exercise routine
+QU,13430,1,19,814,2.5,1,"QU,QUO",high_037:0013,high_037,13,QU,QUO,0.97,what is your normal diet look like
+QU,13430,1,20,3916,2.484375,1,"QU,QUO",high_144:0009,high_144,9,QU,QUO,0.93,so how would you tie those two things together by not running
+QU,664,2,1,433,3.25,1,"QU,QUO",high_019:0043,high_019,43,QU,QUO,0.9,is that just is that just me or does it seem that way to you to
+QU,664,2,2,3929,3.171875,1,"QU,QUC",high_144:0022,high_144,22,QU,QUC,0.97,how motivated on a scale one to ten would you say you are too kind of reignite friendships with people with people that don't smoke pot
+QU,664,2,3,1871,3.140625,1,"QU,QUO",high_068:0023,high_068,23,QU,QUO,0.9,thinking about importance Nathan how important would it be for you to to make changes to your copious
+QU,664,2,4,1708,3.140625,1,"QU,QUC",high_064:0011,high_064,11,QU,QUC,0.97,so on a scale of zero to 100 how important do you think it is for you to make this change
+QU,664,2,5,1496,3.140625,1,"QU,QUO",high_059:0023,high_059,23,QU,QUO,0.92,thinking about importance Nathan how important would it be for you to to make changes to your copious
+QU,664,2,6,4942,3.109375,1,"QU,QUO",low_033:0037,low_033,37,QU,QUO,0.95,so is that surprising to you?
+QU,664,2,7,3886,3.09375,1,"QU,QUC",high_143:0028,high_143,28,QU,QUC,0.95,okay so how motivated would that make you feel on a scale of one to ten
+QU,664,2,8,649,3.09375,1,"QU,QUC",high_027:0004,high_027,4,QU,QUC,0.96,so I wanted to ask you on a scale from one to ten ten being the best on being the worst how important is it to you
+QU,664,2,9,3699,3.0625,1,"QU,QUO",high_133:0009,high_133,9,QU,QUO,0.9,and how confident would you say you are about making this change right now
+QU,664,2,10,860,3.046875,1,"QU,QUC",high_039:0007,high_039,7,QU,QUC,0.96,and how confident would you say you are right in this moment that you'd be able to make this change and we'll do the same zero to ten scale
+QU,664,2,11,3183,3.0,1,"QU,QUC",high_113:0009,high_113,9,QU,QUC,0.98,um so on a scale of one to ten how likely do you think you could like make this change if you're willing to?
+QU,664,2,12,858,3.0,1,"QU,QUC",high_039:0005,high_039,5,QU,QUC,0.95,okay so how important would you say this change is for you to make in your life we'll try on a scale from zero which is not important at all to time which is very important to me
+QU,664,2,13,3501,2.890625,1,"QU,QUC",high_123:0040,high_123,40,QU,QUC,0.93,and then one final question on a scale of  to   being not ready at all and  being extremely ready how ready would you say you are to commit to taking some kind of brief break and that let's say the next couple of weeks
+QU,664,2,14,1844,2.859375,1,"QU,QUO",high_067:0016,high_067,16,QU,QUO,0.78,okay so would you like to have what kind of snacks would you like two halves would you like I like to have a little vegetables or what are you looking for when it comes ideally
+QU,664,2,15,2425,2.78125,1,"QU,QUC",high_077:0026,high_077,26,QU,QUC,0.96,could you say on a scale of zero to ten ten being really ready zero being not ready at all how ready would you be to do some counselling
+QU,664,2,16,1445,2.78125,1,"QU,QUC",high_058:0040,high_058,40,QU,QUC,0.97,could you say on a scale of zero to ten ten being really ready zero being not ready at all how ready would you be to do some counselling
+QU,664,2,17,1064,2.71875,1,"QU,QUO",high_046:0005,high_046,5,QU,QUO,0.97,so which of these two concerns would you like to focus more on today
+QU,664,2,18,1195,2.703125,1,"QU,QUC",high_051:0008,high_051,8,QU,QUC,0.98,on a scale of one to ten how angry would you say you were
+QU,664,2,19,3214,2.671875,1,"QU,QUC",high_115:0013,high_115,13,QU,QUC,0.97,and so on a scale of one  to ten how ready do you think you are to  drink less soda?
+QU,664,2,20,3704,2.640625,1,"QU,QUC",high_133:0014,high_133,14,QU,QUC,0.8,do you think you'd be able to how often would you be able to walk them to school this week
+QU,9959,3,1,4988,2.578125,1,"QU,QUC",low_036:0009,low_036,9,QU,QUC,0.99,What kind of dog do you have?
+QU,9959,3,2,6176,2.34375,1,"QU,QUC",low_104:0102,low_104,102,QU,QUC,0.97,So how many children do you have?
+QU,9959,3,3,201,2.296875,1,"QU,QUO",high_011:0003,high_011,3,QU,QUO,0.98,so what brings you here today
+QU,9959,3,4,281,2.296875,1,"QU,QUO",high_014:0003,high_014,3,QU,QUO,0.98,so what brings you here today
+QU,9959,3,5,575,2.296875,1,"QU,QUO",high_021:0041,high_021,41,QU,QUO,0.9,all right well you mentioned a couple times that you've made a few decisions to try and limit the a dangerous aspect of the drinking why did you make those decisions
+QU,9959,3,6,123,2.21875,1,"QU,QUO",high_006:0043,high_006,43,QU,QUO,0.93,okay all right well you mentioned a couple times that you've made a few decisions to try and limit the a dangerous aspect of the drinking why did you make those decisions
+QU,9959,3,7,4915,2.203125,1,"QU,QUC",low_033:0010,low_033,10,QU,QUC,0.96,okay what kind of dog do you have?
+QU,9959,3,8,3635,2.140625,1,"QU,QUO",high_129:0007,high_129,7,QU,QUO,0.95,if you were to change or improve any area of your life where would it be
+QU,9959,3,9,3372,1.953125,0,,high_121:0040,high_121,40,EC,,0.9,"About what, when the timing is right for any decision that you make, one way or the other."
+QU,9959,3,10,1905,1.9453125,1,"QU,QUC",high_069:0018,high_069,18,QU,QUC,0.9,so these different tablets that you've got from the the herbal shop how are you taking them
+QU,9959,3,11,2190,1.9296875,1,"QU,QUC",high_074:0029,high_074,29,QU,QUC,0.9,okay well let's just start a little bit by talking about your cravings the cravings themselves when you wake up in the morning you start your day when does a typical cravings start for you
+QU,9959,3,12,184,1.890625,1,"QU,QUC",high_009:0011,high_009,11,QU,QUC,0.97,um how many cigarettes do you smoke a day
+QU,9959,3,13,6106,1.8828125,1,"QU,QUC",low_104:0032,low_104,32,QU,QUC,0.96,So how much does that cost you?
+QU,9959,3,14,4906,1.8828125,1,"QU,QUC",low_033:0001,low_033,1,QU,QUC,0.96,"okay, how long ago did you start playing saxophone"
+QU,9959,3,15,1924,1.8671875,1,"QU,QUO",high_069:0037,high_069,37,QU,QUO,0.95,right what is it you'd spend your average day doing now
+QU,9959,3,16,28,1.8515625,1,"QU,QUO",high_002:0016,high_002,16,QU,QUO,0.95,what have you discuss with your doctor recently
+QU,9959,3,17,5163,1.8359375,1,"QU,QUC",low_044:0031,low_044,31,QU,QUC,0.9,so how much of vegetables or serving do you eat in a day?
+QU,9959,3,18,3787,1.828125,1,"QU,QUO",high_137:0002,high_137,2,QU,QUO,0.97,so um why do you think you're here today
+QU,9959,3,19,5047,1.8125,1,"QU,QUO",low_040:0004,low_040,4,QU,QUO,0.96,okay and what kind of hobbies do you have?
+QU,9959,3,20,4172,1.8125,1,"QU,QUO",low_001:0004,low_001,4,QU,QUO,0.96,okay and what kind of hobbies do you have
+QU,11660,4,1,171,2.6875,1,"QU,QUC",high_008:0002,high_008,2,QU,QUC,0.86,would what would I be right in saying that
+QU,11660,4,2,4975,2.671875,1,"QU,QUO",low_035:0002,low_035,2,QU,QUO,0.96,What would you say?
+QU,11660,4,3,2977,2.640625,1,"QU,QUO",high_104:0009,high_104,9,QU,QUO,0.86,and what would you start thinking of doing
+QU,11660,4,4,1255,2.578125,1,"QU,QUC",high_052:0007,high_052,7,QU,QUC,0.9,you've thought about a letter but who would you send it to
+QU,11660,4,5,1209,2.578125,1,"QU,QUO",high_051:0022,high_051,22,QU,QUO,0.9,so you have your pencil where did you cut
+QU,11660,4,6,3523,2.5625,1,"QU,QUO",high_124:0016,high_124,16,QU,QUO,0.96,so in what ways would you like to do that
+QU,11660,4,7,2622,2.546875,1,"QU,QUO",high_085:0019,high_085,19,QU,QUO,0.78,and what if what if anything would you choose to do would be to cut down with a bit to quit
+QU,11660,4,8,339,2.546875,1,"QU,QUO",high_016:0025,high_016,25,QU,QUO,0.7,and what if what if anything would you choose to do would be to cut down with a bit to quit just in case but
+QU,11660,4,9,5272,2.53125,1,"QU,QUO",low_052:0012,low_052,12,QU,QUO,0.96,so what would you like to do  now?
+QU,11660,4,10,2645,2.53125,1,"QU,QUO",high_086:0021,high_086,21,QU,QUO,0.92,so what would you like to do next you
+QU,11660,4,11,1299,2.5,1,"QU,QUO",high_054:0015,high_054,15,QU,QUO,0.9,so what are your goal is to try and do that or why why would you want to do that
+QU,11660,4,12,3595,2.5,1,"QU,QUO",high_127:0029,high_127,29,QU,QUO,0.86,and when would you like that for probably
+QU,11660,4,13,3878,2.484375,1,"QU,QUO",high_143:0020,high_143,20,QU,QUO,0.94,and how would you feel if you could do all the poses in the class
+QU,11660,4,14,1077,2.453125,0,,high_046:0018,high_046,18,AD,ADP,0.76,all right if since you wanted to exercise would you mind if we took some time to find out how i feel about exercising
+QU,11660,4,15,1703,2.4375,1,"QU,QUO",high_064:0006,high_064,6,QU,QUO,0.93,and so what what do you what would you like to do
+QU,11660,4,16,303,2.4375,0,"RE,REC",high_015:0009,high_015,9,RE,REC,0.78,at this point what do we have to lose
+QU,11660,4,17,3451,2.421875,1,"QU,QUO",high_122:0019,high_122,19,QU,QUO,0.95,what would you what would you say to your Minister
+QU,11660,4,18,3452,2.421875,1,"QU,QUO",high_122:0020,high_122,20,QU,QUO,0.95,what would you like to tell your minister
+QU,11660,4,19,1943,2.421875,0,,high_069:0056,high_069,56,AD,ADW,0.9,what would you think about trying that slightly different approach for say two or three months just to see whether or not it makes any difference
+QU,11660,4,20,1704,2.421875,1,"QU,QUO",high_064:0007,high_064,7,QU,QUO,0.95,what would you like to change
+QU,26485,5,1,3423,3.90625,1,"QU,QUO",high_121:0091,high_121,91,QU,QUO,0.82,"How do I, how do I respond to this"
+QU,26485,5,2,5414,3.109375,1,"QU,QUO",low_064:0001,low_064,1,QU,QUO,0.86,how can I help you t well
+QU,26485,5,3,4244,3.109375,1,"QU,QUO",low_004:0002,low_004,2,QU,QUO,0.96,how can I help you
+QU,26485,5,4,4505,3.109375,1,"QU,QUO",low_018:0002,low_018,2,QU,QUO,0.96,how can I help you
+QU,26485,5,5,5285,2.71875,1,"QU,QUO",low_054:0013,low_054,13,QU,QUO,0.9,how do you see that working in like an evening kind of thing around the evening?
+QU,26485,5,6,2469,2.703125,1,"QU,QUO",high_078:0027,high_078,27,QU,QUO,0.96,how do you feel about that
+QU,26485,5,7,3482,2.703125,1,"QU,QUO",high_123:0021,high_123,21,QU,QUO,0.9,how do you how do you extract yourself from that in a way
+QU,26485,5,8,2676,2.703125,1,"QU,QUO",high_089:0006,high_089,6,QU,QUO,0.97,how do you view this problem
+QU,26485,5,9,1980,2.703125,1,"QU,QUO",high_070:0034,high_070,34,QU,QUO,0.96,how do you feel about that
+QU,26485,5,10,413,2.6875,1,"QU,QUO",high_019:0023,high_019,23,QU,QUO,0.95,how do you figure those two things out
+QU,26485,5,11,750,2.6875,1,"QU,QUO",high_033:0004,high_033,4,QU,QUO,0.8,how do you reach the level of importance of
+QU,26485,5,12,3317,2.6875,1,"QU,QUO",high_119:0030,high_119,30,QU,QUO,0.96,how do you think you might use it?
+QU,26485,5,13,1011,2.6875,1,"QU,QUO",high_044:0014,high_044,14,QU,QUO,0.9,how do you see yourself quitting in canyons
+QU,26485,5,14,5241,2.6875,1,"QU,QUO",low_050:0003,low_050,3,QU,QUO,0.96,how do you think it affects your teeth?
+QU,26485,5,15,3086,2.6875,1,"QU,QUO",high_109:0002,high_109,2,QU,QUO,0.93,how do you think I can help right
+QU,26485,5,16,126,2.6875,1,"QU,QUO",high_006:0046,high_006,46,QU,QUO,0.97,how do you think that the drinking fits in with that
+QU,26485,5,17,4825,2.6875,1,"QU,QUO",low_030:0023,low_030,23,QU,QUO,0.93,how do you manage to stop sneaking in the past
+QU,26485,5,18,2747,2.296875,1,"QU,QUO",high_092:0003,high_092,3,QU,QUO,0.9,okay so how do you feel about that how how do you feel about he'll be up and in front of you
+QU,26485,5,19,1518,2.28125,1,"QU,QUO",high_060:0006,high_060,6,QU,QUO,0.95,okay so how do you feel about being here today
+QU,26485,5,20,5369,2.1875,0,,low_061:0005,low_061,5,AD,ADP,0.86,can I tell you what your options are here?
+QU,10916,6,1,2459,3.859375,1,"QU,QUO",high_078:0017,high_078,17,QU,QUO,0.93,okay so what other things can you tell me about that might affect your blood pressure
+QU,10916,6,2,1968,3.859375,1,"QU,QUO",high_070:0022,high_070,22,QU,QUO,0.95,okay so what other things can you tell me about that might affect your blood pressure
+QU,10916,6,3,858,3.71875,1,"QU,QUC",high_039:0005,high_039,5,QU,QUC,0.95,okay so how important would you say this change is for you to make in your life we'll try on a scale from zero which is not important at all to time which is very important to me
+QU,10916,6,4,4088,3.484375,1,"QU,QUO",high_151:0027,high_151,27,QU,QUO,0.78,oh really oh alright so what store do we know or pick up with what we know you don't want to make a bad impression in this whole court proceeding with the deal I what do you think you could do that would make a bad impression
+QU,10916,6,5,3695,3.484375,1,"QU,QUO",high_133:0005,high_133,5,QU,QUO,0.86,okay well how important is this change to you
+QU,10916,6,6,1708,3.4375,1,"QU,QUC",high_064:0011,high_064,11,QU,QUC,0.97,so on a scale of zero to 100 how important do you think it is for you to make this change
+QU,10916,6,7,4179,3.421875,1,"QU,QUC",low_001:0011,low_001,11,QU,QUC,0.9,okay what classes are you not getting A's and B's in
+QU,10916,6,8,4705,3.421875,1,"QU,QUC",low_027:0014,low_027,14,QU,QUC,0.88,okay what classes are you not getting A's and B's in
+QU,10916,6,9,584,3.359375,1,"QU,QUO",high_021:0050,high_021,50,QU,QUO,0.94,okay so kind of thinking along those lines how important is it to you to make some changes or make some adjustments to your drinking to sort of fit with your values and your goals for yourself
+QU,10916,6,10,133,3.359375,1,"QU,QUO",high_006:0053,high_006,53,QU,QUO,0.96,okay so kind of thinking along those lines how important is it to you to make some changes or make some adjustments to your drinking to sort of fit with your values and your goals for yourself
+QU,10916,6,11,2733,3.328125,1,"QU,QUC",high_091:0007,high_091,7,QU,QUC,0.9,ok so how motivated are you today start like a rigorous exercise routine
+QU,10916,6,12,4906,3.328125,1,"QU,QUC",low_033:0001,low_033,1,QU,QUC,0.96,"okay, how long ago did you start playing saxophone"
+QU,10916,6,13,3141,3.25,1,"QU,QUC",high_110:0002,high_110,2,QU,QUC,0.97,so how many cigarettes would you say that you have you smoked each day?
+QU,10916,6,14,3886,3.21875,1,"QU,QUC",high_143:0028,high_143,28,QU,QUC,0.95,okay so how motivated would that make you feel on a scale of one to ten
+QU,10916,6,15,4275,3.21875,1,"QU,QUC",low_007:0004,low_007,4,QU,QUC,0.96,so how many times you guys have sex that night on a scale of one to five five being the lowest how many times did you guys have sex that night
+QU,10916,6,16,6091,3.21875,1,"QU,QUO",low_104:0017,low_104,17,QU,QUO,0.94,"I want to ask you about the tobacco that you've been using, so what kind of tobacco product you use?"
+QU,10916,6,17,5156,3.1875,1,"QU,QUO",low_044:0024,low_044,24,QU,QUO,0.94,so what kinds of meals does your mom cook?
+QU,10916,6,18,2184,3.1875,1,"QU,QUC",high_074:0023,high_074,23,QU,QUC,0.97,okay so how confident are you that you can make these changes on a scale of one to ten one being not confident at all and ten being the most confident you've ever felt
+QU,10916,6,19,5058,3.171875,1,"QU,QUC",low_040:0015,low_040,15,QU,QUC,0.96,What classes are you not getting A's and B's in?
+QU,10916,6,20,184,3.171875,1,"QU,QUC",high_009:0011,high_009,11,QU,QUC,0.97,um how many cigarettes do you smoke a day
+QU,27061,7,1,3565,2.265625,1,"QU,QUO",high_126:0016,high_126,16,QU,QUO,0.96,do you know of any thing that will help you quit smoking?
+QU,27061,7,2,3559,2.171875,1,"QU,QUO",high_126:0010,high_126,10,QU,QUO,0.96,so what would be some of the negative things if you stop if you decide to stop smoking
+QU,27061,7,3,2517,2.171875,1,"QU,QUO",high_079:0019,high_079,19,QU,QUO,0.96,so what would be some of the positives some of the good things about quitting based on what you told me here today
+QU,27061,7,4,3850,2.09375,1,"QU,QUO",high_142:0012,high_142,12,QU,QUO,0.9,do you can you tell me about some of the important things in your life
+QU,27061,7,5,5888,2.015625,1,"QU,QUO",low_097:0004,low_097,4,QU,QUO,0.95,I'm just wondering what's going on
+QU,27061,7,6,3037,1.953125,1,"QU,QUC",high_106:0004,high_106,4,QU,QUC,0.97,and just to clarify from my information on average how many days a week would you have a drink that contains um alcohol?
+QU,27061,7,7,3671,1.953125,1,"QU,QUO",high_131:0004,high_131,4,QU,QUO,0.97,but what would be some positives of doing that
+QU,27061,7,8,1092,1.953125,1,"QU,QUO",high_046:0033,high_046,33,QU,QUO,0.9,would you what exercises do you think would be easier for you to try
+QU,27061,7,9,3891,1.9375,1,"QU,QUO",high_143:0033,high_143,33,QU,QUO,0.92,I'm wondering what you could do to possibly get an hour of walking the dog in a day
+QU,27061,7,10,3913,1.921875,1,"QU,QUO",high_144:0006,high_144,6,QU,QUO,0.95,I'm wondering what you could have done to get in the mood
+QU,27061,7,11,2898,1.9140625,1,"QU,QUO",high_099:0029,high_099,29,QU,QUO,0.94,so I'm wondering what you think about that just in terms of how it fits into your life
+QU,27061,7,12,3453,1.9140625,1,"QU,QUO",high_122:0021,high_122,21,QU,QUO,0.95,what would be some reasons why you would tell him these things
+QU,27061,7,13,3862,1.9140625,1,"QU,QUO",high_143:0004,high_143,4,QU,QUO,0.9,so I'm wondering what we could do about that
+QU,27061,7,14,2493,1.8984375,1,"QU,QUO",high_078:0051,high_078,51,QU,QUO,0.95,so interms of making a change what are some of the things that you'd be willing to do in order to make that happen
+QU,27061,7,15,2475,1.8828125,1,"QU,QUO",high_078:0033,high_078,33,QU,QUO,0.8,is the number okay let's go you do with thigh okay I think I can do  all right so if you were to want to lose  pounds how would you go about it
+QU,27061,7,16,1161,1.859375,1,"QU,QUO",high_049:0016,high_049,16,QU,QUO,0.8,I noticed over a year there and I know you don't really like like the idea of it but what do you know about it eh like what's one shift of light on that
+QU,27061,7,17,5300,1.84375,1,"QU,QUO",low_055:0013,low_055,13,QU,QUO,0.95,is there anything else that I can help you with today?
+QU,27061,7,18,2846,1.84375,1,"QU,QUO",high_098:0025,high_098,25,QU,QUO,0.9,and do you notice a big difference or can you tell me about the difference in your enjoyment level at say a party versus and that you're playing board games
+QU,27061,7,19,756,1.828125,1,"QU,QUO",high_033:0010,high_033,10,QU,QUO,0.95,can you tell me how it typically is like for you
+QU,27061,7,20,2787,1.828125,1,"QU,QUC",high_094:0002,high_094,2,QU,QUC,0.86,and I was wondering how you are managing this blood pressure or are you aware of your hypertension
+QUO,9959,1,1,4988,2.578125,0,"QU,QUC",low_036:0009,low_036,9,QU,QUC,0.99,What kind of dog do you have?
+QUO,9959,1,2,6176,2.34375,0,"QU,QUC",low_104:0102,low_104,102,QU,QUC,0.97,So how many children do you have?
+QUO,9959,1,3,201,2.296875,1,"QU,QUO",high_011:0003,high_011,3,QU,QUO,0.98,so what brings you here today
+QUO,9959,1,4,281,2.296875,1,"QU,QUO",high_014:0003,high_014,3,QU,QUO,0.98,so what brings you here today
+QUO,9959,1,5,575,2.296875,1,"QU,QUO",high_021:0041,high_021,41,QU,QUO,0.9,all right well you mentioned a couple times that you've made a few decisions to try and limit the a dangerous aspect of the drinking why did you make those decisions
+QUO,9959,1,6,123,2.21875,1,"QU,QUO",high_006:0043,high_006,43,QU,QUO,0.93,okay all right well you mentioned a couple times that you've made a few decisions to try and limit the a dangerous aspect of the drinking why did you make those decisions
+QUO,9959,1,7,4915,2.203125,0,"QU,QUC",low_033:0010,low_033,10,QU,QUC,0.96,okay what kind of dog do you have?
+QUO,9959,1,8,3635,2.140625,1,"QU,QUO",high_129:0007,high_129,7,QU,QUO,0.95,if you were to change or improve any area of your life where would it be
+QUO,9959,1,9,3372,1.953125,0,,high_121:0040,high_121,40,EC,,0.9,"About what, when the timing is right for any decision that you make, one way or the other."
+QUO,9959,1,10,1905,1.9453125,0,"QU,QUC",high_069:0018,high_069,18,QU,QUC,0.9,so these different tablets that you've got from the the herbal shop how are you taking them
+QUO,9959,1,11,2190,1.9296875,0,"QU,QUC",high_074:0029,high_074,29,QU,QUC,0.9,okay well let's just start a little bit by talking about your cravings the cravings themselves when you wake up in the morning you start your day when does a typical cravings start for you
+QUO,9959,1,12,184,1.890625,0,"QU,QUC",high_009:0011,high_009,11,QU,QUC,0.97,um how many cigarettes do you smoke a day
+QUO,9959,1,13,6106,1.8828125,0,"QU,QUC",low_104:0032,low_104,32,QU,QUC,0.96,So how much does that cost you?
+QUO,9959,1,14,4906,1.8828125,0,"QU,QUC",low_033:0001,low_033,1,QU,QUC,0.96,"okay, how long ago did you start playing saxophone"
+QUO,9959,1,15,1924,1.8671875,1,"QU,QUO",high_069:0037,high_069,37,QU,QUO,0.95,right what is it you'd spend your average day doing now
+QUO,9959,1,16,28,1.8515625,1,"QU,QUO",high_002:0016,high_002,16,QU,QUO,0.95,what have you discuss with your doctor recently
+QUO,9959,1,17,5163,1.8359375,0,"QU,QUC",low_044:0031,low_044,31,QU,QUC,0.9,so how much of vegetables or serving do you eat in a day?
+QUO,9959,1,18,3787,1.828125,1,"QU,QUO",high_137:0002,high_137,2,QU,QUO,0.97,so um why do you think you're here today
+QUO,9959,1,19,5047,1.8125,1,"QU,QUO",low_040:0004,low_040,4,QU,QUO,0.96,okay and what kind of hobbies do you have?
+QUO,9959,1,20,4172,1.8125,1,"QU,QUO",low_001:0004,low_001,4,QU,QUO,0.96,okay and what kind of hobbies do you have
+QUO,664,2,1,433,3.25,1,"QU,QUO",high_019:0043,high_019,43,QU,QUO,0.9,is that just is that just me or does it seem that way to you to
+QUO,664,2,2,3929,3.171875,0,"QU,QUC",high_144:0022,high_144,22,QU,QUC,0.97,how motivated on a scale one to ten would you say you are too kind of reignite friendships with people with people that don't smoke pot
+QUO,664,2,3,1871,3.140625,1,"QU,QUO",high_068:0023,high_068,23,QU,QUO,0.9,thinking about importance Nathan how important would it be for you to to make changes to your copious
+QUO,664,2,4,1708,3.140625,0,"QU,QUC",high_064:0011,high_064,11,QU,QUC,0.97,so on a scale of zero to 100 how important do you think it is for you to make this change
+QUO,664,2,5,1496,3.140625,1,"QU,QUO",high_059:0023,high_059,23,QU,QUO,0.92,thinking about importance Nathan how important would it be for you to to make changes to your copious
+QUO,664,2,6,4942,3.109375,1,"QU,QUO",low_033:0037,low_033,37,QU,QUO,0.95,so is that surprising to you?
+QUO,664,2,7,3886,3.09375,0,"QU,QUC",high_143:0028,high_143,28,QU,QUC,0.95,okay so how motivated would that make you feel on a scale of one to ten
+QUO,664,2,8,649,3.09375,0,"QU,QUC",high_027:0004,high_027,4,QU,QUC,0.96,so I wanted to ask you on a scale from one to ten ten being the best on being the worst how important is it to you
+QUO,664,2,9,3699,3.0625,1,"QU,QUO",high_133:0009,high_133,9,QU,QUO,0.9,and how confident would you say you are about making this change right now
+QUO,664,2,10,860,3.046875,0,"QU,QUC",high_039:0007,high_039,7,QU,QUC,0.96,and how confident would you say you are right in this moment that you'd be able to make this change and we'll do the same zero to ten scale
+QUO,664,2,11,3183,3.0,0,"QU,QUC",high_113:0009,high_113,9,QU,QUC,0.98,um so on a scale of one to ten how likely do you think you could like make this change if you're willing to?
+QUO,664,2,12,858,3.0,0,"QU,QUC",high_039:0005,high_039,5,QU,QUC,0.95,okay so how important would you say this change is for you to make in your life we'll try on a scale from zero which is not important at all to time which is very important to me
+QUO,664,2,13,3501,2.890625,0,"QU,QUC",high_123:0040,high_123,40,QU,QUC,0.93,and then one final question on a scale of  to   being not ready at all and  being extremely ready how ready would you say you are to commit to taking some kind of brief break and that let's say the next couple of weeks
+QUO,664,2,14,1844,2.859375,1,"QU,QUO",high_067:0016,high_067,16,QU,QUO,0.78,okay so would you like to have what kind of snacks would you like two halves would you like I like to have a little vegetables or what are you looking for when it comes ideally
+QUO,664,2,15,2425,2.78125,0,"QU,QUC",high_077:0026,high_077,26,QU,QUC,0.96,could you say on a scale of zero to ten ten being really ready zero being not ready at all how ready would you be to do some counselling
+QUO,664,2,16,1445,2.78125,0,"QU,QUC",high_058:0040,high_058,40,QU,QUC,0.97,could you say on a scale of zero to ten ten being really ready zero being not ready at all how ready would you be to do some counselling
+QUO,664,2,17,1064,2.71875,1,"QU,QUO",high_046:0005,high_046,5,QU,QUO,0.97,so which of these two concerns would you like to focus more on today
+QUO,664,2,18,1195,2.703125,0,"QU,QUC",high_051:0008,high_051,8,QU,QUC,0.98,on a scale of one to ten how angry would you say you were
+QUO,664,2,19,3214,2.671875,0,"QU,QUC",high_115:0013,high_115,13,QU,QUC,0.97,and so on a scale of one  to ten how ready do you think you are to  drink less soda?
+QUO,664,2,20,3704,2.640625,0,"QU,QUC",high_133:0014,high_133,14,QU,QUC,0.8,do you think you'd be able to how often would you be able to walk them to school this week
+QUO,13430,3,1,5777,2.8125,0,"QU,QUC",low_092:0023,low_092,23,QU,QUC,0.97,Did you come here for a prescription for anti-depressants?
+QUO,13430,3,2,1321,2.796875,0,"QU,QUC",high_055:0005,high_055,5,QU,QUC,0.96,doesn't that concern you
+QUO,13430,3,3,3001,2.75,0,"QU,QUC",high_104:0033,high_104,33,QU,QUC,0.88,OK we've talked about the alcohol do you use any other drugs besides our whole you know like cannabis cocaine and veterinarians in
+QUO,13430,3,4,1237,2.65625,0,,high_051:0050,high_051,50,AD,ADP,0.86,is that something you'd be willing to try next time
+QUO,13430,3,5,3730,2.625,0,,high_134:0016,high_134,16,AD,ADP,0.95,is it okay if I share some thoughts with you as well
+QUO,13430,3,6,4144,2.609375,1,"QU,QUO",high_154:0010,high_154,10,QU,QUO,0.97,why'd you say eight or nine rather than six or seven
+QUO,13430,3,7,3886,2.609375,0,"QU,QUC",high_143:0028,high_143,28,QU,QUC,0.95,okay so how motivated would that make you feel on a scale of one to ten
+QUO,13430,3,8,5532,2.59375,1,"QU,QUO",low_076:0001,low_076,1,QU,QUO,0.96,Have you had any major stressful events recently or any change in your work situation?
+QUO,13430,3,9,358,2.59375,1,"QU,QUO",high_017:0016,high_017,16,QU,QUO,0.93,- why'd you say 8 or 9 rather than 6 or 7
+QUO,13430,3,10,1090,2.59375,0,,high_046:0031,high_046,31,AD,ADP,0.9,would you consider including your children in your exercise routine
+QUO,13430,3,11,58,2.578125,1,"QU,QUO",high_004:0011,high_004,11,QU,QUO,0.93,so are you ready for the challenge of quitting
+QUO,13430,3,12,1236,2.578125,0,"QU,QUC",high_051:0049,high_051,49,QU,QUC,0.97,do you have your headphones with you at school
+QUO,13430,3,13,402,2.578125,0,"QU,QUC",high_019:0012,high_019,12,QU,QUC,0.94,when you drink do you ever socialize at the same time
+QUO,13430,3,14,2836,2.5625,0,"QU,QUC",high_098:0015,high_098,15,QU,QUC,0.99,when you're hanging out with friends is there ever alcohol involved
+QUO,13430,3,15,525,2.5625,1,"QU,QUO",high_020:0061,high_020,61,QU,QUO,0.93,so if you want to do the absolute opposite of that what would that look like
+QUO,13430,3,16,50,2.5625,1,"QU,QUO",high_004:0003,high_004,3,QU,QUO,0.9,but is it the hardest thing you've ever done
+QUO,13430,3,17,4532,2.53125,1,"QU,QUO",low_020:0011,low_020,11,QU,QUO,0.88,so what kind of a career are you looking for it at 56
+QUO,13430,3,18,2733,2.515625,0,"QU,QUC",high_091:0007,high_091,7,QU,QUC,0.9,ok so how motivated are you today start like a rigorous exercise routine
+QUO,13430,3,19,814,2.5,1,"QU,QUO",high_037:0013,high_037,13,QU,QUO,0.97,what is your normal diet look like
+QUO,13430,3,20,3916,2.484375,1,"QU,QUO",high_144:0009,high_144,9,QU,QUO,0.93,so how would you tie those two things together by not running
+QUO,26485,5,1,3423,3.90625,1,"QU,QUO",high_121:0091,high_121,91,QU,QUO,0.82,"How do I, how do I respond to this"
+QUO,26485,5,2,5414,3.109375,1,"QU,QUO",low_064:0001,low_064,1,QU,QUO,0.86,how can I help you t well
+QUO,26485,5,3,4244,3.109375,1,"QU,QUO",low_004:0002,low_004,2,QU,QUO,0.96,how can I help you
+QUO,26485,5,4,4505,3.109375,1,"QU,QUO",low_018:0002,low_018,2,QU,QUO,0.96,how can I help you
+QUO,26485,5,5,5285,2.71875,1,"QU,QUO",low_054:0013,low_054,13,QU,QUO,0.9,how do you see that working in like an evening kind of thing around the evening?
+QUO,26485,5,6,2469,2.703125,1,"QU,QUO",high_078:0027,high_078,27,QU,QUO,0.96,how do you feel about that
+QUO,26485,5,7,3482,2.703125,1,"QU,QUO",high_123:0021,high_123,21,QU,QUO,0.9,how do you how do you extract yourself from that in a way
+QUO,26485,5,8,2676,2.703125,1,"QU,QUO",high_089:0006,high_089,6,QU,QUO,0.97,how do you view this problem
+QUO,26485,5,9,1980,2.703125,1,"QU,QUO",high_070:0034,high_070,34,QU,QUO,0.96,how do you feel about that
+QUO,26485,5,10,413,2.6875,1,"QU,QUO",high_019:0023,high_019,23,QU,QUO,0.95,how do you figure those two things out
+QUO,26485,5,11,750,2.6875,1,"QU,QUO",high_033:0004,high_033,4,QU,QUO,0.8,how do you reach the level of importance of
+QUO,26485,5,12,3317,2.6875,1,"QU,QUO",high_119:0030,high_119,30,QU,QUO,0.96,how do you think you might use it?
+QUO,26485,5,13,1011,2.6875,1,"QU,QUO",high_044:0014,high_044,14,QU,QUO,0.9,how do you see yourself quitting in canyons
+QUO,26485,5,14,5241,2.6875,1,"QU,QUO",low_050:0003,low_050,3,QU,QUO,0.96,how do you think it affects your teeth?
+QUO,26485,5,15,3086,2.6875,1,"QU,QUO",high_109:0002,high_109,2,QU,QUO,0.93,how do you think I can help right
+QUO,26485,5,16,126,2.6875,1,"QU,QUO",high_006:0046,high_006,46,QU,QUO,0.97,how do you think that the drinking fits in with that
+QUO,26485,5,17,4825,2.6875,1,"QU,QUO",low_030:0023,low_030,23,QU,QUO,0.93,how do you manage to stop sneaking in the past
+QUO,26485,5,18,2747,2.296875,1,"QU,QUO",high_092:0003,high_092,3,QU,QUO,0.9,okay so how do you feel about that how how do you feel about he'll be up and in front of you
+QUO,26485,5,19,1518,2.28125,1,"QU,QUO",high_060:0006,high_060,6,QU,QUO,0.95,okay so how do you feel about being here today
+QUO,26485,5,20,5369,2.1875,0,,low_061:0005,low_061,5,AD,ADP,0.86,can I tell you what your options are here?
+QUO,11660,7,1,171,2.6875,0,"QU,QUC",high_008:0002,high_008,2,QU,QUC,0.86,would what would I be right in saying that
+QUO,11660,7,2,4975,2.671875,1,"QU,QUO",low_035:0002,low_035,2,QU,QUO,0.96,What would you say?
+QUO,11660,7,3,2977,2.640625,1,"QU,QUO",high_104:0009,high_104,9,QU,QUO,0.86,and what would you start thinking of doing
+QUO,11660,7,4,1255,2.578125,0,"QU,QUC",high_052:0007,high_052,7,QU,QUC,0.9,you've thought about a letter but who would you send it to
+QUO,11660,7,5,1209,2.578125,1,"QU,QUO",high_051:0022,high_051,22,QU,QUO,0.9,so you have your pencil where did you cut
+QUO,11660,7,6,3523,2.5625,1,"QU,QUO",high_124:0016,high_124,16,QU,QUO,0.96,so in what ways would you like to do that
+QUO,11660,7,7,2622,2.546875,1,"QU,QUO",high_085:0019,high_085,19,QU,QUO,0.78,and what if what if anything would you choose to do would be to cut down with a bit to quit
+QUO,11660,7,8,339,2.546875,1,"QU,QUO",high_016:0025,high_016,25,QU,QUO,0.7,and what if what if anything would you choose to do would be to cut down with a bit to quit just in case but
+QUO,11660,7,9,5272,2.53125,1,"QU,QUO",low_052:0012,low_052,12,QU,QUO,0.96,so what would you like to do  now?
+QUO,11660,7,10,2645,2.53125,1,"QU,QUO",high_086:0021,high_086,21,QU,QUO,0.92,so what would you like to do next you
+QUO,11660,7,11,1299,2.5,1,"QU,QUO",high_054:0015,high_054,15,QU,QUO,0.9,so what are your goal is to try and do that or why why would you want to do that
+QUO,11660,7,12,3595,2.5,1,"QU,QUO",high_127:0029,high_127,29,QU,QUO,0.86,and when would you like that for probably
+QUO,11660,7,13,3878,2.484375,1,"QU,QUO",high_143:0020,high_143,20,QU,QUO,0.94,and how would you feel if you could do all the poses in the class
+QUO,11660,7,14,1077,2.453125,0,,high_046:0018,high_046,18,AD,ADP,0.76,all right if since you wanted to exercise would you mind if we took some time to find out how i feel about exercising
+QUO,11660,7,15,1703,2.4375,1,"QU,QUO",high_064:0006,high_064,6,QU,QUO,0.93,and so what what do you what would you like to do
+QUO,11660,7,16,303,2.4375,0,"RE,REC",high_015:0009,high_015,9,RE,REC,0.78,at this point what do we have to lose
+QUO,11660,7,17,3451,2.421875,1,"QU,QUO",high_122:0019,high_122,19,QU,QUO,0.95,what would you what would you say to your Minister
+QUO,11660,7,18,3452,2.421875,1,"QU,QUO",high_122:0020,high_122,20,QU,QUO,0.95,what would you like to tell your minister
+QUO,11660,7,19,1943,2.421875,0,,high_069:0056,high_069,56,AD,ADW,0.9,what would you think about trying that slightly different approach for say two or three months just to see whether or not it makes any difference
+QUO,11660,7,20,1704,2.421875,1,"QU,QUO",high_064:0007,high_064,7,QU,QUO,0.95,what would you like to change
+QUO,27061,10,1,3565,2.265625,1,"QU,QUO",high_126:0016,high_126,16,QU,QUO,0.96,do you know of any thing that will help you quit smoking?
+QUO,27061,10,2,3559,2.171875,1,"QU,QUO",high_126:0010,high_126,10,QU,QUO,0.96,so what would be some of the negative things if you stop if you decide to stop smoking
+QUO,27061,10,3,2517,2.171875,1,"QU,QUO",high_079:0019,high_079,19,QU,QUO,0.96,so what would be some of the positives some of the good things about quitting based on what you told me here today
+QUO,27061,10,4,3850,2.09375,1,"QU,QUO",high_142:0012,high_142,12,QU,QUO,0.9,do you can you tell me about some of the important things in your life
+QUO,27061,10,5,5888,2.015625,1,"QU,QUO",low_097:0004,low_097,4,QU,QUO,0.95,I'm just wondering what's going on
+QUO,27061,10,6,3037,1.953125,0,"QU,QUC",high_106:0004,high_106,4,QU,QUC,0.97,and just to clarify from my information on average how many days a week would you have a drink that contains um alcohol?
+QUO,27061,10,7,3671,1.953125,1,"QU,QUO",high_131:0004,high_131,4,QU,QUO,0.97,but what would be some positives of doing that
+QUO,27061,10,8,1092,1.953125,1,"QU,QUO",high_046:0033,high_046,33,QU,QUO,0.9,would you what exercises do you think would be easier for you to try
+QUO,27061,10,9,3891,1.9375,1,"QU,QUO",high_143:0033,high_143,33,QU,QUO,0.92,I'm wondering what you could do to possibly get an hour of walking the dog in a day
+QUO,27061,10,10,3913,1.921875,1,"QU,QUO",high_144:0006,high_144,6,QU,QUO,0.95,I'm wondering what you could have done to get in the mood
+QUO,27061,10,11,2898,1.9140625,1,"QU,QUO",high_099:0029,high_099,29,QU,QUO,0.94,so I'm wondering what you think about that just in terms of how it fits into your life
+QUO,27061,10,12,3453,1.9140625,1,"QU,QUO",high_122:0021,high_122,21,QU,QUO,0.95,what would be some reasons why you would tell him these things
+QUO,27061,10,13,3862,1.9140625,1,"QU,QUO",high_143:0004,high_143,4,QU,QUO,0.9,so I'm wondering what we could do about that
+QUO,27061,10,14,2493,1.8984375,1,"QU,QUO",high_078:0051,high_078,51,QU,QUO,0.95,so interms of making a change what are some of the things that you'd be willing to do in order to make that happen
+QUO,27061,10,15,2475,1.8828125,1,"QU,QUO",high_078:0033,high_078,33,QU,QUO,0.8,is the number okay let's go you do with thigh okay I think I can do  all right so if you were to want to lose  pounds how would you go about it
+QUO,27061,10,16,1161,1.859375,1,"QU,QUO",high_049:0016,high_049,16,QU,QUO,0.8,I noticed over a year there and I know you don't really like like the idea of it but what do you know about it eh like what's one shift of light on that
+QUO,27061,10,17,5300,1.84375,1,"QU,QUO",low_055:0013,low_055,13,QU,QUO,0.95,is there anything else that I can help you with today?
+QUO,27061,10,18,2846,1.84375,1,"QU,QUO",high_098:0025,high_098,25,QU,QUO,0.9,and do you notice a big difference or can you tell me about the difference in your enjoyment level at say a party versus and that you're playing board games
+QUO,27061,10,19,756,1.828125,1,"QU,QUO",high_033:0010,high_033,10,QU,QUO,0.95,can you tell me how it typically is like for you
+QUO,27061,10,20,2787,1.828125,0,"QU,QUC",high_094:0002,high_094,2,QU,QUC,0.86,and I was wondering how you are managing this blood pressure or are you aware of your hypertension
+QUO,10916,11,1,2459,3.859375,1,"QU,QUO",high_078:0017,high_078,17,QU,QUO,0.93,okay so what other things can you tell me about that might affect your blood pressure
+QUO,10916,11,2,1968,3.859375,1,"QU,QUO",high_070:0022,high_070,22,QU,QUO,0.95,okay so what other things can you tell me about that might affect your blood pressure
+QUO,10916,11,3,858,3.71875,0,"QU,QUC",high_039:0005,high_039,5,QU,QUC,0.95,okay so how important would you say this change is for you to make in your life we'll try on a scale from zero which is not important at all to time which is very important to me
+QUO,10916,11,4,4088,3.484375,1,"QU,QUO",high_151:0027,high_151,27,QU,QUO,0.78,oh really oh alright so what store do we know or pick up with what we know you don't want to make a bad impression in this whole court proceeding with the deal I what do you think you could do that would make a bad impression
+QUO,10916,11,5,3695,3.484375,1,"QU,QUO",high_133:0005,high_133,5,QU,QUO,0.86,okay well how important is this change to you
+QUO,10916,11,6,1708,3.4375,0,"QU,QUC",high_064:0011,high_064,11,QU,QUC,0.97,so on a scale of zero to 100 how important do you think it is for you to make this change
+QUO,10916,11,7,4179,3.421875,0,"QU,QUC",low_001:0011,low_001,11,QU,QUC,0.9,okay what classes are you not getting A's and B's in
+QUO,10916,11,8,4705,3.421875,0,"QU,QUC",low_027:0014,low_027,14,QU,QUC,0.88,okay what classes are you not getting A's and B's in
+QUO,10916,11,9,584,3.359375,1,"QU,QUO",high_021:0050,high_021,50,QU,QUO,0.94,okay so kind of thinking along those lines how important is it to you to make some changes or make some adjustments to your drinking to sort of fit with your values and your goals for yourself
+QUO,10916,11,10,133,3.359375,1,"QU,QUO",high_006:0053,high_006,53,QU,QUO,0.96,okay so kind of thinking along those lines how important is it to you to make some changes or make some adjustments to your drinking to sort of fit with your values and your goals for yourself
+QUO,10916,11,11,2733,3.328125,0,"QU,QUC",high_091:0007,high_091,7,QU,QUC,0.9,ok so how motivated are you today start like a rigorous exercise routine
+QUO,10916,11,12,4906,3.328125,0,"QU,QUC",low_033:0001,low_033,1,QU,QUC,0.96,"okay, how long ago did you start playing saxophone"
+QUO,10916,11,13,3141,3.25,0,"QU,QUC",high_110:0002,high_110,2,QU,QUC,0.97,so how many cigarettes would you say that you have you smoked each day?
+QUO,10916,11,14,3886,3.21875,0,"QU,QUC",high_143:0028,high_143,28,QU,QUC,0.95,okay so how motivated would that make you feel on a scale of one to ten
+QUO,10916,11,15,4275,3.21875,0,"QU,QUC",low_007:0004,low_007,4,QU,QUC,0.96,so how many times you guys have sex that night on a scale of one to five five being the lowest how many times did you guys have sex that night
+QUO,10916,11,16,6091,3.21875,1,"QU,QUO",low_104:0017,low_104,17,QU,QUO,0.94,"I want to ask you about the tobacco that you've been using, so what kind of tobacco product you use?"
+QUO,10916,11,17,5156,3.1875,1,"QU,QUO",low_044:0024,low_044,24,QU,QUO,0.94,so what kinds of meals does your mom cook?
+QUO,10916,11,18,2184,3.1875,0,"QU,QUC",high_074:0023,high_074,23,QU,QUC,0.97,okay so how confident are you that you can make these changes on a scale of one to ten one being not confident at all and ten being the most confident you've ever felt
+QUO,10916,11,19,5058,3.171875,0,"QU,QUC",low_040:0015,low_040,15,QU,QUC,0.96,What classes are you not getting A's and B's in?
+QUO,10916,11,20,184,3.171875,0,"QU,QUC",high_009:0011,high_009,11,QU,QUC,0.97,um how many cigarettes do you smoke a day
+QUC,13430,2,1,5777,2.8125,1,"QU,QUC",low_092:0023,low_092,23,QU,QUC,0.97,Did you come here for a prescription for anti-depressants?
+QUC,13430,2,2,1321,2.796875,1,"QU,QUC",high_055:0005,high_055,5,QU,QUC,0.96,doesn't that concern you
+QUC,13430,2,3,3001,2.75,1,"QU,QUC",high_104:0033,high_104,33,QU,QUC,0.88,OK we've talked about the alcohol do you use any other drugs besides our whole you know like cannabis cocaine and veterinarians in
+QUC,13430,2,4,1237,2.65625,0,,high_051:0050,high_051,50,AD,ADP,0.86,is that something you'd be willing to try next time
+QUC,13430,2,5,3730,2.625,0,,high_134:0016,high_134,16,AD,ADP,0.95,is it okay if I share some thoughts with you as well
+QUC,13430,2,6,4144,2.609375,0,"QU,QUO",high_154:0010,high_154,10,QU,QUO,0.97,why'd you say eight or nine rather than six or seven
+QUC,13430,2,7,3886,2.609375,1,"QU,QUC",high_143:0028,high_143,28,QU,QUC,0.95,okay so how motivated would that make you feel on a scale of one to ten
+QUC,13430,2,8,5532,2.59375,0,"QU,QUO",low_076:0001,low_076,1,QU,QUO,0.96,Have you had any major stressful events recently or any change in your work situation?
+QUC,13430,2,9,358,2.59375,0,"QU,QUO",high_017:0016,high_017,16,QU,QUO,0.93,- why'd you say 8 or 9 rather than 6 or 7
+QUC,13430,2,10,1090,2.59375,0,,high_046:0031,high_046,31,AD,ADP,0.9,would you consider including your children in your exercise routine
+QUC,13430,2,11,58,2.578125,0,"QU,QUO",high_004:0011,high_004,11,QU,QUO,0.93,so are you ready for the challenge of quitting
+QUC,13430,2,12,1236,2.578125,1,"QU,QUC",high_051:0049,high_051,49,QU,QUC,0.97,do you have your headphones with you at school
+QUC,13430,2,13,402,2.578125,1,"QU,QUC",high_019:0012,high_019,12,QU,QUC,0.94,when you drink do you ever socialize at the same time
+QUC,13430,2,14,2836,2.5625,1,"QU,QUC",high_098:0015,high_098,15,QU,QUC,0.99,when you're hanging out with friends is there ever alcohol involved
+QUC,13430,2,15,525,2.5625,0,"QU,QUO",high_020:0061,high_020,61,QU,QUO,0.93,so if you want to do the absolute opposite of that what would that look like
+QUC,13430,2,16,50,2.5625,0,"QU,QUO",high_004:0003,high_004,3,QU,QUO,0.9,but is it the hardest thing you've ever done
+QUC,13430,2,17,4532,2.53125,0,"QU,QUO",low_020:0011,low_020,11,QU,QUO,0.88,so what kind of a career are you looking for it at 56
+QUC,13430,2,18,2733,2.515625,1,"QU,QUC",high_091:0007,high_091,7,QU,QUC,0.9,ok so how motivated are you today start like a rigorous exercise routine
+QUC,13430,2,19,814,2.5,0,"QU,QUO",high_037:0013,high_037,13,QU,QUO,0.97,what is your normal diet look like
+QUC,13430,2,20,3916,2.484375,0,"QU,QUO",high_144:0009,high_144,9,QU,QUO,0.93,so how would you tie those two things together by not running
+QUC,11660,12,1,171,2.6875,1,"QU,QUC",high_008:0002,high_008,2,QU,QUC,0.86,would what would I be right in saying that
+QUC,11660,12,2,4975,2.671875,0,"QU,QUO",low_035:0002,low_035,2,QU,QUO,0.96,What would you say?
+QUC,11660,12,3,2977,2.640625,0,"QU,QUO",high_104:0009,high_104,9,QU,QUO,0.86,and what would you start thinking of doing
+QUC,11660,12,4,1255,2.578125,1,"QU,QUC",high_052:0007,high_052,7,QU,QUC,0.9,you've thought about a letter but who would you send it to
+QUC,11660,12,5,1209,2.578125,0,"QU,QUO",high_051:0022,high_051,22,QU,QUO,0.9,so you have your pencil where did you cut
+QUC,11660,12,6,3523,2.5625,0,"QU,QUO",high_124:0016,high_124,16,QU,QUO,0.96,so in what ways would you like to do that
+QUC,11660,12,7,2622,2.546875,0,"QU,QUO",high_085:0019,high_085,19,QU,QUO,0.78,and what if what if anything would you choose to do would be to cut down with a bit to quit
+QUC,11660,12,8,339,2.546875,0,"QU,QUO",high_016:0025,high_016,25,QU,QUO,0.7,and what if what if anything would you choose to do would be to cut down with a bit to quit just in case but
+QUC,11660,12,9,5272,2.53125,0,"QU,QUO",low_052:0012,low_052,12,QU,QUO,0.96,so what would you like to do  now?
+QUC,11660,12,10,2645,2.53125,0,"QU,QUO",high_086:0021,high_086,21,QU,QUO,0.92,so what would you like to do next you
+QUC,11660,12,11,1299,2.5,0,"QU,QUO",high_054:0015,high_054,15,QU,QUO,0.9,so what are your goal is to try and do that or why why would you want to do that
+QUC,11660,12,12,3595,2.5,0,"QU,QUO",high_127:0029,high_127,29,QU,QUO,0.86,and when would you like that for probably
+QUC,11660,12,13,3878,2.484375,0,"QU,QUO",high_143:0020,high_143,20,QU,QUO,0.94,and how would you feel if you could do all the poses in the class
+QUC,11660,12,14,1077,2.453125,0,,high_046:0018,high_046,18,AD,ADP,0.76,all right if since you wanted to exercise would you mind if we took some time to find out how i feel about exercising
+QUC,11660,12,15,1703,2.4375,0,"QU,QUO",high_064:0006,high_064,6,QU,QUO,0.93,and so what what do you what would you like to do
+QUC,11660,12,16,303,2.4375,0,"RE,REC",high_015:0009,high_015,9,RE,REC,0.78,at this point what do we have to lose
+QUC,11660,12,17,3451,2.421875,0,"QU,QUO",high_122:0019,high_122,19,QU,QUO,0.95,what would you what would you say to your Minister
+QUC,11660,12,18,3452,2.421875,0,"QU,QUO",high_122:0020,high_122,20,QU,QUO,0.95,what would you like to tell your minister
+QUC,11660,12,19,1943,2.421875,0,,high_069:0056,high_069,56,AD,ADW,0.9,what would you think about trying that slightly different approach for say two or three months just to see whether or not it makes any difference
+QUC,11660,12,20,1704,2.421875,0,"QU,QUO",high_064:0007,high_064,7,QU,QUO,0.95,what would you like to change
+SU,2995,19,1,2392,2.890625,0,GI,high_076:0121,high_076,121,GI,,0.83,I don't remember the exact timeframe but it's somewhere around there
+SU,2995,19,2,3753,2.875,1,SU,high_135:0020,high_135,20,SU,,0.88,this is a big stuff for you I know I'm it's hard to make a step like this
+SU,2995,19,3,3455,2.765625,0,"RE,REC",high_122:0023,high_122,23,RE,REC,0.78,um yeah I don't think you will so so so your pastor's home actually might be a physically safe place for you all to go
+SU,2995,19,4,2939,2.75,0,"QU,QUO",high_102:0002,high_102,2,QU,QUO,0.95,"I haven't look in your file, what brings you in today?"
+SU,2995,19,5,4371,2.703125,0,,low_011:0026,low_011,26,WA,,0.82,because this is something that that's very important not just for your overall physical health even your oral healt
+SU,2995,19,6,1128,2.671875,0,"QU,QUO",high_048:0017,high_048,17,QU,QUO,0.93,well I don't mean to be evasive about this but I just I want to know what do you think you should do in this situation
+SU,2995,19,7,3647,2.671875,1,SU,high_129:0019,high_129,19,SU,,0.82,I'm sure you could do it by yourself but a little assistance and some knowledge never hurts
+SU,2995,19,8,2348,2.59375,0,,high_076:0077,high_076,77,AD,ADW,0.9,exercise so maybe parking I don't know an exact distance but parking further away if you're going to the grocery store if you're going in and out of places just walking more in general
+SU,2995,19,9,4411,2.59375,0,GI,low_015:0002,low_015,2,GI,,0.86,yes yes yeah it's not that long since you were last here
+SU,2995,19,10,5365,2.59375,0,GI,low_061:0001,low_061,1,GI,,0.78,yes yes yeah it's not that long since you were last here
+SU,2995,19,11,3162,2.5625,0,"RE,REC",high_111:0004,high_111,4,RE,REC,0.9,so that group is really helpful to you not only just to kind of chill out and have a good time but also you actually had some exercise
+SU,2995,19,12,5783,2.515625,0,"QU,QUC",low_092:0029,low_092,29,QU,QUC,0.96,"Okay, um, so, um, off-topic, would you ever want to get together sometime?"
+SU,2995,19,13,3503,2.515625,0,"QU,QUC",high_123:0042,high_123,42,QU,QUC,0.93,and and you've spoken to this already a little bit i believe but I'll ask you again why and eight and not on a one or two
+SU,2995,19,14,4953,2.5,0,,low_033:0048,low_033,48,AD,ADW,0.93,I think just tell your friends you know you realize there's all these bad things about it and you don't want to do it anymore so you're just not going to okay
+SU,2995,19,15,5626,2.5,0,GI,low_084:0010,low_084,10,GI,,0.8,well ideally this is something to do every day this is kind of a minimum amount of physical activity
+SU,2995,19,16,1745,2.484375,0,"QU,QUC",high_065:0004,high_065,4,QU,QUC,0.72,um actually no not really I only live a couple hours away but my parents come here not frequently but enough that i get to see them so you say they play basketball
+SU,2995,19,17,2784,2.484375,0,,high_093:0022,high_093,22,NR,,0.7,I suppose I could replace it with low-calorie drink or drink more water
+SU,2995,19,18,6171,2.46875,1,SU,low_104:0097,low_104,97,SU,,0.65,"I might not know my name, you know."
+SU,2995,19,19,5795,2.40625,0,GI,low_093:0008,low_093,8,GI,,0.8,"coffee, tea yeah, and you've heard this before I'm sure"
+SU,2995,19,20,3670,2.40625,0,"RE,REC",high_131:0003,high_131,3,RE,REC,0.78,okay so taking out time out of your day and the money are obviously some big concerns that maybe we can look into you and we're gone
