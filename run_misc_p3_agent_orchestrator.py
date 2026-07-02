@@ -2,16 +2,22 @@
 """
 P3 Agent Batch Orchestrator
 ============================
-Manages batch processing of P3 evaluation tasks for IDE AI agent.
+Manages batch processing of P3 evaluation tasks for a dialogue AI agent.
 
 This script orchestrates the P3 feature card evaluation pipeline by:
 1. Splitting large tasks into manageable batches
-2. Preparing self-contained batch input files for the AI agent to process
+2. Preparing self-contained batch input files for the current AI agent to process
 3. Merging batch outputs into the main result files
 4. Computing evaluation metrics
 5. Running pure-Python data processing tasks (Task C, D)
 
+It does not call model APIs. Task A/B reasoning is performed by the current
+dialogue model or another agent that reads the generated batch files and writes
+the requested output JSON.
+
 Usage:
+    python run_misc_p3_agent_orchestrator.py 启动p3 [--batch-size 3]
+    python run_misc_p3_agent_orchestrator.py start-p3 [--batch-size 3]
     python run_misc_p3_agent_orchestrator.py status
     python run_misc_p3_agent_orchestrator.py next-batch [--batch-size 3]
     python run_misc_p3_agent_orchestrator.py task-a prepare [--batch-size 5] [--label RE]
@@ -25,10 +31,10 @@ Usage:
     python run_misc_p3_agent_orchestrator.py validate
 
 Batch files (in agent_batches/):
-    task_a_batch_{NNN}_input.json   - Prompts for AI to process
-    task_a_batch_{NNN}_output.json  - AI-generated explanations
-    task_b_batch_{NNN}_input.json   - Scoring tasks for AI
-    task_b_batch_{NNN}_output.json  - AI-generated predictions
+    task_a_batch_{NNN}_input.json   - Prompts for the current agent to process
+    task_a_batch_{NNN}_output.json  - Agent-generated explanations
+    task_b_batch_{NNN}_input.json   - Scoring tasks for the current agent
+    task_b_batch_{NNN}_output.json  - Agent-generated predictions
 """
 
 import argparse
@@ -282,7 +288,9 @@ def write_batch_instructions(batch_input, batch_path, *, task_label):
     lines = [
         f"# {task_label} Batch {info.get('batch_id')}",
         "",
-        "Read this file before processing the JSON batch. This batch is intentionally small so the IDE AI can handle it without losing context.",
+        "Read this file before processing the JSON batch. This batch is intentionally small so the current dialogue AI can handle it without losing context.",
+        "",
+        "No API runner is used here. Use the model in the current conversation to reason over the input and write the JSON output file.",
         "",
         "## Input",
         "",
@@ -296,6 +304,7 @@ def write_batch_instructions(batch_input, batch_path, *, task_label):
         "- Preserve `packet_id`, `target_label`, `latent_idx`, `rank_within_label`, and `item_index` exactly.",
         "- Do not stop the full project if one item fails; write a failed item with `parse_status` or a short error note.",
         "- Keep all conclusions bounded: candidate interpretation / scoring judgment, not causal proof.",
+        "- Set `model` to a descriptive current-agent value such as `current_dialogue_agent`.",
         "",
         "## Items",
         "",
@@ -465,7 +474,7 @@ def compute_auroc(y_true, y_scores):
 # ============================================================
 
 def cmd_task_a_prepare(args):
-    """Prepare next batch of prompts for AI agent to process."""
+    """Prepare next batch of prompts for the current agent to process."""
     batch_size = args.batch_size
     prompt_files = get_prompt_files()
     if not prompt_files:
@@ -542,13 +551,13 @@ def cmd_task_a_prepare(args):
         "output_instructions": {
             "output_file": str(BATCH_DIR / f"task_a_batch_{next_id:03d}_output.json"),
             "description": (
-                "AI agent should read each item's prompt_messages, "
+                "The current dialogue agent should read each item's prompt_messages, "
                 "analyze the SAE latent examples, and generate a structured explanation. "
                 "Write the results array to the output file."
             ),
             "output_schema": {
                 "batch_id": next_id,
-                "model": "MODEL_NAME_USED",
+                "model": "current_dialogue_agent",
                 "completed_at": "ISO_TIMESTAMP",
                 "results": [{
                     "item_index": 0,
@@ -615,7 +624,7 @@ def cmd_task_a_merge(args):
     for bf in batch_outputs:
         try:
             data = load_json(bf)
-            model = data.get("model", "ide_agent")
+            model = data.get("model", "current_dialogue_agent")
             for result in data.get("results", []):
                 pid = result.get("packet_id")
                 if not pid:
@@ -666,7 +675,7 @@ def cmd_task_a_merge(args):
     save_json({
         "analysis_phase": "p3_explanations_runner",
         "timestamp": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-        "model": "ide_agent",
+        "model": "current_dialogue_agent",
         "n_prompts_found": len(get_prompt_files()),
         "n_success": sum(1 for r in all_records if r.get("parse_status") == "ok"),
         "n_failed": sum(1 for r in all_records if r.get("parse_status") != "ok"),
@@ -724,7 +733,7 @@ def cmd_task_a_validate(args):
 # ============================================================
 
 def cmd_task_b_prepare(args):
-    """Prepare next batch of scoring tasks for AI agent."""
+    """Prepare next batch of scoring tasks for the current agent."""
     batch_size = args.batch_size  # number of latents per batch
 
     scoring_tasks = load_jsonl(SCORING_TASKS_JSONL)
@@ -847,7 +856,7 @@ def cmd_task_b_prepare(args):
             ),
             "output_schema": {
                 "batch_id": next_id,
-                "model": "MODEL_NAME_USED",
+                "model": "current_dialogue_agent",
                 "completed_at": "ISO_TIMESTAMP",
                 "results": [{
                     "item_index": 0,
@@ -929,7 +938,7 @@ def cmd_task_b_merge(args):
     for bf in batch_outputs:
         try:
             data = load_json(bf)
-            model = data.get("model", "ide_agent")
+            model = data.get("model", "current_dialogue_agent")
             for result in data.get("results", []):
                 pid = result.get("packet_id", "")
                 tt = result.get("task_type", "")
@@ -1501,7 +1510,7 @@ def cmd_validate(args):
 
 
 def cmd_next_batch(args):
-    """Prepare the next actionable Task A/B batch for the IDE AI agent."""
+    """Prepare the next actionable Task A/B batch for the current agent."""
     progress = collect_progress()
     if not progress["task_a"]["complete"]:
         print("Next stage: Task A input explanation")
@@ -1546,6 +1555,111 @@ def cmd_next_batch(args):
     return 0
 
 
+def _has_batch_outputs(pattern):
+    return BATCH_DIR.exists() and any(BATCH_DIR.glob(pattern))
+
+
+def _latest_unanswered_batch(prefix):
+    if not BATCH_DIR.exists():
+        return None
+    inputs = sorted(BATCH_DIR.glob(f"{prefix}_batch_*_input.json"))
+    for input_path in reversed(inputs):
+        output_path = input_path.with_name(input_path.name.replace("_input.json", "_output.json"))
+        if not output_path.exists():
+            return input_path
+    return None
+
+
+def _print_agent_handoff():
+    print()
+    print("=" * 60)
+    print("Current-agent handoff")
+    print("=" * 60)
+    print("No model API is called by this pipeline.")
+    print("Use the current dialogue model to read the generated batch input JSON,")
+    print("produce the requested structured judgments, and write the batch output JSON.")
+    print("Then run this command again:")
+    print()
+    print("  python run_misc_p3_agent_orchestrator.py 启动p3")
+    print()
+
+
+def cmd_start_p3(args):
+    """Start or continue P3 using file batches for the current dialogue agent."""
+    print("=" * 60)
+    print("P3 current-agent workflow")
+    print("=" * 60)
+    print("Mode: file-based agent batches; no API keys, no external model runner.")
+    print()
+
+    if not CARDS_JSONL.exists() or not SCORING_TASKS_JSONL.exists() or not PROMPTS_DIR.exists():
+        print("P3 dry-run inputs are missing. Generate them first:")
+        print()
+        print("  python run_misc_p3_feature_cards.py")
+        print()
+        return 1
+
+    progress = collect_progress()
+
+    if not progress["task_a"]["complete"]:
+        if _has_batch_outputs("task_a_batch_*_output.json"):
+            print("Found Task A batch outputs; merging before preparing more work.")
+            cmd_task_a_merge(argparse.Namespace())
+            progress = collect_progress()
+
+        if not progress["task_a"]["complete"]:
+            pending = _latest_unanswered_batch("task_a")
+            if pending is not None:
+                print("Task A already has a pending batch input without output.")
+                print(f"Batch input: {pending}")
+                print(f"Instructions: {pending.with_name(pending.name.replace('_input.json', '_instructions.md'))}")
+                print(f"Expected output: {pending.with_name(pending.name.replace('_input.json', '_output.json'))}")
+                _print_agent_handoff()
+                return 0
+            print("Next required reasoning stage: Task A input explanations.")
+            rc = cmd_next_batch(args)
+            _print_agent_handoff()
+            return rc
+
+    if not progress["task_b"]["complete"]:
+        if _has_batch_outputs("task_b_batch_*_output.json"):
+            print("Found Task B batch outputs; merging and recomputing metrics before preparing more work.")
+            cmd_task_b_merge(argparse.Namespace())
+            cmd_task_b_metrics(argparse.Namespace())
+            progress = collect_progress()
+
+        if not progress["task_b"]["complete"]:
+            pending = _latest_unanswered_batch("task_b")
+            if pending is not None:
+                print("Task B already has a pending batch input without output.")
+                print(f"Batch input: {pending}")
+                print(f"Instructions: {pending.with_name(pending.name.replace('_input.json', '_instructions.md'))}")
+                print(f"Expected output: {pending.with_name(pending.name.replace('_input.json', '_output.json'))}")
+                _print_agent_handoff()
+                return 0
+            print("Next required reasoning stage: Task B held-out scoring.")
+            rc = cmd_next_batch(args)
+            _print_agent_handoff()
+            return rc
+
+    if not progress["task_c"]["complete"]:
+        print("Task A/B are complete. Generating Task C manual review template.")
+        rc = cmd_task_c_run(argparse.Namespace())
+        if rc:
+            return rc
+        progress = collect_progress()
+
+    if not progress["task_d"]["complete"]:
+        print("Generating Task D final feature cards.")
+        rc = cmd_task_d_run(argparse.Namespace())
+        if rc:
+            return rc
+        progress = collect_progress()
+
+    print("P3 stages A-D appear complete. Running final validation.")
+    return cmd_validate(argparse.Namespace())
+
+
 # ============================================================
 # CLI
 # ============================================================
@@ -1556,6 +1670,8 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
+  python run_misc_p3_agent_orchestrator.py 启动p3 --batch-size 3
+  python run_misc_p3_agent_orchestrator.py start-p3 --batch-size 3
   python run_misc_p3_agent_orchestrator.py status
   python run_misc_p3_agent_orchestrator.py next-batch --batch-size 3 --label RE
   python run_misc_p3_agent_orchestrator.py task-a prepare --batch-size 5
@@ -1575,6 +1691,24 @@ Examples:
 
     sub.add_parser("status", help="Show overall progress").set_defaults(func=cmd_status)
     sub.add_parser("validate", help="Validate all P3 agent artifacts").set_defaults(func=cmd_validate)
+
+    def add_start_parser(name, help_text):
+        p_start = sub.add_parser(name, help=help_text)
+        p_start.add_argument("--batch-size", type=int, default=3, help="Items/latents per batch")
+        p_start.add_argument("--limit", type=int, default=None, help="Override batch-size after filters")
+        p_start.add_argument("--label", nargs="*", default=None, help="Optional label filter, e.g. RE RES or RE,RES")
+        p_start.add_argument("--rank-min", type=int, default=None)
+        p_start.add_argument("--rank-max", type=int, default=None)
+        p_start.add_argument("--start-index", type=int, default=0, help="Offset within filtered pending items")
+        p_start.add_argument("--batch-id", type=int, default=None, help="Explicit batch id")
+        p_start.add_argument("--include-completed", action="store_true", help="Regenerate already completed items")
+        p_start.add_argument("--max-examples-per-group", type=int, default=None, help="Task A prompt example cap per group")
+        p_start.add_argument("--max-examples-per-task", type=int, default=None, help="Task B example cap per task")
+        p_start.add_argument("--force", action="store_true", help="Overwrite an existing batch input id")
+        p_start.set_defaults(func=cmd_start_p3)
+
+    add_start_parser("启动p3", "Start or continue P3 with the current dialogue agent")
+    add_start_parser("start-p3", "Start or continue P3 with the current dialogue agent")
 
     p_next = sub.add_parser("next-batch", help="Prepare the next pending Task A/B batch")
     p_next.add_argument("--batch-size", type=int, default=3, help="Items/latents per batch")

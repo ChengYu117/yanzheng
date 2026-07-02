@@ -160,7 +160,7 @@ outputs/misc_full_sae_eval/interpretability/p3_feature_cards
 运行命令：
 
 ```powershell
-C:\Users\chengyu\AppData\Local\miniconda3\envs\qwen-env-py311\python.exe run_misc_p3_feature_cards.py
+python run_misc_p3_feature_cards.py
 ```
 
 测试命令：
@@ -171,6 +171,14 @@ python test_misc_p3_feature_cards_smoke.py
 ```
 
 当前脚本不会调用 LLM，不读取 API key，不执行 output intervention。它只生成 prompt 和待评分任务。
+
+启动或继续 P3 的统一入口：
+
+```powershell
+python run_misc_p3_agent_orchestrator.py 启动p3 --batch-size 3
+```
+
+该入口不会调用外部模型。它只准备下一批 agent batch、合并当前 agent 已写回的 output、计算指标和执行后续纯 Python 步骤。解释与评分由当前对话模型读取 batch input 后完成。
 
 ## 4. Feature card packet 的结构
 
@@ -1135,7 +1143,7 @@ python run_misc_p3_agent_orchestrator.py validate
 检查当前 P3 dry-run 产物：
 
 ```powershell
-C:\Users\chengyu\AppData\Local\miniconda3\envs\qwen-env-py311\python.exe -c "import json,pathlib,pandas as pd; d=pathlib.Path('outputs/misc_full_sae_eval/interpretability/p3_feature_cards'); m=json.loads((d/'manifest.json').read_text(encoding='utf-8')); s=pd.read_csv(d/'p3_feature_card_summary.csv'); print(m['n_cards'], m['n_scoring_tasks'], m['n_prompts'], m['n_missing_packets']); print(s.groupby('target_label').size().to_dict()); print(s['source_packet_status'].value_counts().to_dict())"
+python -c "import json,pathlib,pandas as pd; d=pathlib.Path('outputs/misc_full_sae_eval/interpretability/p3_feature_cards'); m=json.loads((d/'manifest.json').read_text(encoding='utf-8')); s=pd.read_csv(d/'p3_feature_card_summary.csv'); print(m['n_cards'], m['n_scoring_tasks'], m['n_prompts'], m['n_missing_packets']); print(s.groupby('target_label').size().to_dict()); print(s['source_packet_status'].value_counts().to_dict())"
 ```
 
 预期：
