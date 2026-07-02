@@ -140,8 +140,127 @@ def test_minimal_sufficient_subspace_v2_smoke() -> None:
         assert (out / "minimal_sufficient_subspace_report.md").exists()
 
 
+def test_filtered_topk_policy_without_legacy_seed() -> None:
+    from nlp_re_base.minimal_sufficient_subspace_v2 import (
+        MinimalSufficientSubspaceConfig,
+        run_minimal_sufficient_subspace_v2,
+    )
+
+    features, label_df, association = _make_synthetic()
+    filtered_association = association.drop(
+        columns=[
+            "association_rank",
+            "stable_edge",
+            "positive_support",
+            "negative_boundary",
+            "edge_type",
+            "formal_edge_weight",
+        ],
+        errors="ignore",
+    )
+    with TemporaryDirectory() as tmp:
+        root = Path(tmp)
+        feature_path = root / "features.npy"
+        label_path = root / "labels.csv"
+        association_path = root / "filtered_association.csv"
+        audit_path = root / "feature_filter_audit.csv"
+        out = root / "out"
+        np.save(feature_path, features)
+        label_df.to_csv(label_path, index=False)
+        filtered_association.to_csv(association_path, index=False)
+        pd.DataFrame(
+            {
+                "latent_idx": list(range(features.shape[1])),
+                "keep": [True] * features.shape[1],
+            }
+        ).to_csv(audit_path, index=False)
+
+        result = run_minimal_sufficient_subspace_v2(
+            association_matrix=association_path,
+            thresholded_sets=None,
+            feature_store=feature_path,
+            label_matrix=label_path,
+            output_dir=out,
+            feature_filter_audit=audit_path,
+            config=MinimalSufficientSubspaceConfig(
+                labels=("RES", "REC"),
+                leaf_labels=("RES", "REC"),
+                candidate_policy="filtered_topk_only",
+                candidate_top_k=8,
+                cv_folds=3,
+                min_auc=0.70,
+                max_search_k=5,
+                random_state=3,
+            ),
+            make_figures=False,
+        )
+
+        candidates = result["candidates"]
+        assert not candidates.empty
+        assert set(candidates["candidate_source"]) == {"filtered_top8"}
+        assert not candidates["stable_edge"].astype(bool).any()
+        assert "association_rank" in candidates.columns
+        assert int(candidates.groupby("label").size().max()) <= 8
+        assert result["json_summary"]["candidate_policy"] == "filtered_topk_only"
+        assert result["json_summary"]["keep_pool_audit"]["keep_true_latents"] == features.shape[1]
+        assert result["json_summary"]["candidate_checks"]["candidate_pool_within_limit"] is True
+
+
+def test_filtered_topk_rejects_dropped_latent() -> None:
+    from nlp_re_base.minimal_sufficient_subspace_v2 import (
+        MinimalSufficientSubspaceConfig,
+        run_minimal_sufficient_subspace_v2,
+    )
+
+    features, label_df, association = _make_synthetic()
+    filtered_association = association[
+        (association["label"] == "RES") & (association["latent_idx"].isin([0, 1]))
+    ].drop(columns=["association_rank", "stable_edge"], errors="ignore")
+    with TemporaryDirectory() as tmp:
+        root = Path(tmp)
+        feature_path = root / "features.npy"
+        label_path = root / "labels.csv"
+        association_path = root / "filtered_association.csv"
+        audit_path = root / "feature_filter_audit.csv"
+        out = root / "out"
+        np.save(feature_path, features)
+        label_df.to_csv(label_path, index=False)
+        filtered_association.to_csv(association_path, index=False)
+        pd.DataFrame(
+            {
+                "latent_idx": [0, 1],
+                "keep": [True, False],
+            }
+        ).to_csv(audit_path, index=False)
+
+        try:
+            run_minimal_sufficient_subspace_v2(
+                association_matrix=association_path,
+                thresholded_sets=None,
+                feature_store=feature_path,
+                label_matrix=label_path,
+                output_dir=out,
+                feature_filter_audit=audit_path,
+                config=MinimalSufficientSubspaceConfig(
+                    labels=("RES",),
+                    leaf_labels=("RES",),
+                    candidate_policy="filtered_topk_only",
+                    candidate_top_k=2,
+                    cv_folds=3,
+                    max_search_k=2,
+                ),
+                make_figures=False,
+            )
+        except ValueError as exc:
+            assert "keep=True" in str(exc)
+        else:
+            raise AssertionError("Expected dropped latent in filtered association to be rejected")
+
+
 def main() -> int:
     test_minimal_sufficient_subspace_v2_smoke()
+    test_filtered_topk_policy_without_legacy_seed()
+    test_filtered_topk_rejects_dropped_latent()
     print("minimal_sufficient_subspace_v2 smoke passed")
     return 0
 

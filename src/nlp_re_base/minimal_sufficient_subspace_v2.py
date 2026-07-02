@@ -48,6 +48,7 @@ PARENT_LABELS: tuple[str, ...] = ("RE", "QU")
 class MinimalSufficientSubspaceConfig:
     labels: tuple[str, ...] = DEFAULT_LABELS
     leaf_labels: tuple[str, ...] = LEAF_LABELS
+    candidate_policy: str = "legacy_seed_plus_topk"
     candidate_top_k: int = 100
     cv_folds: int = 5
     min_auc: float = 0.70
@@ -94,6 +95,41 @@ def _bool_series(values: pd.Series) -> pd.Series:
     if values.dtype == bool:
         return values.fillna(False)
     return values.astype(str).str.lower().isin({"true", "1", "yes", "y"})
+
+
+def _load_feature_filter_audit(path: str | Path) -> pd.DataFrame:
+    audit = pd.read_csv(path)
+    required = {"latent_idx", "keep"}
+    missing = sorted(required.difference(audit.columns))
+    if missing:
+        raise ValueError(f"Feature filter audit is missing required columns: {missing}")
+    out = audit.copy()
+    out["latent_idx"] = pd.to_numeric(out["latent_idx"], errors="coerce").fillna(-1).astype(int)
+    out["keep"] = _bool_series(out["keep"])
+    return out
+
+
+def _validate_association_in_keep_pool(
+    association: pd.DataFrame,
+    feature_filter_audit: pd.DataFrame,
+) -> dict[str, Any]:
+    keep_latents = set(
+        feature_filter_audit.loc[feature_filter_audit["keep"], "latent_idx"].astype(int).tolist()
+    )
+    association_latents = set(association["latent_idx"].astype(int).tolist())
+    dropped = sorted(association_latents.difference(keep_latents))
+    if dropped:
+        preview = dropped[:20]
+        raise ValueError(
+            "Association matrix contains latents outside feature_filter_audit keep=True pool: "
+            f"{preview}{'...' if len(dropped) > len(preview) else ''}"
+        )
+    return {
+        "audit_rows": int(len(feature_filter_audit)),
+        "keep_true_latents": int(len(keep_latents)),
+        "association_unique_latents": int(len(association_latents)),
+        "association_latents_all_keep_true": True,
+    }
 
 
 def _json_default(value: Any) -> Any:
@@ -157,6 +193,23 @@ def _build_candidate_pool(
     if group.empty:
         return group
     group = group[(group["latent_idx"] >= 0) & (group["latent_idx"] < feature_dim)].copy()
+    if config.candidate_policy == "filtered_topk_only":
+        pool = group[group["association_rank"] <= config.candidate_top_k].copy()
+        pool = pool.sort_values(
+            ["association_rank", "abs_cohens_d", "directional_auc", "latent_idx"],
+            ascending=[True, False, False, True],
+        ).drop_duplicates("latent_idx", keep="first")
+        pool["stable_edge"] = False
+        pool["positive_support"] = False
+        pool["negative_boundary"] = False
+        pool["edge_type"] = "filtered_topk"
+        pool["formal_edge_weight"] = pool.get("formal_edge_weight", 0.0)
+        pool["candidate_source"] = f"filtered_top{config.candidate_top_k}"
+        pool["candidate_order"] = np.arange(1, len(pool) + 1)
+        return pool.reset_index(drop=True)
+    if config.candidate_policy != "legacy_seed_plus_topk":
+        raise ValueError(f"Unknown candidate_policy: {config.candidate_policy}")
+
     stable = group[group["stable_edge"]].copy()
     backup = group[group["association_rank"] <= config.candidate_top_k].copy()
     pool = pd.concat([stable, backup], ignore_index=True, sort=False)
@@ -803,6 +856,17 @@ def _write_figures(
 
 def _write_report(output_dir: Path, summary: pd.DataFrame, config: MinimalSufficientSubspaceConfig) -> None:
     leaf = summary[summary["label_role"] != "parent_consistency_only"].copy()
+    if config.candidate_policy == "filtered_topk_only":
+        candidate_line = (
+            f"- Candidate pool: filtered association Top{config.candidate_top_k} only; "
+            "legacy stable-edge seeds are not used."
+        )
+        seed_header = "Filtered TopK candidates"
+    else:
+        candidate_line = (
+            f"- Candidate pool: legacy seed candidates plus association-rank Top{config.candidate_top_k} backup."
+        )
+        seed_header = "Legacy seed candidates"
     lines = [
         "# MISC minimal sufficient SAE latent subspace v2",
         "",
@@ -811,21 +875,26 @@ def _write_report(output_dir: Path, summary: pd.DataFrame, config: MinimalSuffic
         "",
         "## Criteria",
         "",
-        f"- Candidate pool: legacy seed candidates plus association-rank Top{config.candidate_top_k} backup.",
+        candidate_line,
         f"- Full-candidate recoverable if mean CV AUC >= {config.min_auc:.2f}.",
         f"- Minimal sufficient K must be within {config.auc_tolerance:.2f} AUC, {config.auprc_tolerance:.2f} AUPRC, and {config.precision_lift_tolerance:.2f} P@{config.precision_k} lift of the full-candidate probe.",
         "- Parent labels `RE` and `QU` are consistency-only rows.",
         "",
         "## Label summary",
         "",
-        "| Label | Role | Status | Class | Candidate pool | Legacy seed candidates | Full AUC | Minimal K median | Stability Jaccard | Predictive redundancy | Selected latents |",
+        f"| Label | Role | Status | Class | Candidate pool | {seed_header} | Full AUC | Minimal K median | Stability Jaccard | Predictive redundancy | Selected latents |",
         "|---|---|---|---|---:|---:|---:|---:|---:|---:|---|",
     ]
     for _, row in summary.iterrows():
         min_k = "-" if pd.isna(row.get("minimal_k_median")) else f"{float(row['minimal_k_median']):.1f}"
+        seed_or_filtered_count = (
+            int(row["candidate_pool_size"])
+            if config.candidate_policy == "filtered_topk_only"
+            else int(row["n_stable_candidates"])
+        )
         lines.append(
             f"| {row['label']} | {row['label_role']} | {row['formal_status']} | {row['fragmentation_class']} | "
-            f"{int(row['candidate_pool_size'])} | {int(row['n_stable_candidates'])} | "
+            f"{int(row['candidate_pool_size'])} | {seed_or_filtered_count} | "
             f"{float(row.get('full_auc_mean', 0.0)):.3f} | {min_k} | "
             f"{float(row.get('mean_pairwise_jaccard_between_folds', 0.0)):.3f} | "
             f"{float(row.get('predictive_redundancy_ratio', 0.0)):.3f} | "
@@ -907,6 +976,7 @@ def run_minimal_sufficient_subspace_v2(
     feature_store: str | Path,
     label_matrix: str | Path,
     output_dir: str | Path,
+    feature_filter_audit: str | Path | None = None,
     config: MinimalSufficientSubspaceConfig | None = None,
     make_figures: bool = True,
 ) -> dict[str, Any]:
@@ -919,7 +989,15 @@ def run_minimal_sufficient_subspace_v2(
     if len(labels_df) != features.shape[0]:
         raise ValueError(f"Label rows ({len(labels_df)}) do not match feature rows ({features.shape[0]})")
     association = _prepare_association_matrix(pd.read_csv(association_matrix), config.labels)
-    if thresholded_sets and Path(thresholded_sets).exists():
+    keep_pool_audit: dict[str, Any] | None = None
+    if feature_filter_audit is not None:
+        keep_pool_audit = _validate_association_in_keep_pool(
+            association,
+            _load_feature_filter_audit(feature_filter_audit),
+        )
+    if config.candidate_policy == "filtered_topk_only" and thresholded_sets:
+        raise ValueError("thresholded_sets must be omitted when candidate_policy='filtered_topk_only'.")
+    if config.candidate_policy != "filtered_topk_only" and thresholded_sets and Path(thresholded_sets).exists():
         thresholded = pd.read_csv(thresholded_sets)
         if not thresholded.empty and {"label", "latent_idx"}.issubset(thresholded.columns):
             stable_pairs = {
@@ -953,6 +1031,18 @@ def run_minimal_sufficient_subspace_v2(
     selected = pd.concat([result["selected"] for result in results if not result["selected"].empty], ignore_index=True, sort=False)
     redundancy = pd.concat([result["redundancy"] for result in results if not result["redundancy"].empty], ignore_index=True, sort=False)
     curves = _aggregate_curves(steps)
+    candidate_checks = {
+        "labels": int(summary.shape[0]),
+        "candidate_pool_rows": int(candidates.shape[0]),
+        "candidate_pool_max_per_label": int(candidates.groupby("label").size().max()) if not candidates.empty else 0,
+        "candidate_pool_limit": int(config.candidate_top_k),
+        "candidate_pool_within_limit": bool(
+            candidates.empty or candidates.groupby("label").size().max() <= config.candidate_top_k
+        ),
+        "all_candidate_latents_keep_true": bool(
+            keep_pool_audit is None or keep_pool_audit["association_latents_all_keep_true"]
+        ),
+    }
 
     files = {
         "minimal_sufficient_summary_v2": output_path / "minimal_sufficient_summary_v2.csv",
@@ -983,7 +1073,11 @@ def run_minimal_sufficient_subspace_v2(
             "thresholded_sets": str(thresholded_sets) if thresholded_sets else None,
             "feature_store": str(feature_store),
             "label_matrix": str(label_matrix),
+            "feature_filter_audit": str(feature_filter_audit) if feature_filter_audit else None,
         },
+        "candidate_policy": config.candidate_policy,
+        "keep_pool_audit": keep_pool_audit,
+        "candidate_checks": candidate_checks,
         "n_labels": int(summary.shape[0]),
         "fragmentation_class_counts": summary["fragmentation_class"].value_counts().to_dict(),
         "formal_status_counts": summary["formal_status"].value_counts().to_dict(),

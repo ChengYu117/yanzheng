@@ -115,9 +115,15 @@ def test_misc_label_mapping_module():
         assert summary["candidate_feature_shape"][0] == len(raw_records)
 
         audit = pd.read_csv(out_dir / "feature_filter_audit.csv")
+        kept = set(audit.loc[audit["keep"].astype(bool), "latent_idx"].astype(int))
         dropped = set(audit.loc[~audit["keep"].astype(bool), "latent_idx"].astype(int))
+        matrix_latents = set(matrix["latent_idx"].astype(int))
+        assert matrix_latents == kept
         assert {4, 5, 6}.issubset(dropped)
-        assert {4, 5, 6}.isdisjoint(set(matrix["latent_idx"].astype(int)))
+        assert {4, 5, 6}.isdisjoint(matrix_latents)
+        assert summary["metric_scope"] == "features[:, kept_latent_indices]"
+        assert summary["row_count_checks"]["matrix_latent_set_equals_keep_true"] is True
+        assert summary["row_count_checks"]["metric_rows_match"] is True
         assert "rarely_active" in str(audit.loc[audit["latent_idx"] == 4, "drop_reasons"].iloc[0])
         assert "almost_always_active" in str(audit.loc[audit["latent_idx"] == 5, "drop_reasons"].iloc[0])
         assert "top1_activation_mass_dominated" in str(audit.loc[audit["latent_idx"] == 6, "drop_reasons"].iloc[0])

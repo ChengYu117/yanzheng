@@ -73,6 +73,41 @@ def _truthy(value: Any) -> bool:
     return str(value).strip().lower() in {"true", "1", "yes", "y"}
 
 
+def _load_feature_filter_audit(path: Path) -> pd.DataFrame:
+    audit = pd.read_csv(path)
+    required = {"latent_idx", "keep"}
+    missing = sorted(required.difference(audit.columns))
+    if missing:
+        raise ValueError(f"Feature filter audit is missing required columns: {missing}")
+    out = audit.copy()
+    out["latent_idx"] = pd.to_numeric(out["latent_idx"], errors="coerce").fillna(-1).astype(int)
+    out["keep"] = out["keep"].map(_truthy)
+    return out
+
+
+def validate_selected_latents_in_keep_pool(
+    selected: pd.DataFrame,
+    feature_filter_audit: pd.DataFrame,
+) -> dict[str, Any]:
+    keep_latents = set(
+        feature_filter_audit.loc[feature_filter_audit["keep"], "latent_idx"].astype(int).tolist()
+    )
+    selected_latents = set(selected["latent_idx"].astype(int).tolist())
+    dropped_selected = sorted(selected_latents.difference(keep_latents))
+    if dropped_selected:
+        preview = dropped_selected[:20]
+        raise ValueError(
+            "Selected latents are not in the feature_filter_audit keep=True pool: "
+            f"{preview}{'...' if len(dropped_selected) > len(preview) else ''}"
+        )
+    return {
+        "audit_rows": int(len(feature_filter_audit)),
+        "keep_true_latents": int(len(keep_latents)),
+        "selected_unique_latents": int(len(selected_latents)),
+        "selected_latents_all_keep_true": True,
+    }
+
+
 def _normalise_association_table(df: pd.DataFrame) -> pd.DataFrame:
     required = {"label", "latent_idx", "cohens_d"}
     missing = sorted(required.difference(df.columns))
@@ -224,6 +259,39 @@ def build_top_activating_utterances(
     return pd.DataFrame(rows)
 
 
+def build_compact_metrics(
+    top_latents: pd.DataFrame,
+    top_utterances: pd.DataFrame,
+    *,
+    top_utterances_count: int,
+) -> pd.DataFrame:
+    rows: list[dict[str, Any]] = []
+    for _, latent in top_latents.iterrows():
+        label = str(latent["label"]).upper()
+        latent_idx = int(latent["latent_idx"])
+        examples = top_utterances[
+            (top_utterances["label"] == label)
+            & (top_utterances["latent_idx"] == latent_idx)
+        ]
+        rows.append(
+            {
+                "label": label,
+                "rank_within_label": int(latent["rank_within_label"]),
+                "latent_idx": latent_idx,
+                "cohens_d": float(latent["cohens_d"]),
+                "auc": float(latent["auc"]),
+                "directional_auc": float(latent["directional_auc"]),
+                "precision_at_10": float(latent["precision_at_10"]),
+                "precision_at_50": float(latent["precision_at_50"]),
+                "significant_fdr": bool(latent["significant_fdr"]),
+                f"top{top_utterances_count}_target_match_rate": (
+                    float(examples["target_match"].mean()) if not examples.empty else np.nan
+                ),
+            }
+        )
+    return pd.DataFrame(rows)
+
+
 def _fmt_float(value: Any, digits: int = 3) -> str:
     try:
         number = float(value)
@@ -244,8 +312,10 @@ def write_report(
     audit: dict[str, Any],
     output_path: Path,
 ) -> None:
+    top_features_count = int(audit["selection_policy"]["top_features_per_label"])
+    top_utterances_count = int(audit["selection_policy"]["top_utterances_per_feature"])
     lines = [
-        "# 每标签 Top20 正向 Cohen's d SAE features 与 Top50 高激活语句",
+        f"# 每标签 Top{top_features_count} 正向 Cohen's d SAE features 与 Top{top_utterances_count} 高激活语句",
         "",
         "本报告用于人工审阅每个 MISC 标签对应的正向 SAE feature 候选及其最高激活语句。",
         "",
@@ -311,7 +381,7 @@ def write_report(
             lines.extend(
                 [
                     "",
-                    f"### {label} latent {latent_idx} top50 高激活语句",
+                    f"### {label} latent {latent_idx} top{top_utterances_count} 高激活语句",
                     "",
                     f"- rank within label: {int(row['rank_within_label'])}",
                     f"- Cohen's d: {_fmt_float(row['cohens_d'], 4)}",
@@ -343,14 +413,16 @@ def run_top20_cohensd_latent_utterance_export(
     label_matrix_path: str | Path,
     records_path: str | Path,
     output_dir: str | Path,
+    feature_filter_audit_path: str | Path,
     labels: tuple[str, ...] = DEFAULT_LABELS,
     top_features: int = 20,
-    top_utterances: int = 50,
+    top_utterances: int = 20,
 ) -> dict[str, Any]:
     association_path = Path(association_path)
     feature_store_path = Path(feature_store_path)
     label_matrix_path = Path(label_matrix_path)
     records_path = Path(records_path)
+    feature_filter_audit_path = Path(feature_filter_audit_path)
     output_path = Path(output_dir)
     output_path.mkdir(parents=True, exist_ok=True)
 
@@ -358,12 +430,17 @@ def run_top20_cohensd_latent_utterance_export(
     features = _load_feature_tensor(feature_store_path)
     label_matrix = pd.read_csv(label_matrix_path)
     records = _read_jsonl(records_path)
+    feature_filter_audit = _load_feature_filter_audit(feature_filter_audit_path)
     label_tuple = tuple(label.upper() for label in labels)
 
     selected, label_audit = select_top_positive_cohensd_latents(
         association,
         labels=label_tuple,
         top_features=top_features,
+    )
+    filter_summary = validate_selected_latents_in_keep_pool(
+        selected,
+        feature_filter_audit,
     )
     utterances = build_top_activating_utterances(
         selected,
@@ -373,36 +450,66 @@ def run_top20_cohensd_latent_utterance_export(
         labels=label_tuple,
         top_utterances=top_utterances,
     )
+    compact_metrics = build_compact_metrics(
+        selected,
+        utterances,
+        top_utterances_count=top_utterances,
+    )
 
-    selected_path = output_path / "top20_cohensd_latents_by_label.csv"
-    utterances_path = output_path / "top50_utterances_by_top20_cohensd_latents.csv"
-    report_path = output_path / "top20_cohensd_feature_activation_report.md"
-    audit_path = output_path / "top20_cohensd_feature_activation_audit.json"
+    selected_path = output_path / f"top{top_features}_cohensd_latents_by_label.csv"
+    utterances_path = output_path / f"top{top_utterances}_utterances_by_top{top_features}_cohensd_latents.csv"
+    compact_metrics_path = output_path / (
+        f"top{top_features}_latent_label_metrics_with_top{top_utterances}_precision.csv"
+    )
+    report_path = output_path / f"top{top_features}_cohensd_feature_activation_report.md"
+    audit_path = output_path / f"top{top_features}_cohensd_feature_activation_audit.json"
 
     selected.to_csv(selected_path, index=False)
     utterances.to_csv(utterances_path, index=False)
+    compact_metrics.to_csv(compact_metrics_path, index=False)
+    expected_utterance_rows = int(len(selected) * min(top_utterances, int(features.shape[0])))
+    per_pair_counts = (
+        utterances.groupby(["label", "latent_idx"]).size().to_dict()
+        if not utterances.empty
+        else {}
+    )
     audit = {
-        "analysis": "misc_top20_positive_cohensd_latent_utterances",
+        "analysis": "misc_filtered_top_positive_cohensd_latent_utterances",
         "model_scope": "llama_main_result",
         "labels": label_audit,
+        "filter_summary": filter_summary,
         "selection_policy": {
             "top_features_per_label": int(top_features),
             "top_utterances_per_feature": int(top_utterances),
             "feature_filter": "cohens_d > 0 and latent_idx >= 0",
             "feature_sort": ["cohens_d desc", "directional_auc desc", "precision_at_50 desc", "latent_idx asc"],
             "utterance_scope": "full_dataset",
+            "duplicate_text_policy": "row-level utterances are retained",
         },
         "inputs": {
             "association": str(association_path),
             "feature_store": str(feature_store_path),
             "label_matrix": str(label_matrix_path),
             "records": str(records_path),
+            "feature_filter_audit": str(feature_filter_audit_path),
         },
         "outputs": {
-            "top20_cohensd_latents_by_label": str(selected_path),
-            "top50_utterances_by_top20_cohensd_latents": str(utterances_path),
+            "selected_latents": str(selected_path),
+            "top_utterances": str(utterances_path),
+            "compact_metrics": str(compact_metrics_path),
             "report": str(report_path),
             "audit": str(audit_path),
+        },
+        "row_count_checks": {
+            "selected_latent_rows": int(len(selected)),
+            "utterance_rows_expected": expected_utterance_rows,
+            "utterance_rows_actual": int(len(utterances)),
+            "utterance_rows_match": bool(len(utterances) == expected_utterance_rows),
+            "metrics_rows_actual": int(len(compact_metrics)),
+            "every_label_latent_has_top_n": bool(
+                all(count == min(top_utterances, int(features.shape[0])) for count in per_pair_counts.values())
+                and len(per_pair_counts) == len(selected)
+            ),
         },
         "n_selected_latents": int(len(selected)),
         "n_top_utterance_rows": int(len(utterances)),
@@ -425,12 +532,16 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--label-matrix", default="outputs/misc_full_sae_eval/label_matrix.csv")
     parser.add_argument("--records", default="outputs/misc_full_sae_eval/records.jsonl")
     parser.add_argument(
+        "--feature-filter-audit",
+        default="outputs/misc_full_sae_eval/functional/misc_label_mapping_filtered/feature_filter_audit.csv",
+    )
+    parser.add_argument(
         "--output-dir",
-        default="outputs/misc_full_sae_eval/interpretability/top20_cohensd_latent_utterances",
+        default="outputs/misc_full_sae_eval/interpretability/filtered_top20_cohensd_latent_utterances",
     )
     parser.add_argument("--labels", nargs="+", default=list(DEFAULT_LABELS))
     parser.add_argument("--top-features", type=int, default=20)
-    parser.add_argument("--top-utterances", type=int, default=50)
+    parser.add_argument("--top-utterances", type=int, default=20)
     return parser.parse_args()
 
 
@@ -442,14 +553,20 @@ def main() -> int:
         label_matrix_path=args.label_matrix,
         records_path=args.records,
         output_dir=args.output_dir,
+        feature_filter_audit_path=args.feature_filter_audit,
         labels=tuple(label.upper() for label in args.labels),
         top_features=args.top_features,
         top_utterances=args.top_utterances,
     )
-    print("Completed Top20 positive-Cohen's-d latent + Top50 utterance export.")
+    print(
+        "Completed filtered Top"
+        f"{args.top_features} positive-Cohen's-d latent + Top{args.top_utterances} utterance export."
+    )
     print(f"Output dir: {args.output_dir}")
     print(f"Selected latents: {audit['n_selected_latents']}")
     print(f"Top utterance rows: {audit['n_top_utterance_rows']}")
+    print(f"Utterances: {audit['outputs']['top_utterances']}")
+    print(f"Compact metrics: {audit['outputs']['compact_metrics']}")
     print(f"Report: {audit['outputs']['report']}")
     return 0
 

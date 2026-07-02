@@ -28,6 +28,8 @@ DEFAULT_INCLUDE_FILES = [
     "run_misc_causal_candidate_export.py",
     "run_misc_interpretability_analysis.py",
     "run_misc_mapping_structure_analysis.py",
+    "run_misc_mapping_structure_filtered.py",
+    "run_misc_minimal_sufficient_subspace_v2.py",
     "run_sae_evaluation.py",
 ]
 EXCLUDED_DIR_NAMES = {

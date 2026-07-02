@@ -1014,6 +1014,23 @@ def run_misc_label_mapping(
         "feature_shape": list(features_np.shape),
         "candidate_feature_shape": [int(features_np.shape[0]), int(candidate_latent_indices.shape[0])],
         "feature_filter": feature_filter_summary,
+        "metric_scope": "features[:, kept_latent_indices]",
+        "row_count_checks": {
+            "kept_latents": int(candidate_latent_indices.shape[0]),
+            "labels": int(len(selected_labels) - len(skipped)),
+            "metric_rows_expected": int(candidate_latent_indices.shape[0] * (len(selected_labels) - len(skipped))),
+            "metric_rows_actual": int(matrix.shape[0]),
+            "metric_rows_match": bool(
+                matrix.shape[0]
+                == candidate_latent_indices.shape[0] * (len(selected_labels) - len(skipped))
+            ),
+            "matrix_latent_set_equals_keep_true": bool(
+                set(matrix["latent_idx"].astype(int).tolist())
+                == set(candidate_latent_indices.astype(int).tolist())
+            )
+            if not matrix.empty
+            else bool(candidate_latent_indices.shape[0] == 0),
+        },
         "labels": selected_labels,
         "fdr_alpha": fdr_alpha,
         "min_positive": min_positive,

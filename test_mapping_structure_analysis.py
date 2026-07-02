@@ -171,8 +171,57 @@ def test_mapping_structure_cli():
         assert doc_report.exists()
 
 
+def test_filtered_mapping_structure_cli():
+    with tempfile.TemporaryDirectory() as tmp:
+        root = Path(tmp)
+        mapping_dir = _write_mapping_dir(root)
+        out_dir = root / "filtered_cli_out"
+        cmd = [
+            sys.executable,
+            str(PROJECT_ROOT / "run_misc_mapping_structure_filtered.py"),
+            "--mapping-dir",
+            str(mapping_dir),
+            "--output-dir",
+            str(out_dir),
+            "--top-k",
+            "2",
+            "3",
+            "--analysis-top-k",
+            "2",
+            "--label-hierarchy",
+            "RE:RES,REC",
+            "QU:QUO",
+            "--core-labels",
+            "RE",
+            "RES",
+            "REC",
+            "QU",
+            "QUO",
+            "--no-figures",
+        ]
+        result = subprocess.run(
+            cmd,
+            cwd=PROJECT_ROOT,
+            text=True,
+            capture_output=True,
+            timeout=120,
+        )
+        assert result.returncode == 0, result.stderr + result.stdout
+        metrics = json.loads((out_dir / "mapping_structure_metrics.json").read_text())
+        assert metrics["analysis_top_k"] == 2
+        assert metrics["topk_latent_label_edges"] == 10
+        assert (out_dir / "mapping_structure_report.md").exists()
+        assert (out_dir / "label_fragmentation_rank.csv").exists()
+        assert (out_dir / "label_pair_similarity.csv").exists()
+        assert (out_dir / "latent_overlap_distribution.csv").exists()
+
+
 def main() -> int:
-    tests = [test_mapping_structure_module, test_mapping_structure_cli]
+    tests = [
+        test_mapping_structure_module,
+        test_mapping_structure_cli,
+        test_filtered_mapping_structure_cli,
+    ]
     failures = 0
     for test in tests:
         try:

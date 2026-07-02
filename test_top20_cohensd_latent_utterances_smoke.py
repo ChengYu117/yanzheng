@@ -67,12 +67,22 @@ def test_top20_cohensd_selection_and_utterance_export() -> None:
         feature_path = root / "features.pt"
         label_path = root / "labels.csv"
         records_path = root / "records.jsonl"
+        feature_filter_audit_path = root / "feature_filter_audit.csv"
         output_dir = root / "out"
 
         association.to_csv(association_path, index=False)
         torch.save({"utterance_features": features}, feature_path)
         labels.to_csv(label_path, index=False)
         _write_jsonl(records_path, records)
+        pd.DataFrame(
+            [
+                {"latent_idx": 0, "keep": True},
+                {"latent_idx": 1, "keep": True},
+                {"latent_idx": 2, "keep": False},
+                {"latent_idx": 3, "keep": True},
+                {"latent_idx": 4, "keep": True},
+            ]
+        ).to_csv(feature_filter_audit_path, index=False)
 
         audit = run_top20_cohensd_latent_utterance_export(
             association_path=association_path,
@@ -80,22 +90,29 @@ def test_top20_cohensd_selection_and_utterance_export() -> None:
             label_matrix_path=label_path,
             records_path=records_path,
             output_dir=output_dir,
+            feature_filter_audit_path=feature_filter_audit_path,
             labels=("A", "B"),
             top_features=2,
             top_utterances=3,
         )
 
-        selected = pd.read_csv(output_dir / "top20_cohensd_latents_by_label.csv")
-        utterances = pd.read_csv(output_dir / "top50_utterances_by_top20_cohensd_latents.csv")
-        report = (output_dir / "top20_cohensd_feature_activation_report.md").read_text(encoding="utf-8")
-        audit_path = output_dir / "top20_cohensd_feature_activation_audit.json"
+        selected = pd.read_csv(output_dir / "top2_cohensd_latents_by_label.csv")
+        utterances = pd.read_csv(output_dir / "top3_utterances_by_top2_cohensd_latents.csv")
+        metrics = pd.read_csv(output_dir / "top2_latent_label_metrics_with_top3_precision.csv")
+        report = (output_dir / "top2_cohensd_feature_activation_report.md").read_text(encoding="utf-8")
+        audit_path = output_dir / "top2_cohensd_feature_activation_audit.json"
 
         assert len(selected) == 4
         assert len(utterances) == 12
+        assert len(metrics) == 4
         assert audit["n_selected_latents"] == 4
         assert audit["n_top_utterance_rows"] == 12
+        assert audit["filter_summary"]["selected_latents_all_keep_true"] is True
+        assert audit["row_count_checks"]["utterance_rows_match"] is True
+        assert audit["row_count_checks"]["every_label_latent_has_top_n"] is True
         assert audit_path.exists()
-        assert (output_dir / "top20_cohensd_feature_activation_report.md").exists()
+        assert (output_dir / "top2_cohensd_feature_activation_report.md").exists()
+        assert "top3_target_match_rate" in metrics.columns
 
         assert selected[selected["label"] == "A"]["latent_idx"].tolist() == [1, 3]
         assert 2 not in selected["latent_idx"].tolist()
@@ -119,6 +136,68 @@ def test_top20_cohensd_selection_and_utterance_export() -> None:
         shutil.rmtree(root, ignore_errors=True)
 
 
+def test_feature_filter_audit_rejects_dropped_selected_latent() -> None:
+    root = _safe_smoke_root()
+    if root.exists():
+        shutil.rmtree(root)
+    root.mkdir(parents=True, exist_ok=True)
+
+    try:
+        association = pd.DataFrame(
+            [
+                {"label": "A", "latent_idx": 0, "cohens_d": 0.70, "abs_cohens_d": 0.70, "auc": 0.70, "directional_auc": 0.80, "precision_at_10": 0.8, "precision_at_50": 0.6, "p_value": 0.01, "significant_fdr": True},
+                {"label": "A", "latent_idx": 2, "cohens_d": 9.00, "abs_cohens_d": 9.00, "auc": 0.99, "directional_auc": 0.99, "precision_at_10": 1.0, "precision_at_50": 1.0, "p_value": 0.0, "significant_fdr": True},
+            ]
+        )
+        features = torch.ones((5, 3), dtype=torch.float32)
+        labels = pd.DataFrame(
+            [
+                {"row_idx": i, "record_id": f"r{i}", "unit_text": f"utterance {i}", "A": int(i < 3)}
+                for i in range(5)
+            ]
+        )
+        records = labels.to_dict(orient="records")
+
+        association_path = root / "association.csv"
+        feature_path = root / "features.pt"
+        label_path = root / "labels.csv"
+        records_path = root / "records.jsonl"
+        feature_filter_audit_path = root / "feature_filter_audit.csv"
+        output_dir = root / "out"
+
+        association.to_csv(association_path, index=False)
+        torch.save({"utterance_features": features}, feature_path)
+        labels.to_csv(label_path, index=False)
+        _write_jsonl(records_path, records)
+        pd.DataFrame(
+            [
+                {"latent_idx": 0, "keep": True},
+                {"latent_idx": 1, "keep": True},
+                {"latent_idx": 2, "keep": False},
+            ]
+        ).to_csv(feature_filter_audit_path, index=False)
+
+        try:
+            run_top20_cohensd_latent_utterance_export(
+                association_path=association_path,
+                feature_store_path=feature_path,
+                label_matrix_path=label_path,
+                records_path=records_path,
+                output_dir=output_dir,
+                feature_filter_audit_path=feature_filter_audit_path,
+                labels=("A",),
+                top_features=1,
+                top_utterances=3,
+            )
+        except ValueError as exc:
+            assert "keep=True" in str(exc)
+        else:
+            raise AssertionError("Expected dropped selected latent to be rejected")
+    finally:
+        shutil.rmtree(root, ignore_errors=True)
+
+
 if __name__ == "__main__":
     test_top20_cohensd_selection_and_utterance_export()
+    test_feature_filter_audit_rejects_dropped_selected_latent()
     print("test_top20_cohensd_latent_utterances_smoke passed")

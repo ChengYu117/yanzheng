@@ -156,10 +156,16 @@ def main() -> int:
     )
 
     feature_filter = summary.get("feature_filter", {})
+    row_checks = summary.get("row_count_checks", {})
     print(
         "[done] kept "
         f"{feature_filter.get('n_kept_latents')} / {feature_filter.get('n_original_latents')} "
         "SAE latents"
+    )
+    print(
+        "[done] metric rows "
+        f"{row_checks.get('metric_rows_actual')} / {row_checks.get('metric_rows_expected')} "
+        f"(match={row_checks.get('metric_rows_match')})"
     )
     print(f"[done] outputs: {args.output_dir}")
     return 0
