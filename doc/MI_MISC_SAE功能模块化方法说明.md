@@ -14,9 +14,9 @@
 2. 再判断 SAE 表征在 MI 数据集上是否质量足够、稀疏性是否合理。
 3. 接着过滤掉明显不适合作解释的 latent，形成 filtered 初筛候选池。
 4. 在 filtered 池内重新计算 label-latent 关联指标。
-5. 对这些关联指标做交叉验证审计，检查 Top20 候选可复现性、效应量置信区间和跨质量 split 稳定性。
-6. 分析标签和 latent 之间的统计结构，包括重叠、碎片化和最小预测充分子空间。
-7. 对 top latent 的最高激活语句做功能解释，区分 MI 概念、咨询功能、表层模板和数据 artifact。
+5. 对这些关联指标做交叉验证审计：先用 AUC@K 确定每个标签的候选预算 `K*`，再用 repeated split-half inclusion frequency 和 grouped bootstrap CI 筛出 `stable_core` latent set。
+6. 分析标签和 stable core latent 之间的统计结构，包括重叠、碎片化和最小预测充分子空间。
+7. 以后续默认 latent set，即 `stable_core`，为主对象做 top activation 功能解释，区分 MI 概念、咨询功能、表层模板和数据 artifact。
 
 这条证据链刻意把 decodability、predictive utility、interpretability 和 causality 分开。一个 latent 能预测某个标签，并不等于它就是该标签的临床概念；一个 top activation example 看起来像某种 MI 技术，也不等于模型已经具备因果意义上的咨询理解。
 
@@ -30,9 +30,9 @@
 | SAE 表征质量评估 | SAE 在 MI 数据集上的表示是否可用？ | EV、重构质量、稀疏性、激活分布 |
 | 初筛 latent 池构建 | 哪些 latent 不适合作为解释候选？ | activation rate、dead/rare/always-active、异常激活过滤 |
 | label-latent 关联指标 | 哪些 latent 与哪些标签统计相关？ | AUC、Cohen's d、directional AUC、FDR、Precision@K |
-| label-latent 交叉验证审计 | 上述关联候选是否可复现、是否有置信区间、是否跨质量 split 稳定？ | source-file split-half、Top20 Jaccard、bootstrap CI、cross-quality drop、candidate status |
-| 统计结构与最小充分子空间 | 标签是 compact 还是 distributed？标签之间 latent 如何重叠？ | TopK Jaccard、shared/exclusive、minimal K、fold stability |
-| top latent 功能解释 | 高激活语句体现 MI 概念还是某种模式？ | top utterances、pattern taxonomy、candidate interpretation |
+| label-latent 交叉验证审计 | 上述关联候选是否可复现、是否有置信区间、每个标签应使用多大的候选预算？ | AUC@K、per-label K*、50 次 split-half inclusion frequency、bootstrap CI、stable_core / boundary_candidate |
+| 统计结构与最小充分子空间 | 标签是 compact 还是 distributed？标签之间 stable core latent 如何重叠？ | stable_core overlap、shared/exclusive、minimal K、fold stability |
+| top latent 功能解释 | stable core 的高激活语句体现 MI 概念还是某种模式？ | top utterances、pattern taxonomy、candidate interpretation |
 
 这些模块不是平行关系，而是从粗到细的证据递进：
 
@@ -269,20 +269,21 @@ filtered 初筛池的目的，是在做标签关联分析之前，先去掉明�
 
 ### 7.6 关联指标的交叉验证审计
 
-在 filtered label-latent association matrix 生成之后，当前系统又补充了一组交叉验证实验，用来检查这些 AUC / Cohen's d 候选是否只是全量数据上的一次性点估计。
+在 filtered label-latent association matrix 生成之后，当前系统又补充了一组交叉验证实验，用来形成每标签自适应的稳定 latent set。这一步的目的不是重新解释 latent，而是确定后续分析应该使用哪一批更稳健的统计候选。
 
 这部分实验不重新定义新的语义解释模块，而是作为 label-latent 关联指标模块的稳健性审计。它回答的是：
 
-> 原始 filtered-pool Top latent 候选，在按 `source_file` 分组拆分、bootstrap 重抽样和 high/low quality split 验证后，是否仍然稳定？
+> 对每个 MISC 标签，应使用多大的 TopK 候选预算？在这个预算内，哪些 latent 既反复出现，又有 positive Cohen's d 的 bootstrap CI 支持？
 
-交叉实验分成四个部分：
+交叉实验现在分成五个部分：
 
 | 实验 | 做了什么 | 验证的问题 | 主要输出 |
 |---|---|---|---|
 | E0 分组与去重地基 | 为 6194 条 utterance 建立 `source_file` 和去重文本组映射 | 后续 split / bootstrap 是否能避免重复文本和同源文件相关性 | `outputs/cross_val/dedup_group_mapping.csv` |
-| E1 repeated split-half Top20 复现 | 按 `source_file` 用 50 个随机种子重复二分，每次分别重算 filtered label-latent matrix 和 Top20 | 原始 Top20 是否能在多次独立 grouped split 中重现，是否显著高于随机 overlap | `repeated_split_summary.csv`, `repeated_split_top20_jaccard.csv`, `repeated_split_rank_correlation.csv` |
+| E1 repeated split-half TopK grid | 按 `source_file` 用 50 个随机种子重复二分，每次分别重算 filtered label-latent matrix，并对 `K=1..100` 统计 TopK overlap 和 latent inclusion frequency | 候选 latent 是否在不同随机二分中反复出现，TopK 集合是否稳定 | `repeated_split_topk_grid_summary.csv`, `topk_inclusion_frequency.csv`, `topk_jaccard_vs_k.png` |
 | E2 grouped bootstrap CI | 对每标签 Top100 positive Cohen's d latent 做 `source_file` grouped bootstrap | AUC / Cohen's d 是否有稳定置信区间，而不是只有点估计 | `bootstrap_ci_by_label_latent.csv` |
-| E3 cross-quality validation | high-quality 上选 Top20 去 low-quality 验证，反向也做 | 候选是否只是 high/low 数据质量或来源差异造成的 | `cross_quality_auc_comparison.csv`, `cross_quality_summary.csv` |
+| E3 cross-quality validation | high-quality 上选 Top100 去 low-quality 验证，反向也做 | 候选是否可能受 high/low 数据质量或来源差异影响 | `cross_quality_auc_comparison.csv`, `cross_quality_summary.csv` |
+| E4 stable TopK selection | 先用 AUC@K 找性能平台 `K_auc`，再用 E1 稳定性找 `K_stab`，最终在 full-data TopK* 内筛 `stable_core` 和 `boundary_candidate` | 如何形成每标签的稳定 latent set | `stable_k_by_label.csv`, `stable_topk_latent_set.csv`, `stable_topk_global_union.csv` |
 
 当前交叉实验的主输入固定为 filtered pool：
 
@@ -295,35 +296,61 @@ filtered 初筛池的目的，是在做标签关联分析之前，先去掉明�
 
 - `outputs/cross_val/filtered_pool_association_matrix_with_cv.csv`
 - `outputs/cross_val/cross_val_summary.md`
+- `outputs/misc_full_sae_eval/interpretability/ranked_sae_subspace_probe_k001_100/auc_by_k_curve_0_100.csv`
+- `outputs/cross_val/stable_topk_selection/stable_k_by_label.csv`
+- `outputs/cross_val/stable_topk_selection/stable_topk_latent_set.csv`
+- `outputs/cross_val/stable_topk_selection/stable_topk_analysis_report_20260706.md`
 
-当前结果显示，merged matrix 仍为 `114822` 行，和原始 filtered association matrix 对齐。交叉实验给每个 label-latent pair 增加了 `cv_candidate_status`，主要状态包括：
+当前结果显示，merged matrix 仍为 `114822` 行，和原始 filtered association matrix 对齐。后续主线使用 `stable_core` 作为默认 latent set。
 
-| 状态 | 数量 | 解释 |
-|---|---:|---|
-| `reproducible_candidate` | 199 | CI 支持且跨质量验证较稳定，是当前最强统计候选 |
-| `cross_quality_risk` | 71 | CI 支持，但 high/low quality 迁移存在风险 |
-| `ci_supported_not_cross_quality_tested` | 625 | Top100 内 CI 支持，但未进入 Top20 cross-quality 检验 |
-| `ci_not_available_or_includes_zero` | 113927 | 未做 CI 或 CI 不支持稳定正向效应 |
+`K*` 的确定规则是：
 
-从结果解释上，E1 已从单次 split-half 升级为 50 次 `source_file` grouped split-half。所有标签和两个排序指标的 Top20 Jaccard 在 50 次重复中都显著高于随机 null，因此原始 Top20 不是纯随机噪声。但不同标签稳定性不同：`QU`、`QUO` 的 Top20 集合最稳定；`AF`、`QUC`、`RE`、`REC` 属于中等稳定；`GI`、`RES`、`SU` 在 positive Cohen's d Top20 口径下波动较大。完整排序的 Spearman 稳定性更严格，目前主要由 `QU`、`RE`、`REC` 的 Cohen's d 口径通过，其他标签更适合写作“候选集合可复现”，而不是“完整排序稳定”。
+1. 对每个标签用 positive Cohen's d 排序的 AUC@K 曲线找性能平台 `K_auc`。
+2. 从 `K >= K_auc` 中找满足 repeated split-half 稳定平台的 `K_stab`。
+3. 若有 `K_stab`，则 `K* = K_stab`；若没有，则 `K* = K_auc`，并把标签标记为 `performance_only_unstable`。
+4. 在 full-data TopK* 内筛 latent-level `stable_core` 和 `boundary_candidate`。
 
-E2 表明每标签 Top100 positive Cohen's d 候选中，大多数效应量 CI 不跨 0，因此很多正向候选不是单次点估计偶然偏高。
+当前 `stable_core` 的简化判定规则是：
 
-E3 表明大多数标签可以较好跨 high/low quality split 保持关联，但 `SU` 风险最高，`QUC` 也需要谨慎。`SU` 的 stable fraction 较低，说明支持类行为的候选 latent 更容易受数据质量或来源分布影响。
+- `full_data_rank <= K*`
+- `inclusion_frequency >= 0.70`
+- `cohens_d_ci_lo > 0`
 
-因此，后续使用 label-latent 关联指标时，应优先使用 `reproducible_candidate` 作为强候选，将 `cross_quality_risk` 降级处理，并把 `SU` 相关结论写成探索性候选而不是主结论。
+`boundary_candidate` 的判定规则是：
+
+- `full_data_rank <= K*`
+- `0.40 <= inclusion_frequency < 0.70`
+- `cohens_d_ci_lo > 0`
+
+cross-quality 结果继续保留为风险审计字段，但不再作为进入 `stable_core` 的硬门槛。原因是本项目的后续目标是寻找与 MI code 稳定相关、可进入人工解释的 latent set；因此“反复出现 + positive Cohen's d CI 支持”比“跨质量 split 不掉点”更直接对应当前筛选目的。cross-quality 更适合作为后续解释时的风险提示，而不是第一层候选筛选条件。
+
+当前每标签 `K*` 和 stable set 结果如下：
+
+| label | K_auc | K_stab | K* | status | stable_core | boundary_candidate |
+|---|---:|---:|---:|---|---:|---:|
+| RE | 66 | 66 | 66 | stable_topk_found | 54 | 12 |
+| RES | 45 | - | 45 | performance_only_unstable | 15 | 16 |
+| REC | 56 | 56 | 56 | stable_topk_found | 47 | 9 |
+| QU | 28 | 28 | 28 | stable_topk_found | 26 | 2 |
+| QUO | 36 | 36 | 36 | stable_topk_found | 32 | 4 |
+| QUC | 26 | 59 | 59 | stable_topk_found | 45 | 14 |
+| GI | 72 | - | 72 | performance_only_unstable | 26 | 37 |
+| SU | 60 | - | 60 | performance_only_unstable | 31 | 28 |
+| AF | 33 | 33 | 33 | stable_topk_found | 27 | 6 |
+
+总计得到 303 条 label-latent 层面的 `stable_core`，去重后为 225 个 unique latent。后续 top utterance、P3 解释审计、人工审核、case card 和 ablation 的默认 latent set 应使用 `stable_core`。
 
 这部分能支持：
 
 - 原始 filtered-pool AUC / Cohen's d 结果不是单次快照噪声。
-- 一部分 Top latent 候选可以被标记为更稳健的统计候选。
-- 不同标签的候选稳定性不同，尤其 `SU` 和部分 `QUC` 需要降级。
-- 后续人工审核和 top utterance 解释应优先抽取 `reproducible_candidate`。
+- 每个标签可以得到有证据支持的 `K*` 候选预算。
+- 一部分 latent 可以被标记为 `stable_core`，作为后续默认 latent set。
 
 不能支持：
 
 - 交叉验证通过就说明 latent 是临床概念。
-- Top20 在 split 中重叠就说明精确排名固定。
+- `stable_core` 就是完整 MI 概念本体。
+- `K*` 是因果最小充分集合。
 - bootstrap CI 不跨 0 就说明存在因果机制。
 - cross-quality stable 就可以跳过人工语义审核。
 
@@ -349,27 +376,27 @@ label fragmentation 衡量一个标签的候选表示是否分散。
 
 如果一个标签只需要少数强 latent 就能覆盖主要预测信号，可以称为更 compact。反之，如果一个标签需要很多 latent 才能接近完整候选池表现，则说明它更 distributed。
 
-fragmentation 不只看 top latent 的数量，还要结合：
+fragmentation 不只看 stable core 的数量，还要结合：
 
-- TopK 内 positive/negative latent 的比例。
-- TopK shared/exclusive 比例。
+- stable core 与 boundary candidate 的比例。
+- stable core shared/exclusive 比例。
 - minimal sufficient K。
 - fold stability。
 - redundancy。
 
 ### 8.3 latent overlap
 
-latent overlap 衡量不同标签的 TopK latent 集合是否相交。
+latent overlap 现在优先衡量不同标签的 stable core latent 集合是否相交。
 
-常用方法是对每个标签取 TopK latent，然后计算任意两个标签之间：
+常用方法是对每个标签取 `stable_core`，然后计算任意两个标签之间：
 
 ```text
-intersection = 两个 TopK 集合共同出现的 latent 数
-union = 两个 TopK 集合合并后的 latent 数
+intersection = 两个 stable_core 集合共同出现的 latent 数
+union = 两个 stable_core 集合合并后的 latent 数
 Jaccard = intersection / union
 ```
 
-Jaccard 越高，说明两个标签在 TopK candidate latent 上越相似。
+Jaccard 越高，说明两个标签在稳定统计候选 latent 上越相似。
 
 ### 8.4 父子标签与层级重叠
 
@@ -390,16 +417,16 @@ MISC 标签存在层级结构，例如：
 
 ### 8.5 经常重叠的 latent
 
-经常重叠的 latent 是那些进入多个标签 TopK 的 latent。它们需要进一步区分角色：
+经常重叠的 latent 是那些进入多个标签 stable core 的 latent。它们需要进一步区分角色：
 
 | 角色 | 含义 |
 |---|---|
-| exclusive | 只进入一个标签的 TopK |
+| exclusive | 只进入一个标签的 stable core |
 | family_shared | 在同一标签家族内部共享，例如 `QU` 与 `QUO` |
 | cross_family | 跨不同行为家族共享 |
 | global | 出现在多个家族和多个标签中 |
 
-当前 filtered Top20 结构中，每标签 20 个候选共 180 条 label-latent 边，去重后为 131 个 latent，其中 34 个 latent 进入多个标签 Top20。这说明标签和 latent 之间不是一对一映射，而是多对多结构。
+当前 stable core 结构中，共有 303 条 label-latent 层面的稳定候选边，去重后为 225 个 unique latent。这说明标签和 latent 之间不是一对一映射，而是多对多结构。后续结构分析应以 stable core 为主。
 
 ### 8.6 能支持的结论
 
@@ -413,7 +440,7 @@ MISC 标签存在层级结构，例如：
 不能支持：
 
 - overlap latent 一定表示共同语义。
-- TopK Jaccard 高就说明两个标签临床意义相同。
+- stable core Jaccard 高就说明两个标签临床意义相同。
 - shared latent 就一定比 exclusive latent 更重要。
 
 ## 9. 模块六：最小预测充分子空间
@@ -450,9 +477,9 @@ minimal K 表示在当前候选池和当前阈值下，达到接近 full-candida
 minimal K 不是唯一重要结果。还要看：
 
 - 不同 fold 选出的 latent 是否一致。
-- selected latent 之间是否冗余。
+- selected latent 或 stable core latent 之间是否冗余。
 - full-candidate performance 是否稳定。
-- recoverable 标签是否有非空 selected latent set。
+- recoverable 标签是否有非空 selected latent set；解释审计阶段则优先看 stable core latent set。
 
 如果 minimal K 看起来不大，但不同 fold 选择的 latent 差异很大，说明具体 latent 组合不稳定，结论应该写成“存在一组可预测子空间”，而不是“固定这几个 latent 构成标签机制”。
 
@@ -463,7 +490,7 @@ minimal K 不是唯一重要结果。还要看：
 - 某标签在 filtered SAE latent space 中可预测恢复。
 - 某标签更 compact 或更 distributed。
 - 某标签大概需要多少 latent 才能达到预测充分。
-- selected latent groups 可作为后续干预或人工审查的优先候选。
+- minimal selected latent groups 可作为预测充分性分析的候选；人工审查和解释链路优先使用 stable core latent set。
 
 不能支持：
 
@@ -485,7 +512,7 @@ top latent 功能解释与人工审核模块回答：
 
 ### 10.2 方法设计
 
-对一个 selected latent，从全 MI/MISC 数据集中按 activation 排序，取最高激活的若干 utterances。AI 可以先基于这些语句生成候选解释，但该解释必须进入人工审核流程。
+对一个 stable core latent，从全 MI/MISC 数据集中按 activation 排序，取最高激活的若干 utterances。AI 可以先基于这些语句生成候选解释，但该解释必须进入人工审核流程。
 
 人工审核时不直接问“这个 latent 是不是 QUO/RES/MI 概念”，而是先归类它捕捉的模式：
 
@@ -570,11 +597,11 @@ AI 解释经过人工审核后，建议分成四个证据等级：
 1. 线性探针和选层决定后续使用哪层表征更合理。
 2. SAE 表征质量评估决定 SAE 是否值得做可解释性分析。
 3. 初筛 latent 池决定哪些 latent 进入 filtered-pool 统计。
-4. label-latent 指标提供 TopK 候选和方向性信息。
-5. 交叉验证审计对这些 TopK 候选打上稳定性状态，区分更稳健候选、cross-quality risk 和仅有点估计的候选。
-6. 统计结构分析使用经过 filtered-pool 和交叉验证审计后的 TopK 候选，判断标签是否 distributed、是否重叠。
-7. minimal sufficient subspace 使用候选池，估计每个标签需要多少 latent。
-8. top latent 功能解释优先使用更稳健的统计候选，回到真实 utterance 做模式审查。
+4. label-latent 指标提供 positive Cohen's d 排序、方向性信息和每个 latent 的单变量关联证据。
+5. 交叉验证审计先用 AUC@K 和 split-half 稳定性确定每标签 `K*`，再用 repeated inclusion 和 bootstrap CI 筛出 `stable_core`。
+6. 统计结构分析默认使用 `stable_core`，判断标签是否 distributed、是否重叠，以及哪些 stable core latent 被多个标签共享。
+7. minimal sufficient subspace 使用候选池估计每个标签需要多少 latent，但不替代 `stable_core` 作为解释对象。
+8. top latent 功能解释优先使用 `stable_core`，回到真实 utterance 做模式审查。
 
 如果前面的模块没有固定，后面的解释就容易漂移。例如，如果不先过滤 dead 或 always-active latent，top examples 可能被异常激活误导。如果不先区分父子标签 overlap，`QU-QUO` 的重叠可能被误写成新的跨标签共享结构。
 
@@ -583,10 +610,10 @@ AI 解释经过人工审核后，建议分成四个证据等级：
 当前证据最适合支持以下类型的表述：
 
 - MI/MISC 标签信息可以从 LLM hidden representation 和 SAE latent space 中被预测性读出。
-- filtered SAE latent pool 中存在与 MISC 标签相关的可审查候选特征。
+- filtered SAE latent pool 中存在与 MISC 标签相关、反复出现且 positive Cohen's d CI 支持的 `stable_core` 候选特征。
 - MISC 标签与 SAE latent 呈多对多映射，而不是一标签一 latent。
 - 多数 leaf 标签更像 distributed predictive subspace，需要多个 latent 协同表示。
-- 部分 top latent 的高激活语句呈现稳定的咨询行为模式或 MI 技术模板。
+- 部分 stable core latent 的高激活语句呈现稳定的咨询行为模式或 MI 技术模板。
 - top latent 解释应被视为 candidate interpretation，需要人工审核后才能进入研究结论。
 
 不应表述为：
@@ -620,8 +647,8 @@ AI 解释经过人工审核后，建议分成四个证据等级：
 - dead/rare/always-active/outlier-dominated latent 被过滤。
 - filtered matrix 行数和 keep pool 对齐。
 - AUC、Cohen's d、FDR、Precision@K 等指标重新在 filtered pool 上计算。
-- 已补充交叉验证审计：source-file split-half、grouped bootstrap CI 和 high/low cross-quality validation。
-- association matrix 已合并 `cv_candidate_status`，可区分 `reproducible_candidate`、`cross_quality_risk` 和 CI 不支持或未覆盖的候选。
+- 已补充交叉验证审计：AUC@K 曲线、50 次 source-file split-half TopK grid、grouped bootstrap CI 和 high/low cross-quality validation。
+- 已生成每标签 `K*`、`stable_core`、`boundary_candidate` 和 global union；后续默认 latent set 使用 `stable_core`。
 
 ### 13.3 Stage 3：structure and sufficiency
 
@@ -629,7 +656,7 @@ AI 解释经过人工审核后，建议分成四个证据等级：
 
 通过条件：
 
-- TopK overlap、Jaccard、shared/exclusive role taxonomy 已生成。
+- stable core overlap、Jaccard、shared/exclusive role taxonomy 已生成。
 - 父子标签 overlap 与 cross-family overlap 分开分析。
 - minimal sufficient subspace 给出每个标签的 minimal K、stability 和 redundancy。
 
@@ -639,7 +666,7 @@ AI 解释经过人工审核后，建议分成四个证据等级：
 
 通过条件：
 
-- 每个 selected latent 有 top activation utterances。
+- 每个 stable core latent 有 top activation utterances。
 - AI 候选解释区分 surface_form、dialogue_function、context_relation、mi_principle、artifact、mixed_unclear。
 - 人工审核记录 dominant pattern type、artifact risk、target-label support、adjacent-label confusion、evidence quality 和 final status。
 - 对 RE/RES/REC 明确标注缺少 client context 的限制，并由人工审核决定是否降级。
@@ -665,7 +692,7 @@ AI 解释经过人工审核后，建议分成四个证据等级：
 2. contrastive minimal pairs：构造表层相似但 MI 功能不同的语句，测试 latent 是否只追踪模板。
 3. context-aware RE/REC analysis：加入前一句 client utterance，判断 reflection 是否真正复述或改写 client 内容。
 4. held-out source validation：检查人工采纳的解释是否跨文件、跨质量 split、跨主题稳定。
-5. intervention or steering：对 selected latent 或 latent group 做 ablation、clamping 或 steering，观察下游标签判断是否按预期变化。
+5. intervention or steering：优先对 stable core latent 或 stable core latent group 做 ablation、clamping 或 steering，观察下游标签判断是否按预期变化。
 
 人工审核会把项目从“AI 候选解释”推进到“人工采纳的解释材料”。token attribution、minimal pairs 和 intervention 等扩展验证完成后，才可以进一步讨论更强的解释可靠性或潜在机制证据。在这些验证完成前，论文和报告中应使用候选、关联、可解码、人工审核采纳的模式解释等措辞，避免直接使用因果机制或真实概念表示这样的强表述。
 
@@ -677,8 +704,8 @@ AI 解释经过人工审核后，建议分成四个证据等级：
 2. 用 EV 和稀疏性指标确认 SAE 表征是否可用。
 3. 用 filtered pool 排除明显不适合解释的 latent。
 4. 用 AUC、Cohen's d、directional AUC、FDR 和 Precision@K 建立 label-latent 关联矩阵。
-5. 用 source-file split-half、grouped bootstrap CI 和 cross-quality validation 审计关联候选是否可复现、效应量是否稳定、是否存在质量来源混淆。
-6. 用 overlap、fragmentation 和 minimal sufficient subspace 判断标签在 SAE 空间中的统计结构。
-7. 用 top activation utterances 生成 AI 候选解释，并通过人工审核区分 MI 概念、咨询功能、表层模板和 artifact。
+5. 用 AUC@K、50 次 source-file split-half、grouped bootstrap CI 和 cross-quality validation 审计关联候选，并筛出后续默认使用的 `stable_core` latent set。
+6. 用 stable core overlap、fragmentation 和 minimal sufficient subspace 判断标签在 SAE 空间中的统计结构。
+7. 以 `stable_core` 为主对象生成 top activation 候选解释，并通过人工审核区分 MI 概念、咨询功能、表层模板和 artifact。
 
 这套设计的优势是层次清楚、证据边界明确。它能支持“MI/MISC 标签在 SAE 空间中有可预测、可审查、分布式的候选表征结构”，但不会过度声称“已经证明模型内部存在清晰因果 MI 概念机制”。

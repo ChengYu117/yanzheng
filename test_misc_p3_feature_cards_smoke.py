@@ -320,6 +320,155 @@ def test_misc_p3_feature_cards() -> None:
         shutil.rmtree(root, ignore_errors=True)
 
 
+def test_misc_p3_feature_cards_stable_core_input() -> None:
+    root = (Path.cwd() / "outputs" / "_smoke_misc_p3_feature_cards_stable_core").resolve()
+    cwd = Path.cwd().resolve()
+    if cwd not in root.parents:
+        raise RuntimeError(f"Refusing to use smoke output outside repo: {root}")
+    if root.exists():
+        shutil.rmtree(root)
+    root.mkdir(parents=True, exist_ok=True)
+
+    try:
+        labels = ("QUO", "QUC", "QU")
+        texts = [
+            "What would help next?",
+            "How would you like to proceed?",
+            "Do you want to talk about it?",
+            "Can you describe the hard part?",
+            "plain non question statement",
+            "another low activation statement",
+        ]
+        label_values = [
+            {"QUO": 1, "QUC": 0, "QU": 1},
+            {"QUO": 1, "QUC": 0, "QU": 1},
+            {"QUO": 0, "QUC": 1, "QU": 1},
+            {"QUO": 0, "QUC": 1, "QU": 1},
+            {"QUO": 0, "QUC": 0, "QU": 0},
+            {"QUO": 0, "QUC": 0, "QU": 0},
+        ]
+        records = []
+        rows = []
+        for idx, text in enumerate(texts):
+            row = {
+                "row_idx": idx,
+                "record_id": f"s{idx}",
+                "unit_text": text,
+                **label_values[idx],
+            }
+            records.append(dict(row))
+            rows.append(row)
+
+        features = np.asarray(
+            [
+                [5.0, 0.0],
+                [4.0, 0.1],
+                [3.0, 9.0],
+                [2.0, 8.0],
+                [0.1, 0.2],
+                [0.0, 0.0],
+            ],
+            dtype=np.float32,
+        )
+        latents = pd.DataFrame(
+            [
+                {
+                    "label": "QUO",
+                    "latent_idx": 0,
+                    "full_data_rank": 1,
+                    "rank_within_label": 1,
+                    "cohens_d": 1.1,
+                    "directional_auc": 0.82,
+                    "precision_at_50": 0.5,
+                    "inclusion_frequency": 0.95,
+                    "cohens_d_ci_lo": 0.4,
+                    "cohens_d_ci_hi": 1.7,
+                    "top_k_star": 3,
+                    "stable_set_role": "stable_core",
+                },
+                {
+                    "label": "QUO",
+                    "latent_idx": 1,
+                    "full_data_rank": 2,
+                    "rank_within_label": 2,
+                    "cohens_d": 0.8,
+                    "directional_auc": 0.75,
+                    "precision_at_50": 0.4,
+                    "inclusion_frequency": 0.5,
+                    "cohens_d_ci_lo": 0.2,
+                    "cohens_d_ci_hi": 1.2,
+                    "top_k_star": 3,
+                    "stable_set_role": "boundary_candidate",
+                },
+                {
+                    "label": "QUC",
+                    "latent_idx": 1,
+                    "full_data_rank": 1,
+                    "rank_within_label": 1,
+                    "cohens_d": 1.3,
+                    "directional_auc": 0.88,
+                    "precision_at_50": 0.6,
+                    "inclusion_frequency": 1.0,
+                    "cohens_d_ci_lo": 0.5,
+                    "cohens_d_ci_hi": 1.8,
+                    "top_k_star": 2,
+                    "stable_set_role": "stable_core",
+                },
+            ]
+        )
+
+        latents_path = root / "stable_latents.csv"
+        features_path = root / "features.npy"
+        labels_path = root / "labels.csv"
+        records_path = root / "records.jsonl"
+        out_dir = root / "out"
+
+        latents.to_csv(latents_path, index=False)
+        np.save(features_path, features)
+        pd.DataFrame(rows).to_csv(labels_path, index=False)
+        _write_jsonl(records_path, records)
+
+        manifest = run_p3_feature_card_export(
+            latents_path=latents_path,
+            packets_path="",
+            feature_store_path=features_path,
+            label_matrix_path=labels_path,
+            records_path=records_path,
+            layer_selection_path=root / "missing_layer_selection.csv",
+            output_dir=out_dir,
+            labels=labels,
+            top_features=None,
+            stable_role="stable_core",
+            candidate_source="stable_core",
+            top_activating=2,
+            high_non_target=1,
+            random_target=1,
+            sibling_contrast=1,
+            surface_contrast=1,
+            low_activation=1,
+            prompt_examples_per_group=1,
+            scoring_heldout_start=1,
+            scoring_examples_per_class=1,
+        )
+
+        assert manifest["candidate_source"] == "stable_core"
+        assert manifest["inputs"]["packets"] == ""
+        assert manifest["n_cards"] == 2
+        assert manifest["n_expected_cards"] == 2
+        assert manifest["n_fallback_packets"] == 2
+
+        summary = pd.read_csv(out_dir / "p3_feature_card_summary.csv")
+        assert set(summary["target_label"]) == {"QUO", "QUC"}
+        assert set(summary["latent_idx"]) == {0, 1}
+        assert "boundary_candidate" not in set(summary.get("stable_set_role", []))
+        assert summary["source_packet_status"].eq("fallback_generated_from_feature_store").all()
+        assert summary["cohens_d_ci_lo"].notna().all()
+        assert summary["inclusion_frequency"].min() >= 0.95
+    finally:
+        shutil.rmtree(root, ignore_errors=True)
+
+
 if __name__ == "__main__":
     test_misc_p3_feature_cards()
+    test_misc_p3_feature_cards_stable_core_input()
     print("test_misc_p3_feature_cards_smoke passed")

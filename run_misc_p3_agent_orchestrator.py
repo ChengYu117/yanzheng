@@ -50,7 +50,8 @@ from collections import defaultdict
 # Constants
 # ============================================================
 
-BASE_DIR = pathlib.Path("outputs/misc_full_sae_eval/interpretability/p3_feature_cards")
+DEFAULT_BASE_DIR = pathlib.Path("outputs/misc_full_sae_eval/interpretability/p3_feature_cards_stable_core")
+BASE_DIR = DEFAULT_BASE_DIR
 BATCH_DIR = BASE_DIR / "agent_batches"
 PROGRESS_JSON = BASE_DIR / "p3_agent_batch_progress.json"
 VALIDATION_JSON = BASE_DIR / "p3_agent_validation.json"
@@ -87,6 +88,50 @@ FINAL_MD = FINAL_DIR / "p3_final_feature_cards.md"
 LABEL_SUMMARY = FINAL_DIR / "p3_label_summary.csv"
 CLUSTER_SEED = FINAL_DIR / "p3_concept_cluster_seed_table.csv"
 MANIFEST_D = FINAL_DIR / "manifest.json"
+
+
+def configure_paths(base_dir):
+    """Configure all P3 artifact paths for the selected feature-card directory."""
+    global BASE_DIR, BATCH_DIR, PROGRESS_JSON, VALIDATION_JSON
+    global PROMPTS_DIR, REVIEWS_DIR, RAW_RESP_A_DIR, EXPLANATIONS_JSONL, EXPLANATIONS_CSV
+    global FAILED_A_JSONL, MANIFEST_A, SCORING_DIR, RAW_RESP_B_DIR, SCORING_TASKS_JSONL
+    global PREDICTIONS_JSONL, METRICS_BY_LATENT, METRICS_BY_LABEL, METRICS_OVERALL, MANIFEST_B
+    global MANUAL_DIR, REVIEW_TEMPLATE, FINAL_DIR, CARDS_JSONL, FINAL_JSONL, FINAL_CSV
+    global FINAL_MD, LABEL_SUMMARY, CLUSTER_SEED, MANIFEST_D
+
+    BASE_DIR = pathlib.Path(base_dir)
+    BATCH_DIR = BASE_DIR / "agent_batches"
+    PROGRESS_JSON = BASE_DIR / "p3_agent_batch_progress.json"
+    VALIDATION_JSON = BASE_DIR / "p3_agent_validation.json"
+
+    PROMPTS_DIR = BASE_DIR / "p3_input_explanation_prompts"
+    REVIEWS_DIR = BASE_DIR / "ai_reviews"
+    RAW_RESP_A_DIR = REVIEWS_DIR / "raw_responses"
+    EXPLANATIONS_JSONL = REVIEWS_DIR / "p3_input_explanations.jsonl"
+    EXPLANATIONS_CSV = REVIEWS_DIR / "p3_input_explanations.csv"
+    FAILED_A_JSONL = REVIEWS_DIR / "failed_responses.jsonl"
+    MANIFEST_A = REVIEWS_DIR / "manifest.json"
+
+    SCORING_DIR = BASE_DIR / "ai_scoring"
+    RAW_RESP_B_DIR = SCORING_DIR / "raw_responses"
+    SCORING_TASKS_JSONL = BASE_DIR / "p3_scoring_tasks.jsonl"
+    PREDICTIONS_JSONL = SCORING_DIR / "p3_scoring_predictions.jsonl"
+    METRICS_BY_LATENT = SCORING_DIR / "p3_scoring_metrics_by_latent.csv"
+    METRICS_BY_LABEL = SCORING_DIR / "p3_scoring_metrics_by_label.csv"
+    METRICS_OVERALL = SCORING_DIR / "p3_scoring_metrics_overall.json"
+    MANIFEST_B = SCORING_DIR / "manifest.json"
+
+    MANUAL_DIR = BASE_DIR / "manual_review"
+    REVIEW_TEMPLATE = MANUAL_DIR / "p3_mi_coder_review_template.csv"
+
+    FINAL_DIR = BASE_DIR / "final_cards"
+    CARDS_JSONL = BASE_DIR / "p3_feature_card_packets.jsonl"
+    FINAL_JSONL = FINAL_DIR / "p3_final_feature_cards.jsonl"
+    FINAL_CSV = FINAL_DIR / "p3_final_feature_cards.csv"
+    FINAL_MD = FINAL_DIR / "p3_final_feature_cards.md"
+    LABEL_SUMMARY = FINAL_DIR / "p3_label_summary.csv"
+    CLUSTER_SEED = FINAL_DIR / "p3_concept_cluster_seed_table.csv"
+    MANIFEST_D = FINAL_DIR / "manifest.json"
 
 
 # ============================================================
@@ -185,6 +230,25 @@ def count_csv_rows(path):
         return 0
     with open(path, "r", encoding="utf-8") as f:
         return max(sum(1 for _ in f) - 1, 0)
+
+
+def expected_artifact_counts():
+    """Derive validation expectations from the current P3 feature-card inputs."""
+    cards = load_jsonl(CARDS_JSONL)
+    scoring_tasks = load_jsonl(SCORING_TASKS_JSONL)
+    return {
+        "cards": len(cards),
+        "prompts": len(get_prompt_files()),
+        "expected_predictions": sum(len(t.get("examples", [])) for t in scoring_tasks),
+        "metrics_by_latent_rows": len(
+            {
+                (t.get("packet_id", ""), t.get("task_type", ""))
+                for t in scoring_tasks
+                if t.get("packet_id") and t.get("task_type")
+            }
+        ),
+        "metrics_by_label_rows": len({card.get("target_label", "") for card in cards if card.get("target_label")}),
+    }
 
 
 def parse_labels_arg(value):
@@ -1412,6 +1476,7 @@ def cmd_status(args):
 def cmd_validate(args):
     """Validate the full P3 agent pipeline against expected artifact counts."""
     progress = collect_progress()
+    expected = expected_artifact_counts()
     checks = []
 
     def add_check(name, passed, expected, observed, path=""):
@@ -1434,57 +1499,60 @@ def cmd_validate(args):
 
     add_check(
         "task_a_explanations_count",
-        progress["task_a"]["explanations"] == progress["task_a"]["prompts"] == 180,
-        "180 explanations for 180 prompts",
+        expected["prompts"] > 0 and progress["task_a"]["explanations"] == progress["task_a"]["prompts"] == expected["prompts"],
+        f"{expected['prompts']} explanations for {expected['prompts']} prompts",
         f"{progress['task_a']['explanations']} / {progress['task_a']['prompts']}",
         EXPLANATIONS_JSONL,
     )
     add_check(
         "task_a_parse_ok_count",
-        progress["task_a"]["parse_ok"] == progress["task_a"]["prompts"] == 180,
-        "180 parse_status=ok explanations",
+        expected["prompts"] > 0 and progress["task_a"]["parse_ok"] == progress["task_a"]["prompts"] == expected["prompts"],
+        f"{expected['prompts']} parse_status=ok explanations",
         progress["task_a"]["parse_ok"],
         EXPLANATIONS_JSONL,
     )
     add_check(
         "task_b_prediction_count",
-        progress["task_b"]["predictions"] == progress["task_b"]["expected_predictions"] == 5280,
-        "5280 predictions for all scoring examples",
+        expected["expected_predictions"] > 0
+        and progress["task_b"]["predictions"] == progress["task_b"]["expected_predictions"] == expected["expected_predictions"],
+        f"{expected['expected_predictions']} predictions for all scoring examples",
         f"{progress['task_b']['predictions']} / {progress['task_b']['expected_predictions']}",
         PREDICTIONS_JSONL,
     )
     add_check(
         "task_b_prediction_schema",
-        pred_fields_ok and len(predictions) == 5280,
-        "All 5280 predictions have correct schema fields",
+        expected["expected_predictions"] > 0 and pred_fields_ok and len(predictions) == expected["expected_predictions"],
+        f"All {expected['expected_predictions']} predictions have correct schema fields",
         f"Passed: {len(predictions) - bad_pred_count} / {len(predictions)}",
         PREDICTIONS_JSONL,
     )
     add_check(
         "task_b_metrics_by_latent",
-        progress["task_b"]["metrics_by_latent_rows"] == 360,
-        "360 rows, one per latent x task_type",
+        expected["metrics_by_latent_rows"] > 0
+        and progress["task_b"]["metrics_by_latent_rows"] == expected["metrics_by_latent_rows"],
+        f"{expected['metrics_by_latent_rows']} rows, one per latent x task_type",
         progress["task_b"]["metrics_by_latent_rows"],
         METRICS_BY_LATENT,
     )
     add_check(
         "task_b_metrics_by_label",
-        progress["task_b"]["metrics_by_label_rows"] == 9,
-        "9 label-level rows",
+        expected["metrics_by_label_rows"] > 0
+        and progress["task_b"]["metrics_by_label_rows"] == expected["metrics_by_label_rows"],
+        f"{expected['metrics_by_label_rows']} label-level rows",
         progress["task_b"]["metrics_by_label_rows"],
         METRICS_BY_LABEL,
     )
     add_check(
         "task_c_manual_review_template",
-        progress["task_c"]["manual_review_template_rows"] == 180,
-        "180 manual review template rows",
+        expected["cards"] > 0 and progress["task_c"]["manual_review_template_rows"] == expected["cards"],
+        f"{expected['cards']} manual review template rows",
         progress["task_c"]["manual_review_template_rows"],
         REVIEW_TEMPLATE,
     )
     add_check(
         "task_d_final_cards",
-        progress["task_d"]["final_cards"] == 180 and progress["task_d"]["markdown_exists"],
-        "180 final cards plus markdown report",
+        expected["cards"] > 0 and progress["task_d"]["final_cards"] == expected["cards"] and progress["task_d"]["markdown_exists"],
+        f"{expected['cards']} final cards plus markdown report",
         f"{progress['task_d']['final_cards']} cards, md={progress['task_d']['markdown_exists']}",
         FINAL_JSONL,
     )
@@ -1494,6 +1562,7 @@ def cmd_validate(args):
         "all_passed": all(check["passed"] for check in checks),
         "checks": checks,
         "progress": progress,
+        "expected": expected,
     }
     save_json(validation, VALIDATION_JSON)
     write_progress_snapshot("validated full p3 agent pipeline")
@@ -1687,6 +1756,11 @@ Examples:
   python run_misc_p3_agent_orchestrator.py validate
         """,
     )
+    parser.add_argument(
+        "--base-dir",
+        default=str(DEFAULT_BASE_DIR),
+        help="P3 feature-card artifact directory. Defaults to the stable_core P3 output.",
+    )
     sub = parser.add_subparsers(dest="command")
 
     sub.add_parser("status", help="Show overall progress").set_defaults(func=cmd_status)
@@ -1771,6 +1845,7 @@ Examples:
     sd.add_parser("run", help="Generate final cards").set_defaults(func=cmd_task_d_run)
 
     args = parser.parse_args()
+    configure_paths(args.base_dir)
 
     if not args.command:
         parser.print_help()

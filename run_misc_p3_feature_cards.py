@@ -1,9 +1,9 @@
 """Generate P3 dry-run SAE feature cards for MISC latent interpretation.
 
-This is a descriptive, read-only analysis export. It consumes the existing
-Top20 positive Cohen's d latent packets and adds contrast examples, dry-run
-LLM prompts, and scoring task sets. It does not call an LLM and does not claim
-causal mechanism evidence.
+This is a descriptive, read-only analysis export. It consumes the current
+stable-core latent set, optionally reuses existing evidence packets, and adds
+contrast examples, dry-run LLM prompts, and scoring task sets. It does not call
+an LLM and does not claim causal mechanism evidence.
 """
 
 from __future__ import annotations
@@ -22,15 +22,14 @@ import pandas as pd
 
 
 DEFAULT_LABELS = ("RE", "RES", "REC", "QU", "QUO", "QUC", "GI", "SU", "AF")
-DEFAULT_INPUT_DIR = (
-    "outputs/misc_full_sae_eval/interpretability/top20_cohensd_latent_utterances"
-)
+DEFAULT_STABLE_SELECTION_DIR = "outputs/cross_val/stable_topk_selection"
 DEFAULT_EVIDENCE_DIR = (
     "outputs/misc_full_sae_eval/interpretability/top20_cohensd_latent_utterances/"
     "latent_evidence_packets"
 )
-DEFAULT_OUTPUT_DIR = "outputs/misc_full_sae_eval/interpretability/p3_feature_cards"
-P3_VERSION = "misc_p3_feature_cards_v1"
+DEFAULT_OUTPUT_DIR = "outputs/misc_full_sae_eval/interpretability/p3_feature_cards_stable_core"
+DEFAULT_CANDIDATE_SOURCE = "stable_core"
+P3_VERSION = "misc_p3_feature_cards_v2_stable_core"
 CONTEXT_LIMITATION = (
     "Only counselor current utterance is available; prior client context is unavailable. "
     "RES/REC/RE context-relation claims must be treated as limited."
@@ -292,8 +291,12 @@ def _dedupe_examples(examples: list[dict[str, Any]]) -> list[dict[str, Any]]:
     return out
 
 
-def _load_packets(path: Path) -> dict[tuple[str, int, int], dict[str, Any]]:
+def _load_packets(path: Path | None) -> dict[tuple[str, int, int], dict[str, Any]]:
     packets: dict[tuple[str, int, int], dict[str, Any]] = {}
+    if path is None or not str(path):
+        return packets
+    if not path.exists():
+        return packets
     for packet in _read_jsonl(path):
         key = (
             str(packet.get("target_label", "")).upper(),
@@ -304,23 +307,47 @@ def _load_packets(path: Path) -> dict[tuple[str, int, int], dict[str, Any]]:
     return packets
 
 
-def _normalise_latents(latents: pd.DataFrame, labels: tuple[str, ...], top_features: int | None) -> pd.DataFrame:
+def _normalise_latents(
+    latents: pd.DataFrame,
+    labels: tuple[str, ...],
+    top_features: int | None,
+    stable_role: str | None = DEFAULT_CANDIDATE_SOURCE,
+) -> pd.DataFrame:
     label_col = "target_label" if "target_label" in latents.columns else "label"
-    required = {label_col, "latent_idx", "rank_within_label"}
+    required = {label_col, "latent_idx"}
     missing = sorted(required.difference(latents.columns))
     if missing:
         raise ValueError(f"Latents table missing columns: {missing}")
     out = latents.copy()
     out["target_label"] = out[label_col].astype(str).str.upper()
+    if stable_role and stable_role.lower() not in {"all", "*"} and "stable_set_role" in out.columns:
+        out = out[out["stable_set_role"].astype(str).str.lower() == stable_role.lower()].copy()
     out["latent_idx"] = pd.to_numeric(out["latent_idx"], errors="coerce").fillna(-1).astype(int)
-    out["rank_within_label"] = pd.to_numeric(out["rank_within_label"], errors="coerce").fillna(-1).astype(int)
-    for col in ("cohens_d", "directional_auc", "precision_at_50"):
+    if "rank_within_label" in out.columns:
+        out["rank_within_label"] = pd.to_numeric(out["rank_within_label"], errors="coerce").fillna(-1).astype(int)
+    elif "full_data_rank" in out.columns:
+        out["rank_within_label"] = pd.to_numeric(out["full_data_rank"], errors="coerce").fillna(-1).astype(int)
+    else:
+        out["_tmp_order"] = np.arange(len(out))
+        out = out.sort_values(["target_label", "_tmp_order"], kind="mergesort")
+        out["rank_within_label"] = out.groupby("target_label").cumcount() + 1
+        out = out.drop(columns=["_tmp_order"])
+    for col in (
+        "cohens_d",
+        "directional_auc",
+        "precision_at_50",
+        "full_data_rank",
+        "inclusion_frequency",
+        "cohens_d_ci_lo",
+        "cohens_d_ci_hi",
+        "top_k_star",
+    ):
         if col not in out.columns:
             out[col] = np.nan
         out[col] = pd.to_numeric(out[col], errors="coerce")
     label_order = {label: idx for idx, label in enumerate(labels)}
     out = out[out["target_label"].isin(label_order)].copy()
-    if top_features is not None:
+    if top_features is not None and int(top_features) > 0:
         out = out[out["rank_within_label"] <= int(top_features)].copy()
     out["_label_order"] = out["target_label"].map(label_order)
     out = out.sort_values(["_label_order", "rank_within_label", "latent_idx"], kind="mergesort")
@@ -462,6 +489,12 @@ def _synthesise_source_packet(
         "cohens_d": latent_row.get("cohens_d"),
         "directional_auc": latent_row.get("directional_auc"),
         "precision_at_50": latent_row.get("precision_at_50"),
+        "full_data_rank": latent_row.get("full_data_rank"),
+        "inclusion_frequency": latent_row.get("inclusion_frequency"),
+        "cohens_d_ci_lo": latent_row.get("cohens_d_ci_lo"),
+        "cohens_d_ci_hi": latent_row.get("cohens_d_ci_hi"),
+        "top_k_star": latent_row.get("top_k_star"),
+        "stable_set_role": latent_row.get("stable_set_role", ""),
         "evidence_source": "p3_generated_from_feature_store",
         "summary": _source_packet_summary(examples),
         "examples": examples,
@@ -867,6 +900,12 @@ def _build_card(
             "cohens_d": latent_row.get("cohens_d"),
             "directional_auc": latent_row.get("directional_auc"),
             "precision_at_50": latent_row.get("precision_at_50"),
+            "full_data_rank": latent_row.get("full_data_rank"),
+            "inclusion_frequency": latent_row.get("inclusion_frequency"),
+            "cohens_d_ci_lo": latent_row.get("cohens_d_ci_lo"),
+            "cohens_d_ci_hi": latent_row.get("cohens_d_ci_hi"),
+            "top_k_star": latent_row.get("top_k_star"),
+            "stable_set_role": latent_row.get("stable_set_role", ""),
         },
         "layer_metadata": _layer_metadata(layer_selection, target_label),
         "dry_run_explanation_slots": {
@@ -928,7 +967,7 @@ def build_p3_feature_cards(
                 "target_label": target_label,
                 "latent_idx": latent_idx,
                 "rank_within_label": rank,
-                "reason": "phase1_packet_key_not_found",
+                "reason": "source_packet_missing_generated_from_feature_store",
             }
             try:
                 packet = _synthesise_source_packet(
@@ -996,6 +1035,12 @@ def _summary_dataframe(cards: list[dict[str, Any]]) -> pd.DataFrame:
             "cohens_d": card["association_metrics"].get("cohens_d"),
             "directional_auc": card["association_metrics"].get("directional_auc"),
             "precision_at_50": card["association_metrics"].get("precision_at_50"),
+            "full_data_rank": card["association_metrics"].get("full_data_rank"),
+            "inclusion_frequency": card["association_metrics"].get("inclusion_frequency"),
+            "cohens_d_ci_lo": card["association_metrics"].get("cohens_d_ci_lo"),
+            "cohens_d_ci_hi": card["association_metrics"].get("cohens_d_ci_hi"),
+            "top_k_star": card["association_metrics"].get("top_k_star"),
+            "stable_set_role": card["association_metrics"].get("stable_set_role"),
             "source_packet_status": card.get("source_packet_status"),
             "sae_canonical_layer": card["layer_metadata"].get("sae_canonical_layer"),
             "llama_label_specific_best_layer": card["layer_metadata"].get("llama_label_specific_best_layer"),
@@ -1037,7 +1082,12 @@ def _write_prompts(
     return prompt_manifest
 
 
-def _write_markdown_report(path: Path, cards: list[dict[str, Any]], summary_df: pd.DataFrame) -> None:
+def _write_markdown_report(
+    path: Path,
+    cards: list[dict[str, Any]],
+    summary_df: pd.DataFrame,
+    candidate_source: str,
+) -> None:
     lines: list[str] = [
         "# P3 SAE Feature Cards Dry-Run Report",
         "",
@@ -1045,7 +1095,7 @@ def _write_markdown_report(path: Path, cards: list[dict[str, Any]], summary_df: 
         "",
         "## Method Boundary",
         "",
-        "- Candidate features are Top20 positive Cohen's d SAE latents per core MISC label.",
+        f"- Candidate features are `{candidate_source}` SAE latents selected after cross-validation.",
         "- SAE canonical layer remains Llama layer 19 (`blocks.19.hook_resid_post`).",
         "- Llama cross-layer probe results are included only as label-level localization metadata.",
         "- Only counselor current utterance is available; prior client context is unavailable.",
@@ -1075,16 +1125,18 @@ def _write_markdown_report(path: Path, cards: list[dict[str, Any]], summary_df: 
             [
                 f"### {label}",
                 "",
-                "| rank | latent | Cohen's d | dir. AUC | P@50 | evidence source | Llama best | early stable | prompts/scoring |",
-                "|---:|---:|---:|---:|---:|---|---:|---:|---|",
+                "| rank | latent | Cohen's d | d CI lo | inclusion | dir. AUC | P@50 | evidence source | Llama best | early stable | prompts/scoring |",
+                "|---:|---:|---:|---:|---:|---:|---:|---|---:|---:|---|",
             ]
         )
         for _, row in group.sort_values("rank_within_label").iterrows():
             lines.append(
-                "| {rank} | {latent} | {d} | {auc} | {p50} | {source} | {best} | {early} | pending |".format(
+                "| {rank} | {latent} | {d} | {ci_lo} | {freq} | {auc} | {p50} | {source} | {best} | {early} | pending |".format(
                     rank=int(row["rank_within_label"]),
                     latent=int(row["latent_idx"]),
                     d=_fmt_float(row["cohens_d"]),
+                    ci_lo=_fmt_float(row.get("cohens_d_ci_lo")),
+                    freq=_fmt_float(row.get("inclusion_frequency"), 3),
                     auc=_fmt_float(row["directional_auc"]),
                     p50=_fmt_float(row["precision_at_50"]),
                     source=row.get("source_packet_status", "NA"),
@@ -1100,14 +1152,16 @@ def _write_markdown_report(path: Path, cards: list[dict[str, Any]], summary_df: 
 def run_p3_feature_card_export(
     *,
     latents_path: str | Path,
-    packets_path: str | Path,
+    packets_path: str | Path | None,
     feature_store_path: str | Path,
     label_matrix_path: str | Path,
     records_path: str | Path,
     layer_selection_path: str | Path,
     output_dir: str | Path,
     labels: tuple[str, ...] = DEFAULT_LABELS,
-    top_features: int | None = 20,
+    top_features: int | None = None,
+    stable_role: str | None = DEFAULT_CANDIDATE_SOURCE,
+    candidate_source: str = DEFAULT_CANDIDATE_SOURCE,
     top_activating: int = 20,
     high_non_target: int = 10,
     random_target: int = 10,
@@ -1122,8 +1176,10 @@ def run_p3_feature_card_export(
     output_path.mkdir(parents=True, exist_ok=True)
 
     label_tuple = tuple(label.upper() for label in labels)
-    latents = _normalise_latents(pd.read_csv(latents_path), label_tuple, top_features)
-    packets = _load_packets(Path(packets_path))
+    effective_top_features = None if top_features is None or int(top_features) <= 0 else int(top_features)
+    latents = _normalise_latents(pd.read_csv(latents_path), label_tuple, effective_top_features, stable_role)
+    packet_path = None if packets_path is None or str(packets_path).strip() == "" else Path(packets_path)
+    packets = _load_packets(packet_path)
     features = _load_feature_matrix(Path(feature_store_path))
     label_matrix = pd.read_csv(label_matrix_path)
     records = _read_jsonl(Path(records_path))
@@ -1175,7 +1231,7 @@ def run_p3_feature_card_export(
         prompts_dir=paths["prompts_dir"],
         prompt_examples_per_group=prompt_examples_per_group,
     )
-    _write_markdown_report(paths["report_md"], cards, summary_df)
+    _write_markdown_report(paths["report_md"], cards, summary_df, candidate_source)
 
     scarcity_counts: dict[str, int] = defaultdict(int)
     for card in cards:
@@ -1187,11 +1243,11 @@ def run_p3_feature_card_export(
         "analysis": P3_VERSION,
         "dry_run": True,
         "labels": list(label_tuple),
-        "candidate_source": "top20_positive_cohens_d_latents",
+        "candidate_source": candidate_source,
         "context_limitation": CONTEXT_LIMITATION,
         "inputs": {
             "latents": str(latents_path),
-            "packets": str(packets_path),
+            "packets": str(packets_path) if packets_path is not None else "",
             "feature_store": str(feature_store_path),
             "label_matrix": str(label_matrix_path),
             "records": str(records_path),
@@ -1209,7 +1265,8 @@ def run_p3_feature_card_export(
         "n_prompts": int(len(prompt_manifest)),
         "scarcity_counts": dict(scarcity_counts),
         "parameters": {
-            "top_features": top_features,
+            "top_features": effective_top_features,
+            "stable_role": stable_role,
             "top_activating": top_activating,
             "high_non_target": high_non_target,
             "random_target": random_target,
@@ -1232,11 +1289,15 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--latents",
-        default=f"{DEFAULT_INPUT_DIR}/top20_cohensd_latents_by_label.csv",
+        default=f"{DEFAULT_STABLE_SELECTION_DIR}/stable_topk_latent_set.csv",
     )
     parser.add_argument(
         "--packets",
-        default=f"{DEFAULT_EVIDENCE_DIR}/latent_evidence_packets_labeled.jsonl",
+        default="",
+        help=(
+            "Optional legacy evidence packet JSONL. Leave empty to generate P3 source "
+            f"packets from the feature store. Legacy default was {DEFAULT_EVIDENCE_DIR}/latent_evidence_packets_labeled.jsonl"
+        ),
     )
     parser.add_argument(
         "--feature-store",
@@ -1250,7 +1311,18 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--output-dir", default=DEFAULT_OUTPUT_DIR)
     parser.add_argument("--labels", nargs="+", default=list(DEFAULT_LABELS))
-    parser.add_argument("--top-features", type=int, default=20)
+    parser.add_argument(
+        "--top-features",
+        type=int,
+        default=0,
+        help="Per-label rank cap. Use 0 for no extra cap beyond the stable-core input.",
+    )
+    parser.add_argument(
+        "--stable-role",
+        default=DEFAULT_CANDIDATE_SOURCE,
+        help="Filter stable_set_role when present; use 'all' to disable.",
+    )
+    parser.add_argument("--candidate-source", default=DEFAULT_CANDIDATE_SOURCE)
     parser.add_argument("--top-activating", type=int, default=20)
     parser.add_argument("--high-non-target", type=int, default=10)
     parser.add_argument("--random-target", type=int, default=10)
@@ -1275,6 +1347,8 @@ def main() -> int:
         output_dir=args.output_dir,
         labels=tuple(args.labels),
         top_features=args.top_features,
+        stable_role=args.stable_role,
+        candidate_source=args.candidate_source,
         top_activating=args.top_activating,
         high_non_target=args.high_non_target,
         random_target=args.random_target,

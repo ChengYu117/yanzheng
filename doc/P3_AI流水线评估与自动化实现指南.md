@@ -20,31 +20,42 @@ LLM 内部 SAE features 是否捕捉到了 MISC 咨询师行为标签相关的�
 当前 P3 的位置：
 
 ```text
-P2: top-latent / representation probe 已筛出候选 SAE latents
+P2: stable_core selection 已筛出候选 SAE latents
 P3: 自动解释 + 评估 + 人工审核 feature cards
 P4: feature clustering
 P5: causal ablation / steering
 ```
 
-当前已经存在三类 P3 材料：
+当前已经存在旧 P3 快照，同时新的默认 P3 输入已更新为 stable core：
 
 ```text
-1. dry-run feature card 材料：
+1. 新默认候选输入：
+   stable_core SAE latents
+   → 来自 outputs/cross_val/stable_topk_selection/stable_topk_latent_set.csv
+   → 303 label-latent stable_core rows / 225 unique latent ids
+
+2. 旧 dry-run feature card 材料：
    Top20 positive Cohen's d SAE latents
    → MaxAct / contrast / low-activation examples
    → input-centric explanation prompts
    → scoring task sets
    → feature card packets
 
-2. IDE AI agent 下游草稿产物：
+3. IDE AI agent 下游草稿产物：
    input-centric explanations
    → scoring predictions / metrics
    → MI coder manual review template
    → draft final feature cards
 
-3. 分批执行脚本：
+4. 分批执行脚本：
    run_misc_p3_agent_orchestrator.py
    用于把 Task A/B 拆成小批次，让当前 AI 持续读取、生成、合并和校验。
+```
+
+重要更新：后续新一轮 P3 不应继续以旧 Top20 表作为默认输入，而应以 `stable_core` 为默认 latent set。为避免覆盖历史快照，建议新输出目录使用：
+
+```text
+outputs/misc_full_sae_eval/interpretability/p3_feature_cards_stable_core
 ```
 
 当前仍未闭环或需要后续人工/独立脚本完成：
@@ -66,10 +77,16 @@ top activating utterances 只能作为候选解释证据，不是语义证明，
 
 ## 2. 当前已生成的 P3 产物
 
-主输出目录：
+旧快照主输出目录：
 
 ```text
 outputs/misc_full_sae_eval/interpretability/p3_feature_cards
+```
+
+新 stable core 口径建议输出目录：
+
+```text
+outputs/misc_full_sae_eval/interpretability/p3_feature_cards_stable_core
 ```
 
 核心文件：
@@ -80,8 +97,8 @@ outputs/misc_full_sae_eval/interpretability/p3_feature_cards
 | `p3_feature_card_packets.jsonl` | 每个 latent 一条完整材料包 |
 | `p3_feature_card_examples.csv` | 所有样例展开成 CSV，便于筛选和人工查看 |
 | `p3_feature_card_summary.csv` | 每个 latent 一行摘要 |
-| `p3_input_explanation_prompts/` | 180 个 input-centric explanation prompt |
-| `p3_scoring_tasks.jsonl` | 360 个待评分任务 |
+| `p3_input_explanation_prompts/` | input-centric explanation prompt；旧快照为 180 个，新 stable core 口径以 manifest 为准 |
+| `p3_scoring_tasks.jsonl` | 待评分任务；旧快照为 360 个，新 stable core 口径通常为每个 card 两类任务 |
 | `p3_feature_cards_dryrun.md` | dry-run 总览报告 |
 
 分批执行与校验脚本：
@@ -105,7 +122,7 @@ outputs/misc_full_sae_eval/interpretability/p3_feature_cards
 | `final_cards/p3_final_feature_cards.jsonl` | Task D 的 draft final cards |
 | `final_cards/p3_final_feature_cards.md` | Task D 的 Markdown 草稿报告 |
 
-当前数量：
+旧快照数量：
 
 ```text
 feature cards: 180
@@ -130,7 +147,7 @@ Task D final cards: 180 rows, Markdown exists
 Full validation: PASS, checked by run_misc_p3_agent_orchestrator.py validate on 2026-06-29
 ```
 
-17 个 fallback packet 全部来自 `RES rank 4-20`。原因是第一阶段 evidence packet 与当前 top20 Cohen's d latent 表不同步。当前 P3 输出以最新 top20 latent 表为准，缺失的 RES packet 已从 `utterance_features.pt + label_matrix.csv + records.jsonl` 现场重建。
+旧快照中曾有 17 个 fallback packet。新 stable core 口径重跑时，应统一从 `utterance_features.pt + label_matrix.csv + records.jsonl` 现场重建 evidence packet，避免依赖旧 Top20 evidence packet 的同步状态。
 
 ## 3. 如何重新生成当前 dry-run 材料
 
@@ -140,7 +157,7 @@ Full validation: PASS, checked by run_misc_p3_agent_orchestrator.py validate on 
 run_misc_p3_feature_cards.py
 ```
 
-默认输入：
+旧脚本默认输入：
 
 ```text
 outputs/misc_full_sae_eval/interpretability/top20_cohensd_latent_utterances/top20_cohensd_latents_by_label.csv
@@ -151,10 +168,27 @@ outputs/misc_full_sae_eval/records.jsonl
 outputs/layer_selection_strategy/llama_layer_selection.csv
 ```
 
-默认输出：
+新 stable core 口径应改为读取：
+
+```text
+outputs/cross_val/stable_topk_selection/stable_topk_latent_set.csv
+outputs/cross_val/stable_topk_selection/stable_k_by_label.csv
+outputs/misc_full_sae_eval/feature_store/utterance_features.pt
+outputs/misc_full_sae_eval/label_matrix.csv
+outputs/misc_full_sae_eval/records.jsonl
+outputs/layer_selection_strategy/llama_layer_selection.csv
+```
+
+旧脚本默认输出：
 
 ```text
 outputs/misc_full_sae_eval/interpretability/p3_feature_cards
+```
+
+新 stable core 口径建议输出：
+
+```text
+outputs/misc_full_sae_eval/interpretability/p3_feature_cards_stable_core
 ```
 
 运行命令：
@@ -398,7 +432,7 @@ outputs/misc_full_sae_eval/interpretability/p3_feature_cards/p3_scoring_tasks.js
 当前数量：
 
 ```text
-360 tasks = 180 latents × 2 task types
+scoring tasks = n_cards × 2 task types
 ```
 
 任务类型：
@@ -653,7 +687,7 @@ p3_output_stimulation_effects.jsonl
 run_misc_p3_final_feature_cards.py
 ```
 
-默认输入：
+旧快照默认输入：
 
 ```text
 --cards outputs/misc_full_sae_eval/interpretability/p3_feature_cards/p3_feature_card_packets.jsonl
@@ -663,10 +697,16 @@ run_misc_p3_final_feature_cards.py
 --manual-review outputs/misc_full_sae_eval/interpretability/p3_feature_cards/manual_review/p3_mi_coder_review_completed.csv
 ```
 
-默认输出：
+旧快照默认输出：
 
 ```text
 outputs/misc_full_sae_eval/interpretability/p3_feature_cards/final_cards
+```
+
+stable core 口径重跑时，应把上述 base directory 替换为：
+
+```text
+outputs/misc_full_sae_eval/interpretability/p3_feature_cards_stable_core
 ```
 
 建议输出：
@@ -735,7 +775,7 @@ output-centric explanation（agent 可辅助解释）
 
 以下 Task A-D 均由 IDE AI agent（当前对话 AI）直接执行，用户在 IDE 中发出评估指令即可。Task E 需要独立脚本。
 
-实际执行时不要让 AI 一次性读取全部 180 个 prompt 或 5280 条 scoring examples。推荐使用第 14 节的 `run_misc_p3_agent_orchestrator.py` 生成小批次输入，AI 每次只读一个 `*_instructions.md` 和对应的 `*_input.json`，完成后写回同批次 `*_output.json`，再由脚本合并。
+实际执行时不要让 AI 一次性读取全部 prompt 或 scoring examples。推荐使用第 14 节的 `run_misc_p3_agent_orchestrator.py` 生成小批次输入，AI 每次只读一个 `*_instructions.md` 和对应的 `*_input.json`，完成后写回同批次 `*_output.json`，再由脚本合并。
 
 ### Task A: Input explanation（IDE agent 执行）
 
@@ -756,7 +796,7 @@ output-centric explanation（agent 可辅助解释）
 验收：
 
 ```text
-p3_input_explanations.jsonl 行数应为 180
+p3_input_explanations.jsonl 行数应等于 manifest 中的 `n_cards`
 每条都有 packet_id, target_label, latent_idx
 parse_status=ok 的比例需要报告
 不得丢弃失败样本
@@ -781,7 +821,7 @@ parse_status=ok 的比例需要报告
 
 ```text
 prediction rows 数量 = 所有 scoring task examples 数量
-metrics_by_latent.csv 行数 = 180
+metrics_by_latent.csv 行数 = manifest 中的 `n_cards`
 metrics_by_label.csv 行数 = 9
 每个 latent 至少有 activation_prediction 和 code_discrimination 两类结果
 ```
@@ -794,7 +834,7 @@ metrics_by_label.csv 行数 = 9
 
 ```text
 1. agent 读取 cards + explanations + scoring metrics
-2. 合并为 180 行的人工审核 CSV
+2. 合并为每个 card 一行的人工审核 CSV
 3. 保留空列给 MI coder 填写
 4. 写入 manual_review/ 目录
 ```
@@ -802,7 +842,7 @@ metrics_by_label.csv 行数 = 9
 验收：
 
 ```text
-p3_mi_coder_review_template.csv 行数 = 180
+p3_mi_coder_review_template.csv 行数 = manifest 中的 `n_cards`
 字段包含 final_status, mi_coder_label, reviewer_notes
 ```
 
@@ -821,7 +861,7 @@ p3_mi_coder_review_template.csv 行数 = 180
 验收：
 
 ```text
-p3_final_feature_cards.jsonl 行数 = 180
+p3_final_feature_cards.jsonl 行数 = manifest 中的 `n_cards`
 p3_final_feature_cards.md 包含每个 label 的 section
 p3_label_summary.csv 包含每个 label 的 robust / artifact / unclear 数量
 ```
@@ -860,7 +900,7 @@ run_misc_p3_output_stimulation.py
 这样做的目的：
 
 ```text
-1. 避免当前 AI 一次性读取 180 个 prompt 或 5280 条 scoring examples 后丢失上下文
+1. 避免当前 AI 一次性读取全部 prompt 或 scoring examples 后丢失上下文
 2. 每个批次都有独立 input / instructions / output 文件，便于暂停、恢复、审计和重跑
 3. 合并、指标计算、进度快照、全量校验由 Python 脚本完成，减少手工拼接错误
 4. 保留 IDE agent 直接分析文本的优势，同时把大任务拆成可控小任务
@@ -1069,16 +1109,16 @@ predictions[row_idx, predicted, confidence, rationale_short]
 
 `packet_id`, `target_label`, `latent_idx`, `rank_within_label`, `task_type`, `row_idx` 必须从 input 原样复制。否则 merge 后无法和原始 prompt / scoring task 对齐。
 
-### 14.7 当前仓库中的已完成状态
+### 14.7 当前仓库中的旧快照完成状态
 
-截至 2026-06-29，当前工作区通过了：
+截至 2026-06-29，旧 Top20 快照工作区通过了：
 
 ```powershell
 python run_misc_p3_agent_orchestrator.py status
 python run_misc_p3_agent_orchestrator.py validate
 ```
 
-当前状态：
+旧快照状态：
 
 ```text
 Task A complete: 180 / 180 explanations
@@ -1089,7 +1129,7 @@ Pipeline complete: True
 Validation: PASS
 ```
 
-因此，后续若不是从零重跑，应把 orchestrator 主要用于：
+因此，若审计旧快照，可把 orchestrator 主要用于：
 
 ```text
 1. 按标签 / rank 抽样审计某些 latent 的 explanation
@@ -1140,13 +1180,13 @@ python run_misc_p3_agent_orchestrator.py status
 python run_misc_p3_agent_orchestrator.py validate
 ```
 
-检查当前 P3 dry-run 产物：
+检查旧 P3 dry-run 产物：
 
 ```powershell
 python -c "import json,pathlib,pandas as pd; d=pathlib.Path('outputs/misc_full_sae_eval/interpretability/p3_feature_cards'); m=json.loads((d/'manifest.json').read_text(encoding='utf-8')); s=pd.read_csv(d/'p3_feature_card_summary.csv'); print(m['n_cards'], m['n_scoring_tasks'], m['n_prompts'], m['n_missing_packets']); print(s.groupby('target_label').size().to_dict()); print(s['source_packet_status'].value_counts().to_dict())"
 ```
 
-预期：
+旧快照预期：
 
 ```text
 180 360 180 0
@@ -1155,25 +1195,25 @@ phase1_packet 163
 fallback_generated_from_feature_store 17
 ```
 
-检查 prompt 数量：
+检查旧快照 prompt 数量：
 
 ```powershell
 (Get-ChildItem outputs\misc_full_sae_eval\interpretability\p3_feature_cards\p3_input_explanation_prompts\*.json).Count
 ```
 
-预期：
+旧快照预期：
 
 ```text
 180
 ```
 
-检查 scoring task 数量：
+检查旧快照 scoring task 数量：
 
 ```powershell
 (Get-Content outputs\misc_full_sae_eval\interpretability\p3_feature_cards\p3_scoring_tasks.jsonl).Count
 ```
 
-预期：
+旧快照预期：
 
 ```text
 360
@@ -1184,11 +1224,11 @@ fallback_generated_from_feature_store 17
 如果另一个 AI 只做第一轮自动化，最低交付标准是：
 
 ```text
-1. p3_input_explanations.jsonl: 180 条
+1. p3_input_explanations.jsonl: 行数等于 manifest.n_cards
 2. p3_scoring_predictions.jsonl: 所有 task example 的逐条预测
-3. p3_scoring_metrics_by_latent.csv: 180 行
+3. p3_scoring_metrics_by_latent.csv: 行数等于 manifest.n_cards
 4. p3_scoring_metrics_by_label.csv: 9 行
-5. p3_mi_coder_review_template.csv: 180 行
+5. p3_mi_coder_review_template.csv: 行数等于 manifest.n_cards
 6. p3_final_feature_cards_draft.md: 可人工阅读
 7. manifest.json: 记录输入、输出、模型、成功/失败数量
 ```
