@@ -87,8 +87,8 @@ def test_full_representation_probe_module() -> None:
                 max_iter=500,
                 verbose=False,
                 include_sae_ranked_subspaces=True,
-                sae_subspace_top_ns=(1, 5, 10),
-                sae_subspace_rankings=("abs_cohens_d", "directional_auc"),
+                sae_subspace_top_ns=(0, 1, 2, 3, 5, 10),
+                sae_subspace_rankings=("cohens_d", "directional_auc"),
                 association_chunk_size=8,
             ),
         )
@@ -101,9 +101,11 @@ def test_full_representation_probe_module() -> None:
             "pca_raw_hidden",
         }.issubset(representations)
         assert {
-            "sae_top_abs_cohens_d_n001",
-            "sae_top_abs_cohens_d_n005",
-            "sae_top_abs_cohens_d_n010",
+            "sae_top_cohens_d_n000",
+            "sae_top_cohens_d_n001",
+            "sae_top_cohens_d_n005",
+            "sae_top_cohens_d_n010",
+            "sae_top_directional_auc_n000",
             "sae_top_directional_auc_n001",
             "sae_top_directional_auc_n005",
             "sae_top_directional_auc_n010",
@@ -113,6 +115,9 @@ def test_full_representation_probe_module() -> None:
         assert (out / "full_probe_by_label_summary.csv").exists()
         assert (out / "full_probe_summary.csv").exists()
         assert (out / "ranked_sae_subspace_convergence.csv").exists()
+        assert (out / "auc_by_k_curve_0_100.csv").exists()
+        assert (out / "figures" / "macro_auc_vs_k_0_100.png").exists()
+        assert (out / "figures" / "label_auc_vs_k_0_100.png").exists()
         assert (out / "ranked_sae_subspace_selected_latents.csv").exists()
         assert (out / "ranked_sae_subspace_feature_filter_summary.csv").exists()
         assert (out / "full_probe_summary.json").exists()
@@ -121,12 +126,17 @@ def test_full_representation_probe_module() -> None:
         sae_row = summary[summary["representation"] == "full_sae_latents"].iloc[0]
         raw_row = summary[summary["representation"] == "raw_hidden"].iloc[0]
         pca_row = summary[summary["representation"] == "pca_raw_hidden"].iloc[0]
-        top1_row = summary[summary["representation"] == "sae_top_abs_cohens_d_n001"].iloc[0]
+        top0_row = summary[summary["representation"] == "sae_top_cohens_d_n000"].iloc[0]
+        top1_row = summary[summary["representation"] == "sae_top_cohens_d_n001"].iloc[0]
         assert sae_row["macro_auc"] > 0.8
         assert abs(float(raw_row["macro_auc"]) - float(pca_row["macro_auc"])) < 0.02
+        assert float(top0_row["macro_auc"]) == 0.5
+        assert top0_row["mean_n_features"] == 0.0
         assert top1_row["mean_n_features"] == 1.0
         assert top1_row["macro_auc"] > 0.8
         assert not result["convergence"].empty
+        assert set(result["auc_curve"]["top_k"].astype(int)).issuperset({0, 1, 2, 3, 5, 10})
+        assert {"cohens_d", "directional_auc"}.issubset(set(result["auc_curve"]["subspace_ranking"]))
         assert not result["selected_latents"].empty
         assert not result["feature_filter_summary"].empty
         assert {30, 31}.isdisjoint(set(result["selected_latents"]["latent_idx"].astype(int)))

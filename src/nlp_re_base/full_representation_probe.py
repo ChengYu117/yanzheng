@@ -53,7 +53,8 @@ DEFAULT_LABELS: tuple[str, ...] = (
     "AF",
 )
 DEFAULT_SAE_SUBSPACE_TOP_NS: tuple[int, ...] = (1, *range(5, 201, 5))
-DEFAULT_SAE_SUBSPACE_RANKINGS: tuple[str, ...] = ("abs_cohens_d", "directional_auc")
+ALLOWED_SAE_SUBSPACE_RANKINGS: tuple[str, ...] = ("cohens_d", "abs_cohens_d", "directional_auc")
+DEFAULT_SAE_SUBSPACE_RANKINGS: tuple[str, ...] = ("cohens_d", "directional_auc")
 
 
 @dataclass(frozen=True)
@@ -75,6 +76,7 @@ class FullRepresentationProbeConfig:
     association_chunk_size: int = 512
     filter_sae_subspace_candidates: bool = True
     sae_subspace_filter_config: FeatureFilterConfig | None = None
+    sae_subspace_n_jobs: int = 1
 
 
 def _json_default(value: Any) -> Any:
@@ -260,13 +262,15 @@ def _normalize_subspace_top_ns(config: FullRepresentationProbeConfig, feature_di
     top_ns: set[int] = set()
     for value in config.sae_subspace_top_ns:
         n = int(value)
-        if n > 0:
+        if n == 0:
+            top_ns.add(0)
+        elif n > 0:
             top_ns.add(min(n, int(feature_dim)))
     return tuple(sorted(top_ns))
 
 
 def _normalize_subspace_rankings(config: FullRepresentationProbeConfig) -> tuple[str, ...]:
-    allowed = set(DEFAULT_SAE_SUBSPACE_RANKINGS)
+    allowed = set(ALLOWED_SAE_SUBSPACE_RANKINGS)
     rankings: list[str] = []
     for ranking in config.sae_subspace_rankings:
         normalized = str(ranking).lower()
@@ -336,7 +340,10 @@ def _chunked_sae_train_associations(
 
 def _rank_sae_features(metrics: dict[str, np.ndarray], ranking: str) -> np.ndarray:
     latent_idx = np.arange(len(metrics["auc"]), dtype=np.int64)
-    if ranking == "abs_cohens_d":
+    if ranking == "cohens_d":
+        primary = metrics["cohens_d"]
+        secondary = metrics["directional_auc"]
+    elif ranking == "abs_cohens_d":
         primary = metrics["abs_cohens_d"]
         secondary = metrics["directional_auc"]
     elif ranking == "directional_auc":
@@ -349,6 +356,39 @@ def _rank_sae_features(metrics: dict[str, np.ndarray], ranking: str) -> np.ndarr
 
 def _subspace_representation_name(ranking: str, top_n: int) -> str:
     return f"sae_top_{ranking}_n{int(top_n):03d}"
+
+
+def _score_zero_feature_probe(
+    *,
+    representation: str,
+    label: str,
+    fold: int,
+    y_train: np.ndarray,
+    y_test: np.ndarray,
+    split_policy_used: str,
+    extra_info: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    prevalence = float(np.mean(y_test)) if len(y_test) else 0.0
+    row: dict[str, Any] = {
+        "representation": representation,
+        "label": label,
+        "fold": int(fold),
+        "split_policy": split_policy_used,
+        "n_train": int(len(y_train)),
+        "n_test": int(len(y_test)),
+        "train_positive": int(y_train.sum()),
+        "test_positive": int(y_test.sum()),
+        "n_features": 0,
+        "probe_auc": 0.5,
+        "probe_average_precision": prevalence,
+        "probe_f1": 0.0,
+        "probe_balanced_accuracy": 0.5,
+        "probe_accuracy": float(1.0 - prevalence),
+        "status": "zero_feature_baseline",
+    }
+    if extra_info:
+        row.update(extra_info)
+    return row
 
 
 def _selected_latent_rows(
@@ -451,6 +491,54 @@ def _score_probe(
     if pca_info:
         row.update({f"pca_{key}": value for key, value in pca_info.items()})
     return row
+
+
+def _score_sae_top_n_subspace(
+    *,
+    top_n: int,
+    ranking: str,
+    label: str,
+    fold: int,
+    sub_train: np.ndarray,
+    sub_test: np.ndarray,
+    y_train: np.ndarray,
+    y_test: np.ndarray,
+    split_policy_used: str,
+    candidate_pool_size: int,
+    candidate_filter_enabled: bool,
+    config: FullRepresentationProbeConfig,
+) -> dict[str, Any]:
+    n = min(int(top_n), sub_train.shape[1])
+    extra_info = {
+        "subspace_ranking": ranking,
+        "top_n": int(n),
+        "source_representation": "full_sae_latents",
+        "candidate_pool_size": int(candidate_pool_size),
+        "candidate_filter_enabled": bool(candidate_filter_enabled),
+    }
+    representation = _subspace_representation_name(ranking, n)
+    if n == 0:
+        return _score_zero_feature_probe(
+            representation=representation,
+            label=label,
+            fold=fold,
+            y_train=y_train,
+            y_test=y_test,
+            split_policy_used=split_policy_used,
+            extra_info=extra_info,
+        )
+    return _score_probe(
+        representation=representation,
+        label=label,
+        fold=fold,
+        x_train=sub_train[:, :n],
+        x_test=sub_test[:, :n],
+        y_train=y_train,
+        y_test=y_test,
+        split_policy_used=split_policy_used,
+        config=config,
+        extra_info=extra_info,
+    )
 
 
 def _summarize_by_label(fold_rows: pd.DataFrame) -> pd.DataFrame:
@@ -573,6 +661,98 @@ def _build_subspace_convergence(summary: pd.DataFrame) -> pd.DataFrame:
             rows.append(item)
     return pd.DataFrame(rows).sort_values(["subspace_ranking", "top_n"]).reset_index(drop=True)
 
+
+def _build_auc_by_k_curve(by_label: pd.DataFrame, summary: pd.DataFrame) -> pd.DataFrame:
+    rows: list[dict[str, Any]] = []
+    if not by_label.empty and {"subspace_ranking", "top_n"}.issubset(by_label.columns):
+        sub_by_label = by_label[
+            by_label["subspace_ranking"].notna() & by_label["top_n"].notna()
+        ].copy()
+        for _, row in sub_by_label.iterrows():
+            rows.append(
+                {
+                    "label": str(row["label"]),
+                    "subspace_ranking": str(row["subspace_ranking"]),
+                    "top_k": int(row["top_n"]),
+                    "auc_mean": float(row["probe_auc_mean"]),
+                    "auc_std": float(row.get("probe_auc_std", np.nan)),
+                    "average_precision_mean": float(row.get("probe_average_precision_mean", np.nan)),
+                    "f1_mean": float(row.get("probe_f1_mean", np.nan)),
+                    "balanced_accuracy_mean": float(row.get("probe_balanced_accuracy_mean", np.nan)),
+                    "n_folds": int(row.get("n_folds", 0)),
+                    "n_features_mean": float(row.get("n_features_mean", np.nan)),
+                    "row_type": "label",
+                }
+            )
+    if not summary.empty and {"subspace_ranking", "top_n"}.issubset(summary.columns):
+        sub_summary = summary[
+            summary["subspace_ranking"].notna() & summary["top_n"].notna()
+        ].copy()
+        for _, row in sub_summary.iterrows():
+            rows.append(
+                {
+                    "label": "__macro__",
+                    "subspace_ranking": str(row["subspace_ranking"]),
+                    "top_k": int(row["top_n"]),
+                    "auc_mean": float(row["macro_auc"]),
+                    "auc_std": np.nan,
+                    "average_precision_mean": float(row.get("macro_average_precision", np.nan)),
+                    "f1_mean": float(row.get("macro_f1", np.nan)),
+                    "balanced_accuracy_mean": float(row.get("macro_balanced_accuracy", np.nan)),
+                    "n_folds": int(row.get("n_labels", 0)),
+                    "n_features_mean": float(row.get("mean_n_features", np.nan)),
+                    "row_type": "macro",
+                }
+            )
+    if not rows:
+        return pd.DataFrame()
+    return pd.DataFrame(rows).sort_values(["row_type", "subspace_ranking", "label", "top_k"]).reset_index(drop=True)
+
+
+def _write_auc_k_figures(output_dir: Path, auc_curve: pd.DataFrame) -> None:
+    if auc_curve.empty:
+        return
+    import matplotlib
+
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+
+    fig_dir = output_dir / "figures"
+    fig_dir.mkdir(parents=True, exist_ok=True)
+
+    macro = auc_curve[auc_curve["row_type"] == "macro"].copy()
+    if not macro.empty:
+        fig, ax = plt.subplots(figsize=(8, 4.5))
+        for ranking, group in macro.groupby("subspace_ranking", sort=False):
+            group = group.sort_values("top_k")
+            ax.plot(group["top_k"], group["auc_mean"], marker="o", markersize=2.5, linewidth=1.5, label=ranking)
+        ax.set_xlabel("Top-K latents")
+        ax.set_ylabel("Macro AUC")
+        ax.set_title("Macro AUC vs Top-K")
+        ax.set_ylim(0.45, min(1.0, max(0.55, float(macro["auc_mean"].max()) + 0.05)))
+        ax.legend(fontsize=8)
+        fig.tight_layout()
+        fig.savefig(fig_dir / "macro_auc_vs_k_0_100.png", dpi=180)
+        plt.close(fig)
+
+    label_curve = auc_curve[(auc_curve["row_type"] == "label") & (auc_curve["label"] != "__macro__")].copy()
+    if not label_curve.empty:
+        ranking = "cohens_d" if "cohens_d" in set(label_curve["subspace_ranking"]) else str(label_curve["subspace_ranking"].iloc[0])
+        label_curve = label_curve[label_curve["subspace_ranking"] == ranking]
+        fig, ax = plt.subplots(figsize=(9, 5))
+        for label, group in label_curve.groupby("label", sort=True):
+            group = group.sort_values("top_k")
+            ax.plot(group["top_k"], group["auc_mean"], linewidth=1.3, label=label)
+        ax.set_xlabel("Top-K latents")
+        ax.set_ylabel("Held-out AUC")
+        ax.set_title(f"Label AUC vs Top-K ({ranking})")
+        ax.set_ylim(0.45, min(1.0, max(0.55, float(label_curve["auc_mean"].max()) + 0.05)))
+        ax.legend(ncol=2, fontsize=8)
+        fig.tight_layout()
+        fig.savefig(fig_dir / "label_auc_vs_k_0_100.png", dpi=180)
+        plt.close(fig)
+
+
 def _markdown_table(df: pd.DataFrame, columns: list[str]) -> str:
     if df.empty:
         return ""
@@ -624,6 +804,7 @@ def _write_comparison_report_zh(
         f"- PCA: `{config.pca_components}`，每个训练折单独拟合。",
         f"- SAE 子空间排序: `{', '.join(config.sae_subspace_rankings)}`。",
         f"- top-n 网格: `{', '.join(str(n) for n in config.sae_subspace_top_ns)}`。",
+        f"- top-n probe 并行数: `{config.sae_subspace_n_jobs}`。",
         "- 重要防泄漏设置: top-n feature 排名只使用当前训练折标签和训练折 SAE features，测试折只用于最终评估。",
         "",
         "## Macro AUC 总览",
@@ -746,6 +927,7 @@ def _write_report(
         f"- Include SAE ranked subspaces: `{config.include_sae_ranked_subspaces}`",
         f"- SAE subspace rankings: `{config.sae_subspace_rankings}`",
         f"- SAE subspace top-n grid: `{config.sae_subspace_top_ns}`",
+        f"- SAE subspace n_jobs: `{config.sae_subspace_n_jobs}`",
         f"- Filter SAE subspace candidates: `{config.filter_sae_subspace_candidates}`",
         "",
         "## Macro Summary",
@@ -920,28 +1102,46 @@ def run_full_representation_probe(
                             f"top_n_grid={len(subspace_top_ns)} max_n={max_subspace_n}",
                             flush=True,
                         )
-                    for top_n in subspace_top_ns:
-                        n = min(int(top_n), sub_train.shape[1])
-                        fold_records.append(
-                            _score_probe(
-                                representation=_subspace_representation_name(ranking, n),
-                                label=label,
-                                fold=fold_id,
-                                x_train=sub_train[:, :n],
-                                x_test=sub_test[:, :n],
-                                y_train=y_train,
-                                y_test=y_test,
-                                split_policy_used=split_policy_used,
-                                config=config,
-                                extra_info={
-                                    "subspace_ranking": ranking,
-                                    "top_n": int(n),
-                                    "source_representation": "full_sae_latents",
-                                    "candidate_pool_size": int(candidate_indices.size),
-                                    "candidate_filter_enabled": bool(config.filter_sae_subspace_candidates),
-                                },
+                    if config.sae_subspace_n_jobs and int(config.sae_subspace_n_jobs) != 1:
+                        from joblib import Parallel, delayed
+
+                        fold_records.extend(
+                            Parallel(n_jobs=int(config.sae_subspace_n_jobs), prefer="threads")(
+                                delayed(_score_sae_top_n_subspace)(
+                                    top_n=top_n,
+                                    ranking=ranking,
+                                    label=label,
+                                    fold=fold_id,
+                                    sub_train=sub_train,
+                                    sub_test=sub_test,
+                                    y_train=y_train,
+                                    y_test=y_test,
+                                    split_policy_used=split_policy_used,
+                                    candidate_pool_size=int(candidate_indices.size),
+                                    candidate_filter_enabled=bool(config.filter_sae_subspace_candidates),
+                                    config=config,
+                                )
+                                for top_n in subspace_top_ns
                             )
                         )
+                    else:
+                        for top_n in subspace_top_ns:
+                            fold_records.append(
+                                _score_sae_top_n_subspace(
+                                    top_n=top_n,
+                                    ranking=ranking,
+                                    label=label,
+                                    fold=fold_id,
+                                    sub_train=sub_train,
+                                    sub_test=sub_test,
+                                    y_train=y_train,
+                                    y_test=y_test,
+                                    split_policy_used=split_policy_used,
+                                    candidate_pool_size=int(candidate_indices.size),
+                                    candidate_filter_enabled=bool(config.filter_sae_subspace_candidates),
+                                    config=config,
+                                )
+                            )
 
             raw_train, raw_test = _prepare_fold_features(
                 raw_hidden,
@@ -1012,6 +1212,7 @@ def run_full_representation_probe(
     by_label = _summarize_by_label(fold_rows)
     summary = _summarize_macro(by_label)
     convergence = _build_subspace_convergence(summary)
+    auc_curve = _build_auc_by_k_curve(by_label, summary)
     selected_latents = pd.DataFrame(
         selected_latent_records,
         columns=[
@@ -1045,6 +1246,7 @@ def run_full_representation_probe(
     by_label.to_csv(output_path / "full_probe_by_label_summary.csv", index=False)
     summary.to_csv(output_path / "full_probe_summary.csv", index=False)
     convergence.to_csv(output_path / "ranked_sae_subspace_convergence.csv", index=False)
+    auc_curve.to_csv(output_path / "auc_by_k_curve_0_100.csv", index=False)
     selected_latents.to_csv(output_path / "ranked_sae_subspace_selected_latents.csv", index=False)
     feature_filter_summary.to_csv(
         output_path / "ranked_sae_subspace_feature_filter_summary.csv",
@@ -1065,6 +1267,7 @@ def run_full_representation_probe(
         convergence=convergence,
         config=config,
     )
+    _write_auc_k_figures(output_path, auc_curve)
     metadata = {
         "analysis_version": "full_representation_probe_v2_ranked_sae_subspaces",
         "config": asdict(config),
@@ -1080,10 +1283,13 @@ def run_full_representation_probe(
             "full_probe_by_label_summary": str(output_path / "full_probe_by_label_summary.csv"),
             "full_probe_summary": str(output_path / "full_probe_summary.csv"),
             "ranked_sae_subspace_convergence": str(output_path / "ranked_sae_subspace_convergence.csv"),
+            "auc_by_k_curve_0_100": str(output_path / "auc_by_k_curve_0_100.csv"),
             "ranked_sae_subspace_selected_latents": str(output_path / "ranked_sae_subspace_selected_latents.csv"),
             "ranked_sae_subspace_feature_filter_summary": str(output_path / "ranked_sae_subspace_feature_filter_summary.csv"),
             "full_probe_report": str(output_path / "full_probe_report.md"),
             "full_probe_comparison_report_zh": str(output_path / "full_probe_comparison_report_zh.md"),
+            "macro_auc_vs_k_0_100": str(output_path / "figures" / "macro_auc_vs_k_0_100.png"),
+            "label_auc_vs_k_0_100": str(output_path / "figures" / "label_auc_vs_k_0_100.png"),
         },
     }
     with (output_path / "full_probe_summary.json").open("w", encoding="utf-8") as f:
@@ -1094,13 +1300,16 @@ def run_full_representation_probe(
         "by_label": by_label,
         "summary": summary,
         "convergence": convergence,
+        "auc_curve": auc_curve,
         "selected_latents": selected_latents,
         "feature_filter_summary": feature_filter_summary,
         "metadata": metadata,
     }
 
 __all__ = [
+    "ALLOWED_SAE_SUBSPACE_RANKINGS",
     "DEFAULT_LABELS",
+    "DEFAULT_SAE_SUBSPACE_RANKINGS",
     "FullRepresentationProbeConfig",
     "load_matrix",
     "run_full_representation_probe",

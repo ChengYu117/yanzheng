@@ -27,6 +27,7 @@ __all__ = [
     "export_misc_causal_candidates",
     "run_minimal_sufficient_subspace_v2",
     "run_full_representation_probe",
+    "run_stable_topk_selection",
     "load_gemma_scope_sae",
     "run_gemma_scope_sae_evaluation",
 ]
@@ -63,6 +64,10 @@ _LAZY_IMPORTS = {
     "run_full_representation_probe": (
         ".full_representation_probe",
         "run_full_representation_probe",
+    ),
+    "run_stable_topk_selection": (
+        ".stable_topk_selection",
+        "run_stable_topk_selection",
     ),
     "load_gemma_scope_sae": (
         ".gemma_scope_sae",

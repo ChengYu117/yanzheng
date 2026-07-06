@@ -12,6 +12,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
 from nlp_re_base.full_representation_probe import (  # noqa: E402
+    ALLOWED_SAE_SUBSPACE_RANKINGS,
     DEFAULT_LABELS,
     DEFAULT_SAE_SUBSPACE_RANKINGS,
     FullRepresentationProbeConfig,
@@ -41,7 +42,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--output-dir",
-        default="outputs/misc_full_sae_eval/interpretability/full_representation_probe",
+        default="outputs/misc_full_sae_eval/interpretability/ranked_sae_subspace_probe_k001_100",
         help="Output directory for full-representation probe results.",
     )
     parser.add_argument("--labels", nargs="+", default=list(DEFAULT_LABELS))
@@ -75,26 +76,32 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--subspace-max-n",
         type=int,
-        default=200,
+        default=100,
         help="Maximum top-n SAE features per label/fold/ranking.",
     )
     parser.add_argument(
         "--subspace-step",
         type=int,
-        default=5,
+        default=1,
         help="Step for top-n SAE feature grid after n=1.",
     )
     parser.add_argument(
         "--subspace-rankings",
         nargs="+",
         default=list(DEFAULT_SAE_SUBSPACE_RANKINGS),
-        choices=list(DEFAULT_SAE_SUBSPACE_RANKINGS),
+        choices=list(ALLOWED_SAE_SUBSPACE_RANKINGS),
         help="Feature-ranking metrics for SAE top-n subspace probes.",
     )
     parser.add_argument(
         "--no-filter-sae-subspace-candidates",
         action="store_true",
         help="Disable the train-fold SAE feature quality filter before top-n ranking.",
+    )
+    parser.add_argument(
+        "--subspace-n-jobs",
+        type=int,
+        default=1,
+        help="Thread-level parallelism for scoring SAE top-n subspace probes within each fold.",
     )
     parser.add_argument("--quiet", action="store_true", help="Suppress per-label/fold progress logs.")
     return parser.parse_args()
@@ -110,7 +117,7 @@ def _parse_pca_components(value: str) -> int | str:
 def _build_subspace_top_ns(max_n: int, step: int) -> tuple[int, ...]:
     max_n = max(1, int(max_n))
     step = max(1, int(step))
-    values = {1}
+    values = {0, 1}
     values.update(range(step, max_n + 1, step))
     return tuple(sorted(n for n in values if n <= max_n))
 
@@ -134,6 +141,7 @@ def main() -> int:
         sae_subspace_top_ns=_build_subspace_top_ns(args.subspace_max_n, args.subspace_step),
         sae_subspace_rankings=tuple(args.subspace_rankings),
         filter_sae_subspace_candidates=not args.no_filter_sae_subspace_candidates,
+        sae_subspace_n_jobs=args.subspace_n_jobs,
     )
 
     print(f"[load] SAE features: {args.sae_features}")
