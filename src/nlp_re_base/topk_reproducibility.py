@@ -36,11 +36,15 @@ def run_topk_reproducibility(
     min_positive: int = 10,
     min_negative: int = 10,
     chunk_size: int = 512,
+    fast_associations: bool = False,
 ) -> dict:
     """Run repeated E1 split-half rank and TopK set reproducibility."""
 
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
+    ranking_metrics = tuple(str(metric) for metric in ranking_metrics)
+    needs_auc_metrics = {"auc", "directional_auc", "auc_effect"}
+    compute_auc = any(metric in needs_auc_metrics for metric in ranking_metrics)
     if group_column not in inputs.label_matrix.columns:
         raise ValueError(f"group column {group_column!r} not found in label matrix")
     if n_repeats < 1:
@@ -82,6 +86,9 @@ def run_topk_reproducibility(
                 min_positive=min_positive,
                 min_negative=min_negative,
                 chunk_size=chunk_size,
+                precision_k_values=[] if fast_associations else None,
+                compute_p_values=not fast_associations,
+                compute_auc=compute_auc,
             )
             for rows in row_splits
         ]
@@ -255,6 +262,7 @@ def run_topk_reproducibility(
         "n_repeats": int(n_repeats),
         "null_iter": int(null_iter),
         "random_state": int(random_state),
+        "fast_associations": bool(fast_associations),
         "split_random_states": split_random_states,
         "reference_matrix": str(reference_matrix_path) if reference_matrix_path is not None else None,
         "n_rows": int(len(inputs.label_matrix)),

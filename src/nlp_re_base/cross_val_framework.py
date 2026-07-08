@@ -24,7 +24,7 @@ DEFAULT_LABELS = ("RE", "RES", "REC", "QU", "QUO", "QUC", "GI", "SU", "AF")
 
 @dataclass(frozen=True)
 class CrossValInputs:
-    """Aligned rows, labels, source groups, and filtered SAE features."""
+    """Aligned rows, labels, source groups, and selected SAE features."""
 
     label_matrix: pd.DataFrame
     features: np.ndarray
@@ -125,6 +125,34 @@ def load_filtered_inputs(
     )
 
 
+def load_full_inputs(
+    *,
+    feature_store_path: str | Path,
+    label_matrix_path: str | Path,
+    labels: Iterable[str] = DEFAULT_LABELS,
+) -> CrossValInputs:
+    """Load row-aligned labels and all SAE latents without feature prefiltering."""
+
+    label_matrix = pd.read_csv(label_matrix_path)
+    features = load_feature_matrix(feature_store_path)
+    if len(label_matrix) != features.shape[0]:
+        raise ValueError(
+            f"label matrix rows ({len(label_matrix)}) must match feature rows ({features.shape[0]})"
+        )
+
+    selected_labels = tuple(label.upper() for label in labels)
+    missing = [label for label in selected_labels if label not in label_matrix.columns]
+    if missing:
+        raise ValueError(f"label matrix is missing requested labels: {missing}")
+
+    return CrossValInputs(
+        label_matrix=label_matrix,
+        features=np.asarray(features, dtype=np.float32),
+        latent_indices=np.arange(features.shape[1], dtype=np.int32),
+        labels=selected_labels,
+    )
+
+
 def label_indicator_matrix(label_matrix: pd.DataFrame, labels: Iterable[str]) -> np.ndarray:
     """Return boolean [N, L] matrix for requested labels."""
 
@@ -139,6 +167,9 @@ def compute_subset_associations(
     min_positive: int = 10,
     min_negative: int = 10,
     chunk_size: int = 512,
+    precision_k_values: list[int] | None = None,
+    compute_p_values: bool = True,
+    compute_auc: bool = True,
 ) -> pd.DataFrame:
     """Compute label-latent association metrics for a row subset."""
 
@@ -151,6 +182,9 @@ def compute_subset_associations(
         min_positive=min_positive,
         min_negative=min_negative,
         chunk_size=chunk_size,
+        precision_k_values=precision_k_values,
+        compute_p_values=compute_p_values,
+        compute_auc=compute_auc,
         candidate_latent_indices=inputs.latent_indices,
     )
     if skipped:
@@ -279,4 +313,3 @@ def grouped_bootstrap_row_indices(
     group_names = np.array(sorted(group_to_indices), dtype=object)
     sampled = rng.choice(group_names, size=len(group_names), replace=True)
     return np.concatenate([group_to_indices[str(group)] for group in sampled]).astype(np.int64)
-

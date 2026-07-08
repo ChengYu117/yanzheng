@@ -14,6 +14,7 @@ sys.path.insert(0, str(PROJECT_ROOT / "src"))
 from nlp_re_base.cross_val_framework import (
     build_dedup_group_mapping,
     load_filtered_inputs,
+    load_full_inputs,
 )
 from nlp_re_base.cross_quality_val import run_cross_quality_validation
 from nlp_re_base.effect_size_ci import run_bootstrap_ci
@@ -85,6 +86,13 @@ def test_cross_val_experiment_stack() -> None:
             feature_filter_audit_path=audit_path,
             labels=labels,
         )
+        full_inputs = load_full_inputs(
+            feature_store_path=feature_path,
+            label_matrix_path=label_path,
+            labels=labels,
+        )
+        assert full_inputs.features.shape == (n, d)
+        assert full_inputs.latent_indices.tolist() == list(range(d))
         association, skipped = compute_latent_label_associations(
             inputs.features,
             label_matrix.loc[:, labels].to_numpy(dtype=bool),

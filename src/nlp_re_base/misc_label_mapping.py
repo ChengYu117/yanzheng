@@ -414,6 +414,8 @@ def compute_latent_label_associations(
     *,
     fdr_alpha: float = 0.05,
     precision_k_values: list[int] | None = None,
+    compute_p_values: bool = True,
+    compute_auc: bool = True,
     min_positive: int = 10,
     min_negative: int = 10,
     chunk_size: int = 512,
@@ -429,7 +431,8 @@ def compute_latent_label_associations(
     if label_indicators.shape[1] != len(labels):
         raise ValueError("label_indicators column count must match labels length.")
 
-    precision_k_values = precision_k_values or [10, 50]
+    if precision_k_values is None:
+        precision_k_values = [10, 50]
     rows: list[pd.DataFrame] = []
     skipped: list[dict[str, Any]] = []
     d_sae = features_np.shape[1]
@@ -499,17 +502,20 @@ def compute_latent_label_associations(
         cohens_d = mean_diff / pooled_std
         cohens_d = np.nan_to_num(cohens_d, nan=0.0, posinf=0.0, neginf=0.0)
 
-        if pos.shape[0] > 1 and neg.shape[0] > 1:
+        if compute_p_values and pos.shape[0] > 1 and neg.shape[0] > 1:
             _, p_values = stats.ttest_ind(pos, neg, axis=0, equal_var=False)
             p_values = np.nan_to_num(p_values, nan=1.0, posinf=1.0, neginf=1.0)
         else:
             p_values = np.ones(d_sae, dtype=np.float32)
 
-        auc = _chunked_auc_by_rank(
-            features_np,
-            positive_mask,
-            chunk_size=max(1, int(chunk_size)),
-        )
+        if compute_auc:
+            auc = _chunked_auc_by_rank(
+                features_np,
+                positive_mask,
+                chunk_size=max(1, int(chunk_size)),
+            )
+        else:
+            auc = np.full(d_sae, 0.5, dtype=np.float32)
 
         payload: dict[str, Any] = {
             "label": label,
@@ -526,7 +532,9 @@ def compute_latent_label_associations(
             "directional_auc": np.where(cohens_d >= 0, auc, 1.0 - auc),
             "auc_effect": np.abs(auc - 0.5) * 2.0,
             "p_value": p_values,
-            "significant_fdr": benjamini_hochberg(p_values, alpha=fdr_alpha),
+            "significant_fdr": benjamini_hochberg(p_values, alpha=fdr_alpha)
+            if compute_p_values
+            else np.zeros(d_sae, dtype=bool),
         }
 
         for k in precision_k_values:
