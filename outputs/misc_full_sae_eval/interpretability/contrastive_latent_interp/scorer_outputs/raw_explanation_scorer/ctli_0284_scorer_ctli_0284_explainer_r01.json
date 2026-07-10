@@ -1,0 +1,142 @@
+[
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "doesn't sound like good quality sleep",
+    "reason": "Does not match directive_and_imperative_instructions: insufficient trigger alignment",
+    "sample_id": "u012"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "we'll see you next week all right",
+    "reason": "Does not match directive_and_imperative_instructions: insufficient trigger alignment",
+    "sample_id": "u001"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "we'll check in next week",
+    "reason": "Does not match directive_and_imperative_instructions: insufficient trigger alignment",
+    "sample_id": "u008"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "we were kind of down like now you're...",
+    "reason": "Does not match directive_and_imperative_instructions: insufficient trigger alignment",
+    "sample_id": "u014"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "oh nice",
+    "reason": "Does not match directive_and_imperative_instructions: insufficient trigger alignment",
+    "sample_id": "u016"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "so that was the face pretty good experience",
+    "reason": "Does not match directive_and_imperative_instructions: insufficient trigger alignment",
+    "sample_id": "u013"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "all right great",
+    "reason": "Does not match directive_and_imperative_instructions: insufficient trigger alignment",
+    "sample_id": "u020"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "You did great.",
+    "reason": "Does not match directive_and_imperative_instructions: insufficient trigger alignment",
+    "sample_id": "u002"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "yes go for it so in today's session...",
+    "reason": "Does not match directive_and_imperative_instructions: insufficient trigger alignment",
+    "sample_id": "u006"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "um telling me would have been great but...",
+    "reason": "Does not match directive_and_imperative_instructions: insufficient trigger alignment",
+    "sample_id": "u011"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "okay you have some pretty big dreams",
+    "reason": "Does not match directive_and_imperative_instructions: insufficient trigger alignment",
+    "sample_id": "u018"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "let's see you in two weeks crazy idea",
+    "reason": "Does not match directive_and_imperative_instructions: insufficient trigger alignment",
+    "sample_id": "u005"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "Emily I've been seeing you for so long",
+    "reason": "Does not match directive_and_imperative_instructions: insufficient trigger alignment",
+    "sample_id": "u007"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "and then we can hit some of those...",
+    "reason": "Does not match directive_and_imperative_instructions: insufficient trigger alignment",
+    "sample_id": "u010"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "great that's a really good strategy",
+    "reason": "Does not match directive_and_imperative_instructions: insufficient trigger alignment",
+    "sample_id": "u019"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "so I'm hearing the good part about drinking...",
+    "reason": "Does not match directive_and_imperative_instructions: insufficient trigger alignment",
+    "sample_id": "u015"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "okay great so you're doing well",
+    "reason": "Does not match directive_and_imperative_instructions: insufficient trigger alignment",
+    "sample_id": "u017"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "It's Friday.",
+    "reason": "Does not match directive_and_imperative_instructions: insufficient trigger alignment",
+    "sample_id": "u003"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "and we did your scaling and root planing...",
+    "reason": "Does not match directive_and_imperative_instructions: insufficient trigger alignment",
+    "sample_id": "u009"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "that sounds like a great idea",
+    "reason": "Does not match directive_and_imperative_instructions: insufficient trigger alignment",
+    "sample_id": "u004"
+  }
+]

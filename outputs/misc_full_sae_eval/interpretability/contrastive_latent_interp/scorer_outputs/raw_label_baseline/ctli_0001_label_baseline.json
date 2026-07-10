@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "it really took you",
+    "reason": "reflects client experience"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "i know you",
+    "reason": "acknowledges client context"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "i'm guessing you",
+    "reason": "infers from client"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "you're realizing",
+    "reason": "reflects client insight"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "okay great so if your mom  put the soda some where",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "it is a different type of difficulty you're right",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "okay well then that sounds like a perfect location",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "you feel",
+    "reason": "reflects client feeling"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "and you've",
+    "reason": "references client"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "So that means you want to quit now right",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "you can",
+    "reason": "advice/information, not reflection"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "i know there",
+    "reason": "acknowledges client context"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "i know you",
+    "reason": "acknowledges client context"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "yeah throwing up is never fun",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "right and so it's it's it's been a bit of a rush f",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "so if you have if you had consistent work it would",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "Oh didn't know you had an ankle pain",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "and you've",
+    "reason": "references client"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "no I didn't know that what if I just switched to d",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "and you know",
+    "reason": "references client knowledge"
+  }
+]

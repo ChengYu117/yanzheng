@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "I understand I understand but you know I'm not saying that we need to lose  poun...",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "what we want to focus on is keeping your diet and insulin dosage in check",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "yeah you don't look terribly overweight but according to the the charts there it...",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "no problem I have this in stock",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "right you can see the links between your weight and your health and you'd like t...",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "but if you give me twenty minutes I can get them all ready for you",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "mm-hmm and when you're hanging out with friends is there ever alcohol involved",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "okay can you tell me a little bit about why you picked those three",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "all right and also this medication does not have any drug interactions with your...",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "I did have some auto refills for you in the pharmacy unfortunately to return to ...",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "so we've talked about changing your medication stopping the medication you're on...",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "so the doctor had told you recently that you have pre-diabetes",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "but I do notice that these prescriptions from the hospital",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "can you tell me a little bit about that",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "also physical activity can help lower your blood sugar and help you lose weight ...",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "mm-hmm and so when you go to parties most of the time there's alcohol there",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "so right now would you like to discuss the potential health risks associated wit...",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "and you were about 160 or so yeah which is actually according to your BMI body m...",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "the ibuprofen is you're holding especially with your medical condition will have...",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "does it hurt anymore mark when you move it does",
+    "reason": "No strong trigger or exclusion match"
+  }
+]

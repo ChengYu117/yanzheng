@@ -1,0 +1,202 @@
+[
+  {
+    "sample_id": "u003",
+    "predicted_label": 0,
+    "confidence": 0.35,
+    "reasoning": "Time approximation in session management context, not reflecting client content",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "it sound like a few months ago",
+    "reason": "Time approximation in session management context, not reflecting client content"
+  },
+  {
+    "sample_id": "u013",
+    "predicted_label": 0,
+    "confidence": 0.3,
+    "reasoning": "Evaluative acknowledgment rather than paraphrasing client content",
+    "pred_activate_prob": 0.3,
+    "binary_prediction": 0,
+    "evidence_span": "that sounds like an excellent plan",
+    "reason": "Evaluative acknowledgment rather than paraphrasing client content"
+  },
+  {
+    "sample_id": "u012",
+    "predicted_label": 1,
+    "confidence": 0.9,
+    "reasoning": "Reflective paraphrase restating client eating habits with sounds-like framing",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "it sounds like you are eating pretty healthy",
+    "reason": "Reflective paraphrase restating client eating habits with sounds-like framing"
+  },
+  {
+    "sample_id": "u002",
+    "predicted_label": 1,
+    "confidence": 0.6,
+    "reasoning": "Discourse-initial so with sounds-like reflective framing and second-person reference",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 1,
+    "evidence_span": "so if those sound like things that you might be willing to do",
+    "reason": "Discourse-initial so with sounds-like reflective framing and second-person reference"
+  },
+  {
+    "sample_id": "u014",
+    "predicted_label": 0,
+    "confidence": 0.35,
+    "reasoning": "Evaluative acknowledgment of commitment, not restating client content",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "that sounds like a pretty strong commitment",
+    "reason": "Evaluative acknowledgment of commitment, not restating client content"
+  },
+  {
+    "sample_id": "u007",
+    "predicted_label": 1,
+    "confidence": 0.95,
+    "reasoning": "Classic reflective paraphrase opener what I am hearing is it sounds like",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "what I am hearing is it sounds like you might feel like",
+    "reason": "Classic reflective paraphrase opener what I am hearing is it sounds like"
+  },
+  {
+    "sample_id": "u011",
+    "predicted_label": 1,
+    "confidence": 0.55,
+    "reasoning": "Brief reflective summary of jointly discussed plan with sounds-like framing",
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 1,
+    "evidence_span": "it sounds like we have a plan",
+    "reason": "Brief reflective summary of jointly discussed plan with sounds-like framing"
+  },
+  {
+    "sample_id": "u010",
+    "predicted_label": 1,
+    "confidence": 0.8,
+    "reasoning": "Reflective paraphrase reframing client content into clinical language",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "evidence_span": "it sounds like a social anxiety type symptom",
+    "reason": "Reflective paraphrase reframing client content into clinical language"
+  },
+  {
+    "sample_id": "u001",
+    "predicted_label": 0,
+    "confidence": 0.25,
+    "reasoning": "Counselor own medical assessment not derived from client statement",
+    "pred_activate_prob": 0.25,
+    "binary_prediction": 0,
+    "evidence_span": "Sounds like post-nasal drip",
+    "reason": "Counselor own medical assessment not derived from client statement"
+  },
+  {
+    "sample_id": "u015",
+    "predicted_label": 0,
+    "confidence": 0.3,
+    "reasoning": "Simple evaluative acknowledgment excluded by explicit exclusions",
+    "pred_activate_prob": 0.3,
+    "binary_prediction": 0,
+    "evidence_span": "that sounds like a great idea",
+    "reason": "Simple evaluative acknowledgment excluded by explicit exclusions"
+  },
+  {
+    "sample_id": "u008",
+    "predicted_label": 1,
+    "confidence": 0.85,
+    "reasoning": "Reflective paraphrase confirming client direction with elaboration",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "it sounds like you are in the right track",
+    "reason": "Reflective paraphrase confirming client direction with elaboration"
+  },
+  {
+    "sample_id": "u005",
+    "predicted_label": 1,
+    "confidence": 0.9,
+    "reasoning": "Detailed reflective paraphrase listing client communicated concerns",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "sounds like you are noticing quite a few not so good things about alcohol",
+    "reason": "Detailed reflective paraphrase listing client communicated concerns"
+  },
+  {
+    "sample_id": "u016",
+    "predicted_label": 0,
+    "confidence": 0.3,
+    "reasoning": "Counselor inference without typical reflective framing markers",
+    "pred_activate_prob": 0.3,
+    "binary_prediction": 0,
+    "evidence_span": "I am guessing you have learned a lot of lessons",
+    "reason": "Counselor inference without typical reflective framing markers"
+  },
+  {
+    "sample_id": "u018",
+    "predicted_label": 1,
+    "confidence": 0.55,
+    "reasoning": "Discourse-initial so summarizing client communicated ambivalence",
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 1,
+    "evidence_span": "so there is sort of pros and cons",
+    "reason": "Discourse-initial so summarizing client communicated ambivalence"
+  },
+  {
+    "sample_id": "u020",
+    "predicted_label": 1,
+    "confidence": 0.95,
+    "reasoning": "Clear you-mentioned reflective paraphrase of client content",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "one of the things you mentioned is really wanting to respect",
+    "reason": "Clear you-mentioned reflective paraphrase of client content"
+  },
+  {
+    "sample_id": "u017",
+    "predicted_label": 0,
+    "confidence": 0.2,
+    "reasoning": "No reflective framing markers present",
+    "pred_activate_prob": 0.2,
+    "binary_prediction": 0,
+    "evidence_span": "change gears to get healthy",
+    "reason": "No reflective framing markers present"
+  },
+  {
+    "sample_id": "u019",
+    "predicted_label": 1,
+    "confidence": 0.8,
+    "reasoning": "Discourse-initial so with second-person reflective statement",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "evidence_span": "so you are kind of stuck being exposed to things",
+    "reason": "Discourse-initial so with second-person reflective statement"
+  },
+  {
+    "sample_id": "u009",
+    "predicted_label": 1,
+    "confidence": 0.9,
+    "reasoning": "Clear it-sounds-like reflective paraphrase of client feelings",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "it sounds a little bit like you are feeling a change",
+    "reason": "Clear it-sounds-like reflective paraphrase of client feelings"
+  },
+  {
+    "sample_id": "u006",
+    "predicted_label": 1,
+    "confidence": 0.92,
+    "reasoning": "Double reflective markers paraphrasing client health concerns",
+    "pred_activate_prob": 0.92,
+    "binary_prediction": 1,
+    "evidence_span": "so it sounds like if it sounds to me like",
+    "reason": "Double reflective markers paraphrasing client health concerns"
+  },
+  {
+    "sample_id": "u004",
+    "predicted_label": 1,
+    "confidence": 0.65,
+    "reasoning": "Sounds-like framing referencing client experience as basis",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "evidence_span": "sounds like a good choice for you",
+    "reason": "Sounds-like framing referencing client experience as basis"
+  }
+]

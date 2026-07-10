@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 1,
+    "reason": "Acknowledges client being stuck in difficult situation, shows attunement though phrasing is garbled",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 0,
+    "reason": "Direct question (tell me more) without empathy markers; excluded as directive",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 0,
+    "reason": "Brief procedural/factual observation about pros and cons, no empathic language",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "reason": "Strong empathic: sounds like + validates feelings (hard to accept) + acknowledges difficulty about children",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 0,
+    "reason": "Analytical/balanced framing about drinking and values, not primarily empathic attunement",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 1,
+    "reason": "Sounds like + positive validation of plan, shows attunement though brief",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "reason": "Sounds like opener + acknowledgment of giving up and physical situation, empathic",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 0,
+    "reason": "Implied understanding but no strong empathy markers; more of an inference statement",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 0,
+    "reason": "Brief positive acknowledgment (doing well), not deep empathic attunement",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "reason": "Sounds like opener + acknowledgment that client understands progressing problem",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 0,
+    "reason": "Acknowledges failure but fairly flat delivery without strong empathy markers",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "reason": "Seems like + validation of commitment to health goal, empathic attunement",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 0,
+    "reason": "Sounds like opener but restates informational content about goals, not empathic",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 0,
+    "reason": "Brief validation of idea, not deep empathic attunement to difficulty",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "reason": "Seems like it means something to you validates personal meaning, empathic",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 0,
+    "reason": "Brief positive validation of suggestion, not deep empathy",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 0,
+    "reason": "Direct question (tell me more) without empathy markers",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Factual/procedural statement about change, no empathy markers",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "reason": "Sounds like + acknowledgment of dealing with difficulty for a while, empathic",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "reason": "Sounds like + validation of strong commitment, shows attunement",
+    "evidence_span": ""
+  }
+]

@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "Describes client's current reality of caregiving burden; no hypothetical framing.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "Opinion/statement about depression and Star Wars; no conditional or hypothetical structure.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Describes actual relationship situation; no hypothetical framing.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 0,
+    "reason": "Factual question about what brought client here; no conditional construction.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "Statement about current breathing difficulty; present reality, not hypothetical.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "reason": "Explores hypothetical advantages of stopping/cutting down; conditional framing with 'advantages of actually stopping'.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Statement about obligation ('you have to'); factual, not hypothetical exploration.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 0,
+    "reason": "Health risk statement; factual consequence, not hypothetical scenario framing.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 0,
+    "reason": "Past tense statement about steps already taken; actual events, not hypothetical.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 0,
+    "reason": "Brief factual observation; no conditional or hypothetical content.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "Past event description; explicitly about actual experience, not hypothetical.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "reason": "Borderline: 'you can do that' invites imagining ability/success; mild conditional.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 0,
+    "reason": "Statement about past attempts; actual events, not hypothetical framing.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "Descriptive statement about a scene; no hypothetical construction.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "Validating acknowledgment; no conditional or hypothetical structure.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 0,
+    "reason": "Describes actual behavior pattern with 'when' temporal clause; not hypothetical scenario.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Statement about current impact; present reality, not imagined situation.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Reflection on making sense of something; no hypothetical framing.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "Direct factual claim about different medications; no conditional construction.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Past tense statement linking behavior; actual events, not hypothetical.",
+    "evidence_span": ""
+  }
+]

@@ -1,0 +1,142 @@
+[
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "okay that sounds really interesting",
+    "reason": "Does not match positive_forward_looking_encouragement: insufficient trigger alignment",
+    "sample_id": "u016"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "we were kind of down like now you're...",
+    "reason": "Does not match positive_forward_looking_encouragement: insufficient trigger alignment",
+    "sample_id": "u013"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "very cool",
+    "reason": "Does not match positive_forward_looking_encouragement: insufficient trigger alignment",
+    "sample_id": "u017"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "so that was the face pretty good experience",
+    "reason": "Does not match positive_forward_looking_encouragement: insufficient trigger alignment",
+    "sample_id": "u012"
+  },
+  {
+    "pred_activate_prob": 0.73,
+    "binary_prediction": 1,
+    "evidence_span": "sounds like you",
+    "reason": "Matches positive_forward_looking_encouragement: strong trigger match (sounds like you)",
+    "sample_id": "u004"
+  },
+  {
+    "pred_activate_prob": 0.33,
+    "binary_prediction": 1,
+    "evidence_span": "concept:you can",
+    "reason": "Matches positive_forward_looking_encouragement: moderate trigger alignment with explanation",
+    "sample_id": "u006"
+  },
+  {
+    "pred_activate_prob": 0.33,
+    "binary_prediction": 1,
+    "evidence_span": "concept:think",
+    "reason": "Matches positive_forward_looking_encouragement: moderate trigger alignment with explanation",
+    "sample_id": "u003"
+  },
+  {
+    "pred_activate_prob": 0.63,
+    "binary_prediction": 1,
+    "evidence_span": "sounds like you",
+    "reason": "Matches positive_forward_looking_encouragement: strong trigger match (sounds like you)",
+    "sample_id": "u011"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "well if you don't need them then you...",
+    "reason": "Does not match positive_forward_looking_encouragement: insufficient trigger alignment",
+    "sample_id": "u008"
+  },
+  {
+    "pred_activate_prob": 0.63,
+    "binary_prediction": 1,
+    "evidence_span": "sounds like you",
+    "reason": "Matches positive_forward_looking_encouragement: strong trigger match (sounds like you)",
+    "sample_id": "u001"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "so so quite a few things going on...",
+    "reason": "Does not match positive_forward_looking_encouragement: insufficient trigger alignment",
+    "sample_id": "u010"
+  },
+  {
+    "pred_activate_prob": 0.97,
+    "binary_prediction": 1,
+    "evidence_span": "that sounds like a great idea; okay that sounds like a great idea",
+    "reason": "Matches positive_forward_looking_encouragement: strong trigger match (that sounds like a great idea)",
+    "sample_id": "u002"
+  },
+  {
+    "pred_activate_prob": 0.63,
+    "binary_prediction": 1,
+    "evidence_span": "sounds like you",
+    "reason": "Matches positive_forward_looking_encouragement: strong trigger match (sounds like you)",
+    "sample_id": "u005"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "so I'm hearing the good part about drinking...",
+    "reason": "Does not match positive_forward_looking_encouragement: insufficient trigger alignment",
+    "sample_id": "u014"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "oh nice",
+    "reason": "Does not match positive_forward_looking_encouragement: insufficient trigger alignment",
+    "sample_id": "u019"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "cute",
+    "reason": "Does not match positive_forward_looking_encouragement: insufficient trigger alignment",
+    "sample_id": "u018"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "very fun",
+    "reason": "Does not match positive_forward_looking_encouragement: insufficient trigger alignment",
+    "sample_id": "u020"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "that's something I hear not yeah pretty it's...",
+    "reason": "Does not match positive_forward_looking_encouragement: insufficient trigger alignment",
+    "sample_id": "u009"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "so you said green beans and cabbage and...",
+    "reason": "Does not match positive_forward_looking_encouragement: insufficient trigger alignment",
+    "sample_id": "u007"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "the good side of it is that you...",
+    "reason": "Does not match positive_forward_looking_encouragement: insufficient trigger alignment",
+    "sample_id": "u015"
+  }
+]

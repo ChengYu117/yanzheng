@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "Reflective statement about client's anxiety; no meta-communicative framing of counselor's own agenda.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 0,
+    "reason": "Vague fragment; no meta-communicative framing.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "Third-party description; no counselor self-reference or process framing.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "reason": "Explicit meta-framing: 'let me first verify' announces counselor's conversational move and agenda.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Reflective summary of client's activities; no process-framing of counselor's intent.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 0,
+    "reason": "Counselor assessment with 'I'd say'; borderline but no explicit process announcement.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Reflective statement; no meta-communicative framing of counselor's agenda.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 0,
+    "reason": "Directive about getting control; no meta-framing of conversational process.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 0,
+    "reason": "Reflective summary; no explicit process-framing or agenda announcement.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Reflective statement about eating habits; no meta-communicative framing.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Reflective statement about steps taken; no meta-framing.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "Brief relational observation; no meta-communicative content.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "Direct question about pain; no meta-framing of counselor's move.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 0,
+    "reason": "Reflective statement about support group; no process-framing.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "Validating acknowledgment; no meta-communicative framing.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "reason": "Process-framing: 'I have a little handout here so we can talk about' announces counselor's agenda.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "reason": "Meta-framing of session management: 'you're going to take that home and you're going to look that over' frames counselor's plan.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 0,
+    "reason": "Reflective summary of workplace situation; no meta-framing.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 0,
+    "reason": "Reflective statement about past feelings; no meta-communicative framing.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "General descriptive statement; no meta-communicative content.",
+    "evidence_span": ""
+  }
+]

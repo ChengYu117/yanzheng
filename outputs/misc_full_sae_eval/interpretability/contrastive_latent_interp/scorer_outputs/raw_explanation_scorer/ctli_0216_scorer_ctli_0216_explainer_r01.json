@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "evidence_span": "Have you ever used any type of medication or any nicotine to try to stop chewing...",
+    "reason": "Positive: matches trigger term 'you ever'"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "have you heard about serotonin",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "when did you start",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "have you considered exercise",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "all right is there anything you'd like to tell me about it",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "have you been keeping up with your insulin injections",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 1,
+    "evidence_span": "okay so have you ever considered maybe trying to buy like different made whole g...",
+    "reason": "Positive: matches trigger term 'you ever'"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "and what what sort of treatments have you tried for this before",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 1,
+    "evidence_span": "have you ever until now with the DUI have you ever envisioned stopping",
+    "reason": "Positive: matches trigger term 'you ever'"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "does it hurt anymore mark when you move it does",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "evidence_span": "Have you had any symptoms lately?",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "what other lessons have you learned from quitting",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "tell me about how you're using the insulin",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "evidence_span": "Have you ever had an abdominal aortic aneurysm test?",
+    "reason": "Positive: matches trigger term 'you ever'"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 1,
+    "evidence_span": "and how do you feel your implants working for that",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "yeah have a seat",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "okay bad idea on in that same scale with one being not confident at all to 10 be...",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "and what puts you out of 10",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 1,
+    "evidence_span": "have you ever considered maybe talking to your boss I'll moving the candy jar fr...",
+    "reason": "Positive: matches trigger term 'you ever'"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "what kind of dogs",
+    "reason": "No strong trigger or exclusion match"
+  }
+]

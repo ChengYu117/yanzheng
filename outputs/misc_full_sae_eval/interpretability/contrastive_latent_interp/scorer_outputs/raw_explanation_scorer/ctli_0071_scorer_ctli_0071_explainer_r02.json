@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 0,
+    "reason": "Client expressing ambivalence about treatment, not counselor directive",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "reason": "Validates/affirms a concrete plan -- aligns with directive pattern",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 0,
+    "reason": "Client discussing medication consideration and asking counselor opinion; not counselor directive",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "reason": "Counselor asks about quitting drinking -- directive-adjacent suggestion of behavior change",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 0,
+    "reason": "Framing client's ambivalence about stopping, not providing direction",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Empathic validation ('totally makes sense that you're feeling fear')",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 0,
+    "reason": "Describing stuck situation, no directive language",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "Positive reinforcement ('wonderful to hear') -- excluded",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 0,
+    "reason": "Empathic acknowledgment of past hardships",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Open-ended exploratory question about past -- excluded",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 0,
+    "reason": "Positive feedback on descriptive language, not directive",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "reason": "Explicit directive: 'change gears to get healthy'",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Empathic reflection on fear after diagnosis",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 0,
+    "reason": "Exploratory question about social support concerns",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 0,
+    "reason": "Reflective observation about reason for referral",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 0,
+    "reason": "Reflective summary of client's internal conflict",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 0,
+    "reason": "Neutral pros/cons framing",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 0,
+    "reason": "Reflective assumption about lessons learned; not explicit direction",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 0,
+    "reason": "Empathic/procedural closing",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "reason": "Validates an 'excellent plan' -- directive alignment",
+    "evidence_span": ""
+  }
+]

@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "No 'that you' pattern; 'that sounds like' has 'that' but not 'that you'.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "No 'that you' pattern; uses 'you'd be willing' not 'that you'.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Has 'that would' not 'that you'; different grammatical structure.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "Has 'that is' not 'that you'; different pronoun.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 0,
+    "reason": "No 'that you' pattern; short question.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 0,
+    "reason": "No 'that you' pattern; short statement about being stuck.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "reason": "Contains 'that you can do it' which matches the 'that you' trigger.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Has 'that getting' not 'that you'; different complement structure.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "Has 'that sounds like' not 'that you'; different pattern.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "reason": "Contains 'that you have candy' which matches the 'that you' trigger.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 0,
+    "reason": "No 'that you' pattern; infinitive construction.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "reason": "Contains 'that you've filled' which matches the 'that you' trigger variant.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "Has 'that home' not 'that you'; 'that' is a demonstrative pronoun.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "reason": "Contains 'that you' at end of utterance; matches the trigger pattern.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "Has 'of that' not 'that you'; different prepositional phrase.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 0,
+    "reason": "No 'that you' pattern; statement about decision.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 0,
+    "reason": "No 'that you' pattern; directive about social atmosphere.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "Has 'that sounds like' not 'that you'; different pattern.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 0,
+    "reason": "No 'that you' pattern; exclamation about music involvement.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 0,
+    "reason": "No 'that you' pattern; exclamation.",
+    "evidence_span": ""
+  }
+]

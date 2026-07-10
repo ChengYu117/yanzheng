@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "what do you think about those guidelines and maybe",
+    "reason": "Lacks positive trigger pattern(s): things, know, smoking"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "I'm wondering what you could do to possibly get an",
+    "reason": "Lacks positive trigger pattern(s): things, know, smoking"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "but what would be some positives of doing that",
+    "reason": "Lacks positive trigger pattern(s): things, know, smoking"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "is there anything like today",
+    "reason": "Lacks positive trigger pattern(s): things, know, smoking"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "what brings you in",
+    "reason": "Lacks positive trigger pattern(s): things, know, smoking"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "what about serious head injury where you lost cons",
+    "reason": "Lacks positive trigger pattern(s): things, know, smoking"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "what other lessons have you learned from quitting",
+    "reason": "Lacks positive trigger pattern(s): things, know, smoking"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "so would you you'd be able to walk them to school ",
+    "reason": "Lacks positive trigger pattern(s): things, know, smoking"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "what else have you learned",
+    "reason": "Lacks positive trigger pattern(s): things, know, smoking"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "would you what exercises do you think would be eas",
+    "reason": "Lacks positive trigger pattern(s): things, know, smoking"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "Is this something that happens at work?",
+    "reason": "Lacks positive trigger pattern(s): things, know, smoking"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "I'm wondering what you could have done to get in t",
+    "reason": "Lacks positive trigger pattern(s): things, know, smoking"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "and just to clarify from my information on average",
+    "reason": "Lacks positive trigger pattern(s): things, know, smoking"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "so if quitting really the toughest thing you've ev",
+    "reason": "Lacks positive trigger pattern(s): things, know, smoking"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "what about medications for pain other than what or",
+    "reason": "Lacks positive trigger pattern(s): things, know, smoking"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "so what kind of a career are you looking for it at",
+    "reason": "Lacks positive trigger pattern(s): things, know, smoking"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "when was your last period of abstinence when you d",
+    "reason": "Lacks positive trigger pattern(s): things, know, smoking"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "so what are the three what the four letters again",
+    "reason": "Lacks positive trigger pattern(s): things, know, smoking"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "then can I write you a prescription for the medica",
+    "reason": "Lacks positive trigger pattern(s): things, know, smoking"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "but is it the hardest thing you've ever done",
+    "reason": "Lacks positive trigger pattern(s): things, know, smoking"
+  }
+]

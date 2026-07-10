@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 0,
+    "reason": "No 'you're not' pattern; guessing statement about lessons.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "No 'you're not' pattern; question about disturbing experience.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 0,
+    "reason": "Uses 'you don't want' which is a negated client state but not 'you're not'; borderline.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 0,
+    "reason": "No 'you're not' pattern; positive reflection about connection.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 0,
+    "reason": "No 'you're not' pattern; narrative about a third party.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 0,
+    "reason": "No 'you're not' pattern; acknowledgment.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "No 'you're not' pattern; uses 'your physical activity is inactive' not negated copula.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Has 'you're listening' not 'you're not'; positive copula construction.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 0,
+    "reason": "Has conditional 'if I could' and 'you'd be interested' which matches hypothetical reasoning about client; borderline.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "reason": "Contains 'you're not a zero' which directly matches the 'you're not' trigger.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "No 'you're not' pattern; uses 'you pretty much give up' without negated copula.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 0,
+    "reason": "No 'you're not' pattern; statement about health.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "Has 'you're doing well' not 'you're not'; positive copula.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "Has 'you're saying' not 'you're not'; positive copula.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 0,
+    "reason": "No 'you're not' pattern; short agreement.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Has 'you're kind of stuck' not 'you're not'; different negation pattern.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "Has 'you're working' not 'you're not'; positive copula.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 0,
+    "reason": "No 'you're not' pattern; general observation.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 0,
+    "reason": "No 'you're not' pattern; long reflective statement.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 0,
+    "reason": "No 'you're not' pattern; gratitude/closing.",
+    "evidence_span": ""
+  }
+]

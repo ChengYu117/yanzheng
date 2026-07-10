@@ -1,0 +1,142 @@
+[
+  {
+    "pred_activate_prob": 0.03,
+    "binary_prediction": 0,
+    "evidence_span": "okay well how confident are you that you...",
+    "reason": "Excluded by empathy_affirm_lat11872: matches an explicit exclusion criterion",
+    "sample_id": "u015"
+  },
+  {
+    "pred_activate_prob": 0.03,
+    "binary_prediction": 0,
+    "evidence_span": "can you tell me a little bit about...",
+    "reason": "Excluded by empathy_affirm_lat11872: matches an explicit exclusion criterion",
+    "sample_id": "u014"
+  },
+  {
+    "pred_activate_prob": 0.03,
+    "binary_prediction": 0,
+    "evidence_span": "so it would be difficult to do it...",
+    "reason": "Excluded by empathy_affirm_lat11872: matches an explicit exclusion criterion",
+    "sample_id": "u003"
+  },
+  {
+    "pred_activate_prob": 0.03,
+    "binary_prediction": 0,
+    "evidence_span": "that's nice",
+    "reason": "Excluded by empathy_affirm_lat11872: matches an explicit exclusion criterion",
+    "sample_id": "u019"
+  },
+  {
+    "pred_activate_prob": 0.03,
+    "binary_prediction": 0,
+    "evidence_span": "okay so then something to remember is that...",
+    "reason": "Excluded by empathy_affirm_lat11872: matches an explicit exclusion criterion",
+    "sample_id": "u008"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "mm-hmm and when you're hanging out with friends...",
+    "reason": "Does not match empathy_affirm_lat11872: insufficient trigger alignment",
+    "sample_id": "u013"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "yeah throwing up is never fun it's not",
+    "reason": "Does not match empathy_affirm_lat11872: insufficient trigger alignment",
+    "sample_id": "u017"
+  },
+  {
+    "pred_activate_prob": 0.03,
+    "binary_prediction": 0,
+    "evidence_span": "that's very difficult to speak about that",
+    "reason": "Excluded by empathy_affirm_lat11872: matches an explicit exclusion criterion",
+    "sample_id": "u009"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "do you find it difficult to to get...",
+    "reason": "Does not match empathy_affirm_lat11872: insufficient trigger alignment",
+    "sample_id": "u006"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "oh you you feel frustrated because it's so...",
+    "reason": "Excluded by empathy_affirm_lat11872: matches an explicit exclusion criterion",
+    "sample_id": "u005"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "so in the past we were able to...",
+    "reason": "Does not match empathy_affirm_lat11872: insufficient trigger alignment",
+    "sample_id": "u007"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "okay can you tell me a little bit...",
+    "reason": "Does not match empathy_affirm_lat11872: insufficient trigger alignment",
+    "sample_id": "u012"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "no I didn't but it's that I mean...",
+    "reason": "Excluded by empathy_affirm_lat11872: matches an explicit exclusion criterion",
+    "sample_id": "u004"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "does it hurt anymore mark when you move...",
+    "reason": "Does not match empathy_affirm_lat11872: insufficient trigger alignment",
+    "sample_id": "u011"
+  },
+  {
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "the fish is very busy sniffle and Emily...",
+    "reason": "Does not match empathy_affirm_lat11872: insufficient trigger alignment",
+    "sample_id": "u001"
+  },
+  {
+    "pred_activate_prob": 0.03,
+    "binary_prediction": 0,
+    "evidence_span": "and I don't want to make light of...",
+    "reason": "Excluded by empathy_affirm_lat11872: matches an explicit exclusion criterion",
+    "sample_id": "u016"
+  },
+  {
+    "pred_activate_prob": 0.03,
+    "binary_prediction": 0,
+    "evidence_span": "hmm I'd be happy to do that",
+    "reason": "Excluded by empathy_affirm_lat11872: matches an explicit exclusion criterion",
+    "sample_id": "u018"
+  },
+  {
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 1,
+    "evidence_span": "concept:great",
+    "reason": "Matches empathy_affirm_lat11872: moderate trigger alignment with explanation",
+    "sample_id": "u020"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "I'm sure it was really difficult to come...",
+    "reason": "Does not match empathy_affirm_lat11872: insufficient trigger alignment",
+    "sample_id": "u010"
+  },
+  {
+    "pred_activate_prob": 0.03,
+    "binary_prediction": 0,
+    "evidence_span": "so the alcohol is something that might make...",
+    "reason": "Excluded by empathy_affirm_lat11872: matches an explicit exclusion criterion",
+    "sample_id": "u002"
+  }
+]

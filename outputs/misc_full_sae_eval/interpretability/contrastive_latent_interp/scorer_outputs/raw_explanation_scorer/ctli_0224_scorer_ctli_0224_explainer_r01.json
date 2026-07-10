@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "perhaps what I could tell you is looked at the moment the current recommendation...",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "they've got a lot of new flavors on the gum they're cinnamon and orange and juic...",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "okay okay well thanks for sharing a bit of information within this patient this ...",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "there are some things over the counter that I think for mild depression may be a...",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "but I do notice that these prescriptions from the hospital",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "okay so what other things can you tell me about that might affect your blood pre...",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "are we talking about the low risk drinking guidelines one to two standard drinks...",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "I did have some auto refills for you in the pharmacy unfortunately to return to ...",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "Have you at least been taking your diabetic medications?",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "can you tell me more about that",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "I understand you've been having some some troubling symptoms bother",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "okay can you tell me a little bit about how alcohol fits into your overall socia...",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "okay so it sounds like you're drinking about four times a week anywhere between ...",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "no problem I have this in stock",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "and I can discuss with you further kind of see your ankle John",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "but if you give me twenty minutes I can get them all ready for you",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "well mr. I'd you know we've talked about it length at this visit we've talked ab...",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "yeah so uh I think probably it sounds to me like probably changing medications a...",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "you can see in order to lose weight and improve on your symptoms diet modificati...",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "does it hurt anymore mark when you move it does",
+    "reason": "No strong trigger or exclusion match"
+  }
+]

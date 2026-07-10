@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "so what do you think has worked in your therapy",
+    "reason": "open-ended question pattern"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "was it I didn't really you know what",
+    "reason": "closed-ended question expecting short answer"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "I don't did I he's sticky send me an email during the wake about...",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "do you imagine she wants for you when she takes your computer way...",
+    "reason": "closed-ended question expecting short answer"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "what kind of dogs",
+    "reason": "open-ended question pattern"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "was that somewhere else then?",
+    "reason": "closed-ended question expecting short answer"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "now that you know more about black do you think stop flossing?",
+    "reason": "question structure unclear"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "where does that where does that leave you",
+    "reason": "not clearly a closed question"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "and how often do you think that happened",
+    "reason": "open-ended question pattern"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "okay so have you ever considered maybe trying to buy like different...",
+    "reason": "closed-ended question expecting short answer"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "Would you like to answer some questions and kind of do a self...",
+    "reason": "closed-ended question expecting short answer"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "okay and how often do you think you would say you're drinking",
+    "reason": "open-ended question pattern"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "can you probably give me an example like the activities you did and...",
+    "reason": "closed-ended question expecting short answer"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "great I'm in Romania to get a break from the sugar I sort of on a...",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "mm-hmm and when you're hanging out with friends is there ever...",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "how will privacy what is how does cutting effect privacy for you...",
+    "reason": "question structure unclear"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "you deserve to be hit no one deserves to be did every way should we...",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "can you tell me does some of the other good things possible",
+    "reason": "open-ended question pattern"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "do you feel like you've done involve thus far the semester your...",
+    "reason": "closed-ended question expecting short answer"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "was at the meeting up on the third floor that on the Thursday where...",
+    "reason": "not clearly a closed question"
+  }
+]

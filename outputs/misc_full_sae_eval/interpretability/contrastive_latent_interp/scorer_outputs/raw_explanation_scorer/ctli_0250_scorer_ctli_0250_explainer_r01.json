@@ -1,0 +1,142 @@
+[
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "not taking any more okay great no problem...",
+    "reason": "Does not match reflection_lat4756: insufficient trigger alignment",
+    "sample_id": "u020"
+  },
+  {
+    "pred_activate_prob": 0.03,
+    "binary_prediction": 0,
+    "evidence_span": "you know like I know quitting is really...",
+    "reason": "Excluded by reflection_lat4756: matches an explicit exclusion criterion",
+    "sample_id": "u016"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "I suppose there are some things you could...",
+    "reason": "Does not match reflection_lat4756: insufficient trigger alignment",
+    "sample_id": "u010"
+  },
+  {
+    "pred_activate_prob": 0.78,
+    "binary_prediction": 1,
+    "evidence_span": "concept:you've been",
+    "reason": "Matches reflection_lat4756: moderate trigger alignment with explanation",
+    "sample_id": "u005"
+  },
+  {
+    "pred_activate_prob": 0.03,
+    "binary_prediction": 0,
+    "evidence_span": "okay well how confident are you that you...",
+    "reason": "Excluded by reflection_lat4756: matches an explicit exclusion criterion",
+    "sample_id": "u015"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "I completely understand your you have a busy...",
+    "reason": "Does not match reflection_lat4756: insufficient trigger alignment",
+    "sample_id": "u008"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "Bush won last year why yes sure are...",
+    "reason": "Does not match reflection_lat4756: insufficient trigger alignment",
+    "sample_id": "u007"
+  },
+  {
+    "pred_activate_prob": 0.03,
+    "binary_prediction": 0,
+    "evidence_span": "can you tell me a little bit about...",
+    "reason": "Excluded by reflection_lat4756: matches an explicit exclusion criterion",
+    "sample_id": "u014"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "mm-hmm and when you're hanging out with friends...",
+    "reason": "Does not match reflection_lat4756: insufficient trigger alignment",
+    "sample_id": "u013"
+  },
+  {
+    "pred_activate_prob": 0.03,
+    "binary_prediction": 0,
+    "evidence_span": "That's true and that's true.",
+    "reason": "Excluded by reflection_lat4756: matches an explicit exclusion criterion",
+    "sample_id": "u003"
+  },
+  {
+    "pred_activate_prob": 0.03,
+    "binary_prediction": 0,
+    "evidence_span": "that's nice",
+    "reason": "Excluded by reflection_lat4756: matches an explicit exclusion criterion",
+    "sample_id": "u019"
+  },
+  {
+    "pred_activate_prob": 0.03,
+    "binary_prediction": 0,
+    "evidence_span": "yes I understand that",
+    "reason": "Excluded by reflection_lat4756: matches an explicit exclusion criterion",
+    "sample_id": "u004"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "okay can you tell me a little bit...",
+    "reason": "Does not match reflection_lat4756: insufficient trigger alignment",
+    "sample_id": "u012"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "yeah throwing up is never fun it's not",
+    "reason": "Does not match reflection_lat4756: insufficient trigger alignment",
+    "sample_id": "u017"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "yeah I mean okay fair enough",
+    "reason": "Does not match reflection_lat4756: insufficient trigger alignment",
+    "sample_id": "u001"
+  },
+  {
+    "pred_activate_prob": 0.03,
+    "binary_prediction": 0,
+    "evidence_span": "hmm I'd be happy to do that",
+    "reason": "Excluded by reflection_lat4756: matches an explicit exclusion criterion",
+    "sample_id": "u018"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "listen I like both Tammy associates I want...",
+    "reason": "Does not match reflection_lat4756: insufficient trigger alignment",
+    "sample_id": "u006"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "does it hurt anymore mark when you move...",
+    "reason": "Does not match reflection_lat4756: insufficient trigger alignment",
+    "sample_id": "u011"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "I agree you know overall most comments in...",
+    "reason": "Does not match reflection_lat4756: insufficient trigger alignment",
+    "sample_id": "u009"
+  },
+  {
+    "pred_activate_prob": 0.03,
+    "binary_prediction": 0,
+    "evidence_span": "I can understand that",
+    "reason": "Excluded by reflection_lat4756: matches an explicit exclusion criterion",
+    "sample_id": "u002"
+  }
+]

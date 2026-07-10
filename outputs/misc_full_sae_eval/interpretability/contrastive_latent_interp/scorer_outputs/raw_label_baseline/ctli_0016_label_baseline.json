@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "yeah you're not here because you think you have a ",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "all right so with this recent arrest you realize i",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "I'm really depressed and then you call me disturbe",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "wow you really are",
+    "reason": "emphasizes involvement"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "how about",
+    "reason": "suggestion, not reflection"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "so do you think you could quit drinking?",
+    "reason": "question, not reflection"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "you feel",
+    "reason": "reflects client feeling"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "and I can discuss with you further kind of see you",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "so you were experiencing",
+    "reason": "interprets experience"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "okay so sounds like you've seen some improvement y",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "you feel",
+    "reason": "reflects client feeling"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "so you",
+    "reason": "paraphrases or references client"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "so thought it was what people are doing it so does",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "so here feeling kind of two ways but I kind of fee",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "does look swollen",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "it sounds like",
+    "reason": "paraphrases client meaning"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "but if you give me twenty minutes I can get them a",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "it sounds like",
+    "reason": "paraphrases client meaning"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "it seems like you",
+    "reason": "infers client state"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "so you've been avoiding",
+    "reason": "interprets avoidance"
+  }
+]

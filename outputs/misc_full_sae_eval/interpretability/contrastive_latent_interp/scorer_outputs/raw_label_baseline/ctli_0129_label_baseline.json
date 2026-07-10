@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "do you feel like you've seen some real improvements on that",
+    "reason": "closed-ended question"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "tell me about how you're using the insulin",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "what do you think you'd like to try",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "so what is that like for you",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "evidence_span": "so what I like to do is get a little bit of history",
+    "reason": "question pattern detected"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "so you really you really want to know what the path forward might...",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "what do you think about that",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "what do you think about getting rid of the pencil this time choosing...",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "evidence_span": "so what I'm getting here right now is that if you just want to quit",
+    "reason": "question pattern detected"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "evidence_span": "but but what I know is that most people doing a lot more of that so",
+    "reason": "question pattern detected"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "and how do you feel your implants working for that",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "what do you think your dad wants you to be like",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "what were you feeling right then",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "yeah yeah well and David honestly wherever you're at will work with it",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "yeah what do you think needs to be different in order for you to...",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "Well, the number I dial now what is this number?",
+    "reason": "question structure present"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "what do you think that might be",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "do you think that this will be helpful I'm black Franny",
+    "reason": "closed-ended question"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "and your date of birth",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "what were you thinking at that point",
+    "reason": "open-ended question"
+  }
+]

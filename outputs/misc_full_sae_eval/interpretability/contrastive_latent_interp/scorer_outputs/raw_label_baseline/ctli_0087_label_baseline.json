@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "it sounds like it",
+    "reason": "some reflection but not clearly complex"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "it sounds like a brilliant start",
+    "reason": "some reflection but not clearly complex"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "that sounds quite interesting was that a fashion s",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "that sounds really upsetting",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "right you've got it okay good",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "it sounds like it's kind of affecting your life ne",
+    "reason": "some reflection but not clearly complex"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "that sounds like a good one to try",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "it sounds like it's kind of affecting your life ne",
+    "reason": "some reflection but not clearly complex"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "okay so there's sort of pros and cons",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "so you",
+    "reason": "references client"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "that sounds like you're fairly ready to do somethi",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "there's big change gears to get healthy",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "but but you did say it more descriptively which is",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "so you're kind of stuck",
+    "reason": "interprets situation"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "i'm guessing",
+    "reason": "adds inference beyond restatement"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "right and then with the respect one of the things ",
+    "reason": "some reflection but not clearly complex"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "that sounds exhausting",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "thank you very much I really appreciate your time ",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "it sounds like that was a very scary experience in",
+    "reason": "some reflection but not clearly complex"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "oh great that's really wonderful to hear from you",
+    "reason": "not a reflection"
+  }
+]

@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "reason": "Strong second person address with 'you'/'you're' and discourse marker 'so', matching substance use discussion",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "No second person address or discourse markers; purely descriptive statement",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 0,
+    "reason": "'you' appears but embedded in reported speech about third party 'him'; weak second person address",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "reason": "Heavy second person address with 'so'/'you'/'your'/'you're' throughout; very strong match",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 1,
+    "reason": "Contains 'you' for second person address; moderate match without discourse marker",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 0,
+    "reason": "Has 'so' but no second person address; primary trigger absent",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 0,
+    "reason": "Mostly first person 'I'; 'you know' is filler discourse, not structured second person address",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "No second person address and no discourse markers",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 0,
+    "reason": "'you' is object of 'listening to'; subject is first person 'I'; weak second person address",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "reason": "Strong 'so' discourse marker + 'you're'/'you' second person address",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "reason": "Contains 'your'/'you'; direct second person address present",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 1,
+    "reason": "Has 'so' and 'you' but mixed with first person 'I'; moderate match",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "reason": "'So' discourse marker + 'you're' direct second person address",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 0,
+    "reason": "Has 'so' but no second person address",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "reason": "'you could' is conditional with second person address; suggestion directed at client",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "reason": "'you're' direct second person address by name",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "reason": "'so' discourse marker + 'you're'/'you' second person address",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "reason": "Has 'you' in question form; second person address present",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 0,
+    "reason": "Has 'your' but very short; no discourse marker; weak match",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "reason": "'so' discourse marker + 'you' second person address",
+    "evidence_span": ""
+  }
+]

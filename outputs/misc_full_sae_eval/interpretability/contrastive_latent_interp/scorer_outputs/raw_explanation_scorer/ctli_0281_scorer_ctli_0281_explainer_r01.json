@@ -1,0 +1,142 @@
+[
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "not taking any more okay great no problem...",
+    "reason": "Does not match mixed_activation_no_clear_pattern: insufficient trigger alignment",
+    "sample_id": "u012"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "that would be a good indicator where you're...",
+    "reason": "Does not match mixed_activation_no_clear_pattern: insufficient trigger alignment",
+    "sample_id": "u009"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "so what I know of you is that...",
+    "reason": "Does not match mixed_activation_no_clear_pattern: insufficient trigger alignment",
+    "sample_id": "u016"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "okay that sounds like an excellent plan",
+    "reason": "Does not match mixed_activation_no_clear_pattern: insufficient trigger alignment",
+    "sample_id": "u004"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "cute",
+    "reason": "Does not match mixed_activation_no_clear_pattern: insufficient trigger alignment",
+    "sample_id": "u019"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "so it sounds like your sleep has really...",
+    "reason": "Does not match mixed_activation_no_clear_pattern: insufficient trigger alignment",
+    "sample_id": "u007"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "that's great that's a really good goal yeah",
+    "reason": "Does not match mixed_activation_no_clear_pattern: insufficient trigger alignment",
+    "sample_id": "u005"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "so six is a great start and I...",
+    "reason": "Does not match mixed_activation_no_clear_pattern: insufficient trigger alignment",
+    "sample_id": "u006"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "latest thing that they're not talk to you...",
+    "reason": "Does not match mixed_activation_no_clear_pattern: insufficient trigger alignment",
+    "sample_id": "u013"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "it sounds like with lots of your brother...",
+    "reason": "Does not match mixed_activation_no_clear_pattern: insufficient trigger alignment",
+    "sample_id": "u008"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "okay that sounds really interesting",
+    "reason": "Does not match mixed_activation_no_clear_pattern: insufficient trigger alignment",
+    "sample_id": "u017"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "sounds like you weren't feeling so good about...",
+    "reason": "Does not match mixed_activation_no_clear_pattern: insufficient trigger alignment",
+    "sample_id": "u014"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "doesn't sound like good quality sleep",
+    "reason": "Does not match mixed_activation_no_clear_pattern: insufficient trigger alignment",
+    "sample_id": "u011"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "um telling me would have been great but...",
+    "reason": "Does not match mixed_activation_no_clear_pattern: insufficient trigger alignment",
+    "sample_id": "u015"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "I think this is a really good goal",
+    "reason": "Does not match mixed_activation_no_clear_pattern: insufficient trigger alignment",
+    "sample_id": "u002"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "that sounds like a great idea",
+    "reason": "Does not match mixed_activation_no_clear_pattern: insufficient trigger alignment",
+    "sample_id": "u003"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "sounds like you have like I said really...",
+    "reason": "Does not match mixed_activation_no_clear_pattern: insufficient trigger alignment",
+    "sample_id": "u001"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "wow you really are involved in music",
+    "reason": "Does not match mixed_activation_no_clear_pattern: insufficient trigger alignment",
+    "sample_id": "u018"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "excellent well thank you so much for coming...",
+    "reason": "Does not match mixed_activation_no_clear_pattern: insufficient trigger alignment",
+    "sample_id": "u010"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "oh nice",
+    "reason": "Does not match mixed_activation_no_clear_pattern: insufficient trigger alignment",
+    "sample_id": "u020"
+  }
+]

@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.25,
+    "binary_prediction": 0,
+    "reason": "Simple affirmation of readiness, not extended reasoning from client disclosure",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.3,
+    "binary_prediction": 0,
+    "reason": "Simple observation with 'it seems like' but lacks extended reasoning",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "reason": "Simple client reference without extended reasoning",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "reason": "Question asking for info, not building on disclosure with reasoning",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.92,
+    "binary_prediction": 1,
+    "reason": "Client reference 'it sounds like' with extended reasoning about letting children down",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.2,
+    "binary_prediction": 0,
+    "reason": "Simple client observation without extended embedding",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.05,
+    "binary_prediction": 0,
+    "reason": "Simple affirmation, excluded as near-miss",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.05,
+    "binary_prediction": 0,
+    "reason": "Simple plan affirmation, excluded as near-miss",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.2,
+    "binary_prediction": 0,
+    "reason": "Simple observation, not extended reasoning",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "reason": "Question, not extended reasoning from client disclosure",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "reason": "References client experience but relatively simple",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "reason": "Simple observation about outcome",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.05,
+    "binary_prediction": 0,
+    "reason": "Simple agreement",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "reason": "Simple observation",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.93,
+    "binary_prediction": 1,
+    "reason": "Client reference with extended reasoning about parenting failure and physical escalation",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.05,
+    "binary_prediction": 0,
+    "reason": "Short factual, no client reference",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.05,
+    "binary_prediction": 0,
+    "reason": "Simple affirmation",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.05,
+    "binary_prediction": 0,
+    "reason": "Simple affirmation",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.45,
+    "binary_prediction": 0,
+    "reason": "Client reference with temporal note but not complex extended reasoning",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "reason": "Client reference 'it seems like' with extended reasoning about what education means to client",
+    "evidence_span": ""
+  }
+]

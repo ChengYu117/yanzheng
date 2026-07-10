@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 0,
+    "reason": "No discourse marker 'so'; empathic/positive statement with 'you'",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 1,
+    "reason": "Has 'you're' second person; direct challenge about dentist; no 'so' but second person very strong",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 0,
+    "reason": "Has 'you've' but no 'so'; guessing statement",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "No discourse marker or second person; very short",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "reason": "Has 'you're' second person; question with direct address",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 0,
+    "reason": "Has 'you're' but no 'so'; positive affirmation",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "reason": "'so' + 'you've' both primary and secondary triggers",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "reason": "'so' + 'you're'/'you' strong match for both triggers",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "reason": "'so' + 'you're' both triggers present",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 0,
+    "reason": "Has 'you're' but no 'so'; very short praise",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 0,
+    "reason": "Has 'you've'/'you' but no 'so'; 'yeah' is not specified marker",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "reason": "'so' + 'you're' both triggers present",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 0,
+    "reason": "Has 'you're' but very short and formulaic",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "reason": "'so' + 'you're'/'your' strong match",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 0,
+    "reason": "Has 'you're' but no 'so'; exclamation",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "reason": "'so' + 'you're'/'your'/'you' strong match",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "reason": "'so' + 'you're'/'you' both triggers",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 0,
+    "reason": "Has 'you're' but no 'so'",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "reason": "'okay so' + 'you've'/'your' both triggers",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 0,
+    "reason": "Has 'you've' but no 'so'; 'well' is not specified marker",
+    "evidence_span": ""
+  }
+]

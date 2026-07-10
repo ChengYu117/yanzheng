@@ -1,0 +1,142 @@
+[
+  {
+    "pred_activate_prob": 0.41,
+    "binary_prediction": 1,
+    "evidence_span": "concept:?",
+    "reason": "Matches health status observation / clinical finding: moderate trigger alignment with explanation",
+    "sample_id": "u010"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "I've always wanted to be good at music",
+    "reason": "Does not match health status observation / clinical finding: insufficient trigger alignment",
+    "sample_id": "u019"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "and I can discuss with you further kind...",
+    "reason": "Does not match health status observation / clinical finding: insufficient trigger alignment",
+    "sample_id": "u018"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "it can't it can't anything else you can...",
+    "reason": "Does not match health status observation / clinical finding: insufficient trigger alignment",
+    "sample_id": "u015"
+  },
+  {
+    "pred_activate_prob": 0.33,
+    "binary_prediction": 1,
+    "evidence_span": "concept:do you",
+    "reason": "Matches health status observation / clinical finding: moderate trigger alignment with explanation",
+    "sample_id": "u009"
+  },
+  {
+    "pred_activate_prob": 0.33,
+    "binary_prediction": 1,
+    "evidence_span": "concept:what ",
+    "reason": "Matches health status observation / clinical finding: moderate trigger alignment with explanation",
+    "sample_id": "u008"
+  },
+  {
+    "pred_activate_prob": 0.33,
+    "binary_prediction": 1,
+    "evidence_span": "concept:what ",
+    "reason": "Matches health status observation / clinical finding: moderate trigger alignment with explanation",
+    "sample_id": "u006"
+  },
+  {
+    "pred_activate_prob": 0.33,
+    "binary_prediction": 1,
+    "evidence_span": "concept:do you",
+    "reason": "Matches health status observation / clinical finding: moderate trigger alignment with explanation",
+    "sample_id": "u002"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "on that same scale from one to ten",
+    "reason": "Does not match health status observation / clinical finding: insufficient trigger alignment",
+    "sample_id": "u020"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "yeah yeah it's our that the the social...",
+    "reason": "Does not match health status observation / clinical finding: insufficient trigger alignment",
+    "sample_id": "u007"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "yeah something that you can maybe take no...",
+    "reason": "Does not match health status observation / clinical finding: insufficient trigger alignment",
+    "sample_id": "u011"
+  },
+  {
+    "pred_activate_prob": 0.73,
+    "binary_prediction": 1,
+    "evidence_span": "Alright, your blood pressure is over",
+    "reason": "Matches health status observation / clinical finding: strong trigger match (Alright, your blood pressure is over)",
+    "sample_id": "u001"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "no problem I have this in stock",
+    "reason": "Does not match health status observation / clinical finding: insufficient trigger alignment",
+    "sample_id": "u016"
+  },
+  {
+    "pred_activate_prob": 0.43,
+    "binary_prediction": 1,
+    "evidence_span": "concept:why ",
+    "reason": "Matches health status observation / clinical finding: moderate trigger alignment with explanation",
+    "sample_id": "u005"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "like maybe you should just start hanging out...",
+    "reason": "Does not match health status observation / clinical finding: insufficient trigger alignment",
+    "sample_id": "u003"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "And then the other there's good things you...",
+    "reason": "Does not match health status observation / clinical finding: insufficient trigger alignment",
+    "sample_id": "u014"
+  },
+  {
+    "pred_activate_prob": 0.33,
+    "binary_prediction": 1,
+    "evidence_span": "concept:can you",
+    "reason": "Matches health status observation / clinical finding: moderate trigger alignment with explanation",
+    "sample_id": "u013"
+  },
+  {
+    "pred_activate_prob": 0.33,
+    "binary_prediction": 1,
+    "evidence_span": "concept:?",
+    "reason": "Matches health status observation / clinical finding: moderate trigger alignment with explanation",
+    "sample_id": "u012"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "it's around there and then if you're gonna...",
+    "reason": "Does not match health status observation / clinical finding: insufficient trigger alignment",
+    "sample_id": "u004"
+  },
+  {
+    "pred_activate_prob": 0.18,
+    "binary_prediction": 0,
+    "evidence_span": "but I do notice that these prescriptions from...",
+    "reason": "Does not match health status observation / clinical finding: insufficient trigger alignment",
+    "sample_id": "u017"
+  }
+]

@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "yeah it does it does sound as though over the last",
+    "reason": "some reflection but not clearly complex"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "okay so just to verify what you said on here it lo",
+    "reason": "some reflection but not clearly complex"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "yeah well it sounds as though you feel pretty stro",
+    "reason": "some reflection but not clearly complex"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "that sounds like a really good plan",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "and according to your profile it looks like you're",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "there's big change gears to get healthy",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "but but you did say it more descriptively which is",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "so it really sounds like you've had a very traumat",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "thank you very much I really appreciate your time ",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "so it sounds like",
+    "reason": "infers from client"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "just kind of going through the motions it sounds l",
+    "reason": "some reflection but not clearly complex"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "so you",
+    "reason": "references client"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "yeah well it sounds like it's really it helps you ",
+    "reason": "some reflection but not clearly complex"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "so you're kind of stuck",
+    "reason": "interprets situation"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "okay that sounds like an excellent plan",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "we'll talk about that you know it looks like on he",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "okay so there's sort of pros and cons",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "oh great that's really wonderful to hear from you",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "it also sounds like it's tempting what do you thin",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "right and then with the respect one of the things ",
+    "reason": "some reflection but not clearly complex"
+  }
+]

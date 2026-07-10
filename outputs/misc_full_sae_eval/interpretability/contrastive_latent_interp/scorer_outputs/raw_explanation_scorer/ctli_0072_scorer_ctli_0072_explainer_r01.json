@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 0,
+    "reason": "Acknowledgment of client's awareness, not providing direction",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 0,
+    "reason": "Exploratory discussion of drinking's social role; not directive",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 0,
+    "reason": "Neutral pros/cons framing without directive language",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 0,
+    "reason": "Neutral factual observation about client's activities",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Empathic acknowledgment of pain",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "Positive reinforcement ('you got it') -- excluded",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "reason": "Observation about missed prescription implicitly prompts action; borderline directive",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 0,
+    "reason": "Positive feedback on descriptive language, not directive",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 0,
+    "reason": "Expressing puzzlement, not providing direction",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "Positive reinforcement ('wonderful to hear') -- excluded",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 0,
+    "reason": "Reflective observation about past behavior",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 0,
+    "reason": "Describes stuck situation, no directive language",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 0,
+    "reason": "Reflective acknowledgment of ongoing situation",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 0,
+    "reason": "Reflective observation about third-party concern; not counselor directive",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "reason": "Validates an 'excellent plan' -- directive alignment",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 0,
+    "reason": "Exploratory framing of balance-seeking around drinking",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "Procedural closing/thanking -- excluded",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 0,
+    "reason": "Acknowledging client motivation and desire for help; exploratory rather than directive",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 0,
+    "reason": "Reflective observation about feeling of change, no directive",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 0,
+    "reason": "Exploring values and boundaries, not directing action",
+    "evidence_span": ""
+  }
+]

@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "well I wanted to talk to you about something we ta",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "okay that sounds like an excellent plan",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "okay great  it sounds like you're eating pretty  h",
+    "reason": "some reflection but not clearly complex"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "so if those sound like things that you might be wi",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "okay that sounds like a pretty strong commitment",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "what I'm hearing is it sounds like you might feel ",
+    "reason": "some reflection but not clearly complex"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "all right well good it sounds like we have a plan ",
+    "reason": "some reflection but not clearly complex"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "it sounds like a social anxiety type symptom that ",
+    "reason": "some reflection but not clearly complex"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "Sounds like post-nasal drip",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "okay that sounds like a great idea",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "it sounds like you're in the right track looks lik",
+    "reason": "some reflection but not clearly complex"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "sounds like you're noticing quite a few not so goo",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "i'm guessing",
+    "reason": "adds inference beyond restatement"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "okay so there's sort of pros and cons",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "right and then with the respect one of the things ",
+    "reason": "some reflection but not clearly complex"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "there's big change gears to get healthy",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "so you're kind of stuck",
+    "reason": "interprets situation"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "it sounds a little bit like you're feeling a chang",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "so it sounds like",
+    "reason": "infers from client"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "sounds like a good choice for you and given that y",
+    "reason": "some reflection but not clearly complex"
+  }
+]

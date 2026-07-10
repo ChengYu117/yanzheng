@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "you",
+    "reason": "Contains positive trigger phrase 'you'"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "you",
+    "reason": "Contains positive trigger phrase 'you'"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "you",
+    "reason": "Contains positive trigger phrase 'you'"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "you",
+    "reason": "Contains positive trigger phrase 'you'"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "you",
+    "reason": "Contains positive trigger phrase 'you'"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "you",
+    "reason": "Contains positive trigger phrase 'you'"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "ok so let's start what about reasons to change wha",
+    "reason": "Lacks positive trigger pattern(s): you"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "you",
+    "reason": "Contains positive trigger phrase 'you'"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "you",
+    "reason": "Contains positive trigger phrase 'you'"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "you",
+    "reason": "Contains positive trigger phrase 'you'"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "you",
+    "reason": "Contains positive trigger phrase 'you'"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "you",
+    "reason": "Contains positive trigger phrase 'you'"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "you",
+    "reason": "Contains positive trigger phrase 'you'"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "you",
+    "reason": "Contains positive trigger phrase 'you'"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "you",
+    "reason": "Contains positive trigger phrase 'you'"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "so so tell me what has happened what what is what'",
+    "reason": "Lacks positive trigger pattern(s): you"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "you",
+    "reason": "Contains positive trigger phrase 'you'"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "you",
+    "reason": "Contains positive trigger phrase 'you'"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "you",
+    "reason": "Contains positive trigger phrase 'you'"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "you",
+    "reason": "Contains positive trigger phrase 'you'"
+  }
+]

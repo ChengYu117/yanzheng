@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 0,
+    "evidence_span": "Direct factual statement",
+    "reason": "Tied evidence, lean toward non-activation"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.67,
+    "binary_prediction": 1,
+    "evidence_span": "Partial match: 'you know'",
+    "reason": "Matches triggers: Partial match: 'you know'"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.67,
+    "binary_prediction": 1,
+    "evidence_span": "Hedging: 'i'm guessing'",
+    "reason": "Matches triggers: Hedging: 'i'm guessing'"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.91,
+    "binary_prediction": 1,
+    "evidence_span": "Direct match: ', '",
+    "reason": "Matches triggers: Direct match: ', '; Evaluative: 'really'; Self-repair: repeated 'i,'"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.91,
+    "binary_prediction": 1,
+    "evidence_span": "Direct match: 'wouldn'",
+    "reason": "Matches triggers: Direct match: 'wouldn'; Evaluative: 'great'; Hedging: 'would'"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 0,
+    "evidence_span": "No surface-form markers",
+    "reason": "Lacks the surface-level markers described"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.79,
+    "binary_prediction": 1,
+    "evidence_span": "Direct match: 'well'",
+    "reason": "Matches triggers: Direct match: 'well'; Discourse marker: 'well'"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.67,
+    "binary_prediction": 1,
+    "evidence_span": "Evaluative: 'really'",
+    "reason": "Matches triggers: Evaluative: 'really'"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.79,
+    "binary_prediction": 1,
+    "evidence_span": "Direct match: ', '",
+    "reason": "Matches triggers: Direct match: ', '; Disfluency: false start pattern"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 0,
+    "evidence_span": "No surface-form markers",
+    "reason": "Lacks the surface-level markers described"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "Direct match: 'well'",
+    "reason": "Matches triggers: Direct match: 'well'; Discourse marker: 'well'; Hedging: 'probably'"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.91,
+    "binary_prediction": 1,
+    "evidence_span": "Direct match: 'well'",
+    "reason": "Matches triggers: Direct match: 'well'; Partial match: 'you know'; Discourse marker: 'well'"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 0,
+    "evidence_span": "Direct factual statement",
+    "reason": "Tied evidence, lean toward non-activation"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.67,
+    "binary_prediction": 0,
+    "evidence_span": "Direct factual statement",
+    "reason": "Matches exclusions: Direct factual statement"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.67,
+    "binary_prediction": 1,
+    "evidence_span": "Self-repair: repeated 'it's'",
+    "reason": "Matches triggers: Self-repair: repeated 'it's'"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.79,
+    "binary_prediction": 1,
+    "evidence_span": "Direct match: 'wouldn'",
+    "reason": "Matches triggers: Direct match: 'wouldn'; Hedging: 'would'"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.67,
+    "binary_prediction": 1,
+    "evidence_span": "Partial match: 'you know'",
+    "reason": "Matches triggers: Partial match: 'you know'"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.67,
+    "binary_prediction": 1,
+    "evidence_span": "Hesitation marker: 'um'",
+    "reason": "Matches triggers: Hesitation marker: 'um'"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 0,
+    "evidence_span": "No surface-form markers",
+    "reason": "Lacks the surface-level markers described"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.79,
+    "binary_prediction": 1,
+    "evidence_span": "Direct match: 'you know'",
+    "reason": "Matches triggers: Direct match: 'you know'; Discourse marker: 'you know'"
+  }
+]

@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "and how do you think you will feel if you were to envision how you...",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "evidence_span": "what else have you learned",
+    "reason": "question pattern detected"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "what kind of problems sister experience",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "do you feel a little bit proud of yourself",
+    "reason": "closed-ended question"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "so you'd at least be willing to try a change and and see how that goes",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "yeah I bet you have a lot of life experience",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "so you really you really want to know what the path forward might...",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "evidence_span": "so if quitting really the toughest thing you've ever done",
+    "reason": "question pattern detected"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "I'm wondering if there is any purpose for you joining some sort of...",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "four times a week so for how long do you think you can even go on",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "so you feel like you can get out of the rehab part too-",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "do you take any medications or do you have any medical conditions",
+    "reason": "closed-ended question"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "and how do you see that best in your day how do you see that working...",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "does it hurt anymore mark when you move it does",
+    "reason": "closed-ended question"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "do you remember what I mean by opposite action",
+    "reason": "closed-ended question"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "evidence_span": "what other lessons have you learned from quitting",
+    "reason": "question pattern detected"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "so why don't you come into the clinic today",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "so now that we have had this conversation um how do you feel about...",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "do you drink alcohol",
+    "reason": "closed-ended question"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "do you find it difficult to to get alcohol like you have to work to...",
+    "reason": "closed-ended question"
+  }
+]

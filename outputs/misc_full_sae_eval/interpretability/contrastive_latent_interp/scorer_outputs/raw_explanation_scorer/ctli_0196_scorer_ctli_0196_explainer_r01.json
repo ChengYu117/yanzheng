@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "evidence_span": "move you just a little bit higher up to a nine as far as importance",
+    "reason": "References numeric scale endpoint (nine) with importance anchoring"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "does it hurt anymore mark when you move it",
+    "reason": "No numeric scale, no endpoint anchors, no rating framework"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 1,
+    "evidence_span": "your confidence you said is that a two or three why not a one",
+    "reason": "References numeric confidence rating with implicit scale anchoring"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "How confident are you that you want to change in a scale of one to ten",
+    "reason": "Explicit 'scale of one to ten' with confidence anchoring"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 1,
+    "evidence_span": "on a scale that yeah yeah okay so where are you at the moment",
+    "reason": "References scale framework and asks client to self-place"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "an eight why an eight not a five or six",
+    "reason": "References previously established rating but doesn't set up a new scale"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "when did you start",
+    "reason": "No numeric scale, no endpoint anchors, no rating framework"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "why did you say a five and not a three or four",
+    "reason": "References prior rating; asks about number choice but doesn't set up scale"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "what kind of dogs",
+    "reason": "No numeric scale, no endpoint anchors, no rating framework"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "why a six or seven and not a four or a five",
+    "reason": "References prior rating numbers but doesn't construct a new scale"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "on a scale of one to five five being the lowest how many times",
+    "reason": "Explicit scale construction with 'one to five' and endpoint anchor"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "10 is pretty pretty big so why do you think you picked a 10",
+    "reason": "References prior rating value but doesn't construct a new scale"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "on a scale from one to ten ten being the best on being the worst how important",
+    "reason": "Full scale construction with 'one to ten' and both endpoint anchors"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "do you feel like you've seen some real improvements",
+    "reason": "No numeric scale, no endpoint anchors, no rating framework"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 1,
+    "evidence_span": "move higher up on the scale of how serious",
+    "reason": "References scale framework and asks about movement on seriousness continuum"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.92,
+    "binary_prediction": 1,
+    "evidence_span": "on a scale of zero to ten zero being not confident at all and ten being 100% confident",
+    "reason": "Full scale construction with 'zero to ten' and both endpoint anchors"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.58,
+    "binary_prediction": 1,
+    "evidence_span": "what would it take to get you to like a five in confidence",
+    "reason": "References numeric confidence level with implicit scale anchoring"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "when you're hanging out with friends is there ever alcohol",
+    "reason": "No numeric scale, no endpoint anchors, no rating framework"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "on a scale of to being not confident at all and being one hundred percent confident",
+    "reason": "Full scale construction with endpoint anchors matching the trigger pattern"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.45,
+    "binary_prediction": 0,
+    "evidence_span": "thinking about importance Nathan how important it be for you",
+    "reason": "Asks about importance but without explicit numeric scale construction"
+  }
+]

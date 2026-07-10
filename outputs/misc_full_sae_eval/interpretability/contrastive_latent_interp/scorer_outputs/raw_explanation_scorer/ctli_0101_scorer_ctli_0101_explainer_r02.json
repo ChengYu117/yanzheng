@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "reason": "Contains 'it sounds to me like' which matches the reflective 'sounds like' framing.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 0,
+    "reason": "No 'sounds like' pattern; short statement about health.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 0,
+    "reason": "No 'sounds like' pattern; medical follow-up statement.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 0,
+    "reason": "No 'sounds like' pattern; general observation about pros and cons.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "reason": "Contains 'it sounds like' in reflective framing about drinking levels.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Uses 'could be' not 'sounds like'; causal reasoning without the reflective frame.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 0,
+    "reason": "Uses 'feel like' not 'sounds like'; similar but different reflective verb.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "reason": "Contains 'it sounds kind of similar' which matches the 'sounds like' reflective framing.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "reason": "Contains 'it sounds like' and 'sounds like' in reflective framing about implemented things.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 0,
+    "reason": "Praise/positive feedback with no 'sounds like' pattern.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "reason": "Contains 'sounds like' in acknowledgment; borderline as it's more agreement than reflection.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "Uses 'indicating to me' not 'sounds like'; factual statement about ear infections.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "No 'sounds like' pattern; directive about balancing drinking.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Uses 'from what I hear you saying' which is reflective but not 'sounds like' framing.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 0,
+    "reason": "No 'sounds like' pattern; statement about pain when sleeping.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 0,
+    "reason": "Gratitude/closing with no 'sounds like' pattern.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 0,
+    "reason": "Uses 'looks like' not 'sounds like'; similar but different sensory verb.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 0,
+    "reason": "No 'sounds like' pattern; statement about being stuck.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 0,
+    "reason": "Praise/acknowledgment with no 'sounds like' pattern.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 0,
+    "reason": "Long reflective statement with no 'sounds like' pattern.",
+    "evidence_span": ""
+  }
+]

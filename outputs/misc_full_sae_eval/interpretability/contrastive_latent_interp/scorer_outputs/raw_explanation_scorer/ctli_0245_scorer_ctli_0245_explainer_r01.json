@@ -1,0 +1,142 @@
+[
+  {
+    "pred_activate_prob": 0.33,
+    "binary_prediction": 1,
+    "evidence_span": "concept:?",
+    "reason": "Matches evocation_lat20329: moderate trigger alignment with explanation",
+    "sample_id": "u013"
+  },
+  {
+    "pred_activate_prob": 0.33,
+    "binary_prediction": 1,
+    "evidence_span": "concept:can you",
+    "reason": "Matches evocation_lat20329: moderate trigger alignment with explanation",
+    "sample_id": "u015"
+  },
+  {
+    "pred_activate_prob": 0.33,
+    "binary_prediction": 1,
+    "evidence_span": "concept:can you",
+    "reason": "Matches evocation_lat20329: moderate trigger alignment with explanation",
+    "sample_id": "u012"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "okay so I wrote a prescription for an...",
+    "reason": "Does not match evocation_lat20329: insufficient trigger alignment",
+    "sample_id": "u008"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "and then you are using the unplanned when...",
+    "reason": "Does not match evocation_lat20329: insufficient trigger alignment",
+    "sample_id": "u014"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "but I do notice that these prescriptions from...",
+    "reason": "Does not match evocation_lat20329: insufficient trigger alignment",
+    "sample_id": "u017"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "if you loss weight, it will lessen the...",
+    "reason": "Does not match evocation_lat20329: insufficient trigger alignment",
+    "sample_id": "u001"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "sounds like for you cutting works for a...",
+    "reason": "Does not match evocation_lat20329: insufficient trigger alignment",
+    "sample_id": "u011"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "Having diabetes affects you more than you realize...",
+    "reason": "Does not match evocation_lat20329: insufficient trigger alignment",
+    "sample_id": "u005"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "no I don't really feel you know a...",
+    "reason": "Does not match evocation_lat20329: insufficient trigger alignment",
+    "sample_id": "u002"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "okay so that was a really helpful thing...",
+    "reason": "Does not match evocation_lat20329: insufficient trigger alignment",
+    "sample_id": "u009"
+  },
+  {
+    "pred_activate_prob": 0.03,
+    "binary_prediction": 0,
+    "evidence_span": "ok so what's nothing to me is that...",
+    "reason": "Excluded by evocation_lat20329: matches an explicit exclusion criterion",
+    "sample_id": "u004"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "no problem I have this in stock",
+    "reason": "Does not match evocation_lat20329: insufficient trigger alignment",
+    "sample_id": "u016"
+  },
+  {
+    "pred_activate_prob": 0.48,
+    "binary_prediction": 1,
+    "evidence_span": "concept:do you",
+    "reason": "Matches evocation_lat20329: moderate trigger alignment with explanation",
+    "sample_id": "u003"
+  },
+  {
+    "pred_activate_prob": 0.48,
+    "binary_prediction": 1,
+    "evidence_span": "concept:important",
+    "reason": "Matches evocation_lat20329: moderate trigger alignment with explanation",
+    "sample_id": "u006"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "ok well mrs. key relapses are normal they're...",
+    "reason": "Does not match evocation_lat20329: insufficient trigger alignment",
+    "sample_id": "u010"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "I did have some auto refills for you...",
+    "reason": "Does not match evocation_lat20329: insufficient trigger alignment",
+    "sample_id": "u018"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "I said you have some anxiety but you're...",
+    "reason": "Does not match evocation_lat20329: insufficient trigger alignment",
+    "sample_id": "u007"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "and I can discuss with you further kind...",
+    "reason": "Does not match evocation_lat20329: insufficient trigger alignment",
+    "sample_id": "u020"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "but if you give me twenty minutes I...",
+    "reason": "Does not match evocation_lat20329: insufficient trigger alignment",
+    "sample_id": "u019"
+  }
+]

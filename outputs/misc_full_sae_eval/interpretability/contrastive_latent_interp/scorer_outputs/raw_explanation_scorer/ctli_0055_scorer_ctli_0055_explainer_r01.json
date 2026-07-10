@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "reason": "'how about if' conditional/hypothetical framing",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "No conditional or discourse markers; very short",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "reason": "'so' discourse marker; long descriptive utterance",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 0,
+    "reason": "'you'll' future but not clearly conditional/hypothetical framing",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "reason": "'You know' + 'so' discourse markers; confrontational question",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 0,
+    "reason": "'I understand' first person; no conditional or discourse markers",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "reason": "'so' discourse marker twice; longer utterance",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 0,
+    "reason": "'I understand' first person; no conditional or discourse markers",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "reason": "'so' + 'sounds like' discourse markers",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 0,
+    "reason": "'I understand'/'I really appreciate' first person; no conditional",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 0,
+    "reason": "No conditional or discourse markers; short",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "reason": "'so' + 'would be' conditional",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "reason": "'so' + 'if you become' conditional hypothetical; long",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 0,
+    "reason": "No conditional or discourse markers; short",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 0,
+    "reason": "'so' present but very short and formulaic",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "reason": "'so' + 'you know' discourse markers; longer utterance",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 0,
+    "reason": "'You know' discourse marker; dental observation",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "No conditional or discourse markers; very short",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "reason": "'so' + 'you know' discourse markers; long utterance",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 0,
+    "reason": "'can't' negation and confrontational but no conditional/discourse markers",
+    "evidence_span": ""
+  }
+]

@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "does look swollen",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "okay so sounds like you've seen some improvement y",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "it doesn't matter if your son's always healthy vit",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "it's an eighth Wow so it's not a two or three it's",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "hello Maria it's nice to see you again",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "it sounds like",
+    "reason": "paraphrases client meaning"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "what would",
+    "reason": "question, not reflection"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "so you were experiencing",
+    "reason": "interprets experience"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "today it was . and three months ago, it was ..",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "it sounds like",
+    "reason": "paraphrases client meaning"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "what i'm hearing",
+    "reason": "reflects client meaning"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "it's going to work for you",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "so you're really not confident",
+    "reason": "infers self-assessment"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "it sounds like",
+    "reason": "paraphrases client meaning"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "what i'm hearing",
+    "reason": "reflects client meaning"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "well I also want to reiterate that it's you know t",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "you feel",
+    "reason": "reflects client feeling"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "i know that it hasn't been easy",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "so sorry it's like there really are a lot of good ",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "so you",
+    "reason": "paraphrases or references client"
+  }
+]

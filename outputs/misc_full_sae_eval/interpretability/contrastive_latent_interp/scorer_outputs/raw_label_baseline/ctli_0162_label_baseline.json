@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "so do you know all the bad stuff about alcohol?",
+    "reason": "closed-ended question pattern"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "so if quitting really the toughest thing you've ever done",
+    "reason": "not clearly an open question"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "so do you think you can quit",
+    "reason": "closed-ended question pattern"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "so what do you do on a normal day or what times would she be okay",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "what what's what kind of drinks do you have what do you drink",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "so what do you think I've helped you move towards the -",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "so do you have a goal of quitting smoking",
+    "reason": "closed-ended question pattern"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "what have you discuss with your doctor recently",
+    "reason": "not clearly an open question"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "can you tell me more about that",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "okay and what kind of sweets do you like to eat during that time or...",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "So what do you think will help",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "okay interesting so do you know all the bad stuff about alcohol",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "so do you put any of anything on the salad?",
+    "reason": "closed-ended question pattern"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "yeah I'm wondering if if in lieu of what's happening in kind of in...",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "okay so tell me why you're only using it when your blood sugar goes...",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "but is it the hardest thing you've ever done",
+    "reason": "closed-ended question pattern"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "now thinking about what you've done already what do you feel like...",
+    "reason": "not clearly an open question"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "okay and so we talked about  changing your soda drinking how much ...",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "so when you reflect back now on last week and the rain coming down...",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "so what do you make of all that",
+    "reason": "open-ended question inviting elaboration"
+  }
+]

@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "why do you eat too much",
+    "reason": "Direct WH-question probing client eating behavior with 'you' address"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "are you willing to incorporate more vegetables",
+    "reason": "Yes/no question soliciting client's dietary willingness using 'you'"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.78,
+    "binary_prediction": 1,
+    "evidence_span": "you want nicotine replacement but you don't want to quit",
+    "reason": "Question probing client's contradictory desires with 'you' framing"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "evidence_span": "does it hurt anymore mark when you move it",
+    "reason": "Direct question about client's physical state using 'you'"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.72,
+    "binary_prediction": 1,
+    "evidence_span": "when did you start",
+    "reason": "Brief WH-question seeking factual information from client"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "Do you have any problems taking the drug",
+    "reason": "Direct yes/no question about client's medication experience"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "evidence_span": "Is that something you're interested in really exploring",
+    "reason": "Question soliciting client's interest using 'you' address"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "evidence_span": "do you want to wait for a dramatic experience",
+    "reason": "Yes/no question probing client preferences with 'you'"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.3,
+    "binary_prediction": 0,
+    "evidence_span": "All day long",
+    "reason": "Brief backchannel/clarification request lacking clear inquiry vocabulary"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "evidence_span": "tell me about how you're using the insulin",
+    "reason": "Directive soliciting client self-disclosure about health behavior"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "do you know all the bad stuff about alcohol",
+    "reason": "Question using 'know' to probe client's knowledge about alcohol"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 1,
+    "evidence_span": "where would you say your are in terms of your confidence",
+    "reason": "Scale question soliciting client self-assessment using 'you'"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "evidence_span": "how does cutting effect privacy for you",
+    "reason": "WH-question probing client's experience of cutting behavior"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.78,
+    "binary_prediction": 1,
+    "evidence_span": "what other ideas do you have",
+    "reason": "Open question soliciting client's own ideas using 'you'"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "evidence_span": "anything you'd like to tell me about it",
+    "reason": "Open prompt using 'like' and 'you' to invite client disclosure"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.78,
+    "binary_prediction": 1,
+    "evidence_span": "do you feel like you've seen some real improvements",
+    "reason": "Yes/no question probing client's perception using 'feel like'"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 0,
+    "evidence_span": "what puts you out of 10",
+    "reason": "Brief scaling question with awkward phrasing and limited inquiry vocabulary"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.72,
+    "binary_prediction": 1,
+    "evidence_span": "you want to lose right but you just really like breads",
+    "reason": "Question probing client desires and food preferences with 'like'"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 1,
+    "evidence_span": "You have been using the last four weeks",
+    "reason": "Question about client's recent substance use history with 'you'"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "Any questions",
+    "reason": "Brief administrative prompt without specific inquiry vocabulary targeting client"
+  }
+]

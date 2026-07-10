@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 0,
+    "evidence_span": "No counseling function marker",
+    "reason": "Does not match described counseling function"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 0,
+    "evidence_span": "No counseling function marker",
+    "reason": "Does not match described counseling function"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 0,
+    "evidence_span": "No counseling function marker",
+    "reason": "Does not match described counseling function"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 0,
+    "evidence_span": "No counseling function marker",
+    "reason": "Does not match described counseling function"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.67,
+    "binary_prediction": 1,
+    "evidence_span": "Reflective: 'it sounds like'",
+    "reason": "Matches triggers: Reflective: 'it sounds like'; Contains 'sounds like'"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 0,
+    "evidence_span": "'so' present but no clear function match",
+    "reason": "'so' alone insufficient per explanation"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 0,
+    "evidence_span": "No counseling function marker",
+    "reason": "Does not match described counseling function"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 0,
+    "evidence_span": "No counseling function marker",
+    "reason": "Does not match described counseling function"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.67,
+    "binary_prediction": 1,
+    "evidence_span": "Reflective: 'it seems like'",
+    "reason": "Matches triggers: Reflective: 'it seems like'"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 0,
+    "evidence_span": "No counseling function marker",
+    "reason": "Does not match described counseling function"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.67,
+    "binary_prediction": 1,
+    "evidence_span": "Reflective: 'it sounds like'",
+    "reason": "Matches triggers: Reflective: 'it sounds like'; Contains 'sounds like'"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 0,
+    "evidence_span": "'so' present but no clear function match",
+    "reason": "'so' alone insufficient per explanation"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 0,
+    "evidence_span": "No counseling function marker",
+    "reason": "Does not match described counseling function"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 0,
+    "evidence_span": "No counseling function marker",
+    "reason": "Does not match described counseling function"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.67,
+    "binary_prediction": 1,
+    "evidence_span": "Reflective: 'it seems like'",
+    "reason": "Matches triggers: Reflective: 'it seems like'"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 0,
+    "evidence_span": "No counseling function marker",
+    "reason": "Does not match described counseling function"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.67,
+    "binary_prediction": 1,
+    "evidence_span": "Reflective: 'you feel'",
+    "reason": "Matches triggers: Reflective: 'you feel'"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.67,
+    "binary_prediction": 1,
+    "evidence_span": "Reflective: 'it sounds like'",
+    "reason": "Matches triggers: Reflective: 'it sounds like'; Contains 'sounds like'"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.79,
+    "binary_prediction": 1,
+    "evidence_span": "Reflective: 'it sounds like'",
+    "reason": "Matches triggers: Reflective: 'it sounds like'; Reflective: 'you feel'; Contains 'sounds like'"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 1,
+    "evidence_span": "'so' + second person present",
+    "reason": "Matches basic counseling function pattern"
+  }
+]

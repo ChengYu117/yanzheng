@@ -1,0 +1,142 @@
+[
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "well not always it looks like you got...",
+    "reason": "Does not match reflection_lat2995: insufficient trigger alignment",
+    "sample_id": "u009"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "yeah I can definitely check with her and...",
+    "reason": "Does not match reflection_lat2995: insufficient trigger alignment",
+    "sample_id": "u013"
+  },
+  {
+    "pred_activate_prob": 0.23,
+    "binary_prediction": 0,
+    "evidence_span": "I appreciate how difficult it must be for...",
+    "reason": "Does not match reflection_lat2995: insufficient trigger alignment",
+    "sample_id": "u006"
+  },
+  {
+    "pred_activate_prob": 0.03,
+    "binary_prediction": 0,
+    "evidence_span": "yes I understand that",
+    "reason": "Excluded by reflection_lat2995: matches an explicit exclusion criterion",
+    "sample_id": "u008"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "okay and I can give you a little...",
+    "reason": "Does not match reflection_lat2995: insufficient trigger alignment",
+    "sample_id": "u011"
+  },
+  {
+    "pred_activate_prob": 0.23,
+    "binary_prediction": 0,
+    "evidence_span": "it is a different type of difficulty you're...",
+    "reason": "Does not match reflection_lat2995: insufficient trigger alignment",
+    "sample_id": "u010"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "well I don't mean to be evasive about...",
+    "reason": "Does not match reflection_lat2995: insufficient trigger alignment",
+    "sample_id": "u001"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "that must have be real scary",
+    "reason": "Does not match reflection_lat2995: insufficient trigger alignment",
+    "sample_id": "u018"
+  },
+  {
+    "pred_activate_prob": 0.33,
+    "binary_prediction": 1,
+    "evidence_span": "concept:so ",
+    "reason": "Matches reflection_lat2995: moderate trigger alignment with explanation",
+    "sample_id": "u003"
+  },
+  {
+    "pred_activate_prob": 0.97,
+    "binary_prediction": 1,
+    "evidence_span": "so you",
+    "reason": "Matches reflection_lat2995: strong trigger match (so you)",
+    "sample_id": "u007"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "and hopefully you won't have the same issues...",
+    "reason": "Does not match reflection_lat2995: insufficient trigger alignment",
+    "sample_id": "u016"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "is that something you talk with them about...",
+    "reason": "Does not match reflection_lat2995: insufficient trigger alignment",
+    "sample_id": "u015"
+  },
+  {
+    "pred_activate_prob": 0.03,
+    "binary_prediction": 0,
+    "evidence_span": "okay pretty important yes",
+    "reason": "Excluded by reflection_lat2995: matches an explicit exclusion criterion",
+    "sample_id": "u020"
+  },
+  {
+    "pred_activate_prob": 0.03,
+    "binary_prediction": 0,
+    "evidence_span": "it's all right",
+    "reason": "Excluded by reflection_lat2995: matches an explicit exclusion criterion",
+    "sample_id": "u019"
+  },
+  {
+    "pred_activate_prob": 0.33,
+    "binary_prediction": 1,
+    "evidence_span": "concept:so ",
+    "reason": "Matches reflection_lat2995: moderate trigger alignment with explanation",
+    "sample_id": "u012"
+  },
+  {
+    "pred_activate_prob": 0.63,
+    "binary_prediction": 1,
+    "evidence_span": "concept:so ",
+    "reason": "Matches reflection_lat2995: moderate trigger alignment with explanation",
+    "sample_id": "u014"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "there's always another chance no matter how bad...",
+    "reason": "Does not match reflection_lat2995: insufficient trigger alignment",
+    "sample_id": "u017"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "I'm sure you could do it by yourself...",
+    "reason": "Does not match reflection_lat2995: insufficient trigger alignment",
+    "sample_id": "u002"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "yes yes yeah it's not that long since...",
+    "reason": "Does not match reflection_lat2995: insufficient trigger alignment",
+    "sample_id": "u004"
+  },
+  {
+    "pred_activate_prob": 0.97,
+    "binary_prediction": 1,
+    "evidence_span": "so you",
+    "reason": "Matches reflection_lat2995: strong trigger match (so you)",
+    "sample_id": "u005"
+  }
+]

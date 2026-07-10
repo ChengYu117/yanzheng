@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "So how you been since I spoke to you last time?",
+    "reason": "question structure present"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "tell me about how you're using the insulin",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "So how much does that cost you?",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "start calculating how much money you spend and how much money",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "so if we were to ask your second question and that's kind of where...",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "evidence_span": "and how she feels about you is important",
+    "reason": "question pattern detected"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "evidence_span": "what have you discuss with your doctor recently",
+    "reason": "question pattern detected"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "okay so tell me why you're only using it when your blood sugar goes...",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "So how many children do you have?",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "so we have some materials on the table",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "okay well you know will agree to disagree how about that",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "you know not sure how they're really tracking",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "okay people how do you feel about frosting while you're watching TV?",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "okay and how often do you think you would say you're drinking",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "and so if I were to ask you right now how motivated are you to find...",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "do you feel like you've seen some real improvements on that",
+    "reason": "closed-ended question"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "so let me ask you a slightly different question on that same scale...",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "and okay  how much so do you think you drink every  day?",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "and your date of birth",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "evidence_span": "so when you're sort of looking ahead how often do you think you...",
+    "reason": "question pattern detected"
+  }
+]

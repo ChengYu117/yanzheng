@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "do you know how you're supposed to take the medica",
+    "reason": "Lacks positive trigger pattern(s): like, kind, quit"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "quit",
+    "reason": "Contains positive trigger phrase 'quit'"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "but is it the hardest thing you've ever done",
+    "reason": "Lacks positive trigger pattern(s): like, kind, quit"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "then how come you're at a seven and not a two or t",
+    "reason": "Lacks positive trigger pattern(s): like, kind, quit"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "quit",
+    "reason": "Contains positive trigger phrase 'quit'"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "what have you discuss with your doctor recently",
+    "reason": "Lacks positive trigger pattern(s): like, kind, quit"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "how are you going to fit exercise into that lifest",
+    "reason": "Lacks positive trigger pattern(s): like, kind, quit"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "okay and do you know where you're going to apply t",
+    "reason": "Lacks positive trigger pattern(s): like, kind, quit"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "but if i enter just that idea of stopping the cons",
+    "reason": "Lacks positive trigger pattern(s): like, kind, quit"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "and I'm curious as to how much time did you spend ",
+    "reason": "Lacks positive trigger pattern(s): like, kind, quit"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "like",
+    "reason": "Contains positive trigger phrase 'like'"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "and when would they drug test you",
+    "reason": "Lacks positive trigger pattern(s): like, kind, quit"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "excuse excuse me if not you've not had the time to",
+    "reason": "Lacks positive trigger pattern(s): like, kind, quit"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "so before that when you can still exit what's your",
+    "reason": "Lacks positive trigger pattern(s): like, kind, quit"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "can you tell me more about that",
+    "reason": "Lacks positive trigger pattern(s): like, kind, quit"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "okay so tell me why you're only using it when your",
+    "reason": "Lacks positive trigger pattern(s): like, kind, quit"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "what about serious head injury where you lost cons",
+    "reason": "Lacks positive trigger pattern(s): like, kind, quit"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "but I have to ask you Bruce what gee what made you",
+    "reason": "Lacks positive trigger pattern(s): like, kind, quit"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "but I was asking how are you doing",
+    "reason": "Lacks positive trigger pattern(s): like, kind, quit"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "so you have three days without your electronics ho",
+    "reason": "Lacks positive trigger pattern(s): like, kind, quit"
+  }
+]

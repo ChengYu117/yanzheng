@@ -1,0 +1,142 @@
+[
+  {
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "thanks; ndra thanks for coming in",
+    "reason": "Matches explicit_gratitude_thanks_r02: strong trigger match (thanks)",
+    "sample_id": "u010"
+  },
+  {
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "thanks; drea thanks for coming in",
+    "reason": "Matches explicit_gratitude_thanks_r02: strong trigger match (thanks)",
+    "sample_id": "u007"
+  },
+  {
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "thank you; thank you for your time",
+    "reason": "Matches explicit_gratitude_thanks_r02: strong trigger match (thank you)",
+    "sample_id": "u002"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "okay that sounds really interesting",
+    "reason": "Does not match explicit_gratitude_thanks_r02: insufficient trigger alignment",
+    "sample_id": "u019"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "so that was the face pretty good experience",
+    "reason": "Does not match explicit_gratitude_thanks_r02: insufficient trigger alignment",
+    "sample_id": "u015"
+  },
+  {
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "thanks; ways thanks for watching",
+    "reason": "Matches explicit_gratitude_thanks_r02: strong trigger match (thanks)",
+    "sample_id": "u005"
+  },
+  {
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "thanks; and thanks for coming in",
+    "reason": "Matches explicit_gratitude_thanks_r02: strong trigger match (thanks)",
+    "sample_id": "u006"
+  },
+  {
+    "pred_activate_prob": 0.33,
+    "binary_prediction": 1,
+    "evidence_span": "concept:what ",
+    "reason": "Matches explicit_gratitude_thanks_r02: moderate trigger alignment with explanation",
+    "sample_id": "u017"
+  },
+  {
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "thanks; ther thanks for coming in",
+    "reason": "Matches explicit_gratitude_thanks_r02: strong trigger match (thanks)",
+    "sample_id": "u009"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "wow you really are involved in music",
+    "reason": "Does not match explicit_gratitude_thanks_r02: insufficient trigger alignment",
+    "sample_id": "u020"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "doesn't sound like good quality sleep",
+    "reason": "Does not match explicit_gratitude_thanks_r02: insufficient trigger alignment",
+    "sample_id": "u014"
+  },
+  {
+    "pred_activate_prob": 0.33,
+    "binary_prediction": 1,
+    "evidence_span": "concept:what ",
+    "reason": "Matches explicit_gratitude_thanks_r02: moderate trigger alignment with explanation",
+    "sample_id": "u016"
+  },
+  {
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "thanks; well thanks for talking wi",
+    "reason": "Matches explicit_gratitude_thanks_r02: strong trigger match (thanks)",
+    "sample_id": "u008"
+  },
+  {
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "thank you; thank you for answering",
+    "reason": "Matches explicit_gratitude_thanks_r02: strong trigger match (thank you)",
+    "sample_id": "u001"
+  },
+  {
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "thank you; thank you for all of tha",
+    "reason": "Matches explicit_gratitude_thanks_r02: strong trigger match (thank you)",
+    "sample_id": "u003"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "sounds like you weren't feeling so good about...",
+    "reason": "Does not match explicit_gratitude_thanks_r02: insufficient trigger alignment",
+    "sample_id": "u011"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "cutting down that would be a great step...",
+    "reason": "Does not match explicit_gratitude_thanks_r02: insufficient trigger alignment",
+    "sample_id": "u018"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "that sounds like a good one to try",
+    "reason": "Does not match explicit_gratitude_thanks_r02: insufficient trigger alignment",
+    "sample_id": "u012"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "um telling me would have been great but...",
+    "reason": "Does not match explicit_gratitude_thanks_r02: insufficient trigger alignment",
+    "sample_id": "u013"
+  },
+  {
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "thank you; thank you for your time",
+    "reason": "Matches explicit_gratitude_thanks_r02: strong trigger match (thank you)",
+    "sample_id": "u004"
+  }
+]

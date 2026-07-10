@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "okay as they are there for me well given that you'",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "okay well let's just start a little bit by talking",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "okay the CIA's using your cell phone to track your",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "evidence_span": "you're putting yourself at risk for lung cancer fo",
+    "reason": "simple paraphrase"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "evidence_span": "you've already shown here in the last few months t",
+    "reason": "simple acknowledgment"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "does look swollen",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "The baby and you and him and, and was kinda scary.",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "kind of a mystery to you why she'd even be worried",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "and then you are using the unplanned when you feel",
+    "reason": "has reflection markers, likely simple"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "I'm sure that you have friends or family members.",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "I know you have a question you want to answer",
+    "reason": "has reflection markers, likely simple"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "There's no reason why you shouldn't be able to qui",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "soreally just continuing to do what you're doing",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "Yeah, so right now you're feeling a little overwhe",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "If you not see a dentist, I bet you.",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "no I'm saying that you need to be looking at your ",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "it is a different type of difficulty you're right",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "evidence_span": "so you were experiencing some pain",
+    "reason": "simple restatement"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "how about if I cut back for a month and then I'll ",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "evidence_span": "you were pretty shocked at what you learned about ",
+    "reason": "simple restatement"
+  }
+]

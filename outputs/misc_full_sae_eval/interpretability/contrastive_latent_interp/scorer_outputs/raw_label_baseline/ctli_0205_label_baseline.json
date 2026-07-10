@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "on a scale of 1 to 10 with 10 being the most how motivated do you feel",
+    "reason": "Scale question is a constrained option"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "a scale of  to  how likely would you go",
+    "reason": "Scale question is a constrained option"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "how confident are you that you want to change in a scale of one to ten",
+    "reason": "Scale question is a constrained option"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "on a scale of 0 to 10",
+    "reason": "Scale question is a constrained option"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "on a scale of 0 to 10 how much do you think you can make the change",
+    "reason": "Scale question is a constrained option"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "on a scale of one to ten how confident are you",
+    "reason": "Scale question is a constrained option"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "how many times you guys have sex that night on a scale of one to five",
+    "reason": "Scale question is a constrained option"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "if we were to put it on a scale again one to ten",
+    "reason": "Scale question is a constrained option"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "where do you think you fall on the scale of one to ten",
+    "reason": "Scale question is a constrained option"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "on a scale of one to ten how angry would you say you were",
+    "reason": "Scale question is a constrained option"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "tell me why you are only using it when your blood sugar goes high",
+    "reason": "Open-ended question asking for explanation"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 1,
+    "evidence_span": "what have you discuss with your doctor recently",
+    "reason": "Factual question answerable with short list"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 0,
+    "evidence_span": "can you tell me more about that",
+    "reason": "Open-ended elaboration request"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "evidence_span": "is it the hardest thing you have ever done",
+    "reason": "Yes/no question is closed"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "evidence_span": "are you ready for the challenge of quitting",
+    "reason": "Yes/no question is closed"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "evidence_span": "do you feel like you have seen some real improvements",
+    "reason": "Yes/no question is closed"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "evidence_span": "does it hurt anymore mark when you move it",
+    "reason": "Yes/no question is closed"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "what puts you out of 10",
+    "reason": "Constrained scale question"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "when did you start",
+    "reason": "Factual question answerable with short fact"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 1,
+    "evidence_span": "what kind of dogs",
+    "reason": "Factual question answerable with short fact"
+  }
+]

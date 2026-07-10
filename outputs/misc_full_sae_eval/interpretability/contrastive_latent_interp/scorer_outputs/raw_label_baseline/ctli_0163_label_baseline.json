@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "can I ask you about your exercise habits some things like any...",
+    "reason": "not clearly an open question"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "and what what promise you to pick a five or six",
+    "reason": "not clearly an open question"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "but is it the hardest thing you've ever done",
+    "reason": "closed-ended question pattern"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "can tell me about how the symptoms the presence of the symptoms like...",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "I'm seeing great great so based off the serving size of one cup how...",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "is normal enjoy playing with your kids",
+    "reason": "not clearly an open question"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "is there anything I've said so far that you want to ask about",
+    "reason": "closed-ended question pattern"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "what you mean okay are you willing to do that choose grilled options",
+    "reason": "not clearly an open question"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "how long have you noticed that",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "Is it your drink of choice now",
+    "reason": "closed-ended question pattern"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "so if quitting really the toughest thing you've ever done",
+    "reason": "not clearly an open question"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "is that something she's to say when she was around which was a lot",
+    "reason": "closed-ended question pattern"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "how long have you been having these panic like sometimes",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "how long has",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "can't tell me how long you've been feeling down",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "what about serious head injury where you lost consciousness and then",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "how long have you noticed that oh I don't know I",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "so are you ready for the challenge of quitting",
+    "reason": "closed-ended question pattern"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "how long you've smoked",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "okay so tell me why you're only using it when your blood sugar goes...",
+    "reason": "open-ended question inviting elaboration"
+  }
+]

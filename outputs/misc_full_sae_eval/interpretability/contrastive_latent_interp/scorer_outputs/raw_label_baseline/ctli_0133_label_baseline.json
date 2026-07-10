@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "But anyway, let me go ahead; look to see what day I can call you okay?",
+    "reason": "question structure present"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "okay so tell me why you're only using it when your blood sugar goes...",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "okay great so can you tell  me what you eat in a regular day?",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "evidence_span": "What's their name and all that.",
+    "reason": "question pattern detected"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "mhm...when you're hanging out is there ever alcohol sometimes?",
+    "reason": "question structure present"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "evidence_span": "what have you discuss with your doctor recently",
+    "reason": "question pattern detected"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "hi-oh Vina how are you doing today it's good to see you",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "what when was the last time you got that prescription from us?",
+    "reason": "question structure present"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "do you feel like you've seen some real improvements on that",
+    "reason": "closed-ended question"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "and do you hang out with them?",
+    "reason": "closed-ended question"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "because I understand from your chart that you have a young baby?",
+    "reason": "question structure present"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "so are you putting on weight or have you been losing the weight?",
+    "reason": "closed-ended question"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "Is your, is your head not attached to your body or something?",
+    "reason": "closed-ended question"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "so what do you typically eat in the day?",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "and and what made you decide maybe law school or journalism?",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "can you tell me a little bit more about that?",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "and how do you feel your implants working for that",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "can you tell me more about that",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "hmm um do you do you see like a problem with three king or do you do...",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "How are you doing in  school?",
+    "reason": "open-ended question"
+  }
+]

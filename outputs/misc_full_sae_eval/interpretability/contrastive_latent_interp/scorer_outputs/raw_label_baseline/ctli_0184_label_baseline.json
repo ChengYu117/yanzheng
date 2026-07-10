@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "okay people how do you feel about frosting while you're watching TV?",
+    "reason": "open-ended question pattern"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "and what puts you out of 10",
+    "reason": "open-ended question pattern"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "does it hurt anymore mark when you move it does",
+    "reason": "closed-ended question expecting short answer"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "is that just is that just me or does it seem that way to you to",
+    "reason": "closed-ended question expecting short answer"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "How do those thoughts make you feel?",
+    "reason": "open-ended question pattern"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "Good afternoon, this is April from the pharmacy, could I speak to...",
+    "reason": "question structure unclear"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "hmm well I mean how confident would you say that you are right?",
+    "reason": "closed-ended question expecting short answer"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "Have you ever had an abdominal aortic aneurysm test?",
+    "reason": "closed-ended question expecting short answer"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "um what some of the not so good things for you about smoking...",
+    "reason": "question structure unclear"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "Yeah, okay so like if I recognize, if I saw that look, what to do?",
+    "reason": "question structure unclear"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "are you smoking?",
+    "reason": "closed-ended question expecting short answer"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "when did you start",
+    "reason": "not clearly a closed question"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "Did you come here for a prescription for anti-depressants?",
+    "reason": "closed-ended question expecting short answer"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "do you feel like you've seen some real improvements on that",
+    "reason": "closed-ended question expecting short answer"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "so you've tried some diets before and they haven't worked out and...",
+    "reason": "question structure unclear"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "do you know of any thing that will help you quit smoking?",
+    "reason": "closed-ended question expecting short answer"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "okay what do you think the most you've ever had?",
+    "reason": "open-ended question pattern"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "okay bad idea on in that same scale with one being not confident at...",
+    "reason": "not clearly a closed question"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "How does that sound?",
+    "reason": "open-ended question pattern"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "so how much of vegetables or serving do you eat in a day?",
+    "reason": "open-ended question pattern"
+  }
+]

@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "I ask you some questions out what's going on and see how you're...",
+    "reason": "not clearly an open question"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "are you surprised what that might be true",
+    "reason": "closed-ended question pattern"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 1,
+    "evidence_span": "But anyway, let me go ahead; look to see what day I can call you okay?",
+    "reason": "question with open-ended features"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "so if quitting really the toughest thing you've ever done",
+    "reason": "not clearly an open question"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "I do you what is drinking you for you would have",
+    "reason": "not clearly an open question"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "and how do you feel your implants working for that",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "ok so let's start what about reasons to change what's going on",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "You know, you not depend on with a lot of medication like what we do...",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "okay so tell me why you're only using it when your blood sugar goes...",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "can you tell me more about that",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "dawn you told me what brought you here today",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "you don't know what's going to happen",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "and do you what times do you think will work good for testing for you",
+    "reason": "closed-ended question pattern"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "but I have to ask you Bruce what gee what made you say three instead...",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "do you remember what I mean by opposite action",
+    "reason": "closed-ended question pattern"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "so so tell me what has happened what what is what's shifted",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "but is it the hardest thing you've ever done",
+    "reason": "closed-ended question pattern"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "what's the quantity that you're drinking?",
+    "reason": "closed-ended question pattern"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "if what you're asking you're not listening to me and I appreciate...",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "what you mean okay are you willing to do that choose grilled options",
+    "reason": "not clearly an open question"
+  }
+]

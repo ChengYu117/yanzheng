@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 0,
+    "reason": "Has conditional 'if/wouldn't' but not idiomatic language; moderate",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 0,
+    "reason": "No idiomatic language; short",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 0,
+    "reason": "No idiomatic language; informational",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 0,
+    "reason": "'well' discourse marker; closing/wrap-up but not idiomatic",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 0,
+    "reason": "No idiomatic language; descriptive",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 0,
+    "reason": "No idiomatic language; informational",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 0,
+    "reason": "'never fun' has casual/idiomatic flavor but weak match",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 0,
+    "reason": "'I also imagine' empathic reflection; no idiomatic language",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "reason": "'So that means' + direct challenge 'you want to quit now right'; confrontational",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "reason": "'So' + 'it's like' idiomatic expression; 'you're realizing' confrontational",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 0,
+    "reason": "No idiomatic language; short agreement",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 0,
+    "reason": "No idiomatic language; very short",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "reason": "'so' + 'a bit of a rush' idiomatic expression",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 1,
+    "reason": "'so' + 'if I understand you correctly' has idiomatic/casual flavor",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "reason": "'so' + 'if you had' conditional + 'wouldn't worry so much' idiomatic",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 0,
+    "reason": "'so' but no clear idiomatic language",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "reason": "'how about if' is idiomatic/casual conditional framing",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 0,
+    "reason": "'what if' conditional but not clearly idiomatic",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "reason": "'took you by surprise' is idiomatic expression",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 0,
+    "reason": "No idiomatic language; observation",
+    "evidence_span": ""
+  }
+]

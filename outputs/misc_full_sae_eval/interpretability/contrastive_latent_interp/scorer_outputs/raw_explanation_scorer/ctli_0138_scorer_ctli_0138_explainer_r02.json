@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.2,
+    "binary_prediction": 0,
+    "evidence_span": "No direct trigger or exclusion match",
+    "reason": "No clear match to positive triggers in explanation"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.2,
+    "binary_prediction": 0,
+    "evidence_span": "Statement without interrogative intent",
+    "reason": "Matches exclusions: Statement without interrogative intent"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.2,
+    "binary_prediction": 0,
+    "evidence_span": "No direct trigger or exclusion match",
+    "reason": "No clear match to positive triggers in explanation"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.2,
+    "binary_prediction": 0,
+    "evidence_span": "Short affirmation/backchannel (exclusion)",
+    "reason": "Matches exclusions: Short affirmation/backchannel (exclusion)"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.2,
+    "binary_prediction": 0,
+    "evidence_span": "Statement without interrogative intent",
+    "reason": "Matches exclusions: Statement without interrogative intent"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.36,
+    "binary_prediction": 0,
+    "evidence_span": "Statement without interrogative intent",
+    "reason": "Exclusion 'Statement without interrogative intent' outweighs positive"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "Common word: 'see'",
+    "reason": "Matches trigger: Common word: 'see'"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.2,
+    "binary_prediction": 0,
+    "evidence_span": "No direct trigger or exclusion match",
+    "reason": "No clear match to positive triggers in explanation"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.2,
+    "binary_prediction": 0,
+    "evidence_span": "No direct trigger or exclusion match",
+    "reason": "No clear match to positive triggers in explanation"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "Question to client",
+    "reason": "Matches trigger: Question to client"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "Common word: 'see'",
+    "reason": "Matches trigger: Common word: 'see'"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.2,
+    "binary_prediction": 0,
+    "evidence_span": "Statement without interrogative intent",
+    "reason": "Matches exclusions: Statement without interrogative intent"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.2,
+    "binary_prediction": 0,
+    "evidence_span": "No direct trigger or exclusion match",
+    "reason": "No clear match to positive triggers in explanation"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.2,
+    "binary_prediction": 0,
+    "evidence_span": "Statement without interrogative intent",
+    "reason": "Matches exclusions: Statement without interrogative intent"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.73,
+    "binary_prediction": 1,
+    "evidence_span": "Common word: 'like'",
+    "reason": "Matches trigger: Common word: 'like'"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.2,
+    "binary_prediction": 0,
+    "evidence_span": "No direct trigger or exclusion match",
+    "reason": "No clear match to positive triggers in explanation"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "Common word: 'like'",
+    "reason": "Matches trigger: Common word: 'like'"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "Common word: 'like'",
+    "reason": "Matches trigger: Common word: 'like'"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "Common word: ', '",
+    "reason": "Matches trigger: Common word: ', '"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.2,
+    "binary_prediction": 0,
+    "evidence_span": "No direct trigger or exclusion match",
+    "reason": "No clear match to positive triggers in explanation"
+  }
+]

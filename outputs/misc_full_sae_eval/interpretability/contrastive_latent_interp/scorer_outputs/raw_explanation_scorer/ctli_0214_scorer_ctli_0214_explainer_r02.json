@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 1,
+    "evidence_span": "does it hurt anymore mark when you move it does",
+    "reason": "Positive: contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "so I wanted to ask you on a scale from one to ten ten being the best on being th...",
+    "reason": "Positive: scaling question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 1,
+    "evidence_span": "what have you discuss with your doctor recently",
+    "reason": "Positive: contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "do you feel like you've seen some real improvements on that",
+    "reason": "Positive: hedging marker 'like' found; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 1,
+    "evidence_span": "okay so tell me why you're only using it when your blood sugar goes high",
+    "reason": "Positive: matches trigger term 'okay so'"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "okay so can I ask you on a scale of zero to ten now that you're considering abou...",
+    "reason": "Positive: scaling question pattern; matches trigger term 'okay so'"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "and on the same scale of zero to ten how confident are you in being able to make...",
+    "reason": "Positive: contains inquiry/question pattern; matches trigger term 'scale of'"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 1,
+    "evidence_span": "can you tell me more about that",
+    "reason": "Positive: contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 1,
+    "evidence_span": "um let's say from a on the scale from zero to ten with the CEO being not importa...",
+    "reason": "Positive: hedging marker 'um' found"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "yeah well tell me honest go from one to ten and how important is it for you to g...",
+    "reason": "Positive: scaling question pattern; hedging marker 'well' found"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "so are you ready for the challenge of quitting",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "but is it the hardest thing you've ever done",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 1,
+    "evidence_span": "okay bad idea on in that same scale with one being not confident at all to 10 be...",
+    "reason": "Positive: contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "on a scale of zero to ten in terms of how important you feel they need to exerci...",
+    "reason": "Positive: scaling question pattern; contains inquiry/question pattern. Excluded: greeting pattern"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "and so on a scale of one  to ten how ready do you think you are to  drink less s...",
+    "reason": "Positive: scaling question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "on that same scale from one to ten",
+    "reason": "Positive: scaling question pattern; scaling question pattern"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "okay so tell me a scale of zero to ten where zero is no pain at all on ten is li...",
+    "reason": "Positive: matches trigger term 'okay so'; matches trigger term 'scale of'"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 1,
+    "evidence_span": "when did you start",
+    "reason": "Positive: contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 1,
+    "evidence_span": "and what puts you out of 10",
+    "reason": "Positive: contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "on a scale of zero to ten zero being not very important and ten being very impor...",
+    "reason": "Positive: scaling question pattern; contains inquiry/question pattern"
+  }
+]

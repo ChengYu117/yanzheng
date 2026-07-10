@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "last session we spoke a little about your alcohol use over the last...",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "any other things",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "- why'd you say 8 or 9 rather than 6 or 7",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "okay it is promised been going on for how many watts or",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "I'm the greatest so maybe getting up in the morning and going on the...",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "okay so how motivated would that make you feel on a scale of one to...",
+    "reason": "not clearly an open question"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "why'd you say eight or nine rather than six or seven",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "right and how were you Tommy symptoms then",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "and more importantly how you use them",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.3,
+    "binary_prediction": 0,
+    "evidence_span": "and then um you know like are your friends in band drinking?",
+    "reason": "question structure unclear"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "in the session before we were talking a little bit about your...",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "and then how's your appetite been",
+    "reason": "not clearly an open question"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "so does this sound like something that you want to continue or...",
+    "reason": "closed-ended question pattern"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "okay chips and then for dinner",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "would you consider including your children in your exercise routine",
+    "reason": "closed-ended question pattern"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "do you want to speak to me?",
+    "reason": "closed-ended question pattern"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "do you know what kind of risks or like the obesity will lead to?",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "Have you had any major stressful events recently or any change in...",
+    "reason": "closed-ended question pattern"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "Are you having problems paying for it",
+    "reason": "closed-ended question pattern"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "so um is there a counselor that you know or that you have a...",
+    "reason": "closed-ended question pattern"
+  }
+]

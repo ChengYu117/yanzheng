@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 0,
+    "reason": "Multi-clause acknowledgment of smoking history but lacks explicit validation of client strengths.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 0,
+    "reason": "Incomplete conditional structure without dual-perspective empathic content.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Single-perspective reflection naming concern without balancing validation.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 0,
+    "reason": "Brief affirmation without elaboration or dual perspective.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "Simple question without dual-perspective structure.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Single-perspective observation without validation of strengths.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "Simple affirmation without elaboration; explicitly excluded pattern.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "Educational/factual statement without dual perspective.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "Brief affirmation without dual-perspective elaboration.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "Factual verification statement without empathic dual perspective.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "reason": "Dual perspective with multi-clause: willingness to change and frustration about lacking support.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "reason": "Explicit bilateral framing with 'on one hand/on the other hand': confidence vs. uncertainty.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "Brief planning statement without dual-perspective empathic content.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 0,
+    "reason": "Acknowledges feeling overwhelmed but lacks validation of strengths.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "Simple affirmation without dual-perspective elaboration.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 0,
+    "reason": "Acknowledges time constraint with appreciation but more logistical than dual-perspective about client struggles.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "Simple affirmation without difficulty-validation pairing.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Garbled unclear text without recognizable dual-perspective structure.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 0,
+    "reason": "Acknowledges stakes but no validation of client strengths.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "reason": "Dual perspective: devotion and capability paired with stress management challenge in complex syntax.",
+    "evidence_span": ""
+  }
+]

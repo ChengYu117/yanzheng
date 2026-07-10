@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "reason": "Open-ended how-much question probing personal habit, invites elaboration.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "reason": "Declarative reflection about client, not an open-ended question.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.2,
+    "binary_prediction": 0,
+    "reason": "Declarative observation about pros/cons, not a question inviting elaboration.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "reason": "Reflective summary of client statement, no question syntax.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "reason": "Conditional directive about rules, not exploratory open-ended question.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "reason": "Declarative affirmation, no question structure.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "reason": "Declarative evaluative statement, no question.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "reason": "Question probing personal experience and barriers as single mom.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.78,
+    "binary_prediction": 1,
+    "reason": "Explores client internal reasoning about consequences of decision.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "reason": "Appreciative declarative statement, no question syntax.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "reason": "Declarative affirmation of readiness, not exploratory question.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.92,
+    "binary_prediction": 1,
+    "reason": "Classic scaling question inviting self-assessment, clear open-ended probe.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.25,
+    "binary_prediction": 0,
+    "reason": "Fragment suggesting action, not a question structure.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "reason": "Declarative statement about change, no question syntax.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "reason": "Declarative reflective observation, no question.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "reason": "Open-ended how-do-you-feel question probing preferences for behavior change.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.2,
+    "binary_prediction": 0,
+    "reason": "Disorganized declarative statement, not a coherent exploratory question.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "reason": "Client perspective statement, not a counselor question.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "reason": "Declarative reflective statement, no question structure.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "reason": "Brief declarative affirmation, not a question.",
+    "evidence_span": ""
+  }
+]

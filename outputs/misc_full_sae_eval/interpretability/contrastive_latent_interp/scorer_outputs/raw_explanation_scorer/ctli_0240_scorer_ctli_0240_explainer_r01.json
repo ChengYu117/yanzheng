@@ -1,0 +1,142 @@
+[
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "can you tell me more about that",
+    "reason": "Does not match caloric/sugar content of foods and drinks: insufficient trigger alignment",
+    "sample_id": "u014"
+  },
+  {
+    "pred_activate_prob": 0.2,
+    "binary_prediction": 0,
+    "evidence_span": "Well according to your chart your blood pressure...",
+    "reason": "Does not match caloric/sugar content of foods and drinks: insufficient trigger alignment",
+    "sample_id": "u006"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "so it shows carbs and stuff",
+    "reason": "Does not match caloric/sugar content of foods and drinks: insufficient trigger alignment",
+    "sample_id": "u004"
+  },
+  {
+    "pred_activate_prob": 0.2,
+    "binary_prediction": 0,
+    "evidence_span": "okay so you're kind of looking at balancing...",
+    "reason": "Does not match caloric/sugar content of foods and drinks: insufficient trigger alignment",
+    "sample_id": "u007"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "okay so pretty high levels of pain",
+    "reason": "Does not match caloric/sugar content of foods and drinks: insufficient trigger alignment",
+    "sample_id": "u005"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "no problem I have this in stock",
+    "reason": "Does not match caloric/sugar content of foods and drinks: insufficient trigger alignment",
+    "sample_id": "u016"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "and I can discuss with you further kind...",
+    "reason": "Does not match caloric/sugar content of foods and drinks: insufficient trigger alignment",
+    "sample_id": "u020"
+  },
+  {
+    "pred_activate_prob": 0.26,
+    "binary_prediction": 0,
+    "evidence_span": "it will lower your blood sugar",
+    "reason": "Does not match caloric/sugar content of foods and drinks: insufficient trigger alignment",
+    "sample_id": "u009"
+  },
+  {
+    "pred_activate_prob": 0.2,
+    "binary_prediction": 0,
+    "evidence_span": "yeah how much you can drink to have...",
+    "reason": "Does not match caloric/sugar content of foods and drinks: insufficient trigger alignment",
+    "sample_id": "u012"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "but if you give me twenty minutes I...",
+    "reason": "Does not match caloric/sugar content of foods and drinks: insufficient trigger alignment",
+    "sample_id": "u019"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "what kinds of things have you been doing...",
+    "reason": "Does not match caloric/sugar content of foods and drinks: insufficient trigger alignment",
+    "sample_id": "u010"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "but I do notice that these prescriptions from...",
+    "reason": "Does not match caloric/sugar content of foods and drinks: insufficient trigger alignment",
+    "sample_id": "u017"
+  },
+  {
+    "pred_activate_prob": 0.48,
+    "binary_prediction": 1,
+    "evidence_span": "no I didn't know that what if I...",
+    "reason": "Matches caloric/sugar content of foods and drinks: text aligns with hypothesis pattern",
+    "sample_id": "u001"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "does it hurt anymore mark when you move...",
+    "reason": "Does not match caloric/sugar content of foods and drinks: insufficient trigger alignment",
+    "sample_id": "u015"
+  },
+  {
+    "pred_activate_prob": 0.54,
+    "binary_prediction": 1,
+    "evidence_span": "so they usually have lots of fat and...",
+    "reason": "Matches caloric/sugar content of foods and drinks: text aligns with hypothesis pattern",
+    "sample_id": "u003"
+  },
+  {
+    "pred_activate_prob": 0.26,
+    "binary_prediction": 0,
+    "evidence_span": "and then you are using the unplanned when...",
+    "reason": "Does not match caloric/sugar content of foods and drinks: insufficient trigger alignment",
+    "sample_id": "u013"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "I did have some auto refills for you...",
+    "reason": "Does not match caloric/sugar content of foods and drinks: insufficient trigger alignment",
+    "sample_id": "u018"
+  },
+  {
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "and just to clarify from my information on...",
+    "reason": "Does not match caloric/sugar content of foods and drinks: insufficient trigger alignment",
+    "sample_id": "u002"
+  },
+  {
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "and on a typical day that you smoke...",
+    "reason": "Does not match caloric/sugar content of foods and drinks: insufficient trigger alignment",
+    "sample_id": "u008"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "what have they been when you test them?",
+    "reason": "Does not match caloric/sugar content of foods and drinks: insufficient trigger alignment",
+    "sample_id": "u011"
+  }
+]

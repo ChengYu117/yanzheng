@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.45,
+    "binary_prediction": 0,
+    "evidence_span": "Mixed: +Direct match: 'would you' / -Not a question (exclusion)",
+    "reason": "Tied evidence, lean toward non-activation"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.81,
+    "binary_prediction": 1,
+    "evidence_span": "Client-experience elicitation question",
+    "reason": "Matches trigger: Client-experience elicitation question"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.2,
+    "binary_prediction": 0,
+    "evidence_span": "Not a question (exclusion)",
+    "reason": "Matches exclusions: Not a question (exclusion)"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.2,
+    "binary_prediction": 0,
+    "evidence_span": "Not a question (exclusion)",
+    "reason": "Matches exclusions: Not a question (exclusion)"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.81,
+    "binary_prediction": 1,
+    "evidence_span": "Client-experience elicitation question",
+    "reason": "Matches trigger: Client-experience elicitation question"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.2,
+    "binary_prediction": 0,
+    "evidence_span": "Not a question (exclusion)",
+    "reason": "Matches exclusions: Not a question (exclusion)"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.81,
+    "binary_prediction": 1,
+    "evidence_span": "Client-experience elicitation question",
+    "reason": "Matches trigger: Client-experience elicitation question"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.2,
+    "binary_prediction": 0,
+    "evidence_span": "Not a question (exclusion)",
+    "reason": "Matches exclusions: Not a question (exclusion)"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.2,
+    "binary_prediction": 0,
+    "evidence_span": "Not a question (exclusion)",
+    "reason": "Matches exclusions: Not a question (exclusion)"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.81,
+    "binary_prediction": 1,
+    "evidence_span": "Client-experience elicitation question",
+    "reason": "Matches trigger: Client-experience elicitation question"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.2,
+    "binary_prediction": 0,
+    "evidence_span": "Not a question (exclusion)",
+    "reason": "Matches exclusions: Not a question (exclusion)"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.2,
+    "binary_prediction": 0,
+    "evidence_span": "Not a question (exclusion)",
+    "reason": "Matches exclusions: Not a question (exclusion)"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.45,
+    "binary_prediction": 0,
+    "evidence_span": "Mixed: +Direct match: 'would you' / -Not a question (exclusion)",
+    "reason": "Tied evidence, lean toward non-activation"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.89,
+    "binary_prediction": 1,
+    "evidence_span": "Direct match: 'would you'",
+    "reason": "Matches trigger: Direct match: 'would you'"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.81,
+    "binary_prediction": 1,
+    "evidence_span": "Client-experience elicitation question",
+    "reason": "Matches trigger: Client-experience elicitation question"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.2,
+    "binary_prediction": 0,
+    "evidence_span": "Not a question (exclusion)",
+    "reason": "Matches exclusions: Not a question (exclusion)"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.45,
+    "binary_prediction": 0,
+    "evidence_span": "Mixed: +Direct match: 'would you' / -Not a question (exclusion)",
+    "reason": "Tied evidence, lean toward non-activation"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.2,
+    "binary_prediction": 0,
+    "evidence_span": "Not a question (exclusion)",
+    "reason": "Matches exclusions: Not a question (exclusion)"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.45,
+    "binary_prediction": 0,
+    "evidence_span": "Mixed: +Direct match: 'would you' / -Not a question (exclusion)",
+    "reason": "Tied evidence, lean toward non-activation"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.2,
+    "binary_prediction": 0,
+    "evidence_span": "Not a question (exclusion)",
+    "reason": "Matches exclusions: Not a question (exclusion)"
+  }
+]

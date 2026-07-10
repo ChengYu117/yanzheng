@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "it's wonderful you can't have the strategies you s",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "evidence_span": "okay so you don't have a digestion issue",
+    "reason": "agreement + reflection"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "Being jealous and not wanting you to have friends.",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "We know from clinical trial that it helps to slow ",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "Not just for your overall physical health",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "okay and that your pet has never been mentioned as",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "okay so how important would you say this change is",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "well that sounds like you've barely determined to ",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "sounds like you're really motivated and you're doi",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "so you sound ready to make a change you sound read",
+    "reason": "has reflection markers, likely simple"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "does it it doesn't look like you went and got any ",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "hey Larry how are you doing today",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "oh I see you and a lot of pain right now",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "Until newer drugs are developed this is the bet e ",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "okay thank you so you say here that you have four ",
+    "reason": "has reflection markers, likely simple"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "alright so it's back and forth in the situate a si",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "and you know you can do that right",
+    "reason": "has reflection markers, likely simple"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "so what makes it better and what makes it worse",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "let's take a breath and then we'll go back and do ",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "anything worrying you about your teeth or gums",
+    "reason": "not a reflection, not simple"
+  }
+]

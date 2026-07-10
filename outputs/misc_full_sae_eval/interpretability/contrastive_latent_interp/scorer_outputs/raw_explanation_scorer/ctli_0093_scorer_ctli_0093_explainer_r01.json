@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "reason": "Directive about future action: going to do brisk walking today - conditional/hypothetical about client action.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "reason": "Conditional framing: you could give it a shot, not sure you could do it - hypothetical reasoning about ability.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 0,
+    "reason": "Reflective summarizing of stated desires about respecting self, not conditional/hypothetical reasoning.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 0,
+    "reason": "Reflective/summarizing about a big decision, not conditional/hypothetical reasoning about client actions.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 0,
+    "reason": "Simple positive response with no conditional or hypothetical reasoning.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 0,
+    "reason": "Contains exclusion marker good; describes current state/experience, not conditional reasoning about actions.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Short directive about getting healthy, no conditional/hypothetical reasoning about client actions.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 0,
+    "reason": "Contains sounds-like framing; empathic reflection, not conditional reasoning.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 0,
+    "reason": "Contains exclusion marker you-ve; reflective statement about past learning, not conditional reasoning.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Positive feedback about descriptive language, not conditional/hypothetical reasoning.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 0,
+    "reason": "Simple gratitude statement with no conditional or hypothetical reasoning.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "Contains exclusion markers you-ve and good; simple acknowledgment, not conditional reasoning.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 0,
+    "reason": "Contains if-then structure but also exclusion marker you-ve; general conditional about behavior patterns, not about future client actions.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Statement about awareness of hormones/antibodies, not conditional/hypothetical reasoning about client actions.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 0,
+    "reason": "Informational statement about age-related health concerns, not conditional/hypothetical reasoning about client actions.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 0,
+    "reason": "Simple exclamation with no conditional or hypothetical reasoning.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 0,
+    "reason": "Short statement about pros and cons framework, not conditional/hypothetical reasoning about actions.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Statement about past events (ended up with injury), not conditional/hypothetical reasoning.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 1,
+    "reason": "Contains conditional structure about consequences if there is too much - conditional reasoning about client actions.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 0,
+    "reason": "Contains exclusion marker it-s; reflective statement about decision-making, not conditional reasoning.",
+    "evidence_span": ""
+  }
+]

@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "on a scale from one to ten",
+    "reason": "Scale question is a constrained option"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "how motivated would that make you feel on a scale of one to ten",
+    "reason": "Scale question is a constrained option"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "how confident would you say you are about making this change right now",
+    "reason": "Confidence rating is a constrained scale question"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "how confident would you say you are right in this moment",
+    "reason": "Confidence scale question is constrained"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "how important would you say this change is for you",
+    "reason": "Scale question is a constrained option"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 1,
+    "evidence_span": "can you tell me a little bit more about what you mean by sick",
+    "reason": "Asks for a specific factual elaboration"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "when would you like that",
+    "reason": "Factual question answerable with a short response"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "do you like about we could",
+    "reason": "Unclear fragment, not a clear closed question"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "has anything changed with your medical history",
+    "reason": "Yes/no question about factual changes"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 0,
+    "evidence_span": "can you just tell me how you are going to use these",
+    "reason": "Asks for extended explanation, not short fact"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "what typical day with or without pot",
+    "reason": "Open-ended question about daily routine"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "evidence_span": "do you feel like these behaviors affect your relationship",
+    "reason": "Yes/no question is a closed question"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "evidence_span": "how do you feel about journaling",
+    "reason": "Could be answered with a constrained rating"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "what makes you feel that now it was a good time",
+    "reason": "Open-ended question asking for reasoning"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "what your thoughts are about using condoms",
+    "reason": "Open-ended question about thoughts"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "your name is Larry seedorf is your date of birth",
+    "reason": "Factual question answerable with short fact"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "evidence_span": "are you still on same address as before",
+    "reason": "Yes/no question is closed"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "evidence_span": "is there a willingness or are you basically giving up",
+    "reason": "Yes/no question is closed"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "evidence_span": "are you willing to go to treatment",
+    "reason": "Yes/no question is closed"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.3,
+    "binary_prediction": 0,
+    "evidence_span": "you know what is scary",
+    "reason": "Statement or rhetorical prompt, not a closed question"
+  }
+]

@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "it sounds like",
+    "reason": "paraphrases client meaning"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "and the doctor recently told you the UH pre-diabet",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "really related to your sister",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "and you know",
+    "reason": "references client knowledge"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "so you",
+    "reason": "paraphrases or references client"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "it's kind of everyday sort of thing",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "okay, how long ago did you start playing saxophone",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "it does sound like he's concerned about you and an",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "it sounds like",
+    "reason": "paraphrases client meaning"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "i know you",
+    "reason": "acknowledges client context"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "um obviously you shouldn't be drinking at all",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "it sounds like",
+    "reason": "paraphrases client meaning"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "yeah the fact that you're drinking stands out from",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "it sounds like",
+    "reason": "paraphrases client meaning"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "what do you think's a realistic goal for you then",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "good I also notice you filled out one of our quest",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "and I really really think the same can happen for ",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "you Rachel it hurt coming today",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "your alcohol level was  clearly you had more than ",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "what about at these parties you're going to there ",
+    "reason": "no clear reflection markers found"
+  }
+]

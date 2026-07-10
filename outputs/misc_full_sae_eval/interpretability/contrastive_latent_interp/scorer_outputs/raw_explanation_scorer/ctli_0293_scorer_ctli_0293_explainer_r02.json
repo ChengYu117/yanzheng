@@ -1,0 +1,142 @@
+[
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "latest thing that they're not talk to you...",
+    "reason": "Does not match complex_detailed_counselor_utterances_r02: insufficient trigger alignment",
+    "sample_id": "u011"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "I think that's a good thing that's a...",
+    "reason": "Does not match complex_detailed_counselor_utterances_r02: insufficient trigger alignment",
+    "sample_id": "u008"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "And you have a wonderful month.",
+    "reason": "Does not match complex_detailed_counselor_utterances_r02: insufficient trigger alignment",
+    "sample_id": "u010"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "our stay quit line is excellent and convenient",
+    "reason": "Does not match complex_detailed_counselor_utterances_r02: insufficient trigger alignment",
+    "sample_id": "u002"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "sounds like you weren't feeling so good about...",
+    "reason": "Does not match complex_detailed_counselor_utterances_r02: insufficient trigger alignment",
+    "sample_id": "u012"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "wow you really are involved in music",
+    "reason": "Does not match complex_detailed_counselor_utterances_r02: insufficient trigger alignment",
+    "sample_id": "u020"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "so that was the face pretty good experience",
+    "reason": "Does not match complex_detailed_counselor_utterances_r02: insufficient trigger alignment",
+    "sample_id": "u007"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "great and is anything maybe worrying you about...",
+    "reason": "Does not match complex_detailed_counselor_utterances_r02: insufficient trigger alignment",
+    "sample_id": "u005"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "um telling me would have been great but...",
+    "reason": "Does not match complex_detailed_counselor_utterances_r02: insufficient trigger alignment",
+    "sample_id": "u014"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "that sounds like a good one to try",
+    "reason": "Does not match complex_detailed_counselor_utterances_r02: insufficient trigger alignment",
+    "sample_id": "u013"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "okay that sounds really interesting",
+    "reason": "Does not match complex_detailed_counselor_utterances_r02: insufficient trigger alignment",
+    "sample_id": "u019"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "great and you maybe have any ideas that...",
+    "reason": "Does not match complex_detailed_counselor_utterances_r02: insufficient trigger alignment",
+    "sample_id": "u009"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "pretty good it's been three months now since...",
+    "reason": "Does not match complex_detailed_counselor_utterances_r02: insufficient trigger alignment",
+    "sample_id": "u004"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "so what I know of you is that...",
+    "reason": "Does not match complex_detailed_counselor_utterances_r02: insufficient trigger alignment",
+    "sample_id": "u017"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "okay okay well that's great it sounds like...",
+    "reason": "Does not match complex_detailed_counselor_utterances_r02: insufficient trigger alignment",
+    "sample_id": "u006"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "okay that sounds good and it sounds reasonable...",
+    "reason": "Does not match complex_detailed_counselor_utterances_r02: insufficient trigger alignment",
+    "sample_id": "u003"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "yeah so that's that's that's awesome it sounds...",
+    "reason": "Does not match complex_detailed_counselor_utterances_r02: insufficient trigger alignment",
+    "sample_id": "u001"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "but what I'm the point I'm trying to...",
+    "reason": "Does not match complex_detailed_counselor_utterances_r02: insufficient trigger alignment",
+    "sample_id": "u016"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "cutting down that would be a great step...",
+    "reason": "Does not match complex_detailed_counselor_utterances_r02: insufficient trigger alignment",
+    "sample_id": "u018"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "doesn't sound like good quality sleep",
+    "reason": "Does not match complex_detailed_counselor_utterances_r02: insufficient trigger alignment",
+    "sample_id": "u015"
+  }
+]

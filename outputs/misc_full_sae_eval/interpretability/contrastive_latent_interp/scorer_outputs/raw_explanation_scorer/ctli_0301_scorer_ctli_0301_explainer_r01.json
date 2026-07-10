@@ -1,0 +1,142 @@
+[
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "oh nice",
+    "reason": "Does not match positive_self_evaluation_and_wellbeing: insufficient trigger alignment",
+    "sample_id": "u018"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "how are your grades right now um they're...",
+    "reason": "Does not match positive_self_evaluation_and_wellbeing: insufficient trigger alignment",
+    "sample_id": "u005"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "okay you have some pretty big dreams",
+    "reason": "Does not match positive_self_evaluation_and_wellbeing: insufficient trigger alignment",
+    "sample_id": "u020"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "no it was pretty straightforward",
+    "reason": "Does not match positive_self_evaluation_and_wellbeing: insufficient trigger alignment",
+    "sample_id": "u001"
+  },
+  {
+    "pred_activate_prob": 0.33,
+    "binary_prediction": 1,
+    "evidence_span": "not taking any more okay great no problem...",
+    "reason": "Matches positive_self_evaluation_and_wellbeing: text aligns with hypothesis pattern",
+    "sample_id": "u013"
+  },
+  {
+    "pred_activate_prob": 0.33,
+    "binary_prediction": 1,
+    "evidence_span": "okay great it sounds like you're really excited...",
+    "reason": "Matches positive_self_evaluation_and_wellbeing: text aligns with hypothesis pattern",
+    "sample_id": "u012"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "so that was the face pretty good experience",
+    "reason": "Does not match positive_self_evaluation_and_wellbeing: insufficient trigger alignment",
+    "sample_id": "u002"
+  },
+  {
+    "pred_activate_prob": 0.63,
+    "binary_prediction": 1,
+    "evidence_span": "sounds like a good choice for you",
+    "reason": "Matches positive_self_evaluation_and_wellbeing: strong trigger match (sounds like a good choice for you)",
+    "sample_id": "u011"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "Well, you know, you're doing good but don't...",
+    "reason": "Does not match positive_self_evaluation_and_wellbeing: insufficient trigger alignment",
+    "sample_id": "u007"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "very cool",
+    "reason": "Does not match positive_self_evaluation_and_wellbeing: insufficient trigger alignment",
+    "sample_id": "u016"
+  },
+  {
+    "pred_activate_prob": 0.33,
+    "binary_prediction": 1,
+    "evidence_span": "okay that sounds like a great idea",
+    "reason": "Matches positive_self_evaluation_and_wellbeing: text aligns with hypothesis pattern",
+    "sample_id": "u008"
+  },
+  {
+    "pred_activate_prob": 0.33,
+    "binary_prediction": 1,
+    "evidence_span": "yeah you got rid of that bed yes...",
+    "reason": "Matches positive_self_evaluation_and_wellbeing: text aligns with hypothesis pattern",
+    "sample_id": "u006"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "very fun",
+    "reason": "Does not match positive_self_evaluation_and_wellbeing: insufficient trigger alignment",
+    "sample_id": "u019"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "cute",
+    "reason": "Does not match positive_self_evaluation_and_wellbeing: insufficient trigger alignment",
+    "sample_id": "u017"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "yes that make sense",
+    "reason": "Does not match positive_self_evaluation_and_wellbeing: insufficient trigger alignment",
+    "sample_id": "u010"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "sure how was your trip over",
+    "reason": "Does not match positive_self_evaluation_and_wellbeing: insufficient trigger alignment",
+    "sample_id": "u009"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "latest thing that they're not talk to you...",
+    "reason": "Does not match positive_self_evaluation_and_wellbeing: insufficient trigger alignment",
+    "sample_id": "u015"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "and working really well",
+    "reason": "Does not match positive_self_evaluation_and_wellbeing: insufficient trigger alignment",
+    "sample_id": "u004"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "okay so that gives you a good reason...",
+    "reason": "Does not match positive_self_evaluation_and_wellbeing: insufficient trigger alignment",
+    "sample_id": "u014"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "right it was actually I feel pretty good...",
+    "reason": "Does not match positive_self_evaluation_and_wellbeing: insufficient trigger alignment",
+    "sample_id": "u003"
+  }
+]

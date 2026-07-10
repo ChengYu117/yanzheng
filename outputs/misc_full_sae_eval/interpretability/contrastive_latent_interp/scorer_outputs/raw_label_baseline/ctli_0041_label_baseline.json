@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "it also sounds like it's tempting what do you thin",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "it seems like it really fits in with your lifestyle with the friends that you",
+    "reason": "infers client state"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "i know there",
+    "reason": "acknowledges client context"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "so you're really not confident",
+    "reason": "infers self-assessment"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "thank you",
+    "reason": "courtesy, not reflection"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "okay that sounds like an excellent plan",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "so you",
+    "reason": "paraphrases or references client"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "so you feel like right now smoking is a pretty important part of your life it's not something you're ready to change but if the time came when you did decide to quit you feel",
+    "reason": "reflects client feeling"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "so you feel",
+    "reason": "reflects client feeling"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "you feel",
+    "reason": "reflects client feeling"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "okay that sounds like a pretty strong commitment",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "so you do a lot of things but from where you feel",
+    "reason": "reflects client feeling"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "it seems like it's helped you",
+    "reason": "infers client state"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "it sounds like",
+    "reason": "paraphrases client meaning"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "it is a different type of difficulty you're right",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "well I feel like this is a really private thing th",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "okay that sounds like a great idea",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "okay so sounds like you've seen some improvement y",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "so you feel",
+    "reason": "reflects client feeling"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "i know you",
+    "reason": "acknowledges client context"
+  }
+]

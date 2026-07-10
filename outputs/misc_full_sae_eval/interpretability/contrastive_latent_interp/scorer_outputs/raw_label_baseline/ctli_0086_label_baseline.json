@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "yeah all of these are like really understand aborn",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "and just to clarify from my information on average",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "so sometimes you're stressed because your son's ho",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "And when he's there he, he does take care of you?",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "okay that sounds like an excellent plan",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "there's big change gears to get healthy",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "so a portion of the time it's working well for you",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "There's all these risks that you're putting yourse",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "I don't think you realize how serious your disease",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "and so those times when you decide to quit what ar",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "and I think you would - very good",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "oh great that's really wonderful to hear from you",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "I don't think you realize how serious your disease",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "It's really gotten to the point where you can't ke",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "thank you very much I really appreciate your time ",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "so sort of trying to plan more activities that don",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "I suppose there are some things you could do to he",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "like to make some adjustments to to make it a litt",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "sounds like you have like I said really good goals",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "okay so there's sort of pros and cons",
+    "reason": "not a reflection"
+  }
+]

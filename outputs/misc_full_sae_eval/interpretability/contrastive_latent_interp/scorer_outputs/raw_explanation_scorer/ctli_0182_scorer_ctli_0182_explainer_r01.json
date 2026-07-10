@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "evidence_span": "do you remember which one you're taking",
+    "reason": "'Do you remember' + 'you' in interrogative asks about client's medication knowledge."
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "do you think that your dad doesn't understand that you're tired",
+    "reason": "'Do you think' + 'you' solicits client's belief about interpersonal situation."
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.78,
+    "binary_prediction": 1,
+    "evidence_span": "do you think if you put up with a little bit of embarrassment",
+    "reason": "'Do you think' + 'you' addresses client about tolerating discomfort."
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "do you know how long you have",
+    "reason": "'Do you know' + 'you' directly asks client about their awareness of a situation."
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.84,
+    "binary_prediction": 1,
+    "evidence_span": "do you think that drinking kind of fits in with that value",
+    "reason": "'Do you think' + 'you' solicits client's perspective on drinking vs. values."
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.78,
+    "binary_prediction": 1,
+    "evidence_span": "do you feel like these behaviors affect your relationship",
+    "reason": "'Do you feel like' + 'you' asks about client's perception of behavior impact."
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "when did you start",
+    "reason": "Very short question with 'you' but no verb about client's internal states."
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "what kind of dogs",
+    "reason": "No second-person 'you'; question about third-party topic."
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.42,
+    "binary_prediction": 0,
+    "evidence_span": "do you have any hearings or anything coming up",
+    "reason": "'You' in interrogative but administrative/logistics question, not about internal states."
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "evidence_span": "do you think those things that you mentioned earlier would be good",
+    "reason": "'Do you think' + 'you' solicits client's assessment of previously mentioned options."
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.68,
+    "binary_prediction": 1,
+    "evidence_span": "what's been going on what happens",
+    "reason": "Open inquiry soliciting client's experience report, framing client as information source."
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.42,
+    "binary_prediction": 0,
+    "evidence_span": "what puts you out of 10",
+    "reason": "'You' in brief scale question but very short with no verb about internal states."
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.72,
+    "binary_prediction": 1,
+    "evidence_span": "do you have an idea of how you'll like keep a journal maybe",
+    "reason": "'Do you have' + 'you' solicits client's ideas about behavioral planning."
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "do you think they're really good friends of yours if they're gonna give you such a hard time",
+    "reason": "'Do you think' + 'you' asks client to assess their social relationships."
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "when you're hanging out with friends is there ever alcohol involved",
+    "reason": "'You' in context but question is about situational behavior, not internal states directly."
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.68,
+    "binary_prediction": 1,
+    "evidence_span": "do you like to feel such views",
+    "reason": "'Do you like' + 'you' inquires about client's preferences and feelings."
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "do you think you will have trying to eat that's not during that period of time",
+    "reason": "'Do you think' + 'you' solicits client's belief about their eating behavior capacity."
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.72,
+    "binary_prediction": 1,
+    "evidence_span": "where would you say your are in terms of your confidence to actually lose the way",
+    "reason": "'Would you say' + 'you' asks client to self-report confidence level."
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "evidence_span": "do you know what the risks are associated with letting your blood Sugar's run high",
+    "reason": "'Do you know' + 'you' solicits client's knowledge about health risks."
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.72,
+    "binary_prediction": 1,
+    "evidence_span": "do you not do like to not know what's going on",
+    "reason": "'Do you' + 'not know' inquires about client's awareness and knowledge state."
+  }
+]

@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "yeah yeah so I don't know it sounds to me like you probably you...",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "there's big change gears to get healthy",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "will recheck your blood pressure and see how you're doing with all...",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "okay so there's sort of pros and cons",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.72,
+    "binary_prediction": 1,
+    "evidence_span": "I'm concerned about the amount that you're drinking currently it...",
+    "reason": "infers meaning"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "and it could be that drinking at the level that you're drinking...",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "mm-hmm and do you feel like that's working pretty well for you or...",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.72,
+    "binary_prediction": 1,
+    "evidence_span": "okay yeah it sounds kind of similar to your your value of respect...",
+    "reason": "paraphrases/interprets"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "yeah so that's that's that's awesome it sounds like good a great...",
+    "reason": "weak reflection signal"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "oh great that's really wonderful to hear from you",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "okay that sounds like an excellent plan",
+    "reason": "weak reflection signal"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "Well, the fact that he's having these ear infections, is indicating...",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "okay so you're kind of looking at balancing you know how much you...",
+    "reason": "characterizes state"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "okay so from what I hear you saying you're having difficulty...",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "it's but when you're sleeping at night or you're staying in one...",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "thank you very much I really appreciate your time today",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "very good so it looks like you're using a good method of birth control",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "so you're kind of stuck being exposed to things you don't mean busy",
+    "reason": "characterizes state; identifies emotion"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "but but you did say it more descriptively which is great",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "right and then with the respect one of the things you mentioned is...",
+    "reason": "not a reflection"
+  }
+]

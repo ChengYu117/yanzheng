@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.72,
+    "binary_prediction": 1,
+    "reason": "Negation 'don't' present",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "reason": "Third person 'wife's', discourse marker 'so', family-related",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.05,
+    "binary_prediction": 0,
+    "reason": "No confrontational challenge, negation, or third person reference",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "reason": "Negation 'not', discourse marker 'so'",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.05,
+    "binary_prediction": 0,
+    "reason": "No clear primary triggers",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.05,
+    "binary_prediction": 0,
+    "reason": "No triggers",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.05,
+    "binary_prediction": 0,
+    "reason": "No confrontational challenge or third person",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "reason": "No strong primary trigger",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "reason": "Third person 'husband's', discourse marker 'so', family-related",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.05,
+    "binary_prediction": 0,
+    "reason": "No triggers",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "reason": "Discourse marker 'so' but short with no other triggers",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 1,
+    "reason": "Family reference (sister)",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.05,
+    "binary_prediction": 0,
+    "reason": "No primary triggers",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.78,
+    "binary_prediction": 1,
+    "reason": "Third person 'he', family-related (relationship, baby)",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.05,
+    "binary_prediction": 0,
+    "reason": "Discourse marker 'so' but no other triggers",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "reason": "Third person 'wife's', family-related",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "reason": "First person but not a primary trigger for this latent",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "reason": "Discourse marker 'so', negation 'not'",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.05,
+    "binary_prediction": 0,
+    "reason": "No primary triggers",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.05,
+    "binary_prediction": 0,
+    "reason": "No primary triggers",
+    "evidence_span": ""
+  }
+]

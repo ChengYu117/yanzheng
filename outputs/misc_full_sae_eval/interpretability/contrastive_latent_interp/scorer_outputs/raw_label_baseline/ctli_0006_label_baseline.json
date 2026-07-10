@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "so you're kind of stuck",
+    "reason": "interprets client situation"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "and then so we kind of boiled that down so it's ac",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "you feel",
+    "reason": "reflects client feeling"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "what keeps",
+    "reason": "question, not reflection"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "yeah so kind of keeping your options open yeah def",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "so if quitting really the toughest thing you've ev",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "i know there",
+    "reason": "acknowledges client context"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "how about",
+    "reason": "suggestion, not reflection"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "i know you",
+    "reason": "acknowledges client context"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "it is a different type of difficulty you're right",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "thank you",
+    "reason": "courtesy, not reflection"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "so you",
+    "reason": "paraphrases or references client"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "so you're really not confident",
+    "reason": "infers self-assessment"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "does look swollen",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "you can",
+    "reason": "advice/information, not reflection"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "i'm guessing you",
+    "reason": "infers from client"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "I don't know that doesn't seem very serious to me ",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "so are you ready for the challenge of quitting",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "so a standard  ounces as standard can or bottle th",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "day good right so that's you",
+    "reason": "no clear reflection markers found"
+  }
+]

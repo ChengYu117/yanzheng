@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "any other things that you can think of",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "when did you start",
+    "reason": "not clearly a closed question"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "now i'm curious if you had a magic wand and you were able to wake up...",
+    "reason": "not clearly a closed question"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "aren't you a student like don't you know I mean like our anyone...",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "do you drink alcohol",
+    "reason": "closed-ended question expecting short answer"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "would you be willing to find out a bit more about that",
+    "reason": "closed-ended question expecting short answer"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "do you mind telling me some of the things that she discuss with you",
+    "reason": "closed-ended question expecting short answer"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "okay bad idea on in that same scale with one being not confident at...",
+    "reason": "not clearly a closed question"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "okay people how do you feel about frosting while you're watching TV?",
+    "reason": "open-ended question pattern"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "what kind of dogs",
+    "reason": "open-ended question pattern"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "who knows what I'd like you to kind of use it a little left off",
+    "reason": "not clearly a closed question"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "do you remember what I mean by opposite action",
+    "reason": "closed-ended question expecting short answer"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "do you take any medications or do you have any medical conditions",
+    "reason": "closed-ended question expecting short answer"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "I'm wondering do you have you think you have like a physical craving...",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "mm-hmm and when you're hanging out with friends is there ever...",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "any consequences of cutting on your independence do you think",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "could you tell me more is you've been partying your wife's been...",
+    "reason": "open-ended question pattern"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "would you what exercises do you think would be easier for you to try",
+    "reason": "closed-ended question expecting short answer"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "do you find it difficult to to get alcohol like you have to work to...",
+    "reason": "closed-ended question expecting short answer"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "and what puts you out of 10",
+    "reason": "open-ended question pattern"
+  }
+]

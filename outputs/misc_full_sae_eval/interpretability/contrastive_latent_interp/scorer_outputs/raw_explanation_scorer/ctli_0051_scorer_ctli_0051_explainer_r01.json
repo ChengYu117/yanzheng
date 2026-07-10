@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "No negation; short medical observation",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 0,
+    "reason": "Has 'I'm' first person but no negation; descriptive",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 0,
+    "reason": "No negation; informational statement",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 0,
+    "reason": "'I mean' first person discourse but no negation",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "reason": "'not' negation present + 'yeah' discourse marker",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 0,
+    "reason": "Has 'I know' first person but no clear negation",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 0,
+    "reason": "No negation; agreement statement",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 0,
+    "reason": "No negation; descriptive",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 0,
+    "reason": "No negation markers; factual observation",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 0,
+    "reason": "Has 'I know' first person but no negation",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 0,
+    "reason": "No negation; exclamation",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 0,
+    "reason": "No negation; lots of second person but primary trigger is negation",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "reason": "'not' negation in 'I'm not saying'; good match for primary trigger",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "reason": "'not' negation in 'I'm not saying' + first person 'I understand'",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 0,
+    "reason": "No negation; past tense observation",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 0,
+    "reason": "No negation; positive affirmation",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 0,
+    "reason": "No negation; future plan statement",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "reason": "'not' negation in 'you're not feeling'; clear negation pattern",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "reason": "'no more than' is negation + 'well' discourse marker",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 0,
+    "reason": "No negation; has 'so' discourse marker but primary trigger is negation",
+    "evidence_span": ""
+  }
+]

@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "No 'so' discourse marker; very short",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "reason": "'so' discourse marker present; short but has primary trigger",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "reason": "'So' + conditional 'might'/'would be'; long; work-related content",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 0,
+    "reason": "No 'so' discourse marker; specific question but lacks primary trigger",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "reason": "'so' discourse marker present",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "No 'so' discourse marker; short statement",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "No 'so' discourse marker; short",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "reason": "'so' discourse marker present",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "reason": "'so' discourse marker present",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 0,
+    "reason": "'well' is not the specified discourse marker 'so'",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "No 'so' discourse marker; very short",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "reason": "'So' discourse marker present",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "No 'so' discourse marker; very short medical observation",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 0,
+    "reason": "No 'so' but has 'if' conditional; primary trigger absent",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "reason": "'So' discourse marker + question",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "reason": "'so' discourse marker present",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "reason": "'So' + 'you know' discourse markers; long",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "reason": "'So' discourse marker; long utterance",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "reason": "'so' discourse marker; question + confrontational",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "reason": "'so' discourse marker present",
+    "evidence_span": ""
+  }
+]

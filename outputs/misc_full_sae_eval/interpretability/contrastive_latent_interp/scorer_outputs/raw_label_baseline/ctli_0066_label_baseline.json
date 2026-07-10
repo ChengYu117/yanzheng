@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "evidence_span": "so you're you're taking care of a lot of people yo",
+    "reason": "simple paraphrase"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "You know, I find it so surprising that people can ",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "evidence_span": "You have this relationship that's been kinda off a",
+    "reason": "simple acknowledgment"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "dawn you told me what brought you here today",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "evidence_span": "so you're you're still struggling to breathe some",
+    "reason": "simple paraphrase"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "Of the advantages of you actually stopping or cutt",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "evidence_span": "yeah you're you're it yep you have to provide for ",
+    "reason": "agreement + reflection"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "evidence_span": "You're putting yourself at risk for lung cancer, f",
+    "reason": "simple paraphrase"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "and that you've already taken some steps you've, y",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "does look swollen",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "evidence_span": "so you were experiencing some pain",
+    "reason": "simple restatement"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "and you know you can do that right",
+    "reason": "has reflection markers, likely simple"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "so I know you've tried before",
+    "reason": "has reflection markers, likely simple"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "You know, handsome guys lurking around clubs, sell",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "it is a different type of difficulty you're right",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "and then you are using the unplanned when you feel",
+    "reason": "has reflection markers, likely simple"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "evidence_span": "and you feel like that's really impacting your day",
+    "reason": "simple restatement"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "Yeah, and I think, you know, just have to kind of ",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "You can't generalize the experience your grandfath",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "evidence_span": "and you've linked it back search of the drinking",
+    "reason": "simple acknowledgment"
+  }
+]

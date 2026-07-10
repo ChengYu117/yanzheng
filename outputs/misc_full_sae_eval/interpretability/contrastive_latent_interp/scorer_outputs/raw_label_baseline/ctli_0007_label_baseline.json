@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "you can",
+    "reason": "advice/information, not reflection"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "it sounds like",
+    "reason": "paraphrases client meaning"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "how about",
+    "reason": "suggestion, not reflection"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "and you'll really feel so much better",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "there's big change gears to get healthy",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "and that you've already taken some steps you've, y",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "you said",
+    "reason": "references client statement"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "so you have your",
+    "reason": "references client"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "you feel",
+    "reason": "reflects client feeling"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "Sal, you're almost on the strongest one.",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "so you may not notice",
+    "reason": "infers awareness gap"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "yeah Chris come on you're getting peer pressure",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "so you feel",
+    "reason": "reflects client feeling"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "so you used to be",
+    "reason": "interprets change"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "yeah well you're one of the leaders",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "does look swollen",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "you can",
+    "reason": "advice/information, not reflection"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "really related to your sister",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "i know you",
+    "reason": "acknowledges client context"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "you said",
+    "reason": "references client statement"
+  }
+]

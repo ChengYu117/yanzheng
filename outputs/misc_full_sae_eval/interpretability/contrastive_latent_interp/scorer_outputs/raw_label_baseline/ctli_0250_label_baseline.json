@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "reason": "encouragement or positive feedback",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.2,
+    "binary_prediction": 0,
+    "reason": "no clear support or empathy markers",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "reason": "offers help or support",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "reason": "expresses understanding, empathy, or support",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.2,
+    "binary_prediction": 0,
+    "reason": "no clear support or empathy markers",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.2,
+    "binary_prediction": 0,
+    "reason": "no clear support or empathy markers",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.2,
+    "binary_prediction": 0,
+    "reason": "no clear support or empathy markers",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "reason": "question, not a support statement",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.2,
+    "binary_prediction": 0,
+    "reason": "no clear support or empathy markers",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.2,
+    "binary_prediction": 0,
+    "reason": "no clear support or empathy markers",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "reason": "expresses understanding, empathy, or support",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.2,
+    "binary_prediction": 0,
+    "reason": "no clear support or empathy markers",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.2,
+    "binary_prediction": 0,
+    "reason": "no clear support or empathy markers",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "reason": "expresses understanding, empathy, or support",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.2,
+    "binary_prediction": 0,
+    "reason": "no clear support or empathy markers",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.2,
+    "binary_prediction": 0,
+    "reason": "no clear support or empathy markers",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "reason": "offers help or support",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "reason": "question, not a support statement",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.2,
+    "binary_prediction": 0,
+    "reason": "no clear support or empathy markers",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.2,
+    "binary_prediction": 0,
+    "reason": "no clear support or empathy markers",
+    "evidence_span": ""
+  }
+]

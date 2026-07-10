@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.3,
+    "binary_prediction": 0,
+    "evidence_span": "can you tell me more about that",
+    "reason": "Positive: matches trigger term 'you'. Excluded: matches exclusion term 'you'; matches exclusion term 'you'"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.3,
+    "binary_prediction": 0,
+    "evidence_span": "sure why don't you tell me a little bit about what you're thinking",
+    "reason": "Positive: matches trigger term 'you'. Excluded: matches exclusion term 'you'; matches exclusion term 'you'"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.3,
+    "binary_prediction": 0,
+    "evidence_span": "does it hurt anymore mark when you move it does",
+    "reason": "Positive: matches trigger term 'you'. Excluded: matches exclusion term 'you'; matches exclusion term 'you'"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.3,
+    "binary_prediction": 0,
+    "evidence_span": "and what about validate it's an interesting word what what might that how might ...",
+    "reason": "Positive: matches trigger term 'you'. Excluded: matches exclusion term 'you'; matches exclusion term 'you'"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.3,
+    "binary_prediction": 0,
+    "evidence_span": "okay so could you tell me a little bit about what are some things that you don't...",
+    "reason": "Positive: matches trigger term 'you'. Excluded: matches exclusion term 'you'; matches exclusion term 'you'"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.3,
+    "binary_prediction": 0,
+    "evidence_span": "and how do you feel your implants working for that",
+    "reason": "Positive: matches trigger term 'you'. Excluded: matches exclusion term 'you'; matches exclusion term 'you'"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.3,
+    "binary_prediction": 0,
+    "evidence_span": "so you've said that a few times now that things got so out of control and crazy ...",
+    "reason": "Positive: matches trigger term 'you'. Excluded: matches exclusion term 'you'; matches exclusion term 'you'"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.3,
+    "binary_prediction": 0,
+    "evidence_span": "do you feel like you've seen some real improvements on that",
+    "reason": "Positive: matches trigger term 'you'. Excluded: matches exclusion term 'you'; matches exclusion term 'you'"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.3,
+    "binary_prediction": 0,
+    "evidence_span": "can you expand on that a little bit more what do you mean",
+    "reason": "Positive: matches trigger term 'you'. Excluded: matches exclusion term 'you'; matches exclusion term 'you'"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.3,
+    "binary_prediction": 0,
+    "evidence_span": "So Greg, just focus on your drinking, can you tell me a bit about when you first...",
+    "reason": "Positive: matches trigger term 'you'. Excluded: matches exclusion term 'you'; matches exclusion term 'you'"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.3,
+    "binary_prediction": 0,
+    "evidence_span": "okay so tell me why you're only using it when your blood sugar goes high",
+    "reason": "Positive: matches trigger term 'you'. Excluded: matches exclusion term 'you'; matches exclusion term 'you'"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.3,
+    "binary_prediction": 0,
+    "evidence_span": "do you think that this will be helpful I'm black Franny",
+    "reason": "Positive: matches trigger term 'you'. Excluded: matches exclusion term 'you'; matches exclusion term 'you'"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.3,
+    "binary_prediction": 0,
+    "evidence_span": "okay so what let me ask you what would it be like if we were to bring running in...",
+    "reason": "Positive: matches trigger term 'you'. Excluded: matches exclusion term 'you'; matches exclusion term 'you'"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.3,
+    "binary_prediction": 0,
+    "evidence_span": "so if quitting really the toughest thing you've ever done",
+    "reason": "Positive: matches trigger term 'you'. Excluded: matches exclusion term 'you'; matches exclusion term 'you'"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.3,
+    "binary_prediction": 0,
+    "evidence_span": "and what puts you out of 10",
+    "reason": "Positive: matches trigger term 'you'. Excluded: matches exclusion term 'you'; matches exclusion term 'you'"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.3,
+    "binary_prediction": 0,
+    "evidence_span": "it do did you have a color that you wanted",
+    "reason": "Positive: matches trigger term 'you'. Excluded: matches exclusion term 'you'; matches exclusion term 'you'"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.3,
+    "binary_prediction": 0,
+    "evidence_span": "okay can you tell me a little bit about what that's like for you",
+    "reason": "Positive: matches trigger term 'you'. Excluded: matches exclusion term 'you'; matches exclusion term 'you'"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.3,
+    "binary_prediction": 0,
+    "evidence_span": "sure and back to that skill you mentioned you said you're a - what do you think ...",
+    "reason": "Positive: matches trigger term 'you'. Excluded: matches exclusion term 'you'; matches exclusion term 'you'"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.3,
+    "binary_prediction": 0,
+    "evidence_span": "but is it the hardest thing you've ever done",
+    "reason": "Positive: matches trigger term 'you'. Excluded: matches exclusion term 'you'; matches exclusion term 'you'"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.3,
+    "binary_prediction": 0,
+    "evidence_span": "so Sandra what's good about smoking what do you like about it",
+    "reason": "Positive: matches trigger term 'you'. Excluded: matches exclusion term 'you'; matches exclusion term 'you'"
+  }
+]

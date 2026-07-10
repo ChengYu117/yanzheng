@@ -1,0 +1,142 @@
+[
+  {
+    "pred_activate_prob": 0.23,
+    "binary_prediction": 0,
+    "evidence_span": "we can do to help you with this...",
+    "reason": "Does not match evocation_lat28603: insufficient trigger alignment",
+    "sample_id": "u001"
+  },
+  {
+    "pred_activate_prob": 0.48,
+    "binary_prediction": 1,
+    "evidence_span": "concept:do you",
+    "reason": "Matches evocation_lat28603: moderate trigger alignment with explanation",
+    "sample_id": "u004"
+  },
+  {
+    "pred_activate_prob": 0.38,
+    "binary_prediction": 1,
+    "evidence_span": "concept:important to you",
+    "reason": "Matches evocation_lat28603: moderate trigger alignment with explanation",
+    "sample_id": "u005"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "and I can discuss with you further kind...",
+    "reason": "Does not match evocation_lat28603: insufficient trigger alignment",
+    "sample_id": "u011"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "mm-hmm and when you're hanging out with friends...",
+    "reason": "Does not match evocation_lat28603: insufficient trigger alignment",
+    "sample_id": "u014"
+  },
+  {
+    "pred_activate_prob": 0.33,
+    "binary_prediction": 1,
+    "evidence_span": "concept:why you",
+    "reason": "Matches evocation_lat28603: moderate trigger alignment with explanation",
+    "sample_id": "u013"
+  },
+  {
+    "pred_activate_prob": 0.03,
+    "binary_prediction": 0,
+    "evidence_span": "and I don't want to make light of...",
+    "reason": "Excluded by evocation_lat28603: matches an explicit exclusion criterion",
+    "sample_id": "u017"
+  },
+  {
+    "pred_activate_prob": 0.23,
+    "binary_prediction": 0,
+    "evidence_span": "I really try to help you",
+    "reason": "Does not match evocation_lat28603: insufficient trigger alignment",
+    "sample_id": "u003"
+  },
+  {
+    "pred_activate_prob": 0.03,
+    "binary_prediction": 0,
+    "evidence_span": "that's nice",
+    "reason": "Excluded by evocation_lat28603: matches an explicit exclusion criterion",
+    "sample_id": "u020"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "and so you feel relaxed and you would...",
+    "reason": "Does not match evocation_lat28603: insufficient trigger alignment",
+    "sample_id": "u009"
+  },
+  {
+    "pred_activate_prob": 0.23,
+    "binary_prediction": 0,
+    "evidence_span": "so they're gonna try their best to make...",
+    "reason": "Does not match evocation_lat28603: insufficient trigger alignment",
+    "sample_id": "u002"
+  },
+  {
+    "pred_activate_prob": 0.13,
+    "binary_prediction": 0,
+    "evidence_span": "concept:can you",
+    "reason": "Excluded by evocation_lat28603: matches an explicit exclusion criterion",
+    "sample_id": "u015"
+  },
+  {
+    "pred_activate_prob": 0.23,
+    "binary_prediction": 0,
+    "evidence_span": "I want to help you up",
+    "reason": "Does not match evocation_lat28603: insufficient trigger alignment",
+    "sample_id": "u008"
+  },
+  {
+    "pred_activate_prob": 0.03,
+    "binary_prediction": 0,
+    "evidence_span": "hmm I'd be happy to do that",
+    "reason": "Excluded by evocation_lat28603: matches an explicit exclusion criterion",
+    "sample_id": "u019"
+  },
+  {
+    "pred_activate_prob": 0.23,
+    "binary_prediction": 0,
+    "evidence_span": "I want to help you",
+    "reason": "Does not match evocation_lat28603: insufficient trigger alignment",
+    "sample_id": "u006"
+  },
+  {
+    "pred_activate_prob": 0.03,
+    "binary_prediction": 0,
+    "evidence_span": "we can also get you groups that will...",
+    "reason": "Excluded by evocation_lat28603: matches an explicit exclusion criterion",
+    "sample_id": "u010"
+  },
+  {
+    "pred_activate_prob": 0.23,
+    "binary_prediction": 0,
+    "evidence_span": "I really really want to help you on...",
+    "reason": "Does not match evocation_lat28603: insufficient trigger alignment",
+    "sample_id": "u007"
+  },
+  {
+    "pred_activate_prob": 0.03,
+    "binary_prediction": 0,
+    "evidence_span": "you know like I know quitting is really...",
+    "reason": "Excluded by evocation_lat28603: matches an explicit exclusion criterion",
+    "sample_id": "u016"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "does it hurt anymore mark when you move...",
+    "reason": "Does not match evocation_lat28603: insufficient trigger alignment",
+    "sample_id": "u012"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "yeah throwing up is never fun it's not",
+    "reason": "Does not match evocation_lat28603: insufficient trigger alignment",
+    "sample_id": "u018"
+  }
+]

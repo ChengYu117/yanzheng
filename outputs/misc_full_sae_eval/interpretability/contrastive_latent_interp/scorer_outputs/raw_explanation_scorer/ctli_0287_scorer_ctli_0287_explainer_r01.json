@@ -1,0 +1,142 @@
+[
+  {
+    "pred_activate_prob": 0.97,
+    "binary_prediction": 1,
+    "evidence_span": "that; bout that",
+    "reason": "Matches positive_evaluative_descriptors: strong trigger match (that)",
+    "sample_id": "u001"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "cute",
+    "reason": "Does not match positive_evaluative_descriptors: insufficient trigger alignment",
+    "sample_id": "u020"
+  },
+  {
+    "pred_activate_prob": 0.58,
+    "binary_prediction": 1,
+    "evidence_span": "concept:great",
+    "reason": "Matches positive_evaluative_descriptors: moderate trigger alignment with explanation",
+    "sample_id": "u007"
+  },
+  {
+    "pred_activate_prob": 0.73,
+    "binary_prediction": 1,
+    "evidence_span": "that; ious that you're a good",
+    "reason": "Matches positive_evaluative_descriptors: strong trigger match (that)",
+    "sample_id": "u005"
+  },
+  {
+    "pred_activate_prob": 0.73,
+    "binary_prediction": 1,
+    "evidence_span": "that; hing that they're not ta",
+    "reason": "Matches positive_evaluative_descriptors: strong trigger match (that)",
+    "sample_id": "u011"
+  },
+  {
+    "pred_activate_prob": 0.33,
+    "binary_prediction": 1,
+    "evidence_span": "concept:good",
+    "reason": "Matches positive_evaluative_descriptors: moderate trigger alignment with explanation",
+    "sample_id": "u014"
+  },
+  {
+    "pred_activate_prob": 0.33,
+    "binary_prediction": 1,
+    "evidence_span": "wow you really are involved in music",
+    "reason": "Matches positive_evaluative_descriptors: text aligns with hypothesis pattern",
+    "sample_id": "u018"
+  },
+  {
+    "pred_activate_prob": 0.97,
+    "binary_prediction": 1,
+    "evidence_span": "that; hink that's a great deci",
+    "reason": "Matches positive_evaluative_descriptors: strong trigger match (that)",
+    "sample_id": "u008"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "and just keeps you more alert when you're...",
+    "reason": "Does not match positive_evaluative_descriptors: insufficient trigger alignment",
+    "sample_id": "u010"
+  },
+  {
+    "pred_activate_prob": 0.63,
+    "binary_prediction": 1,
+    "evidence_span": "that; e is that you guys are w",
+    "reason": "Matches positive_evaluative_descriptors: strong trigger match (that)",
+    "sample_id": "u003"
+  },
+  {
+    "pred_activate_prob": 0.97,
+    "binary_prediction": 1,
+    "evidence_span": "that; but that's okay",
+    "reason": "Matches positive_evaluative_descriptors: strong trigger match (that)",
+    "sample_id": "u013"
+  },
+  {
+    "pred_activate_prob": 0.73,
+    "binary_prediction": 1,
+    "evidence_span": "that; that would be a pos",
+    "reason": "Matches positive_evaluative_descriptors: strong trigger match (that)",
+    "sample_id": "u004"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "very cool",
+    "reason": "Does not match positive_evaluative_descriptors: insufficient trigger alignment",
+    "sample_id": "u019"
+  },
+  {
+    "pred_activate_prob": 0.73,
+    "binary_prediction": 1,
+    "evidence_span": "that; know that is a good way",
+    "reason": "Matches positive_evaluative_descriptors: strong trigger match (that)",
+    "sample_id": "u009"
+  },
+  {
+    "pred_activate_prob": 0.33,
+    "binary_prediction": 1,
+    "evidence_span": "concept:good",
+    "reason": "Matches positive_evaluative_descriptors: moderate trigger alignment with explanation",
+    "sample_id": "u006"
+  },
+  {
+    "pred_activate_prob": 0.63,
+    "binary_prediction": 1,
+    "evidence_span": "that; okay that sounds really",
+    "reason": "Matches positive_evaluative_descriptors: strong trigger match (that)",
+    "sample_id": "u017"
+  },
+  {
+    "pred_activate_prob": 0.33,
+    "binary_prediction": 1,
+    "evidence_span": "concept:good",
+    "reason": "Matches positive_evaluative_descriptors: moderate trigger alignment with explanation",
+    "sample_id": "u012"
+  },
+  {
+    "pred_activate_prob": 0.33,
+    "binary_prediction": 1,
+    "evidence_span": "concept:good",
+    "reason": "Matches positive_evaluative_descriptors: moderate trigger alignment with explanation",
+    "sample_id": "u002"
+  },
+  {
+    "pred_activate_prob": 0.63,
+    "binary_prediction": 1,
+    "evidence_span": "that; u is that when you're fa",
+    "reason": "Matches positive_evaluative_descriptors: strong trigger match (that)",
+    "sample_id": "u016"
+  },
+  {
+    "pred_activate_prob": 0.73,
+    "binary_prediction": 1,
+    "evidence_span": "that; t is that you understand",
+    "reason": "Matches positive_evaluative_descriptors: strong trigger match (that)",
+    "sample_id": "u015"
+  }
+]

@@ -1,0 +1,142 @@
+[
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "so what I know of you is that...",
+    "reason": "Does not match gratitude_and_session_appreciation: insufficient trigger alignment",
+    "sample_id": "u017"
+  },
+  {
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "Thank you; okay thank you very much than",
+    "reason": "Matches gratitude_and_session_appreciation: strong trigger match (Thank you)",
+    "sample_id": "u009"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "okay that sounds really interesting",
+    "reason": "Does not match gratitude_and_session_appreciation: insufficient trigger alignment",
+    "sample_id": "u019"
+  },
+  {
+    "pred_activate_prob": 0.73,
+    "binary_prediction": 1,
+    "evidence_span": "thanks; Thanks so let me cont",
+    "reason": "Matches gratitude_and_session_appreciation: strong trigger match (thanks)",
+    "sample_id": "u006"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "cutting down that would be a great step...",
+    "reason": "Does not match gratitude_and_session_appreciation: insufficient trigger alignment",
+    "sample_id": "u018"
+  },
+  {
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "Thank you; Thank you so much for ca",
+    "reason": "Matches gratitude_and_session_appreciation: strong trigger match (Thank you)",
+    "sample_id": "u003"
+  },
+  {
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "Thank you; this thank you talking I want",
+    "reason": "Matches gratitude_and_session_appreciation: strong trigger match (Thank you)",
+    "sample_id": "u002"
+  },
+  {
+    "pred_activate_prob": 0.73,
+    "binary_prediction": 1,
+    "evidence_span": "thanks; pful thanks Ian",
+    "reason": "Matches gratitude_and_session_appreciation: strong trigger match (thanks)",
+    "sample_id": "u008"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "I am so proud of you that is...",
+    "reason": "Does not match gratitude_and_session_appreciation: insufficient trigger alignment",
+    "sample_id": "u001"
+  },
+  {
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "evidence_span": "concept:appreciate",
+    "reason": "Matches gratitude_and_session_appreciation: moderate trigger alignment with explanation",
+    "sample_id": "u007"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "so that was the face pretty good experience",
+    "reason": "Does not match gratitude_and_session_appreciation: insufficient trigger alignment",
+    "sample_id": "u014"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "doesn't sound like good quality sleep",
+    "reason": "Does not match gratitude_and_session_appreciation: insufficient trigger alignment",
+    "sample_id": "u013"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "wow you really are involved in music",
+    "reason": "Does not match gratitude_and_session_appreciation: insufficient trigger alignment",
+    "sample_id": "u020"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "that sounds like a good one to try",
+    "reason": "Does not match gratitude_and_session_appreciation: insufficient trigger alignment",
+    "sample_id": "u011"
+  },
+  {
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "Thank you; okay thank you very much",
+    "reason": "Matches gratitude_and_session_appreciation: strong trigger match (Thank you)",
+    "sample_id": "u010"
+  },
+  {
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "Thank you; thank you so much for do",
+    "reason": "Matches gratitude_and_session_appreciation: strong trigger match (Thank you)",
+    "sample_id": "u004"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "um telling me would have been great but...",
+    "reason": "Does not match gratitude_and_session_appreciation: insufficient trigger alignment",
+    "sample_id": "u012"
+  },
+  {
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "Thank you; Thank you very much and",
+    "reason": "Matches gratitude_and_session_appreciation: strong trigger match (Thank you)",
+    "sample_id": "u005"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "but what I'm the point I'm trying to...",
+    "reason": "Does not match gratitude_and_session_appreciation: insufficient trigger alignment",
+    "sample_id": "u016"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "we were kind of down like now you're...",
+    "reason": "Does not match gratitude_and_session_appreciation: insufficient trigger alignment",
+    "sample_id": "u015"
+  }
+]

@@ -1,0 +1,142 @@
+[
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "excuse excuse me if not you've not had...",
+    "reason": "Does not match latent_30223_mixed: insufficient trigger alignment",
+    "sample_id": "u004"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "but correct me if I'm wrong what you're...",
+    "reason": "Does not match latent_30223_mixed: insufficient trigger alignment",
+    "sample_id": "u006"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "guilt definitely sadness joke says yeah any think...",
+    "reason": "Does not match latent_30223_mixed: insufficient trigger alignment",
+    "sample_id": "u008"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "not taking any more okay great no problem...",
+    "reason": "Does not match latent_30223_mixed: insufficient trigger alignment",
+    "sample_id": "u020"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "well I'm sorry to hear that",
+    "reason": "Does not match latent_30223_mixed: insufficient trigger alignment",
+    "sample_id": "u002"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "does it hurt anymore mark when you move...",
+    "reason": "Does not match latent_30223_mixed: insufficient trigger alignment",
+    "sample_id": "u012"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "and I can discuss with you further kind...",
+    "reason": "Does not match latent_30223_mixed: insufficient trigger alignment",
+    "sample_id": "u011"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "okay so you'd be embarrassed if you couldn't...",
+    "reason": "Does not match latent_30223_mixed: insufficient trigger alignment",
+    "sample_id": "u007"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "okay let's see your records that be sorry...",
+    "reason": "Does not match latent_30223_mixed: insufficient trigger alignment",
+    "sample_id": "u005"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "okay can you tell me a little bit...",
+    "reason": "Does not match latent_30223_mixed: insufficient trigger alignment",
+    "sample_id": "u013"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "mm-hmm and when you're hanging out with friends...",
+    "reason": "Does not match latent_30223_mixed: insufficient trigger alignment",
+    "sample_id": "u014"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "I'm really sorry that i'm unable to help...",
+    "reason": "Does not match latent_30223_mixed: insufficient trigger alignment",
+    "sample_id": "u001"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "can you tell me a little bit about...",
+    "reason": "Does not match latent_30223_mixed: insufficient trigger alignment",
+    "sample_id": "u015"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "I'm sorry we can't prescribe orlistat",
+    "reason": "Does not match latent_30223_mixed: insufficient trigger alignment",
+    "sample_id": "u003"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "yeah throwing up is never fun it's not",
+    "reason": "Does not match latent_30223_mixed: insufficient trigger alignment",
+    "sample_id": "u017"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "um see from your records here that you're...",
+    "reason": "Does not match latent_30223_mixed: insufficient trigger alignment",
+    "sample_id": "u010"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "that's nice",
+    "reason": "Does not match latent_30223_mixed: insufficient trigger alignment",
+    "sample_id": "u019"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "you know like I know quitting is really...",
+    "reason": "Does not match latent_30223_mixed: insufficient trigger alignment",
+    "sample_id": "u016"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "hmm I'd be happy to do that",
+    "reason": "Does not match latent_30223_mixed: insufficient trigger alignment",
+    "sample_id": "u018"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "would it be okay with you if we...",
+    "reason": "Does not match latent_30223_mixed: insufficient trigger alignment",
+    "sample_id": "u009"
+  }
+]

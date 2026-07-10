@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "so it affects your mood in a positive way",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "so we might we might plan that",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "and so the thing that comes to mind is me asking w",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "and having that conversation to see if that might ",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "Well, I appreciate you thinking about it",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "so Jane it sounds like you're angry with your supe",
+    "reason": "some reflection but not clearly complex"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "I want you to tell the chair or your dad how you f",
+    "reason": "some reflection but not clearly complex"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "no I'm saying that you need to be looking at your ",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "oh well I just don't just stop you there because I",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "you it's good to see it",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "and how she feels about you is important",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "so it sounds like you've",
+    "reason": "infers from client"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "well I appreciate you bringing your weight to the ",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "yeah and if his love for you is based on picture w",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "so your",
+    "reason": "references client"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "what do you think about getting rid of the pencil ",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "I've taken my time writing this to use telling you",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "right you've got it okay good",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "so why don't we start by you telling me a bit abou",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "so there is a social component here",
+    "reason": "not a reflection"
+  }
+]

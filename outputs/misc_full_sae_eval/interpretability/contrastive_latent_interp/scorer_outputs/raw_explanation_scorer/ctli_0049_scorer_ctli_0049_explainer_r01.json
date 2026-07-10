@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 0,
+    "reason": "Greeting with 'you' but not structured second person address about work topics",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "reason": "'so' discourse marker + 'you'/'your' second person address",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 0,
+    "reason": "'yourself' is idiomatic reflexive; no discourse markers; no work content",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "reason": "'so' + 'you're' present; health topic but triggers match",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "reason": "'so' + 'sounds like' + 'you've' discourse markers and second person",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "reason": "'sounds like' + 'you' matches discourse marker pattern",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "No second person address; third person 'him'",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "No second person or discourse markers; very short",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "No second person or discourse markers; very short",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "reason": "'so' + 'sounds like' + 'you've'/'your' strong trigger match",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 0,
+    "reason": "Has 'you'/'your' but no discourse markers; moderate match",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "reason": "'seems like' similar to 'sounds like' + 'you're'/'your'",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "Medical observation; no second person or discourse markers",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "reason": "Multiple 'you' references; encouragement with second person",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "reason": "'so' + 'you're'/'you'd' discourse marker and second person",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "reason": "'sounds like' + 'you're' discourse marker pattern match",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "No second person address; statement about exercise",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "reason": "'so' + 'you' discourse marker and second person address",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 0,
+    "reason": "'so' present but mostly first person 'I'm'/'we'; weak second person",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "No second person or discourse markers",
+    "evidence_span": ""
+  }
+]

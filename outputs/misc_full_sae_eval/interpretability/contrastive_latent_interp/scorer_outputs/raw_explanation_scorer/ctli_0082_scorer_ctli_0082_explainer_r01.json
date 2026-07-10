@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 1,
+    "reason": "Acknowledges client stuck situation and difficulty.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "reason": "Open-ended exploratory question, not empathic validation.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "reason": "Neutral observation about decision, no empathy markers.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "reason": "Strong empathic validation using sounds-like and acknowledging emotional difficulty.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.78,
+    "binary_prediction": 1,
+    "reason": "Uses sounds-like to connect with client values and acknowledge tension.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "reason": "Plan endorsement without deeper emotional attunement.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "reason": "Empathic acknowledgment of client emotional state using sounds-like.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "reason": "Reflective observation without strong empathy markers or validation.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.2,
+    "binary_prediction": 0,
+    "reason": "Brief positive acknowledgment, lacks emotional depth or attunement.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.52,
+    "binary_prediction": 1,
+    "reason": "Uses sounds-like to validate client awareness of escalating situation.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "reason": "Factual observation about outcomes, no empathy markers.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.68,
+    "binary_prediction": 1,
+    "reason": "Validates client commitment using seems-like attunement language.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.62,
+    "binary_prediction": 1,
+    "reason": "Uses sounds-like to reflect shared goals and validate aspirations.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "reason": "Brief plan endorsement, more procedural than emotionally attuned.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "reason": "Validates what matters to client using seems-like empathic framing.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "reason": "Brief procedural endorsement, lacks emotional depth.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "reason": "Exploratory question without empathic framing or validation.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "reason": "Factual statement about change, no empathy markers.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "reason": "Uses sounds-like to acknowledge ongoing struggle and validate experience.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.52,
+    "binary_prediction": 1,
+    "reason": "Uses sounds-like to validate client commitment with emotional recognition.",
+    "evidence_span": ""
+  }
+]

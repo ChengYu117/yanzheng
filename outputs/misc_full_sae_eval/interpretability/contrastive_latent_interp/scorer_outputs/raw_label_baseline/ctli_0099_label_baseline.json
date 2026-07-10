@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "so you",
+    "reason": "references client"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "I understand you don't have very much time but I r",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "okay so I mean do you think they're really good fr",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "so you",
+    "reason": "references client"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "mm-hmm and it touches them in a way that you want ",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "how do you think that the drinking fits in with th",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "there's big change gears to get healthy",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "where was the stake character relation to her unit",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "mm-hmm so she doesn't need me mmm just like a litt",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "i'm guessing",
+    "reason": "adds inference beyond restatement"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "okay so where between hearing the person talking a",
+    "reason": "some reflection but not clearly complex"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "oh great that's really wonderful to hear from you",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "do you kind of have the feeling that your wife and",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "so you're really not confident",
+    "reason": "infers self-assessment"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "okay so there's sort of pros and cons",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "but but you did say it more descriptively which is",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "so what what do you think sante and thao think abo",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "well in all seriousness is I know there's other ha",
+    "reason": "some reflection but not clearly complex"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "very good so it looks like you're using a good met",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "that sounds like a really good plan",
+    "reason": "not a reflection"
+  }
+]

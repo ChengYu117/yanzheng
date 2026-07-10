@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "okay so it's one cup but let's imagine not what I drink a lot of...",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "so let's talk more about what brought you in today",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "you're absolutely right that nobody has the right to tell you what...",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "and your date of birth",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "so before that when you can still exit what's your anxiety level",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "so it sounds like it's a way to relax it's a way to socialize with...",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "alright so the next time you come in we'll start talking about the...",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "you know what your lovemaking with Jason that was music to my ears",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "ok back to what I was saying",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "do you think that this will be helpful I'm black Franny",
+    "reason": "closed-ended question"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "evidence_span": "I ask you some questions out what's going on and see how you're...",
+    "reason": "question pattern detected"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "evidence_span": "so can I ask you are you considering about making any changes to...",
+    "reason": "question pattern detected"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "tell me about how you're using the insulin",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "so my am i right in thinking you perhaps decide on a day-to-day...",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "yeah I mean I kind of have a plan of what i want to do blood change...",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "all right you know what forget what I said",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "evidence_span": "okay so what let me ask you what would it be like if we were to...",
+    "reason": "question pattern detected"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "do you feel like you've seen some real improvements on that",
+    "reason": "closed-ended question"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "Well, you do talk to me all the time, what you talking about.",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "and how do you feel your implants working for that",
+    "reason": "open-ended question"
+  }
+]

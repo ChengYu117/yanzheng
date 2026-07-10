@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "evidence_span": "so you feel torn stuck between decisions about",
+    "reason": "simple restatement"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.25,
+    "binary_prediction": 0,
+    "evidence_span": "so you used to be more socially involved than you ",
+    "reason": "complex reflection, not simple"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "because clearly you know that those are things tha",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "yeah Chris come on you're getting peer pressure",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "evidence_span": "so you said your dad made you come here is that ri",
+    "reason": "simple restatement"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "okay and sat down and now you're taking it a total",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "really related to your sister",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "how about if I cut back for a month and then I'll ",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "and that you've already taken some steps you've, y",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "it's kind of everyday sort of thing",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "it feels better now as you're contemplating and an",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "Sal, you're almost on the strongest one.",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "um you said that you know you weren't raised like ",
+    "reason": "has reflection markers, likely simple"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "umm you can also try chewing sugar-free gum",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "all right so it sounds like you're in band and a f",
+    "reason": "has reflection markers, likely simple"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "yeah well you're one of the leaders",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "so the marijuana has real value for you but you do",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "evidence_span": "so you have your pencil where did you cut",
+    "reason": "simple acknowledgment"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "mm-hmm and so when you go to parties most of the t",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.25,
+    "binary_prediction": 0,
+    "evidence_span": "so you may not notice the problems go on when you'",
+    "reason": "complex reflection, not simple"
+  }
+]

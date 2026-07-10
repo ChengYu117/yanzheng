@@ -1,0 +1,142 @@
+[
+  {
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 1,
+    "evidence_span": "concept:good; now you're you see my",
+    "reason": "Matches positive_compliments_and_praise_r02: moderate trigger alignment with explanation",
+    "sample_id": "u014"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "yeah just okay yeah all right okay",
+    "reason": "Does not match positive_compliments_and_praise_r02: insufficient trigger alignment",
+    "sample_id": "u006"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "for that I don't want to see you...",
+    "reason": "Does not match positive_compliments_and_praise_r02: insufficient trigger alignment",
+    "sample_id": "u010"
+  },
+  {
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 1,
+    "evidence_span": "concept:good",
+    "reason": "Matches positive_compliments_and_praise_r02: moderate trigger alignment with explanation",
+    "sample_id": "u011"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "cute",
+    "reason": "Does not match positive_compliments_and_praise_r02: insufficient trigger alignment",
+    "sample_id": "u019"
+  },
+  {
+    "pred_activate_prob": 0.33,
+    "binary_prediction": 1,
+    "evidence_span": "our stay quit line is excellent and convenient",
+    "reason": "Matches positive_compliments_and_praise_r02: text aligns with hypothesis pattern",
+    "sample_id": "u007"
+  },
+  {
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 1,
+    "evidence_span": "concept:good; eeps you calm",
+    "reason": "Matches positive_compliments_and_praise_r02: moderate trigger alignment with explanation",
+    "sample_id": "u015"
+  },
+  {
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "evidence_span": "concept:great",
+    "reason": "Matches positive_compliments_and_praise_r02: moderate trigger alignment with explanation",
+    "sample_id": "u004"
+  },
+  {
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "evidence_span": "concept:great",
+    "reason": "Matches positive_compliments_and_praise_r02: moderate trigger alignment with explanation",
+    "sample_id": "u012"
+  },
+  {
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "concept:great",
+    "reason": "Matches positive_compliments_and_praise_r02: moderate trigger alignment with explanation",
+    "sample_id": "u017"
+  },
+  {
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 1,
+    "evidence_span": "concept:good",
+    "reason": "Matches positive_compliments_and_praise_r02: moderate trigger alignment with explanation",
+    "sample_id": "u013"
+  },
+  {
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "evidence_span": "concept:amazing",
+    "reason": "Matches positive_compliments_and_praise_r02: moderate trigger alignment with explanation",
+    "sample_id": "u001"
+  },
+  {
+    "pred_activate_prob": 0.03,
+    "binary_prediction": 0,
+    "evidence_span": "so what I know of you is that...",
+    "reason": "Excluded by positive_compliments_and_praise_r02: matches an explicit exclusion criterion",
+    "sample_id": "u016"
+  },
+  {
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "evidence_span": "concept:great; mean you did great.",
+    "reason": "Matches positive_compliments_and_praise_r02: moderate trigger alignment with explanation",
+    "sample_id": "u008"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "oh nice",
+    "reason": "Does not match positive_compliments_and_praise_r02: insufficient trigger alignment",
+    "sample_id": "u020"
+  },
+  {
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "evidence_span": "concept:great; mean you were doing so",
+    "reason": "Matches positive_compliments_and_praise_r02: moderate trigger alignment with explanation",
+    "sample_id": "u009"
+  },
+  {
+    "pred_activate_prob": 0.03,
+    "binary_prediction": 0,
+    "evidence_span": "yeah yeah look it sounds like you did...",
+    "reason": "Excluded by positive_compliments_and_praise_r02: matches an explicit exclusion criterion",
+    "sample_id": "u005"
+  },
+  {
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "sounds brilliant; iant you know",
+    "reason": "Matches positive_compliments_and_praise_r02: strong trigger match (sounds brilliant)",
+    "sample_id": "u002"
+  },
+  {
+    "pred_activate_prob": 0.33,
+    "binary_prediction": 1,
+    "evidence_span": "wow you really are involved in music",
+    "reason": "Matches positive_compliments_and_praise_r02: text aligns with hypothesis pattern",
+    "sample_id": "u018"
+  },
+  {
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "evidence_span": "concept:great; you did a great jo",
+    "reason": "Matches positive_compliments_and_praise_r02: moderate trigger alignment with explanation",
+    "sample_id": "u003"
+  }
+]

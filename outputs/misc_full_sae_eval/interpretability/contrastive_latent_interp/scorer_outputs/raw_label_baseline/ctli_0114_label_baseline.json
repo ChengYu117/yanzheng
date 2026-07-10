@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "so you're kind of stuck being exposed to things you don't mean busy",
+    "reason": "characterizes state; identifies emotion"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "there's big change gears to get healthy",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "well I don't mean to be evasive about this but I just I want to know...",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "right and then with the respect one of the things you mentioned is...",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.72,
+    "binary_prediction": 1,
+    "evidence_span": "well not always it looks like you got a letter about your ac and you...",
+    "reason": "infers meaning"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "so you've tried the medication you've been willing once",
+    "reason": "weak reflection signal"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "exercise so maybe parking I don't know an exact distance but parking...",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "yes I understand that",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "that's great i think that you know you you have a lot of really...",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "so that group is really helpful to you not only just to kind of...",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "so it sounds like you've got a connection there already that's...",
+    "reason": "infers meaning; paraphrases/interprets"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "you know I appreciate you talking to me about this",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "okay so there's sort of pros and cons",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "but but you did say it more descriptively which is great",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "sure I wonder if now that your workplace is going smoke-free if...",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "I'm sure you could do it by yourself but a little assistance and...",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "yes yes yeah it's not that long since you were last here",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "it is a different type of difficulty you're right",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "I appreciate how difficult it must be for you to look after your...",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "that sounds like you're fairly ready to do something that's good",
+    "reason": "weak reflection signal"
+  }
+]

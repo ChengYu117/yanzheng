@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "What kind of dog do you have?",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "and how do you feel your implants working for that",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "What have you thought about?",
+    "reason": "closed-ended question"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "tell me about how you're using the insulin",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "do you think that this will be helpful I'm black Franny",
+    "reason": "closed-ended question"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "there's a lot riding on your decision in what to do this",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "ok so and you thought about already what you might do is such as...",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "and your date of birth",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "okay sure see you next what then",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "do you feel like you've seen some real improvements on that",
+    "reason": "closed-ended question"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "What do you think?",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "What would you say?",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "okay what do you know about how that's dangerous",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "okay what kind of barriers are standing in the way of that",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "okay what do you have any ideas as to what feels you might be...",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "What classes are you not getting A's and B's in?",
+    "reason": "question structure present"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "Well, you do talk to me all the time, what you talking about.",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "okay what kind of along those lines looking ahead you know five...",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "so let's talk more about what brought you in today",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "evidence_span": "okay what's important to you about your family",
+    "reason": "question pattern detected"
+  }
+]

@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "so why do you eat too much?",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "so are you willing to incorporate more vegetables in your diet or eating paths?",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "So you want nicotine replacement but you don't want to quit smoking?",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "does it hurt anymore mark when you move it does",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "when did you start",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "Do you have any problems taking the drug?",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "Is that something you're interested in really exploring?",
+    "reason": "Positive: matches trigger term 'interested'; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "do you want to wait for a dramatic experience?",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "All day long?",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "tell me about how you're using the insulin",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "so do you know all the bad stuff about alcohol?",
+    "reason": "Positive: matches trigger term 'know'; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "okay bad idea on in that same scale with one being not confident at all to 10 be...",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "how will privacy what is how does cutting effect privacy for you that value?",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "what other ideas do you have about?",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "all right is there anything you'd like to tell me about it",
+    "reason": "Positive: matches trigger term 'like'; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "do you feel like you've seen some real improvements on that",
+    "reason": "Positive: matches trigger term 'like'; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "and what puts you out of 10",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "so you you want to lose right but you you just you just really like breads and c...",
+    "reason": "Positive: matches trigger term 'like'; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "You have been using the last four weeks?",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "Any questions?",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  }
+]

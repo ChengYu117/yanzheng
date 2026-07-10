@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 0,
+    "evidence_span": "could you tell me a little bit about what are some things that you don not really like about it",
+    "reason": "Open-ended question asking for elaboration"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.3,
+    "binary_prediction": 0,
+    "evidence_span": "did not know we explained that early on",
+    "reason": "Statement, not a question"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.3,
+    "binary_prediction": 0,
+    "evidence_span": "would not be already",
+    "reason": "Unclear fragment, not a clear closed question"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.3,
+    "binary_prediction": 0,
+    "evidence_span": "would not what to do",
+    "reason": "Unclear fragment, not a clear closed question"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "would you mind if we explore this issue a little further",
+    "reason": "Yes/no question is closed"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.3,
+    "binary_prediction": 0,
+    "evidence_span": "I still need to change ok so saluted oh yes is what you are now",
+    "reason": "Statement, not a question"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 0,
+    "evidence_span": "what do you know about low carb diets",
+    "reason": "Open-ended factual question inviting elaboration"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.3,
+    "binary_prediction": 0,
+    "evidence_span": "yeah peaking definitely outside I can just can not imagine the feeling",
+    "reason": "Statement, not a question"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.3,
+    "binary_prediction": 0,
+    "evidence_span": "so that would be a positive okay you like to give back",
+    "reason": "Statement, not a question"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.3,
+    "binary_prediction": 0,
+    "evidence_span": "you are not sure about how well you know he died",
+    "reason": "Statement, not a question"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "why did you say eight or nine rather than even like five or six",
+    "reason": "Open-ended question asking for reasoning"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "why did you say eight or nine rather than six or seven",
+    "reason": "Open-ended question asking for reasoning"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 0,
+    "evidence_span": "as long as you can remember is there ever",
+    "reason": "Incomplete sentence, unclear if closed"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "how is how is that progress to over time",
+    "reason": "Open-ended question about progress"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "is that just me or does it seem that way to you",
+    "reason": "Yes/no question is closed"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "evidence_span": "do you feel like you have seen some real improvements",
+    "reason": "Yes/no question is closed"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "what puts you out of 10",
+    "reason": "Constrained scale question"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "on that same scale with one being not confident at all to 10 being super super confident where would you say",
+    "reason": "Scale question is a constrained option"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "when did you start",
+    "reason": "Factual question answerable with short fact"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 1,
+    "evidence_span": "what kind of dogs",
+    "reason": "Factual question answerable with short fact"
+  }
+]

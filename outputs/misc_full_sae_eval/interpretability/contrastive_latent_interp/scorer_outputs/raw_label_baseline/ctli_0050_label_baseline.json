@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "I love going to the why yeah I'm really",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "it seems like you're kind of conflicted about what's going on you know i'm hear you say that you",
+    "reason": "infers client state"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "last time we talked um you and Kelly had just gott",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "And you had said on your form that you're not a to",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "okay so sounds like you've seen some improvement y",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "you feel",
+    "reason": "reflects client feeling"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "does look swollen",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "you feel",
+    "reason": "reflects client feeling"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "wow you really are",
+    "reason": "emphasizes involvement"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "I got a little bit of an idea but I really don't k",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "so you are",
+    "reason": "references client state"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "okay so actually getting out with people actually ",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "so you were experiencing",
+    "reason": "interprets experience"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "sounds like you're pretty committed",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "so see you were pretty shocked with this news",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "sometimes it's sad for me to notice how hard you a",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "and I think you would - very good",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "and then you could get to choose who you're around",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "it sounds like",
+    "reason": "paraphrases client meaning"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "so think of it as you're one step closer to quitti",
+    "reason": "no clear reflection markers found"
+  }
+]

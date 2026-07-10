@@ -1,0 +1,142 @@
+[
+  {
+    "pred_activate_prob": 0.63,
+    "binary_prediction": 1,
+    "evidence_span": "that; like that with this one",
+    "reason": "Matches evaluative_commentary_on_situation: strong trigger match (that)",
+    "sample_id": "u017"
+  },
+  {
+    "pred_activate_prob": 0.33,
+    "binary_prediction": 1,
+    "evidence_span": "not taking any more okay great no problem...",
+    "reason": "Matches evaluative_commentary_on_situation: text aligns with hypothesis pattern",
+    "sample_id": "u016"
+  },
+  {
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "that; nths that's impressive",
+    "reason": "Matches evaluative_commentary_on_situation: strong trigger match (that)",
+    "sample_id": "u002"
+  },
+  {
+    "pred_activate_prob": 0.63,
+    "binary_prediction": 1,
+    "evidence_span": "that; so that sounds doable",
+    "reason": "Matches evaluative_commentary_on_situation: strong trigger match (that)",
+    "sample_id": "u006"
+  },
+  {
+    "pred_activate_prob": 0.63,
+    "binary_prediction": 1,
+    "evidence_span": "that; what that probably means",
+    "reason": "Matches evaluative_commentary_on_situation: strong trigger match (that)",
+    "sample_id": "u012"
+  },
+  {
+    "pred_activate_prob": 0.63,
+    "binary_prediction": 1,
+    "evidence_span": "that; ah, that makes no sense",
+    "reason": "Matches evaluative_commentary_on_situation: strong trigger match (that)",
+    "sample_id": "u009"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "and hopefully you won't have the same issues...",
+    "reason": "Does not match evaluative_commentary_on_situation: insufficient trigger alignment",
+    "sample_id": "u019"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "there's always another chance no matter how bad...",
+    "reason": "Does not match evaluative_commentary_on_situation: insufficient trigger alignment",
+    "sample_id": "u020"
+  },
+  {
+    "pred_activate_prob": 0.63,
+    "binary_prediction": 1,
+    "evidence_span": "that; that's correct and",
+    "reason": "Matches evaluative_commentary_on_situation: strong trigger match (that)",
+    "sample_id": "u011"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "and I can discuss with you further kind...",
+    "reason": "Does not match evaluative_commentary_on_situation: insufficient trigger alignment",
+    "sample_id": "u015"
+  },
+  {
+    "pred_activate_prob": 0.63,
+    "binary_prediction": 1,
+    "evidence_span": "that; that sounds exhaust",
+    "reason": "Matches evaluative_commentary_on_situation: strong trigger match (that)",
+    "sample_id": "u007"
+  },
+  {
+    "pred_activate_prob": 0.97,
+    "binary_prediction": 1,
+    "evidence_span": "that; and that's great you kn",
+    "reason": "Matches evaluative_commentary_on_situation: strong trigger match (that)",
+    "sample_id": "u004"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "and how she feels about you is important",
+    "reason": "Does not match evaluative_commentary_on_situation: insufficient trigger alignment",
+    "sample_id": "u008"
+  },
+  {
+    "pred_activate_prob": 0.73,
+    "binary_prediction": 1,
+    "evidence_span": "that; tand that",
+    "reason": "Matches evaluative_commentary_on_situation: strong trigger match (that)",
+    "sample_id": "u018"
+  },
+  {
+    "pred_activate_prob": 0.97,
+    "binary_prediction": 1,
+    "evidence_span": "that; and that's great",
+    "reason": "Matches evaluative_commentary_on_situation: strong trigger match (that)",
+    "sample_id": "u005"
+  },
+  {
+    "pred_activate_prob": 0.73,
+    "binary_prediction": 1,
+    "evidence_span": "that; and that's hard to acce",
+    "reason": "Matches evaluative_commentary_on_situation: strong trigger match (that)",
+    "sample_id": "u003"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "but if you give me twenty minutes I...",
+    "reason": "Does not match evaluative_commentary_on_situation: insufficient trigger alignment",
+    "sample_id": "u014"
+  },
+  {
+    "pred_activate_prob": 0.63,
+    "binary_prediction": 1,
+    "evidence_span": "that; y so that's pretty frigh",
+    "reason": "Matches evaluative_commentary_on_situation: strong trigger match (that)",
+    "sample_id": "u001"
+  },
+  {
+    "pred_activate_prob": 0.63,
+    "binary_prediction": 1,
+    "evidence_span": "that; bout that",
+    "reason": "Matches evaluative_commentary_on_situation: strong trigger match (that)",
+    "sample_id": "u013"
+  },
+  {
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "that; hink that's a great deci",
+    "reason": "Matches evaluative_commentary_on_situation: strong trigger match (that)",
+    "sample_id": "u010"
+  }
+]

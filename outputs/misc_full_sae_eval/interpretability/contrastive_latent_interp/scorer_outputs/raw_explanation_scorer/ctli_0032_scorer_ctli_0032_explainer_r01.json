@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "reason": "Causal framing but not conditional/hypothetical; no first person",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.05,
+    "binary_prediction": 0,
+    "reason": "No conditional or first person",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "reason": "First person 'I' and conditional 'would give', multi-clause",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.72,
+    "binary_prediction": 1,
+    "reason": "First person 'I' multiple times, discourse markers",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.05,
+    "binary_prediction": 0,
+    "reason": "No conditional framing or first person",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.05,
+    "binary_prediction": 0,
+    "reason": "No conditional or first person",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.78,
+    "binary_prediction": 1,
+    "reason": "First person 'I thought' and 'I changed', discourse marker 'you know'",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.05,
+    "binary_prediction": 0,
+    "reason": "No conditional or first person",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "reason": "First person 'I', discourse markers 'you know', long complex utterance",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "reason": "Third person 'she' but short, no conditional",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "reason": "Question with discourse marker but no conditional framing",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.72,
+    "binary_prediction": 1,
+    "reason": "Long (28 words), complex multi-clause, emotional content about consequences",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.05,
+    "binary_prediction": 0,
+    "reason": "Short, no conditional or first person",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "reason": "First person 'I can tell', long, emotional content about discomfort",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "reason": "Explicit conditional 'if you took'",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.05,
+    "binary_prediction": 0,
+    "reason": "No conditional or first person",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.05,
+    "binary_prediction": 0,
+    "reason": "Short, no conditional or first person",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.05,
+    "binary_prediction": 0,
+    "reason": "No conditional or first person",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "reason": "Conditional 'could be' and 'could stop', discourse marker 'so'",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.05,
+    "binary_prediction": 0,
+    "reason": "No conditional or first person",
+    "evidence_span": ""
+  }
+]

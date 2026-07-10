@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "do you feel like your mood is depressed most of the day nearly every day",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "does it hurt anymore mark when you move it does",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "and what puts you out of 10",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "okay and how do you  feel about your soda drinking",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "what do you see as some of the barriers that might get in your way",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "can tell me about how the symptoms the presence of the symptoms like the frequen...",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "and on the same scale of zero to ten how confident are you in being able to make...",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "so on a scale of zero to 100 how important do you think it is for you to make th...",
+    "reason": "Positive: scaling question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "what kind of dogs",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "and on a scale from zero to 100 100 how confident are you in making this change",
+    "reason": "Positive: scaling question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "when do you normally take your medications?",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "so let me ask you a slightly different question on that same scale of one to  ho...",
+    "reason": "Positive: scaling question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "when did you start",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "mm-hmm and when you're hanging out with friends is there ever alcohol involved",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "how motivated on a scale one to ten would you say you are too kind of reignite f...",
+    "reason": "Positive: scaling question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "good what would you say is your biggest challenge for keeping it well controlled",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "how important is it for you to change your life right now on a scale of  to",
+    "reason": "Positive: scaling question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "what makes you confident that you can drink the low risk levels",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "on a scale of zero to ten in terms of how important you feel they need to exerci...",
+    "reason": "Positive: matches trigger term 'on a scale of zero to ten'; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "how confident are you to take your medications if you decide to do so p not conf...",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  }
+]

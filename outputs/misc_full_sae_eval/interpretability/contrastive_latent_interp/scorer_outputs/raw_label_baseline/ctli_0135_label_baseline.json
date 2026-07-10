@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "um so then why are you feeling depressed?",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "how is that for you?",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "so you see really no need to change your drinking?",
+    "reason": "question structure present"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "do you want to wait for a dramatic experience?",
+    "reason": "closed-ended question"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "what about at these parties you're going to?",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "and then you are using the unplanned when you feel like your blood...",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "so how much of vegetables or serving do you eat in a day?",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "so we have some materials on the table",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "but what do you think clogging is?",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "and your date of birth",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "Did you know that?",
+    "reason": "closed-ended question"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "do you think that this will be helpful I'm black Franny",
+    "reason": "closed-ended question"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "do you feel like you've seen some real improvements on that",
+    "reason": "closed-ended question"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "so it sounds like nature and mountains are coming to you",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "there are some options that we could discuss about how to reduce...",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "and you wanting tablets?",
+    "reason": "closed-ended question"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "tell me about how you're using the insulin",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "and how do you feel your implants working for that",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "evidence_span": "who knows what I'd like you to kind of use it a little left off",
+    "reason": "question pattern detected"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "are you ready to set some goals to try and follow them?",
+    "reason": "closed-ended question"
+  }
+]

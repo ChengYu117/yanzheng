@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.42,
+    "binary_prediction": 0,
+    "evidence_span": "would you consider including your children in your exercise routine",
+    "reason": "Question solicits client input but lacks 'like/well/know' vocabulary trigger."
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "how's your appetite been",
+    "reason": "Inquiry about client state but no 'like/well/know' vocabulary present."
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.38,
+    "binary_prediction": 0,
+    "evidence_span": "how often would you be willing to do that",
+    "reason": "Client-directed question but lacks the target inquiry vocabulary."
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.3,
+    "binary_prediction": 0,
+    "evidence_span": "Have you had any major stressful events recently",
+    "reason": "Inquiry about client experience but no 'like/well/know' trigger words present."
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.78,
+    "binary_prediction": 1,
+    "evidence_span": "does this sound like something that you want to continue",
+    "reason": "'Sound like' contains 'like' in an inquiry context soliciting client preference."
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.48,
+    "binary_prediction": 0,
+    "evidence_span": "how do you think that the drinking fits in with that",
+    "reason": "Question with 'think' soliciting perspective, but lacks primary triggers 'like/well/know'."
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "evidence_span": "is there a counselor that you know or that you have a relationship",
+    "reason": "'You know' provides the 'know' trigger in an information-seeking context."
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.22,
+    "binary_prediction": 0,
+    "evidence_span": "what what has happened that makes you believe the CIA's is following",
+    "reason": "Question to client but lacks 'like/well/know' vocabulary; topic is not self-disclosure."
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "can you tell me 103 best reasons for you to make this change",
+    "reason": "Inquiry soliciting reasons but lacks primary trigger vocabulary 'like/well/know'."
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.25,
+    "binary_prediction": 0,
+    "evidence_span": "why'd you say 8 or 9 rather than 6 or 7",
+    "reason": "Clarification question without 'like/well/know' vocabulary or self-disclosure solicitation."
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "occasionally how much",
+    "reason": "Very short fragment with no target vocabulary or clear inquiry framing."
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.2,
+    "binary_prediction": 0,
+    "evidence_span": "do you want to speak to me",
+    "reason": "Simple yes/no question without 'like/well/know' vocabulary or self-disclosure framing."
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.25,
+    "binary_prediction": 0,
+    "evidence_span": "why'd you say eight or nine rather than six or seven",
+    "reason": "Clarification question without target inquiry vocabulary 'like/well/know'."
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.22,
+    "binary_prediction": 0,
+    "evidence_span": "so you have your pencil where did you cut",
+    "reason": "Question about logistics/location, lacks 'like/well/know' and not self-disclosure."
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "leg how many times",
+    "reason": "Very short logistics question with no target vocabulary or client self-disclosure framing."
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.06,
+    "binary_prediction": 0,
+    "evidence_span": "does it",
+    "reason": "Two-word fragment with no inquiry vocabulary or self-disclosure solicitation."
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.22,
+    "binary_prediction": 0,
+    "evidence_span": "what happened when you got there",
+    "reason": "Question to client but lacks 'like/well/know' vocabulary for the latent trigger."
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.18,
+    "binary_prediction": 0,
+    "evidence_span": "you're aware of hormones and antibodies",
+    "reason": "Declarative statement with 'you're aware' but not interrogative; excluded as non-question."
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "let me know if I've missed anything",
+    "reason": "Imperative request, not client-directed inquiry; lacks 'like/well/know' trigger."
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.42,
+    "binary_prediction": 0,
+    "evidence_span": "how motivated would that make you feel on a scale of one to ten",
+    "reason": "Client-directed inquiry about feelings but lacks primary trigger vocabulary 'like/well/know'."
+  }
+]

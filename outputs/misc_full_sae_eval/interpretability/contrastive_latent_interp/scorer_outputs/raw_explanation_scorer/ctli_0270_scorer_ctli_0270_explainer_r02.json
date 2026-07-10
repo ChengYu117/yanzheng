@@ -1,0 +1,142 @@
+[
+  {
+    "pred_activate_prob": 0.33,
+    "binary_prediction": 1,
+    "evidence_span": "concept:our ",
+    "reason": "Matches support_lat20743: moderate trigger alignment with explanation",
+    "sample_id": "u014"
+  },
+  {
+    "pred_activate_prob": 0.53,
+    "binary_prediction": 1,
+    "evidence_span": "concept:hard",
+    "reason": "Matches support_lat20743: moderate trigger alignment with explanation",
+    "sample_id": "u019"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "awful",
+    "reason": "Does not match support_lat20743: insufficient trigger alignment",
+    "sample_id": "u020"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "that's right that would I mean that would...",
+    "reason": "Does not match support_lat20743: insufficient trigger alignment",
+    "sample_id": "u010"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "how confident are you you could not even",
+    "reason": "Does not match support_lat20743: insufficient trigger alignment",
+    "sample_id": "u013"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "wish you well",
+    "reason": "Does not match support_lat20743: insufficient trigger alignment",
+    "sample_id": "u017"
+  },
+  {
+    "pred_activate_prob": 0.33,
+    "binary_prediction": 1,
+    "evidence_span": "concept:our ",
+    "reason": "Matches support_lat20743: moderate trigger alignment with explanation",
+    "sample_id": "u006"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "It really took you by surprise.",
+    "reason": "Does not match support_lat20743: insufficient trigger alignment",
+    "sample_id": "u005"
+  },
+  {
+    "pred_activate_prob": 0.33,
+    "binary_prediction": 1,
+    "evidence_span": "concept:our ",
+    "reason": "Matches support_lat20743: moderate trigger alignment with explanation",
+    "sample_id": "u011"
+  },
+  {
+    "pred_activate_prob": 0.53,
+    "binary_prediction": 1,
+    "evidence_span": "concept:hard",
+    "reason": "Matches support_lat20743: moderate trigger alignment with explanation",
+    "sample_id": "u004"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "that would be something that you could do...",
+    "reason": "Does not match support_lat20743: insufficient trigger alignment",
+    "sample_id": "u007"
+  },
+  {
+    "pred_activate_prob": 0.43,
+    "binary_prediction": 1,
+    "evidence_span": "concept:for you",
+    "reason": "Matches support_lat20743: moderate trigger alignment with explanation",
+    "sample_id": "u009"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "that must have be real scary",
+    "reason": "Does not match support_lat20743: insufficient trigger alignment",
+    "sample_id": "u008"
+  },
+  {
+    "pred_activate_prob": 0.33,
+    "binary_prediction": 1,
+    "evidence_span": "concept:tough",
+    "reason": "Matches support_lat20743: moderate trigger alignment with explanation",
+    "sample_id": "u016"
+  },
+  {
+    "pred_activate_prob": 0.33,
+    "binary_prediction": 1,
+    "evidence_span": "concept:sounds like",
+    "reason": "Matches support_lat20743: moderate trigger alignment with explanation",
+    "sample_id": "u001"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "It does sound like something pretty significant happened...",
+    "reason": "Does not match support_lat20743: insufficient trigger alignment",
+    "sample_id": "u002"
+  },
+  {
+    "pred_activate_prob": 0.33,
+    "binary_prediction": 1,
+    "evidence_span": "concept:our ",
+    "reason": "Matches support_lat20743: moderate trigger alignment with explanation",
+    "sample_id": "u003"
+  },
+  {
+    "pred_activate_prob": 0.33,
+    "binary_prediction": 1,
+    "evidence_span": "concept:help you",
+    "reason": "Matches support_lat20743: moderate trigger alignment with explanation",
+    "sample_id": "u012"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "definitely most important",
+    "reason": "Does not match support_lat20743: insufficient trigger alignment",
+    "sample_id": "u018"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "how do you think I can help right",
+    "reason": "Does not match support_lat20743: insufficient trigger alignment",
+    "sample_id": "u015"
+  }
+]

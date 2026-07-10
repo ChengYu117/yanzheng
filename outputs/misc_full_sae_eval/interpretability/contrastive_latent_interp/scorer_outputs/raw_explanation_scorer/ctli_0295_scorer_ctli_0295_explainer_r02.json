@@ -1,0 +1,142 @@
+[
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "doesn't sound like good quality sleep",
+    "reason": "Does not match thanks_with_positive_feedback_r02: insufficient trigger alignment",
+    "sample_id": "u015"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "your wife's foot feeding you huh",
+    "reason": "Does not match thanks_with_positive_feedback_r02: insufficient trigger alignment",
+    "sample_id": "u009"
+  },
+  {
+    "pred_activate_prob": 0.33,
+    "binary_prediction": 1,
+    "evidence_span": "cutting down that would be a great step...",
+    "reason": "Matches thanks_with_positive_feedback_r02: text aligns with hypothesis pattern",
+    "sample_id": "u018"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "hope you all ready",
+    "reason": "Does not match thanks_with_positive_feedback_r02: insufficient trigger alignment",
+    "sample_id": "u008"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "why miss Clark my name is Alan Lyme...",
+    "reason": "Does not match thanks_with_positive_feedback_r02: insufficient trigger alignment",
+    "sample_id": "u010"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "latest thing that they're not talk to you...",
+    "reason": "Does not match thanks_with_positive_feedback_r02: insufficient trigger alignment",
+    "sample_id": "u011"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "good job",
+    "reason": "Does not match thanks_with_positive_feedback_r02: insufficient trigger alignment",
+    "sample_id": "u007"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "so what I know of you is that...",
+    "reason": "Does not match thanks_with_positive_feedback_r02: insufficient trigger alignment",
+    "sample_id": "u017"
+  },
+  {
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "evidence_span": "very helpful thanks",
+    "reason": "Matches thanks_with_positive_feedback_r02: strong trigger match (very helpful thanks)",
+    "sample_id": "u001"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "very cool",
+    "reason": "Does not match thanks_with_positive_feedback_r02: insufficient trigger alignment",
+    "sample_id": "u020"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "sounds like you weren't feeling so good about...",
+    "reason": "Does not match thanks_with_positive_feedback_r02: insufficient trigger alignment",
+    "sample_id": "u012"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "you look really healthy good very healthy",
+    "reason": "Does not match thanks_with_positive_feedback_r02: insufficient trigger alignment",
+    "sample_id": "u002"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "okay that sounds really interesting",
+    "reason": "Does not match thanks_with_positive_feedback_r02: insufficient trigger alignment",
+    "sample_id": "u019"
+  },
+  {
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 1,
+    "evidence_span": "concept:thank",
+    "reason": "Matches thanks_with_positive_feedback_r02: moderate trigger alignment with explanation",
+    "sample_id": "u005"
+  },
+  {
+    "pred_activate_prob": 0.33,
+    "binary_prediction": 1,
+    "evidence_span": "um telling me would have been great but...",
+    "reason": "Matches thanks_with_positive_feedback_r02: text aligns with hypothesis pattern",
+    "sample_id": "u014"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "that sounds like a good one to try",
+    "reason": "Does not match thanks_with_positive_feedback_r02: insufficient trigger alignment",
+    "sample_id": "u013"
+  },
+  {
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 1,
+    "evidence_span": "concept:appreciate",
+    "reason": "Matches thanks_with_positive_feedback_r02: moderate trigger alignment with explanation",
+    "sample_id": "u003"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "hi Michael it's good to see ya",
+    "reason": "Does not match thanks_with_positive_feedback_r02: insufficient trigger alignment",
+    "sample_id": "u006"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "but what I'm the point I'm trying to...",
+    "reason": "Does not match thanks_with_positive_feedback_r02: insufficient trigger alignment",
+    "sample_id": "u016"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "hi n it's good to see you today",
+    "reason": "Does not match thanks_with_positive_feedback_r02: insufficient trigger alignment",
+    "sample_id": "u004"
+  }
+]

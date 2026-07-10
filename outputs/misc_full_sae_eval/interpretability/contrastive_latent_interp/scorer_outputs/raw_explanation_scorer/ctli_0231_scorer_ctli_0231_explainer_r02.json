@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "how are you doing today I'm Bruce Berger I work on the case manager with your he...",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "no problem I have this in stock",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "mm-hmm and when you're hanging out with friends is there ever alcohol involved",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "and I also want you to at least once a day do your breathing technique",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "yeah it's funny when I think it's hannaford here in Calais the ice cream is over...",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "okay so I wrote a prescription for an antibiotic for Aidan that should help with...",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "evidence_span": "but if you give me twenty minutes I can get them all ready for you",
+    "reason": "Positive: matches trigger term 'if you'"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "but I do notice that these prescriptions from the hospital",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "Alright there Marcy, I'm your therapist, not your Tumblr.",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "okay can you tell me a little bit about why you picked those three",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "does it hurt anymore mark when you move it does",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "mm-hmm and so when you go to parties most of the time there's alcohol there",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "tell me a little bit about your family  uh well I have one older brother he's ab...",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "can you tell me more about that",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "they've got a lot of new flavors on the gum they're cinnamon and orange and juic...",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "the ibuprofen is you're holding especially with your medical condition will have...",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "I don't even recall all the anxiety know why it was such a big deal anyway I don...",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "I did have some auto refills for you in the pharmacy unfortunately to return to ...",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "well smoking really is really bad for you you know it causes things like lung ca...",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "do you know what those oral piercings can do to your teeth",
+    "reason": "No strong trigger or exclusion match"
+  }
+]

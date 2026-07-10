@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "I'm Shelley see our own personal trainers I shall be through you um",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "right and and you you would jump Harry oh yeah and you didn't know...",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "okay great so you're doing well",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "good so to open up your social atmosphere baby",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "excellent well thank you so much for coming in today",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "all right well I'm excited for you so I'll will take a look at the...",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "I know it's been it's been a really long time he certainly didn't...",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "yeah I mean I just I don't know it's it's just difficult for me you...",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "well it's great that's a good thing that you're going home soon",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "and I'm sure you were really excited to get to see that score you...",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "like to make some adjustments to to make it a little smoother",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "that's something I hear not yeah pretty it's pretty often",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.72,
+    "binary_prediction": 1,
+    "evidence_span": "yeah I understand it does sound like you're worried about getting...",
+    "reason": "identifies emotion"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "okay can you tell me a little bit about the difference a pleasure...",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "it's overwhelming that getting all your stuff inside working out...",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "okay well I appreciate you bringing it up",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "okay sounds like email about it sometime relationship with his...",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "yeah I understand so you you like having fun your friends drinking...",
+    "reason": "weak reflection signal"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "that's correct quitting would be important for you",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "sure I wonder if now that your workplace is going smoke-free if...",
+    "reason": "not a reflection"
+  }
+]

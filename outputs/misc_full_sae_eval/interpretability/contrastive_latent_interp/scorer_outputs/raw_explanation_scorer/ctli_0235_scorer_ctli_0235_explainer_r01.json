@@ -1,0 +1,142 @@
+[
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "so the name of this medication is gem...",
+    "reason": "Does not match medication dosage and adherence discussion: insufficient trigger alignment",
+    "sample_id": "u004"
+  },
+  {
+    "pred_activate_prob": 0.03,
+    "binary_prediction": 0,
+    "evidence_span": "okay so I see that you're taking simvastatin...",
+    "reason": "Excluded by medication dosage and adherence discussion: matches an explicit exclusion criterion",
+    "sample_id": "u008"
+  },
+  {
+    "pred_activate_prob": 0.48,
+    "binary_prediction": 1,
+    "evidence_span": "I think you",
+    "reason": "Matches medication dosage and adherence discussion: strong trigger match (I think you)",
+    "sample_id": "u007"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "and the best way to take this medication...",
+    "reason": "Does not match medication dosage and adherence discussion: insufficient trigger alignment",
+    "sample_id": "u005"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "me you can buy em over the counter...",
+    "reason": "Does not match medication dosage and adherence discussion: insufficient trigger alignment",
+    "sample_id": "u002"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "how are you going to take this medicate...",
+    "reason": "Does not match medication dosage and adherence discussion: insufficient trigger alignment",
+    "sample_id": "u003"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "but I do notice that these prescriptions from...",
+    "reason": "Does not match medication dosage and adherence discussion: insufficient trigger alignment",
+    "sample_id": "u017"
+  },
+  {
+    "pred_activate_prob": 0.03,
+    "binary_prediction": 0,
+    "evidence_span": "can you tell me a little bit about...",
+    "reason": "Excluded by medication dosage and adherence discussion: matches an explicit exclusion criterion",
+    "sample_id": "u013"
+  },
+  {
+    "pred_activate_prob": 0.03,
+    "binary_prediction": 0,
+    "evidence_span": "well you just take it once a day",
+    "reason": "Excluded by medication dosage and adherence discussion: matches an explicit exclusion criterion",
+    "sample_id": "u009"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "mm-hmm and when you're hanging out with friends...",
+    "reason": "Does not match medication dosage and adherence discussion: insufficient trigger alignment",
+    "sample_id": "u011"
+  },
+  {
+    "pred_activate_prob": 0.48,
+    "binary_prediction": 1,
+    "evidence_span": "this medication is for your cholesterol you",
+    "reason": "Matches medication dosage and adherence discussion: strong trigger match (this medication is for your cholesterol )",
+    "sample_id": "u001"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "but if you give me twenty minutes I...",
+    "reason": "Does not match medication dosage and adherence discussion: insufficient trigger alignment",
+    "sample_id": "u019"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "because it looks like you need to just...",
+    "reason": "Does not match medication dosage and adherence discussion: insufficient trigger alignment",
+    "sample_id": "u006"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "have you tried anything that might have works...",
+    "reason": "Does not match medication dosage and adherence discussion: insufficient trigger alignment",
+    "sample_id": "u015"
+  },
+  {
+    "pred_activate_prob": 0.48,
+    "binary_prediction": 1,
+    "evidence_span": "I think you",
+    "reason": "Matches medication dosage and adherence discussion: strong trigger match (I think you)",
+    "sample_id": "u020"
+  },
+  {
+    "pred_activate_prob": 0.2,
+    "binary_prediction": 0,
+    "evidence_span": "keywords:sure,make,doses",
+    "reason": "Does not match medication dosage and adherence discussion: insufficient trigger alignment",
+    "sample_id": "u010"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "no problem I have this in stock",
+    "reason": "Does not match medication dosage and adherence discussion: insufficient trigger alignment",
+    "sample_id": "u016"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "mm-hmm and so when you go to parties...",
+    "reason": "Does not match medication dosage and adherence discussion: insufficient trigger alignment",
+    "sample_id": "u012"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "I did have some auto refills for you...",
+    "reason": "Does not match medication dosage and adherence discussion: insufficient trigger alignment",
+    "sample_id": "u018"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "okay well how confident are you that you...",
+    "reason": "Does not match medication dosage and adherence discussion: insufficient trigger alignment",
+    "sample_id": "u014"
+  }
+]

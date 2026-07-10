@@ -1,0 +1,142 @@
+[
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "that you can track how much water you're...",
+    "reason": "Does not match empathy_affirm_lat19359: insufficient trigger alignment",
+    "sample_id": "u011"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "I want you this week to make a...",
+    "reason": "Does not match empathy_affirm_lat19359: insufficient trigger alignment",
+    "sample_id": "u006"
+  },
+  {
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "I understand you're just experimenting with alcohol then...",
+    "reason": "Does not match empathy_affirm_lat19359: insufficient trigger alignment",
+    "sample_id": "u007"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "okay well hopefully you won't have any issues...",
+    "reason": "Does not match empathy_affirm_lat19359: insufficient trigger alignment",
+    "sample_id": "u020"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "um so I guess can you quit this...",
+    "reason": "Does not match empathy_affirm_lat19359: insufficient trigger alignment",
+    "sample_id": "u013"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "I remember me just said earlier about creating...",
+    "reason": "Does not match empathy_affirm_lat19359: insufficient trigger alignment",
+    "sample_id": "u001"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "you know like I know quitting is really...",
+    "reason": "Does not match empathy_affirm_lat19359: insufficient trigger alignment",
+    "sample_id": "u016"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "See I can call her she can call...",
+    "reason": "Does not match empathy_affirm_lat19359: insufficient trigger alignment",
+    "sample_id": "u015"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "I would like to share with you this...",
+    "reason": "Does not match empathy_affirm_lat19359: insufficient trigger alignment",
+    "sample_id": "u008"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "I'll be sure to go over this with...",
+    "reason": "Does not match empathy_affirm_lat19359: insufficient trigger alignment",
+    "sample_id": "u003"
+  },
+  {
+    "pred_activate_prob": 0.18,
+    "binary_prediction": 0,
+    "evidence_span": "I look forward to seeing you and our...",
+    "reason": "Does not match empathy_affirm_lat19359: insufficient trigger alignment",
+    "sample_id": "u010"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "because really i mean its athletes we're working...",
+    "reason": "Does not match empathy_affirm_lat19359: insufficient trigger alignment",
+    "sample_id": "u014"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "that's nice",
+    "reason": "Does not match empathy_affirm_lat19359: insufficient trigger alignment",
+    "sample_id": "u018"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "okay have you know participant I can exercise...",
+    "reason": "Does not match empathy_affirm_lat19359: insufficient trigger alignment",
+    "sample_id": "u012"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "I guess I also wonder whether regardless of...",
+    "reason": "Does not match empathy_affirm_lat19359: insufficient trigger alignment",
+    "sample_id": "u009"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "I will talk about that before I get...",
+    "reason": "Does not match empathy_affirm_lat19359: insufficient trigger alignment",
+    "sample_id": "u004"
+  },
+  {
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 1,
+    "evidence_span": "concept:great",
+    "reason": "Matches empathy_affirm_lat19359: moderate trigger alignment with explanation",
+    "sample_id": "u019"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "I'm glad you had the opportunity to talk...",
+    "reason": "Does not match empathy_affirm_lat19359: insufficient trigger alignment",
+    "sample_id": "u005"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "yeah throwing up is never fun it's not",
+    "reason": "Does not match empathy_affirm_lat19359: insufficient trigger alignment",
+    "sample_id": "u017"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "I want you have a seat here sure",
+    "reason": "Does not match empathy_affirm_lat19359: insufficient trigger alignment",
+    "sample_id": "u002"
+  }
+]

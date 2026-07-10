@@ -1,0 +1,142 @@
+[
+  {
+    "pred_activate_prob": 0.63,
+    "binary_prediction": 1,
+    "evidence_span": "that; okay that sounds really",
+    "reason": "Matches good_as_positive_affirmation_r02: strong trigger match (that)",
+    "sample_id": "u018"
+  },
+  {
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "evidence_span": "Good; g so good about it then",
+    "reason": "Matches good_as_positive_affirmation_r02: strong trigger match (Good)",
+    "sample_id": "u011"
+  },
+  {
+    "pred_activate_prob": 0.97,
+    "binary_prediction": 1,
+    "evidence_span": "Good; 's a good thing that you",
+    "reason": "Matches good_as_positive_affirmation_r02: strong trigger match (Good)",
+    "sample_id": "u003"
+  },
+  {
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "evidence_span": "Good; e my good little off",
+    "reason": "Matches good_as_positive_affirmation_r02: strong trigger match (Good)",
+    "sample_id": "u013"
+  },
+  {
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "evidence_span": "Good; the good side of it is",
+    "reason": "Matches good_as_positive_affirmation_r02: strong trigger match (Good)",
+    "sample_id": "u015"
+  },
+  {
+    "pred_activate_prob": 0.63,
+    "binary_prediction": 1,
+    "evidence_span": "that; u is that it was difficu",
+    "reason": "Matches good_as_positive_affirmation_r02: strong trigger match (that)",
+    "sample_id": "u016"
+  },
+  {
+    "pred_activate_prob": 0.33,
+    "binary_prediction": 1,
+    "evidence_span": "wow you really are involved in music",
+    "reason": "Matches good_as_positive_affirmation_r02: text aligns with hypothesis pattern",
+    "sample_id": "u019"
+  },
+  {
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "evidence_span": "Good; the good part about dri",
+    "reason": "Matches good_as_positive_affirmation_r02: strong trigger match (Good)",
+    "sample_id": "u014"
+  },
+  {
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "evidence_span": "Good; unds good",
+    "reason": "Matches good_as_positive_affirmation_r02: strong trigger match (Good)",
+    "sample_id": "u010"
+  },
+  {
+    "pred_activate_prob": 0.97,
+    "binary_prediction": 1,
+    "evidence_span": "Good; t be good for you to com",
+    "reason": "Matches good_as_positive_affirmation_r02: strong trigger match (Good)",
+    "sample_id": "u007"
+  },
+  {
+    "pred_activate_prob": 0.83,
+    "binary_prediction": 1,
+    "evidence_span": "Good; ally good friends of you",
+    "reason": "Matches good_as_positive_affirmation_r02: strong trigger match (Good)",
+    "sample_id": "u002"
+  },
+  {
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "evidence_span": "Good; ions good core memory is",
+    "reason": "Matches good_as_positive_affirmation_r02: strong trigger match (Good)",
+    "sample_id": "u008"
+  },
+  {
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "evidence_span": "Good; ke a good one to try",
+    "reason": "Matches good_as_positive_affirmation_r02: strong trigger match (Good)",
+    "sample_id": "u012"
+  },
+  {
+    "pred_activate_prob": 0.63,
+    "binary_prediction": 1,
+    "evidence_span": "that; u is that when you're fa",
+    "reason": "Matches good_as_positive_affirmation_r02: strong trigger match (that)",
+    "sample_id": "u017"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "very cool",
+    "reason": "Does not match good_as_positive_affirmation_r02: insufficient trigger alignment",
+    "sample_id": "u020"
+  },
+  {
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "evidence_span": "Good; it's good to see you aga",
+    "reason": "Matches good_as_positive_affirmation_r02: strong trigger match (Good)",
+    "sample_id": "u005"
+  },
+  {
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "evidence_span": "Good; g is good or you could d",
+    "reason": "Matches good_as_positive_affirmation_r02: strong trigger match (Good)",
+    "sample_id": "u001"
+  },
+  {
+    "pred_activate_prob": 0.63,
+    "binary_prediction": 1,
+    "evidence_span": "that; yeah that's bad",
+    "reason": "Matches good_as_positive_affirmation_r02: strong trigger match (that)",
+    "sample_id": "u009"
+  },
+  {
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "evidence_span": "Good; tely good that you grasp",
+    "reason": "Matches good_as_positive_affirmation_r02: strong trigger match (Good)",
+    "sample_id": "u004"
+  },
+  {
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "evidence_span": "Good; e is good about it",
+    "reason": "Matches good_as_positive_affirmation_r02: strong trigger match (Good)",
+    "sample_id": "u006"
+  }
+]

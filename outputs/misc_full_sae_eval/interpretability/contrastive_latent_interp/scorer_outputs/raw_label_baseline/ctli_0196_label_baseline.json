@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "yes so what would it take to move you just a little bit higher up to...",
+    "reason": "not clearly a closed question"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "does it hurt anymore mark when you move it does",
+    "reason": "closed-ended question expecting short answer"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "yeah and so your confidence you said is that a two or three why not...",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "How confident are you that you want to change in a scale of one to...",
+    "reason": "question structure unclear"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "on a scale that yeah yeah okay so where are you at the moment if if...",
+    "reason": "question structure unclear"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "an eight why an eight not a five or six",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "when did you start",
+    "reason": "not clearly a closed question"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "why did you say a five and not a three or four",
+    "reason": "open-ended question pattern"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "what kind of dogs",
+    "reason": "open-ended question pattern"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "why a six or seven and not a four or a five",
+    "reason": "open-ended question pattern"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "so how many times you guys have sex that night on a scale of one to...",
+    "reason": "open-ended question pattern"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "Wow so 10 is pretty pretty big so why do you think you picked a 10",
+    "reason": "open-ended question pattern"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "so I wanted to ask you on a scale from one to ten ten being the best...",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "do you feel like you've seen some real improvements on that",
+    "reason": "closed-ended question expecting short answer"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "so what would have to happen for you to know that this is a problem...",
+    "reason": "open-ended question pattern"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "so let me ask you on a scale of zero to ten zero being not confident...",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "great yeah um so tell me what would it take to get you to like a...",
+    "reason": "not clearly a closed question"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "mm-hmm and when you're hanging out with friends is there ever...",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "so let me ask you on a scale of  to   being not confident at all...",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "thinking about importance Nathan how important it be for you to make...",
+    "reason": "not a question"
+  }
+]

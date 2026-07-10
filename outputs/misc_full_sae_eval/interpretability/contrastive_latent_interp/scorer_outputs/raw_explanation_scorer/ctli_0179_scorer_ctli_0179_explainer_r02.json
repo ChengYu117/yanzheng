@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "how motivated do you feel you are to make this change",
+    "reason": "Client-directed inquiry but lacks explicit 'same/okay/right' trigger vocabulary."
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.25,
+    "binary_prediction": 0,
+    "evidence_span": "do they seem to be in order when I tell you about them",
+    "reason": "Question but no 'same/okay/right' vocabulary present."
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.32,
+    "binary_prediction": 0,
+    "evidence_span": "do you have any ideas on how to achieve this goal",
+    "reason": "Solicits client ideas but lacks 'same/okay/right' trigger vocabulary."
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.22,
+    "binary_prediction": 0,
+    "evidence_span": "I'm not sure whether I got I saw something mom you look it's just me nuts",
+    "reason": "Fragmented statement without inquiry frame or 'same/okay/right' vocabulary."
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.72,
+    "binary_prediction": 1,
+    "evidence_span": "okay do you know why they be doing this",
+    "reason": "'Okay' as discourse opener combined with 'do you know' forms an inquiry about reasoning."
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "evidence_span": "okay and how often do you think you would say you're drinking",
+    "reason": "'Okay' triggers the inquiry vocabulary in context of asking about drinking frequency."
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "Do you ever crave for a drink",
+    "reason": "Question to client but lacks 'same/okay/right' trigger vocabulary."
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "what would need to happen or how would you know when you win",
+    "reason": "Hypothetical inquiry but lacks explicit 'same/okay/right' trigger vocabulary."
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.25,
+    "binary_prediction": 0,
+    "evidence_span": "so you're not sure if they're here now",
+    "reason": "Checks client certainty but lacks 'same/okay/right' trigger vocabulary."
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "Is there anything getting in the way of you",
+    "reason": "Inquiry but lacks 'same/okay/right' trigger vocabulary."
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.22,
+    "binary_prediction": 0,
+    "evidence_span": "Do you smoke at all",
+    "reason": "Simple yes/no question without 'same/okay/right' vocabulary."
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.72,
+    "binary_prediction": 1,
+    "evidence_span": "is that just me or does it seem that way to you to",
+    "reason": "Seeks agreement/shared perspective, implicit 'right' concept in checking perception."
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.2,
+    "binary_prediction": 0,
+    "evidence_span": "when did you start",
+    "reason": "Short question without 'same/okay/right' trigger vocabulary."
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.22,
+    "binary_prediction": 0,
+    "evidence_span": "Do you have any medical problems at all or diabetes high blood pressure",
+    "reason": "Medical screening without 'same/okay/right' vocabulary present."
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "Is there certain situation where you find more stuff are you saying",
+    "reason": "Question but lacks explicit 'same/okay/right' trigger vocabulary."
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.72,
+    "binary_prediction": 1,
+    "evidence_span": "that same scale with one being not confident at all to 10",
+    "reason": "'Same' is a direct trigger word; inquiry about confidence on referenced scale."
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.3,
+    "binary_prediction": 0,
+    "evidence_span": "I was wondering if it's a great view I can give you this for sure",
+    "reason": "Counselor offering, not soliciting client self-disclosure; lacks 'same/okay/right'."
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.25,
+    "binary_prediction": 0,
+    "evidence_span": "can you stop wondering if you have to",
+    "reason": "Question about ability but lacks 'same/okay/right' trigger vocabulary."
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "what kind of dogs",
+    "reason": "Simple question about dogs with no 'same/okay/right' vocabulary."
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.25,
+    "binary_prediction": 0,
+    "evidence_span": "Do you drink alcohol and including beer or wine",
+    "reason": "Behavioral screening without 'same/okay/right' trigger vocabulary."
+  }
+]

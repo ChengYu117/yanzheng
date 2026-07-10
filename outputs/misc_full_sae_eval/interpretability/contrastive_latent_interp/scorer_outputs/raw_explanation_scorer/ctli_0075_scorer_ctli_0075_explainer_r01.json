@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "reason": "Contains 'if...would' conditional hypothetical construction",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "Reflective statement about current awareness, not hypothetical",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "Direct factual question, not hypothetical framing",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "Reflective summary without hypothetical framing",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "reason": "Contains 'what if' hypothetical framing for imagined alternatives",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "References actual past/current events, not hypothetical",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "reason": "Contains 'if...would' conditional hypothetical construction",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "Empathic or validating statement about current reality, not hypothetical",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "Empathic or validating statement about current reality, not hypothetical",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "Empathic or validating statement about current reality, not hypothetical",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "Empathic or validating statement about current reality, not hypothetical",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Validating reflection, not hypothetical construction",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "Reflective statement referencing client's values, not hypothetical",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Directional statement, not hypothetical framing",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "Session management/closing, not hypothetical",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 0,
+    "reason": "Suggestion language, not clearly hypothetical scenario",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "Empathic or validating statement about current reality, not hypothetical",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "Empathic or validating statement about current reality, not hypothetical",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "Empathic or validating statement about current reality, not hypothetical",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 0,
+    "reason": "Expression of personal desire/concern, not counselor-constructed hypothetical",
+    "evidence_span": ""
+  }
+]

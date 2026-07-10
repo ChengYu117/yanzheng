@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "so sometimes you're stressed because your son's how's his health...",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "can you tell me more about that",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "jobs count who you was being in college",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "what kind of grades do you get?",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "great hello my name is Sara I'm the student pharmacist at what's a...",
+    "reason": "not clearly an open question"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "what do you want me to see if your doctors available",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "why is six and not a one",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "what do what do you know about cocaine and alcohol and how they work",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "so what are the three what the four letters again",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "what about medications for pain other than what or prescribed?",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "was it I didn't really you know what",
+    "reason": "closed-ended question pattern"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "but is it the hardest thing you've ever done",
+    "reason": "closed-ended question pattern"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "okay well you know will agree to disagree how about that",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "what's the quantity that you're drinking?",
+    "reason": "closed-ended question pattern"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "so are you ready for the challenge of quitting",
+    "reason": "closed-ended question pattern"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "like why are you not spending on bills and right that's the most...",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "all right when a scale one to ten how bad is your headache",
+    "reason": "not clearly an open question"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "so if quitting really the toughest thing you've ever done",
+    "reason": "not clearly an open question"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "so you've said that a few times now that things got so out of...",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "okay so what can we do to get you at say like a nine or ten level of...",
+    "reason": "not clearly an open question"
+  }
+]

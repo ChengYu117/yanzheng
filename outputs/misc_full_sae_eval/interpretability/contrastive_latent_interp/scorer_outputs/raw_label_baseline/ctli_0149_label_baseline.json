@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "okay what do you thinks the most you've ever had",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "and have you talked to your doctor about possibly increasing the...",
+    "reason": "closed-ended question pattern"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "what were you feeling right then",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "any other hobbies you have or things you like to do for fun",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "and how do you think will deal with some of these carbohydrate...",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "so we could we can talk about a lot of these things with which one...",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "and what if what if anything would you choose to do would be to cut...",
+    "reason": "not clearly an open question"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "what were you thinking when you got into your car after having six...",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "and how do you see yourself doing that",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "can we talk about how you could use it",
+    "reason": "not clearly an open question"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "and what what promise you to pick a five or six",
+    "reason": "not clearly an open question"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "what brings you in",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "and what if what if anything would you choose to do would be to cut...",
+    "reason": "not clearly an open question"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "okay what do you want me to see if your doctors available?",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "so what would you like to do next you",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "so if quitting really the toughest thing you've ever done",
+    "reason": "not clearly an open question"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "so what would you like to do  now?",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "so in what ways would you like to do that",
+    "reason": "not clearly an open question"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "okay what kind of dog do you have?",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "what kind of problems sister experience",
+    "reason": "open-ended question inviting elaboration"
+  }
+]

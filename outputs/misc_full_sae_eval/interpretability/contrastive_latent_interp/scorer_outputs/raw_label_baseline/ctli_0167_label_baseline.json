@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "what have you discuss with your doctor recently",
+    "reason": "not clearly an open question"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "so what do you think you are in terms of making this change you feel...",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "do you think in that time you would at least attempt to start the...",
+    "reason": "closed-ended question pattern"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "okay what do you think",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "What are you thinking?",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "do you think it's going to last that long?",
+    "reason": "closed-ended question pattern"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "how do you feel about that",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "can you tell me more about that",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "okay so tell me why you're only using it when your blood sugar goes...",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "but is it the hardest thing you've ever done",
+    "reason": "closed-ended question pattern"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "do you think you'll be supposed about the",
+    "reason": "closed-ended question pattern"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "do you think they're here right now",
+    "reason": "closed-ended question pattern"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "okay what do you think the most you've ever had?",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "tell me more about what you've thought about and when you think...",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "sure why don't you tell me a little bit about what you're thinking",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "do you think that this will be helpful I'm black Franny",
+    "reason": "closed-ended question pattern"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "okay okay the most important thing I mean I've got slides will and...",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "so if quitting really the toughest thing you've ever done",
+    "reason": "not clearly an open question"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "so what do you think it would be like here at UT if you would...",
+    "reason": "open-ended question inviting elaboration"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "okay what do you think it would take to move you to a seven or an...",
+    "reason": "open-ended question inviting elaboration"
+  }
+]

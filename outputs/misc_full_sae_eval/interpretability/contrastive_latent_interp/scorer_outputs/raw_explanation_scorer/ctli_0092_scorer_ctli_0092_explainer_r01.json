@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "reason": "Contains hypothetical reasoning about client actions: thinking about maybe going back to work - conditional framing about future behavior.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 0,
+    "reason": "Reflective summarizing about current difficulty, not conditional/hypothetical reasoning about future client actions.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 0,
+    "reason": "Simple appreciation statement with no conditional or hypothetical reasoning about client actions.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "reason": "Clear hypothetical reasoning: how you might go about doing that - conditional framing about potential client actions.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Contains exclusion marker good; factual observation about current state, not conditional reasoning.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 0,
+    "reason": "Reflective summarizing of stated values; not conditional/hypothetical reasoning about client actions.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 0,
+    "reason": "Simple gratitude statement with no conditional or hypothetical reasoning.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Contains exclusion markers good and sounds; summarizing current plan, not conditional reasoning.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 0,
+    "reason": "Simple suggestion about adjustments; purpose clause rather than conditional/hypothetical reasoning about client actions.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 0,
+    "reason": "Directive asking client to think about pros and cons; not itself conditional/hypothetical reasoning about actions.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Simple factual estimate with no conditional reasoning about client actions.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "reason": "Hypothetical reasoning about consequences: I would also like it to be so I am not damaging my body - conditional framing about future outcomes of actions.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "reason": "Conditional framing: when you are in that bind trying to find ways - hypothetical reasoning about client actions in a situational context.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 0,
+    "reason": "Question about confidence rating scale, not conditional/hypothetical reasoning about client actions.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 0,
+    "reason": "Speculative about current behavior (maybe you spend), but reflecting on present state rather than conditional reasoning about future actions.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 0,
+    "reason": "Contains exclusion marker sounds; empathic reflection about current worry, not conditional reasoning.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 0,
+    "reason": "Question about past reasoning, not conditional/hypothetical reasoning about future client actions.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Short directive statement about change; no conditional/hypothetical reasoning about client actions.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "reason": "Clear conditional/hypothetical: you might have to explore some other options - reasoning about potential client actions and outcomes.",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Contains exclusion marker good; short directive about social atmosphere, not conditional reasoning.",
+    "evidence_span": ""
+  }
+]

@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "Are you interested in reordering your prescription",
+    "reason": "'Are you' yes/no question matching the primary trigger pattern"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.3,
+    "binary_prediction": 0,
+    "evidence_span": "is that the highest like today that you've been",
+    "reason": "Starts with 'is that' not 'Are you'; different auxiliary fronting"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.25,
+    "binary_prediction": 0,
+    "evidence_span": "do you like to feel such views",
+    "reason": "'Do you' question explicitly excluded from triggering pattern"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "is that just me or does it seem that way to you",
+    "reason": "Starts with 'is that' not 'Are you'; alternative auxiliary"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.25,
+    "binary_prediction": 0,
+    "evidence_span": "do you not do like to not know what's going on",
+    "reason": "'Do you' question explicitly excluded from triggering pattern"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.25,
+    "binary_prediction": 0,
+    "evidence_span": "how often do you think you would say you're drinking",
+    "reason": "WH-question with 'do you'; not 'Are you' fronted"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "Is there certain situation where you find more stuff are you saying",
+    "reason": "'Are you' appears mid-sentence, not as fronted auxiliary; starts with 'Is there'"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.45,
+    "binary_prediction": 0,
+    "evidence_span": "Is there anything getting in the way of you",
+    "reason": "'Is there' question; similar but not 'Are you' fronted"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.2,
+    "binary_prediction": 0,
+    "evidence_span": "when did you start",
+    "reason": "WH-question with 'did you'; not 'Are you' fronted"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.25,
+    "binary_prediction": 0,
+    "evidence_span": "do you ever miss a dose",
+    "reason": "'Do you' question explicitly excluded from triggering pattern"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.25,
+    "binary_prediction": 0,
+    "evidence_span": "where would you say your are in terms of your confidence",
+    "reason": "WH-question; not 'Are you' fronted"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.2,
+    "binary_prediction": 0,
+    "evidence_span": "what kind of dogs",
+    "reason": "WH-question; no auxiliary fronting at all"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 1,
+    "evidence_span": "have you ever until now with the DUI have you ever envisioned stopping",
+    "reason": "'Have you' question matching secondary trigger pattern"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "have you considered exercise",
+    "reason": "'Have you' question matching secondary trigger pattern"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.25,
+    "binary_prediction": 0,
+    "evidence_span": "when you're hanging out with friends is there ever alcohol",
+    "reason": "Indirect question; not auxiliary-fronted yes/no"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "Is this something that happens at work",
+    "reason": "'Is this' question; similar but not 'Are you' fronted"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "Is that",
+    "reason": "'Is that' question; not 'Are you' fronted"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "is that okay with you if we have this conversation",
+    "reason": "'Is that' question; not 'Are you' fronted"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.25,
+    "binary_prediction": 0,
+    "evidence_span": "do you think if you put up with a little bit of embarrassment",
+    "reason": "'Do you' question explicitly excluded from triggering pattern"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.25,
+    "binary_prediction": 0,
+    "evidence_span": "do you feel like these behaviors affect your relationship",
+    "reason": "'Do you' question explicitly excluded from triggering pattern"
+  }
+]

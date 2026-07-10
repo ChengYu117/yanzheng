@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "okay, how long ago did you start playing saxophone",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "okay so tell me why you're only using it when your blood sugar goes...",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "tell me about how you're using the insulin",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "okay so why don't we try something if that's okay with you",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "can you tell me more about that",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "okay so why don't we start trying with 20 minutes",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "okay so kind of thinking along those lines how important is it to...",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "okay so why don't you have a rinse David",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "do you feel like you've seen some real improvements on that",
+    "reason": "closed-ended question"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "okay so why don't you try that",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "Well, you do talk to me all the time, what you talking about.",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "so how many cigarettes would you say that you have you smoked each...",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "evidence_span": "now i'm curious if you had a magic wand and you were able to wake up...",
+    "reason": "question pattern detected"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "evidence_span": "okay what classes are you not getting A's and B's in",
+    "reason": "question pattern detected"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "and your date of birth",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "how many pieces of furniture",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "and how much are you drinking on the days that you're... on the days...",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "evidence_span": "so which of these two concerns would you like to focus more on today",
+    "reason": "question pattern detected"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "mm-hmm and do you feel like that's working pretty well for you or...",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "ok so how motivated are you today start like a rigorous exercise...",
+    "reason": "not a question"
+  }
+]

@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "do you keep partying like this your problems will only get worse",
+    "reason": "closed-ended question"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "um do you believe that changing these behaviors will be in your best...",
+    "reason": "closed-ended question"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "so picking them up is it's worth all the anxiety",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "Good afternoon, this is April from the pharmacy, could I speak to...",
+    "reason": "question structure present"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "do you think it's a good support",
+    "reason": "closed-ended question"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "evidence_span": "can I ask if you were to if there was to be a situation where you...",
+    "reason": "question pattern detected"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "evidence_span": "so if quitting really the toughest thing you've ever done",
+    "reason": "question pattern detected"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "um do you think you've used to lived at home when your parents...",
+    "reason": "closed-ended question"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "do you drink alcohol",
+    "reason": "closed-ended question"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "okay so tell me why you're only using it when your blood sugar goes...",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "can you tell me more about that",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "evidence_span": "what have you discuss with your doctor recently",
+    "reason": "question pattern detected"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "um do you perceive any obstacles or challenges that you might...",
+    "reason": "closed-ended question"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "okay so why don't you have a rinse David",
+    "reason": "open-ended question"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "Can't you understand that you are putting your body at great harm by...",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "do you feel a little bit proud of yourself",
+    "reason": "closed-ended question"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "so from your family perspective the drinking is not something that...",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "um do you think that there's any changes you would want to make with...",
+    "reason": "closed-ended question"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "but is it the hardest thing you've ever done",
+    "reason": "closed-ended question"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "do you remember what I mean by opposite action",
+    "reason": "closed-ended question"
+  }
+]

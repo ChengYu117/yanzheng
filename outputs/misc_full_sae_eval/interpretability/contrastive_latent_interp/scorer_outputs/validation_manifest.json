@@ -1,0 +1,38 @@
+{
+  "step": "validate-scorer",
+  "inputs": {
+    "scorer_tasks": "outputs\\misc_full_sae_eval\\interpretability\\contrastive_latent_interp\\llm_tasks\\scorer_tasks.jsonl",
+    "baseline_tasks": "outputs\\misc_full_sae_eval\\interpretability\\contrastive_latent_interp\\llm_tasks\\baseline_tasks.jsonl",
+    "heldout_answer_key": "outputs\\misc_full_sae_eval\\interpretability\\contrastive_latent_interp\\scorer_outputs\\heldout_answer_key.csv"
+  },
+  "outputs": {
+    "validated_scorer_predictions": "outputs\\misc_full_sae_eval\\interpretability\\contrastive_latent_interp\\scorer_outputs\\validated_scorer_predictions.jsonl",
+    "validated_baseline_predictions": "outputs\\misc_full_sae_eval\\interpretability\\contrastive_latent_interp\\scorer_outputs\\validated_baseline_predictions.jsonl",
+    "scorer_metrics": "outputs\\misc_full_sae_eval\\interpretability\\contrastive_latent_interp\\scorer_outputs\\scorer_metrics.csv",
+    "baseline_metrics": "outputs\\misc_full_sae_eval\\interpretability\\contrastive_latent_interp\\scorer_outputs\\baseline_metrics.csv",
+    "latent_level_status": "outputs\\misc_full_sae_eval\\interpretability\\contrastive_latent_interp\\scorer_outputs\\latent_level_status.csv",
+    "validation_errors": "outputs\\misc_full_sae_eval\\interpretability\\contrastive_latent_interp\\scorer_outputs\\validation_errors.csv",
+    "retry_scorer_tasks": "outputs\\misc_full_sae_eval\\interpretability\\contrastive_latent_interp\\scorer_outputs\\retry_scorer_tasks.jsonl",
+    "retry_baseline_tasks": "outputs\\misc_full_sae_eval\\interpretability\\contrastive_latent_interp\\scorer_outputs\\retry_baseline_tasks.jsonl"
+  },
+  "n_scorer_tasks": 578,
+  "n_baseline_tasks": 289,
+  "n_valid_scorer_predictions": 11560,
+  "n_valid_baseline_predictions": 5780,
+  "n_scorer_errors": 0,
+  "n_baseline_errors": 0,
+  "n_valid_scorer_tasks": 578,
+  "n_valid_baseline_tasks": 289,
+  "latent_status_counts": {
+    "accepted_single": 5,
+    "accepted_stable": 81,
+    "ambiguous": 31,
+    "rejected": 172
+  },
+  "status_counts": {
+    "accepted": 167,
+    "ambiguous": 60,
+    "no_latent_contribution": 266,
+    "rejected": 85
+  }
+}

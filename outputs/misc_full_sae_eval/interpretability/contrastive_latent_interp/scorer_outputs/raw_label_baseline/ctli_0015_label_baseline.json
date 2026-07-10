@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "I don't think you realize how serious your disease",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "and I've heard that you're getting evicted",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "does look swollen",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "and just to clarify from my information on average",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "you can",
+    "reason": "advice/information, not reflection"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "you Rachel it hurt coming today",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "and so those times when you decide to quit what ar",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "how about",
+    "reason": "suggestion, not reflection"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "i know you",
+    "reason": "acknowledges client context"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "you need to",
+    "reason": "directive, not reflection"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "so sometimes you're stressed because your son's ho",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "I noticed that you filled out one of our drug ques",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "so you're almost",
+    "reason": "evaluates progress"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "I don't think you realize how serious your disease",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "and when he's there he, he does take care of you?",
+    "reason": "question, not reflection"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "There's all these risks that you're putting yourse",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "but at least you're willing to say that you're wil",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "okay so sounds like you've seen some improvement y",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "I suppose there are some things you could do to he",
+    "reason": "no clear reflection markers found"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 1,
+    "evidence_span": "i'm guessing you",
+    "reason": "infers from client"
+  }
+]

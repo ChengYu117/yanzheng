@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "okay that sounds like an excellent plan",
+    "reason": "weak reflection signal"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "I would love to see you next week if you'd be willing to schedule...",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "that would be super I'd really look forward to it I'm really glad...",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "well you know that is a good way of thinking about",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "at this point what do we have to lose",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "so you're stuck there",
+    "reason": "characterizes state; identifies emotion"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.72,
+    "binary_prediction": 1,
+    "evidence_span": "so you're pretty confident that you can do it",
+    "reason": "identifies emotion"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "it's overwhelming that getting all your stuff inside working out...",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "okay that sounds like a great idea",
+    "reason": "weak reflection signal"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "all right um so when you say that you have candy at work is there...",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "like to make some adjustments to to make it a little smoother",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "okay I see that you've filled it here before",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "so you're going to take that home and you're going to look that over...",
+    "reason": "characterizes state"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "I'm glad that we're up work for every one another yeah so and and I...",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "yeah imagine you've had some thoughts of that",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "there's a lot riding on your decision in what to do this",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "good so to open up your social atmosphere baby",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "that sounds like a really good plan",
+    "reason": "weak reflection signal"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "wow you really are involved in music",
+    "reason": "not a reflection"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "oh my god your titties are amazing",
+    "reason": "not a reflection"
+  }
+]

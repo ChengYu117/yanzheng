@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "you mean get a discharge?",
+    "reason": "Lacks the is/are/can polar question trigger pattern"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 1,
+    "evidence_span": "does it hurt anymore mark when you move it does",
+    "reason": "Polar question with does, syntactically similar to is/are/can trigger"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "okay bad idea on in that same scale with one being",
+    "reason": "Lacks the is/are/can polar question trigger pattern"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "okay so does that mean you're gonna stop drinking?",
+    "reason": "Lacks the is/are/can polar question trigger pattern"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "tell me about how you're using the insulin",
+    "reason": "Lacks the is/are/can polar question trigger pattern"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "how confident are you to take your medications if ",
+    "reason": "Lacks the is/are/can polar question trigger pattern"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "and how do you feel your implants working for that",
+    "reason": "Lacks the is/are/can polar question trigger pattern"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "when did you start",
+    "reason": "Lacks the is/are/can polar question trigger pattern"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "Do you see a dentist?",
+    "reason": "Lacks the is/are/can polar question trigger pattern"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "evidence_span": "Oh is this going to be about something serious?",
+    "reason": "Starts with is/are/can forming a polar question matching the trigger pattern"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 1,
+    "evidence_span": "Did you come here for a prescription for anti-depressants?",
+    "reason": "Polar question with did, syntactically similar to is/are/can trigger"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "what have you discuss with your doctor recently",
+    "reason": "Lacks the is/are/can polar question trigger pattern"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "so thought it was what people are doing it so does",
+    "reason": "Lacks the is/are/can polar question trigger pattern"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "All day long?",
+    "reason": "Lacks the is/are/can polar question trigger pattern"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "And if Oscar's that important to you then do you p",
+    "reason": "Lacks the is/are/can polar question trigger pattern"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "and what puts you out of 10",
+    "reason": "Lacks the is/are/can polar question trigger pattern"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "evidence_span": "all right is there anything you'd like to tell me about it",
+    "reason": "Starts with is/are/can forming a polar question matching the trigger pattern"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "From your family, did your family smoke?",
+    "reason": "Lacks the is/are/can polar question trigger pattern"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "okay so tell me why you're only using it when your",
+    "reason": "Lacks the is/are/can polar question trigger pattern"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "do you feel like you've seen some real improvement",
+    "reason": "Lacks the is/are/can polar question trigger pattern"
+  }
+]

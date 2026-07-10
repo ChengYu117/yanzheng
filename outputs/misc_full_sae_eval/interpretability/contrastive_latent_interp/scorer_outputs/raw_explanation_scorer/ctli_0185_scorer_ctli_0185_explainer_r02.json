@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "evidence_span": "four times a week so for how long do you think you can even go on",
+    "reason": "Positive: matches trigger term 'do you'; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "so does either of those sound like they might work for you",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "evidence_span": "and what what promise you to pick a five or six",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "evidence_span": "do you drink alcohol",
+    "reason": "Positive: matches trigger term 'do you'; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "evidence_span": "mm-hmm and when you're hanging out with friends is there ever alcohol involved",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.6,
+    "binary_prediction": 1,
+    "evidence_span": "and how do you think you will feel if you were to envision how you would feel in...",
+    "reason": "Positive: matches trigger term 'do you'; contains inquiry/question pattern. Excluded: logistics/scheduling"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "evidence_span": "do you feel a little bit proud of yourself",
+    "reason": "Positive: matches trigger term 'do you'; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "evidence_span": "do you take any medications or do you have any medical conditions",
+    "reason": "Positive: matches trigger term 'do you'; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "evidence_span": "what kind of dogs",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "evidence_span": "and how do you see that best in your day how do you see that working in like an ...",
+    "reason": "Positive: matches trigger term 'do you'; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "evidence_span": "so now that we have had this conversation um how do you feel about you know maki...",
+    "reason": "Positive: matches trigger term 'do you'; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "evidence_span": "do you remember what I mean by opposite action",
+    "reason": "Positive: matches trigger term 'do you'; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "evidence_span": "what are some of the barriers you believe that prevent you from exercising on a ...",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "evidence_span": "okay how much do your friends drink",
+    "reason": "Positive: matches trigger term 'do you'; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "evidence_span": "and how does that make you feel and",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "evidence_span": "when did you start",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "do you find it difficult to to get alcohol like you have to work to find it no",
+    "reason": "Positive: matches trigger term 'do you'; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "evidence_span": "all right so what are your goals",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "evidence_span": "I'm wondering if there is any purpose for you joining some sort of support group...",
+    "reason": "Positive: matches trigger term 'do you'; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "has anything changed with your medical history since I last saw you like any new...",
+    "reason": "No strong trigger or exclusion match"
+  }
+]

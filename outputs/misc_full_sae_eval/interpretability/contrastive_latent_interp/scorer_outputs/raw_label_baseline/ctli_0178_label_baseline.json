@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "when did you start",
+    "reason": "not clearly a closed question"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "did they give you a new advice when you left hospital or any support",
+    "reason": "closed-ended question expecting short answer"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "okay and how often do you think you would say you're drinking",
+    "reason": "open-ended question pattern"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "yes I'm surprised did you see the local GP?",
+    "reason": "question structure unclear"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "have you been getting on with it?",
+    "reason": "closed-ended question expecting short answer"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "we're we ever pretty close",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "so i suppose what still puzzles me is there you are really quite...",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "what kind of dogs",
+    "reason": "open-ended question pattern"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "evidence_span": "has anything changed with your medical history since I last saw you...",
+    "reason": "not clearly a closed question"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "hmm well I mean how confident would you say that you are right?",
+    "reason": "closed-ended question expecting short answer"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.12,
+    "binary_prediction": 0,
+    "evidence_span": "um so how many days a week do you think you can exercise?",
+    "reason": "open-ended question pattern"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "have you thought at all about how you might go about doing that",
+    "reason": "closed-ended question expecting short answer"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "is that something that would be helpful",
+    "reason": "closed-ended question expecting short answer"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "have you tell me about how you're taking the medication",
+    "reason": "closed-ended question expecting short answer"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "and are you willing to go to treatment",
+    "reason": "closed-ended question expecting short answer"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "did that feeling last you for the rest of the day they're feeling...",
+    "reason": "closed-ended question expecting short answer"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "mm-hmm and when you're hanging out with friends is there ever...",
+    "reason": "not a question"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.35,
+    "binary_prediction": 0,
+    "evidence_span": "Sixty years, have you been to the dentist to have them check your...",
+    "reason": "question structure unclear"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "evidence_span": "yeah um is there anything else that really you know is one of the...",
+    "reason": "closed-ended question expecting short answer"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "it do did you have a color that you wanted",
+    "reason": "not a question"
+  }
+]

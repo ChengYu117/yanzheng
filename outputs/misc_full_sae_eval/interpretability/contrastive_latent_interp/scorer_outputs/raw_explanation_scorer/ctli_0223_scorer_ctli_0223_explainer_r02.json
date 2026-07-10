@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "okay can you tell me a little bit about why you picked those three",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "and according to your profile it looks like you're taking likes in Aprill hydroc...",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "mm-hmm and so when you go to parties most of the time there's alcohol there",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "okay well this should only take a few minutes so before we get started I just wa...",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "Um, according to the chart she is has a BMI of  which is at the  percentile, whi...",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "but in looking through this chart I mean it seems like he's had six or seven of ...",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "I noticed that you filled out one of our drug questionnaires",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "okay well how confident are you that you could cut down if you wanted to",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "and you do have three refills on here",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "um see from your records here that you're  yes I'm afraid that I'm not prepared ...",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "the ibuprofen is you're holding especially with your medical condition will have...",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "and I can discuss with you further kind of see your ankle John",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "yeah so if you had something on a resume that was around education training mayb...",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "can you tell me a little bit about that",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "I did have some auto refills for you in the pharmacy unfortunately to return to ...",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "mm-hmm and when you're hanging out with friends is there ever alcohol involved",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "they've got a lot of new flavors on the gum they're cinnamon and orange and juic...",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "okay I see that you've filled it here before",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "but if you give me twenty minutes I can get them all ready for you",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "um now I was taking a look at your medication profile earlier and it looks like ...",
+    "reason": "No strong trigger or exclusion match"
+  }
+]

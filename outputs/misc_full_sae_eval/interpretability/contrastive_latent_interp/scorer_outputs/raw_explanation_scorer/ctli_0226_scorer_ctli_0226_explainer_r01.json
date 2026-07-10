@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "mm-hmm and so when you go to parties most of the time there's alcohol there",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "evidence_span": "the ibuprofen is you're holding especially with your medical condition will have...",
+    "reason": "Positive: matches trigger term 'it'"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "Well, I think we need to check her cholesterol and her triglycerides",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "evidence_span": "can you tell me a little bit about that",
+    "reason": "Positive: matches trigger term 'it'"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "evidence_span": "right and I'm like a sea of my foes or bread or like starch and then you can als...",
+    "reason": "Positive: matches trigger term 'it'"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "okay well how confident are you that you could cut down if you wanted to",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "evidence_span": "I think we can I think we can work it out right there I just got this sinus head...",
+    "reason": "Positive: matches trigger term 'it'"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "oh yeah right the cardiovascular as well yep",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "evidence_span": "mm-hmm and when you're hanging out with friends is there ever alcohol involved",
+    "reason": "Positive: matches trigger term 'it'"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "evidence_span": "your ac it measures the amount of sugar that's been on your hemoglobin in the la...",
+    "reason": "Positive: matches trigger term 'it'"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "evidence_span": "my guess is that all the sugar it needs somewhere to go so your body gets rid of...",
+    "reason": "Positive: matches trigger term 'it'"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "evidence_span": "okay well smoking really is really bad for you you know it causes things like lu...",
+    "reason": "Positive: matches trigger term 'it'"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "so carbohydrates actually do make us feel better they actually raise something c...",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "but if you give me twenty minutes I can get them all ready for you",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "no problem I have this in stock",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "Oh like yes yes I brought you Reducto Reducto actually is no longer recommended ...",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "have you tried anything that might have works in past -",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "okay okay so this medication is for your cholesterol",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "I did have some auto refills for you in the pharmacy unfortunately to return to ...",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.65,
+    "binary_prediction": 1,
+    "evidence_span": "but I do notice that these prescriptions from the hospital",
+    "reason": "Positive: matches trigger term 'it'"
+  }
+]

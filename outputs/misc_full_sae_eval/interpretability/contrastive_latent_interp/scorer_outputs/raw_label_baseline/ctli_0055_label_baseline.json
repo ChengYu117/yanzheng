@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "how about if I cut back for a month and then I'll ",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "does look swollen",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "evidence_span": "okay so you are on the higher end of the scale in ",
+    "reason": "agreement + reflection"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "and you'll really feel so much better",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "You know so why haven't you quit yet",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "I understand you've been having some some troublin",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "evidence_span": "okay so you noticing that it's kind of a little to",
+    "reason": "agreement + reflection"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "I understand you've been having some difficulties ",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.5,
+    "binary_prediction": 1,
+    "evidence_span": "all right so it sounds like you're in band and a f",
+    "reason": "has reflection markers, likely simple"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "I understand you don't have very much time but I r",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "it is a different type of difficulty you're right",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "so that would be a positive okay you like to give ",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "evidence_span": "okay so you realize that if you become more consis",
+    "reason": "agreement + reflection"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "evidence_span": "You want to be there for your baby",
+    "reason": "simple restatement"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "You guess so",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "evidence_span": "okay so you're kind of looking at balancing you kn",
+    "reason": "agreement + reflection"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "You know there is quite alot of staining",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "really related to your sister",
+    "reason": "not a reflection, not simple"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.8,
+    "binary_prediction": 1,
+    "evidence_span": "okay so you're saying thank by staying at some fri",
+    "reason": "agreement + reflection"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "evidence_span": "You can't generalize the experience your grandfath",
+    "reason": "not a reflection, not simple"
+  }
+]

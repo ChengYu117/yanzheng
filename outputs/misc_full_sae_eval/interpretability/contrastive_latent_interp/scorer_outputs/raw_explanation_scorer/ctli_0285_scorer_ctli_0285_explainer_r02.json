@@ -1,0 +1,142 @@
+[
+  {
+    "pred_activate_prob": 0.33,
+    "binary_prediction": 1,
+    "evidence_span": "wow you really are involved in music",
+    "reason": "Matches positive_evaluative_vocabulary_r02: text aligns with hypothesis pattern",
+    "sample_id": "u020"
+  },
+  {
+    "pred_activate_prob": 0.63,
+    "binary_prediction": 1,
+    "evidence_span": "that",
+    "reason": "Matches positive_evaluative_vocabulary_r02: strong trigger match (that)",
+    "sample_id": "u017"
+  },
+  {
+    "pred_activate_prob": 0.73,
+    "binary_prediction": 1,
+    "evidence_span": "that",
+    "reason": "Matches positive_evaluative_vocabulary_r02: strong trigger match (that)",
+    "sample_id": "u014"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "Thanks for comming today",
+    "reason": "Does not match positive_evaluative_vocabulary_r02: insufficient trigger alignment",
+    "sample_id": "u008"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "thanks for your time",
+    "reason": "Does not match positive_evaluative_vocabulary_r02: insufficient trigger alignment",
+    "sample_id": "u005"
+  },
+  {
+    "pred_activate_prob": 0.63,
+    "binary_prediction": 1,
+    "evidence_span": "that",
+    "reason": "Matches positive_evaluative_vocabulary_r02: strong trigger match (that)",
+    "sample_id": "u007"
+  },
+  {
+    "pred_activate_prob": 0.33,
+    "binary_prediction": 1,
+    "evidence_span": "concept:good",
+    "reason": "Matches positive_evaluative_vocabulary_r02: moderate trigger alignment with explanation",
+    "sample_id": "u013"
+  },
+  {
+    "pred_activate_prob": 0.73,
+    "binary_prediction": 1,
+    "evidence_span": "that",
+    "reason": "Matches positive_evaluative_vocabulary_r02: strong trigger match (that)",
+    "sample_id": "u011"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "thank you very much for your time live",
+    "reason": "Does not match positive_evaluative_vocabulary_r02: insufficient trigger alignment",
+    "sample_id": "u009"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "thank you for your time and we'll see...",
+    "reason": "Does not match positive_evaluative_vocabulary_r02: insufficient trigger alignment",
+    "sample_id": "u010"
+  },
+  {
+    "pred_activate_prob": 0.97,
+    "binary_prediction": 1,
+    "evidence_span": "that",
+    "reason": "Matches positive_evaluative_vocabulary_r02: strong trigger match (that)",
+    "sample_id": "u018"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "thanks for coming in for participating today",
+    "reason": "Does not match positive_evaluative_vocabulary_r02: insufficient trigger alignment",
+    "sample_id": "u004"
+  },
+  {
+    "pred_activate_prob": 0.63,
+    "binary_prediction": 1,
+    "evidence_span": "that",
+    "reason": "Matches positive_evaluative_vocabulary_r02: strong trigger match (that)",
+    "sample_id": "u019"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "hi Andrea thanks for coming in",
+    "reason": "Does not match positive_evaluative_vocabulary_r02: insufficient trigger alignment",
+    "sample_id": "u001"
+  },
+  {
+    "pred_activate_prob": 0.63,
+    "binary_prediction": 1,
+    "evidence_span": "that",
+    "reason": "Matches positive_evaluative_vocabulary_r02: strong trigger match (that)",
+    "sample_id": "u016"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "nothing thanks for asking",
+    "reason": "Does not match positive_evaluative_vocabulary_r02: insufficient trigger alignment",
+    "sample_id": "u002"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "well thank you so much for coming in...",
+    "reason": "Does not match positive_evaluative_vocabulary_r02: insufficient trigger alignment",
+    "sample_id": "u006"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "thanks for these helpful information",
+    "reason": "Does not match positive_evaluative_vocabulary_r02: insufficient trigger alignment",
+    "sample_id": "u003"
+  },
+  {
+    "pred_activate_prob": 0.33,
+    "binary_prediction": 1,
+    "evidence_span": "concept:good",
+    "reason": "Matches positive_evaluative_vocabulary_r02: moderate trigger alignment with explanation",
+    "sample_id": "u015"
+  },
+  {
+    "pred_activate_prob": 0.97,
+    "binary_prediction": 1,
+    "evidence_span": "that",
+    "reason": "Matches positive_evaluative_vocabulary_r02: strong trigger match (that)",
+    "sample_id": "u012"
+  }
+]

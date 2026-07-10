@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "reason": "Repeated 'And,' with comma indicates trailing conjunction disfluency",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.05,
+    "binary_prediction": 0,
+    "reason": "Short factual statement, excluded per explanation",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.75,
+    "binary_prediction": 1,
+    "reason": "Disfluent clause 'it sounded like a started' shows fragmented thought",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "reason": "'Um' hesitation marker with incomplete trailing structure",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.05,
+    "binary_prediction": 0,
+    "reason": "Complete well-formed question",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.05,
+    "binary_prediction": 0,
+    "reason": "Complete, clean sentence",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.05,
+    "binary_prediction": 0,
+    "reason": "Single-word factual statement",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.88,
+    "binary_prediction": 1,
+    "reason": "Grammatically fragmented 'you not depend on with' shows disfluent construction",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.05,
+    "binary_prediction": 0,
+    "reason": "Complete sentence",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "reason": "Short factual fragment but too brief to be complex thought",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "reason": "Incomplete question structure, disfluent opening",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.05,
+    "binary_prediction": 0,
+    "reason": "Complete, clean sentence",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "reason": "Extended disfluency with 'and and', trailing incompleteness at end",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.05,
+    "binary_prediction": 0,
+    "reason": "Complete sentence",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.2,
+    "binary_prediction": 0,
+    "reason": "Slightly odd phrasing but relatively complete",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.93,
+    "binary_prediction": 1,
+    "reason": "Repeated 'And,', hesitation commas, trailing conjunction 'and-'",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.15,
+    "binary_prediction": 0,
+    "reason": "Long but grammatically complete sentence",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.1,
+    "binary_prediction": 0,
+    "reason": "Listing style but relatively complete",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.05,
+    "binary_prediction": 0,
+    "reason": "Complete, clean sentence",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.72,
+    "binary_prediction": 1,
+    "reason": "Starts mid-thought with 'involved but', fragment continuation from prior context",
+    "evidence_span": ""
+  }
+]

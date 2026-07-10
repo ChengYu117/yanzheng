@@ -1,0 +1,142 @@
+[
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "okay well great thanks for coming in",
+    "reason": "Does not match engaging_questions_inviting_reflection: insufficient trigger alignment",
+    "sample_id": "u003"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "alright great so I'll plan to see you...",
+    "reason": "Does not match engaging_questions_inviting_reflection: insufficient trigger alignment",
+    "sample_id": "u004"
+  },
+  {
+    "pred_activate_prob": 0.38,
+    "binary_prediction": 1,
+    "evidence_span": "so that was the face pretty good experience",
+    "reason": "Matches engaging_questions_inviting_reflection: text aligns with hypothesis pattern",
+    "sample_id": "u014"
+  },
+  {
+    "pred_activate_prob": 0.9,
+    "binary_prediction": 1,
+    "evidence_span": "concept:sounds like",
+    "reason": "Matches engaging_questions_inviting_reflection: moderate trigger alignment with explanation",
+    "sample_id": "u011"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "doesn't sound like good quality sleep",
+    "reason": "Does not match engaging_questions_inviting_reflection: insufficient trigger alignment",
+    "sample_id": "u013"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "we were kind of down like now you're...",
+    "reason": "Does not match engaging_questions_inviting_reflection: insufficient trigger alignment",
+    "sample_id": "u015"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "Great",
+    "reason": "Does not match engaging_questions_inviting_reflection: insufficient trigger alignment",
+    "sample_id": "u001"
+  },
+  {
+    "pred_activate_prob": 0.38,
+    "binary_prediction": 1,
+    "evidence_span": "so six is a great start and I...",
+    "reason": "Matches engaging_questions_inviting_reflection: text aligns with hypothesis pattern",
+    "sample_id": "u010"
+  },
+  {
+    "pred_activate_prob": 0.97,
+    "binary_prediction": 1,
+    "evidence_span": "do you feel that",
+    "reason": "Matches engaging_questions_inviting_reflection: strong trigger match (do you feel that)",
+    "sample_id": "u016"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "wow you really are involved in music",
+    "reason": "Does not match engaging_questions_inviting_reflection: insufficient trigger alignment",
+    "sample_id": "u018"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "well it's great that's a good thing that...",
+    "reason": "Does not match engaging_questions_inviting_reflection: insufficient trigger alignment",
+    "sample_id": "u008"
+  },
+  {
+    "pred_activate_prob": 0.68,
+    "binary_prediction": 1,
+    "evidence_span": "concept:sounds like",
+    "reason": "Matches engaging_questions_inviting_reflection: moderate trigger alignment with explanation",
+    "sample_id": "u012"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "great... all right your blood pressure's over",
+    "reason": "Does not match engaging_questions_inviting_reflection: insufficient trigger alignment",
+    "sample_id": "u007"
+  },
+  {
+    "pred_activate_prob": 0.43,
+    "binary_prediction": 1,
+    "evidence_span": "concept:what ",
+    "reason": "Matches engaging_questions_inviting_reflection: moderate trigger alignment with explanation",
+    "sample_id": "u002"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "okay that sounds really interesting",
+    "reason": "Does not match engaging_questions_inviting_reflection: insufficient trigger alignment",
+    "sample_id": "u017"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "great okay so before we get started",
+    "reason": "Does not match engaging_questions_inviting_reflection: insufficient trigger alignment",
+    "sample_id": "u006"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "very cool",
+    "reason": "Does not match engaging_questions_inviting_reflection: insufficient trigger alignment",
+    "sample_id": "u019"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "cute",
+    "reason": "Does not match engaging_questions_inviting_reflection: insufficient trigger alignment",
+    "sample_id": "u020"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "yeah so kind of keeping your options open...",
+    "reason": "Does not match engaging_questions_inviting_reflection: insufficient trigger alignment",
+    "sample_id": "u009"
+  },
+  {
+    "pred_activate_prob": 0.68,
+    "binary_prediction": 1,
+    "evidence_span": "concept:sounds like",
+    "reason": "Matches engaging_questions_inviting_reflection: moderate trigger alignment with explanation",
+    "sample_id": "u005"
+  }
+]

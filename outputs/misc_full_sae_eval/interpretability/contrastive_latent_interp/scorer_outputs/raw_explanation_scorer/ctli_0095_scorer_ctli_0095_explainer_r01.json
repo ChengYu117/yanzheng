@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Statement/imperative/reflective utterance, not a closed yes/no question to client",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Statement/imperative/reflective utterance, not a closed yes/no question to client",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Statement/imperative/reflective utterance, not a closed yes/no question to client",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Statement or reflective utterance; contains near-miss tokens (good/sounds/you've) per exclusion",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Statement or reflective utterance; contains near-miss tokens (good/sounds/you've) per exclusion",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Statement or reflective utterance; contains near-miss tokens (good/sounds/you've) per exclusion",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Statement or reflective utterance; contains near-miss tokens (good/sounds/you've) per exclusion",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Statement/imperative/reflective utterance, not a closed yes/no question to client",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Statement/imperative/reflective utterance, not a closed yes/no question to client",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Statement/imperative/reflective utterance, not a closed yes/no question to client",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Statement/imperative/reflective utterance, not a closed yes/no question to client",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Statement or reflective utterance; contains near-miss tokens (good/sounds/you've) per exclusion",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Statement/imperative/reflective utterance, not a closed yes/no question to client",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Statement or reflective utterance; contains near-miss tokens (good/sounds/you've) per exclusion",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Statement/imperative/reflective utterance, not a closed yes/no question to client",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Statement/imperative/reflective utterance, not a closed yes/no question to client",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Statement/imperative/reflective utterance, not a closed yes/no question to client",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Statement/imperative/reflective utterance, not a closed yes/no question to client",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Open-ended WH-question (what do you think), not a closed yes/no question",
+    "evidence_span": ""
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.85,
+    "binary_prediction": 0,
+    "reason": "Open-ended WH-question (what do you think), not a closed yes/no question",
+    "evidence_span": ""
+  }
+]

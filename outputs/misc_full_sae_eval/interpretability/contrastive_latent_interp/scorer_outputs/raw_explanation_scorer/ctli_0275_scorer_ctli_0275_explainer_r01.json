@@ -1,0 +1,142 @@
+[
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "yeah I've seen any doctor like I don't...",
+    "reason": "Does not match pride_and_enthusiastic_positive_emotion: insufficient trigger alignment",
+    "sample_id": "u007"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "and hopefully you won't have the same issues...",
+    "reason": "Does not match pride_and_enthusiastic_positive_emotion: insufficient trigger alignment",
+    "sample_id": "u020"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "that's nice",
+    "reason": "Does not match pride_and_enthusiastic_positive_emotion: insufficient trigger alignment",
+    "sample_id": "u017"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "yeah throwing up is never fun it's not",
+    "reason": "Does not match pride_and_enthusiastic_positive_emotion: insufficient trigger alignment",
+    "sample_id": "u016"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "alright well um so I got a little...",
+    "reason": "Does not match pride_and_enthusiastic_positive_emotion: insufficient trigger alignment",
+    "sample_id": "u012"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "okay then I'll think about those ideas",
+    "reason": "Does not match pride_and_enthusiastic_positive_emotion: insufficient trigger alignment",
+    "sample_id": "u006"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "I can really hear you really love your...",
+    "reason": "Does not match pride_and_enthusiastic_positive_emotion: insufficient trigger alignment",
+    "sample_id": "u014"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "yeah I can definitely check with her and...",
+    "reason": "Does not match pride_and_enthusiastic_positive_emotion: insufficient trigger alignment",
+    "sample_id": "u010"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "I need to come up with one more",
+    "reason": "Does not match pride_and_enthusiastic_positive_emotion: insufficient trigger alignment",
+    "sample_id": "u015"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "aren't you a student like don't you know...",
+    "reason": "Does not match pride_and_enthusiastic_positive_emotion: insufficient trigger alignment",
+    "sample_id": "u005"
+  },
+  {
+    "pred_activate_prob": 0.63,
+    "binary_prediction": 1,
+    "evidence_span": "what",
+    "reason": "Matches pride_and_enthusiastic_positive_emotion: strong trigger match (what)",
+    "sample_id": "u001"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "all right any other questions or anything else...",
+    "reason": "Does not match pride_and_enthusiastic_positive_emotion: insufficient trigger alignment",
+    "sample_id": "u011"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "okay well hopefully you won't have any issues...",
+    "reason": "Does not match pride_and_enthusiastic_positive_emotion: insufficient trigger alignment",
+    "sample_id": "u019"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "and when you check out today I will...",
+    "reason": "Does not match pride_and_enthusiastic_positive_emotion: insufficient trigger alignment",
+    "sample_id": "u002"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "and on the other hand I'm hearing you...",
+    "reason": "Does not match pride_and_enthusiastic_positive_emotion: insufficient trigger alignment",
+    "sample_id": "u003"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "I'm she's a very nice lady and she...",
+    "reason": "Does not match pride_and_enthusiastic_positive_emotion: insufficient trigger alignment",
+    "sample_id": "u013"
+  },
+  {
+    "pred_activate_prob": 0.08,
+    "binary_prediction": 0,
+    "evidence_span": "no no I mean I've been like talking...",
+    "reason": "Does not match pride_and_enthusiastic_positive_emotion: insufficient trigger alignment",
+    "sample_id": "u009"
+  },
+  {
+    "pred_activate_prob": 0.63,
+    "binary_prediction": 1,
+    "evidence_span": "what",
+    "reason": "Matches pride_and_enthusiastic_positive_emotion: strong trigger match (what)",
+    "sample_id": "u008"
+  },
+  {
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "So, you're realizing too, how much it really...",
+    "reason": "Does not match pride_and_enthusiastic_positive_emotion: insufficient trigger alignment",
+    "sample_id": "u004"
+  },
+  {
+    "pred_activate_prob": 0.33,
+    "binary_prediction": 1,
+    "evidence_span": "not taking any more okay great no problem...",
+    "reason": "Matches pride_and_enthusiastic_positive_emotion: text aligns with hypothesis pattern",
+    "sample_id": "u018"
+  }
+]

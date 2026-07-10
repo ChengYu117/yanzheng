@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.55,
+    "binary_prediction": 1,
+    "evidence_span": "are you still feeling depressed",
+    "reason": "Positive: matches trigger term 'feeling'"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "are you sure I really well I'm really concerned about you to him I think that we...",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "are you on drugs again",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "so thought it was what people are doing it so does it sound like you're really w...",
+    "reason": "Positive: matches trigger term 'like'; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "hmm well I mean how confident would you say that you are right?",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "so my am i right in thinking you perhaps decide on a day-to-day basis and what y...",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "what kind of dogs",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "what just remind me in why is you want to stop",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "mm-hmm and when you're hanging out with friends is there ever alcohol involved",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "what are your plans for after high school",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "are you were you a virgin before you would chase them",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "have you thought at all about how you might go about doing that",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "when did you start",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "does it hurt anymore mark when you move it does",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.95,
+    "binary_prediction": 1,
+    "evidence_span": "so what kinds of goals  are you are you thinking of?",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "okay so tell me why you're only using it when your blood sugar goes high",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.4,
+    "binary_prediction": 0,
+    "evidence_span": "are you doing school",
+    "reason": "No strong trigger or exclusion match"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "okay and how often do you think you would say you're drinking",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "yeah it's the right and it's the right way you go yeah young you could have a cu...",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  },
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.7,
+    "binary_prediction": 1,
+    "evidence_span": "hi Angelina how are you doing today",
+    "reason": "Positive: contains inquiry/question pattern; contains inquiry/question pattern"
+  }
+]

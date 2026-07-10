@@ -1,0 +1,142 @@
+[
+  {
+    "sample_id": "u007",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "would you",
+    "reason": "Contains positive trigger phrase 'would you'"
+  },
+  {
+    "sample_id": "u005",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "do you",
+    "reason": "Contains positive trigger phrase 'do you'"
+  },
+  {
+    "sample_id": "u003",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "can you",
+    "reason": "Contains positive trigger phrase 'can you'"
+  },
+  {
+    "sample_id": "u010",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "do you",
+    "reason": "Contains positive trigger phrase 'do you'"
+  },
+  {
+    "sample_id": "u008",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "do you",
+    "reason": "Contains positive trigger phrase 'do you'"
+  },
+  {
+    "sample_id": "u013",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "but I have to ask you Bruce what gee what made you",
+    "reason": "Lacks positive trigger pattern(s): can you, could you, do you"
+  },
+  {
+    "sample_id": "u011",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "okay and about how often would that be?",
+    "reason": "Matches the question/pragmatic pattern described in the explanation"
+  },
+  {
+    "sample_id": "u001",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "can you",
+    "reason": "Contains positive trigger phrase 'can you'"
+  },
+  {
+    "sample_id": "u002",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "okay all right well you mentioned a couple times t",
+    "reason": "Lacks positive trigger pattern(s): can you, could you, do you"
+  },
+  {
+    "sample_id": "u016",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "what have you discuss with your doctor recently",
+    "reason": "Lacks positive trigger pattern(s): can you, could you, do you"
+  },
+  {
+    "sample_id": "u014",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "okay, how long ago did you start playing saxophone",
+    "reason": "Lacks positive trigger pattern(s): can you, could you, do you"
+  },
+  {
+    "sample_id": "u004",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "do you",
+    "reason": "Contains positive trigger phrase 'do you'"
+  },
+  {
+    "sample_id": "u015",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "do you",
+    "reason": "Contains positive trigger phrase 'do you'"
+  },
+  {
+    "sample_id": "u017",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "can you",
+    "reason": "Contains positive trigger phrase 'can you'"
+  },
+  {
+    "sample_id": "u019",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "so if quitting really the toughest thing you've ev",
+    "reason": "Lacks positive trigger pattern(s): can you, could you, do you"
+  },
+  {
+    "sample_id": "u020",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "so are you ready for the challenge of quitting",
+    "reason": "Lacks positive trigger pattern(s): can you, could you, do you"
+  },
+  {
+    "sample_id": "u006",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "okay and so you mentioned you know quite a few rea",
+    "reason": "Lacks positive trigger pattern(s): can you, could you, do you"
+  },
+  {
+    "sample_id": "u009",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "so you didn't talk but you did mention the drink d",
+    "reason": "Lacks positive trigger pattern(s): can you, could you, do you"
+  },
+  {
+    "sample_id": "u012",
+    "pred_activate_prob": 0.82,
+    "binary_prediction": 1,
+    "evidence_span": "would you",
+    "reason": "Contains positive trigger phrase 'would you'"
+  },
+  {
+    "sample_id": "u018",
+    "pred_activate_prob": 0.28,
+    "binary_prediction": 0,
+    "evidence_span": "but is it the hardest thing you've ever done",
+    "reason": "Lacks positive trigger pattern(s): can you, could you, do you"
+  }
+]
