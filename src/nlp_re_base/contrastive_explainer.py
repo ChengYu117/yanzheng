@@ -1,4 +1,4 @@
-"""Gemini task generation for label-blind contrastive latent explanations."""
+"""Claude Code LLM task generation for label-blind latent explanations."""
 
 from __future__ import annotations
 
@@ -101,12 +101,17 @@ def make_explainer_tasks(
     config: ExplainerTaskConfig = ExplainerTaskConfig(),
 ) -> dict[str, Any]:
     output_path = Path(output_dir)
-    task_dir = output_path / "ide_tasks"
+    task_dir = output_path / "llm_tasks"
     raw_dir = output_path / "explainer_outputs" / "raw"
     task_dir.mkdir(parents=True, exist_ok=True)
     raw_dir.mkdir(parents=True, exist_ok=True)
 
-    packs = read_jsonl(packs_path)
+    all_packs = read_jsonl(packs_path)
+    packs = [
+        pack
+        for pack in all_packs
+        if pack.get("summary", {}).get("interpretability_eligible", True)
+    ]
     tasks: list[dict[str, Any]] = []
     internal_rows: list[dict[str, Any]] = []
     for pack in packs:
@@ -131,7 +136,7 @@ def make_explainer_tasks(
                 "prompt": prompt,
                 "expected_output_path": str(expected_path),
                 "output_format": "single_json_object",
-                "status": "pending_gemini_in_antigravity",
+                "status": "pending_claude_code_llm",
             }
             tasks.append(task)
             internal_rows.append(
@@ -154,9 +159,9 @@ def make_explainer_tasks(
     readme.write_text(
         "\n".join(
             [
-                "# Gemini explainer raw outputs",
+                "# Claude Code LLM explainer raw outputs",
                 "",
-                "Save Antigravity Gemini 3.5 responses here as `{task_id}.json`.",
+                "Save Claude Code LLM responses here as `{task_id}.json`.",
                 "Keep malformed or fenced JSON unchanged; the validator preserves raw files and writes retry tasks.",
             ]
         )
@@ -173,10 +178,12 @@ def make_explainer_tasks(
             "raw_output_dir": str(raw_dir),
         },
         "parameters": asdict(config),
+        "n_packs_total": int(len(all_packs)),
         "n_packs": int(len(packs)),
+        "n_packs_excluded": int(len(all_packs) - len(packs)),
         "n_tasks": int(len(tasks)),
         "label_blind": True,
-        "gemini_execution": "manual_file_queue_in_antigravity_ide",
+        "llm_execution": "claude_code_model_file_queue",
     }
     write_json(output_path / "explainer_task_manifest.json", manifest)
     return manifest

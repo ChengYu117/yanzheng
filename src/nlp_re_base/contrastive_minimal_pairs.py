@@ -11,7 +11,7 @@ import numpy as np
 import pandas as pd
 
 from .contrastive_evidence_pack import PRIMARY_LABELS, read_jsonl, write_json, write_jsonl
-from .contrastive_gemini_io import parse_gemini_json_file
+from .contrastive_llm_io import parse_llm_json_file
 
 
 @dataclass(frozen=True)
@@ -40,6 +40,7 @@ Create {int(pairs_per_latent)} minimal pairs. Each pair must contain:
 - positive_text: should trigger the latent.
 - negative_text: should not trigger the latent.
 - changed_factor: the single functional factor changed.
+- held_constant: what topic, style, and context were held fixed.
 - expected_direction: use exactly "positive_greater_than_negative".
 
 Rules:
@@ -58,47 +59,83 @@ def _select_representative_explanations(
     config: MinimalPairTaskConfig,
 ) -> list[dict[str, Any]]:
     pack_by_id = {pack["packet_id"]: pack for pack in packs}
-    explanation_by_packet: dict[str, dict[str, Any]] = {}
-    sorted_explanations = sorted(
-        explanations,
-        key=lambda row: (str(row.get("packet_id")), -float(row.get("confidence", 0))),
-    )
-    for explanation in sorted_explanations:
-        explanation_by_packet.setdefault(str(explanation["packet_id"]), explanation)
+    metric_by_explanation: dict[str, dict[str, Any]] = {}
+    if scorer_metrics is not None and not scorer_metrics.empty and "explanation_task_id" in scorer_metrics.columns:
+        metric_by_explanation = {
+            str(row["explanation_task_id"]): row.to_dict()
+            for _, row in scorer_metrics.iterrows()
+            if pd.notna(row.get("explanation_task_id"))
+        }
+    status_order = {
+        "accepted": 0,
+        "ambiguous": 1,
+        "no_latent_contribution": 2,
+        "rejected": 3,
+        "invalid": 4,
+        "unscored": 5,
+    }
+    explanations_by_packet: dict[str, list[dict[str, Any]]] = {}
+    for explanation in explanations:
+        explanations_by_packet.setdefault(str(explanation["packet_id"]), []).append(explanation)
 
-    accepted_packets: set[str] | None = None
-    if scorer_metrics is not None and not scorer_metrics.empty and "status" in scorer_metrics.columns:
-        accepted_packets = set(
-            scorer_metrics.loc[scorer_metrics["status"].astype(str) == "accepted", "packet_id"].astype(str).tolist()
+    pack_rows = [
+        {
+            "packet_id": str(pack["packet_id"]),
+            "target_label": str(pack["target_label"]),
+            "latent_idx": int(pack["latent_idx"]),
+            "rank_within_label": int(pack["rank_within_label"]),
+            "inclusion_frequency": float(pack.get("inclusion_frequency") or 0),
+        }
+        for pack in packs
+        if pack.get("target_label") in set(config.primary_labels)
+    ]
+    pack_df = pd.DataFrame(pack_rows)
+    if pack_df.empty:
+        raise ValueError("No primary-label packs available for minimal-pair planning")
+    selected_packs: list[dict[str, Any]] = []
+    for label in config.primary_labels:
+        group = pack_df[pack_df["target_label"] == label].sort_values(
+            ["inclusion_frequency", "rank_within_label", "latent_idx"],
+            ascending=[False, True, True],
         )
+        if len(group) < int(config.representatives_per_primary_label):
+            raise ValueError(
+                f"Minimal-pair plan requires {config.representatives_per_primary_label} packs for {label}, got {len(group)}"
+            )
+        selected_packs.extend(group.head(int(config.representatives_per_primary_label)).to_dict(orient="records"))
 
-    rows: list[dict[str, Any]] = []
-    for pack in packs:
-        if pack.get("target_label") not in set(config.primary_labels):
-            continue
-        if accepted_packets is not None and accepted_packets and str(pack["packet_id"]) not in accepted_packets:
-            continue
-        if str(pack["packet_id"]) not in explanation_by_packet:
-            continue
-        rows.append(
+    selected: list[dict[str, Any]] = []
+    for pack in selected_packs:
+        packet_id = str(pack["packet_id"])
+        candidates = explanations_by_packet.get(packet_id, [])
+        if not candidates:
+            raise ValueError(f"Minimal-pair representative {packet_id} has no validated explanation")
+        ranked = sorted(
+            candidates,
+            key=lambda explanation: (
+                status_order.get(
+                    str(metric_by_explanation.get(str(explanation.get("task_id")), {}).get("status", "unscored")),
+                    99,
+                ),
+                -float(metric_by_explanation.get(str(explanation.get("task_id")), {}).get("auroc") or -1),
+                -float(explanation.get("confidence", 0)),
+                str(explanation.get("task_id", "")),
+            ),
+        )
+        explanation = ranked[0]
+        metric = metric_by_explanation.get(str(explanation.get("task_id")), {})
+        selected.append(
             {
-                "packet_id": pack["packet_id"],
-                "target_label": pack["target_label"],
-                "latent_idx": int(pack["latent_idx"]),
-                "rank_within_label": int(pack["rank_within_label"]),
-                "inclusion_frequency": float(pack.get("inclusion_frequency") or 0),
-                "explanation": explanation_by_packet[str(pack["packet_id"])],
+                **pack,
+                "explanation": explanation,
+                "scorer_status": str(metric.get("status", "unscored")),
+                "scorer_auroc": metric.get("auroc"),
             }
         )
-    df = pd.DataFrame(rows)
-    if df.empty:
-        return []
-    selected: list[dict[str, Any]] = []
-    for label, group in df.sort_values(
-        ["target_label", "inclusion_frequency", "rank_within_label"],
-        ascending=[True, False, True],
-    ).groupby("target_label", sort=False):
-        selected.extend(group.head(int(config.representatives_per_primary_label)).to_dict(orient="records"))
+
+    expected = len(config.primary_labels) * int(config.representatives_per_primary_label)
+    if len(selected) != expected:
+        raise AssertionError(f"Expected {expected} minimal-pair representatives, got {len(selected)}")
     return selected
 
 
@@ -111,7 +148,7 @@ def make_minimal_pair_tasks(
     config: MinimalPairTaskConfig = MinimalPairTaskConfig(),
 ) -> dict[str, Any]:
     output_path = Path(output_dir)
-    task_dir = output_path / "ide_tasks"
+    task_dir = output_path / "llm_tasks"
     raw_dir = output_path / "minimal_pairs" / "raw_designer_outputs"
     task_dir.mkdir(parents=True, exist_ok=True)
     raw_dir.mkdir(parents=True, exist_ok=True)
@@ -139,10 +176,12 @@ def make_minimal_pair_tasks(
                 "target_label": row["target_label"],
                 "latent_idx": int(row["latent_idx"]),
                 "rank_within_label": int(row["rank_within_label"]),
+                "scorer_status": row["scorer_status"],
+                "scorer_auroc": row["scorer_auroc"],
                 "prompt": _prompt_for_minimal_pairs(row["explanation"], config.pairs_per_latent),
                 "expected_output_path": str(raw_dir / f"{task_id}.json"),
                 "output_format": "json_list",
-                "status": "pending_gemini_in_antigravity",
+                "status": "pending_claude_code_llm",
             }
         )
     tasks_path = task_dir / "minimal_pair_designer_tasks.jsonl"
@@ -159,7 +198,9 @@ def make_minimal_pair_tasks(
             "raw_designer_output_dir": str(raw_dir),
         },
         "parameters": asdict(config),
+        "expected_tasks": int(len(config.primary_labels) * config.representatives_per_primary_label),
         "n_tasks": int(len(tasks)),
+        "plan_complete": bool(len(tasks) == len(config.primary_labels) * config.representatives_per_primary_label),
     }
     write_json(output_path / "minimal_pair_task_manifest.json", manifest)
     return manifest
@@ -181,6 +222,7 @@ def _normalize_pairs(payload: Any) -> list[dict[str, str]]:
         positive = str(item.get("positive_text", "")).strip()
         negative = str(item.get("negative_text", "")).strip()
         changed = str(item.get("changed_factor", "")).strip()
+        held_constant = str(item.get("held_constant", "")).strip()
         direction = str(item.get("expected_direction", "positive_greater_than_negative")).strip()
         if not positive or not negative:
             raise ValueError("Minimal pair missing positive_text or negative_text")
@@ -195,6 +237,7 @@ def _normalize_pairs(payload: Any) -> list[dict[str, str]]:
                 "positive_text": positive,
                 "negative_text": negative,
                 "changed_factor": changed,
+                "held_constant": held_constant,
                 "expected_direction": direction,
             }
         )
@@ -220,7 +263,7 @@ def validate_minimal_pair_outputs(
             retry.append(task)
             continue
         try:
-            normalized = _normalize_pairs(parse_gemini_json_file(raw_path))
+            normalized = _normalize_pairs(parse_llm_json_file(raw_path))
             for idx, pair in enumerate(normalized, start=1):
                 pairs.append(
                     {

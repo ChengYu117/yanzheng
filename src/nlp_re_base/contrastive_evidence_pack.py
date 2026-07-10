@@ -191,7 +191,9 @@ def stable_seed(*parts: Any) -> int:
 
 
 def normalise_text(value: Any) -> str:
-    return re.sub(r"\s+", " ", str(value or "").strip().lower())
+    text = str(value or "").strip().lower()
+    text = re.sub(r"[\W_]+", " ", text, flags=re.UNICODE)
+    return re.sub(r"\s+", " ", text).strip()
 
 
 def numeric_positive(value: Any) -> bool:
@@ -239,6 +241,7 @@ def prepare_pack_context(
     }
     return {
         "texts": texts,
+        "normalised_texts": [normalise_text(text) for text in texts],
         "active_labels": active_by_row,
         "label_masks": label_masks,
         "surface_scores": surface_scores,
@@ -513,6 +516,8 @@ def _append_samples(
     *,
     selected: list[dict[str, Any]],
     used_rows: set[int],
+    used_texts: set[str],
+    id_state: dict[str, int],
     row_indices: list[int],
     tag: str,
     internal_source: str,
@@ -525,12 +530,25 @@ def _append_samples(
     labels: tuple[str, ...],
     heldout: bool,
     prefix: str,
+    max_count: int | None = None,
     context: dict[str, Any] | None = None,
 ) -> None:
     for row_idx in row_indices:
+        if max_count is not None and len(selected) >= int(max_count):
+            break
         if int(row_idx) in used_rows:
             continue
-        sample_id = f"{prefix}{len(selected) + 1:03d}"
+        text = (
+            context["texts"][int(row_idx)]
+            if context is not None
+            else record_value(records[int(row_idx)], label_matrix.iloc[int(row_idx)], "unit_text", "text", "utterance", default="")
+        )
+        normalised = normalise_text(text)
+        if not normalised or normalised in used_texts:
+            continue
+        next_id = int(id_state.get("next", 1))
+        sample_id = f"{prefix}{next_id:03d}"
+        id_state["next"] = next_id + 1
         selected.append(
             _sample_row(
                 sample_id=sample_id,
@@ -549,6 +567,19 @@ def _append_samples(
             )
         )
         used_rows.add(int(row_idx))
+        used_texts.add(normalised)
+
+
+def _merge_ordered_rows(*orders: Iterable[int]) -> list[int]:
+    merged: list[int] = []
+    seen: set[int] = set()
+    for order in orders:
+        for value in order:
+            row_idx = int(value)
+            if row_idx not in seen:
+                seen.add(row_idx)
+                merged.append(row_idx)
+    return merged
 
 
 def _build_single_pack(
@@ -573,12 +604,17 @@ def _build_single_pack(
 
     packet_id = f"ctli_{packet_number:04d}"
     used_rows: set[int] = set()
+    used_texts: set[str] = set()
+    evidence_id_state = {"next": 1}
     samples: list[dict[str, Any]] = []
 
-    active_high = _order_desc(activations, np.flatnonzero(positive).astype(np.int64), config.active_high, used_rows)
+    positive_rows = np.flatnonzero(positive).astype(np.int64)
+    active_high = _order_desc(activations, positive_rows, len(positive_rows), used_rows)
     _append_samples(
         selected=samples,
         used_rows=used_rows,
+        used_texts=used_texts,
+        id_state=evidence_id_state,
         row_indices=active_high,
         tag="ACTIVE_HIGH",
         internal_source="top_activation",
@@ -591,17 +627,20 @@ def _build_single_pack(
         labels=labels,
         heldout=False,
         prefix="s",
+        max_count=config.active_high,
         context=context,
     )
 
     mid_candidates = _range_candidates(activations, 0.50, 0.75)
-    active_mid = _order_desc(activations, mid_candidates, config.active_mid, used_rows)
-    if len(active_mid) < config.active_mid:
-        fallback = _near_quantile_candidates(activations, 0.625)
-        active_mid += [idx for idx in fallback.tolist() if int(idx) not in used_rows][: config.active_mid - len(active_mid)]
+    active_mid = _merge_ordered_rows(
+        _order_desc(activations, mid_candidates, len(mid_candidates), used_rows),
+        [int(idx) for idx in _near_quantile_candidates(activations, 0.625).tolist() if bool(positive[int(idx)])],
+    )
     _append_samples(
         selected=samples,
         used_rows=used_rows,
+        used_texts=used_texts,
+        id_state=evidence_id_state,
         row_indices=active_mid,
         tag="ACTIVE_MID",
         internal_source="mid_nonzero_activation",
@@ -614,17 +653,20 @@ def _build_single_pack(
         labels=labels,
         heldout=False,
         prefix="s",
+        max_count=config.active_high + config.active_mid,
         context=context,
     )
 
     low_candidates = _range_candidates(activations, 0.05, 0.20)
-    active_low = _order_desc(activations, low_candidates, config.active_low, used_rows)
-    if len(active_low) < config.active_low:
-        fallback = _near_quantile_candidates(activations, 0.125)
-        active_low += [idx for idx in fallback.tolist() if int(idx) not in used_rows][: config.active_low - len(active_low)]
+    active_low = _merge_ordered_rows(
+        _order_desc(activations, low_candidates, len(low_candidates), used_rows),
+        _near_quantile_candidates(activations, 0.125).tolist(),
+    )
     _append_samples(
         selected=samples,
         used_rows=used_rows,
+        used_texts=used_texts,
+        id_state=evidence_id_state,
         row_indices=active_low,
         tag="ACTIVE_LOW",
         internal_source="low_nonzero_boundary",
@@ -637,6 +679,7 @@ def _build_single_pack(
         labels=labels,
         heldout=False,
         prefix="s",
+        max_count=config.active_high + config.active_mid + config.active_low,
         context=context,
     )
 
@@ -650,11 +693,12 @@ def _build_single_pack(
         exclude=used_rows,
         context=context,
     )
-    near_rows = near_order[: config.near_miss_surface]
     _append_samples(
         selected=samples,
         used_rows=used_rows,
-        row_indices=near_rows,
+        used_texts=used_texts,
+        id_state=evidence_id_state,
+        row_indices=near_order,
         tag="NONACTIVE_NEAR_MISS",
         internal_source="surface_or_adjacent_nonactive",
         target_label=target_label,
@@ -666,14 +710,17 @@ def _build_single_pack(
         labels=labels,
         heldout=False,
         prefix="s",
+        max_count=config.active_high + config.active_mid + config.active_low + config.near_miss_surface,
         context=context,
     )
 
     label_nonactive = np.flatnonzero(target & nonactive).astype(np.int64)
-    label_match_rows = _order_asc(activations, label_nonactive, config.nonactive_label_match, used_rows)
+    label_match_rows = _order_asc(activations, label_nonactive, len(label_nonactive), used_rows)
     _append_samples(
         selected=samples,
         used_rows=used_rows,
+        used_texts=used_texts,
+        id_state=evidence_id_state,
         row_indices=label_match_rows,
         tag="NONACTIVE_NEAR_MISS",
         internal_source="target_label_positive_nonactive_hidden_from_explainer",
@@ -686,14 +733,23 @@ def _build_single_pack(
         labels=labels,
         heldout=False,
         prefix="s",
+        max_count=(
+            config.active_high
+            + config.active_mid
+            + config.active_low
+            + config.near_miss_surface
+            + config.nonactive_label_match
+        ),
         context=context,
     )
 
     random_pool = np.flatnonzero(nonactive).astype(np.int64)
-    random_rows = _order_asc(activations, random_pool, config.nonactive_random, used_rows)
+    random_rows = _order_asc(activations, random_pool, len(random_pool), used_rows)
     _append_samples(
         selected=samples,
         used_rows=used_rows,
+        used_texts=used_texts,
+        id_state=evidence_id_state,
         row_indices=random_rows,
         tag="NONACTIVE_RANDOM",
         internal_source="lowest_activation_random_nonactive",
@@ -706,11 +762,20 @@ def _build_single_pack(
         labels=labels,
         heldout=False,
         prefix="s",
+        max_count=(
+            config.active_high
+            + config.active_mid
+            + config.active_low
+            + config.near_miss_surface
+            + config.nonactive_label_match
+            + config.nonactive_random
+        ),
         context=context,
     )
 
     evidence_rows = {int(sample["row_idx"]) for sample in samples}
     heldout_used: set[int] = set(evidence_rows)
+    heldout_id_state = {"next": 1}
     heldout: dict[str, list[dict[str, Any]]] = {
         "ACTIVE_HIGH": [],
         "ACTIVE_MID": [],
@@ -718,15 +783,12 @@ def _build_single_pack(
         "NONACTIVE_LABEL_MATCH": [],
     }
 
-    heldout_high = _order_desc(
-        activations,
-        np.flatnonzero(positive).astype(np.int64),
-        config.heldout_active_high,
-        heldout_used,
-    )
+    heldout_high = _order_desc(activations, positive_rows, len(positive_rows), heldout_used)
     _append_samples(
         selected=heldout["ACTIVE_HIGH"],
         used_rows=heldout_used,
+        used_texts=used_texts,
+        id_state=heldout_id_state,
         row_indices=heldout_high,
         tag="ACTIVE_HIGH",
         internal_source="heldout_top_activation",
@@ -738,22 +800,21 @@ def _build_single_pack(
         records=records,
         labels=labels,
         heldout=True,
-        prefix="h",
+        prefix="u",
+        max_count=config.heldout_active_high,
         context=context,
     )
 
     heldout_mid_candidates = _range_candidates(activations, 0.50, 0.75)
-    heldout_mid = _order_desc(activations, heldout_mid_candidates, config.heldout_active_mid, heldout_used)
-    if len(heldout_mid) < config.heldout_active_mid:
-        fallback = _near_quantile_candidates(activations, 0.625)
-        heldout_mid += [
-            int(idx)
-            for idx in fallback.tolist()
-            if int(idx) not in heldout_used and bool(positive[int(idx)])
-        ][: config.heldout_active_mid - len(heldout_mid)]
+    heldout_mid = _merge_ordered_rows(
+        _order_desc(activations, heldout_mid_candidates, len(heldout_mid_candidates), heldout_used),
+        [int(idx) for idx in _near_quantile_candidates(activations, 0.625).tolist() if bool(positive[int(idx)])],
+    )
     _append_samples(
         selected=heldout["ACTIVE_MID"],
         used_rows=heldout_used,
+        used_texts=used_texts,
+        id_state=heldout_id_state,
         row_indices=heldout_mid,
         tag="ACTIVE_MID",
         internal_source="heldout_mid_nonzero_activation",
@@ -765,7 +826,8 @@ def _build_single_pack(
         records=records,
         labels=labels,
         heldout=True,
-        prefix="h",
+        prefix="u",
+        max_count=config.heldout_active_mid,
         context=context,
     )
 
@@ -782,7 +844,9 @@ def _build_single_pack(
     _append_samples(
         selected=heldout["NONACTIVE_NEAR_MISS"],
         used_rows=heldout_used,
-        row_indices=heldout_near_order[: config.heldout_near_miss],
+        used_texts=used_texts,
+        id_state=heldout_id_state,
+        row_indices=heldout_near_order,
         tag="NONACTIVE_NEAR_MISS",
         internal_source="heldout_surface_or_adjacent_nonactive",
         target_label=target_label,
@@ -793,14 +857,17 @@ def _build_single_pack(
         records=records,
         labels=labels,
         heldout=True,
-        prefix="h",
+        prefix="u",
+        max_count=config.heldout_near_miss,
         context=context,
     )
 
-    heldout_label_rows = _order_asc(activations, label_nonactive, config.heldout_label_match, heldout_used)
+    heldout_label_rows = _order_asc(activations, label_nonactive, len(label_nonactive), heldout_used)
     _append_samples(
         selected=heldout["NONACTIVE_LABEL_MATCH"],
         used_rows=heldout_used,
+        used_texts=used_texts,
+        id_state=heldout_id_state,
         row_indices=heldout_label_rows,
         tag="NONACTIVE_LABEL_MATCH",
         internal_source="heldout_target_label_positive_nonactive_hidden_from_scorer",
@@ -812,7 +879,8 @@ def _build_single_pack(
         records=records,
         labels=labels,
         heldout=True,
-        prefix="h",
+        prefix="u",
+        max_count=config.heldout_label_match,
         context=context,
     )
 
@@ -824,6 +892,19 @@ def _build_single_pack(
     overlap = evidence_rows.intersection(heldout_rows)
     if overlap:
         raise AssertionError(f"Evidence/heldout row overlap for latent {latent_idx}: {sorted(overlap)[:10]}")
+    evidence_texts = {normalise_text(sample["text"]) for sample in samples}
+    heldout_samples = [sample for group in heldout.values() for sample in group]
+    heldout_texts = {normalise_text(sample["text"]) for sample in heldout_samples}
+    heldout_ids = [str(sample["id"]) for sample in heldout_samples]
+    if len(evidence_texts) != len(samples):
+        raise AssertionError(f"Duplicate evidence text for latent {latent_idx}")
+    if len(heldout_texts) != len(heldout_samples):
+        raise AssertionError(f"Duplicate heldout text for latent {latent_idx}")
+    text_overlap = evidence_texts.intersection(heldout_texts)
+    if text_overlap:
+        raise AssertionError(f"Evidence/heldout text overlap for latent {latent_idx}: {sorted(text_overlap)[:3]}")
+    if len(heldout_ids) != len(set(heldout_ids)):
+        raise AssertionError(f"Duplicate heldout sample id for latent {latent_idx}")
 
     samples_for_explainer = [project_sample_for_explainer(sample) for sample in samples]
     assert_label_blind_samples(samples_for_explainer)
@@ -844,6 +925,29 @@ def _build_single_pack(
         tag: int(sum(int(sample["ground_truth_activate"]) for sample in rows))
         for tag, rows in heldout.items()
     }
+    scarcity = {
+        tag: int(actual_counts.get(tag, 0)) < int(requested_counts.get(tag, 0))
+        for tag in requested_counts
+    } | {
+        f"heldout_{tag}": int(heldout_counts.get(tag, 0))
+        < int(
+            {
+                "ACTIVE_HIGH": config.heldout_active_high,
+                "ACTIVE_MID": config.heldout_active_mid,
+                "NONACTIVE_NEAR_MISS": config.heldout_near_miss,
+                "NONACTIVE_LABEL_MATCH": config.heldout_label_match,
+            }[tag]
+        )
+        for tag in heldout
+    }
+    n_heldout_positive = int(sum(int(sample["ground_truth_activate"]) for sample in heldout_samples))
+    n_heldout_negative = int(len(heldout_samples) - n_heldout_positive)
+    interpretability_eligible = not any(scarcity[tag] for tag in requested_counts)
+    scorer_eligible = bool(
+        not any(scarcity[f"heldout_{tag}"] for tag in heldout)
+        and n_heldout_positive == config.heldout_active_high + config.heldout_active_mid
+        and n_heldout_negative == config.heldout_near_miss + config.heldout_label_match
+    )
 
     return {
         "packet_id": packet_id,
@@ -883,22 +987,16 @@ def _build_single_pack(
             "n_evidence_rows": int(len(evidence_rows)),
             "n_heldout_rows": int(len(heldout_rows)),
             "evidence_heldout_disjoint": True,
-            "scarcity": {
-                tag: int(actual_counts.get(tag, 0)) < int(requested_counts.get(tag, 0))
-                for tag in requested_counts
-            }
-            | {
-                f"heldout_{tag}": int(heldout_counts.get(tag, 0))
-                < int(
-                    {
-                        "ACTIVE_HIGH": config.heldout_active_high,
-                        "ACTIVE_MID": config.heldout_active_mid,
-                        "NONACTIVE_NEAR_MISS": config.heldout_near_miss,
-                        "NONACTIVE_LABEL_MATCH": config.heldout_label_match,
-                    }[tag]
-                )
-                for tag in heldout
-            },
+            "n_heldout_positive": n_heldout_positive,
+            "n_heldout_negative": n_heldout_negative,
+            "evidence_text_unique": True,
+            "heldout_text_unique": True,
+            "evidence_heldout_text_disjoint": True,
+            "heldout_ids_unique": True,
+            "interpretability_eligible": interpretability_eligible,
+            "scorer_eligible": scorer_eligible,
+            "scarcity_reason": sorted(key for key, value in scarcity.items() if value),
+            "scarcity": scarcity,
         },
     }
 
@@ -966,6 +1064,15 @@ def pack_summary_rows(packs: list[dict[str, Any]]) -> list[dict[str, Any]]:
             "n_nonzero_activation": pack.get("n_nonzero_activation"),
             "n_evidence_rows": summary.get("n_evidence_rows"),
             "n_heldout_rows": summary.get("n_heldout_rows"),
+            "n_heldout_positive": summary.get("n_heldout_positive"),
+            "n_heldout_negative": summary.get("n_heldout_negative"),
+            "evidence_text_unique": summary.get("evidence_text_unique"),
+            "heldout_text_unique": summary.get("heldout_text_unique"),
+            "evidence_heldout_text_disjoint": summary.get("evidence_heldout_text_disjoint"),
+            "heldout_ids_unique": summary.get("heldout_ids_unique"),
+            "interpretability_eligible": summary.get("interpretability_eligible"),
+            "scorer_eligible": summary.get("scorer_eligible"),
+            "scarcity_reason": ",".join(summary.get("scarcity_reason", [])),
         }
         for key, value in summary.get("actual_counts", {}).items():
             row[f"n_{key}"] = value
@@ -1036,6 +1143,26 @@ def run_build_contrastive_evidence_packs(
         "label_matrix_rows": int(len(label_matrix)),
         "records_rows": int(len(records)),
         "scarcity_counts": scarcity_counts,
+        "integrity": {
+            "evidence_duplicate_text_packs": int(
+                sum(not bool(pack.get("summary", {}).get("evidence_text_unique")) for pack in packs)
+            ),
+            "heldout_duplicate_text_packs": int(
+                sum(not bool(pack.get("summary", {}).get("heldout_text_unique")) for pack in packs)
+            ),
+            "evidence_heldout_text_overlap_packs": int(
+                sum(not bool(pack.get("summary", {}).get("evidence_heldout_text_disjoint")) for pack in packs)
+            ),
+            "heldout_duplicate_id_packs": int(
+                sum(not bool(pack.get("summary", {}).get("heldout_ids_unique")) for pack in packs)
+            ),
+            "interpretability_eligible_packs": int(
+                sum(bool(pack.get("summary", {}).get("interpretability_eligible")) for pack in packs)
+            ),
+            "scorer_eligible_packs": int(
+                sum(bool(pack.get("summary", {}).get("scorer_eligible")) for pack in packs)
+            ),
+        },
         "label_blind_projection": {
             "visible_sample_keys": list(VISIBLE_SAMPLE_KEYS),
             "forbidden_keys": sorted(FORBIDDEN_EXPLAINER_KEYS),
@@ -1058,6 +1185,7 @@ __all__ = [
     "jsonable",
     "load_feature_matrix",
     "normalise_latents",
+    "normalise_text",
     "pack_summary_rows",
     "read_jsonl",
     "run_build_contrastive_evidence_packs",

@@ -11,6 +11,7 @@ from src.nlp_re_base.contrastive_evidence_pack import (
     ContrastiveEvidenceConfig,
     FORBIDDEN_EXPLAINER_KEYS,
     build_contrastive_evidence_packs,
+    normalise_text,
     pack_summary_rows,
     run_build_contrastive_evidence_packs,
 )
@@ -155,6 +156,19 @@ def test_contrastive_evidence_pack() -> None:
                 for sample in samples
             }
             assert evidence_rows.isdisjoint(heldout_rows)
+            evidence_texts = [normalise_text(sample["text"]) for sample in pack["samples_internal"]]
+            heldout_samples = [
+                sample
+                for samples in pack["heldout_internal_by_tag"].values()
+                for sample in samples
+            ]
+            heldout_texts = [normalise_text(sample["text"]) for sample in heldout_samples]
+            heldout_ids = [sample["id"] for sample in heldout_samples]
+            assert len(evidence_texts) == len(set(evidence_texts))
+            assert len(heldout_texts) == len(set(heldout_texts))
+            assert set(evidence_texts).isdisjoint(heldout_texts)
+            assert len(heldout_ids) == len(set(heldout_ids))
+            assert all(str(sample_id).startswith("u") for sample_id in heldout_ids)
             assert {"ACTIVE_HIGH", "ACTIVE_MID", "ACTIVE_LOW", "NONACTIVE_NEAR_MISS", "NONACTIVE_RANDOM"}.issubset(
                 {sample["tag"] for sample in pack["samples_internal"]}
             )
@@ -163,6 +177,10 @@ def test_contrastive_evidence_pack() -> None:
         summary = pd.DataFrame(pack_summary_rows(packs))
         assert summary["n_evidence_rows"].min() > 0
         assert summary["n_heldout_rows"].min() > 0
+        assert summary["evidence_text_unique"].all()
+        assert summary["heldout_text_unique"].all()
+        assert summary["evidence_heldout_text_disjoint"].all()
+        assert summary["heldout_ids_unique"].all()
 
         latents_path = root / "latents.csv"
         features_path = root / "features.npy"

@@ -1,0 +1,5890 @@
+[
+ {
+  "task_id": "ctli_0111_explainer_r01",
+  "packet_id": "ctli_0111",
+  "latent_idx": 31915,
+  "repeat": 1,
+  "samples": [
+   {
+    "id": "s006",
+    "tag": "ACTIVE_MID",
+    "activation": 1.35938,
+    "text": "yeah exactly you know I'm not gonna let you get away with saying stuff like that all right"
+   },
+   {
+    "id": "s002",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.45312,
+    "text": "okay so you pretty much it feels like it works for you and you kind of have it spelled out where you know it goes smooth so you're sort of balancing that"
+   },
+   {
+    "id": "s008",
+    "tag": "ACTIVE_MID",
+    "activation": 1.35938,
+    "text": "and things are thrown at you and you have to be a little bit valuable to your different situation"
+   },
+   {
+    "id": "s013",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.523438,
+    "text": "okay great  it sounds like you're eating pretty  healthy"
+   },
+   {
+    "id": "s011",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.59375,
+    "text": "did you stand out that party is being more intoxicated or was everybody intoxicated"
+   },
+   {
+    "id": "s007",
+    "tag": "ACTIVE_MID",
+    "activation": 1.35938,
+    "text": "okay can you tell me a little bit about the difference a pleasure you get from the weekends you're drinking alcohol to the weekends you know I"
+   },
+   {
+    "id": "s019",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "hey Monica how are you doing today"
+   },
+   {
+    "id": "s005",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.35938,
+    "text": "socially everything is going well too just trying to keep everything balanced it's a but I mean I feel like I'm doing a pretty good job of it"
+   },
+   {
+    "id": "s012",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.585938,
+    "text": "okay great so you're doing well"
+   },
+   {
+    "id": "s018",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "there's big change gears to get healthy"
+   },
+   {
+    "id": "s020",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "that sounds like a great idea"
+   },
+   {
+    "id": "s009",
+    "tag": "ACTIVE_MID",
+    "activation": 1.35938,
+    "text": "so thought it was what people are doing it so does it sound like you're really worried about losing your social support if you stop using not really so what are you losing"
+   },
+   {
+    "id": "s001",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.48438,
+    "text": "it's maybe a big one for you right that you're waking up your don't have any scars you got to listen to your music you got to you're smelling good right you're feeling good maybe"
+   },
+   {
+    "id": "s017",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "I'm guessing you've learned a lot of lessons"
+   },
+   {
+    "id": "s014",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "right you've got it okay good"
+   },
+   {
+    "id": "s004",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.39062,
+    "text": "yeah I understand so you you like having fun your friends drinking is a normal thing for you guys to do and you don't see a problem with what you're doing with your friends like you're just drinking one"
+   },
+   {
+    "id": "s003",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.42188,
+    "text": "you went from this strict dieting all-or-nothing kind of plan do not really knowing how to make food for yourself or compose a meal for yourself because you were"
+   },
+   {
+    "id": "s015",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "thank you very much I really appreciate your time today"
+   },
+   {
+    "id": "s016",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "and you feel like that's really impacting your day"
+   },
+   {
+    "id": "s010",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.59375,
+    "text": "so your workplace just went smoke free you're not too pleased huh"
+   }
+  ]
+ },
+ {
+  "task_id": "ctli_0111_explainer_r02",
+  "packet_id": "ctli_0111",
+  "latent_idx": 31915,
+  "repeat": 2,
+  "samples": [
+   {
+    "id": "s009",
+    "tag": "ACTIVE_MID",
+    "activation": 1.35938,
+    "text": "so thought it was what people are doing it so does it sound like you're really worried about losing your social support if you stop using not really so what are you losing"
+   },
+   {
+    "id": "s001",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.48438,
+    "text": "it's maybe a big one for you right that you're waking up your don't have any scars you got to listen to your music you got to you're smelling good right you're feeling good maybe"
+   },
+   {
+    "id": "s016",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "and you feel like that's really impacting your day"
+   },
+   {
+    "id": "s019",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "hey Monica how are you doing today"
+   },
+   {
+    "id": "s015",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "thank you very much I really appreciate your time today"
+   },
+   {
+    "id": "s006",
+    "tag": "ACTIVE_MID",
+    "activation": 1.35938,
+    "text": "yeah exactly you know I'm not gonna let you get away with saying stuff like that all right"
+   },
+   {
+    "id": "s007",
+    "tag": "ACTIVE_MID",
+    "activation": 1.35938,
+    "text": "okay can you tell me a little bit about the difference a pleasure you get from the weekends you're drinking alcohol to the weekends you know I"
+   },
+   {
+    "id": "s005",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.35938,
+    "text": "socially everything is going well too just trying to keep everything balanced it's a but I mean I feel like I'm doing a pretty good job of it"
+   },
+   {
+    "id": "s012",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.585938,
+    "text": "okay great so you're doing well"
+   },
+   {
+    "id": "s003",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.42188,
+    "text": "you went from this strict dieting all-or-nothing kind of plan do not really knowing how to make food for yourself or compose a meal for yourself because you were"
+   },
+   {
+    "id": "s020",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "that sounds like a great idea"
+   },
+   {
+    "id": "s011",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.59375,
+    "text": "did you stand out that party is being more intoxicated or was everybody intoxicated"
+   },
+   {
+    "id": "s010",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.59375,
+    "text": "so your workplace just went smoke free you're not too pleased huh"
+   },
+   {
+    "id": "s017",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "I'm guessing you've learned a lot of lessons"
+   },
+   {
+    "id": "s018",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "there's big change gears to get healthy"
+   },
+   {
+    "id": "s014",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "right you've got it okay good"
+   },
+   {
+    "id": "s002",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.45312,
+    "text": "okay so you pretty much it feels like it works for you and you kind of have it spelled out where you know it goes smooth so you're sort of balancing that"
+   },
+   {
+    "id": "s013",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.523438,
+    "text": "okay great  it sounds like you're eating pretty  healthy"
+   },
+   {
+    "id": "s008",
+    "tag": "ACTIVE_MID",
+    "activation": 1.35938,
+    "text": "and things are thrown at you and you have to be a little bit valuable to your different situation"
+   },
+   {
+    "id": "s004",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.39062,
+    "text": "yeah I understand so you you like having fun your friends drinking is a normal thing for you guys to do and you don't see a problem with what you're doing with your friends like you're just drinking one"
+   }
+  ]
+ },
+ {
+  "task_id": "ctli_0112_explainer_r01",
+  "packet_id": "ctli_0112",
+  "latent_idx": 4018,
+  "repeat": 1,
+  "samples": [
+   {
+    "id": "s007",
+    "tag": "ACTIVE_MID",
+    "activation": 0.871094,
+    "text": "is the number okay let's go you do with thigh okay I think I can do  all right so if you were to want to lose  pounds how would you go about it"
+   },
+   {
+    "id": "s006",
+    "tag": "ACTIVE_MID",
+    "activation": 0.871094,
+    "text": "yeah sounds good"
+   },
+   {
+    "id": "s002",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.1875,
+    "text": "I noticed from your previous physical exam couple days ago that your blood pressure seems to be a little bit high it was around  over"
+   },
+   {
+    "id": "s001",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.26562,
+    "text": "and so you feel relaxed and you would feel more positive"
+   },
+   {
+    "id": "s003",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.0625,
+    "text": "in fact it seems like you're feeling pretty sad and maybe even a little hopeless"
+   },
+   {
+    "id": "s016",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "okay so sounds like you've seen some improvement your blood Sugar's have been sometimes under control"
+   },
+   {
+    "id": "s015",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.515625,
+    "text": "okay that sounds like a great idea"
+   },
+   {
+    "id": "s018",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "well in all seriousness is I know there's other hard things you've been through"
+   },
+   {
+    "id": "s004",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.01562,
+    "text": "and according to your profile it looks like you're taking likes in Aprill hydrochlorothiazide and simvastatin which is one of those medications"
+   },
+   {
+    "id": "s017",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "so you're really not confident that you'd be successful long-term"
+   },
+   {
+    "id": "s008",
+    "tag": "ACTIVE_MID",
+    "activation": 0.871094,
+    "text": "sorry earlier I think fix I think I'm going to have to it's to ivett it sorry Susan riese if what you're asking"
+   },
+   {
+    "id": "s013",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.515625,
+    "text": "okay that sounds like an excellent plan"
+   },
+   {
+    "id": "s005",
+    "tag": "ACTIVE_HIGH",
+    "activation": 1.875,
+    "text": "it it seems like I've used to this question which we called a miracle question"
+   },
+   {
+    "id": "s011",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.478516,
+    "text": "is there a strategy that you use that that that you have found to be successful in your experience with maybe that the problem cases are the harder cases"
+   },
+   {
+    "id": "s009",
+    "tag": "ACTIVE_MID",
+    "activation": 0.871094,
+    "text": "okay a few right here it looks like you haven't had your insulin refilled in a couple of months have you been using it?"
+   },
+   {
+    "id": "s020",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": -0.0,
+    "text": "can absolutely do that"
+   },
+   {
+    "id": "s019",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": -0.0,
+    "text": "hey Monica how are you doing today"
+   },
+   {
+    "id": "s014",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.515625,
+    "text": "okay that sounds like a pretty strong commitment"
+   },
+   {
+    "id": "s010",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.478516,
+    "text": "sounds like a good choice for you and given that you have some experience with it and you know that it works for you"
+   },
+   {
+    "id": "s012",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.539062,
+    "text": "so it sounds like you've got a connection there already that's really good"
+   }
+  ]
+ },
+ {
+  "task_id": "ctli_0112_explainer_r02",
+  "packet_id": "ctli_0112",
+  "latent_idx": 4018,
+  "repeat": 2,
+  "samples": [
+   {
+    "id": "s008",
+    "tag": "ACTIVE_MID",
+    "activation": 0.871094,
+    "text": "sorry earlier I think fix I think I'm going to have to it's to ivett it sorry Susan riese if what you're asking"
+   },
+   {
+    "id": "s016",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "okay so sounds like you've seen some improvement your blood Sugar's have been sometimes under control"
+   },
+   {
+    "id": "s015",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.515625,
+    "text": "okay that sounds like a great idea"
+   },
+   {
+    "id": "s019",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": -0.0,
+    "text": "hey Monica how are you doing today"
+   },
+   {
+    "id": "s011",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.478516,
+    "text": "is there a strategy that you use that that that you have found to be successful in your experience with maybe that the problem cases are the harder cases"
+   },
+   {
+    "id": "s006",
+    "tag": "ACTIVE_MID",
+    "activation": 0.871094,
+    "text": "yeah sounds good"
+   },
+   {
+    "id": "s007",
+    "tag": "ACTIVE_MID",
+    "activation": 0.871094,
+    "text": "is the number okay let's go you do with thigh okay I think I can do  all right so if you were to want to lose  pounds how would you go about it"
+   },
+   {
+    "id": "s012",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.539062,
+    "text": "so it sounds like you've got a connection there already that's really good"
+   },
+   {
+    "id": "s014",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.515625,
+    "text": "okay that sounds like a pretty strong commitment"
+   },
+   {
+    "id": "s005",
+    "tag": "ACTIVE_HIGH",
+    "activation": 1.875,
+    "text": "it it seems like I've used to this question which we called a miracle question"
+   },
+   {
+    "id": "s017",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "so you're really not confident that you'd be successful long-term"
+   },
+   {
+    "id": "s020",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": -0.0,
+    "text": "can absolutely do that"
+   },
+   {
+    "id": "s002",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.1875,
+    "text": "I noticed from your previous physical exam couple days ago that your blood pressure seems to be a little bit high it was around  over"
+   },
+   {
+    "id": "s010",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.478516,
+    "text": "sounds like a good choice for you and given that you have some experience with it and you know that it works for you"
+   },
+   {
+    "id": "s009",
+    "tag": "ACTIVE_MID",
+    "activation": 0.871094,
+    "text": "okay a few right here it looks like you haven't had your insulin refilled in a couple of months have you been using it?"
+   },
+   {
+    "id": "s018",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "well in all seriousness is I know there's other hard things you've been through"
+   },
+   {
+    "id": "s013",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.515625,
+    "text": "okay that sounds like an excellent plan"
+   },
+   {
+    "id": "s004",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.01562,
+    "text": "and according to your profile it looks like you're taking likes in Aprill hydrochlorothiazide and simvastatin which is one of those medications"
+   },
+   {
+    "id": "s001",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.26562,
+    "text": "and so you feel relaxed and you would feel more positive"
+   },
+   {
+    "id": "s003",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.0625,
+    "text": "in fact it seems like you're feeling pretty sad and maybe even a little hopeless"
+   }
+  ]
+ },
+ {
+  "task_id": "ctli_0113_explainer_r01",
+  "packet_id": "ctli_0113",
+  "latent_idx": 17861,
+  "repeat": 1,
+  "samples": [
+   {
+    "id": "s004",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.07812,
+    "text": "And you take niacin."
+   },
+   {
+    "id": "s016",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "there's big change gears to get healthy"
+   },
+   {
+    "id": "s012",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 1.28125,
+    "text": "well those are some great alternatives instead of going to gym you save a lot of time"
+   },
+   {
+    "id": "s013",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 1.25781,
+    "text": "you know I appreciate you talking to me about this"
+   },
+   {
+    "id": "s019",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "that sounds like a great idea"
+   },
+   {
+    "id": "s009",
+    "tag": "ACTIVE_MID",
+    "activation": 1.50781,
+    "text": "okay so it seems that you can't offend that they feel offended you refer to me"
+   },
+   {
+    "id": "s006",
+    "tag": "ACTIVE_MID",
+    "activation": 1.50781,
+    "text": "a few more weeks so I'll see you again I know you have the IOP and everything here I'll see you again in a week and let's pick up with that anything changes we're hearing is moved up just snubby now"
+   },
+   {
+    "id": "s014",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 1.25,
+    "text": "okay great  it sounds like you're eating pretty  healthy"
+   },
+   {
+    "id": "s015",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 1.24219,
+    "text": "Well, I appreciate you thinking about it"
+   },
+   {
+    "id": "s011",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.945312,
+    "text": "right exactly so you know fears associated with that urge like you said to run out the door so instead of running out the door we want you to approach the thing that's scary which is this cheesecake right now right"
+   },
+   {
+    "id": "s008",
+    "tag": "ACTIVE_MID",
+    "activation": 1.50781,
+    "text": "well cast our walls I'm really glad that you were able to find some time to actually get get together"
+   },
+   {
+    "id": "s018",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "like to make some adjustments to to make it a little smoother"
+   },
+   {
+    "id": "s017",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "okay so there's sort of pros and cons"
+   },
+   {
+    "id": "s001",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.125,
+    "text": "you keep throwing wine into the conversation"
+   },
+   {
+    "id": "s003",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.07812,
+    "text": "and you told her heart she's she's hard work isn't she that's what I heard her years ago girly"
+   },
+   {
+    "id": "s007",
+    "tag": "ACTIVE_MID",
+    "activation": 1.50781,
+    "text": "okay so it sounds like you're willing to make a change and you're getting kind of excited about possibly having more energy"
+   },
+   {
+    "id": "s010",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.945312,
+    "text": "are you picking up for yourself today or for somebody else"
+   },
+   {
+    "id": "s020",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "can absolutely do that"
+   },
+   {
+    "id": "s002",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.09375,
+    "text": "and you keep trying"
+   },
+   {
+    "id": "s005",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.03125,
+    "text": "and and you told me that you ordered the New York strip steak"
+   }
+  ]
+ },
+ {
+  "task_id": "ctli_0113_explainer_r02",
+  "packet_id": "ctli_0113",
+  "latent_idx": 17861,
+  "repeat": 2,
+  "samples": [
+   {
+    "id": "s015",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 1.24219,
+    "text": "Well, I appreciate you thinking about it"
+   },
+   {
+    "id": "s008",
+    "tag": "ACTIVE_MID",
+    "activation": 1.50781,
+    "text": "well cast our walls I'm really glad that you were able to find some time to actually get get together"
+   },
+   {
+    "id": "s018",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "like to make some adjustments to to make it a little smoother"
+   },
+   {
+    "id": "s011",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.945312,
+    "text": "right exactly so you know fears associated with that urge like you said to run out the door so instead of running out the door we want you to approach the thing that's scary which is this cheesecake right now right"
+   },
+   {
+    "id": "s005",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.03125,
+    "text": "and and you told me that you ordered the New York strip steak"
+   },
+   {
+    "id": "s002",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.09375,
+    "text": "and you keep trying"
+   },
+   {
+    "id": "s013",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 1.25781,
+    "text": "you know I appreciate you talking to me about this"
+   },
+   {
+    "id": "s019",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "that sounds like a great idea"
+   },
+   {
+    "id": "s001",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.125,
+    "text": "you keep throwing wine into the conversation"
+   },
+   {
+    "id": "s007",
+    "tag": "ACTIVE_MID",
+    "activation": 1.50781,
+    "text": "okay so it sounds like you're willing to make a change and you're getting kind of excited about possibly having more energy"
+   },
+   {
+    "id": "s009",
+    "tag": "ACTIVE_MID",
+    "activation": 1.50781,
+    "text": "okay so it seems that you can't offend that they feel offended you refer to me"
+   },
+   {
+    "id": "s010",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.945312,
+    "text": "are you picking up for yourself today or for somebody else"
+   },
+   {
+    "id": "s004",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.07812,
+    "text": "And you take niacin."
+   },
+   {
+    "id": "s016",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "there's big change gears to get healthy"
+   },
+   {
+    "id": "s020",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "can absolutely do that"
+   },
+   {
+    "id": "s012",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 1.28125,
+    "text": "well those are some great alternatives instead of going to gym you save a lot of time"
+   },
+   {
+    "id": "s014",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 1.25,
+    "text": "okay great  it sounds like you're eating pretty  healthy"
+   },
+   {
+    "id": "s006",
+    "tag": "ACTIVE_MID",
+    "activation": 1.50781,
+    "text": "a few more weeks so I'll see you again I know you have the IOP and everything here I'll see you again in a week and let's pick up with that anything changes we're hearing is moved up just snubby now"
+   },
+   {
+    "id": "s017",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "okay so there's sort of pros and cons"
+   },
+   {
+    "id": "s003",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.07812,
+    "text": "and you told her heart she's she's hard work isn't she that's what I heard her years ago girly"
+   }
+  ]
+ },
+ {
+  "task_id": "ctli_0114_explainer_r01",
+  "packet_id": "ctli_0114",
+  "latent_idx": 2995,
+  "repeat": 1,
+  "samples": [
+   {
+    "id": "s011",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.53125,
+    "text": "and what you say here is that even on this sheet you're perhaps already drinking more than that"
+   },
+   {
+    "id": "s003",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.76562,
+    "text": "um yeah I don't think you will so so so your pastor's home actually might be a physically safe place for you all to go"
+   },
+   {
+    "id": "s017",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "so you're really not confident that you'd be successful long-term"
+   },
+   {
+    "id": "s015",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.648438,
+    "text": "yeah so kind of keeping your options open yeah definitely great"
+   },
+   {
+    "id": "s001",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.89062,
+    "text": "I don't remember the exact timeframe but it's somewhere around there"
+   },
+   {
+    "id": "s012",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.753906,
+    "text": "it's good to see you up and about"
+   },
+   {
+    "id": "s007",
+    "tag": "ACTIVE_MID",
+    "activation": 1.10938,
+    "text": "so there might be an after effect that you would it's going to be absent on your way home"
+   },
+   {
+    "id": "s013",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.75,
+    "text": "okay that sounds like a great idea"
+   },
+   {
+    "id": "s004",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.75,
+    "text": "I haven't look in your file, what brings you in today?"
+   },
+   {
+    "id": "s020",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": -0.0,
+    "text": "can absolutely do that"
+   },
+   {
+    "id": "s019",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": -0.0,
+    "text": "hey Monica how are you doing today"
+   },
+   {
+    "id": "s014",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.738281,
+    "text": "it's obvious that you're a good mom"
+   },
+   {
+    "id": "s005",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.70312,
+    "text": "because this is something that that's very important not just for your overall physical health even your oral healt"
+   },
+   {
+    "id": "s018",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "I'm guessing you've learned a lot of lessons"
+   },
+   {
+    "id": "s016",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "and you feel like that's really impacting your day"
+   },
+   {
+    "id": "s010",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.53125,
+    "text": "so Jane it sounds like you're angry with your supervisor"
+   },
+   {
+    "id": "s006",
+    "tag": "ACTIVE_MID",
+    "activation": 1.10938,
+    "text": "so it sounds like you mentioned that you had been going to church some like the people that you had"
+   },
+   {
+    "id": "s009",
+    "tag": "ACTIVE_MID",
+    "activation": 1.10938,
+    "text": "or it sounds like you kind of got a sense of how it works"
+   },
+   {
+    "id": "s008",
+    "tag": "ACTIVE_MID",
+    "activation": 1.10938,
+    "text": "okay well I appreciate you bringing it up"
+   },
+   {
+    "id": "s002",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.875,
+    "text": "this is a big stuff for you I know I'm it's hard to make a step like this"
+   }
+  ]
+ },
+ {
+  "task_id": "ctli_0114_explainer_r02",
+  "packet_id": "ctli_0114",
+  "latent_idx": 2995,
+  "repeat": 2,
+  "samples": [
+   {
+    "id": "s009",
+    "tag": "ACTIVE_MID",
+    "activation": 1.10938,
+    "text": "or it sounds like you kind of got a sense of how it works"
+   },
+   {
+    "id": "s017",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "so you're really not confident that you'd be successful long-term"
+   },
+   {
+    "id": "s002",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.875,
+    "text": "this is a big stuff for you I know I'm it's hard to make a step like this"
+   },
+   {
+    "id": "s001",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.89062,
+    "text": "I don't remember the exact timeframe but it's somewhere around there"
+   },
+   {
+    "id": "s013",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.75,
+    "text": "okay that sounds like a great idea"
+   },
+   {
+    "id": "s018",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "I'm guessing you've learned a lot of lessons"
+   },
+   {
+    "id": "s012",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.753906,
+    "text": "it's good to see you up and about"
+   },
+   {
+    "id": "s019",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": -0.0,
+    "text": "hey Monica how are you doing today"
+   },
+   {
+    "id": "s005",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.70312,
+    "text": "because this is something that that's very important not just for your overall physical health even your oral healt"
+   },
+   {
+    "id": "s008",
+    "tag": "ACTIVE_MID",
+    "activation": 1.10938,
+    "text": "okay well I appreciate you bringing it up"
+   },
+   {
+    "id": "s015",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.648438,
+    "text": "yeah so kind of keeping your options open yeah definitely great"
+   },
+   {
+    "id": "s003",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.76562,
+    "text": "um yeah I don't think you will so so so your pastor's home actually might be a physically safe place for you all to go"
+   },
+   {
+    "id": "s014",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.738281,
+    "text": "it's obvious that you're a good mom"
+   },
+   {
+    "id": "s011",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.53125,
+    "text": "and what you say here is that even on this sheet you're perhaps already drinking more than that"
+   },
+   {
+    "id": "s010",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.53125,
+    "text": "so Jane it sounds like you're angry with your supervisor"
+   },
+   {
+    "id": "s006",
+    "tag": "ACTIVE_MID",
+    "activation": 1.10938,
+    "text": "so it sounds like you mentioned that you had been going to church some like the people that you had"
+   },
+   {
+    "id": "s007",
+    "tag": "ACTIVE_MID",
+    "activation": 1.10938,
+    "text": "so there might be an after effect that you would it's going to be absent on your way home"
+   },
+   {
+    "id": "s004",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.75,
+    "text": "I haven't look in your file, what brings you in today?"
+   },
+   {
+    "id": "s020",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": -0.0,
+    "text": "can absolutely do that"
+   },
+   {
+    "id": "s016",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "and you feel like that's really impacting your day"
+   }
+  ]
+ },
+ {
+  "task_id": "ctli_0115_explainer_r01",
+  "packet_id": "ctli_0115",
+  "latent_idx": 3416,
+  "repeat": 1,
+  "samples": [
+   {
+    "id": "s016",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "and you feel like that's really impacting your day"
+   },
+   {
+    "id": "s015",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "okay great so you're doing well"
+   },
+   {
+    "id": "s017",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "okay so sounds like you've seen some improvement your blood Sugar's have been sometimes under control"
+   },
+   {
+    "id": "s012",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.839844,
+    "text": "well it's great that's a good thing that you're going home soon"
+   },
+   {
+    "id": "s002",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.32812,
+    "text": "okay so if I understand you correctly it is about your priority right now"
+   },
+   {
+    "id": "s003",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.15625,
+    "text": "okay so a portion of the time it's working in the other portion the time it's kind of like you just go with the flow"
+   },
+   {
+    "id": "s014",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.609375,
+    "text": "very good so it looks like you're using a good method of birth control"
+   },
+   {
+    "id": "s007",
+    "tag": "ACTIVE_MID",
+    "activation": 1.07812,
+    "text": "well I also want to reiterate that it's you know there's no good food and bad food right there's no such thing as good food bad food that's when we we come to pick like portion sizes right"
+   },
+   {
+    "id": "s019",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": -0.0,
+    "text": "hey Monica how are you doing today"
+   },
+   {
+    "id": "s009",
+    "tag": "ACTIVE_MID",
+    "activation": 1.07812,
+    "text": "You said it's not, that... something you do all that often"
+   },
+   {
+    "id": "s010",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.519531,
+    "text": "but but you did say it more descriptively which is great"
+   },
+   {
+    "id": "s008",
+    "tag": "ACTIVE_MID",
+    "activation": 1.07812,
+    "text": "so that you are in control but it doesn't work out for the best yeah"
+   },
+   {
+    "id": "s011",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.519531,
+    "text": "no I wouldn't imagine it would"
+   },
+   {
+    "id": "s018",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "so you're really not confident that you'd be successful long-term"
+   },
+   {
+    "id": "s005",
+    "tag": "ACTIVE_HIGH",
+    "activation": 1.99219,
+    "text": "okay so the goal is just not have it at home"
+   },
+   {
+    "id": "s004",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.14062,
+    "text": "yes so it just started today then"
+   },
+   {
+    "id": "s013",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.839844,
+    "text": "okay Don it's been really good to talking with you today thank you"
+   },
+   {
+    "id": "s001",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.35938,
+    "text": "oh okay it's about sharing there's that yeah really that piece of connectedness that's really important for you"
+   },
+   {
+    "id": "s006",
+    "tag": "ACTIVE_MID",
+    "activation": 1.07812,
+    "text": "hi mr. seed or if my name is Dave it's nice to meet you I'm your pharmacist here today"
+   },
+   {
+    "id": "s020",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": -0.0,
+    "text": "that sounds like a great idea"
+   }
+  ]
+ },
+ {
+  "task_id": "ctli_0115_explainer_r02",
+  "packet_id": "ctli_0115",
+  "latent_idx": 3416,
+  "repeat": 2,
+  "samples": [
+   {
+    "id": "s002",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.32812,
+    "text": "okay so if I understand you correctly it is about your priority right now"
+   },
+   {
+    "id": "s013",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.839844,
+    "text": "okay Don it's been really good to talking with you today thank you"
+   },
+   {
+    "id": "s016",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "and you feel like that's really impacting your day"
+   },
+   {
+    "id": "s004",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.14062,
+    "text": "yes so it just started today then"
+   },
+   {
+    "id": "s008",
+    "tag": "ACTIVE_MID",
+    "activation": 1.07812,
+    "text": "so that you are in control but it doesn't work out for the best yeah"
+   },
+   {
+    "id": "s019",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": -0.0,
+    "text": "hey Monica how are you doing today"
+   },
+   {
+    "id": "s015",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "okay great so you're doing well"
+   },
+   {
+    "id": "s003",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.15625,
+    "text": "okay so a portion of the time it's working in the other portion the time it's kind of like you just go with the flow"
+   },
+   {
+    "id": "s001",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.35938,
+    "text": "oh okay it's about sharing there's that yeah really that piece of connectedness that's really important for you"
+   },
+   {
+    "id": "s010",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.519531,
+    "text": "but but you did say it more descriptively which is great"
+   },
+   {
+    "id": "s006",
+    "tag": "ACTIVE_MID",
+    "activation": 1.07812,
+    "text": "hi mr. seed or if my name is Dave it's nice to meet you I'm your pharmacist here today"
+   },
+   {
+    "id": "s017",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "okay so sounds like you've seen some improvement your blood Sugar's have been sometimes under control"
+   },
+   {
+    "id": "s012",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.839844,
+    "text": "well it's great that's a good thing that you're going home soon"
+   },
+   {
+    "id": "s009",
+    "tag": "ACTIVE_MID",
+    "activation": 1.07812,
+    "text": "You said it's not, that... something you do all that often"
+   },
+   {
+    "id": "s014",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.609375,
+    "text": "very good so it looks like you're using a good method of birth control"
+   },
+   {
+    "id": "s007",
+    "tag": "ACTIVE_MID",
+    "activation": 1.07812,
+    "text": "well I also want to reiterate that it's you know there's no good food and bad food right there's no such thing as good food bad food that's when we we come to pick like portion sizes right"
+   },
+   {
+    "id": "s005",
+    "tag": "ACTIVE_HIGH",
+    "activation": 1.99219,
+    "text": "okay so the goal is just not have it at home"
+   },
+   {
+    "id": "s011",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.519531,
+    "text": "no I wouldn't imagine it would"
+   },
+   {
+    "id": "s018",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "so you're really not confident that you'd be successful long-term"
+   },
+   {
+    "id": "s020",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": -0.0,
+    "text": "that sounds like a great idea"
+   }
+  ]
+ },
+ {
+  "task_id": "ctli_0116_explainer_r01",
+  "packet_id": "ctli_0116",
+  "latent_idx": 26869,
+  "repeat": 1,
+  "samples": [
+   {
+    "id": "s008",
+    "tag": "ACTIVE_MID",
+    "activation": 1.67188,
+    "text": "yes I've been been in for a while but lately I've noticed these white spots appearing on my teeth they've sure that they're before"
+   },
+   {
+    "id": "s001",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.89062,
+    "text": "so that must be really frightening to be so confused about your dad's expectations"
+   },
+   {
+    "id": "s011",
+    "tag": "ACTIVE_LOW",
+    "activation": 1.35938,
+    "text": "that's why we're here"
+   },
+   {
+    "id": "s016",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "right and then with the respect one of the things you mentioned is really wanting to respect yourself and not sort of cross boundaries not sort of cross lines"
+   },
+   {
+    "id": "s006",
+    "tag": "ACTIVE_MID",
+    "activation": 1.67188,
+    "text": "but you've worked hard"
+   },
+   {
+    "id": "s014",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 1.46094,
+    "text": "sounds like you have like I said really good goals and you're working hard in school"
+   },
+   {
+    "id": "s003",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.59375,
+    "text": "so um is there a counselor that you know or that you have a relationship with this lady that worked with you during your mom's death is she someone who's out in the community"
+   },
+   {
+    "id": "s019",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "hey Monica how are you doing today"
+   },
+   {
+    "id": "s013",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 1.55469,
+    "text": "right you've got it okay good"
+   },
+   {
+    "id": "s004",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.46875,
+    "text": "it doesn't matter if your son's always healthy vitamins don't treat the measles"
+   },
+   {
+    "id": "s017",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "like to make some adjustments to to make it a little smoother"
+   },
+   {
+    "id": "s020",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "that sounds like a great idea"
+   },
+   {
+    "id": "s015",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 1.35938,
+    "text": "that's great i think that you know you you have a lot of really great goals"
+   },
+   {
+    "id": "s005",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.4375,
+    "text": "What is your wife's name?"
+   },
+   {
+    "id": "s010",
+    "tag": "ACTIVE_LOW",
+    "activation": 1.35938,
+    "text": "that's terrible John asbestos in your first day coming back from the hospital"
+   },
+   {
+    "id": "s018",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "sure I wonder if now that your workplace is going smoke-free if there will be some people at work who are planning to quit"
+   },
+   {
+    "id": "s002",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.6875,
+    "text": "leann I've noticed that it's been quite  some time since your daughter's last  dental checkup"
+   },
+   {
+    "id": "s007",
+    "tag": "ACTIVE_MID",
+    "activation": 1.67188,
+    "text": "yeah who's that fuzz it's kind of reverse roles like that you know"
+   },
+   {
+    "id": "s009",
+    "tag": "ACTIVE_MID",
+    "activation": 1.67188,
+    "text": "and on the other hand I'm hearing you say that smoking is important in terms of stress relief socializing and it's something you can't imagine ever changing"
+   },
+   {
+    "id": "s012",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 1.57031,
+    "text": "and I think that's awesome really really good for you to have that insight"
+   }
+  ]
+ },
+ {
+  "task_id": "ctli_0116_explainer_r02",
+  "packet_id": "ctli_0116",
+  "latent_idx": 26869,
+  "repeat": 2,
+  "samples": [
+   {
+    "id": "s018",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "sure I wonder if now that your workplace is going smoke-free if there will be some people at work who are planning to quit"
+   },
+   {
+    "id": "s006",
+    "tag": "ACTIVE_MID",
+    "activation": 1.67188,
+    "text": "but you've worked hard"
+   },
+   {
+    "id": "s013",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 1.55469,
+    "text": "right you've got it okay good"
+   },
+   {
+    "id": "s002",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.6875,
+    "text": "leann I've noticed that it's been quite  some time since your daughter's last  dental checkup"
+   },
+   {
+    "id": "s017",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "like to make some adjustments to to make it a little smoother"
+   },
+   {
+    "id": "s003",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.59375,
+    "text": "so um is there a counselor that you know or that you have a relationship with this lady that worked with you during your mom's death is she someone who's out in the community"
+   },
+   {
+    "id": "s014",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 1.46094,
+    "text": "sounds like you have like I said really good goals and you're working hard in school"
+   },
+   {
+    "id": "s012",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 1.57031,
+    "text": "and I think that's awesome really really good for you to have that insight"
+   },
+   {
+    "id": "s005",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.4375,
+    "text": "What is your wife's name?"
+   },
+   {
+    "id": "s011",
+    "tag": "ACTIVE_LOW",
+    "activation": 1.35938,
+    "text": "that's why we're here"
+   },
+   {
+    "id": "s010",
+    "tag": "ACTIVE_LOW",
+    "activation": 1.35938,
+    "text": "that's terrible John asbestos in your first day coming back from the hospital"
+   },
+   {
+    "id": "s008",
+    "tag": "ACTIVE_MID",
+    "activation": 1.67188,
+    "text": "yes I've been been in for a while but lately I've noticed these white spots appearing on my teeth they've sure that they're before"
+   },
+   {
+    "id": "s020",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "that sounds like a great idea"
+   },
+   {
+    "id": "s007",
+    "tag": "ACTIVE_MID",
+    "activation": 1.67188,
+    "text": "yeah who's that fuzz it's kind of reverse roles like that you know"
+   },
+   {
+    "id": "s019",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "hey Monica how are you doing today"
+   },
+   {
+    "id": "s004",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.46875,
+    "text": "it doesn't matter if your son's always healthy vitamins don't treat the measles"
+   },
+   {
+    "id": "s016",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "right and then with the respect one of the things you mentioned is really wanting to respect yourself and not sort of cross boundaries not sort of cross lines"
+   },
+   {
+    "id": "s015",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 1.35938,
+    "text": "that's great i think that you know you you have a lot of really great goals"
+   },
+   {
+    "id": "s009",
+    "tag": "ACTIVE_MID",
+    "activation": 1.67188,
+    "text": "and on the other hand I'm hearing you say that smoking is important in terms of stress relief socializing and it's something you can't imagine ever changing"
+   },
+   {
+    "id": "s001",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.89062,
+    "text": "so that must be really frightening to be so confused about your dad's expectations"
+   }
+  ]
+ },
+ {
+  "task_id": "ctli_0117_explainer_r01",
+  "packet_id": "ctli_0117",
+  "latent_idx": 13430,
+  "repeat": 1,
+  "samples": [
+   {
+    "id": "s014",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 1.21875,
+    "text": "what if i say to you come back and see me in two weeks"
+   },
+   {
+    "id": "s002",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.79688,
+    "text": "doesn't that concern you"
+   },
+   {
+    "id": "s020",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "can absolutely do that"
+   },
+   {
+    "id": "s013",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 1.22656,
+    "text": "yeah who's that fuzz it's kind of reverse roles like that you know"
+   },
+   {
+    "id": "s015",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 1.21094,
+    "text": "welcome I heard that your name is Tim right"
+   },
+   {
+    "id": "s003",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.75,
+    "text": "OK we've talked about the alcohol do you use any other drugs besides our whole you know like cannabis cocaine and veterinarians in"
+   },
+   {
+    "id": "s011",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.566406,
+    "text": "tell me what you know about the consequences of having high blood sugars that are untreated"
+   },
+   {
+    "id": "s019",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "that sounds like a great idea"
+   },
+   {
+    "id": "s001",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.8125,
+    "text": "Did you come here for a prescription for anti-depressants?"
+   },
+   {
+    "id": "s009",
+    "tag": "ACTIVE_MID",
+    "activation": 1.70312,
+    "text": "did you have regular appointments with"
+   },
+   {
+    "id": "s008",
+    "tag": "ACTIVE_MID",
+    "activation": 1.70312,
+    "text": "what do you think you'd like to try"
+   },
+   {
+    "id": "s005",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.625,
+    "text": "is it okay if I share some thoughts with you as well"
+   },
+   {
+    "id": "s016",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "and your date of birth"
+   },
+   {
+    "id": "s007",
+    "tag": "ACTIVE_MID",
+    "activation": 1.70312,
+    "text": "well I mean where'd you cut yourself"
+   },
+   {
+    "id": "s010",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.566406,
+    "text": "so last weekend you didn't plan on drinking and you you drink you dragon and more than you it would have normally"
+   },
+   {
+    "id": "s017",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "what kind of dogs"
+   },
+   {
+    "id": "s006",
+    "tag": "ACTIVE_MID",
+    "activation": 1.70312,
+    "text": "uh-huh well why did you say six or seven rather than like a four"
+   },
+   {
+    "id": "s018",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "how soon you'd like to quit"
+   },
+   {
+    "id": "s012",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 1.23438,
+    "text": "What's their name and all that."
+   },
+   {
+    "id": "s004",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.65625,
+    "text": "is that something you'd be willing to try next time"
+   }
+  ]
+ },
+ {
+  "task_id": "ctli_0117_explainer_r02",
+  "packet_id": "ctli_0117",
+  "latent_idx": 13430,
+  "repeat": 2,
+  "samples": [
+   {
+    "id": "s007",
+    "tag": "ACTIVE_MID",
+    "activation": 1.70312,
+    "text": "well I mean where'd you cut yourself"
+   },
+   {
+    "id": "s009",
+    "tag": "ACTIVE_MID",
+    "activation": 1.70312,
+    "text": "did you have regular appointments with"
+   },
+   {
+    "id": "s005",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.625,
+    "text": "is it okay if I share some thoughts with you as well"
+   },
+   {
+    "id": "s019",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "that sounds like a great idea"
+   },
+   {
+    "id": "s004",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.65625,
+    "text": "is that something you'd be willing to try next time"
+   },
+   {
+    "id": "s002",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.79688,
+    "text": "doesn't that concern you"
+   },
+   {
+    "id": "s016",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "and your date of birth"
+   },
+   {
+    "id": "s013",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 1.22656,
+    "text": "yeah who's that fuzz it's kind of reverse roles like that you know"
+   },
+   {
+    "id": "s006",
+    "tag": "ACTIVE_MID",
+    "activation": 1.70312,
+    "text": "uh-huh well why did you say six or seven rather than like a four"
+   },
+   {
+    "id": "s015",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 1.21094,
+    "text": "welcome I heard that your name is Tim right"
+   },
+   {
+    "id": "s003",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.75,
+    "text": "OK we've talked about the alcohol do you use any other drugs besides our whole you know like cannabis cocaine and veterinarians in"
+   },
+   {
+    "id": "s008",
+    "tag": "ACTIVE_MID",
+    "activation": 1.70312,
+    "text": "what do you think you'd like to try"
+   },
+   {
+    "id": "s020",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "can absolutely do that"
+   },
+   {
+    "id": "s014",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 1.21875,
+    "text": "what if i say to you come back and see me in two weeks"
+   },
+   {
+    "id": "s011",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.566406,
+    "text": "tell me what you know about the consequences of having high blood sugars that are untreated"
+   },
+   {
+    "id": "s001",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.8125,
+    "text": "Did you come here for a prescription for anti-depressants?"
+   },
+   {
+    "id": "s010",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.566406,
+    "text": "so last weekend you didn't plan on drinking and you you drink you dragon and more than you it would have normally"
+   },
+   {
+    "id": "s018",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "how soon you'd like to quit"
+   },
+   {
+    "id": "s012",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 1.23438,
+    "text": "What's their name and all that."
+   },
+   {
+    "id": "s017",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "what kind of dogs"
+   }
+  ]
+ },
+ {
+  "task_id": "ctli_0118_explainer_r01",
+  "packet_id": "ctli_0118",
+  "latent_idx": 664,
+  "repeat": 1,
+  "samples": [
+   {
+    "id": "s012",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.765625,
+    "text": "more support from your husband would help you to continue exercising"
+   },
+   {
+    "id": "s011",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.498047,
+    "text": "okay can you tell me about how that talked you're talking to the chair talking to your dad"
+   },
+   {
+    "id": "s010",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.498047,
+    "text": "what are you feeling right now"
+   },
+   {
+    "id": "s019",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": -0.0,
+    "text": "that sounds like a great idea"
+   },
+   {
+    "id": "s018",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "so are you ready for the challenge of quitting"
+   },
+   {
+    "id": "s014",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.726562,
+    "text": "so for you if you were to stop one it would be the cocaine"
+   },
+   {
+    "id": "s016",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "hey Monica how are you doing today"
+   },
+   {
+    "id": "s005",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.10938,
+    "text": "so is that surprising to you?"
+   },
+   {
+    "id": "s017",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "and your date of birth"
+   },
+   {
+    "id": "s007",
+    "tag": "ACTIVE_MID",
+    "activation": 1.26562,
+    "text": "well I mean where'd you cut yourself"
+   },
+   {
+    "id": "s013",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.734375,
+    "text": "I want you to tell the chair or your dad how you feel"
+   },
+   {
+    "id": "s008",
+    "tag": "ACTIVE_MID",
+    "activation": 1.26562,
+    "text": "and when would they drug test you"
+   },
+   {
+    "id": "s001",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.25,
+    "text": "is that just is that just me or does it seem that way to you to"
+   },
+   {
+    "id": "s020",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": -0.0,
+    "text": "can absolutely do that"
+   },
+   {
+    "id": "s006",
+    "tag": "ACTIVE_MID",
+    "activation": 1.26562,
+    "text": "okay so what do you what do you do with it"
+   },
+   {
+    "id": "s002",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.17188,
+    "text": "how motivated on a scale one to ten would you say you are too kind of reignite friendships with people with people that don't smoke pot"
+   },
+   {
+    "id": "s009",
+    "tag": "ACTIVE_MID",
+    "activation": 1.26562,
+    "text": "So Greg, just focus on your drinking, can you tell me a bit about when you first started drinking when"
+   },
+   {
+    "id": "s004",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.14062,
+    "text": "so on a scale of zero to 100 how important do you think it is for you to make this change"
+   },
+   {
+    "id": "s003",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.14062,
+    "text": "thinking about importance Nathan how important would it be for you to to make changes to your copious"
+   },
+   {
+    "id": "s015",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.726562,
+    "text": "so from your family perspective the drinking is not something that fits very well"
+   }
+  ]
+ },
+ {
+  "task_id": "ctli_0118_explainer_r02",
+  "packet_id": "ctli_0118",
+  "latent_idx": 664,
+  "repeat": 2,
+  "samples": [
+   {
+    "id": "s005",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.10938,
+    "text": "so is that surprising to you?"
+   },
+   {
+    "id": "s008",
+    "tag": "ACTIVE_MID",
+    "activation": 1.26562,
+    "text": "and when would they drug test you"
+   },
+   {
+    "id": "s018",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "so are you ready for the challenge of quitting"
+   },
+   {
+    "id": "s003",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.14062,
+    "text": "thinking about importance Nathan how important would it be for you to to make changes to your copious"
+   },
+   {
+    "id": "s011",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.498047,
+    "text": "okay can you tell me about how that talked you're talking to the chair talking to your dad"
+   },
+   {
+    "id": "s009",
+    "tag": "ACTIVE_MID",
+    "activation": 1.26562,
+    "text": "So Greg, just focus on your drinking, can you tell me a bit about when you first started drinking when"
+   },
+   {
+    "id": "s001",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.25,
+    "text": "is that just is that just me or does it seem that way to you to"
+   },
+   {
+    "id": "s019",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": -0.0,
+    "text": "that sounds like a great idea"
+   },
+   {
+    "id": "s006",
+    "tag": "ACTIVE_MID",
+    "activation": 1.26562,
+    "text": "okay so what do you what do you do with it"
+   },
+   {
+    "id": "s015",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.726562,
+    "text": "so from your family perspective the drinking is not something that fits very well"
+   },
+   {
+    "id": "s010",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.498047,
+    "text": "what are you feeling right now"
+   },
+   {
+    "id": "s012",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.765625,
+    "text": "more support from your husband would help you to continue exercising"
+   },
+   {
+    "id": "s007",
+    "tag": "ACTIVE_MID",
+    "activation": 1.26562,
+    "text": "well I mean where'd you cut yourself"
+   },
+   {
+    "id": "s020",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": -0.0,
+    "text": "can absolutely do that"
+   },
+   {
+    "id": "s013",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.734375,
+    "text": "I want you to tell the chair or your dad how you feel"
+   },
+   {
+    "id": "s017",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "and your date of birth"
+   },
+   {
+    "id": "s016",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "hey Monica how are you doing today"
+   },
+   {
+    "id": "s002",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.17188,
+    "text": "how motivated on a scale one to ten would you say you are too kind of reignite friendships with people with people that don't smoke pot"
+   },
+   {
+    "id": "s004",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.14062,
+    "text": "so on a scale of zero to 100 how important do you think it is for you to make this change"
+   },
+   {
+    "id": "s014",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.726562,
+    "text": "so for you if you were to stop one it would be the cocaine"
+   }
+  ]
+ },
+ {
+  "task_id": "ctli_0119_explainer_r01",
+  "packet_id": "ctli_0119",
+  "latent_idx": 9959,
+  "repeat": 1,
+  "samples": [
+   {
+    "id": "s001",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.57812,
+    "text": "What kind of dog do you have?"
+   },
+   {
+    "id": "s012",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.757812,
+    "text": "okay hi hi how are you doing"
+   },
+   {
+    "id": "s002",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.34375,
+    "text": "So how many children do you have?"
+   },
+   {
+    "id": "s014",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.664062,
+    "text": "Well, you do talk to me all the time, what you talking about."
+   },
+   {
+    "id": "s019",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": -0.0,
+    "text": "so it sounds like you really want to go to Black Friday with your friends you're feeling a little anxious about it"
+   },
+   {
+    "id": "s020",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": -0.0,
+    "text": "that sounds like a great idea"
+   },
+   {
+    "id": "s007",
+    "tag": "ACTIVE_MID",
+    "activation": 1.09375,
+    "text": "okay so what's been going on"
+   },
+   {
+    "id": "s013",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.746094,
+    "text": "When, when, when we get together again and we can do that"
+   },
+   {
+    "id": "s017",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "do you think that this will be helpful I'm black Franny"
+   },
+   {
+    "id": "s011",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.53125,
+    "text": "do you drink alcohol"
+   },
+   {
+    "id": "s006",
+    "tag": "ACTIVE_MID",
+    "activation": 1.09375,
+    "text": "what concerns do you have that you'd like me to address with you here today"
+   },
+   {
+    "id": "s010",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.53125,
+    "text": "and then what about lunch"
+   },
+   {
+    "id": "s003",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.29688,
+    "text": "so what brings you here today"
+   },
+   {
+    "id": "s008",
+    "tag": "ACTIVE_MID",
+    "activation": 1.09375,
+    "text": "you know this is just another little thing about when you first start getting used to counting carbohydrates just grant information for you so um I know you've been on the Lantis and it's an injectable how have you been doing the injection"
+   },
+   {
+    "id": "s016",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "it do did you have a color that you wanted"
+   },
+   {
+    "id": "s009",
+    "tag": "ACTIVE_MID",
+    "activation": 1.09375,
+    "text": "okay so so to start us off could you tell me a little bit about what you eat throughout the day so how's your habit like"
+   },
+   {
+    "id": "s004",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.29688,
+    "text": "all right well you mentioned a couple times that you've made a few decisions to try and limit the a dangerous aspect of the drinking why did you make those decisions"
+   },
+   {
+    "id": "s015",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.652344,
+    "text": "okay well can I tell you a little bit about what being overweight means"
+   },
+   {
+    "id": "s005",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.21875,
+    "text": "okay all right well you mentioned a couple times that you've made a few decisions to try and limit the a dangerous aspect of the drinking why did you make those decisions"
+   },
+   {
+    "id": "s018",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "and your date of birth"
+   }
+  ]
+ },
+ {
+  "task_id": "ctli_0119_explainer_r02",
+  "packet_id": "ctli_0119",
+  "latent_idx": 9959,
+  "repeat": 2,
+  "samples": [
+   {
+    "id": "s012",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.757812,
+    "text": "okay hi hi how are you doing"
+   },
+   {
+    "id": "s010",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.53125,
+    "text": "and then what about lunch"
+   },
+   {
+    "id": "s008",
+    "tag": "ACTIVE_MID",
+    "activation": 1.09375,
+    "text": "you know this is just another little thing about when you first start getting used to counting carbohydrates just grant information for you so um I know you've been on the Lantis and it's an injectable how have you been doing the injection"
+   },
+   {
+    "id": "s015",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.652344,
+    "text": "okay well can I tell you a little bit about what being overweight means"
+   },
+   {
+    "id": "s013",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.746094,
+    "text": "When, when, when we get together again and we can do that"
+   },
+   {
+    "id": "s002",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.34375,
+    "text": "So how many children do you have?"
+   },
+   {
+    "id": "s001",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.57812,
+    "text": "What kind of dog do you have?"
+   },
+   {
+    "id": "s009",
+    "tag": "ACTIVE_MID",
+    "activation": 1.09375,
+    "text": "okay so so to start us off could you tell me a little bit about what you eat throughout the day so how's your habit like"
+   },
+   {
+    "id": "s017",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "do you think that this will be helpful I'm black Franny"
+   },
+   {
+    "id": "s005",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.21875,
+    "text": "okay all right well you mentioned a couple times that you've made a few decisions to try and limit the a dangerous aspect of the drinking why did you make those decisions"
+   },
+   {
+    "id": "s018",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "and your date of birth"
+   },
+   {
+    "id": "s011",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.53125,
+    "text": "do you drink alcohol"
+   },
+   {
+    "id": "s019",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": -0.0,
+    "text": "so it sounds like you really want to go to Black Friday with your friends you're feeling a little anxious about it"
+   },
+   {
+    "id": "s004",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.29688,
+    "text": "all right well you mentioned a couple times that you've made a few decisions to try and limit the a dangerous aspect of the drinking why did you make those decisions"
+   },
+   {
+    "id": "s020",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": -0.0,
+    "text": "that sounds like a great idea"
+   },
+   {
+    "id": "s007",
+    "tag": "ACTIVE_MID",
+    "activation": 1.09375,
+    "text": "okay so what's been going on"
+   },
+   {
+    "id": "s006",
+    "tag": "ACTIVE_MID",
+    "activation": 1.09375,
+    "text": "what concerns do you have that you'd like me to address with you here today"
+   },
+   {
+    "id": "s016",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "it do did you have a color that you wanted"
+   },
+   {
+    "id": "s014",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.664062,
+    "text": "Well, you do talk to me all the time, what you talking about."
+   },
+   {
+    "id": "s003",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.29688,
+    "text": "so what brings you here today"
+   }
+  ]
+ },
+ {
+  "task_id": "ctli_0120_explainer_r01",
+  "packet_id": "ctli_0120",
+  "latent_idx": 11660,
+  "repeat": 1,
+  "samples": [
+   {
+    "id": "s012",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 1.39062,
+    "text": "can I share a few thoughts with you"
+   },
+   {
+    "id": "s009",
+    "tag": "ACTIVE_MID",
+    "activation": 1.75781,
+    "text": "if you really wanted to stop could you stop"
+   },
+   {
+    "id": "s010",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.8125,
+    "text": "and are there any times when you Tommy symptoms bother you more it seemed particularly bad"
+   },
+   {
+    "id": "s016",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "do you think that this will be helpful I'm black Franny"
+   },
+   {
+    "id": "s017",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "and your date of birth"
+   },
+   {
+    "id": "s018",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "tell me about how you're using the insulin"
+   },
+   {
+    "id": "s002",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.67188,
+    "text": "What would you say?"
+   },
+   {
+    "id": "s008",
+    "tag": "ACTIVE_MID",
+    "activation": 1.75781,
+    "text": "what what's what kind of drinks do you have what do you drink"
+   },
+   {
+    "id": "s014",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 1.30469,
+    "text": "why don't we let me just put these on"
+   },
+   {
+    "id": "s013",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 1.39062,
+    "text": "can I tell you what your options are here?"
+   },
+   {
+    "id": "s004",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.57812,
+    "text": "so you have your pencil where did you cut"
+   },
+   {
+    "id": "s020",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": -0.0,
+    "text": "that sounds like a great idea"
+   },
+   {
+    "id": "s019",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": -0.0,
+    "text": "so it sounds like you really want to go to Black Friday with your friends you're feeling a little anxious about it"
+   },
+   {
+    "id": "s005",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.57812,
+    "text": "you've thought about a letter but who would you send it to"
+   },
+   {
+    "id": "s011",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.8125,
+    "text": "am I is a spread"
+   },
+   {
+    "id": "s001",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.6875,
+    "text": "would what would I be right in saying that"
+   },
+   {
+    "id": "s003",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.64062,
+    "text": "and what would you start thinking of doing"
+   },
+   {
+    "id": "s006",
+    "tag": "ACTIVE_MID",
+    "activation": 1.75781,
+    "text": "and how do you feel your implants working for that"
+   },
+   {
+    "id": "s015",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 1.29688,
+    "text": "why don't you come sit on my lap"
+   },
+   {
+    "id": "s007",
+    "tag": "ACTIVE_MID",
+    "activation": 1.75781,
+    "text": "sure and back to that skill you mentioned you said you're a - what do you think it would take to move you up to a four or five"
+   }
+  ]
+ },
+ {
+  "task_id": "ctli_0120_explainer_r02",
+  "packet_id": "ctli_0120",
+  "latent_idx": 11660,
+  "repeat": 2,
+  "samples": [
+   {
+    "id": "s004",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.57812,
+    "text": "so you have your pencil where did you cut"
+   },
+   {
+    "id": "s002",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.67188,
+    "text": "What would you say?"
+   },
+   {
+    "id": "s006",
+    "tag": "ACTIVE_MID",
+    "activation": 1.75781,
+    "text": "and how do you feel your implants working for that"
+   },
+   {
+    "id": "s007",
+    "tag": "ACTIVE_MID",
+    "activation": 1.75781,
+    "text": "sure and back to that skill you mentioned you said you're a - what do you think it would take to move you up to a four or five"
+   },
+   {
+    "id": "s003",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.64062,
+    "text": "and what would you start thinking of doing"
+   },
+   {
+    "id": "s019",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": -0.0,
+    "text": "so it sounds like you really want to go to Black Friday with your friends you're feeling a little anxious about it"
+   },
+   {
+    "id": "s013",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 1.39062,
+    "text": "can I tell you what your options are here?"
+   },
+   {
+    "id": "s016",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "do you think that this will be helpful I'm black Franny"
+   },
+   {
+    "id": "s009",
+    "tag": "ACTIVE_MID",
+    "activation": 1.75781,
+    "text": "if you really wanted to stop could you stop"
+   },
+   {
+    "id": "s012",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 1.39062,
+    "text": "can I share a few thoughts with you"
+   },
+   {
+    "id": "s005",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.57812,
+    "text": "you've thought about a letter but who would you send it to"
+   },
+   {
+    "id": "s018",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "tell me about how you're using the insulin"
+   },
+   {
+    "id": "s001",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.6875,
+    "text": "would what would I be right in saying that"
+   },
+   {
+    "id": "s010",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.8125,
+    "text": "and are there any times when you Tommy symptoms bother you more it seemed particularly bad"
+   },
+   {
+    "id": "s008",
+    "tag": "ACTIVE_MID",
+    "activation": 1.75781,
+    "text": "what what's what kind of drinks do you have what do you drink"
+   },
+   {
+    "id": "s015",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 1.29688,
+    "text": "why don't you come sit on my lap"
+   },
+   {
+    "id": "s020",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": -0.0,
+    "text": "that sounds like a great idea"
+   },
+   {
+    "id": "s017",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "and your date of birth"
+   },
+   {
+    "id": "s011",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.8125,
+    "text": "am I is a spread"
+   },
+   {
+    "id": "s014",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 1.30469,
+    "text": "why don't we let me just put these on"
+   }
+  ]
+ },
+ {
+  "task_id": "ctli_0121_explainer_r01",
+  "packet_id": "ctli_0121",
+  "latent_idx": 26485,
+  "repeat": 1,
+  "samples": [
+   {
+    "id": "s004",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.71875,
+    "text": "how do you see that working in like an evening kind of thing around the evening?"
+   },
+   {
+    "id": "s002",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.10938,
+    "text": "how can I help you"
+   },
+   {
+    "id": "s016",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "it do did you have a color that you wanted"
+   },
+   {
+    "id": "s018",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "and why why do you want to lose weight"
+   },
+   {
+    "id": "s020",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "so we have some materials on the table"
+   },
+   {
+    "id": "s019",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "that sounds like a great idea"
+   },
+   {
+    "id": "s017",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "and your date of birth"
+   },
+   {
+    "id": "s008",
+    "tag": "ACTIVE_MID",
+    "activation": 1.04688,
+    "text": "what steps could you take to move that six or seven or eight"
+   },
+   {
+    "id": "s005",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.70312,
+    "text": "how do you feel about that"
+   },
+   {
+    "id": "s013",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.773438,
+    "text": "dawn you told me what brought you here today"
+   },
+   {
+    "id": "s014",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.773438,
+    "text": "would it be okay with you if we talked a little bit about your smoking today"
+   },
+   {
+    "id": "s011",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.597656,
+    "text": "so you were experiencing some pain"
+   },
+   {
+    "id": "s001",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.90625,
+    "text": "How do I, how do I respond to this"
+   },
+   {
+    "id": "s003",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.10938,
+    "text": "how can I help you t well"
+   },
+   {
+    "id": "s010",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.597656,
+    "text": "so you're testing a lot"
+   },
+   {
+    "id": "s015",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.765625,
+    "text": "if you loss weight, it will lessen the risk of getting these diseases"
+   },
+   {
+    "id": "s012",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.773438,
+    "text": "which is you're feeling uncomfortable right now"
+   },
+   {
+    "id": "s006",
+    "tag": "ACTIVE_MID",
+    "activation": 1.04688,
+    "text": "what is gonna happen"
+   },
+   {
+    "id": "s009",
+    "tag": "ACTIVE_MID",
+    "activation": 1.04688,
+    "text": "okay so can I ask you on a scale of zero to ten now that you're considering about making a change zero being not important whatsoever and ten being super uber important how important is it for you to make this change"
+   },
+   {
+    "id": "s007",
+    "tag": "ACTIVE_MID",
+    "activation": 1.04688,
+    "text": "are there any changes to your medical history such as any new medications you might be taking or any serious operation since the last time I saw you"
+   }
+  ]
+ },
+ {
+  "task_id": "ctli_0121_explainer_r02",
+  "packet_id": "ctli_0121",
+  "latent_idx": 26485,
+  "repeat": 2,
+  "samples": [
+   {
+    "id": "s003",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.10938,
+    "text": "how can I help you t well"
+   },
+   {
+    "id": "s012",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.773438,
+    "text": "which is you're feeling uncomfortable right now"
+   },
+   {
+    "id": "s001",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.90625,
+    "text": "How do I, how do I respond to this"
+   },
+   {
+    "id": "s014",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.773438,
+    "text": "would it be okay with you if we talked a little bit about your smoking today"
+   },
+   {
+    "id": "s005",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.70312,
+    "text": "how do you feel about that"
+   },
+   {
+    "id": "s016",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "it do did you have a color that you wanted"
+   },
+   {
+    "id": "s008",
+    "tag": "ACTIVE_MID",
+    "activation": 1.04688,
+    "text": "what steps could you take to move that six or seven or eight"
+   },
+   {
+    "id": "s018",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "and why why do you want to lose weight"
+   },
+   {
+    "id": "s017",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "and your date of birth"
+   },
+   {
+    "id": "s009",
+    "tag": "ACTIVE_MID",
+    "activation": 1.04688,
+    "text": "okay so can I ask you on a scale of zero to ten now that you're considering about making a change zero being not important whatsoever and ten being super uber important how important is it for you to make this change"
+   },
+   {
+    "id": "s013",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.773438,
+    "text": "dawn you told me what brought you here today"
+   },
+   {
+    "id": "s002",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.10938,
+    "text": "how can I help you"
+   },
+   {
+    "id": "s010",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.597656,
+    "text": "so you're testing a lot"
+   },
+   {
+    "id": "s011",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.597656,
+    "text": "so you were experiencing some pain"
+   },
+   {
+    "id": "s007",
+    "tag": "ACTIVE_MID",
+    "activation": 1.04688,
+    "text": "are there any changes to your medical history such as any new medications you might be taking or any serious operation since the last time I saw you"
+   },
+   {
+    "id": "s015",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.765625,
+    "text": "if you loss weight, it will lessen the risk of getting these diseases"
+   },
+   {
+    "id": "s020",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "so we have some materials on the table"
+   },
+   {
+    "id": "s004",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.71875,
+    "text": "how do you see that working in like an evening kind of thing around the evening?"
+   },
+   {
+    "id": "s006",
+    "tag": "ACTIVE_MID",
+    "activation": 1.04688,
+    "text": "what is gonna happen"
+   },
+   {
+    "id": "s019",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "that sounds like a great idea"
+   }
+  ]
+ },
+ {
+  "task_id": "ctli_0122_explainer_r01",
+  "packet_id": "ctli_0122",
+  "latent_idx": 10916,
+  "repeat": 1,
+  "samples": [
+   {
+    "id": "s013",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.925781,
+    "text": "so when you go to parties most of the time there's alcohol there"
+   },
+   {
+    "id": "s011",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.585938,
+    "text": "and how she feels about you is important"
+   },
+   {
+    "id": "s014",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.925781,
+    "text": "what if i say to you come back and see me in two weeks"
+   },
+   {
+    "id": "s006",
+    "tag": "ACTIVE_MID",
+    "activation": 1.80469,
+    "text": "what if anything will bring up too late online on that scale"
+   },
+   {
+    "id": "s016",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "it do did you have a color that you wanted"
+   },
+   {
+    "id": "s010",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.585938,
+    "text": "and how do you feel your implants working for that"
+   },
+   {
+    "id": "s004",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.48438,
+    "text": "oh really oh alright so what store do we know or pick up with what we know you don't want to make a bad impression in this whole court proceeding with the deal I what do you think you could do that would make a bad impression"
+   },
+   {
+    "id": "s009",
+    "tag": "ACTIVE_MID",
+    "activation": 1.78906,
+    "text": "and what what sort of treatments have you tried for this before"
+   },
+   {
+    "id": "s020",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": -0.0,
+    "text": "that sounds like a great idea"
+   },
+   {
+    "id": "s015",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.925781,
+    "text": "what patients have a lot issues taken all those medications dude"
+   },
+   {
+    "id": "s008",
+    "tag": "ACTIVE_MID",
+    "activation": 1.78906,
+    "text": "so if you want to do the absolute opposite of that what would that look like"
+   },
+   {
+    "id": "s007",
+    "tag": "ACTIVE_MID",
+    "activation": 1.80469,
+    "text": "so in terms of making a change what are some of the things that you'd be willing to do in order to make that happen"
+   },
+   {
+    "id": "s018",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "do you think that this will be helpful I'm black Franny"
+   },
+   {
+    "id": "s019",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": -0.0,
+    "text": "so it sounds like you really want to go to Black Friday with your friends you're feeling a little anxious about it"
+   },
+   {
+    "id": "s003",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.48438,
+    "text": "okay well how important is this change to you"
+   },
+   {
+    "id": "s005",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.4375,
+    "text": "so on a scale of zero to 100 how important do you think it is for you to make this change"
+   },
+   {
+    "id": "s002",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.71875,
+    "text": "okay so how important would you say this change is for you to make in your life we'll try on a scale from zero which is not important at all to time which is very important to me"
+   },
+   {
+    "id": "s001",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.85938,
+    "text": "okay so what other things can you tell me about that might affect your blood pressure"
+   },
+   {
+    "id": "s017",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "all right is there anything you'd like to tell me about it"
+   },
+   {
+    "id": "s012",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.925781,
+    "text": "what we want to focus on is keeping your diet and insulin dosage in check"
+   }
+  ]
+ },
+ {
+  "task_id": "ctli_0122_explainer_r02",
+  "packet_id": "ctli_0122",
+  "latent_idx": 10916,
+  "repeat": 2,
+  "samples": [
+   {
+    "id": "s010",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.585938,
+    "text": "and how do you feel your implants working for that"
+   },
+   {
+    "id": "s001",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.85938,
+    "text": "okay so what other things can you tell me about that might affect your blood pressure"
+   },
+   {
+    "id": "s008",
+    "tag": "ACTIVE_MID",
+    "activation": 1.78906,
+    "text": "so if you want to do the absolute opposite of that what would that look like"
+   },
+   {
+    "id": "s007",
+    "tag": "ACTIVE_MID",
+    "activation": 1.80469,
+    "text": "so in terms of making a change what are some of the things that you'd be willing to do in order to make that happen"
+   },
+   {
+    "id": "s018",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "do you think that this will be helpful I'm black Franny"
+   },
+   {
+    "id": "s017",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "all right is there anything you'd like to tell me about it"
+   },
+   {
+    "id": "s002",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.71875,
+    "text": "okay so how important would you say this change is for you to make in your life we'll try on a scale from zero which is not important at all to time which is very important to me"
+   },
+   {
+    "id": "s014",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.925781,
+    "text": "what if i say to you come back and see me in two weeks"
+   },
+   {
+    "id": "s013",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.925781,
+    "text": "so when you go to parties most of the time there's alcohol there"
+   },
+   {
+    "id": "s020",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": -0.0,
+    "text": "that sounds like a great idea"
+   },
+   {
+    "id": "s003",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.48438,
+    "text": "okay well how important is this change to you"
+   },
+   {
+    "id": "s016",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "it do did you have a color that you wanted"
+   },
+   {
+    "id": "s009",
+    "tag": "ACTIVE_MID",
+    "activation": 1.78906,
+    "text": "and what what sort of treatments have you tried for this before"
+   },
+   {
+    "id": "s004",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.48438,
+    "text": "oh really oh alright so what store do we know or pick up with what we know you don't want to make a bad impression in this whole court proceeding with the deal I what do you think you could do that would make a bad impression"
+   },
+   {
+    "id": "s011",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.585938,
+    "text": "and how she feels about you is important"
+   },
+   {
+    "id": "s006",
+    "tag": "ACTIVE_MID",
+    "activation": 1.80469,
+    "text": "what if anything will bring up too late online on that scale"
+   },
+   {
+    "id": "s012",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.925781,
+    "text": "what we want to focus on is keeping your diet and insulin dosage in check"
+   },
+   {
+    "id": "s005",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.4375,
+    "text": "so on a scale of zero to 100 how important do you think it is for you to make this change"
+   },
+   {
+    "id": "s015",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.925781,
+    "text": "what patients have a lot issues taken all those medications dude"
+   },
+   {
+    "id": "s019",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": -0.0,
+    "text": "so it sounds like you really want to go to Black Friday with your friends you're feeling a little anxious about it"
+   }
+  ]
+ },
+ {
+  "task_id": "ctli_0123_explainer_r01",
+  "packet_id": "ctli_0123",
+  "latent_idx": 27061,
+  "repeat": 1,
+  "samples": [
+   {
+    "id": "s008",
+    "tag": "ACTIVE_MID",
+    "activation": 0.949219,
+    "text": "so picking them up is it's worth all the anxiety"
+   },
+   {
+    "id": "s006",
+    "tag": "ACTIVE_MID",
+    "activation": 0.949219,
+    "text": "I understand you're just experimenting with alcohol then how about if you share with me what the effects of alcohol are"
+   },
+   {
+    "id": "s017",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "and your date of birth"
+   },
+   {
+    "id": "s013",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.660156,
+    "text": "can I tell you what your options are here?"
+   },
+   {
+    "id": "s011",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.470703,
+    "text": "have you ever had any legal or work or social problems because you're drinking"
+   },
+   {
+    "id": "s003",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.17188,
+    "text": "so what would be some of the negative things if you stop if you decide to stop smoking"
+   },
+   {
+    "id": "s019",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "so it sounds like you really want to go to Black Friday with your friends you're feeling a little anxious about it"
+   },
+   {
+    "id": "s012",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.660156,
+    "text": "can I share a few thoughts with you"
+   },
+   {
+    "id": "s010",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.470703,
+    "text": "mm-hmm and do you feel like that's working pretty well for you or you sometimes exceed that limit or or what do you think"
+   },
+   {
+    "id": "s009",
+    "tag": "ACTIVE_MID",
+    "activation": 0.949219,
+    "text": "and on what what do you think your mind is you know what the concerns are that your mind has are the are any doubts or anything"
+   },
+   {
+    "id": "s015",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.617188,
+    "text": "What's their name and all that."
+   },
+   {
+    "id": "s001",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.26562,
+    "text": "do you know of any thing that will help you quit smoking?"
+   },
+   {
+    "id": "s005",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.01562,
+    "text": "I'm just wondering what's going on"
+   },
+   {
+    "id": "s018",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "tell me about how you're using the insulin"
+   },
+   {
+    "id": "s020",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "that sounds like a great idea"
+   },
+   {
+    "id": "s002",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.17188,
+    "text": "so what would be some of the positives some of the good things about quitting based on what you told me here today"
+   },
+   {
+    "id": "s016",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "all right is there anything you'd like to tell me about it"
+   },
+   {
+    "id": "s004",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.09375,
+    "text": "do you can you tell me about some of the important things in your life"
+   },
+   {
+    "id": "s007",
+    "tag": "ACTIVE_MID",
+    "activation": 0.949219,
+    "text": "so what kind of feeling is just bringing up for you"
+   },
+   {
+    "id": "s014",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.628906,
+    "text": "yeah I can definitely check with her and see if she can see me again okay yeah"
+   }
+  ]
+ },
+ {
+  "task_id": "ctli_0123_explainer_r02",
+  "packet_id": "ctli_0123",
+  "latent_idx": 27061,
+  "repeat": 2,
+  "samples": [
+   {
+    "id": "s006",
+    "tag": "ACTIVE_MID",
+    "activation": 0.949219,
+    "text": "I understand you're just experimenting with alcohol then how about if you share with me what the effects of alcohol are"
+   },
+   {
+    "id": "s018",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "tell me about how you're using the insulin"
+   },
+   {
+    "id": "s008",
+    "tag": "ACTIVE_MID",
+    "activation": 0.949219,
+    "text": "so picking them up is it's worth all the anxiety"
+   },
+   {
+    "id": "s020",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "that sounds like a great idea"
+   },
+   {
+    "id": "s002",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.17188,
+    "text": "so what would be some of the positives some of the good things about quitting based on what you told me here today"
+   },
+   {
+    "id": "s015",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.617188,
+    "text": "What's their name and all that."
+   },
+   {
+    "id": "s004",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.09375,
+    "text": "do you can you tell me about some of the important things in your life"
+   },
+   {
+    "id": "s009",
+    "tag": "ACTIVE_MID",
+    "activation": 0.949219,
+    "text": "and on what what do you think your mind is you know what the concerns are that your mind has are the are any doubts or anything"
+   },
+   {
+    "id": "s013",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.660156,
+    "text": "can I tell you what your options are here?"
+   },
+   {
+    "id": "s001",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.26562,
+    "text": "do you know of any thing that will help you quit smoking?"
+   },
+   {
+    "id": "s019",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "so it sounds like you really want to go to Black Friday with your friends you're feeling a little anxious about it"
+   },
+   {
+    "id": "s017",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "and your date of birth"
+   },
+   {
+    "id": "s016",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "all right is there anything you'd like to tell me about it"
+   },
+   {
+    "id": "s007",
+    "tag": "ACTIVE_MID",
+    "activation": 0.949219,
+    "text": "so what kind of feeling is just bringing up for you"
+   },
+   {
+    "id": "s005",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.01562,
+    "text": "I'm just wondering what's going on"
+   },
+   {
+    "id": "s003",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.17188,
+    "text": "so what would be some of the negative things if you stop if you decide to stop smoking"
+   },
+   {
+    "id": "s014",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.628906,
+    "text": "yeah I can definitely check with her and see if she can see me again okay yeah"
+   },
+   {
+    "id": "s012",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.660156,
+    "text": "can I share a few thoughts with you"
+   },
+   {
+    "id": "s010",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.470703,
+    "text": "mm-hmm and do you feel like that's working pretty well for you or you sometimes exceed that limit or or what do you think"
+   },
+   {
+    "id": "s011",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.470703,
+    "text": "have you ever had any legal or work or social problems because you're drinking"
+   }
+  ]
+ },
+ {
+  "task_id": "ctli_0124_explainer_r01",
+  "packet_id": "ctli_0124",
+  "latent_idx": 12340,
+  "repeat": 1,
+  "samples": [
+   {
+    "id": "s006",
+    "tag": "ACTIVE_MID",
+    "activation": 2.34375,
+    "text": "and how do you feel your implants working for that"
+   },
+   {
+    "id": "s004",
+    "tag": "ACTIVE_HIGH",
+    "activation": 4.375,
+    "text": "do you feel like you've done involve thus far the semester your classes"
+   },
+   {
+    "id": "s017",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "and your date of birth"
+   },
+   {
+    "id": "s009",
+    "tag": "ACTIVE_MID",
+    "activation": 2.34375,
+    "text": "and how do you see yourself doing that"
+   },
+   {
+    "id": "s007",
+    "tag": "ACTIVE_MID",
+    "activation": 2.34375,
+    "text": "what what's what kind of drinks do you have what do you drink"
+   },
+   {
+    "id": "s001",
+    "tag": "ACTIVE_HIGH",
+    "activation": 4.375,
+    "text": "do you think that this will be helpful I'm black Franny"
+   },
+   {
+    "id": "s003",
+    "tag": "ACTIVE_HIGH",
+    "activation": 4.375,
+    "text": "do you think if you do what are some options that you see you may have preparing yourself to get the assignments done"
+   },
+   {
+    "id": "s013",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.964844,
+    "text": "okay so why don't you try that"
+   },
+   {
+    "id": "s014",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.945312,
+    "text": "you could give a shot you're just not sure you could you could actually do it"
+   },
+   {
+    "id": "s012",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.964844,
+    "text": "okay so why don't you have a rinse David"
+   },
+   {
+    "id": "s011",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.570312,
+    "text": "you know this is just another little thing about when you first start getting used to counting carbohydrates just grant information for you so um I know you've been on the Lantis and it's an injectable how have you been doing the injection"
+   },
+   {
+    "id": "s018",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "what have you discuss with your doctor recently"
+   },
+   {
+    "id": "s016",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "hey Monica how are you doing today"
+   },
+   {
+    "id": "s002",
+    "tag": "ACTIVE_HIGH",
+    "activation": 4.375,
+    "text": "do you feel like you've seen some real improvements on that"
+   },
+   {
+    "id": "s010",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.570312,
+    "text": "tell me about how you're using the insulin"
+   },
+   {
+    "id": "s005",
+    "tag": "ACTIVE_HIGH",
+    "activation": 4.375,
+    "text": "do you mind telling me some of the things that she discuss with you"
+   },
+   {
+    "id": "s019",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "so it sounds like you really want to go to Black Friday with your friends you're feeling a little anxious about it"
+   },
+   {
+    "id": "s015",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.867188,
+    "text": "so you'd be willing to stop altogether that's what was indicated by the physician"
+   },
+   {
+    "id": "s008",
+    "tag": "ACTIVE_MID",
+    "activation": 2.34375,
+    "text": "sure so what what emotion do you think that is"
+   },
+   {
+    "id": "s020",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "that sounds like a great idea"
+   }
+  ]
+ },
+ {
+  "task_id": "ctli_0124_explainer_r02",
+  "packet_id": "ctli_0124",
+  "latent_idx": 12340,
+  "repeat": 2,
+  "samples": [
+   {
+    "id": "s009",
+    "tag": "ACTIVE_MID",
+    "activation": 2.34375,
+    "text": "and how do you see yourself doing that"
+   },
+   {
+    "id": "s012",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.964844,
+    "text": "okay so why don't you have a rinse David"
+   },
+   {
+    "id": "s013",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.964844,
+    "text": "okay so why don't you try that"
+   },
+   {
+    "id": "s018",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "what have you discuss with your doctor recently"
+   },
+   {
+    "id": "s005",
+    "tag": "ACTIVE_HIGH",
+    "activation": 4.375,
+    "text": "do you mind telling me some of the things that she discuss with you"
+   },
+   {
+    "id": "s011",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.570312,
+    "text": "you know this is just another little thing about when you first start getting used to counting carbohydrates just grant information for you so um I know you've been on the Lantis and it's an injectable how have you been doing the injection"
+   },
+   {
+    "id": "s015",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.867188,
+    "text": "so you'd be willing to stop altogether that's what was indicated by the physician"
+   },
+   {
+    "id": "s020",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "that sounds like a great idea"
+   },
+   {
+    "id": "s006",
+    "tag": "ACTIVE_MID",
+    "activation": 2.34375,
+    "text": "and how do you feel your implants working for that"
+   },
+   {
+    "id": "s001",
+    "tag": "ACTIVE_HIGH",
+    "activation": 4.375,
+    "text": "do you think that this will be helpful I'm black Franny"
+   },
+   {
+    "id": "s016",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "hey Monica how are you doing today"
+   },
+   {
+    "id": "s010",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.570312,
+    "text": "tell me about how you're using the insulin"
+   },
+   {
+    "id": "s008",
+    "tag": "ACTIVE_MID",
+    "activation": 2.34375,
+    "text": "sure so what what emotion do you think that is"
+   },
+   {
+    "id": "s017",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "and your date of birth"
+   },
+   {
+    "id": "s003",
+    "tag": "ACTIVE_HIGH",
+    "activation": 4.375,
+    "text": "do you think if you do what are some options that you see you may have preparing yourself to get the assignments done"
+   },
+   {
+    "id": "s004",
+    "tag": "ACTIVE_HIGH",
+    "activation": 4.375,
+    "text": "do you feel like you've done involve thus far the semester your classes"
+   },
+   {
+    "id": "s007",
+    "tag": "ACTIVE_MID",
+    "activation": 2.34375,
+    "text": "what what's what kind of drinks do you have what do you drink"
+   },
+   {
+    "id": "s014",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.945312,
+    "text": "you could give a shot you're just not sure you could you could actually do it"
+   },
+   {
+    "id": "s002",
+    "tag": "ACTIVE_HIGH",
+    "activation": 4.375,
+    "text": "do you feel like you've seen some real improvements on that"
+   },
+   {
+    "id": "s019",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "so it sounds like you really want to go to Black Friday with your friends you're feeling a little anxious about it"
+   }
+  ]
+ },
+ {
+  "task_id": "ctli_0125_explainer_r01",
+  "packet_id": "ctli_0125",
+  "latent_idx": 29590,
+  "repeat": 1,
+  "samples": [
+   {
+    "id": "s009",
+    "tag": "ACTIVE_MID",
+    "activation": 0.984375,
+    "text": "can I share a few thoughts with you"
+   },
+   {
+    "id": "s007",
+    "tag": "ACTIVE_MID",
+    "activation": 0.984375,
+    "text": "is there a strategy that you use that that that you have found to be successful in your experience with maybe that the problem cases are the harder cases"
+   },
+   {
+    "id": "s019",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "so it sounds like you really want to go to Black Friday with your friends you're feeling a little anxious about it"
+   },
+   {
+    "id": "s018",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "all right is there anything you'd like to tell me about it"
+   },
+   {
+    "id": "s017",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "it do did you have a color that you wanted"
+   },
+   {
+    "id": "s002",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.76562,
+    "text": "how long have you been using the alcohol marijuana"
+   },
+   {
+    "id": "s005",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.76562,
+    "text": "how long did the first time"
+   },
+   {
+    "id": "s010",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.527344,
+    "text": "okay what do you think it would take to move you to a seven or an eight"
+   },
+   {
+    "id": "s013",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.734375,
+    "text": "what we want to focus on is keeping your diet and insulin dosage in check"
+   },
+   {
+    "id": "s012",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.734375,
+    "text": "is that okay with you if we have this conversation at some point in the future"
+   },
+   {
+    "id": "s003",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.76562,
+    "text": "how long ago was that"
+   },
+   {
+    "id": "s016",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "hey Monica how are you doing today"
+   },
+   {
+    "id": "s011",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.527344,
+    "text": "so my am i right in thinking you perhaps decide on a day-to-day basis and what you're going to take demanding of what your stomach's doing"
+   },
+   {
+    "id": "s004",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.76562,
+    "text": "how long has that been going on"
+   },
+   {
+    "id": "s008",
+    "tag": "ACTIVE_MID",
+    "activation": 0.984375,
+    "text": "is there a willingness or you are you basically giving up"
+   },
+   {
+    "id": "s006",
+    "tag": "ACTIVE_MID",
+    "activation": 0.984375,
+    "text": "can absolutely do that"
+   },
+   {
+    "id": "s014",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.734375,
+    "text": "is that something you'd be willing to try next time"
+   },
+   {
+    "id": "s015",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.734375,
+    "text": "is every time you didn't have this happening we see I wasn't chasing you"
+   },
+   {
+    "id": "s001",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.76562,
+    "text": "how long has it been since you kind of drink"
+   },
+   {
+    "id": "s020",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "that sounds like a great idea"
+   }
+  ]
+ },
+ {
+  "task_id": "ctli_0125_explainer_r02",
+  "packet_id": "ctli_0125",
+  "latent_idx": 29590,
+  "repeat": 2,
+  "samples": [
+   {
+    "id": "s019",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "so it sounds like you really want to go to Black Friday with your friends you're feeling a little anxious about it"
+   },
+   {
+    "id": "s011",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.527344,
+    "text": "so my am i right in thinking you perhaps decide on a day-to-day basis and what you're going to take demanding of what your stomach's doing"
+   },
+   {
+    "id": "s005",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.76562,
+    "text": "how long did the first time"
+   },
+   {
+    "id": "s012",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.734375,
+    "text": "is that okay with you if we have this conversation at some point in the future"
+   },
+   {
+    "id": "s001",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.76562,
+    "text": "how long has it been since you kind of drink"
+   },
+   {
+    "id": "s018",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "all right is there anything you'd like to tell me about it"
+   },
+   {
+    "id": "s002",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.76562,
+    "text": "how long have you been using the alcohol marijuana"
+   },
+   {
+    "id": "s010",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.527344,
+    "text": "okay what do you think it would take to move you to a seven or an eight"
+   },
+   {
+    "id": "s008",
+    "tag": "ACTIVE_MID",
+    "activation": 0.984375,
+    "text": "is there a willingness or you are you basically giving up"
+   },
+   {
+    "id": "s016",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "hey Monica how are you doing today"
+   },
+   {
+    "id": "s014",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.734375,
+    "text": "is that something you'd be willing to try next time"
+   },
+   {
+    "id": "s017",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "it do did you have a color that you wanted"
+   },
+   {
+    "id": "s007",
+    "tag": "ACTIVE_MID",
+    "activation": 0.984375,
+    "text": "is there a strategy that you use that that that you have found to be successful in your experience with maybe that the problem cases are the harder cases"
+   },
+   {
+    "id": "s015",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.734375,
+    "text": "is every time you didn't have this happening we see I wasn't chasing you"
+   },
+   {
+    "id": "s020",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "that sounds like a great idea"
+   },
+   {
+    "id": "s009",
+    "tag": "ACTIVE_MID",
+    "activation": 0.984375,
+    "text": "can I share a few thoughts with you"
+   },
+   {
+    "id": "s003",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.76562,
+    "text": "how long ago was that"
+   },
+   {
+    "id": "s004",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.76562,
+    "text": "how long has that been going on"
+   },
+   {
+    "id": "s006",
+    "tag": "ACTIVE_MID",
+    "activation": 0.984375,
+    "text": "can absolutely do that"
+   },
+   {
+    "id": "s013",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.734375,
+    "text": "what we want to focus on is keeping your diet and insulin dosage in check"
+   }
+  ]
+ },
+ {
+  "task_id": "ctli_0126_explainer_r01",
+  "packet_id": "ctli_0126",
+  "latent_idx": 21935,
+  "repeat": 1,
+  "samples": [
+   {
+    "id": "s014",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.6875,
+    "text": "does it it doesn't look like you went and got any stitches"
+   },
+   {
+    "id": "s016",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "and your date of birth"
+   },
+   {
+    "id": "s010",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.474609,
+    "text": "and also what kind of beverages and things that you drink what are some of the things that you drink throughout throughout your day"
+   },
+   {
+    "id": "s012",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.746094,
+    "text": "Will you at least try taking your medications?"
+   },
+   {
+    "id": "s020",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "can absolutely do that"
+   },
+   {
+    "id": "s004",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.07812,
+    "text": "there was one part where we actually asked her it was cut out we said you know do you want to go to treatment she says"
+   },
+   {
+    "id": "s003",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.125,
+    "text": "mm-hmm and have you had any thoughts yourself about what you think might be causing it"
+   },
+   {
+    "id": "s008",
+    "tag": "ACTIVE_MID",
+    "activation": 1.1875,
+    "text": "do you feel like you've done involve thus far the semester your classes"
+   },
+   {
+    "id": "s011",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.474609,
+    "text": "yeah actually I did for a couple of days"
+   },
+   {
+    "id": "s006",
+    "tag": "ACTIVE_MID",
+    "activation": 1.1875,
+    "text": "do you think that this will be helpful I'm black Franny"
+   },
+   {
+    "id": "s013",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.707031,
+    "text": "is it okay if I share some thoughts with you as well"
+   },
+   {
+    "id": "s005",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.07812,
+    "text": "okay can I ask you do you see yourself as overweight"
+   },
+   {
+    "id": "s015",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.675781,
+    "text": "is that okay with you if we have this conversation at some point in the future"
+   },
+   {
+    "id": "s002",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.21875,
+    "text": "yeah absolutely um do you know what type"
+   },
+   {
+    "id": "s017",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "tell me about how you're using the insulin"
+   },
+   {
+    "id": "s001",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.46875,
+    "text": "and you mentioned that you weren't sleeping too well do you have any weight changes during that time"
+   },
+   {
+    "id": "s009",
+    "tag": "ACTIVE_MID",
+    "activation": 1.1875,
+    "text": "do you mind telling me some of the things that she discuss with you"
+   },
+   {
+    "id": "s007",
+    "tag": "ACTIVE_MID",
+    "activation": 1.1875,
+    "text": "do you feel like you've seen some real improvements on that"
+   },
+   {
+    "id": "s019",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "that sounds like a great idea"
+   },
+   {
+    "id": "s018",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "and how do you feel your implants working for that"
+   }
+  ]
+ },
+ {
+  "task_id": "ctli_0126_explainer_r02",
+  "packet_id": "ctli_0126",
+  "latent_idx": 21935,
+  "repeat": 2,
+  "samples": [
+   {
+    "id": "s005",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.07812,
+    "text": "okay can I ask you do you see yourself as overweight"
+   },
+   {
+    "id": "s003",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.125,
+    "text": "mm-hmm and have you had any thoughts yourself about what you think might be causing it"
+   },
+   {
+    "id": "s018",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "and how do you feel your implants working for that"
+   },
+   {
+    "id": "s008",
+    "tag": "ACTIVE_MID",
+    "activation": 1.1875,
+    "text": "do you feel like you've done involve thus far the semester your classes"
+   },
+   {
+    "id": "s015",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.675781,
+    "text": "is that okay with you if we have this conversation at some point in the future"
+   },
+   {
+    "id": "s016",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "and your date of birth"
+   },
+   {
+    "id": "s004",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.07812,
+    "text": "there was one part where we actually asked her it was cut out we said you know do you want to go to treatment she says"
+   },
+   {
+    "id": "s012",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.746094,
+    "text": "Will you at least try taking your medications?"
+   },
+   {
+    "id": "s006",
+    "tag": "ACTIVE_MID",
+    "activation": 1.1875,
+    "text": "do you think that this will be helpful I'm black Franny"
+   },
+   {
+    "id": "s009",
+    "tag": "ACTIVE_MID",
+    "activation": 1.1875,
+    "text": "do you mind telling me some of the things that she discuss with you"
+   },
+   {
+    "id": "s002",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.21875,
+    "text": "yeah absolutely um do you know what type"
+   },
+   {
+    "id": "s017",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "tell me about how you're using the insulin"
+   },
+   {
+    "id": "s020",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "can absolutely do that"
+   },
+   {
+    "id": "s014",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.6875,
+    "text": "does it it doesn't look like you went and got any stitches"
+   },
+   {
+    "id": "s010",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.474609,
+    "text": "and also what kind of beverages and things that you drink what are some of the things that you drink throughout throughout your day"
+   },
+   {
+    "id": "s019",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "that sounds like a great idea"
+   },
+   {
+    "id": "s007",
+    "tag": "ACTIVE_MID",
+    "activation": 1.1875,
+    "text": "do you feel like you've seen some real improvements on that"
+   },
+   {
+    "id": "s001",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.46875,
+    "text": "and you mentioned that you weren't sleeping too well do you have any weight changes during that time"
+   },
+   {
+    "id": "s011",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.474609,
+    "text": "yeah actually I did for a couple of days"
+   },
+   {
+    "id": "s013",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.707031,
+    "text": "is it okay if I share some thoughts with you as well"
+   }
+  ]
+ },
+ {
+  "task_id": "ctli_0127_explainer_r01",
+  "packet_id": "ctli_0127",
+  "latent_idx": 21125,
+  "repeat": 1,
+  "samples": [
+   {
+    "id": "s015",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.472656,
+    "text": "so from your family perspective the drinking is not something that fits very well"
+   },
+   {
+    "id": "s005",
+    "tag": "ACTIVE_HIGH",
+    "activation": 1.75781,
+    "text": "can you tell me a little bit more about what you do?"
+   },
+   {
+    "id": "s012",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.660156,
+    "text": "would it be okay with you if we talked a little bit about your smoking today"
+   },
+   {
+    "id": "s003",
+    "tag": "ACTIVE_HIGH",
+    "activation": 1.77344,
+    "text": "all right well you mentioned a couple times that you've made a few decisions to try and limit the a dangerous aspect of the drinking why did you make those decisions"
+   },
+   {
+    "id": "s016",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "hey Monica how are you doing today"
+   },
+   {
+    "id": "s019",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "so it sounds like you really want to go to Black Friday with your friends you're feeling a little anxious about it"
+   },
+   {
+    "id": "s008",
+    "tag": "ACTIVE_MID",
+    "activation": 0.972656,
+    "text": "so now that we have had this conversation um how do you feel about you know making time now to exercise"
+   },
+   {
+    "id": "s006",
+    "tag": "ACTIVE_MID",
+    "activation": 0.972656,
+    "text": "so do you feel like you but obviously we're this far on this semester how well do you think you've done well thus far"
+   },
+   {
+    "id": "s010",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.476562,
+    "text": "so on a scale of zero to ten ten being really ready to make a change zero being really not ready at all where do you think you are at this point"
+   },
+   {
+    "id": "s011",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.476562,
+    "text": "and then but what do you like about what do you dislike about drinking"
+   },
+   {
+    "id": "s004",
+    "tag": "ACTIVE_HIGH",
+    "activation": 1.76562,
+    "text": "and that was what kind of led you to go to the GP so how did that change things how were things after you moved out and"
+   },
+   {
+    "id": "s020",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "that sounds like a great idea"
+   },
+   {
+    "id": "s002",
+    "tag": "ACTIVE_HIGH",
+    "activation": 1.85156,
+    "text": "have there been any other changes you have been able to make say in the last few years that have been positive"
+   },
+   {
+    "id": "s007",
+    "tag": "ACTIVE_MID",
+    "activation": 0.972656,
+    "text": "so these different tablets that you've got from the the herbal shop how are you taking them"
+   },
+   {
+    "id": "s001",
+    "tag": "ACTIVE_HIGH",
+    "activation": 1.96094,
+    "text": "okay so you said that you were a big runner what role did running play in your life"
+   },
+   {
+    "id": "s009",
+    "tag": "ACTIVE_MID",
+    "activation": 0.972656,
+    "text": "okay and do you know where you're going to apply to college"
+   },
+   {
+    "id": "s017",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "do you think that this will be helpful I'm black Franny"
+   },
+   {
+    "id": "s018",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "and your date of birth"
+   },
+   {
+    "id": "s014",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.601562,
+    "text": "so let's talk more about what brought you in today"
+   },
+   {
+    "id": "s013",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.65625,
+    "text": "And this is, this incident has also made you kind of think about that"
+   }
+  ]
+ },
+ {
+  "task_id": "ctli_0127_explainer_r02",
+  "packet_id": "ctli_0127",
+  "latent_idx": 21125,
+  "repeat": 2,
+  "samples": [
+   {
+    "id": "s014",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.601562,
+    "text": "so let's talk more about what brought you in today"
+   },
+   {
+    "id": "s002",
+    "tag": "ACTIVE_HIGH",
+    "activation": 1.85156,
+    "text": "have there been any other changes you have been able to make say in the last few years that have been positive"
+   },
+   {
+    "id": "s005",
+    "tag": "ACTIVE_HIGH",
+    "activation": 1.75781,
+    "text": "can you tell me a little bit more about what you do?"
+   },
+   {
+    "id": "s015",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.472656,
+    "text": "so from your family perspective the drinking is not something that fits very well"
+   },
+   {
+    "id": "s013",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.65625,
+    "text": "And this is, this incident has also made you kind of think about that"
+   },
+   {
+    "id": "s006",
+    "tag": "ACTIVE_MID",
+    "activation": 0.972656,
+    "text": "so do you feel like you but obviously we're this far on this semester how well do you think you've done well thus far"
+   },
+   {
+    "id": "s004",
+    "tag": "ACTIVE_HIGH",
+    "activation": 1.76562,
+    "text": "and that was what kind of led you to go to the GP so how did that change things how were things after you moved out and"
+   },
+   {
+    "id": "s011",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.476562,
+    "text": "and then but what do you like about what do you dislike about drinking"
+   },
+   {
+    "id": "s010",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.476562,
+    "text": "so on a scale of zero to ten ten being really ready to make a change zero being really not ready at all where do you think you are at this point"
+   },
+   {
+    "id": "s003",
+    "tag": "ACTIVE_HIGH",
+    "activation": 1.77344,
+    "text": "all right well you mentioned a couple times that you've made a few decisions to try and limit the a dangerous aspect of the drinking why did you make those decisions"
+   },
+   {
+    "id": "s012",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.660156,
+    "text": "would it be okay with you if we talked a little bit about your smoking today"
+   },
+   {
+    "id": "s008",
+    "tag": "ACTIVE_MID",
+    "activation": 0.972656,
+    "text": "so now that we have had this conversation um how do you feel about you know making time now to exercise"
+   },
+   {
+    "id": "s009",
+    "tag": "ACTIVE_MID",
+    "activation": 0.972656,
+    "text": "okay and do you know where you're going to apply to college"
+   },
+   {
+    "id": "s016",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "hey Monica how are you doing today"
+   },
+   {
+    "id": "s001",
+    "tag": "ACTIVE_HIGH",
+    "activation": 1.96094,
+    "text": "okay so you said that you were a big runner what role did running play in your life"
+   },
+   {
+    "id": "s018",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "and your date of birth"
+   },
+   {
+    "id": "s007",
+    "tag": "ACTIVE_MID",
+    "activation": 0.972656,
+    "text": "so these different tablets that you've got from the the herbal shop how are you taking them"
+   },
+   {
+    "id": "s020",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "that sounds like a great idea"
+   },
+   {
+    "id": "s017",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "do you think that this will be helpful I'm black Franny"
+   },
+   {
+    "id": "s019",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "so it sounds like you really want to go to Black Friday with your friends you're feeling a little anxious about it"
+   }
+  ]
+ },
+ {
+  "task_id": "ctli_0128_explainer_r01",
+  "packet_id": "ctli_0128",
+  "latent_idx": 18310,
+  "repeat": 1,
+  "samples": [
+   {
+    "id": "s015",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.345703,
+    "text": "how about if I cut back for a month and then I'll try the gum"
+   },
+   {
+    "id": "s010",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.363281,
+    "text": "can you tell me how it typically is like for you"
+   },
+   {
+    "id": "s014",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.416016,
+    "text": "so you really you really want to know what the path forward might look like"
+   },
+   {
+    "id": "s018",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "all right is there anything you'd like to tell me about it"
+   },
+   {
+    "id": "s008",
+    "tag": "ACTIVE_MID",
+    "activation": 1.50781,
+    "text": "what other lessons have you learned from quitting"
+   },
+   {
+    "id": "s019",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "so it sounds like you really want to go to Black Friday with your friends you're feeling a little anxious about it"
+   },
+   {
+    "id": "s009",
+    "tag": "ACTIVE_MID",
+    "activation": 1.50781,
+    "text": "what brings you in"
+   },
+   {
+    "id": "s006",
+    "tag": "ACTIVE_MID",
+    "activation": 1.50781,
+    "text": "what have you discuss with your doctor recently"
+   },
+   {
+    "id": "s012",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.474609,
+    "text": "I'd like to find out what's going on there"
+   },
+   {
+    "id": "s002",
+    "tag": "ACTIVE_HIGH",
+    "activation": 1.85938,
+    "text": "okay and I have a quick quiz for you what does fifteen grams of carbohydrates equal"
+   },
+   {
+    "id": "s007",
+    "tag": "ACTIVE_MID",
+    "activation": 1.50781,
+    "text": "what else have you learned"
+   },
+   {
+    "id": "s016",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "hey Monica how are you doing today"
+   },
+   {
+    "id": "s017",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "it do did you have a color that you wanted"
+   },
+   {
+    "id": "s001",
+    "tag": "ACTIVE_HIGH",
+    "activation": 1.875,
+    "text": "in what ways might your life be better if you succeed in making the changes you mentioned"
+   },
+   {
+    "id": "s004",
+    "tag": "ACTIVE_HIGH",
+    "activation": 1.64844,
+    "text": "what was it like"
+   },
+   {
+    "id": "s011",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.361328,
+    "text": "can I tell you what your options are here?"
+   },
+   {
+    "id": "s020",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "that sounds like a great idea"
+   },
+   {
+    "id": "s013",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.416016,
+    "text": "when you give that example with the bread"
+   },
+   {
+    "id": "s005",
+    "tag": "ACTIVE_HIGH",
+    "activation": 1.64844,
+    "text": "what was different about this place"
+   },
+   {
+    "id": "s003",
+    "tag": "ACTIVE_HIGH",
+    "activation": 1.69531,
+    "text": "3 what were you thinking right afterwards"
+   }
+  ]
+ },
+ {
+  "task_id": "ctli_0128_explainer_r02",
+  "packet_id": "ctli_0128",
+  "latent_idx": 18310,
+  "repeat": 2,
+  "samples": [
+   {
+    "id": "s005",
+    "tag": "ACTIVE_HIGH",
+    "activation": 1.64844,
+    "text": "what was different about this place"
+   },
+   {
+    "id": "s014",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.416016,
+    "text": "so you really you really want to know what the path forward might look like"
+   },
+   {
+    "id": "s016",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "hey Monica how are you doing today"
+   },
+   {
+    "id": "s009",
+    "tag": "ACTIVE_MID",
+    "activation": 1.50781,
+    "text": "what brings you in"
+   },
+   {
+    "id": "s003",
+    "tag": "ACTIVE_HIGH",
+    "activation": 1.69531,
+    "text": "3 what were you thinking right afterwards"
+   },
+   {
+    "id": "s017",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "it do did you have a color that you wanted"
+   },
+   {
+    "id": "s011",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.361328,
+    "text": "can I tell you what your options are here?"
+   },
+   {
+    "id": "s018",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "all right is there anything you'd like to tell me about it"
+   },
+   {
+    "id": "s002",
+    "tag": "ACTIVE_HIGH",
+    "activation": 1.85938,
+    "text": "okay and I have a quick quiz for you what does fifteen grams of carbohydrates equal"
+   },
+   {
+    "id": "s015",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.345703,
+    "text": "how about if I cut back for a month and then I'll try the gum"
+   },
+   {
+    "id": "s020",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "that sounds like a great idea"
+   },
+   {
+    "id": "s012",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.474609,
+    "text": "I'd like to find out what's going on there"
+   },
+   {
+    "id": "s019",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "so it sounds like you really want to go to Black Friday with your friends you're feeling a little anxious about it"
+   },
+   {
+    "id": "s007",
+    "tag": "ACTIVE_MID",
+    "activation": 1.50781,
+    "text": "what else have you learned"
+   },
+   {
+    "id": "s013",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.416016,
+    "text": "when you give that example with the bread"
+   },
+   {
+    "id": "s006",
+    "tag": "ACTIVE_MID",
+    "activation": 1.50781,
+    "text": "what have you discuss with your doctor recently"
+   },
+   {
+    "id": "s001",
+    "tag": "ACTIVE_HIGH",
+    "activation": 1.875,
+    "text": "in what ways might your life be better if you succeed in making the changes you mentioned"
+   },
+   {
+    "id": "s008",
+    "tag": "ACTIVE_MID",
+    "activation": 1.50781,
+    "text": "what other lessons have you learned from quitting"
+   },
+   {
+    "id": "s010",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.363281,
+    "text": "can you tell me how it typically is like for you"
+   },
+   {
+    "id": "s004",
+    "tag": "ACTIVE_HIGH",
+    "activation": 1.64844,
+    "text": "what was it like"
+   }
+  ]
+ },
+ {
+  "task_id": "ctli_0129_explainer_r01",
+  "packet_id": "ctli_0129",
+  "latent_idx": 24744,
+  "repeat": 1,
+  "samples": [
+   {
+    "id": "s013",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.671875,
+    "text": "all right you know what forget what I said"
+   },
+   {
+    "id": "s010",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.447266,
+    "text": "good what would you say is your biggest challenge for keeping it well controlled"
+   },
+   {
+    "id": "s016",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "hey Monica how are you doing today"
+   },
+   {
+    "id": "s019",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": -0.0,
+    "text": "so it sounds like you really want to go to Black Friday with your friends you're feeling a little anxious about it"
+   },
+   {
+    "id": "s018",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "all right is there anything you'd like to tell me about it"
+   },
+   {
+    "id": "s020",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": -0.0,
+    "text": "that sounds like a great idea"
+   },
+   {
+    "id": "s007",
+    "tag": "ACTIVE_MID",
+    "activation": 1.19531,
+    "text": "what do you like about drinking"
+   },
+   {
+    "id": "s008",
+    "tag": "ACTIVE_MID",
+    "activation": 1.19531,
+    "text": "what do you think's a realistic goal for you then"
+   },
+   {
+    "id": "s017",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "it do did you have a color that you wanted"
+   },
+   {
+    "id": "s011",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.447266,
+    "text": "but what stopped you up until now"
+   },
+   {
+    "id": "s005",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.375,
+    "text": "I understand that you're on the go all the time but what's really important is no more that you protect your health now imagine running your business if you're held in the dark deteriorate"
+   },
+   {
+    "id": "s012",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.746094,
+    "text": "I can definitely understand where they're coming from"
+   },
+   {
+    "id": "s002",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.71875,
+    "text": "um what do you think about that?"
+   },
+   {
+    "id": "s006",
+    "tag": "ACTIVE_MID",
+    "activation": 1.19531,
+    "text": "what do you know about the effect of soft drinks on your teeth"
+   },
+   {
+    "id": "s001",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.71875,
+    "text": "um what do you think that there's more of more positive or negative"
+   },
+   {
+    "id": "s009",
+    "tag": "ACTIVE_MID",
+    "activation": 1.19531,
+    "text": "what do you think"
+   },
+   {
+    "id": "s014",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.667969,
+    "text": "Is your, is your head not attached to your body or something?"
+   },
+   {
+    "id": "s004",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.40625,
+    "text": "yeah um well what do you think that you could do to overcome these barriers and make it easier for you to change these behaviors"
+   },
+   {
+    "id": "s003",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.57812,
+    "text": "but I have to ask you Bruce what gee what made you say three instead of one"
+   },
+   {
+    "id": "s015",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.648438,
+    "text": "Could be contributing to this, because I don't know what else might be causing it"
+   }
+  ]
+ },
+ {
+  "task_id": "ctli_0129_explainer_r02",
+  "packet_id": "ctli_0129",
+  "latent_idx": 24744,
+  "repeat": 2,
+  "samples": [
+   {
+    "id": "s004",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.40625,
+    "text": "yeah um well what do you think that you could do to overcome these barriers and make it easier for you to change these behaviors"
+   },
+   {
+    "id": "s018",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "all right is there anything you'd like to tell me about it"
+   },
+   {
+    "id": "s012",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.746094,
+    "text": "I can definitely understand where they're coming from"
+   },
+   {
+    "id": "s019",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": -0.0,
+    "text": "so it sounds like you really want to go to Black Friday with your friends you're feeling a little anxious about it"
+   },
+   {
+    "id": "s013",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.671875,
+    "text": "all right you know what forget what I said"
+   },
+   {
+    "id": "s016",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "hey Monica how are you doing today"
+   },
+   {
+    "id": "s017",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "it do did you have a color that you wanted"
+   },
+   {
+    "id": "s005",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.375,
+    "text": "I understand that you're on the go all the time but what's really important is no more that you protect your health now imagine running your business if you're held in the dark deteriorate"
+   },
+   {
+    "id": "s001",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.71875,
+    "text": "um what do you think that there's more of more positive or negative"
+   },
+   {
+    "id": "s009",
+    "tag": "ACTIVE_MID",
+    "activation": 1.19531,
+    "text": "what do you think"
+   },
+   {
+    "id": "s006",
+    "tag": "ACTIVE_MID",
+    "activation": 1.19531,
+    "text": "what do you know about the effect of soft drinks on your teeth"
+   },
+   {
+    "id": "s003",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.57812,
+    "text": "but I have to ask you Bruce what gee what made you say three instead of one"
+   },
+   {
+    "id": "s008",
+    "tag": "ACTIVE_MID",
+    "activation": 1.19531,
+    "text": "what do you think's a realistic goal for you then"
+   },
+   {
+    "id": "s007",
+    "tag": "ACTIVE_MID",
+    "activation": 1.19531,
+    "text": "what do you like about drinking"
+   },
+   {
+    "id": "s020",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": -0.0,
+    "text": "that sounds like a great idea"
+   },
+   {
+    "id": "s002",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.71875,
+    "text": "um what do you think about that?"
+   },
+   {
+    "id": "s011",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.447266,
+    "text": "but what stopped you up until now"
+   },
+   {
+    "id": "s014",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.667969,
+    "text": "Is your, is your head not attached to your body or something?"
+   },
+   {
+    "id": "s015",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.648438,
+    "text": "Could be contributing to this, because I don't know what else might be causing it"
+   },
+   {
+    "id": "s010",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.447266,
+    "text": "good what would you say is your biggest challenge for keeping it well controlled"
+   }
+  ]
+ },
+ {
+  "task_id": "ctli_0130_explainer_r01",
+  "packet_id": "ctli_0130",
+  "latent_idx": 12544,
+  "repeat": 1,
+  "samples": [
+   {
+    "id": "s016",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "it do did you have a color that you wanted"
+   },
+   {
+    "id": "s019",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "so it sounds like you really want to go to Black Friday with your friends you're feeling a little anxious about it"
+   },
+   {
+    "id": "s007",
+    "tag": "ACTIVE_MID",
+    "activation": 0.792969,
+    "text": "what did you do like then you're at your locker what's the next thing you did after you heard it the"
+   },
+   {
+    "id": "s010",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.53125,
+    "text": "and how do you feel your implants working for that"
+   },
+   {
+    "id": "s003",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.82812,
+    "text": "OK so if we focused over the last month What's your what would be your average intake over the over weeks"
+   },
+   {
+    "id": "s012",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.660156,
+    "text": "what we want to focus on is keeping your diet and insulin dosage in check"
+   },
+   {
+    "id": "s008",
+    "tag": "ACTIVE_MID",
+    "activation": 0.792969,
+    "text": "but thinking a bit worse but what has been the worst thing that's ever happened to you since you've been or when you were using cold five things"
+   },
+   {
+    "id": "s015",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.648438,
+    "text": "so it wasn't what you expected"
+   },
+   {
+    "id": "s014",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.660156,
+    "text": "what patients have a lot issues taken all those medications dude"
+   },
+   {
+    "id": "s001",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.82812,
+    "text": "I love going to the why yeah I'm really"
+   },
+   {
+    "id": "s017",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "all right is there anything you'd like to tell me about it"
+   },
+   {
+    "id": "s009",
+    "tag": "ACTIVE_MID",
+    "activation": 0.792969,
+    "text": "okay I see here also that question was how often during the last year have you had feelings of guilt or remorse Tony drinking you put less than a month left about that"
+   },
+   {
+    "id": "s004",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.76562,
+    "text": "what what's what kind of drinks do you have what do you drink"
+   },
+   {
+    "id": "s005",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.5,
+    "text": "an eight why an eight not a five or six"
+   },
+   {
+    "id": "s006",
+    "tag": "ACTIVE_MID",
+    "activation": 0.792969,
+    "text": "sure so what what emotion do you think that is"
+   },
+   {
+    "id": "s020",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "that sounds like a great idea"
+   },
+   {
+    "id": "s002",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.34375,
+    "text": "oh yeah I haven't been to the why at all"
+   },
+   {
+    "id": "s013",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.660156,
+    "text": "what if i say to you come back and see me in two weeks"
+   },
+   {
+    "id": "s011",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.53125,
+    "text": "when did you start"
+   },
+   {
+    "id": "s018",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "do you think that this will be helpful I'm black Franny"
+   }
+  ]
+ },
+ {
+  "task_id": "ctli_0130_explainer_r02",
+  "packet_id": "ctli_0130",
+  "latent_idx": 12544,
+  "repeat": 2,
+  "samples": [
+   {
+    "id": "s016",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "it do did you have a color that you wanted"
+   },
+   {
+    "id": "s010",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.53125,
+    "text": "and how do you feel your implants working for that"
+   },
+   {
+    "id": "s004",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.76562,
+    "text": "what what's what kind of drinks do you have what do you drink"
+   },
+   {
+    "id": "s002",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.34375,
+    "text": "oh yeah I haven't been to the why at all"
+   },
+   {
+    "id": "s017",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "all right is there anything you'd like to tell me about it"
+   },
+   {
+    "id": "s020",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "that sounds like a great idea"
+   },
+   {
+    "id": "s009",
+    "tag": "ACTIVE_MID",
+    "activation": 0.792969,
+    "text": "okay I see here also that question was how often during the last year have you had feelings of guilt or remorse Tony drinking you put less than a month left about that"
+   },
+   {
+    "id": "s008",
+    "tag": "ACTIVE_MID",
+    "activation": 0.792969,
+    "text": "but thinking a bit worse but what has been the worst thing that's ever happened to you since you've been or when you were using cold five things"
+   },
+   {
+    "id": "s019",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "so it sounds like you really want to go to Black Friday with your friends you're feeling a little anxious about it"
+   },
+   {
+    "id": "s011",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.53125,
+    "text": "when did you start"
+   },
+   {
+    "id": "s014",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.660156,
+    "text": "what patients have a lot issues taken all those medications dude"
+   },
+   {
+    "id": "s018",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "do you think that this will be helpful I'm black Franny"
+   },
+   {
+    "id": "s013",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.660156,
+    "text": "what if i say to you come back and see me in two weeks"
+   },
+   {
+    "id": "s015",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.648438,
+    "text": "so it wasn't what you expected"
+   },
+   {
+    "id": "s006",
+    "tag": "ACTIVE_MID",
+    "activation": 0.792969,
+    "text": "sure so what what emotion do you think that is"
+   },
+   {
+    "id": "s001",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.82812,
+    "text": "I love going to the why yeah I'm really"
+   },
+   {
+    "id": "s003",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.82812,
+    "text": "OK so if we focused over the last month What's your what would be your average intake over the over weeks"
+   },
+   {
+    "id": "s007",
+    "tag": "ACTIVE_MID",
+    "activation": 0.792969,
+    "text": "what did you do like then you're at your locker what's the next thing you did after you heard it the"
+   },
+   {
+    "id": "s005",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.5,
+    "text": "an eight why an eight not a five or six"
+   },
+   {
+    "id": "s012",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.660156,
+    "text": "what we want to focus on is keeping your diet and insulin dosage in check"
+   }
+  ]
+ },
+ {
+  "task_id": "ctli_0131_explainer_r01",
+  "packet_id": "ctli_0131",
+  "latent_idx": 23183,
+  "repeat": 1,
+  "samples": [
+   {
+    "id": "s012",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.964844,
+    "text": "what we want to focus on is keeping your diet and insulin dosage in check"
+   },
+   {
+    "id": "s015",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.917969,
+    "text": "kind of pulling out of school was causing you fall behind what you would like to be"
+   },
+   {
+    "id": "s005",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.65625,
+    "text": "What are, what are you thinking about?"
+   },
+   {
+    "id": "s009",
+    "tag": "ACTIVE_MID",
+    "activation": 1.8125,
+    "text": "okay what do you think our first thing should be what do you think you can try you just heard somebody say something you don't want to hear you're feeling pretty angry what can you do in that moment"
+   },
+   {
+    "id": "s011",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.964844,
+    "text": "what else have you learned"
+   },
+   {
+    "id": "s006",
+    "tag": "ACTIVE_MID",
+    "activation": 1.8125,
+    "text": "okay what are the things that you like about drinking or like about alcohol"
+   },
+   {
+    "id": "s013",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.964844,
+    "text": "what if i say to you come back and see me in two weeks"
+   },
+   {
+    "id": "s017",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "it do did you have a color that you wanted"
+   },
+   {
+    "id": "s001",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.67188,
+    "text": "What, what are your thoughts right now about some of the options out there for you to do, if, if anything?"
+   },
+   {
+    "id": "s019",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": -0.0,
+    "text": "so it sounds like you really want to go to Black Friday with your friends you're feeling a little anxious about it"
+   },
+   {
+    "id": "s010",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.964844,
+    "text": "what have you discuss with your doctor recently"
+   },
+   {
+    "id": "s007",
+    "tag": "ACTIVE_MID",
+    "activation": 1.8125,
+    "text": "okay what made you say two instead of one"
+   },
+   {
+    "id": "s002",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.67188,
+    "text": "What, what thoughts do you have about how you might go about balancing that and, and, and thinking about, thinking about that?"
+   },
+   {
+    "id": "s008",
+    "tag": "ACTIVE_MID",
+    "activation": 1.8125,
+    "text": "okay what do you think it would take to move you to a seven or an eight"
+   },
+   {
+    "id": "s014",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.964844,
+    "text": "what patients have a lot issues taken all those medications dude"
+   },
+   {
+    "id": "s020",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": -0.0,
+    "text": "that sounds like a great idea"
+   },
+   {
+    "id": "s003",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.67188,
+    "text": "What do you mean yo-, yo-, ha-, if you, as an, you know, to be informed about"
+   },
+   {
+    "id": "s004",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.65625,
+    "text": "What what do you think"
+   },
+   {
+    "id": "s016",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "hey Monica how are you doing today"
+   },
+   {
+    "id": "s018",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "all right is there anything you'd like to tell me about it"
+   }
+  ]
+ },
+ {
+  "task_id": "ctli_0131_explainer_r02",
+  "packet_id": "ctli_0131",
+  "latent_idx": 23183,
+  "repeat": 2,
+  "samples": [
+   {
+    "id": "s014",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.964844,
+    "text": "what patients have a lot issues taken all those medications dude"
+   },
+   {
+    "id": "s005",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.65625,
+    "text": "What are, what are you thinking about?"
+   },
+   {
+    "id": "s016",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "hey Monica how are you doing today"
+   },
+   {
+    "id": "s006",
+    "tag": "ACTIVE_MID",
+    "activation": 1.8125,
+    "text": "okay what are the things that you like about drinking or like about alcohol"
+   },
+   {
+    "id": "s008",
+    "tag": "ACTIVE_MID",
+    "activation": 1.8125,
+    "text": "okay what do you think it would take to move you to a seven or an eight"
+   },
+   {
+    "id": "s009",
+    "tag": "ACTIVE_MID",
+    "activation": 1.8125,
+    "text": "okay what do you think our first thing should be what do you think you can try you just heard somebody say something you don't want to hear you're feeling pretty angry what can you do in that moment"
+   },
+   {
+    "id": "s017",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "it do did you have a color that you wanted"
+   },
+   {
+    "id": "s003",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.67188,
+    "text": "What do you mean yo-, yo-, ha-, if you, as an, you know, to be informed about"
+   },
+   {
+    "id": "s013",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.964844,
+    "text": "what if i say to you come back and see me in two weeks"
+   },
+   {
+    "id": "s011",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.964844,
+    "text": "what else have you learned"
+   },
+   {
+    "id": "s004",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.65625,
+    "text": "What what do you think"
+   },
+   {
+    "id": "s018",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": -0.0,
+    "text": "all right is there anything you'd like to tell me about it"
+   },
+   {
+    "id": "s020",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": -0.0,
+    "text": "that sounds like a great idea"
+   },
+   {
+    "id": "s010",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.964844,
+    "text": "what have you discuss with your doctor recently"
+   },
+   {
+    "id": "s012",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.964844,
+    "text": "what we want to focus on is keeping your diet and insulin dosage in check"
+   },
+   {
+    "id": "s007",
+    "tag": "ACTIVE_MID",
+    "activation": 1.8125,
+    "text": "okay what made you say two instead of one"
+   },
+   {
+    "id": "s019",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": -0.0,
+    "text": "so it sounds like you really want to go to Black Friday with your friends you're feeling a little anxious about it"
+   },
+   {
+    "id": "s001",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.67188,
+    "text": "What, what are your thoughts right now about some of the options out there for you to do, if, if anything?"
+   },
+   {
+    "id": "s002",
+    "tag": "ACTIVE_HIGH",
+    "activation": 2.67188,
+    "text": "What, what thoughts do you have about how you might go about balancing that and, and, and thinking about, thinking about that?"
+   },
+   {
+    "id": "s015",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.917969,
+    "text": "kind of pulling out of school was causing you fall behind what you would like to be"
+   }
+  ]
+ },
+ {
+  "task_id": "ctli_0132_explainer_r01",
+  "packet_id": "ctli_0132",
+  "latent_idx": 26144,
+  "repeat": 1,
+  "samples": [
+   {
+    "id": "s002",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.96875,
+    "text": "so out of everything out of all of that I mean what do you think is the thing that how do you think we could best use our time"
+   },
+   {
+    "id": "s018",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "all right is there anything you'd like to tell me about it"
+   },
+   {
+    "id": "s014",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.519531,
+    "text": "you're clumsy a little bit do to get stitches on you"
+   },
+   {
+    "id": "s016",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "hey Monica how are you doing today"
+   },
+   {
+    "id": "s013",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.753906,
+    "text": "do you keep partying like this your problems will only get worse"
+   },
+   {
+    "id": "s004",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.9375,
+    "text": "so what what do you think sante and thao think about your smoking"
+   },
+   {
+    "id": "s009",
+    "tag": "ACTIVE_MID",
+    "activation": 3.28125,
+    "text": "so on a scale of zero to 100 how important do you think it is for you to make this change"
+   },
+   {
+    "id": "s020",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "that sounds like a great idea"
+   },
+   {
+    "id": "s001",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.96875,
+    "text": "and so the thing that comes to mind is me asking what do you wish I would say to you"
+   },
+   {
+    "id": "s008",
+    "tag": "ACTIVE_MID",
+    "activation": 3.29688,
+    "text": "so if we look down the road maybe five ten years and you decided not to quit smoking what do you think that would look like for you"
+   },
+   {
+    "id": "s003",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.9375,
+    "text": "so what what do you think happened there"
+   },
+   {
+    "id": "s011",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.753906,
+    "text": "do you feel like you've seen some real improvements on that"
+   },
+   {
+    "id": "s007",
+    "tag": "ACTIVE_MID",
+    "activation": 3.29688,
+    "text": "okay so on a scale of 0 to 10 how much do you think you can make the change to quit eating candy"
+   },
+   {
+    "id": "s012",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.949219,
+    "text": "Oh, Okay, well, do what you can"
+   },
+   {
+    "id": "s017",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "it do did you have a color that you wanted"
+   },
+   {
+    "id": "s006",
+    "tag": "ACTIVE_MID",
+    "activation": 3.29688,
+    "text": "right and then with the respect one of the things you mentioned is really wanting to respect yourself and not sort of cross boundaries not sort of cross lines how do you think that the drinking fits in with that"
+   },
+   {
+    "id": "s005",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.9375,
+    "text": "so if you know how much you should be eating and then how is it a means you know how much you should be eating then how do you stop"
+   },
+   {
+    "id": "s010",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.753906,
+    "text": "do you think that this will be helpful I'm black Franny"
+   },
+   {
+    "id": "s015",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "so we have some materials on the table"
+   },
+   {
+    "id": "s019",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "so it sounds like you really want to go to Black Friday with your friends you're feeling a little anxious about it"
+   }
+  ]
+ },
+ {
+  "task_id": "ctli_0132_explainer_r02",
+  "packet_id": "ctli_0132",
+  "latent_idx": 26144,
+  "repeat": 2,
+  "samples": [
+   {
+    "id": "s014",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.519531,
+    "text": "you're clumsy a little bit do to get stitches on you"
+   },
+   {
+    "id": "s004",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.9375,
+    "text": "so what what do you think sante and thao think about your smoking"
+   },
+   {
+    "id": "s015",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "so we have some materials on the table"
+   },
+   {
+    "id": "s012",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.949219,
+    "text": "Oh, Okay, well, do what you can"
+   },
+   {
+    "id": "s002",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.96875,
+    "text": "so out of everything out of all of that I mean what do you think is the thing that how do you think we could best use our time"
+   },
+   {
+    "id": "s013",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.753906,
+    "text": "do you keep partying like this your problems will only get worse"
+   },
+   {
+    "id": "s001",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.96875,
+    "text": "and so the thing that comes to mind is me asking what do you wish I would say to you"
+   },
+   {
+    "id": "s020",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "that sounds like a great idea"
+   },
+   {
+    "id": "s005",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.9375,
+    "text": "so if you know how much you should be eating and then how is it a means you know how much you should be eating then how do you stop"
+   },
+   {
+    "id": "s016",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "hey Monica how are you doing today"
+   },
+   {
+    "id": "s017",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "it do did you have a color that you wanted"
+   },
+   {
+    "id": "s011",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.753906,
+    "text": "do you feel like you've seen some real improvements on that"
+   },
+   {
+    "id": "s007",
+    "tag": "ACTIVE_MID",
+    "activation": 3.29688,
+    "text": "okay so on a scale of 0 to 10 how much do you think you can make the change to quit eating candy"
+   },
+   {
+    "id": "s010",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.753906,
+    "text": "do you think that this will be helpful I'm black Franny"
+   },
+   {
+    "id": "s019",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "so it sounds like you really want to go to Black Friday with your friends you're feeling a little anxious about it"
+   },
+   {
+    "id": "s008",
+    "tag": "ACTIVE_MID",
+    "activation": 3.29688,
+    "text": "so if we look down the road maybe five ten years and you decided not to quit smoking what do you think that would look like for you"
+   },
+   {
+    "id": "s006",
+    "tag": "ACTIVE_MID",
+    "activation": 3.29688,
+    "text": "right and then with the respect one of the things you mentioned is really wanting to respect yourself and not sort of cross boundaries not sort of cross lines how do you think that the drinking fits in with that"
+   },
+   {
+    "id": "s009",
+    "tag": "ACTIVE_MID",
+    "activation": 3.28125,
+    "text": "so on a scale of zero to 100 how important do you think it is for you to make this change"
+   },
+   {
+    "id": "s018",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "all right is there anything you'd like to tell me about it"
+   },
+   {
+    "id": "s003",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.9375,
+    "text": "so what what do you think happened there"
+   }
+  ]
+ },
+ {
+  "task_id": "ctli_0133_explainer_r01",
+  "packet_id": "ctli_0133",
+  "latent_idx": 24943,
+  "repeat": 1,
+  "samples": [
+   {
+    "id": "s020",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "that sounds like a great idea"
+   },
+   {
+    "id": "s004",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.5625,
+    "text": "do you ever miss a dose or how do you take them?"
+   },
+   {
+    "id": "s009",
+    "tag": "ACTIVE_MID",
+    "activation": 1.49219,
+    "text": "So it sounds that you have been dealing with this for a while?"
+   },
+   {
+    "id": "s003",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.59375,
+    "text": "can you tell me a little bit more about what you do?"
+   },
+   {
+    "id": "s018",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "tell me about how you're using the insulin"
+   },
+   {
+    "id": "s006",
+    "tag": "ACTIVE_MID",
+    "activation": 1.50781,
+    "text": "how many days a week are you drinking?"
+   },
+   {
+    "id": "s014",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.871094,
+    "text": "And if Oscar's that important to you then do you put Oscar higher than your baby?"
+   },
+   {
+    "id": "s012",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.898438,
+    "text": "can I tell you what your options are here?"
+   },
+   {
+    "id": "s019",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "so it sounds like you really want to go to Black Friday with your friends you're feeling a little anxious about it"
+   },
+   {
+    "id": "s007",
+    "tag": "ACTIVE_MID",
+    "activation": 1.50781,
+    "text": "but you're working now is that right?"
+   },
+   {
+    "id": "s010",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.535156,
+    "text": "so where do you want to go from here you have this DUI I imagine a hearing or some type coming up right here to see me what can I do to help you"
+   },
+   {
+    "id": "s011",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.535156,
+    "text": "over yeah all right of all we do have some time right now if it's okay with you I wonder if we could talk a little bit about your drinking habits"
+   },
+   {
+    "id": "s005",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.4375,
+    "text": "okay and about how often would that be?"
+   },
+   {
+    "id": "s001",
+    "tag": "ACTIVE_HIGH",
+    "activation": 4.125,
+    "text": "could you explain thin detail?"
+   },
+   {
+    "id": "s016",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "it do did you have a color that you wanted"
+   },
+   {
+    "id": "s008",
+    "tag": "ACTIVE_MID",
+    "activation": 1.50781,
+    "text": "Please describe your symptoms."
+   },
+   {
+    "id": "s017",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "and your date of birth"
+   },
+   {
+    "id": "s013",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.882812,
+    "text": "Will we at least try again taking your medications?"
+   },
+   {
+    "id": "s002",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.79688,
+    "text": "what are the not so good things if any about smoking marijuana?"
+   },
+   {
+    "id": "s015",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.851562,
+    "text": "Will you at least try taking your medications?"
+   }
+  ]
+ },
+ {
+  "task_id": "ctli_0133_explainer_r02",
+  "packet_id": "ctli_0133",
+  "latent_idx": 24943,
+  "repeat": 2,
+  "samples": [
+   {
+    "id": "s008",
+    "tag": "ACTIVE_MID",
+    "activation": 1.50781,
+    "text": "Please describe your symptoms."
+   },
+   {
+    "id": "s003",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.59375,
+    "text": "can you tell me a little bit more about what you do?"
+   },
+   {
+    "id": "s005",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.4375,
+    "text": "okay and about how often would that be?"
+   },
+   {
+    "id": "s013",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.882812,
+    "text": "Will we at least try again taking your medications?"
+   },
+   {
+    "id": "s018",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "tell me about how you're using the insulin"
+   },
+   {
+    "id": "s014",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.871094,
+    "text": "And if Oscar's that important to you then do you put Oscar higher than your baby?"
+   },
+   {
+    "id": "s016",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "it do did you have a color that you wanted"
+   },
+   {
+    "id": "s020",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "that sounds like a great idea"
+   },
+   {
+    "id": "s001",
+    "tag": "ACTIVE_HIGH",
+    "activation": 4.125,
+    "text": "could you explain thin detail?"
+   },
+   {
+    "id": "s017",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.0,
+    "text": "and your date of birth"
+   },
+   {
+    "id": "s011",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.535156,
+    "text": "over yeah all right of all we do have some time right now if it's okay with you I wonder if we could talk a little bit about your drinking habits"
+   },
+   {
+    "id": "s019",
+    "tag": "NONACTIVE_RANDOM",
+    "activation": 0.0,
+    "text": "so it sounds like you really want to go to Black Friday with your friends you're feeling a little anxious about it"
+   },
+   {
+    "id": "s006",
+    "tag": "ACTIVE_MID",
+    "activation": 1.50781,
+    "text": "how many days a week are you drinking?"
+   },
+   {
+    "id": "s009",
+    "tag": "ACTIVE_MID",
+    "activation": 1.49219,
+    "text": "So it sounds that you have been dealing with this for a while?"
+   },
+   {
+    "id": "s012",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.898438,
+    "text": "can I tell you what your options are here?"
+   },
+   {
+    "id": "s007",
+    "tag": "ACTIVE_MID",
+    "activation": 1.50781,
+    "text": "but you're working now is that right?"
+   },
+   {
+    "id": "s002",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.79688,
+    "text": "what are the not so good things if any about smoking marijuana?"
+   },
+   {
+    "id": "s004",
+    "tag": "ACTIVE_HIGH",
+    "activation": 3.5625,
+    "text": "do you ever miss a dose or how do you take them?"
+   },
+   {
+    "id": "s015",
+    "tag": "NONACTIVE_NEAR_MISS",
+    "activation": 0.851562,
+    "text": "Will you at least try taking your medications?"
+   },
+   {
+    "id": "s010",
+    "tag": "ACTIVE_LOW",
+    "activation": 0.535156,
+    "text": "so where do you want to go from here you have this DUI I imagine a hearing or some type coming up right here to see me what can I do to help you"
+   }
+  ]
+ }
+]
