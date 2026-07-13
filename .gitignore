@@ -46,8 +46,20 @@ Thumbs.db
 desktop.ini
 
 # Local experiment outputs and logs
-outputs/
+# Keep all experiment outputs local, except for the curated latent-card release
+# checked in below.
+outputs/*
+!outputs/misc_full_sae_eval/
+outputs/misc_full_sae_eval/*
+!outputs/misc_full_sae_eval/interpretability/
+outputs/misc_full_sae_eval/interpretability/*
+!outputs/misc_full_sae_eval/interpretability/contrastive_latent_interp/
+outputs/misc_full_sae_eval/interpretability/contrastive_latent_interp/*
+!outputs/misc_full_sae_eval/interpretability/contrastive_latent_interp/deepseek_v4_flash_latent_cards/
 *.log
+
+# Local assistant configuration
+.claude/
 
 # Local datasets and large research artifacts
 data/mi_quality_counseling_misc/
@@ -71,4 +83,3 @@ hf_cache/
 
 # Git worktrees
 .worktrees/
-
