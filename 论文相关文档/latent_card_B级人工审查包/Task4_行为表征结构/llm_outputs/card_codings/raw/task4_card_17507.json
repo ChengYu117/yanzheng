@@ -1,0 +1,15 @@
+{
+  "latent_idx": 17507,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["topic"],
+  "open_behavior_code": "information_gathering_healthcare_intake",
+  "behavior_component_name_zh": "医疗信息收集",
+  "behavior_component_name_en": "healthcare information gathering",
+  "behavior_definition": "The speaker asks a series of questions to collect personal health, lifestyle, and psychosocial information, typical of a clinical or diagnostic intake interview.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s001", "s006", "s014"],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "All three cited utterances are interrogative forms used to elicit information about health-related topics (stress, dental care, symptoms). The pragmatic function is consistently information gathering in a healthcare context. The topic is health, but the primary function is behavioral (questioning to obtain data).",
+  "confidence": 4,
+  "boundary_note": "The evidence is limited to three utterances, but they are representative of the full set of 50 interrogatives. No contradictory evidence observed."
+}

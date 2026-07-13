@@ -1,0 +1,15 @@
+{
+  "latent_idx": 16131,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["topic"],
+  "open_behavior_code": "medication_dosing_instructions",
+  "behavior_component_name_zh": "用药剂量指导",
+  "behavior_component_name_en": "medication dosing instructions",
+  "behavior_definition": "Healthcare professionals provide instructions or information about medication dosing, administration, and adherence, using directive language and specific medication names.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s001", "s005", "s011"],
+  "contradicting_evidence_ids": ["s007", "s015", "s014"],
+  "coding_rationale": "The majority of utterances (44/50) involve healthcare professionals giving medication instructions, as seen in s005 and s011 with clear directive language ('you're gonna take it once a day', 'you can take it with a lot of water'). s001 provides medication information in a professional context. Outliers like s007 and s014 discuss over-the-counter purchases without instruction, and s015 describes illicit drug sales, differing in function. The pattern is consistent and supported by pragmatic evidence.",
+  "confidence": 4,
+  "boundary_note": "Outliers involve non-prescription or illicit drug contexts, which are topically related but functionally distinct from professional dosing instructions."
+}

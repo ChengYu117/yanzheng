@@ -1,0 +1,15 @@
+{
+  "latent_idx": 16190,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["linguistic_structure"],
+  "open_behavior_code": "offer_help_inquire_needs",
+  "behavior_component_name_zh": "提供帮助与询问需求",
+  "behavior_component_name_en": "Offer Help and Inquire Needs",
+  "behavior_definition": "The speaker offers assistance or asks about the listener's needs, typically using the verb 'help' in constructions with modals like 'can', 'will', or 'want to'.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s001", "s012", "s030"],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "All three cited utterances directly perform the speech act of offering help or inquiring about needs, with clear pragmatic function. The pattern is consistent across 50 samples with no outliers, supporting a behavioral grouping.",
+  "confidence": 4,
+  "boundary_note": "The pattern is broad but stable; may include both offers and inquiries, but all serve a service-oriented discourse function."
+}

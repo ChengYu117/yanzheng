@@ -1,0 +1,15 @@
+{
+  "latent_idx": 10916,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["linguistic_structure"],
+  "open_behavior_code": "health_probing_questions",
+  "behavior_component_name_zh": "健康探询提问",
+  "behavior_component_name_en": "health probing questions",
+  "behavior_definition": "Utterances that function as open-ended questions about health behaviors, habits, or personal experiences, often using discourse markers like 'okay', 'so', 'how', or 'what' to elicit information in a clinical or counseling context.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s001", "s014", "s041"],
+  "contradicting_evidence_ids": ["s004", "s025", "s026", "s050"],
+  "coding_rationale": "The majority of sentences are open-ended questions about health behaviors, with pragmatic evidence supporting a consistent behavioral function of probing in a clinical context. Outliers are non-health or non-question forms, but the pattern is strong.",
+  "confidence": 4,
+  "boundary_note": "Outliers include non-health topics (s004), short ambiguous questions (s025), statements (s026), and conditional statements (s050)."
+}

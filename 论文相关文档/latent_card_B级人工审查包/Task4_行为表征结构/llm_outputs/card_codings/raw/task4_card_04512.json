@@ -1,0 +1,15 @@
+{
+  "latent_idx": 4512,
+  "primary_evidence_class": "unclear_or_mixed",
+  "secondary_evidence_classes": ["linguistic_structure", "topic"],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": [],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The source card claims a behavioral function of 'help offers and discussions', but the cited utterances show a mix of direct offers (s005, s013, s028), negations (s001), reflections (s020), descriptions (s038), requests (s042), and thanks (s047). These do not consistently perform a single communicative action; they vary in pragmatic function. The common thread is the lexical item 'help', making this primarily a linguistic structure (repeated word) and a topic (help-related content), not a unified behavioral function. Therefore, behavioral grouping is not supported.",
+  "confidence": 4,
+  "boundary_note": "The pattern is consistent in lexical choice but not in pragmatic function; the card overgeneralizes from semantic similarity to behavioral function."
+}

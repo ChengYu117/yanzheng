@@ -1,0 +1,15 @@
+{
+  "latent_idx": 12544,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": [],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s004", "s012", "s035"],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The cited utterances consistently show wh-word repetitions and false starts, which are syntactic disfluencies. No consistent behavioral function is supported; the pattern is purely structural.",
+  "confidence": 4,
+  "boundary_note": "The pattern is limited to syntactic repetition and does not extend to semantic or functional consistency."
+}

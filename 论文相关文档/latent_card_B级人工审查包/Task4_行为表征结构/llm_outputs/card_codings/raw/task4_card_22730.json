@@ -1,0 +1,15 @@
+{
+  "latent_idx": 22730,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": [],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s001", "s005", "s010"],
+  "contradicting_evidence_ids": ["s022", "s036", "s042"],
+  "coding_rationale": "The primary pattern is a syntactic structure: deictic pronoun (this/that) + copula + evaluative predicate. This is a linguistic structure, not a consistent behavioral function. The evidence does not support a stable behavioral grouping across all sentences; some outliers show negation or plural forms. Confidence is moderate due to high support fraction but presence of outliers.",
+  "confidence": 3,
+  "boundary_note": "Pattern covers 82% of sentences, but outliers and lack of clear behavioral function limit grouping."
+}

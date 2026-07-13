@@ -1,0 +1,15 @@
+{
+  "latent_idx": 20808,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": [],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s002", "s011", "s023"],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The feature card consistently describes a second-person address pattern across all 50 sentences, which is a clear linguistic structure. The cited utterances (s002, s011, s023) all begin with 'you' or its contractions, supporting this structural classification. The behavioral function is inferred but not directly evidenced by the cited utterances; they are simple statements or compliments without clear pragmatic force like questioning or advising. Therefore, allow_behavior_grouping is false.",
+  "confidence": 4,
+  "boundary_note": "The pattern is purely structural; no behavioral grouping is warranted based on the provided evidence."
+}

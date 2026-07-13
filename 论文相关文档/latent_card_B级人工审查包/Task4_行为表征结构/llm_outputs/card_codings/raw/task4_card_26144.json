@@ -1,0 +1,15 @@
+{
+  "latent_idx": 26144,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": ["behavioral_function"],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s007", "s014", "s023"],
+  "contradicting_evidence_ids": ["s025", "s044", "s049"],
+  "coding_rationale": "The primary evidence is the consistent syntactic pattern of questions starting with 'so', 'and', or 'okay so' followed by 'what do you think' or 'how do you feel'. This is a linguistic structure. While the card proposes a behavioral function (therapist eliciting reflection), the cited utterances only show the form, not the actual discourse function. The outliers (s025, s044, s049) deviate in form (first person, 'we', lack of discourse marker), further supporting a structural classification. Behavioral grouping is not allowed because the evidence does not directly demonstrate a consistent communicative action beyond the question form.",
+  "confidence": 4,
+  "boundary_note": "The pattern is highly consistent in form, but the behavioral function is inferred rather than directly evidenced. The outliers show that the pattern is not universal."
+}

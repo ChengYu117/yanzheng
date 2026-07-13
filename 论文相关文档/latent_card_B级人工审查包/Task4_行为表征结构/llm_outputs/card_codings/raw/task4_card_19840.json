@@ -1,0 +1,15 @@
+{
+  "latent_idx": 19840,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": ["behavioral_function"],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s001", "s005", "s013"],
+  "contradicting_evidence_ids": ["s006", "s007", "s016"],
+  "coding_rationale": "The primary pattern is syntactic: open-ended questions using 'what' or 'tell me'. While these may serve a therapeutic elicitation function, the evidence does not consistently support a single behavioral function across all utterances (e.g., s006 is scheduling, s007 is a statement, s016 is a mix). Thus, the primary class is linguistic_structure, with behavioral_function as secondary. Behavioral grouping is not allowed due to insufficient pragmatic evidence for a consistent communicative action.",
+  "confidence": 4,
+  "boundary_note": "Outliers include scheduling, statements, and mixed discourse that do not fit the question pattern."
+}

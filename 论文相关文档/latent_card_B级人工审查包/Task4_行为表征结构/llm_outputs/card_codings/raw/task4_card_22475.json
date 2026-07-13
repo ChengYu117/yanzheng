@@ -1,0 +1,15 @@
+{
+  "latent_idx": 22475,
+  "primary_evidence_class": "affective_content",
+  "secondary_evidence_classes": ["linguistic_structure"],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s010", "s026", "s043"],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The cited utterances show formulaic positive evaluations ('good', 'great') that express affective content. The pattern is primarily lexical and evaluative, not a distinct behavioral function beyond general affirmation. The source card's behavioral explanation is plausible but not strongly supported by pragmatic evidence beyond the lexical items. Thus, primary class is affective_content, with linguistic_structure as secondary due to the formulaic pattern. No behavioral grouping is warranted.",
+  "confidence": 4,
+  "boundary_note": "The pattern is stable across all 50 sentences, but the function is broad and could overlap with conversational routines. The evidence is sufficient for affective content but not for a specific behavioral grouping."
+}

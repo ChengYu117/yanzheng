@@ -1,0 +1,15 @@
+{
+  "latent_idx": 12555,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": ["behavioral_function"],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s005", "s032", "s035"],
+  "contradicting_evidence_ids": ["s018", "s045", "s049", "s050"],
+  "coding_rationale": "The primary evidence is the syntactic pattern of 'do you' questions, which is a linguistic structure. The behavioral function of probing is plausible but not directly supported by the cited utterances beyond the question form; the utterances themselves are questions, but their pragmatic function as information gathering is inferred rather than explicit. Therefore, behavioral grouping is not allowed due to insufficient pragmatic evidence. The pattern is stable with 92% support, but the primary class remains linguistic structure.",
+  "confidence": 4,
+  "boundary_note": "Outliers are non-question forms or garbled text, indicating the pattern is not perfectly stable but still dominant."
+}

@@ -1,0 +1,15 @@
+{
+  "latent_idx": 8969,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["topic"],
+  "open_behavior_code": "healthcare_questioning",
+  "behavior_component_name_zh": "医疗问询",
+  "behavior_component_name_en": "healthcare questioning",
+  "behavior_definition": "Utterances that function as questions asked by a healthcare professional to assess patient knowledge, behaviors, or readiness to change, covering topics such as alcohol use, medical tests, and quitting behavior.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s001", "s007", "s021"],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The cited utterances are all questions with a clear pragmatic function of eliciting information or assessing readiness in a healthcare context. s001 asks about knowledge of alcohol's harms, s007 asks about a specific medical test, and s021 asks about ability to quit. These directly support a behavioral function of healthcare questioning. The primary class is behavioral_function, with topic as secondary due to health-related content. Confidence is high because the evidence is consistent and directly supports the function.",
+  "confidence": 4,
+  "boundary_note": "The card's claim of a healthcare setting is supported by the cited utterances, though some other sentences in the full set may diverge. The behavioral grouping is based on the pragmatic function of questioning in a healthcare context."
+}

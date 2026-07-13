@@ -1,0 +1,15 @@
+{
+  "latent_idx": 7037,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": ["behavioral_function"],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s001", "s005", "s016"],
+  "contradicting_evidence_ids": ["s042"],
+  "coding_rationale": "The primary evidence is a consistent linguistic template (discourse marker + scale question with anchors). While the function is requesting a rating, the form is the dominant pattern. Behavioral grouping is not supported because the utterances only show the question form, not a consistent behavioral action beyond asking for a rating. The outlier s042 lacks the template.",
+  "confidence": 4,
+  "boundary_note": "The template is highly consistent across 49/50 samples, but the function is embedded in the form; no independent behavioral evidence beyond the question."
+}

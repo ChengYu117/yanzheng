@@ -1,0 +1,15 @@
+{
+  "latent_idx": 12902,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": ["behavioral_function"],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s001", "s002", "s007"],
+  "contradicting_evidence_ids": ["s006", "s008", "s010", "s015", "s017", "s023", "s024", "s027", "s030", "s031", "s033", "s043", "s050"],
+  "coding_rationale": "The primary evidence is a consistent linguistic template (scale question with anchors and rating request), not a behavioral function. The cited utterances show a syntactic pattern, but the behavioral function (self-assessment request) is secondary and not directly supported by pragmatic evidence beyond the form. Outliers are mostly garbled or incomplete, reinforcing the structural pattern. Behavioral grouping is not allowed because the evidence does not consistently demonstrate a communicative action beyond the template.",
+  "confidence": 4,
+  "boundary_note": "The pattern is clear for the majority, but outliers show that not all utterances are complete scale questions; some are meta-commentary or fragments."
+}

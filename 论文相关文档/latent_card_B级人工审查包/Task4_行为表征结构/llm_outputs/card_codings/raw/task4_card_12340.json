@@ -1,0 +1,15 @@
+{
+  "latent_idx": 12340,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": [],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s001", "s008", "s013"],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "All cited utterances begin with 'do you' and are questions, forming a consistent syntactic pattern. The behavioral function (e.g., clinical assessment) is not directly supported by the evidence, which only shows question form. Thus, primary class is linguistic_structure, and behavioral grouping is not allowed.",
+  "confidence": 5,
+  "boundary_note": "Pattern is purely structural; no evidence of behavioral function beyond questioning."
+}

@@ -1,0 +1,15 @@
+{
+  "latent_idx": 24761,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": ["behavioral_function"],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s001", "s004", "s012"],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The primary pattern is a consistent linguistic structure: open-ended questions. While the pragmatic function is to elicit elaboration, the evidence does not support a specific behavioral grouping beyond general question-asking. The utterances vary in topic and specificity, and the behavioral function is not uniquely tied to a single therapeutic technique without additional context. Therefore, linguistic_structure is the primary class, with behavioral_function as secondary.",
+  "confidence": 4,
+  "boundary_note": "The pattern is robust across all 50 samples, but the behavioral function is too broad to warrant a separate grouping."
+}

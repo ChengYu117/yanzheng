@@ -1,0 +1,15 @@
+{
+  "latent_idx": 25532,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["linguistic_structure"],
+  "open_behavior_code": "therapeutic_affirmation_and_reflection",
+  "behavior_component_name_zh": "治疗性肯定与反思",
+  "behavior_component_name_en": "therapeutic affirmation and reflection",
+  "behavior_definition": "Utterances that validate or reflect the speaker's experiences, decisions, or emotions, often using 'sounds like' or 'that is' followed by positive or empathetic evaluation, serving a supportive therapeutic function.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s001", "s005", "s018"],
+  "contradicting_evidence_ids": ["s012", "s023"],
+  "coding_rationale": "The majority of utterances (44/50) are affirmations or reflections with clear pragmatic function, as shown in s001, s005, s018. Outliers like s012 and s023 are grammatically odd or incomplete, likely transcription artifacts, not contradicting the behavioral pattern. The pattern is consistent with therapeutic reflective listening.",
+  "confidence": 4,
+  "boundary_note": "Outliers may be transcription errors or different speech acts; pattern is robust across 88% of samples."
+}

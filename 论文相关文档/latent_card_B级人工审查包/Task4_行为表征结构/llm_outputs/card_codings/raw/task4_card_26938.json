@@ -1,0 +1,15 @@
+{
+  "latent_idx": 26938,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": [],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s003", "s008", "s036"],
+  "contradicting_evidence_ids": ["s002"],
+  "coding_rationale": "The pattern is a linguistic structure: 'great' used as a discourse marker to affirm or transition. The cited utterances show 'great' functioning as a discourse marker (e.g., 'Great well thank you', 'okay well great', 'okay great so'). There is no consistent behavioral function beyond conversational management; the evidence does not support a specific health or counseling action. The outlier s002 uses 'great' as an adjective, confirming the structural pattern.",
+  "confidence": 4,
+  "boundary_note": "The pattern is robust across 49/50 samples, but the function is purely linguistic, not behavioral."
+}

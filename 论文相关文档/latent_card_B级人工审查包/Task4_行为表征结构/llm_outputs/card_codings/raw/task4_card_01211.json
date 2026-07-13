@@ -1,0 +1,15 @@
+{
+  "latent_idx": 1211,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["linguistic_structure"],
+  "open_behavior_code": "therapist_reframing_and_summarizing",
+  "behavior_component_name_zh": "治疗师重述与总结",
+  "behavior_component_name_en": "therapist reframing and summarizing",
+  "behavior_definition": "The therapist uses discourse markers like 'so', 'okay', 'it sounds like', or 'what I hear you saying' to summarize, reframe, or validate the client's reported experiences, demonstrating reflective listening and encouraging further disclosure.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s001", "s003", "s016"],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The cited utterances consistently show a therapist summarizing or reflecting the client's statements using specific discourse markers. This is a clear behavioral function (reflective listening) supported by pragmatic evidence. The pattern is uniform across samples, with no contradicting evidence. The alternative explanations (motivational interviewing, domain artifact) are weaker given the consistent form and function.",
+  "confidence": 4,
+  "boundary_note": "All samples are from therapy sessions; the pattern may not generalize to other contexts. One sample (s020) is a direct question, slightly different but still therapeutic."
+}

@@ -1,0 +1,15 @@
+{
+  "latent_idx": 28795,
+  "primary_evidence_class": "affective_content",
+  "secondary_evidence_classes": ["linguistic_structure"],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s005", "s016", "s018"],
+  "contradicting_evidence_ids": ["s025", "s026", "s031"],
+  "coding_rationale": "The majority of utterances express apology or empathy (e.g., 'I'm sorry', 'sorry to hear'), which is affective content. The pattern is primarily lexical, so linguistic structure is secondary. No consistent behavioral function beyond expressing affect is supported by the evidence; the three outliers are hopeful statements without apology/empathy, reducing coverage. Behavioral grouping is not warranted because the utterances do not consistently serve a single communicative action beyond expressing affect.",
+  "confidence": 4,
+  "boundary_note": "The pattern is strong but surface-level; outliers are hopeful statements that do not fit the apology/empathy theme."
+}

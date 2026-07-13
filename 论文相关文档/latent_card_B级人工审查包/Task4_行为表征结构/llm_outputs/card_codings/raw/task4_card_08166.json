@@ -1,0 +1,15 @@
+{
+  "latent_idx": 8166,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["topic"],
+  "open_behavior_code": "giving_medical_advice",
+  "behavior_component_name_zh": "提供医疗建议",
+  "behavior_component_name_en": "giving medical advice",
+  "behavior_definition": "Utterances where a healthcare professional provides medical advice, prescribes medication, or gives health-related instructions.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s008", "s016", "s046"],
+  "contradicting_evidence_ids": ["s009", "s010", "s012"],
+  "coding_rationale": "The majority of utterances (36/50) involve healthcare professionals giving medical advice or health information, as supported by s008 (prescribing antibiotic), s016 (medication instructions), and s046 (case manager discussing diabetes). Outliers like s009 (family question) and s010 (ice cream) are personal or off-topic, contradicting the behavioral function. The pattern is consistent enough to allow behavioral grouping.",
+  "confidence": 4,
+  "boundary_note": "The function is clear for most utterances, but some outliers are personal or narrative, not fitting the medical advice pattern."
+}

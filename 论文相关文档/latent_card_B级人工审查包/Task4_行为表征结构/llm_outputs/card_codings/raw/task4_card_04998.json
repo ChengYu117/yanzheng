@@ -1,0 +1,15 @@
+{
+  "latent_idx": 4998,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["linguistic_structure"],
+  "open_behavior_code": "therapeutic_probing",
+  "behavior_component_name_zh": "治疗性探询",
+  "behavior_component_name_en": "therapeutic probing",
+  "behavior_definition": "The speaker uses questions to elicit self-reflection, assess readiness for change, and guide the client toward considering alternatives, typical of motivational interviewing or clinical assessment.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s001", "s009", "s015"],
+  "contradicting_evidence_ids": ["s023", "s032", "s040", "s042"],
+  "coding_rationale": "The majority of utterances are questions with a clear therapeutic probing function, as evidenced by s001 (exploring impact), s009 (decisional balance), and s015 (clinical assessment). Outliers are non-questions or off-topic, but the pattern is strong. The primary class is behavioral_function, with secondary linguistic_structure due to the question form.",
+  "confidence": 4,
+  "boundary_note": "The card is well-defined but includes a few outliers that are not questions or are off-topic, reducing coverage slightly."
+}

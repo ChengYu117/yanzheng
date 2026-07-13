@@ -1,0 +1,15 @@
+{
+  "latent_idx": 3887,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["linguistic_structure"],
+  "open_behavior_code": "therapeutic_questioning",
+  "behavior_component_name_zh": "治疗性提问",
+  "behavior_component_name_en": "therapeutic questioning",
+  "behavior_definition": "The speaker uses open-ended questions to elicit detailed personal information about habits, feelings, and behaviors, facilitating exploration and reflection in a therapeutic or counseling context.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s001", "s005", "s012"],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The cited utterances are direct pragmatic acts of questioning to prompt elaboration, consistently serving a therapeutic behavioral function. The linguistic form (open-ended questions) supports but does not override the primary behavioral function. No contradictions found.",
+  "confidence": 4,
+  "boundary_note": "All 50 samples show consistent questioning pattern; no outliers."
+}

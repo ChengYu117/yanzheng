@@ -1,0 +1,15 @@
+{
+  "latent_idx": 12337,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": ["behavioral_function"],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s005", "s010", "s017"],
+  "contradicting_evidence_ids": ["s009", "s016", "s024", "s026", "s035", "s036", "s040", "s049", "s050"],
+  "coding_rationale": "The primary pattern is a clear linguistic structure: questions using 'what do you' or similar forms. The candidate behavioral explanation (probing questions) is plausible but not strongly supported by pragmatic evidence beyond the form itself; the utterances are mostly questions but lack consistent evidence of a specific behavioral function like information elicitation in a therapeutic context. The outliers are non-question forms, confirming the structural focus. Thus, primary class is linguistic_structure, with behavioral_function as secondary but not sufficient for grouping.",
+  "confidence": 4,
+  "boundary_note": "The pattern is robust for questions but does not extend to non-question utterances; outliers are clearly different forms."
+}

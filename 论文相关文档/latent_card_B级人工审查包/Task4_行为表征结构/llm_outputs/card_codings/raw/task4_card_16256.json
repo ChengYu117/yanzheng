@@ -1,0 +1,15 @@
+{
+  "latent_idx": 16256,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["linguistic_structure"],
+  "open_behavior_code": "therapeutic_reflective_listening",
+  "behavior_component_name_zh": "治疗性反思性倾听",
+  "behavior_component_name_en": "therapeutic reflective listening",
+  "behavior_definition": "The speaker uses discourse markers and paraphrasing to reflect, validate, and explore the interlocutor's statements, typical of therapeutic or counseling settings.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s003", "s010", "s024"],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The cited utterances consistently show reflective listening phrases like 'I hear you saying' and 'It really does sound, though, like you', which serve a clear behavioral function of active listening and validation. The pattern is supported by pragmatic evidence, not just form. The primary class is behavioral_function, with secondary linguistic_structure due to the discourse markers. Confidence is high because the evidence is strong and consistent.",
+  "confidence": 4,
+  "boundary_note": "The behavior is specific to therapeutic discourse; however, some utterances (e.g., s001, s044) also include advice or confrontation, which may indicate a broader motivational interviewing context."
+}

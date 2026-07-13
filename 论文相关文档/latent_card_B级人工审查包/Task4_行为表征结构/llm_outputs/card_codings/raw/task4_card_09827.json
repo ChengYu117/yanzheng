@@ -1,0 +1,15 @@
+{
+  "latent_idx": 9827,
+  "primary_evidence_class": "unclear_or_mixed",
+  "secondary_evidence_classes": [],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": [],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The source card identifies a pattern of varied question forms but no stable behavioral function. The cited utterances show diverse interrogative types (yes/no, wh-, negative question, comprehension check) and one statement (s035), confirming the mixed nature. No consistent communicative action is supported by the evidence.",
+  "confidence": 2,
+  "boundary_note": "The set includes one non-question (s035) and fragmented utterances, preventing a unified behavioral grouping."
+}

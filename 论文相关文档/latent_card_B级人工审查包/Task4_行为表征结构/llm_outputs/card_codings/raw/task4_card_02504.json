@@ -1,0 +1,15 @@
+{
+  "latent_idx": 2504,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": [],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s001", "s016", "s038"],
+  "contradicting_evidence_ids": ["s024", "s025", "s031", "s033"],
+  "coding_rationale": "The primary evidence class is linguistic_structure because the feature card focuses on the syntactic pattern of yes/no questions with auxiliary fronting, supported by 46 out of 50 sentences. The behavioral function is inferred but not directly observable from the cited utterances; the utterances themselves are questions or fragments without clear pragmatic evidence of a consistent communicative action beyond questioning. Therefore, allow_behavior_grouping is false.",
+  "confidence": 4,
+  "boundary_note": "The pattern is robust but domain-specific; outliers are syntactic deviations."
+}

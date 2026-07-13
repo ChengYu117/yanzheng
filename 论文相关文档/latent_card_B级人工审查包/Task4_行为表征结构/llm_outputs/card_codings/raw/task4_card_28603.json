@@ -1,0 +1,15 @@
+{
+  "latent_idx": 28603,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["topic"],
+  "open_behavior_code": "help_offering",
+  "behavior_component_name_zh": "提供帮助",
+  "behavior_component_name_en": "help offering",
+  "behavior_definition": "Utterances that express an offer or desire to assist someone, often in a health or wellness context.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s008", "s014", "s020"],
+  "contradicting_evidence_ids": ["s035", "s038", "s039"],
+  "coding_rationale": "The majority of sentences (94%) contain explicit help-offering phrases like 'I want to help you', indicating a consistent behavioral function. The three outliers are semantically unclear or unrelated, but do not undermine the dominant pattern. The topic is health-related, but the primary function is behavioral.",
+  "confidence": 4,
+  "boundary_note": "The pattern is clear and frequent, but the dataset domain may bias the topic. Outliers are ambiguous fragments."
+}

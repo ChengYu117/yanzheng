@@ -1,0 +1,15 @@
+{
+  "latent_idx": 18730,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["linguistic_structure", "topic"],
+  "open_behavior_code": "exploratory_questioning",
+  "behavior_component_name_zh": "探索性提问",
+  "behavior_component_name_en": "exploratory questioning",
+  "behavior_definition": "The speaker uses open-ended questions or prompts to explore the patient's symptoms, thoughts, or behaviors, aiming to gather information and guide discussion.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s003", "s013", "s035"],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The cited utterances (s003, s013, s035) directly contain exploratory questions ('what the problem might be', 'what's going on with you', 'what's going on'), demonstrating a consistent behavioral function of exploratory questioning. The pattern is supported by pragmatic evidence of inquiry. Alternative interpretations as linguistic structure or topic are secondary.",
+  "confidence": 4,
+  "boundary_note": "The pattern is consistent across all 50 samples, but domain specificity (healthcare) may inflate coherence. Some supporting utterances (s009, s014) are statements, not questions, but still fit the exploratory theme."
+}

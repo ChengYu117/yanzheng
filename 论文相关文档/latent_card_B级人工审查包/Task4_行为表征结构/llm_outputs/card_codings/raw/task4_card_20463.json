@@ -1,0 +1,15 @@
+{
+  "latent_idx": 20463,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": ["behavioral_function"],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s001", "s010", "s041"],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The primary evidence is the recurring 'are you' question structure, which is a clear linguistic pattern. The behavioral function (seeking information) is inferred but not directly supported by the cited utterances; the utterances are questions but lack pragmatic context to confirm a consistent communicative action beyond form. Thus, allow_behavior_grouping is false.",
+  "confidence": 4,
+  "boundary_note": "The pattern is highly consistent across all 50 samples, but the behavioral function is not directly evidenced; the card's candidate behavioral explanation is speculative."
+}

@@ -1,0 +1,15 @@
+{
+  "latent_idx": 10181,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["linguistic_structure"],
+  "open_behavior_code": "reflective_listening_motivational_interviewing",
+  "behavior_component_name_zh": "反思性倾听与动机访谈",
+  "behavior_component_name_en": "reflective listening and motivational interviewing",
+  "behavior_definition": "The clinician reflects back the client's mixed feelings, concerns, or progress regarding health behaviors using tentative language and summarizing ambivalence to promote behavior change.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s001", "s011", "s033"],
+  "contradicting_evidence_ids": ["s013", "s017", "s024", "s039"],
+  "coding_rationale": "The majority of utterances (46/50) consistently show reflective listening and motivational interviewing techniques, such as summarizing ambivalence and using tentative language. The three representative evidence IDs directly illustrate this function. The four outliers are fragments or self-reports that break the pattern, but the overall evidence strongly supports a behavioral function classification.",
+  "confidence": 4,
+  "boundary_note": "The pattern is clear for clinician utterances; outliers may be client turns or transcription artifacts."
+}

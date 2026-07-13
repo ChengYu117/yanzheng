@@ -1,0 +1,15 @@
+{
+  "latent_idx": 20743,
+  "primary_evidence_class": "unclear_or_mixed",
+  "secondary_evidence_classes": [],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": [],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The source card emphasizes second-person pronouns and health advice, but the cited evidence shows a mix of second-person and first-person plural forms, and the pragmatic function is not consistently behavioral across all utterances. The evidence does not strongly support a single behavioral function; rather, it reflects a mix of linguistic structure (second-person address) and topic (health). Therefore, the primary class is unclear_or_mixed.",
+  "confidence": 3,
+  "boundary_note": "The card's claim of a behavioral function is not fully supported by the limited evidence provided; the pattern may be an artifact of the dataset's topic rather than a consistent communicative action."
+}

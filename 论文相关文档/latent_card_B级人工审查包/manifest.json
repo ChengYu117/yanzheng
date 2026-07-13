@@ -1,0 +1,44 @@
+{
+  "analysis": "paper_frozen_latent_card_B_review_package",
+  "freeze_date": "2026-07-13",
+  "source_base": "outputs\\misc_full_sae_eval\\interpretability\\contrastive_latent_interp\\deepseek_v4_flash_latent_cards",
+  "leaf_labels": [
+    "RES",
+    "REC",
+    "QUO",
+    "QUC",
+    "GI",
+    "SU",
+    "AF"
+  ],
+  "grade_definition": "automatically generated stable-core candidate selected for human review; not human validated",
+  "counts": {
+    "all_frozen_cards": 225,
+    "leaf_label_candidate_rows": 35,
+    "leaf_candidates_per_label": {
+      "AF": 5,
+      "GI": 5,
+      "QUC": 5,
+      "QUO": 5,
+      "REC": 5,
+      "RES": 5,
+      "SU": 5
+    },
+    "shared_candidates": 8,
+    "unique_selected_latents": 37
+  },
+  "outputs": {
+    "readme": "论文相关文档\\latent_card_B级人工审查包\\README.md",
+    "leaf_candidates": "论文相关文档\\latent_card_B级人工审查包\\B_level_human_review\\leaf_label_B_candidates.csv",
+    "shared_candidates": "论文相关文档\\latent_card_B级人工审查包\\B_level_human_review\\shared_B_candidates.csv",
+    "checksums": "论文相关文档\\latent_card_B级人工审查包\\package_checksums.sha256"
+  },
+  "source_sha256": {
+    "validated_cards": "951b3e380a687344d98922fcc7a9bc4752a67a6f53b4b7d3118519ec9e54eebb",
+    "sentence_packs": "ccf4cb24ef148410b3f8a4b16706112aa11bff96d9441297808dcfb8a91a1953",
+    "quality_by_label": "36135b8fea9c614f225c94c9dc967e680d1d79a5d65abfa4c10e5a8e968a38d5",
+    "quality_by_latent": "b97499db5bec4ee982879d4943b0836ddff99954a83bbac982a99254336a1d8a",
+    "content_audit_md": "6e5955beeb98f5b58b58f4b83993b45515c1de6aee8cc290806aa3db6a2852b9",
+    "content_audit_csv": "9f006023bbfe98ae86fe9dbfcf190b5d898229bca614a743bffb0d29e8045788"
+  }
+}

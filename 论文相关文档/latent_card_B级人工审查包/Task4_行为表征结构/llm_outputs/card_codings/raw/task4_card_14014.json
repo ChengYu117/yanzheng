@@ -1,0 +1,15 @@
+{
+  "latent_idx": 14014,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["linguistic_structure"],
+  "open_behavior_code": "medical_history_questioning",
+  "behavior_component_name_zh": "病史询问",
+  "behavior_component_name_en": "medical history questioning",
+  "behavior_definition": "Utterances that function as questions to gather patient medical history, symptoms, medication use, or lifestyle habits, typically starting with 'Did you' or 'Have you'.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s003", "s007", "s008"],
+  "contradicting_evidence_ids": ["s012", "s013", "s016", "s022", "s023", "s024", "s026", "s041", "s046", "s049"],
+  "coding_rationale": "The majority of utterances are questions about medical history, as shown by supporting evidence. The pattern is consistent and stable, with clear outliers that are incomplete or topically different. The behavioral function is supported by pragmatic evidence of diagnostic questioning.",
+  "confidence": 4,
+  "boundary_note": "Outliers include incomplete sentences, non-medical topics, and mixed discourse markers, but the core pattern is strong."
+}

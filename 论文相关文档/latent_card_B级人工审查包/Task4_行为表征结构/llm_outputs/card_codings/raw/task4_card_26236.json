@@ -1,0 +1,15 @@
+{
+  "latent_idx": 26236,
+  "primary_evidence_class": "topic",
+  "secondary_evidence_classes": ["linguistic_structure"],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s001", "s002", "s003"],
+  "contradicting_evidence_ids": ["s039"],
+  "coding_rationale": "The utterances consistently discuss cholesterol and blood pressure management, with discourse markers like 'okay' and 'so' structuring explanations. This is primarily a topic (health/medication) with some linguistic structure (discourse markers). No stable behavioral function is supported; s039 introduces a different health topic (lung cancer, heart disease), contradicting a pure cholesterol/blood pressure topic but not a broader health topic. Confidence is high due to strong topical consistency.",
+  "confidence": 4,
+  "boundary_note": "The topic is health counseling/education, but the specific focus varies slightly across utterances."
+}

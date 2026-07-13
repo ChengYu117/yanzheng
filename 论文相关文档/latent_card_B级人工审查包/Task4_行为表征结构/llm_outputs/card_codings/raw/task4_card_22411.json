@@ -1,0 +1,15 @@
+{
+  "latent_idx": 22411,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["linguistic_structure"],
+  "open_behavior_code": "affirmation_positive_reinforcement",
+  "behavior_component_name_zh": "肯定与积极强化",
+  "behavior_component_name_en": "affirmation and positive reinforcement",
+  "behavior_definition": "The speaker uses positive evaluative language (e.g., 'good', 'great', 'obvious') to affirm the interlocutor's actions, traits, or plans, serving a supportive or coaching function.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s002", "s010", "s021"],
+  "contradicting_evidence_ids": ["s023"],
+  "coding_rationale": "The utterances consistently express positive evaluations (e.g., 'really good goals', 'good mom', 'that's great'), which pragmatically function as affirmations or reinforcements. The outlier s023 is more speculative and lacks positive evaluation. The pattern is highly consistent (98% support) and the behavioral function is plausible given the semantic content.",
+  "confidence": 4,
+  "boundary_note": "The pattern is robust across 49/50 samples, but the outlier suggests the function may not apply in all contexts (e.g., speculative statements)."
+}

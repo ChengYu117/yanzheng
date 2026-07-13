@@ -1,0 +1,15 @@
+{
+  "latent_idx": 23242,
+  "primary_evidence_class": "unclear_or_mixed",
+  "secondary_evidence_classes": [],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": [],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The source card claims a behavioral function of therapist observation/affirmation, but the cited evidence is limited to three 'I noticed' utterances (s001, s002, s030) which are linguistic forms, not necessarily consistent behavioral functions. Outliers s006, s008, s009 are clearly different (compliment, appreciation, surprise). The sample is too small and mixed to confirm a coherent behavioral grouping. The primary pattern is a linguistic structure (phrases like 'I noticed') rather than a pragmatic function, and the presence of contradictory evidence prevents grouping.",
+  "confidence": 2,
+  "boundary_note": "The card's behavioral explanation is not supported by sufficient pragmatic evidence; the 'I noticed' pattern is a surface form that may serve various functions across contexts."
+}

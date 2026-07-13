@@ -1,0 +1,15 @@
+{
+  "latent_idx": 11405,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["linguistic_structure"],
+  "open_behavior_code": "advice_giving_and_reflective_questioning",
+  "behavior_component_name_zh": "建议与反思性提问",
+  "behavior_component_name_en": "advice and reflective questioning",
+  "behavior_definition": "The speaker uses second-person address to give advice, reflect on risks, and encourage behavior change, consistent with motivational interviewing or coaching.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s002", "s007", "s030"],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The cited utterances show direct advice (s002), risk reflection (s007), and imperative encouragement (s030), supporting a behavioral function of advice-giving and reflective questioning. The pattern is consistent across all 50 samples with no outliers. Confidence is high due to strong pragmatic evidence.",
+  "confidence": 4,
+  "boundary_note": "The function is clearly advice/reflection; first-person narratives (s001, s011) are mixed but still support the conversational context."
+}

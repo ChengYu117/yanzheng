@@ -1,0 +1,15 @@
+{
+  "latent_idx": 20869,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["topic", "linguistic_structure"],
+  "open_behavior_code": "health_probing_questions",
+  "behavior_component_name_zh": "健康探询提问",
+  "behavior_component_name_en": "health probing questions",
+  "behavior_definition": "Utterances that are questions about health-related behaviors (e.g., diet, alcohol, smoking, treatment) used in a clinical or counseling context to assess or motivate behavior change.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s010", "s037", "s048"],
+  "contradicting_evidence_ids": ["s029"],
+  "coding_rationale": "The source card identifies a consistent pattern of health-related questions across 49/50 sentences. The cited evidence (s010, s037, s048) directly supports a behavioral function of probing health behaviors in a clinical context. The outlier s029 is an exclamation, not a question, and does not fit the pattern. The primary class is behavioral_function because the utterances serve a clear pragmatic function of assessment/motivation, not just topic or form.",
+  "confidence": 4,
+  "boundary_note": "The pattern is very consistent, but one outlier (s029) and potential confounds (clinical setting bias, transcription artifacts) slightly reduce confidence."
+}

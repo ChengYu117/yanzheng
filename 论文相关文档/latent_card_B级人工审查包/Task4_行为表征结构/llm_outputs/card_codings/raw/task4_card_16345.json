@@ -1,0 +1,15 @@
+{
+  "latent_idx": 16345,
+  "primary_evidence_class": "topic",
+  "secondary_evidence_classes": [],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": [],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The source card correctly identifies a consistent health/medication topic across all utterances. The cited evidence (s001, s002, s003) shows informational statements about medications and health conditions, but no consistent behavioral function (e.g., advice, instruction) is pragmatically supported. The utterances vary in discourse function (explanation, description) and speaker role, so behavioral grouping is not warranted.",
+  "confidence": 4,
+  "boundary_note": "The topic is broad (health/medication) but consistent; no outliers."
+}

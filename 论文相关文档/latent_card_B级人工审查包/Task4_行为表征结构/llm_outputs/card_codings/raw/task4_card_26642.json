@@ -1,0 +1,15 @@
+{
+  "latent_idx": 26642,
+  "primary_evidence_class": "unclear_or_mixed",
+  "secondary_evidence_classes": [],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": [],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The source card's primary explanation focuses on second-person address and health/advice discourse, which are linguistic structure and topic features. The candidate behavioral explanation (therapeutic interview) is not directly supported by the cited utterances: s016 is a warning, s017 is advice, s049 is a question—these are diverse pragmatic functions, not a consistent behavioral grouping. The evidence does not demonstrate a unified communicative action beyond surface form and topic. Therefore, behavioral grouping is not warranted, and the primary class is unclear_or_mixed.",
+  "confidence": 3,
+  "boundary_note": "The card mixes linguistic form (second-person pronouns) with topic (health) and varied pragmatic functions (warning, advice, question). Without context, the behavioral function cannot be reliably determined."
+}

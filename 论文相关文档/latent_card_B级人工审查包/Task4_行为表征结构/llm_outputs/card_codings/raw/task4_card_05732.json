@@ -1,0 +1,15 @@
+{
+  "latent_idx": 5732,
+  "primary_evidence_class": "unclear_or_mixed",
+  "secondary_evidence_classes": [],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": [],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The source card claims a behavioral function (therapeutic discourse), but the cited utterances only show first-person pronouns and discourse markers, which are linguistic structures. The evidence does not directly support a consistent communicative action; alternative explanations (e.g., general conversation) are plausible. Thus, the primary class is unclear_or_mixed, and behavioral grouping is not allowed.",
+  "confidence": 1,
+  "boundary_note": "The card's behavioral interpretation is not supported by pragmatic evidence from the cited utterances; the pattern is primarily linguistic."
+}

@@ -1,0 +1,15 @@
+{
+  "latent_idx": 21935,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["linguistic_structure"],
+  "open_behavior_code": "health_behavior_assessment_questions",
+  "behavior_component_name_zh": "健康行为评估提问",
+  "behavior_component_name_en": "health behavior assessment questions",
+  "behavior_definition": "Utterances that function as questions assessing health-related behaviors (sleep, weight, alcohol, drugs, diet, exercise) and attitudes, typical of clinical or counseling interviews.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s001", "s005", "s009"],
+  "contradicting_evidence_ids": ["s004", "s012", "s031", "s032", "s048"],
+  "coding_rationale": "The majority of sentences are questions about health behaviors, supported by pragmatic evidence (e.g., s001 asks about sleep and weight changes, s005 asks about self-perception of weight, s009 asks about perceived benefits of change). Outliers are narrative or non-health topics, but the core pattern is consistent. The behavioral function is clear: assessing patient behaviors and readiness to change. Confidence is high due to strong support fraction (0.9).",
+  "confidence": 4,
+  "boundary_note": "Outliers include narrative statements (s004, s012), non-health questions (s032, s048), and responses (s031), indicating the pattern is not universal but dominant."
+}

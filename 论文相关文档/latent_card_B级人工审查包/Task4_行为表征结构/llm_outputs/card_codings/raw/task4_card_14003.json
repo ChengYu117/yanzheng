@@ -1,0 +1,15 @@
+{
+  "latent_idx": 14003,
+  "primary_evidence_class": "unclear_or_mixed",
+  "secondary_evidence_classes": ["linguistic_structure", "topic"],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": [],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The cited utterances are predominantly wh-questions and yes/no questions about health habits, but the evidence for a consistent behavioral function (e.g., diagnostic interview) is inferred rather than directly supported. The utterances could also be from a structured questionnaire or casual conversation. The primary class is unclear because the pragmatic function is not uniquely determined by the evidence; the form (interrogative) and topic (health) are clear, but the behavioral grouping is not strongly supported.",
+  "confidence": 3,
+  "boundary_note": "The set includes fragmentary questions (e.g., 'Than your wife?') and non-standard interrogatives, suggesting mixed contexts."
+}

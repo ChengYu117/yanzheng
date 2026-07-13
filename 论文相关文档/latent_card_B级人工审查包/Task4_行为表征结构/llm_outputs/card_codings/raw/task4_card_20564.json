@@ -1,0 +1,15 @@
+{
+  "latent_idx": 20564,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["topic"],
+  "open_behavior_code": "therapeutic_guidance",
+  "behavior_component_name_zh": "治疗性指导",
+  "behavior_component_name_en": "therapeutic guidance",
+  "behavior_definition": "Utterances that offer advice, explore motivations, or reinforce positive changes in a counseling context, often using second-person address and reflecting on health behaviors or emotional states.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s001", "s004", "s035"],
+  "contradicting_evidence_ids": ["s007", "s012", "s017"],
+  "coding_rationale": "The source card's candidate behavioral explanation is supported by pragmatic evidence: s001 offers a suggestion about healthy lunch, s004 shares depression and asks for medication opinion (client sharing), s035 reflects on relaxation and marijuana use. These show consistent therapeutic guidance. Outliers s007, s012, s017 lack second-person address or clear therapeutic function. Thus behavioral grouping is allowed with open code 'therapeutic_guidance'.",
+  "confidence": 4,
+  "boundary_note": "The pattern is strong (94% support) but outliers indicate some noise; the behavioral function is consistent across diverse health topics."
+}

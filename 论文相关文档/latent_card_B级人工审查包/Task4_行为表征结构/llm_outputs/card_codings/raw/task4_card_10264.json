@@ -1,0 +1,15 @@
+{
+  "latent_idx": 10264,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["topic"],
+  "open_behavior_code": "health_behavior_counseling",
+  "behavior_component_name_zh": "健康行为咨询",
+  "behavior_component_name_en": "health behavior counseling",
+  "behavior_definition": "A dialogue where a healthcare provider gives advice, assesses readiness, and sets goals regarding lifestyle modifications such as diet, exercise, alcohol, and smoking.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s004", "s020", "s044"],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The cited utterances show clear pragmatic functions: s004 gives advice to cut out drinking, s020 asks about increasing confidence (motivational interviewing), s044 assesses readiness to change. These are consistent with health behavior counseling. Topical evidence (s001, s005, s007, s031) supports the health context but is not behavioral. The pattern is strong across 50 samples, so grouping is allowed.",
+  "confidence": 4,
+  "boundary_note": "The dialogue is extracted from a longer conversation; some context is missing but the behavioral function remains clear."
+}

@@ -1,0 +1,15 @@
+{
+  "latent_idx": 15504,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": ["behavioral_function"],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s005", "s018", "s025"],
+  "contradicting_evidence_ids": ["s001", "s039"],
+  "coding_rationale": "The primary evidence is the repeated use of 'So' at utterance beginnings, a linguistic structure. While many utterances are questions in a counseling context, the cited evidence shows that not all start with 'So' (s001, s039) and the behavioral function is not uniformly supported by the utterances alone (e.g., s039 is a statement). Thus, the pattern is primarily structural, with a secondary behavioral aspect, but insufficient for a behavioral grouping.",
+  "confidence": 4,
+  "boundary_note": "The pattern is consistent across 50 samples, but the behavioral function is inferred from context rather than directly from the utterances."
+}

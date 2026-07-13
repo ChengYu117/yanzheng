@@ -1,0 +1,15 @@
+{
+  "latent_idx": 24206,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["linguistic_structure"],
+  "open_behavior_code": "expressing_gratitude_and_appreciation",
+  "behavior_component_name_zh": "表达感谢和赞赏",
+  "behavior_component_name_en": "expressing gratitude and appreciation",
+  "behavior_definition": "The speaker uses explicit gratitude or appreciation phrases (e.g., 'thank you', 'I appreciate') to acknowledge the listener's actions, fostering social bonding and rapport.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s001", "s006", "s015"],
+  "contradicting_evidence_ids": ["s003", "s013", "s022", "s043", "s044", "s050"],
+  "coding_rationale": "The majority of sentences contain clear lexical markers of gratitude/appreciation (e.g., 'thank you', 'appreciate'), serving a social bonding function. Outliers lack these markers and are narrative or question forms. The pattern is consistent and supported by pragmatic evidence.",
+  "confidence": 4,
+  "boundary_note": "The function is clear for the majority, but outliers indicate the set is not entirely homogeneous; some sentences may be from different discourse contexts."
+}

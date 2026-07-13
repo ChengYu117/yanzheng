@@ -1,0 +1,15 @@
+{
+  "latent_idx": 4756,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["linguistic_structure"],
+  "open_behavior_code": "empathic_validation",
+  "behavior_component_name_zh": "共情验证",
+  "behavior_component_name_en": "empathic validation",
+  "behavior_definition": "The speaker uses phrases like 'I understand' and 'I get where you're coming from' to validate the interlocutor's perspective, building rapport and demonstrating empathy.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s004", "s007", "s030"],
+  "contradicting_evidence_ids": ["s042"],
+  "coding_rationale": "The cited utterances directly support a consistent communicative action of empathic validation, with clear pragmatic evidence. The pattern is highly consistent across 49/50 samples, and the behavioral function is well-supported. The outlier s042 contradicts the pattern.",
+  "confidence": 4,
+  "boundary_note": "The pattern is domain-specific (e.g., therapy) and may not generalize; the outlier suggests possible transcription errors or different contexts."
+}

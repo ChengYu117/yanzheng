@@ -85,7 +85,7 @@ Return only one JSON object. Do not wrap it in Markdown. Use exactly these field
 Field requirements:
 - latent_idx must be the integer latent id shown in the task metadata.
 - short_name must be concise and must not contain dataset label codes.
-- positive_triggers, explicit_exclusions, possible_surface_confounds, alternative_hypotheses, and key_evidence must be JSON arrays.
+- positive_triggers, explicit_exclusions, possible_surface_confounds, alternative_hypotheses, key_evidence, and failure_modes must be JSON arrays.
 - confidence must be a continuous number between 0 and 1.
 - key_evidence should list sample ids from the prompt.
 """

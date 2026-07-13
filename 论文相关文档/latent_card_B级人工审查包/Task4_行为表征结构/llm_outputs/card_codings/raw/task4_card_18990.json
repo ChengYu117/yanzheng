@@ -1,0 +1,15 @@
+{
+  "latent_idx": 18990,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": ["behavioral_function"],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s001", "s003", "s016"],
+  "contradicting_evidence_ids": ["s025", "s037", "s048"],
+  "coding_rationale": "The primary pattern is a linguistic structure: sentences predominantly begin with 'what' (often 'what would'), forming open-ended questions. However, several cited utterances are statements or patient responses, not questions (s025, s037, s048), contradicting a purely behavioral function. The behavioral interpretation (motivational interviewing) is plausible but not consistently supported by all evidence; the linguistic form is more robust. Thus, primary class is linguistic_structure, with secondary behavioral_function. Behavioral grouping is not allowed due to mixed evidence.",
+  "confidence": 3,
+  "boundary_note": "The pattern is strong for 'what' questions, but the presence of non-question utterances limits the behavioral claim. The dataset appears to be from a single therapeutic session, which may inflate consistency."
+}

@@ -1,0 +1,9 @@
+﻿grade,review_status,selection_order,latent_idx,leaf_labels,sharing_type,rank_within_labels,short_name,explanation_type,confidence,support_fraction_model_reported,selection_rationale,human_shared_interpretation,reviewer_1,reviewer_2,human_review_notes
+B,pending_human_review,1,19435,REC|RES,sibling_leaf_labels,REC:5|RES:8,so_you_statements,linguistic_structure,4,1.0,同家族共享；so you 结构清晰，但反映、总结和指令功能需要人工区分。,,,,
+B,pending_human_review,2,29759,REC|RES,sibling_leaf_labels,REC:6|RES:4,therapeutic reflection and questioning,behavioral_function,4,1.0,同家族共享；反映与提问混合，适合审查简单/复杂反映边界。,,,,
+B,pending_human_review,3,11660,QUC|QUO,sibling_leaf_labels,QUC:12|QUO:7,wh_questions_with_would,linguistic_structure,4,0.84,同家族共享；wh + would 可同时表现开放性和可回答边界。,,,,
+B,pending_human_review,4,12340,QUC|QUO,sibling_leaf_labels,QUC:11|QUO:22,do_you_questions,linguistic_structure,5,1.0,同家族共享；do you 句式说明问句表层结构不能自动区分开放/封闭功能。,,,,
+B,pending_human_review,5,26485,QUC|QUO,sibling_leaf_labels,QUC:30|QUO:5,how_questions,behavioral_function,4,0.96,同家族共享；how 问句在两个子标签中共享，适合审查功能标注边界。,,,,
+B,pending_human_review,6,29590,QUC|QUO,sibling_leaf_labels,QUC:23|QUO:21,how_long_how_much_how_often_questions,behavioral_function,4,1.0,同家族共享；how long/much/often/many 的数量问句具有开放形式和受限答案双重属性。,,,,
+B,pending_human_review,7,23464,AF|SU,cross_family,AF:1|SU:30,affirmative_evaluations,affective_content,3,0.78,跨家族共享；正向评价可能同时承担肯定和支持作用。,,,,
+B,pending_human_review,8,24856,AF|SU,cross_family,AF:13|SU:37,evaluative_that-copula-adjective,linguistic_structure,4,1.0,跨家族共享；that + copula + evaluative adjective 是可核查的共同表层模板。,,,,

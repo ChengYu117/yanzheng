@@ -1,0 +1,15 @@
+{
+  "latent_idx": 14833,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": [],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s003", "s012", "s025"],
+  "contradicting_evidence_ids": ["s034", "s039", "s041"],
+  "coding_rationale": "The primary pattern is lexical/syntactic: questions beginning with 'what do you' or similar. The cited utterances show this form, but the behavioral function (therapeutic prompts) is inferred, not directly supported by the evidence. The variations (e.g., 'what does') contradict a strict lexical pattern but still fit the broader interrogative structure. Thus, linguistic_structure is the best primary class.",
+  "confidence": 4,
+  "boundary_note": "The pattern is consistent across 50 samples, but the behavioral grouping is not directly evidenced; allow_behavior_grouping is false."
+}

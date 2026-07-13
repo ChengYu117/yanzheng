@@ -1,0 +1,15 @@
+{
+  "latent_idx": 28469,
+  "primary_evidence_class": "affective_content",
+  "secondary_evidence_classes": ["linguistic_structure"],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s002", "s009", "s025"],
+  "contradicting_evidence_ids": ["s008", "s035"],
+  "coding_rationale": "The majority of supporting utterances (s002, s009, s025) express positive affect through words like 'proud', 'awesome', 'great', and 'wow', indicating affective content. The pattern is primarily evaluative and emotional, not a consistent behavioral function like reinforcement, as the context is unclear and there are neutral (s008) and mixed (s035) outliers. The linguistic structure of evaluative adjectives is a secondary pattern. Behavioral grouping is not supported due to insufficient pragmatic evidence of a consistent communicative action beyond affect.",
+  "confidence": 3,
+  "boundary_note": "The card's proposed behavioral function is not strongly supported; the evidence primarily shows positive affective expressions rather than a clear behavioral reinforcement function. Outliers like s008 and s035 limit the generalization."
+}

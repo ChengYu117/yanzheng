@@ -1,0 +1,15 @@
+{
+  "latent_idx": 29701,
+  "primary_evidence_class": "unclear_or_mixed",
+  "secondary_evidence_classes": [],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": [],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The source card identifies a weak pattern of 'you know what' discourse markers in only 14/50 sentences, with high heterogeneity and many outliers. The cited utterances show varied forms (questions, statements) and no consistent behavioral function. Evidence is insufficient to support a behavioral grouping.",
+  "confidence": 1,
+  "boundary_note": "The pattern is too weak and mixed to define a clear linguistic structure or behavioral function."
+}

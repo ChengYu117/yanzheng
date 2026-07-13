@@ -1,0 +1,15 @@
+{
+  "latent_idx": 9109,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": ["behavioral_function"],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s001", "s015", "s016"],
+  "contradicting_evidence_ids": ["s027", "s028", "s029"],
+  "coding_rationale": "The primary pattern is lexical: the presence of 'sorry' or 'I'm sorry' in 26/50 sentences. This is a surface linguistic structure. While the card proposes a behavioral function (apologizing), the evidence only shows the lexical form, not consistent pragmatic function across all supporting samples. For example, 'I'm sorry to hear that' (s001) expresses sympathy, but 'I'm sorry that I'm unable to help' (s016) is a polite refusal. The outliers lack the lexical marker and include diverse functions (e.g., reassurance, statement). Thus, the pattern is best classified as linguistic structure, with a secondary behavioral aspect. Behavioral grouping is not supported due to insufficient pragmatic evidence and large outlier set.",
+  "confidence": 3,
+  "boundary_note": "The pattern is clear for the lexical marker but does not generalize to a consistent behavioral function across all samples. Outliers show that the absence of 'sorry' does not imply absence of apology, and presence does not always imply apology."
+}

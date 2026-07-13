@@ -121,14 +121,14 @@ $$\text{若存在 } K_{stab}\text{，则 } K^* = K_{stab}\text{；否则 } K^* =
 
 ## 5. 最近几次 Commit 构成的技术证据链
 
-本技术文档对应的技术升级和实验产物，已在最近几次代码提交（Commits）中完全闭环，并在工程上实现了与下游 P3 自动化可解释性评估流水线的无缝对接：
+本技术文档对应的 **stable-core 选择部分** 已在最近几次代码提交中闭环。下游 P3 自动解释尚未形成可信闭环：2026-07-10 审计发现旧运行存在规则输出替代 LLM、Scorer 标签泄漏、sample ID 错配和 minimal-pair 缺失等问题，相关无效结果已删除。P3 后续实施只遵循 `doc/P3_stable_core对比式latent解释_Claude_Code执行工作流.md`。
 
 1. **`00aafbc`（引入交叉验证与稳定筛选框架）**：
    实现了 `run_cross_val_stable_topk_selection.py` 与底层算法模块，奠定了 AUC@K 平台探测与随机二分稳定性计算的代码基础。
 2. **`821cae0`（落盘交叉验证与 K 选择结果）**：
    在服务器上跑通全量数据，并将每个行为标签的 K 选择表（`stable_k_by_label.csv`）、稳定特征明细表（`stable_topk_latent_set.csv`）和去重总特征表（`stable_topk_global_union.csv`）等核心产物持久化存储至 `outputs/cross_val/stable_topk_selection/`。
-3. **`27d1988` 与 `9b8e576`（全面对接下游可解释性流水线）**：
-   将 downstream P3 解释流水线（构建特征证据包、通过 AI 生成特征语义卡片、人工审查）的输入源，由早期固定的 `Top20 Cohen's d` 切换为最新筛选出的 `stable_core` 特征集，并在 303 条稳定特征边上执行了全量自动化评估。
+3. **`27d1988` 与 `9b8e576`（准备下游 stable-core 接口）**：
+   将 downstream P3 的候选输入从早期固定的 `Top20 Cohen's d` 切换为 `stable_core`。这只证明 303 条稳定 label-latent 关系可作为 P3 输入，不代表自动解释、Scorer、minimal pair 或子概念聚合已经通过质量验收。
 
 ---
 

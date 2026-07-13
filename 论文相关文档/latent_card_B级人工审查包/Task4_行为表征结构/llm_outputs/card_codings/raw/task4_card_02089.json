@@ -1,0 +1,15 @@
+{
+  "latent_idx": 2089,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": ["behavioral_function"],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": [],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The primary evidence is a consistent linguistic pattern (discourse marker 'it seems/sounds/looks like') used in reflective listening. While the source card labels it as behavioral_function, the cited utterances only show the form, not a consistent communicative action beyond the template. The behavioral interpretation is plausible but not directly supported by the evidence; the pattern could be a transcription artifact. Thus, primary class is linguistic_structure, with secondary behavioral_function. No grouping is allowed due to insufficient pragmatic evidence.",
+  "confidence": 3,
+  "boundary_note": "The pattern is highly consistent but may be domain-specific; behavioral function is inferred but not directly evidenced."
+}

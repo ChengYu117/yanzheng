@@ -374,6 +374,19 @@ outputs/misc_full_sae_eval
 - `interpretability/followup_analysis/followup_interpretability_report.md`
 - `interpretability/causal_candidates/causal_candidate_report.md`
 
+### 论文表征比较冻结包（2026-07-13）
+
+当前 7 个 leaf 标签（`RES, REC, QUO, QUC, GI, SU, AF`）的权威表征比较入口为：
+
+- `outputs/misc_full_sae_eval/interpretability/representation_comparison_frozen_leaf7_20260713/README.md`
+- `outputs/misc_full_sae_eval/interpretability/representation_comparison_frozen_leaf7_20260713/final_metrics_by_label.csv`
+- `outputs/misc_full_sae_eval/interpretability/representation_comparison_frozen_leaf7_20260713/final_macro_metrics.csv`
+- `outputs/misc_full_sae_eval/interpretability/representation_comparison_frozen_leaf7_20260713/protocol_audit.csv`
+- `outputs/misc_full_sae_eval/interpretability/representation_comparison_frozen_leaf7_20260713/figures/representation_comparison_leaf7.png`
+- `outputs/misc_full_sae_eval/interpretability/representation_comparison_frozen_leaf7_20260713/SHA256SUMS.txt`
+
+冻结状态为 `FROZEN_WITH_STABLE_CORE_LIMITATION`。Hidden、Full SAE、Top-n SAE、PCA-n 和 Random SAE-n 通过统一折分、分类器、训练折标准化、随机种子与指标审计；Stable Core SAE 使用全分析数据生成的监督式候选清单，没有 outer-fold nested selection，因此只可作为 exploratory 行，不能写成完全无泄漏的 confirmatory 性能结果。旧 9-label macro 只保留作父标签敏感性/附录，不再作为论文主表。
+
 云端 pipeline 结果：
 
 - `deploy/gce/run_full_pipeline.sh` 默认写入 `${PIPELINE_OUTPUT_DIR}`

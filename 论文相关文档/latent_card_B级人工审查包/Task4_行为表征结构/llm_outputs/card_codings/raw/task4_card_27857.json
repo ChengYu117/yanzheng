@@ -1,0 +1,15 @@
+{
+  "latent_idx": 27857,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["linguistic_structure"],
+  "open_behavior_code": "scale_rating_request",
+  "behavior_component_name_zh": "量表评分请求",
+  "behavior_component_name_en": "scale rating request",
+  "behavior_definition": "Utterances that explicitly ask the interlocutor to provide a numeric rating on a defined scale (e.g., 1-10, 0-10) with or without anchors, functioning as a request for self-assessment.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s001", "s005", "s021"],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "All cited utterances directly perform the communicative action of requesting a numeric rating on a scale, with explicit scale endpoints and often anchors. The pattern is consistent across samples, supporting a behavioral function of eliciting self-assessment. The linguistic structure (scale template) is secondary but not the primary function.",
+  "confidence": 5,
+  "boundary_note": "The behavior is clearly defined by the presence of a numeric scale request. Variations in scale range (0-10, 1-10, 0-100) and topic do not alter the core function."
+}

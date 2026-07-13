@@ -1,0 +1,15 @@
+{
+  "latent_idx": 13312,
+  "primary_evidence_class": "unclear_or_mixed",
+  "secondary_evidence_classes": [],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": [],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The source card itself classifies as unclear_or_mixed with low confidence. The cited utterances show diverse topics and functions (reviewing a chart, expressing concern, asking about consequences) without a consistent behavioral function. No stable behavioral grouping is supported by the evidence.",
+  "confidence": 1,
+  "boundary_note": ""
+}

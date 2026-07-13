@@ -27,22 +27,22 @@
 - 行级数据：`outputs/misc_full_sae_eval/records.jsonl`
 - 标签矩阵：`outputs/misc_full_sae_eval/label_matrix.csv`
 - SAE feature store：`outputs/misc_full_sae_eval/feature_store/utterance_features.pt`
-- Top20 Cohen's d latents：`outputs/misc_full_sae_eval/interpretability/top20_cohensd_latent_utterances/top20_cohensd_latents_by_label.csv`
-- P3 feature cards：`outputs/misc_full_sae_eval/interpretability/p3_feature_cards`
-- P3 中文说明：`doc/P3流程详解.md`
-- P3 自动化指南：`doc/P3_AI流水线评估与自动化实现指南.md`
+- stable-core latent：`outputs/cross_val/stable_topk_selection/stable_topk_latent_set.csv` 中 `stable_set_role == stable_core`
+- P3 唯一执行规范：`doc/P3_stable_core对比式latent解释_Claude_Code执行工作流.md`
+- 旧 Top20 / feature-card 目录和旧 P3 文档只作历史对照，不作为新实验输入或执行依据。
 
 当前核心标签范围：
 
 `RE, RES, REC, QU, QUO, QUC, GI, SU, AF`
 
-当前 P3 已有状态：
+当前 P3 已有状态（2026-07-10）：
 
-- 每个标签 20 个正向 Cohen's d latents。
-- 总计 180 个 feature cards。
+- stable-core 输入已固定为 303 条 label-latent 关系、225 个 unique latent；
+- 旧 180 feature cards 只作历史快照；
+- 新对比式 P3 的无效自动运行已删除，等待按 canonical 工作流修复并重跑；
 - 当前 evidence 只包含 counselor current utterance。
 - 缺少前一句 client utterance，因此 RES、REC、RE 的 context-relation 结论必须降级。
-- 当前 P3 是候选解释与审阅材料，不是因果机制证明。
+- 在新流程通过 Explainer、Scorer 和 minimal-pair 阶段门禁前，不存在可固定的 P3 自动解释结论。
 
 ## 3. 核心研究问题
 
@@ -1001,11 +1001,12 @@ Mixed / unclear：
 
 建议按以下顺序推进。
 
-第一步：固定当前 P3 自动结果。
+第一步：按 canonical 工作流重建 P3。
 
-- 保留 180 cards 的当前输出。
-- 用 manifest 和 validate 记录当前状态。
-- 不再让旧 PCA 或旧 top-n 结论污染新报告。
+- 使用 stable-core 303 条 label-latent 关系作为唯一候选输入；
+- 先修复文本重复泄漏、Scorer tag 泄漏和 sample ID 映射；
+- 不复用旧 180 cards 或已删除的无效自动结果；
+- 每个阶段通过 manifest、质量审计和 stage gate 后再进入下游。
 
 第二步：为 top robust candidates 做人工审核。
 
@@ -1037,4 +1038,3 @@ Mixed / unclear：
 ## 12. 一句话总结
 
 本流程把“LLM 是否理解 MI 概念”拆解为一组可审计、可验证、可降级表述的技术问题：标签是否可解码，相关 SAE latents 是否有稳定高激活证据，这些证据更像表面形式还是咨询功能，以及 minimal pairs 和 triggering-token 检查是否支持更强的功能性解释。
-

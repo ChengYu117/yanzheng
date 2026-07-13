@@ -1,0 +1,15 @@
+{
+  "latent_idx": 26879,
+  "primary_evidence_class": "topic",
+  "secondary_evidence_classes": ["behavioral_function"],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s003", "s021", "s049"],
+  "contradicting_evidence_ids": ["s005", "s012", "s010"],
+  "coding_rationale": "The majority of utterances discuss health risks and advice (e.g., smoking causing DVT, lung cancer), indicating a health topic. However, the function is primarily informational/advisory, not a consistent behavioral action. Outliers like s012 (CIA tracking) and s005 (incomplete) weaken the pattern. No strong pragmatic evidence for a specific behavioral grouping.",
+  "confidence": 3,
+  "boundary_note": "The pattern is broad health topic with some outliers; behavioral function is secondary and not consistently supported."
+}

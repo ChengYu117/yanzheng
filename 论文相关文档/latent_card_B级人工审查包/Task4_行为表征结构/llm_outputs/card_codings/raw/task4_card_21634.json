@@ -1,0 +1,15 @@
+{
+  "latent_idx": 21634,
+  "primary_evidence_class": "topic",
+  "secondary_evidence_classes": [],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s003", "s005", "s037"],
+  "contradicting_evidence_ids": ["s020"],
+  "coding_rationale": "The source card correctly identifies medication discourse as a topic. The cited utterances (s003, s005, s037) all discuss medication instructions or lists, while s020 is an outlier about lack of energy. There is no consistent behavioral function beyond discussing medication; the utterances include instructions, confirmations, and statements, but no single communicative action dominates. Thus, topic is the appropriate primary class.",
+  "confidence": 4,
+  "boundary_note": "The outlier s020 does not mention medication, but the overwhelming majority (49/50) support the medication topic."
+}

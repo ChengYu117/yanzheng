@@ -1,0 +1,15 @@
+{
+  "latent_idx": 11435,
+  "primary_evidence_class": "unclear_or_mixed",
+  "secondary_evidence_classes": [],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": [],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The source card correctly identifies the set as mixed, with diverse pragmatic functions (greeting, inquiry, affirmation, empathy, motivation) and no single behavioral function dominating. The evidence does not support a stable behavioral grouping; the utterances are heterogeneous and decontextualized. Therefore, primary class remains unclear_or_mixed, and behavioral grouping is not allowed.",
+  "confidence": 2,
+  "boundary_note": "The set includes multiple discourse types (e.g., medical inquiry, empathetic response, motivational question) without a consistent communicative action across samples."
+}

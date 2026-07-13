@@ -1,0 +1,15 @@
+{
+  "latent_idx": 17685,
+  "primary_evidence_class": "topic",
+  "secondary_evidence_classes": ["behavioral_function"],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s001", "s005", "s009"],
+  "contradicting_evidence_ids": ["s014"],
+  "coding_rationale": "The majority of utterances discuss health-related topics (smoking, diabetes, condom use) in a conversational or counseling context, but the behavioral function (e.g., advising, questioning) is not consistently supported by the cited evidence. For example, s001 and s005 are factual statements about smoking, not direct advice. s009 includes a warning but is still primarily informational. s006 is a counseling introduction, but s014 is unrelated. Thus, topic is the dominant class, with behavioral function as a secondary but inconsistent pattern.",
+  "confidence": 3,
+  "boundary_note": "The card's candidate behavioral explanation overstates the evidence; many supporting utterances are purely informational. Outliers like s014 show the pattern is not uniform."
+}

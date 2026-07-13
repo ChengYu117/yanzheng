@@ -1,0 +1,15 @@
+{
+  "latent_idx": 8226,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["topic"],
+  "open_behavior_code": "healthcare_advice_summarizing",
+  "behavior_component_name_zh": "医疗建议与总结",
+  "behavior_component_name_en": "healthcare advice and summarizing",
+  "behavior_definition": "The speaker provides medical advice, summarizes treatment plans, and elicits patient agreement or reflection, as seen in utterances like s002, s010, and s007.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s002", "s010", "s007"],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The cited utterances show consistent pragmatic functions: s002 discusses transitioning medication, s010 summarizes a treatment plan and asks for confirmation, s007 evaluates a plan and seeks agreement. These directly support a behavioral function of providing advice and summarizing in a healthcare context. The topic is healthcare, but the primary class is behavioral_function because the utterances perform actions (advising, summarizing, eliciting agreement). Confidence is high due to clear pragmatic markers.",
+  "confidence": 4,
+  "boundary_note": "The evidence is limited to decontextualized sentences, but the pattern is strong across multiple utterances."
+}

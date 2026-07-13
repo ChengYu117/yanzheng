@@ -1,0 +1,15 @@
+{
+  "latent_idx": 27515,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["topic"],
+  "open_behavior_code": "giving_medical_advice",
+  "behavior_component_name_zh": "提供医疗建议",
+  "behavior_component_name_en": "giving medical advice",
+  "behavior_definition": "The speaker provides recommendations or directives regarding treatment, medication changes, or lifestyle modifications, as in s001 (transitioning off oxy), s005 (cut out drinking), and s010 (diet and exercise).",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s001", "s005", "s010"],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The cited utterances directly support a consistent communicative action of giving medical advice: s001 proposes a medication transition, s005 recommends cutting alcohol, and s010 advises diet and exercise. The primary class is behavioral_function because the pragmatic function is directive/advisory. Topic is secondary as the domain is medical. Confidence is high due to clear pragmatic evidence.",
+  "confidence": 4,
+  "boundary_note": "All three cited utterances are from a healthcare provider giving advice; no contradictory evidence."
+}

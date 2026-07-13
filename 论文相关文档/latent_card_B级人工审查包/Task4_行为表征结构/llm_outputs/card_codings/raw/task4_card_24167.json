@@ -1,0 +1,15 @@
+{
+  "latent_idx": 24167,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["topic"],
+  "open_behavior_code": "assessment_and_affirmation",
+  "behavior_component_name_zh": "评估与肯定",
+  "behavior_component_name_en": "assessment and affirmation",
+  "behavior_definition": "The clinician checks on the patient's status and provides positive reinforcement or summarizes progress.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s002", "s012", "s017"],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The cited utterances show consistent pragmatic function of assessment and affirmation (e.g., 'sounds like...going pretty well', 'you're doing well', 'sounds like you're eating pretty healthy'). The topic is healthcare, but the primary evidence is behavioral. No contradicting evidence.",
+  "confidence": 4,
+  "boundary_note": "The behavioral function is clear across multiple utterances, though some utterances (e.g., s041) are more topical. The grouping is supported by pragmatic evidence."
+}

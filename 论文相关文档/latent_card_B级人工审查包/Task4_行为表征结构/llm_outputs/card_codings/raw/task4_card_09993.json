@@ -1,0 +1,15 @@
+{
+  "latent_idx": 9993,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["topic"],
+  "open_behavior_code": "counseling_advice_giving",
+  "behavior_component_name_zh": "咨询建议",
+  "behavior_component_name_en": "counseling advice giving",
+  "behavior_definition": "Utterances where a professional (e.g., doctor, counselor) gives advice, asks reflective questions, or summarizes client statements to guide behavior change or explore ambivalence.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s001", "s006", "s035"],
+  "contradicting_evidence_ids": ["s004", "s008", "s010"],
+  "coding_rationale": "The majority of utterances exhibit a consistent counseling/advice-giving discourse function with markers like 'so', 'okay', and reflective summaries. Outliers are incoherent or off-topic. The pattern is supported by pragmatic evidence.",
+  "confidence": 4,
+  "boundary_note": "Outliers may represent different interaction stages or transcription errors."
+}

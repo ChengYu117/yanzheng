@@ -1,0 +1,15 @@
+{
+  "latent_idx": 3459,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": ["surface_artifact"],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s001", "s005", "s026"],
+  "contradicting_evidence_ids": ["s029", "s030", "s040", "s041"],
+  "coding_rationale": "The primary pattern is wh-questions with repetition and hesitation, which is a linguistic structure. The evidence shows surface-level repetition and discourse markers, but the behavioral function (requests for information) is not directly supported by the cited utterances; the utterances are questions but lack explicit pragmatic context. Outliers show non-question forms or different wh-words, limiting behavioral grouping.",
+  "confidence": 4,
+  "boundary_note": "Pattern covers 46/50 samples, but outliers indicate variation in form and function."
+}

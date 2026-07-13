@@ -1,0 +1,15 @@
+{
+  "latent_idx": 23077,
+  "primary_evidence_class": "unclear_or_mixed",
+  "secondary_evidence_classes": [],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": [],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The cited utterances show a mix of healthcare topics (marijuana use, caffeine, medications) and conversational functions (thanking, open-ended question), but no consistent behavioral function across all evidence. The set is heterogeneous and lacks a stable pattern, supporting the 'unclear_or_mixed' classification.",
+  "confidence": 2,
+  "boundary_note": "The evidence spans multiple discourse functions and topics, preventing a single behavioral grouping."
+}

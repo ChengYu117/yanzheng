@@ -1,0 +1,15 @@
+{
+  "latent_idx": 26968,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["topic"],
+  "open_behavior_code": "therapeutic_reflection_and_exploration",
+  "behavior_component_name_zh": "治疗性反思与探索",
+  "behavior_component_name_en": "therapeutic reflection and exploration",
+  "behavior_definition": "The speaker reflects, validates, or probes the client's emotional states and experiences, using reflective listening, validation, and open-ended questions to encourage elaboration on feelings and behaviors.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s002", "s007", "s011"],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The cited utterances consistently demonstrate a behavioral function of therapeutic reflection and exploration: s002 and s011 directly reflect the client's feeling of being overwhelmed, s007 uses reflective listening ('what I hear you saying is...'), and s014 probes coping behaviors. These are pragmatic functions, not mere topic or affect. The primary class is behavioral_function, with a secondary topic of mental health. Confidence is high due to strong pragmatic evidence.",
+  "confidence": 4,
+  "boundary_note": "Some utterances (e.g., s003 about dairy) are slightly off-topic but still within a health counseling context; they do not contradict the behavioral function."
+}

@@ -1,0 +1,15 @@
+{
+  "latent_idx": 23464,
+  "primary_evidence_class": "affective_content",
+  "secondary_evidence_classes": ["linguistic_structure"],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s002", "s010", "s016"],
+  "contradicting_evidence_ids": ["s013", "s022", "s015", "s017"],
+  "coding_rationale": "The majority of utterances are positive evaluations (e.g., 'that's good to hear', 'that's great', 'that's a good idea'), which are affective content expressing approval. The pattern is primarily affective, with a consistent syntactic form ('that's' + adjective). However, outliers include expressions of understanding, empathy, and gratitude, which are different affective functions. The behavioral function is not consistently supported across all utterances; some serve as feedback, others as empathy or thanks. Thus, behavioral grouping is not warranted. Confidence is moderate due to the clear majority pattern but notable outliers.",
+  "confidence": 3,
+  "boundary_note": "The pattern is defined by positive evaluations with 'that's' + adjective, but outliers show other affective functions like empathy and gratitude, indicating a mixed affective class."
+}

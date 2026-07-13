@@ -1,0 +1,15 @@
+{
+  "latent_idx": 12852,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["linguistic_structure"],
+  "open_behavior_code": "reflective_listening_and_affirmation",
+  "behavior_component_name_zh": "反思性倾听与肯定",
+  "behavior_component_name_en": "reflective listening and affirmation",
+  "behavior_definition": "The speaker reflects the client's statements, summarizes ambivalence, or affirms the client's strengths, using discourse markers like 'so', 'okay', 'it sounds like'.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s002", "s010", "s016"],
+  "contradicting_evidence_ids": ["s007", "s012", "s015"],
+  "coding_rationale": "The representative evidence shows clear reflective listening and affirmation (s002 reflects ambivalence, s010 affirms strength, s016 reflects fear). Outliers include direct advice (s007), unclear metaphor (s012), and suggestion (s015), which do not fit the reflective pattern. The primary class is behavioral_function because the utterances serve a consistent communicative action of reflecting and affirming, supported by pragmatic evidence.",
+  "confidence": 4,
+  "boundary_note": "The pattern is strong for reflective listening, but outliers indicate occasional direct advice or suggestions that break the pattern."
+}

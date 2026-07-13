@@ -1,0 +1,15 @@
+{
+  "latent_idx": 26263,
+  "primary_evidence_class": "unclear_or_mixed",
+  "secondary_evidence_classes": [],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": [],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The source card claims a behavioral function of counseling dialogue, but the cited utterances show a mix of scheduling (s001), reflective listening (s008), empowerment (s028), a question about knowledge (s010), and client resistance (s017). These do not consistently support a single behavioral function; they are heterogeneous. The card's candidate behavioral explanation is not directly supported by pragmatic evidence across all cited samples. Therefore, primary class is unclear_or_mixed, and behavioral grouping is not allowed.",
+  "confidence": 3,
+  "boundary_note": "The utterances span multiple functions (scheduling, reflection, empowerment, information gathering, resistance) without a unified behavioral function. The card's grouping is too broad."
+}

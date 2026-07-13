@@ -1,0 +1,15 @@
+{
+  "latent_idx": 21859,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": ["behavioral_function"],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s002", "s005", "s028"],
+  "contradicting_evidence_ids": ["s004", "s009", "s012", "s018", "s020", "s026", "s038", "s048"],
+  "coding_rationale": "The primary evidence is the syntactic form of wh-questions, which is a linguistic structure. The behavioral function (diagnostic questioning) is inferred but not directly supported by the cited utterances; the utterances are questions but lack explicit context to confirm a consistent behavioral function. Outliers show ungrammatical or mixed utterances, weakening the behavioral grouping claim.",
+  "confidence": 3,
+  "boundary_note": "The pattern is predominantly wh-questions, but the behavioral function is not robustly evidenced due to outliers and lack of pragmatic context."
+}

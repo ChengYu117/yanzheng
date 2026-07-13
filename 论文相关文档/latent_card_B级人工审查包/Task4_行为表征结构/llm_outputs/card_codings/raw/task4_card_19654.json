@@ -1,0 +1,15 @@
+{
+  "latent_idx": 19654,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["linguistic_structure"],
+  "open_behavior_code": "expressing_gratitude",
+  "behavior_component_name_zh": "表达感谢",
+  "behavior_component_name_en": "Expressing Gratitude",
+  "behavior_definition": "Utterances that primarily function to convey thanks or appreciation, often as polite closings or acknowledgments in conversational settings.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s004", "s017", "s041"],
+  "contradicting_evidence_ids": ["s007", "s016", "s031", "s043", "s050"],
+  "coding_rationale": "The majority of sentences contain explicit gratitude markers (e.g., 'thank you', 'thanks', 'appreciate') and function as polite closings or acknowledgments. Outliers show mixed functions but still contain gratitude forms. The pattern is consistent across 45/50 sentences, supporting a behavioral grouping of expressing gratitude.",
+  "confidence": 4,
+  "boundary_note": "Outliers indicate that gratitude can co-occur with other functions (e.g., dissatisfaction, factual statements), limiting purity but not invalidating the primary behavioral function."
+}

@@ -1,0 +1,15 @@
+{
+  "latent_idx": 24744,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": ["behavioral_function"],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s001", "s009", "s014"],
+  "contradicting_evidence_ids": ["s005", "s022", "s023", "s025", "s026", "s027", "s043", "s045"],
+  "coding_rationale": "The primary pattern is syntactic: wh-questions. The behavioral interpretation (probing) is plausible but not directly supported by the cited utterances; the evidence only shows question forms, not consistent pragmatic function (e.g., s023 is rhetorical, s025 expresses frustration). Thus, allow_behavior_grouping=false.",
+  "confidence": 4,
+  "boundary_note": "The card's behavioral explanation is not fully supported by the evidence; the pattern is primarily linguistic structure."
+}

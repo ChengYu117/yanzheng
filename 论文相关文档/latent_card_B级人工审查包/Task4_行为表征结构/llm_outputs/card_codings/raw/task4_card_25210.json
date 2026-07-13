@@ -1,0 +1,15 @@
+{
+  "latent_idx": 25210,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": ["behavioral_function"],
+  "open_behavior_code": "open_ended_questioning",
+  "behavior_component_name_zh": "开放式提问",
+  "behavior_component_name_en": "open-ended questioning",
+  "behavior_definition": "Utterances that are questions beginning with or containing 'what', used to elicit information or encourage elaboration, typical of therapeutic or clinical interviews.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s002", "s010", "s015"],
+  "contradicting_evidence_ids": ["s011", "s018", "s027", "s028", "s030", "s036"],
+  "coding_rationale": "The majority of utterances are 'what' questions, a clear linguistic structure. The pragmatic function is open-ended questioning, supported by s002, s010, s015. Outliers are statements or garbled text, not questions.",
+  "confidence": 4,
+  "boundary_note": "The pattern is strong but not universal; outliers are non-interrogative or garbled."
+}

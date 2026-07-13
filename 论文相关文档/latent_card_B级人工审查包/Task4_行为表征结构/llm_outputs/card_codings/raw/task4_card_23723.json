@@ -1,0 +1,15 @@
+{
+  "latent_idx": 23723,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": ["topic"],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s003", "s011", "s046"],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The card primarily identifies a linguistic structure (discourse marker 'actually') with high confidence. The cited utterances show 'actually' used for emphasis or correction, but do not consistently demonstrate a single behavioral function like asserting facts or reframing perceptions; the behavioral explanation is inferred from context rather than directly supported. The topic is health counseling, but the primary pattern is structural. Therefore, primary class is linguistic_structure, with topic as secondary. Behavioral grouping is not supported due to insufficient pragmatic evidence.",
+  "confidence": 4,
+  "boundary_note": "The pattern is clear and stable across all 50 samples, but the behavioral function is not directly evidenced in the cited utterances."
+}

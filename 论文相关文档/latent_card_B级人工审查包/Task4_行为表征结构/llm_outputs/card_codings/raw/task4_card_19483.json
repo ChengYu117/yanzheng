@@ -1,0 +1,15 @@
+{
+  "latent_idx": 19483,
+  "primary_evidence_class": "unclear_or_mixed",
+  "secondary_evidence_classes": [],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": [],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The source card claims a behavioral function of healthcare advice, but the cited evidence is mixed: s004 is topical (health risks), s005 and s030 are directive instructions. The outlier s007 is about weather/biking, s010 about drinking/police, s013 about pharmacy. The pragmatic evidence does not consistently support a single behavioral function across the supporting set; many supporting samples lack direct pragmatic evidence. The high outlier fraction (38%) and confounds (travel, legal topics) suggest the pattern is not a stable behavioral function. Therefore, primary class is unclear_or_mixed, and behavioral grouping is not allowed.",
+  "confidence": 2,
+  "boundary_note": "The card's proposed behavioral grouping is not supported by sufficient pragmatic evidence; the pattern appears to be a mix of topics and forms rather than a consistent communicative function."
+}

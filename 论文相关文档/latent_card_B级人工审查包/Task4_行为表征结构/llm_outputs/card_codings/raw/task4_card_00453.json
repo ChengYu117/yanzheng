@@ -1,0 +1,15 @@
+{
+  "latent_idx": 453,
+  "primary_evidence_class": "affective_content",
+  "secondary_evidence_classes": ["linguistic_structure"],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s001", "s005", "s011"],
+  "contradicting_evidence_ids": ["s023", "s050"],
+  "coding_rationale": "The card's primary evidence is lexical and affective markers of positive evaluation (e.g., 'brilliant', 'great job', 'awesome'), which are stable across contexts. The pattern is predominantly affective content, not a behavioral function, because the utterances are evaluative statements rather than actions or directives. Outliers show negative or neutral affect, but the majority supports affective content. Behavioral grouping is not warranted as the evidence does not demonstrate a consistent communicative action beyond expressing affect.",
+  "confidence": 4,
+  "boundary_note": "The pattern is clear for positive evaluation, but some utterances (e.g., s023, s050) express negative or mixed affect, indicating the pattern is not universal."
+}

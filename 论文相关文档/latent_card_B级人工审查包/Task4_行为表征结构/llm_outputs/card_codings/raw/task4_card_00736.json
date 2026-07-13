@@ -1,0 +1,15 @@
+{
+  "latent_idx": 736,
+  "primary_evidence_class": "unclear_or_mixed",
+  "secondary_evidence_classes": [],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": [],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The source card correctly identifies a mix of questions and statements without a dominant pattern. The cited utterances show both question forms (s013, s014, s015) and statements (s001, s002), but no consistent behavioral function is supported. The evidence is insufficient to group into a behavioral function.",
+  "confidence": 2,
+  "boundary_note": "The mixed forms and topics prevent a clear classification beyond unclear_or_mixed."
+}

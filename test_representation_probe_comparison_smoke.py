@@ -11,6 +11,7 @@ import pandas as pd
 from run_misc_representation_probe_comparison import (
     METRICS,
     RepresentationProbeComparisonConfig,
+    _fit_pca_max,
     _topn_fold_order,
     run_representation_probe_comparison,
 )
@@ -131,6 +132,26 @@ def test_topn_fold_order_uses_positive_cohens_d() -> None:
         assert np.all(d > 0)
 
 
+def test_pca_scores_are_standardized_from_train_fold_only() -> None:
+    with tempfile.TemporaryDirectory() as tmp:
+        data = _make_synthetic_inputs(Path(tmp))
+        train_idx = np.arange(48)
+        test_idx = np.arange(48, 72)
+        train, test, info = _fit_pca_max(
+            data["hidden"],
+            train_idx,
+            test_idx,
+            max_n=4,
+            random_state=42,
+            standardize=True,
+        )
+        assert info["pca_input_standardized"] is True
+        assert info["pca_post_standardized"] is True
+        np.testing.assert_allclose(train.mean(axis=0), 0.0, atol=1e-5)
+        np.testing.assert_allclose(train.std(axis=0), 1.0, atol=1e-5)
+        assert test.shape == (len(test_idx), 4)
+
+
 def test_representation_probe_comparison_smoke() -> None:
     with tempfile.TemporaryDirectory() as tmp:
         root = Path(tmp)
@@ -198,9 +219,13 @@ def test_representation_probe_comparison_smoke() -> None:
         assert {"Hidden State", "Full SAE", "Stable Core SAE", "Top-n SAE", "PCA-n", "Random SAE-n"}.issubset(
             set(macro["representation"])
         )
+        pca_rows = fold[fold["representation"] == "PCA-n"]
+        assert pca_rows["pca_input_standardized"].fillna(False).astype(bool).all()
+        assert pca_rows["pca_post_standardized"].fillna(False).astype(bool).all()
 
 
 if __name__ == "__main__":
     test_topn_fold_order_uses_positive_cohens_d()
+    test_pca_scores_are_standardized_from_train_fold_only()
     test_representation_probe_comparison_smoke()
     print("test_representation_probe_comparison_smoke passed")

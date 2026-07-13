@@ -1,0 +1,15 @@
+{
+  "latent_idx": 12887,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["linguistic_structure"],
+  "open_behavior_code": "health_screening_questions",
+  "behavior_component_name_zh": "健康筛查提问",
+  "behavior_component_name_en": "health screening questions",
+  "behavior_definition": "Utterances that function as questions to assess health behaviors, substance use, or readiness for change in a clinical or counseling context.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s017", "s012", "s016"],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The cited utterances are direct questions about alcohol and smoking (s017, s012) and readiness to quit (s016), which serve a clear screening/assessment function. The other cited utterances (s033, s044, s034) are less directly related but still fit the clinical context. The primary class is behavioral_function because the pragmatic function of eliciting information is dominant. Secondary class linguistic_structure reflects the question form. Confidence is high due to consistent evidence.",
+  "confidence": 4,
+  "boundary_note": "Some utterances (s033, s044) are not substance-use specific but still serve a screening function in a broader health context."
+}

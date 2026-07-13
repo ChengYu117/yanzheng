@@ -1,0 +1,15 @@
+{
+  "latent_idx": 17827,
+  "primary_evidence_class": "topic",
+  "secondary_evidence_classes": ["unclear_or_mixed"],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s007", "s015", "s024"],
+  "contradicting_evidence_ids": ["s006", "s013", "s017", "s018", "s021", "s028", "s030"],
+  "coding_rationale": "The majority of utterances center on health topics (e.g., blood sugar, smoking risks, cholesterol medication), supporting a topic classification. However, the set is heterogeneous, mixing explanations, personal anecdotes, and fragments, with several outliers that are not clearly health-related or are too vague. No consistent behavioral function is evident; the utterances do not share a pragmatic goal beyond being health-related. Thus, primary class is topic, with secondary unclear_or_mixed due to diversity and outliers.",
+  "confidence": 2,
+  "boundary_note": "The set lacks a single stable pattern; outliers and mixed discourse functions reduce confidence."
+}

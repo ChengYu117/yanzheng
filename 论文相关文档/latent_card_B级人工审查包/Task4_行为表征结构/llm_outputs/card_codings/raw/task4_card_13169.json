@@ -1,0 +1,15 @@
+{
+  "latent_idx": 13169,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["linguistic_structure"],
+  "open_behavior_code": "reflective_listening_and_advice",
+  "behavior_component_name_zh": "反思性倾听与建议",
+  "behavior_component_name_en": "reflective listening and advice",
+  "behavior_definition": "The speaker reflects the interlocutor's statements or emotions using phrases like 'it sounds like' and offers advice or interpretation in a therapeutic context.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s001", "s007", "s025"],
+  "contradicting_evidence_ids": ["s010", "s022", "s011", "s016"],
+  "coding_rationale": "The primary evidence class is behavioral_function because the cited utterances (s001, s007, s025) consistently demonstrate reflective listening and advice-giving, a clear communicative action. The secondary class linguistic_structure captures the recurring 'it sounds like' pattern. Outliers are client statements or off-topic remarks, not contradicting the behavioral function. Confidence is high due to strong pragmatic evidence.",
+  "confidence": 4,
+  "boundary_note": "The behavioral function is dominant in about 70% of samples; outliers are explainable as client utterances or fragments."
+}

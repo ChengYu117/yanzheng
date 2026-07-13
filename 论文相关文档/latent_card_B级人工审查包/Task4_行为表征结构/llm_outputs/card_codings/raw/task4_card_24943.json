@@ -1,0 +1,15 @@
+{
+  "latent_idx": 24943,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["linguistic_structure"],
+  "open_behavior_code": "clinical_information_gathering",
+  "behavior_component_name_zh": "临床信息收集",
+  "behavior_component_name_en": "clinical information gathering",
+  "behavior_definition": "The speaker asks questions or makes requests to obtain health-related information from the patient, such as medication adherence, substance use, diet, and symptoms.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s002", "s008", "s014"],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "All cited utterances are questions or requests in a clinical context, directly supporting information gathering. The pattern is consistent across all 50 samples. Alternative explanations (e.g., survey) are weaker because the utterances include permission requests (s019) and examination requests (s032) typical of clinical interviews.",
+  "confidence": 4,
+  "boundary_note": "The set lacks non-question sentences, but this may be an artifact of selection; the behavioral function is clear."
+}

@@ -1,0 +1,15 @@
+{
+  "latent_idx": 3805,
+  "primary_evidence_class": "unclear_or_mixed",
+  "secondary_evidence_classes": [],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": [],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The source card already identifies the pattern as unclear/mixed, and the cited utterances show a mix of self-disclosure (s001), therapist-like paraphrasing (s017, s031), third-person observation (s044), and direct speech (s048). No single behavioral function is consistently supported across these examples. The card's own candidate behavioral explanation states insufficient evidence for a stable behavioral-function interpretation. Therefore, allow_behavior_grouping is false.",
+  "confidence": 3,
+  "boundary_note": "The set is heterogeneous; utterances likely come from different speakers (client vs. therapist) and different conversational contexts, preventing a unified behavioral grouping."
+}

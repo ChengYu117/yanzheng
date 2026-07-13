@@ -25,6 +25,8 @@ dependencies = [
   "zstandard",
   "lm-saes; python_version >= '3.11'",
   "transformer-lens; python_version >= '3.11'",
+  "zai-sdk",
+  "requests",
 ]
 
 [tool.setuptools]

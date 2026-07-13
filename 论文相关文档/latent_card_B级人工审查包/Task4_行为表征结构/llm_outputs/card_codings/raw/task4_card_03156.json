@@ -1,0 +1,15 @@
+{
+  "latent_idx": 3156,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": ["behavioral_function"],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s004", "s006", "s008"],
+  "contradicting_evidence_ids": ["s011", "s012", "s015", "s017", "s019", "s020", "s023", "s040", "s042", "s047", "s049"],
+  "coding_rationale": "The primary pattern is syntactic: open-ended questions with 'what do you know/think/see' or 'tell me what you know'. This is a linguistic structure, not a behavioral function, because the cited utterances do not consistently demonstrate a specific communicative action beyond asking questions. The behavioral function is inferred from form, not directly supported by pragmatic evidence. Outliers include statements and reflections that contradict a uniform behavioral grouping. Therefore, allow_behavior_grouping is false.",
+  "confidence": 4,
+  "boundary_note": "The pattern is clear for the majority of sentences, but the behavioral interpretation is speculative without conversational context."
+}

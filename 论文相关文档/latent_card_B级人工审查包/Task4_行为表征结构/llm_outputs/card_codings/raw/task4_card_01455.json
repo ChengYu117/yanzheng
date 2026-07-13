@@ -1,0 +1,15 @@
+{
+  "latent_idx": 1455,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["linguistic_structure"],
+  "open_behavior_code": "reflective_listening_summarizing",
+  "behavior_component_name_zh": "反思性倾听与总结",
+  "behavior_component_name_en": "reflective listening and summarizing",
+  "behavior_definition": "The speaker uses discourse markers like 'so' and phrases like 'it sounds like' to reflect back and summarize the client's statements about behavior change, ambivalence, and challenges, serving a therapeutic function of building rapport and encouraging self-exploration.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s001", "s008", "s026"],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The cited utterances consistently show a therapist or counselor using 'so' and 'it sounds like' to summarize and validate the client's experience, which is a clear behavioral function of reflective listening. The pattern is supported by multiple examples and is not merely a surface artifact or topic. The linguistic structure (discourse markers) is secondary to the behavioral function.",
+  "confidence": 4,
+  "boundary_note": "The pattern is robust across 50 samples with no outliers, but the therapeutic context is assumed; alternative interpretations (e.g., general supportive dialogue) are possible but less likely given the consistent use of reflective language."
+}

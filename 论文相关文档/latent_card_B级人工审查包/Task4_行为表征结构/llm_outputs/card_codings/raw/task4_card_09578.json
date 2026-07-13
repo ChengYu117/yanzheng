@@ -1,0 +1,15 @@
+{
+  "latent_idx": 9578,
+  "primary_evidence_class": "unclear_or_mixed",
+  "secondary_evidence_classes": [],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": [],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The source card claims a behavioral function (counseling advice), but the cited utterances show a mix of second-person address (s002, s012, s037) and first-person narratives (s026, s028, s032, s034, s038, s050). The pragmatic evidence does not consistently support a single behavioral function; the pattern is primarily linguistic (second-person pronoun use) with topical variation. Therefore, the primary class is unclear_or_mixed, and behavioral grouping is not allowed.",
+  "confidence": 3,
+  "boundary_note": "The card's behavioral explanation is not strongly supported by the evidence; the pattern is better described as a linguistic structure (second-person address) with mixed topics."
+}

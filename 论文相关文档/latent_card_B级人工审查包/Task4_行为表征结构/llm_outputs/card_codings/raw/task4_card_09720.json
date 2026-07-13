@@ -1,0 +1,15 @@
+{
+  "latent_idx": 9720,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["topic"],
+  "open_behavior_code": "offer_help",
+  "behavior_component_name_zh": "提供帮助",
+  "behavior_component_name_en": "offer help",
+  "behavior_definition": "Utterances that directly offer assistance or inquire about how to help, typically in service or counseling contexts.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s005", "s014", "s049"],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The cited utterances (s005, s014, s049) all express offers of help or inquiries about helping, which is a consistent communicative action. The pattern is supported by pragmatic evidence, not just keyword frequency.",
+  "confidence": 4,
+  "boundary_note": "The pattern is clear across all 50 sentences, but some sentences (e.g., s030, s038) are about past help or self-help, which slightly weakens the behavioral grouping. However, the core function remains consistent."
+}

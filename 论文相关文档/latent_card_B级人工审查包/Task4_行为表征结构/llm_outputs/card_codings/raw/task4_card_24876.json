@@ -1,0 +1,15 @@
+{
+  "latent_idx": 24876,
+  "primary_evidence_class": "topic",
+  "secondary_evidence_classes": [],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s001", "s007", "s011"],
+  "contradicting_evidence_ids": ["s004", "s005", "s010", "s018", "s022", "s023", "s040"],
+  "coding_rationale": "The majority of utterances center on healthcare topics such as medication names, smoking risks, and disease warnings. The cited evidence (s001, s007, s011) directly supports a healthcare topic. Outliers include questions about diet, TV, alcohol, and other drugs, which are less central but still health-related. No consistent behavioral function is evident; utterances mix explanation, warning, and questioning without a stable pragmatic pattern. Thus, primary class is topic, and behavioral grouping is not supported.",
+  "confidence": 3,
+  "boundary_note": "The topic is healthcare discourse, but the set includes diverse subtopics (medication, smoking, lifestyle) and discourse functions (explanatory, directive, interrogative), making a single behavioral function unsupported."
+}

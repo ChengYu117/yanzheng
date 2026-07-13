@@ -1,0 +1,15 @@
+{
+  "latent_idx": 16045,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": [],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s001", "s006", "s043"],
+  "contradicting_evidence_ids": ["s012", "s028", "s036"],
+  "coding_rationale": "The pattern is predominantly syntactic: first-person present perfect and modal constructions. The cited utterances show consistent structural form (e.g., 'I have', 'I would') but no stable behavioral function across examples. The source card's own explanation_type is 'linguistic_structure', and the candidate behavioral explanation is weak. Outliers lack first-person subject or have atypical structure. Thus, primary class is linguistic_structure, and behavioral grouping is not supported.",
+  "confidence": 4,
+  "boundary_note": "Pattern covers 46/50 samples; outliers are minor syntactic deviations."
+}

@@ -1,0 +1,15 @@
+{
+  "latent_idx": 9537,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": [],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s010", "s024", "s037"],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The feature card describes a consistent pattern of sentences beginning with 'so' as a discourse marker. The cited utterances (s010, s024, s037) all start with 'So' followed by a question, supporting a linguistic structure classification. There is insufficient pragmatic evidence to infer a consistent behavioral function beyond conversational turn-taking, and the pattern is purely formal. Thus, allow_behavior_grouping is false.",
+  "confidence": 5,
+  "boundary_note": "The pattern is stable across all 50 samples, but the analysis is limited to the initial discourse marker and does not capture full pragmatic function."
+}

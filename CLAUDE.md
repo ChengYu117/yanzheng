@@ -54,6 +54,14 @@
 - 核心逻辑在 `src/nlp_re_base/`；根目录 `run_*.py` 是薄 CLI 入口。
 - 新增分析遵循三件套：`src/nlp_re_base/<module>.py` + 根目录 `run_<name>.py` + 配套 `test_<name>_smoke.py`，并在 `src/nlp_re_base/__init__.py` 按需导出。
 
+## P3 stable-core 对比式解释（唯一执行入口）
+
+- 实施或复跑 P3 stable-core 对比式 latent 解释时，只以 `doc/P3_stable_core对比式latent解释_Claude_Code执行工作流.md` 为执行规范。
+- `doc/P3流程详解.md`、`doc/P3_AI流水线评估与自动化实现指南.md`、`doc/P3研究设计与方法规则.md` 和 `doc/P3对比式latent解释流程设计.md` 只作历史背景，不得从中复制命令、状态或验收口径。
+- 禁止用关键词规则、正则、固定词表、硬编码概率或本地 fallback 伪造 Explainer、Scorer、baseline、minimal-pair Designer 或子概念聚类的 LLM raw outputs。
+- Claude Code 同时负责工程实现与 LLM 评估。模型必须逐条读取 `llm_tasks/*.jsonl`，并把原始 JSON 回答写入任务声明的 `expected_output_path`，不得绕过任务文件直接合成最终指标。
+- 任一阶段门禁未通过时必须停止，不得继续生成下游结果或在最终报告中写成已完成。
+
 ## Git
 
 - 不要主动 commit，除非用户明确要求。

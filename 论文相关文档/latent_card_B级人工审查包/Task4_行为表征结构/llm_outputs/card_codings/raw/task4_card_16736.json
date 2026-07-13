@@ -1,0 +1,15 @@
+{
+  "latent_idx": 16736,
+  "primary_evidence_class": "affective_content",
+  "secondary_evidence_classes": [],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": [],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The feature card consistently describes difficulty, hardship, or emotional challenge across all 50 sentences, with explicit lexical markers like 'difficult', 'hard', 'tough', etc. This is primarily affective content expressing or acknowledging negative emotional states, not a consistent behavioral function. The candidate behavioral explanation is not strongly supported by pragmatic evidence; the utterances are statements or questions about difficulty, not consistently performing a specific communicative action like empathy or validation. Therefore, allow_behavior_grouping is false.",
+  "confidence": 4,
+  "boundary_note": "The pattern is clear and uniform, but it remains at the level of affective content rather than a distinct behavioral function."
+}

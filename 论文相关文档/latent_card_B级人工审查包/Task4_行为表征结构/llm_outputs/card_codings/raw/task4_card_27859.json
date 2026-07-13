@@ -1,0 +1,15 @@
+{
+  "latent_idx": 27859,
+  "primary_evidence_class": "unclear_or_mixed",
+  "secondary_evidence_classes": [],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": [],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The source card claims a behavioral function of giving advice, but the cited utterances show a mix of advice, explanations, and unclear statements. For example, s001 gives advice, s016 warns, s024 explains, but s006 is abstract, s008 unclear, s012 mixed topics, and s011 is a greeting. The pattern is primarily second-person address with health topics, but the behavioral function is not consistently supported across all evidence. The primary class is unclear_or_mixed because the evidence does not uniformly support a single behavioral function; it combines linguistic structure (second-person) and topic (health) with varied pragmatic functions.",
+  "confidence": 2,
+  "boundary_note": "The card's behavioral grouping is not supported by sufficient pragmatic evidence; many utterances lack clear advice-giving function."
+}

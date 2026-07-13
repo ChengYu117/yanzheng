@@ -1,0 +1,15 @@
+{
+  "latent_idx": 26681,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["topic", "linguistic_structure"],
+  "open_behavior_code": "therapeutic_guidance",
+  "behavior_component_name_zh": "治疗性引导",
+  "behavior_component_name_en": "therapeutic guidance",
+  "behavior_definition": "The speaker uses second-person address, reflective listening, open-ended questions, and motivational language to explore the client's ambivalence and promote behavior change in a counseling or motivational interviewing context.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s001", "s005", "s028"],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The cited utterances consistently show a therapeutic guidance function: s001 discusses stopping drinking, s005 uses motivational language ('motivate you to make those changes'), and s028 asks about joining a support group. These directly support a behavioral function of therapeutic guidance. The secondary classes reflect the topic (health behaviors) and linguistic structure (second-person 'you').",
+  "confidence": 4,
+  "boundary_note": "The evidence is limited to decontextualized sentences, but the pattern across multiple utterances strongly supports a counseling dialogue function."
+}

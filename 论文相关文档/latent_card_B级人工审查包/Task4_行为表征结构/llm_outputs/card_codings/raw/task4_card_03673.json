@@ -1,0 +1,15 @@
+{
+  "latent_idx": 3673,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": ["behavioral_function"],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s001", "s002", "s006"],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The cited utterances show discourse markers like 'so', 'you know', 'yeah', 'well', and 'it sounds like', which are linguistic structures typical of therapeutic reflection. However, the evidence does not directly demonstrate a consistent behavioral function (e.g., reflective listening) because the utterances are isolated and lack conversational context. The primary pattern is linguistic (discourse markers), not behavioral. Behavioral grouping is not supported due to insufficient pragmatic evidence of a consistent communicative action beyond the markers themselves.",
+  "confidence": 4,
+  "boundary_note": "The pattern is clear across all 50 sentences, but the behavioral interpretation is inferred rather than directly evidenced."
+}

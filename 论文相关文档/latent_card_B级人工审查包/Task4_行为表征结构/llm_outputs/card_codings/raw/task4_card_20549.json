@@ -1,0 +1,15 @@
+{
+  "latent_idx": 20549,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["linguistic_structure"],
+  "open_behavior_code": "interviewer_questioning",
+  "behavior_component_name_zh": "访谈者提问",
+  "behavior_component_name_en": "interviewer questioning",
+  "behavior_definition": "Utterances that function as questions posed by an interviewer or clinician to gather information from a patient or client, typically in a healthcare or counseling context.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s001", "s004", "s024"],
+  "contradicting_evidence_ids": ["s013", "s018", "s022", "s028", "s037", "s038", "s040", "s041"],
+  "coding_rationale": "The majority of utterances are interrogative forms used to probe for information (e.g., s001, s004, s024), consistent with a behavioral function of interviewer questioning. Outliers are non-interrogative statements or responses. The pattern is clear and supported by pragmatic evidence.",
+  "confidence": 4,
+  "boundary_note": "Outliers include declarative statements and responses that do not serve a questioning function."
+}

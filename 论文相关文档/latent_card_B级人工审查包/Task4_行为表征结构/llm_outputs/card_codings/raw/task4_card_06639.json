@@ -1,0 +1,15 @@
+{
+  "latent_idx": 6639,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": ["behavioral_function"],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s004", "s005", "s010"],
+  "contradicting_evidence_ids": ["s046", "s050"],
+  "coding_rationale": "The primary pattern is a consistent linguistic template (discourse marker + scale request + anchors) across 45/50 samples. While the utterances serve a behavioral function (eliciting ratings), the evidence primarily supports a structural form rather than a distinct communicative action beyond questioning. Outliers lack the scale structure or are fragments. Behavioral grouping is not warranted because the function is generic questioning, not a specialized behavior.",
+  "confidence": 4,
+  "boundary_note": "Outliers are either incomplete scale questions or different question types, suggesting the pattern is robust but not universal."
+}

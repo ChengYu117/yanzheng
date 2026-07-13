@@ -1,0 +1,15 @@
+{
+  "latent_idx": 2167,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": ["behavioral_function"],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": [],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The source card emphasizes discourse markers like 'so', 'okay', 'it sounds like' as the primary pattern, which is a linguistic structure. The behavioral interpretation (reflective listening) is plausible but not directly supported by the cited utterances alone, as speaker roles are unknown. The evidence shows a consistent linguistic pattern but insufficient pragmatic evidence to confirm a specific behavioral function. Thus, primary class is linguistic_structure, with behavioral_function as secondary. Grouping is not allowed due to lack of direct behavioral evidence.",
+  "confidence": 3,
+  "boundary_note": "The pattern is robust across many samples, but the behavioral function is inferred rather than directly observed. Outliers show different structures."
+}

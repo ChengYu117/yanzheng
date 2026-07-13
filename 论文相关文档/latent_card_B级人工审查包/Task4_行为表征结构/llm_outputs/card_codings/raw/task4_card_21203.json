@@ -1,0 +1,15 @@
+{
+  "latent_idx": 21203,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": ["behavioral_function"],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s001", "s016", "s035"],
+  "contradicting_evidence_ids": ["s005", "s012", "s025", "s042"],
+  "coding_rationale": "The card primarily identifies a pattern of open-ended questions, which is a linguistic structure. While the card claims a behavioral function (therapeutic questioning), the cited utterances do not consistently demonstrate a clear behavioral function; they are mostly questions but lack explicit evidence of therapeutic intent. The outliers are non-questions, further weakening the behavioral claim. Thus, the primary class is linguistic_structure, with behavioral_function as secondary. Grouping is not allowed due to insufficient pragmatic evidence.",
+  "confidence": 3,
+  "boundary_note": "The pattern is predominantly syntactic (question forms), but the behavioral interpretation is speculative without context."
+}

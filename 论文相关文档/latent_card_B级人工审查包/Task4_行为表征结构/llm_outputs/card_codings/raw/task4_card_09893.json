@@ -1,0 +1,15 @@
+{
+  "latent_idx": 9893,
+  "primary_evidence_class": "topic",
+  "secondary_evidence_classes": ["behavioral_function"],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s004", "s005", "s010"],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The utterances consistently discuss health, diet, exercise, and lifestyle changes, with references to specific diets, smoking, alcohol, weight, and medical conditions. This is a clear topic. The candidate behavioral explanation (counseling/coaching) is plausible but not directly supported by the cited utterances; the evidence shows information sharing and advice, but the pragmatic function is not consistently demonstrated across all samples. Therefore, topic is the primary class, and behavioral_function is secondary but not strong enough to allow grouping.",
+  "confidence": 4,
+  "boundary_note": "All 50 samples support the health topic; no outliers. The behavioral function is inferred but not explicitly coded from the evidence."
+}

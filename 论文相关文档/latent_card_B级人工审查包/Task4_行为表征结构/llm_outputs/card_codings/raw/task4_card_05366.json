@@ -1,0 +1,15 @@
+{
+  "latent_idx": 5366,
+  "primary_evidence_class": "unclear_or_mixed",
+  "secondary_evidence_classes": [],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": [],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The three cited utterances show diverse topics (grief, condolence, pharmacy introduction) and no consistent behavioral function. The source card's own explanation indicates heterogeneity and low confidence. No single pragmatic pattern dominates, so behavioral grouping is not supported.",
+  "confidence": 1,
+  "boundary_note": "The set is too heterogeneous to define a coherent behavioral or topical category."
+}

@@ -1,0 +1,5 @@
+{
+  "step": "build_card_coding_tasks",
+  "n_tasks": 225,
+  "tasks": "论文相关文档\\latent_card_B级人工审查包\\Task4_行为表征结构\\llm_tasks\\card_coding_tasks.jsonl"
+}

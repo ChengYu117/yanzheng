@@ -1,0 +1,15 @@
+{
+  "latent_idx": 8468,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["linguistic_structure"],
+  "open_behavior_code": "therapeutic_reflection_challenge",
+  "behavior_component_name_zh": "治疗性反思与挑战",
+  "behavior_component_name_en": "therapeutic reflection and challenge",
+  "behavior_definition": "The speaker uses second-person 'you' to reflect, summarize, or challenge the client's statements and behaviors, typical of therapeutic or counseling discourse aimed at promoting insight or accountability.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s002", "s005", "s009"],
+  "contradicting_evidence_ids": ["s021", "s033", "s046"],
+  "coding_rationale": "The cited utterances (s002, s005, s009) consistently show a therapist-like figure using 'you' to reflect back or challenge the client's actions and thoughts, supporting a behavioral function of therapeutic reflection/challenge. Outliers (s021, s033, s046) are more informational or educational, lacking the reflective/challenging tone. The pattern is strong across 47/50 samples, but the primary class is behavioral_function with a secondary linguistic_structure due to the consistent use of second-person.",
+  "confidence": 4,
+  "boundary_note": "The behavioral function is clear for the majority of samples, but outliers suggest a mix with educational discourse. The grouping is allowed based on the strong pragmatic evidence from the representative samples."
+}

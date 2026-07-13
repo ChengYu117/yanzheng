@@ -1,0 +1,15 @@
+{
+  "latent_idx": 17861,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": [],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s001", "s008", "s018"],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The cited utterances consistently use second-person 'you' as subject, indicating a stable linguistic structure. No behavioral function is directly supported by the evidence; the utterances describe actions, states, or feelings without a clear communicative action beyond addressing the listener. The source card's classification as linguistic_structure is appropriate.",
+  "confidence": 4,
+  "boundary_note": "Pattern is purely structural; no evidence of a consistent behavioral function across samples."
+}

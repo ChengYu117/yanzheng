@@ -1,0 +1,15 @@
+{
+  "latent_idx": 16969,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": [],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s030", "s034", "s048"],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The feature card describes a consistent linguistic pattern of sentences beginning with 'do you', which is a surface-level syntactic structure. The cited utterances (s030, s034, s048) all start with 'do you' and are questions, but there is no direct evidence of a consistent behavioral function beyond the form itself. The primary class is linguistic_structure because the pattern is purely formal; the behavioral function is inferred but not directly supported by the cited utterances. Confidence is high (5) due to the pattern's consistency.",
+  "confidence": 5,
+  "boundary_note": "The pattern is robust across all 50 samples, but the behavioral function is not directly evidenced by the cited utterances; it remains an inference."
+}

@@ -1,0 +1,15 @@
+{
+  "latent_idx": 8191,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": [],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s003", "s006", "s021"],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The feature card consistently describes wh-questions as a syntactic pattern. The cited utterances are all questions, but they do not share a consistent communicative function beyond being questions. The candidate behavioral explanation is speculative and not directly supported by the evidence. Therefore, the primary class is linguistic_structure, and behavioral grouping is not allowed.",
+  "confidence": 4,
+  "boundary_note": "All 50 samples are wh-questions, but the specific wh-word and topic vary. No outliers."
+}

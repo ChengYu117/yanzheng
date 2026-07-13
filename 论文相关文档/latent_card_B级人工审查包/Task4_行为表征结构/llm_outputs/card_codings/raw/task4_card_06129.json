@@ -1,0 +1,15 @@
+{
+  "latent_idx": 6129,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": [],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s005", "s015", "s022"],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The feature card consistently identifies a repeated question form 'what do you think' across all 50 samples. The cited utterances (s005, s015, s022) directly show this lexical-syntactic pattern. The candidate behavioral explanation (eliciting perspective in therapy) is plausible but not directly supported by the cited evidence alone; the utterances lack context to confirm a therapeutic function. Thus, the primary class remains linguistic_structure, and behavioral grouping is not allowed due to insufficient pragmatic evidence.",
+  "confidence": 4,
+  "boundary_note": "The pattern is highly consistent but may be too broad; no outliers exist, suggesting the pattern is inclusive but potentially trivial."
+}

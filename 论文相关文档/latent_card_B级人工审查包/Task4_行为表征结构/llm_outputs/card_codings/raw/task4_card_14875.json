@@ -1,0 +1,15 @@
+{
+  "latent_idx": 14875,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": [],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s012", "s020", "s029"],
+  "contradicting_evidence_ids": ["s001", "s046"],
+  "coding_rationale": "The primary pattern is the consistent use of 'and so' or 'so' as discourse markers, which is a linguistic structure. The cited utterances show this form, but the behavioral function (therapeutic discourse) is inferred and not directly supported by all examples; s001 and s046 contain 'so' but lack clear therapeutic context. Thus, the primary class remains linguistic_structure, and behavioral grouping is not allowed due to insufficient pragmatic evidence.",
+  "confidence": 4,
+  "boundary_note": "The pattern is highly consistent across 50 sentences, but the behavioral interpretation is not uniformly supported; some sentences show non-standard language or fragmented speech."
+}

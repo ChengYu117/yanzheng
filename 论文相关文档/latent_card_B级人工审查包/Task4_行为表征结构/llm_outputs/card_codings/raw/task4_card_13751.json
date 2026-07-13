@@ -1,0 +1,15 @@
+{
+  "latent_idx": 13751,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["linguistic_structure"],
+  "open_behavior_code": "information_gathering_and_verification",
+  "behavior_component_name_zh": "信息收集与核实",
+  "behavior_component_name_en": "information gathering and verification",
+  "behavior_definition": "The speaker reads back or summarizes patient data from records to confirm accuracy or highlight issues during a clinical consultation.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s002", "s007", "s025"],
+  "contradicting_evidence_ids": ["s011", "s016", "s020"],
+  "coding_rationale": "The primary evidence class is behavioral_function because the utterances show a consistent pattern of a healthcare professional reviewing records to gather and verify information. The supporting evidence (s002, s007, s025) directly shows record review with pragmatic functions like 'it says here', 'taking a look at your medication profile', and 'according to your chart'. Contradicting evidence (s011, s016, s020) deviates in topic or context, but does not negate the overall behavioral function. The open_behavior_code captures the specific communicative action.",
+  "confidence": 4,
+  "boundary_note": "The pattern is strong but outliers exist; the behavioral grouping is supported by pragmatic evidence from the cited utterances."
+}

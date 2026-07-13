@@ -1,0 +1,15 @@
+{
+  "latent_idx": 6676,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["affective_content"],
+  "open_behavior_code": "affirmation_encouragement",
+  "behavior_component_name_zh": "肯定与鼓励",
+  "behavior_component_name_en": "Affirmation and Encouragement",
+  "behavior_definition": "Utterances that express positive evaluation (e.g., glad, good, great) directed at the addressee or their actions, functioning to affirm, encourage, or express gratitude in a healthcare context.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s003", "s005", "s032"],
+  "contradicting_evidence_ids": ["s019", "s021", "s022"],
+  "coding_rationale": "The cited utterances (s003, s005, s032) directly show positive evaluation ('glad', 'good') directed at the addressee, functioning as affirmation/encouragement. The outliers (s019, s021, s022) use positive words in different contexts (describing a glass, hedging, discussing life choices) and do not serve the same behavioral function. The pattern is consistent across 47/50 samples, supporting a behavioral grouping.",
+  "confidence": 4,
+  "boundary_note": "Outliers involve positive words used in non-affirming contexts (e.g., describing objects, hedging, or discussing life choices)."
+}

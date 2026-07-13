@@ -1,0 +1,15 @@
+{
+  "latent_idx": 28688,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": ["behavioral_function"],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s001", "s005", "s028"],
+  "contradicting_evidence_ids": ["s010", "s024"],
+  "coding_rationale": "The primary evidence is a stable syntactic pattern 'it sounds/looks like' used in 48/50 sentences. While the pattern may serve a reflective listening function in therapy, the cited utterances only show the form, not a consistent behavioral function across all instances. The outliers lack the pattern. Thus, the primary class is linguistic_structure, with behavioral_function as secondary but insufficient for grouping.",
+  "confidence": 4,
+  "boundary_note": "The pattern is clear but the behavioral function is inferred from context, not directly supported by all utterances."
+}

@@ -1,0 +1,15 @@
+{
+  "latent_idx": 24760,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["linguistic_structure"],
+  "open_behavior_code": "empathic_understanding",
+  "behavior_component_name_zh": "共情理解",
+  "behavior_component_name_en": "empathic understanding",
+  "behavior_definition": "The speaker explicitly expresses understanding or empathy towards the listener's situation or feelings, often using phrases like 'I understand' or 'I can understand', followed by a restatement or acknowledgment.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s001", "s008", "s013"],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The cited utterances consistently show the speaker using 'I understand' to acknowledge the listener's perspective, which is a clear behavioral function of empathic reflection. The pattern is pragmatic and not merely a surface artifact. The primary class is behavioral_function because the utterances serve to validate and empathize, not just to convey information. Secondary class linguistic_structure reflects the repeated lexical pattern. Confidence is high due to strong evidence.",
+  "confidence": 4,
+  "boundary_note": "The pattern is consistent across all cited utterances, but may be domain-specific to counseling contexts."
+}

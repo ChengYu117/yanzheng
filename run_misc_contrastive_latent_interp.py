@@ -24,6 +24,7 @@ from nlp_re_base.contrastive_evidence_pack import (
 )
 from nlp_re_base.contrastive_explainer import ExplainerTaskConfig, make_explainer_tasks
 from nlp_re_base.contrastive_llm_io import validate_explainer_outputs
+from nlp_re_base.contrastive_quality_audit import audit_explainer_quality, prepare_explainer_rerun
 from nlp_re_base.contrastive_minimal_pairs import (
     MinimalPairTaskConfig,
     make_minimal_pair_tasks,
@@ -54,10 +55,10 @@ def _read_jsonl_if_exists(path: Path) -> list[dict[str, Any]]:
 def _stage_status(*, prerequisite_complete: bool, has_artifacts: bool, complete: bool) -> str:
     if complete:
         return "complete"
-    if has_artifacts:
-        return "partial"
     if not prerequisite_complete:
         return "blocked"
+    if has_artifacts:
+        return "partial"
     return "not_started"
 
 
@@ -109,20 +110,29 @@ def write_claude_code_guide(output_dir: str | Path) -> Path:
         "",
         "## 1. Explainer 任务",
         "",
-        "1. 在 Claude Code 中读取 `outputs/misc_full_sae_eval/interpretability/contrastive_latent_interp/llm_tasks/explainer_tasks.jsonl`。",
-        "2. 每行是一个独立任务；不要让一个任务读取另一个任务的输出。",
-        "3. Claude Code 模型只返回一个 JSON object，不输出解释性散文。",
-        "4. 将原始回答保存到该任务的 `expected_output_path`，路径形如 `explainer_outputs/raw/ctli_0001_explainer_r01.json`。",
-        "5. 如果返回 Markdown code fence，原样保存，后续校验脚本会解析。",
-        "6. 不要手工改字段名、概率或 sample id；解析失败也保留原始文件。",
+        "0. 若已有旧 raw 输出，先建立隔离的干净队列：",
+        "",
+        "```powershell",
+        "conda run -n qwen-env-py311 python run_misc_contrastive_latent_interp.py --step prepare-explainer-rerun",
+        "```",
+        "",
+        "随后在 Claude Code 中读取 `llm_tasks/explainer_tasks_clean_rerun.jsonl`，并只写入任务中的 `raw_rerun` 路径。旧 `raw/` 与旧 manifest 只作审计材料。",
+        "",
+        "1. 每行是一个独立任务；不要让一个任务读取另一个任务的输出。",
+        "2. Claude Code 模型只返回一个 JSON object，不输出解释性散文。",
+        "3. 将原始回答保存到该任务的 `expected_output_path`，干净重跑路径形如 `explainer_outputs/raw_rerun/ctli_0001_explainer_r01.json`。",
+        "4. 如果返回 Markdown code fence，原样保存，后续校验脚本会解析。",
+        "5. 不要手工改字段名、概率或 sample id；解析失败也保留原始文件。",
+        "6. 对每个已写出的 raw JSON，在 `llm_execution_manifest_explainer_rerun.jsonl` 追加一行，至少包含 `task_id`, `model`, `execution_mode: claude_code_llm`, `timestamp`, `prompt_sha256`（任务 prompt 的 SHA-256）和 `raw_output_sha256`（raw JSON 的 SHA-256）。",
         "",
         "校验：",
         "",
         "```powershell",
-        "conda run -n qwen-env-py311 python run_misc_contrastive_latent_interp.py --step validate-explainer",
+        "conda run -n qwen-env-py311 python run_misc_contrastive_latent_interp.py --step validate-explainer `\n  --explainer-tasks outputs/misc_full_sae_eval/interpretability/contrastive_latent_interp/llm_tasks/explainer_tasks_clean_rerun.jsonl",
+        "conda run -n qwen-env-py311 python run_misc_contrastive_latent_interp.py --step audit-explainer-quality `\n  --explainer-tasks outputs/misc_full_sae_eval/interpretability/contrastive_latent_interp/llm_tasks/explainer_tasks_clean_rerun.jsonl `\n  --execution-manifest outputs/misc_full_sae_eval/interpretability/contrastive_latent_interp/llm_execution_manifest_explainer_rerun.jsonl",
         "```",
         "",
-        "失败任务会进入 `explainer_outputs/retry_tasks.jsonl`，Claude Code 只重做这些任务。",
+        "只有 `explainer_outputs/trusted_explanations.jsonl` 中的任务允许进入 scorer；质量审计报告位于 `explainer_outputs/explainer_quality_audit_report.md`。失败任务进入 `explainer_outputs/explainer_quality_retry_tasks.jsonl`，不得用规则脚本补写。",
         "",
         "## 2. Scorer 与 Label Baseline 任务",
         "",
@@ -145,7 +155,7 @@ def write_claude_code_guide(output_dir: str | Path) -> Path:
         "conda run -n qwen-env-py311 python run_misc_contrastive_latent_interp.py --step validate-scorer",
         "```",
         "",
-        "核心输出是 `scorer_outputs/scorer_metrics.csv`：`accepted` 需要 AUROC >= 0.70 且 `latent_gap > 0`。",
+        "只有 explainer quality/provenance gate 通过后才允许生成 scorer tasks。核心输出是 `scorer_outputs/scorer_metrics.csv`：`accepted` 需要 AUROC >= 0.70 且 `latent_gap > 0`。",
         "",
         "## 3. Minimal Pair 任务",
         "",
@@ -213,6 +223,7 @@ def write_report(output_dir: str | Path) -> Path:
     explainer_tasks = _read_jsonl_if_exists(output_path / "llm_tasks" / "explainer_tasks.jsonl")
     explanations = _read_jsonl_if_exists(output_path / "explainer_outputs" / "validated_explanations.jsonl")
     explainer_manifest = _read_json(output_path / "explainer_outputs" / "validation_manifest.json")
+    explainer_quality_manifest = _read_json(output_path / "explainer_outputs" / "explainer_quality_audit_manifest.json")
     scorer_task_manifest = _read_json(output_path / "scorer_task_manifest.json")
     scorer_validation_manifest = _read_json(output_path / "scorer_outputs" / "validation_manifest.json")
     scorer_metrics = (
@@ -264,10 +275,14 @@ def write_report(output_dir: str | Path) -> Path:
     )
     explainer_tasks_count = int(explainer_manifest.get("n_tasks", len(explainer_tasks)))
     explainer_valid_count = int(explainer_manifest.get("n_valid", len(explanations)))
-    explainer_complete = bool(
+    explainer_schema_complete = bool(
         explainer_tasks_count > 0
         and explainer_valid_count == explainer_tasks_count
         and int(explainer_manifest.get("n_retry", 0)) == 0
+    )
+    explainer_complete = bool(
+        explainer_schema_complete
+        and bool(explainer_quality_manifest.get("stage_gate_complete", False))
     )
     explainer_status = _stage_status(
         prerequisite_complete=evidence_complete,
@@ -277,6 +292,8 @@ def write_report(output_dir: str | Path) -> Path:
     scorer_tasks_count = int(scorer_validation_manifest.get("n_scorer_tasks", scorer_task_manifest.get("n_scorer_tasks", 0)))
     baseline_tasks_count = int(scorer_validation_manifest.get("n_baseline_tasks", scorer_task_manifest.get("n_baseline_tasks", 0)))
     scorer_complete = bool(
+        explainer_complete
+        and
         scorer_tasks_count > 0
         and baseline_tasks_count > 0
         and int(scorer_validation_manifest.get("n_valid_scorer_tasks", -1)) == scorer_tasks_count
@@ -293,6 +310,8 @@ def write_report(output_dir: str | Path) -> Path:
     minimal_expected_tasks = int(minimal_task_manifest.get("expected_tasks", 18))
     minimal_tasks_count = int(minimal_task_manifest.get("n_tasks", 0))
     minimal_complete = bool(
+        scorer_complete
+        and
         minimal_tasks_count == minimal_expected_tasks
         and minimal_expected_tasks > 0
         and int(minimal_validation_manifest.get("n_errors", -1)) == 0
@@ -307,6 +326,8 @@ def write_report(output_dir: str | Path) -> Path:
     )
     subconcept_tasks_count = int(subconcept_task_manifest.get("n_tasks", 0))
     subconcept_complete = bool(
+        scorer_complete
+        and
         subconcept_tasks_count > 0
         and subconcept_manifest
         and int(subconcept_manifest.get("n_errors", -1)) == 0
@@ -326,7 +347,7 @@ def write_report(output_dir: str | Path) -> Path:
 
     stage_rows = [
         {"step": "1", "stage": "Evidence packs", "status": evidence_status, "evidence": f"{len(evidence_summary)} label-latent rows"},
-        {"step": "2", "stage": "Explainer", "status": explainer_status, "evidence": f"{explainer_valid_count}/{explainer_tasks_count} valid tasks"},
+        {"step": "2", "stage": "Explainer", "status": explainer_status, "evidence": f"{explainer_valid_count}/{explainer_tasks_count} schema-valid; {explainer_quality_manifest.get('n_trusted_for_downstream', 0)} quality/provenance-trusted"},
         {"step": "3", "stage": "Held-out scorer", "status": scorer_status, "evidence": f"{scorer_tasks_count} scorer tasks; {len(latent_status)} distinct label-latents"},
         {"step": "4", "stage": "Minimal pairs", "status": minimal_status, "evidence": f"{minimal_tasks_count}/{minimal_expected_tasks} design tasks; {len(minimal_results)} tested pairs"},
         {"step": "5", "stage": "Subconcepts", "status": subconcept_status, "evidence": f"{subconcept_tasks_count} cluster tasks; {len(subconcepts)} output rows"},
@@ -376,9 +397,15 @@ def write_report(output_dir: str | Path) -> Path:
 
     lines.extend(["", "## Step 2 Explainer", ""])
     if explainer_manifest:
-        distinct_explained = len({(str(row.get("target_label", "")), int(row.get("latent_idx", -1))) for row in explanations})
         lines.append(f"- valid explanation tasks: {explainer_valid_count} / {explainer_tasks_count}")
-        lines.append(f"- distinct explained label-latents: {distinct_explained}")
+        if explainer_quality_manifest:
+            lines.append(f"- schema gate: {'pass' if explainer_schema_complete else 'fail'}")
+            lines.append(f"- quality/provenance gate: {'pass' if explainer_complete else 'fail'}")
+            lines.append(f"- trusted for downstream: {explainer_quality_manifest.get('n_trusted_for_downstream', 0)}")
+            lines.append(f"- contamination detected: {explainer_quality_manifest.get('contamination_detected', False)}")
+            lines.append(f"- quality audit: `{output_path / 'explainer_outputs' / 'explainer_quality_audit_report.md'}`")
+        else:
+            lines.append("- quality/provenance audit: not run; schema-valid rows are not trusted")
         lines.append(f"- retry tasks: {explainer_manifest.get('n_retry', 0)}")
     else:
         lines.append("尚未校验 explainer 输出。")
@@ -460,7 +487,9 @@ def parse_args() -> argparse.Namespace:
         choices=[
             "build-packs",
             "make-explainer-tasks",
-            "validate-explainer",
+        "validate-explainer",
+        "audit-explainer-quality",
+            "prepare-explainer-rerun",
             "make-scorer-tasks",
             "validate-scorer",
             "make-minimal-pair-tasks",
@@ -474,6 +503,8 @@ def parse_args() -> argparse.Namespace:
         ],
     )
     parser.add_argument("--output-dir", default=DEFAULT_OUTPUT_DIR)
+    parser.add_argument("--explainer-tasks", default=None, help="Override explainer task queue for clean reruns.")
+    parser.add_argument("--execution-manifest", default=None, help="Override explainer execution manifest for clean reruns.")
     parser.add_argument("--latents", default=DEFAULT_LATENTS)
     parser.add_argument("--feature-store", default=DEFAULT_FEATURES)
     parser.add_argument("--label-matrix", default=DEFAULT_LABEL_MATRIX)
@@ -502,6 +533,13 @@ def main() -> int:
     packs_path = output_dir / "evidence_packs" / "contrastive_evidence_packs.jsonl"
     explainer_tasks_path = output_dir / "llm_tasks" / "explainer_tasks.jsonl"
     explanations_path = output_dir / "explainer_outputs" / "validated_explanations.jsonl"
+    trusted_explanations_path = output_dir / "explainer_outputs" / "trusted_explanations.jsonl"
+    explainer_quality_manifest_path = output_dir / "explainer_outputs" / "explainer_quality_audit_manifest.json"
+    execution_manifest_path = output_dir / "llm_execution_manifest.jsonl"
+    if args.explainer_tasks:
+        explainer_tasks_path = Path(args.explainer_tasks)
+    if args.execution_manifest:
+        execution_manifest_path = Path(args.execution_manifest)
     scorer_tasks_path = output_dir / "llm_tasks" / "scorer_tasks.jsonl"
     baseline_tasks_path = output_dir / "llm_tasks" / "baseline_tasks.jsonl"
     answer_key_path = output_dir / "scorer_outputs" / "heldout_answer_key.csv"
@@ -542,10 +580,32 @@ def main() -> int:
         manifest = validate_explainer_outputs(tasks_path=explainer_tasks_path, output_dir=output_dir)
         print(f"Validated explainer outputs: {manifest['n_valid']} valid, {manifest['n_retry']} retry")
 
+    if args.step == "audit-explainer-quality":
+        manifest = audit_explainer_quality(
+            tasks_path=explainer_tasks_path,
+            validated_explanations_path=explanations_path,
+            execution_manifest_path=execution_manifest_path,
+            output_dir=output_dir / "explainer_outputs",
+            repo_root=PROJECT_ROOT,
+        )
+        print(
+            f"Audited explainer quality: {manifest['n_trusted_for_downstream']} / "
+            f"{manifest['n_tasks']} trusted; contamination={manifest['contamination_detected']}"
+        )
+
+    if args.step == "prepare-explainer-rerun":
+        manifest = prepare_explainer_rerun(tasks_path=explainer_tasks_path, output_dir=output_dir)
+        print(f"Prepared clean explainer rerun queue: {manifest['n_tasks']} tasks -> {manifest['outputs']['clean_tasks']}")
+
     if args.step == "make-scorer-tasks":
+        quality_manifest = _read_json(explainer_quality_manifest_path)
+        if not bool(quality_manifest.get("stage_gate_complete", False)):
+            raise RuntimeError(
+                "Explainer quality/provenance gate is not complete; refusing to build scorer tasks from untrusted explanations."
+            )
         manifest = make_scorer_tasks(
             packs_path=packs_path,
-            explanations_path=explanations_path,
+            explanations_path=trusted_explanations_path,
             output_dir=output_dir,
             config=ScorerTaskConfig(include_all_valid_explanations=not args.scorer_best_explanation_only),
         )
@@ -561,9 +621,14 @@ def main() -> int:
         print(f"Validated scorer outputs: {manifest['n_valid_scorer_predictions']} scorer predictions")
 
     if args.step == "make-minimal-pair-tasks":
+        quality_manifest = _read_json(explainer_quality_manifest_path)
+        if not bool(quality_manifest.get("stage_gate_complete", False)):
+            raise RuntimeError(
+                "Explainer quality/provenance gate is not complete; refusing to build minimal-pair tasks."
+            )
         manifest = make_minimal_pair_tasks(
             packs_path=packs_path,
-            explanations_path=explanations_path,
+            explanations_path=trusted_explanations_path,
             scorer_metrics_path=scorer_metrics_path,
             output_dir=output_dir,
             config=MinimalPairTaskConfig(),
@@ -589,9 +654,14 @@ def main() -> int:
         print(f"Ran minimal-pair activation test: {manifest['n_pairs']} pairs")
 
     if args.step == "make-subconcept-tasks":
+        quality_manifest = _read_json(explainer_quality_manifest_path)
+        if not bool(quality_manifest.get("stage_gate_complete", False)):
+            raise RuntimeError(
+                "Explainer quality/provenance gate is not complete; refusing to build subconcept tasks."
+            )
         manifest = make_subconcept_tasks(
             packs_path=packs_path,
-            explanations_path=explanations_path,
+            explanations_path=trusted_explanations_path,
             scorer_metrics_path=scorer_metrics_path,
             latent_status_path=latent_status_path,
             output_dir=output_dir,

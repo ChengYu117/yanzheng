@@ -1,0 +1,15 @@
+{
+  "latent_idx": 20436,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": ["behavioral_function"],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": [],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The evidence strongly supports a linguistic pattern of contrastive discourse markers (e.g., 'on one hand... on the other hand', 'but') used to frame ambivalence. While the source card labels it as behavioral_function, the cited utterances primarily demonstrate a structural form (discourse markers) rather than a consistent communicative action. The behavioral interpretation (reflective listening) is plausible but not directly supported by the evidence; the utterances are therapist summaries that could serve multiple functions. Thus, primary class is linguistic_structure, with secondary behavioral_function. No behavioral grouping is warranted because the evidence does not consistently demonstrate a specific behavioral function beyond the linguistic form.",
+  "confidence": 4,
+  "boundary_note": "The pattern is clear and consistent across all cited utterances, but the functional interpretation is inferred rather than directly evidenced."
+}

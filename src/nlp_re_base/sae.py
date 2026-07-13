@@ -483,21 +483,45 @@ def _download_checkpoint_dir(repo_id: str, subfolder: str) -> str:
     """Download the checkpoint directory from HuggingFace Hub."""
     from huggingface_hub import snapshot_download
 
+    def _checkpoint_path(local_dir: str) -> Path:
+        return Path(local_dir) / subfolder / "checkpoints"
+
+    def _has_weights(path: Path) -> bool:
+        from safetensors import safe_open
+
+        for candidate in path.glob("*.safetensors"):
+            if not candidate.is_file() or candidate.stat().st_size == 0:
+                continue
+            try:
+                with safe_open(str(candidate), framework="pt", device="cpu") as handle:
+                    if list(handle.keys()):
+                        return True
+            except Exception:
+                continue
+        return False
+
     try:
         local_dir = snapshot_download(
             repo_id=repo_id,
             allow_patterns=f"{subfolder}/checkpoints/*",
             local_files_only=True,
         )
+        ckpt_path = _checkpoint_path(local_dir)
+        if _has_weights(ckpt_path):
+            return str(ckpt_path)
     except Exception:
-        local_dir = snapshot_download(
-            repo_id=repo_id,
-            allow_patterns=f"{subfolder}/checkpoints/*",
-        )
-    ckpt_path = Path(local_dir) / subfolder / "checkpoints"
-    if not ckpt_path.exists():
+        pass
+
+    # A cached repository snapshot can exist while lacking this particular
+    # layer's checkpoint. Verify the requested subfolder before reusing it.
+    local_dir = snapshot_download(
+        repo_id=repo_id,
+        allow_patterns=f"{subfolder}/checkpoints/*",
+    )
+    ckpt_path = _checkpoint_path(local_dir)
+    if not _has_weights(ckpt_path):
         raise FileNotFoundError(
-            f"Checkpoint directory not found after download: {ckpt_path}"
+            f"No non-empty .safetensors checkpoint found after download: {ckpt_path}"
         )
     return str(ckpt_path)
 

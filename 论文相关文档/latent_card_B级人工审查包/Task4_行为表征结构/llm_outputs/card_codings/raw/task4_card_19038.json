@@ -1,0 +1,15 @@
+{
+  "latent_idx": 19038,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": ["behavioral_function"],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s004", "s015", "s043"],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The primary evidence is the consistent linguistic pattern of wh-questions with discourse markers. The behavioral function (probing questions) is plausible but not directly supported by the cited utterances alone; the utterances are questions but lack explicit context to confirm a therapeutic or counseling setting. Thus, linguistic structure is the primary class, with behavioral_function as secondary. Grouping is not allowed due to insufficient pragmatic evidence.",
+  "confidence": 4,
+  "boundary_note": "The pattern is clear across many samples, but the behavioral interpretation relies on inferred context."
+}

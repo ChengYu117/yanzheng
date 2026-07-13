@@ -1,0 +1,15 @@
+{
+  "latent_idx": 7143,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["linguistic_structure"],
+  "open_behavior_code": "affirmation_and_positive_reinforcement",
+  "behavior_component_name_zh": "肯定与积极强化",
+  "behavior_component_name_en": "affirmation and positive reinforcement",
+  "behavior_definition": "The speaker uses reflective and evaluative language to affirm the client's positive actions, motivations, or progress, often in a therapeutic or coaching context.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s001", "s002", "s007"],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The cited utterances show consistent pragmatic function of affirmation and positive reinforcement (e.g., 'sounds like you're really motivated', 'I commend you'). The pattern is strongly supported by the evidence, with no contradicting examples. The primary class is behavioral_function, with secondary linguistic_structure due to the use of reflective phrases.",
+  "confidence": 4,
+  "boundary_note": "The evidence is limited to isolated utterances; full conversational context might reveal additional functions."
+}

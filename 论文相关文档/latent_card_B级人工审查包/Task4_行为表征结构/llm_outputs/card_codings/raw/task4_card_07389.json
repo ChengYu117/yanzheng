@@ -1,0 +1,15 @@
+{
+  "latent_idx": 7389,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["linguistic_structure"],
+  "open_behavior_code": "empathic_acknowledgment_of_difficulty",
+  "behavior_component_name_zh": "困难共情确认",
+  "behavior_component_name_en": "empathic acknowledgment of difficulty",
+  "behavior_definition": "The speaker uses constructions like 'it is/was [adjective]' or 'that sounds/must be [adjective]' to express empathy or acknowledge that a situation, activity, or feeling is difficult, hard, scary, or not fun, functioning as empathetic reflection or validation in supportive conversations.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s001", "s014", "s018"],
+  "contradicting_evidence_ids": ["s025", "s035"],
+  "coding_rationale": "The cited utterances directly support a consistent communicative action of empathic acknowledgment: s001 ('yeah throwing up is never fun') uses a negative evaluation to acknowledge difficulty, s014 ('it must seem overwhelming...') uses a pragmatic function of empathy, and s018 ('it must be tough') uses a syntactic pattern. The outliers s025 and s035 are factual statements without evaluative difficulty, contradicting the pattern. The behavioral function is strongly supported by pragmatic evidence, not merely by the source card's proposed name.",
+  "confidence": 4,
+  "boundary_note": "The pattern is broad and may overlap with other functions like advice-giving, but the empathic acknowledgment is clearly present in the majority of samples."
+}

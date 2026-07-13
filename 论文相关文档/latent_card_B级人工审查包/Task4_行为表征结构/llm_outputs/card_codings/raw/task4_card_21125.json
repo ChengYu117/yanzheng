@@ -1,0 +1,15 @@
+{
+  "latent_idx": 21125,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["linguistic_structure"],
+  "open_behavior_code": "interviewer_elicitation_of_health_narratives",
+  "behavior_component_name_zh": "访谈者健康叙事引导",
+  "behavior_component_name_en": "interviewer elicitation of health narratives",
+  "behavior_definition": "The interviewer uses open-ended questions and follow-up prompts to elicit detailed personal narratives about health behaviors, motivations, and experiences from the respondent.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s001", "s005", "s013"],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The utterances consistently function as interviewer questions probing health-related behaviors and experiences, with clear pragmatic intent to elicit narrative responses. The linguistic form (open-ended questions) supports this behavioral function. No contradictory evidence found.",
+  "confidence": 4,
+  "boundary_note": "The pattern is highly consistent across all 50 sentences, but the analysis is limited to interviewer turns only; respondent answers could provide additional context."
+}

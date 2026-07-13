@@ -1,0 +1,15 @@
+{
+  "latent_idx": 4018,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": ["behavioral_function"],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s003", "s017", "s022"],
+  "contradicting_evidence_ids": ["s009", "s011", "s025", "s033", "s036", "s038", "s045"],
+  "coding_rationale": "The primary pattern is a consistent linguistic structure: perception verb (seems, sounds, feels, looks) + complement clause. This is supported by the majority of samples. The behavioral function (empathetic inference) is plausible but not directly evidenced by the cited utterances; the utterances only show the form, not the pragmatic effect. Therefore, allow_behavior_grouping is false.",
+  "confidence": 4,
+  "boundary_note": "Outliers include questions, direct requests, and unrelated narratives that lack the perception verb structure."
+}

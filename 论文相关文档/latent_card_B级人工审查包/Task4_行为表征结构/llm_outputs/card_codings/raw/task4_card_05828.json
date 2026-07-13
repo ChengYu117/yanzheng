@@ -1,0 +1,15 @@
+{
+  "latent_idx": 5828,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": ["behavioral_function"],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s008", "s028"],
+  "contradicting_evidence_ids": ["s001"],
+  "coding_rationale": "The primary pattern is a syntactic structure ('yeah it's'), but the cited utterances show mixed evidence: s008 and s028 clearly exhibit the pattern, while s001 lacks it. The behavioral function (affirmation/evaluation) is plausible but not consistently supported by the cited evidence; s001 is a narrative, not an affirmation. Thus, linguistic_structure is primary, behavioral_function is secondary but insufficient for grouping.",
+  "confidence": 3,
+  "boundary_note": "The pattern is present in some but not all representative samples; s001 contradicts the syntactic pattern."
+}

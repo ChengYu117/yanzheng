@@ -1,0 +1,15 @@
+{
+  "latent_idx": 16515,
+  "primary_evidence_class": "topic",
+  "secondary_evidence_classes": ["linguistic_structure"],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s001", "s010", "s024"],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The utterances consistently involve health-related numerical information (calories, A1C, blood sugar, scales), indicating a clear health topic. The use of numbers and scales is a linguistic structure but secondary to the topic. No consistent behavioral function is directly supported by the cited utterances; they are informative or descriptive rather than directive or motivational. Thus, allow_behavior_grouping is false.",
+  "confidence": 4,
+  "boundary_note": "The pattern is homogeneous across samples; no outliers or contradictions."
+}

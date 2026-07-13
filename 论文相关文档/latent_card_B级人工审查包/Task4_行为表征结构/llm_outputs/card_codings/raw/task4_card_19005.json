@@ -1,0 +1,15 @@
+{
+  "latent_idx": 19005,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": ["behavioral_function"],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s001", "s009", "s042"],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The cited utterances show discourse markers like 'okay so', 'well given that', and 'so when you reflect' which are linguistic structures typical of therapeutic dialogue. However, the evidence primarily demonstrates linguistic form (discourse markers) rather than a consistent behavioral function across all utterances. The behavioral interpretation is plausible but not directly supported by the cited evidence alone; the utterances are questions and reflections that could serve multiple functions. Thus, primary class is linguistic_structure with secondary behavioral_function, but allow_behavior_grouping is false due to insufficient pragmatic evidence for a specific behavioral code.",
+  "confidence": 3,
+  "boundary_note": "The card groups 50 samples, but only 3 evidence IDs are provided. The linguistic pattern is clear, but the behavioral function is inferred rather than directly evidenced."
+}

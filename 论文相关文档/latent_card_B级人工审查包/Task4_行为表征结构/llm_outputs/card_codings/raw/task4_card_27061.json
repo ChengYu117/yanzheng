@@ -1,0 +1,15 @@
+{
+  "latent_idx": 27061,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["linguistic_structure"],
+  "open_behavior_code": "therapeutic_questioning",
+  "behavior_component_name_zh": "治疗性提问",
+  "behavior_component_name_en": "therapeutic questioning",
+  "behavior_definition": "The use of open-ended questions and reflective statements to elicit client self-exploration, information gathering, and ambivalence exploration in a therapeutic or counseling context.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s001", "s002", "s003"],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The utterances consistently demonstrate a behavioral function of eliciting client reflection and information, typical of motivational interviewing. The open-ended question forms support this function. No contradicting evidence found.",
+  "confidence": 4,
+  "boundary_note": "All samples are from a single therapeutic session; generalizability may be limited."
+}

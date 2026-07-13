@@ -1,0 +1,15 @@
+{
+  "latent_idx": 20778,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["linguistic_structure"],
+  "open_behavior_code": "therapeutic_guidance_motivational_interviewing",
+  "behavior_component_name_zh": "治疗性引导与动机访谈",
+  "behavior_component_name_en": "therapeutic guidance and motivational interviewing",
+  "behavior_definition": "Utterances that use discourse markers, hedging, and collaborative language to guide a client through behavior change, including open-ended questions, affirmations, reflective listening, and summarizing.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s003", "s011", "s020"],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The cited utterances show consistent pragmatic functions: s003 uses reflective listening and open-ended questioning ('what your thoughts are about your smoking'), s011 uses tentative suggestion and collaborative framing ('I wonder if we could talk'), and s020 uses persistence and encouragement ('I'm going to continue to ask you about it'). These align with motivational interviewing techniques. The primary class is behavioral_function because the evidence supports a consistent communicative action (therapeutic guidance), not just linguistic form. Secondary class linguistic_structure acknowledges the discourse markers. Confidence is high due to strong pragmatic evidence.",
+  "confidence": 4,
+  "boundary_note": "The pattern is consistent across all 50 samples, but near-duplicates may inflate support. The behavioral code is specific to motivational interviewing, not general therapy."
+}

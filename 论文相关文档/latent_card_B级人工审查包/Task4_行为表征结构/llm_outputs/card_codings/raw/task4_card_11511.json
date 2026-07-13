@@ -1,0 +1,15 @@
+{
+  "latent_idx": 11511,
+  "primary_evidence_class": "unclear_or_mixed",
+  "secondary_evidence_classes": [],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": [],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The source card claims a behavioral function of expressing gratitude, but the cited utterances show only three supporting examples (s002, s005, s016) with 'I appreciate', while the majority of the 25 supporting samples are not cited. The outlier samples (e.g., s027, s039) are greetings and introductions, and s026 is a question. The pattern is primarily lexical (form) rather than a consistent communicative action across all samples. The evidence is insufficient to confirm a behavioral grouping; the card mixes a clear lexical pattern with heterogeneous other functions, making it unclear or mixed.",
+  "confidence": 2,
+  "boundary_note": "The card's supporting set is only partially represented in the cited evidence; the pattern is lexical (form) not behavioral. Outliers show diverse pragmatic functions."
+}

@@ -1,0 +1,15 @@
+{
+  "latent_idx": 12676,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": ["topic"],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s029", "s035", "s040"],
+  "contradicting_evidence_ids": ["s001", "s007", "s014", "s016", "s017", "s019", "s020", "s021"],
+  "coding_rationale": "The primary pattern is syntactic: sentences beginning with 'do you'. The cited evidence (s029, s035, s040) clearly shows this form. The card's behavioral explanation is inferred from topic (clinical context) but not directly supported by pragmatic evidence in the utterances; the utterances themselves are questions without explicit diagnostic or therapeutic function. Thus, allow_behavior_grouping is false. The pattern is predominantly linguistic structure with a secondary topic of clinical assessment.",
+  "confidence": 4,
+  "boundary_note": "Outliers are declarative statements or non-'do you' questions, which do not fit the syntactic pattern."
+}

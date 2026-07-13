@@ -1,0 +1,15 @@
+{
+  "latent_idx": 6651,
+  "primary_evidence_class": "topic",
+  "secondary_evidence_classes": [],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s003", "s014", "s036"],
+  "contradicting_evidence_ids": ["s002", "s004", "s008"],
+  "coding_rationale": "The cited utterances predominantly discuss healthcare topics (blood pressure, diabetes, drinking), supporting a topic classification. The candidate behavioral explanation is not directly supported by the evidence; utterances are statements or questions about health, not clearly performing a consistent communicative action like advising or counseling. Outliers show non-health topics (fire, drink driving, youth group). Thus, primary class is topic, and behavioral grouping is not warranted.",
+  "confidence": 3,
+  "boundary_note": "Topic is broad; outliers indicate mixed contexts."
+}

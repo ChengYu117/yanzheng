@@ -1,0 +1,15 @@
+{
+  "latent_idx": 4662,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": ["behavioral_function"],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s001", "s010", "s036"],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The feature card primarily describes a syntactic pattern ('you're' + predicate) that is consistent across all cited utterances. The behavioral function (evaluation/advice) is inferred but not directly supported by pragmatic evidence; the utterances could be informational or descriptive. Thus, the primary class is linguistic_structure, with a secondary behavioral_function. Behavioral grouping is not allowed due to insufficient pragmatic evidence.",
+  "confidence": 4,
+  "boundary_note": "The pattern is clear and stable, but the behavioral interpretation is not directly confirmed by the cited utterances."
+}

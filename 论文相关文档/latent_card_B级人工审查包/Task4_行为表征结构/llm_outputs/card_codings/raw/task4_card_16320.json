@@ -1,0 +1,15 @@
+{
+  "latent_idx": 16320,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["linguistic_structure"],
+  "open_behavior_code": "therapeutic_reflection_and_exploration",
+  "behavior_component_name_zh": "治疗性反思与探索",
+  "behavior_component_name_en": "therapeutic reflection and exploration",
+  "behavior_definition": "Utterances that use second-person address to reflect, summarize, or probe a client's experiences, feelings, or behaviors in a counseling or therapeutic context.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s002", "s008", "s013"],
+  "contradicting_evidence_ids": ["s023", "s025"],
+  "coding_rationale": "The cited utterances s002, s008, and s013 consistently use second-person pronouns in a therapeutic context: s002 is a conditional question about anxiety and motivation, s008 is a reflective summary of the client's responsibilities, and s013 is a direct inquiry about health symptoms. These support a behavioral function of therapeutic reflection and exploration. Outliers s023 and s025 lack this function (fragmentary or navigational). The pattern is primarily behavioral, with a secondary linguistic structure of second-person address.",
+  "confidence": 4,
+  "boundary_note": "The behavioral grouping is supported by pragmatic evidence from the cited utterances. Outliers are clearly non-therapeutic."
+}

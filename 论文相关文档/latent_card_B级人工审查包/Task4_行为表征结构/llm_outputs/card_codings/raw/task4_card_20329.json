@@ -1,0 +1,15 @@
+{
+  "latent_idx": 20329,
+  "primary_evidence_class": "topic",
+  "secondary_evidence_classes": [],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s001", "s016", "s032"],
+  "contradicting_evidence_ids": ["s007", "s017", "s043"],
+  "coding_rationale": "The majority of utterances consistently discuss health conditions, symptoms, treatments, and risk factors (e.g., diabetes, smoking, anxiety). The cited evidence (s001, s016, s032) directly supports a health topic. Outliers (s007, s017, s043) are not health-related or are ambiguous. No consistent behavioral function is supported; the pattern is topical, not functional.",
+  "confidence": 4,
+  "boundary_note": "The health topic is broad but stable across most utterances. Outliers are few and do not undermine the overall topical pattern."
+}

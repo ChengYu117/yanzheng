@@ -1,0 +1,15 @@
+{
+  "latent_idx": 21296,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": ["behavioral_function"],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": [],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The primary pattern is a syntactic template (scale question) rather than a consistent behavioral function. The cited utterances show variation in question type (confidence vs. frequency) and scale range, and the behavioral function (eliciting self-report) is too broad to be a specific behavioral grouping. The evidence supports a linguistic structure classification.",
+  "confidence": 4,
+  "boundary_note": "Outliers s019 and s047 use different scales or ask about frequency, but still follow the scale question template."
+}

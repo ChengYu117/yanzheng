@@ -1,0 +1,15 @@
+{
+  "latent_idx": 664,
+  "primary_evidence_class": "unclear_or_mixed",
+  "secondary_evidence_classes": [],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": [],
+  "contradicting_evidence_ids": ["s013", "s015", "s018"],
+  "coding_rationale": "The source card claims a behavioral function of motivational interviewing scale questions, but the cited evidence shows only 3 of 6 visible utterances contain scales (s004, s009, s023), while s013, s015, and s018 are questions without scales. The primary pattern is a linguistic structure (scaled questions) rather than a consistent behavioral function, as the non-scale questions serve different communicative purposes. The high outlier count (21/50) and alternative explanations weaken the behavioral grouping claim. Thus, the primary class is unclear_or_mixed, and behavioral grouping is not supported.",
+  "confidence": 3,
+  "boundary_note": "The card's behavioral function is not consistently supported by the visible evidence; the pattern is primarily a linguistic form (scaled questions) rather than a distinct behavioral function."
+}

@@ -1,0 +1,15 @@
+{
+  "latent_idx": 14247,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["linguistic_structure"],
+  "open_behavior_code": "therapeutic_elicitation_requests",
+  "behavior_component_name_zh": "治疗性引导请求",
+  "behavior_component_name_en": "therapeutic elicitation requests",
+  "behavior_definition": "The speaker uses open-ended prompts (e.g., 'could you tell me a little bit about', 'why don't we start by having you tell me') to elicit personal information or narrative from the interlocutor, typically in a therapeutic or counseling context.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s001", "s007", "s016"],
+  "contradicting_evidence_ids": ["s035"],
+  "coding_rationale": "The cited utterances consistently show a behavioral function of eliciting information through open-ended requests, supported by discourse markers like 'okay' and 'so'. The outlier s035 is a different register (pharmacy intake). The pattern is robust across 49/50 samples.",
+  "confidence": 4,
+  "boundary_note": "The pattern is clear for therapeutic/counseling contexts but may not generalize to other domains."
+}

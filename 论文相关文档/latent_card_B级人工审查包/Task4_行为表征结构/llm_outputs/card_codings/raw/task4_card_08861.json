@@ -1,0 +1,15 @@
+{
+  "latent_idx": 8861,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": ["behavioral_function"],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s001", "s004", "s028"],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The primary pattern is a repeated syntactic structure ('how much/how many' questions). While the utterances could serve a behavioral function (information seeking in a health context), the evidence only supports the linguistic form directly. The candidate behavioral explanation is not independently supported by pragmatic evidence beyond the form itself. Thus, linguistic_structure is primary, and behavioral_function is secondary but not sufficient for grouping.",
+  "confidence": 4,
+  "boundary_note": "The pattern is consistent across all cited utterances, with no contradictions."
+}

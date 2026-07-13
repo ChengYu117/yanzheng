@@ -1,0 +1,15 @@
+{
+  "latent_idx": 15068,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": ["behavioral_function"],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s003", "s016", "s044"],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The evidence strongly supports a linguistic structure (it-cleft + evaluative complement) across all samples. The behavioral function (reflective listening) is plausible but not directly supported by the cited utterances; the utterances show evaluation/reflection but lack explicit evidence of therapeutic intent. Thus, primary class is linguistic_structure, with secondary behavioral_function noted but not sufficient for grouping.",
+  "confidence": 4,
+  "boundary_note": "The pattern is consistent across all 50 samples, but the behavioral function is inferred from context, not directly from the utterances."
+}

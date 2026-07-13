@@ -1,0 +1,15 @@
+{
+  "latent_idx": 7054,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["linguistic_structure"],
+  "open_behavior_code": "advice_and_evaluation",
+  "behavior_component_name_zh": "建议与评价",
+  "behavior_component_name_en": "advice and evaluation",
+  "behavior_definition": "Utterances that use second-person address to give advice, warnings, or evaluative statements about the addressee's actions or state, typical of a counseling or coaching context.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s001", "s003", "s027"],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The cited utterances consistently use second-person 'you' to give advice (s001: conditional advice about drinking), evaluate (s003: 'you're not here because you think you have a problem'), and warn (s027: imperative warning about health risks). This pragmatic function is supported by the representative evidence, and the pattern is highly consistent across all 50 sentences. The linguistic structure (second-person address) is secondary. Speaker role ambiguity is noted but does not contradict the behavioral function.",
+  "confidence": 4,
+  "boundary_note": "The behavioral function is clear from the evidence, but without speaker labels, some utterances could be from a client rather than counselor. However, the consistent second-person advice/evaluation pattern supports grouping."
+}

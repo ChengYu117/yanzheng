@@ -1,0 +1,15 @@
+{
+  "latent_idx": 18646,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["linguistic_structure"],
+  "open_behavior_code": "therapeutic_questioning",
+  "behavior_component_name_zh": "治疗性提问",
+  "behavior_component_name_en": "therapeutic questioning",
+  "behavior_definition": "Utterances that function as questions or indirect inquiries to explore a client's thoughts, feelings, or behaviors in a therapeutic context, often using tentative or exploratory language.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s001", "s005", "s025"],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The cited utterances (s001, s005, s025) directly show pragmatic function of therapeutic questioning: s001 uses 'I wonder if' to propose discussion, s005 asks 'do you think' to explore client's perception, s025 asks 'what would you think' to suggest a trial. These are consistent behavioral functions, not mere form. The pattern is supported by 50 samples, all questions or indirect inquiries, with high confidence. The domain (therapy sessions) reinforces the behavioral interpretation. No contradicting evidence.",
+  "confidence": 4,
+  "boundary_note": "The pattern is robust across all samples; fragmented utterances like s050 ('does it') still function as questions in context."
+}

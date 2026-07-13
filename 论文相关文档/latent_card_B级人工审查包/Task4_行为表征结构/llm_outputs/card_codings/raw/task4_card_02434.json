@@ -1,0 +1,15 @@
+{
+  "latent_idx": 2434,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": ["affective_content"],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s001", "s013", "s038"],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The card primarily describes a syntactic pattern ('thank you/thanks for + gerund'), which is a linguistic structure. The cited utterances consistently show this form. While the pattern may serve a social bonding function, the evidence does not directly support a consistent behavioral function beyond expressing gratitude; the utterances are isolated thanks without clear interactional context. Thus, behavioral grouping is not warranted.",
+  "confidence": 5,
+  "boundary_note": "The pattern is stable across all 50 samples, but the function is inferred from form; no pragmatic evidence of closing or bonding is directly cited."
+}

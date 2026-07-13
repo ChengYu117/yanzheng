@@ -82,6 +82,17 @@ def validate_explanation_payload(payload: Any, *, task: dict[str, Any]) -> dict[
     if not np.isfinite(confidence) or confidence < 0 or confidence > 1:
         raise ValueError(f"confidence must be in [0, 1], got {payload['confidence']!r}")
 
+    failure_modes = payload["failure_modes"]
+    if isinstance(failure_modes, list):
+        normalized_failure_modes: Any = _as_string_list(failure_modes, "failure_modes")
+    else:
+        normalized_failure_modes = str(failure_modes).strip()
+    visible_sample_ids = set(re.findall(r"^\s*-\s+id=(\S+)\s+tag=", str(task.get("prompt", "")), flags=re.MULTILINE))
+    evidence_ids = _as_string_list(payload["key_evidence"], "key_evidence")
+    unknown_evidence = sorted(set(evidence_ids).difference(visible_sample_ids))
+    if unknown_evidence:
+        raise ValueError(f"key_evidence contains ids not visible in prompt: {unknown_evidence}")
+
     out = {
         "task_id": task["task_id"],
         "packet_id": task["packet_id"],
@@ -98,8 +109,8 @@ def validate_explanation_payload(payload: Any, *, task: dict[str, Any]) -> dict[
         "feature_type": str(payload["feature_type"]).strip(),
         "confidence": confidence,
         "alternative_hypotheses": _as_string_list(payload["alternative_hypotheses"], "alternative_hypotheses"),
-        "key_evidence": _as_string_list(payload["key_evidence"], "key_evidence"),
-        "failure_modes": str(payload["failure_modes"]).strip(),
+        "key_evidence": evidence_ids,
+        "failure_modes": normalized_failure_modes,
         "raw_output_path": str(task.get("expected_output_path", "")),
         "validation_status": "valid",
     }

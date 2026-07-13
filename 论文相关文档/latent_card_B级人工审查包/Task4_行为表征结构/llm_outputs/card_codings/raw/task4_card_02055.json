@@ -1,0 +1,15 @@
+{
+  "latent_idx": 2055,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": ["topic"],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s001", "s003", "s012"],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The primary evidence is the consistent use of discourse markers (so, okay, um, right) across all cited utterances, which is a linguistic structure. The topic of healthcare is present but secondary, as the discourse markers are the unifying feature. No consistent behavioral function is directly supported by the cited utterances; the utterances show checking medication, confirming understanding, and providing information, but these are not consistently tied to a single communicative action across all samples. Therefore, allow_behavior_grouping is false.",
+  "confidence": 3,
+  "boundary_note": "The feature is well-supported for discourse markers, but the healthcare topic is not universal across all 50 samples; some samples may involve non-healthcare topics."
+}

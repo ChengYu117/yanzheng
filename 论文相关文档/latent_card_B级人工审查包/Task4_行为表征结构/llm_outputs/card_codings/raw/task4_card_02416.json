@@ -1,0 +1,15 @@
+{
+  "latent_idx": 2416,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": [],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s002", "s017", "s025"],
+  "contradicting_evidence_ids": ["s026", "s034"],
+  "coding_rationale": "The feature card describes a scale question template, which is a linguistic structure. The cited utterances s002, s017, s025 all contain explicit scale question phrasing (e.g., 'on a scale from...'), supporting the linguistic pattern. Utterances s026 and s034 lack this structure, serving as outliers. The candidate behavioral explanation (requests for self-assessment) is plausible but not directly supported by the cited utterances; the utterances only show the question form, not the behavioral function. Thus, allow_behavior_grouping is false.",
+  "confidence": 4,
+  "boundary_note": "The pattern is highly consistent (48/50), but the behavioral function is inferred rather than directly evidenced."
+}

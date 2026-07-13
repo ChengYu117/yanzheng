@@ -1,0 +1,15 @@
+{
+  "latent_idx": 19435,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": [],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s004", "s012", "s024"],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The feature card describes a consistent syntactic pattern ('so you' + verb phrase) across 50 sentences. The cited utterances (s004, s012, s024) all start with 'so you' and are reflective statements. The primary explanation is linguistic structure, and the behavioral function is inferred but not directly supported by pragmatic evidence from the cited utterances alone. Therefore, allow_behavior_grouping is false.",
+  "confidence": 4,
+  "boundary_note": "The pattern is clear and consistent, but the behavioral function is not directly evidenced by the cited utterances."
+}

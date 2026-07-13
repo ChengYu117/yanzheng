@@ -255,16 +255,24 @@ def _fit_pca_max(
     *,
     max_n: int,
     random_state: int,
+    standardize: bool,
 ) -> tuple[np.ndarray, np.ndarray, dict[str, Any]]:
     x_train = np.asarray(raw_hidden[train_idx], dtype=np.float32)
     x_test = np.asarray(raw_hidden[test_idx], dtype=np.float32)
-    x_train, x_test = _standardize_train_test(x_train, x_test)
+    if standardize:
+        x_train, x_test = _standardize_train_test(x_train, x_test)
+    else:
+        x_train = np.ascontiguousarray(x_train)
+        x_test = np.ascontiguousarray(x_test)
     n_components = max(1, min(int(max_n), x_train.shape[0], x_train.shape[1]))
     max_components = min(x_train.shape[0], x_train.shape[1])
     solver = "full" if n_components >= max_components else "randomized"
     pca = PCA(n_components=n_components, svd_solver=solver, random_state=random_state)
     pca_train = pca.fit_transform(x_train).astype(np.float32)
     pca_test = pca.transform(x_test).astype(np.float32)
+    if standardize:
+        # Keep fixed-C L2 probe regularization comparable with the other representations.
+        pca_train, pca_test = _standardize_train_test(pca_train, pca_test)
     return (
         np.ascontiguousarray(pca_train),
         np.ascontiguousarray(pca_test),
@@ -272,6 +280,8 @@ def _fit_pca_max(
             "pca_fit_n_components": int(n_components),
             "pca_requested_max_n": int(max_n),
             "pca_svd_solver": solver,
+            "pca_input_standardized": bool(standardize),
+            "pca_post_standardized": bool(standardize),
             "pca_explained_variance_ratio_sum": float(np.sum(pca.explained_variance_ratio_)),
         },
     )
@@ -548,6 +558,11 @@ def _write_report(
         f"- Random SAE repeats: `{config.random_repeats}`",
         f"- Split: `{config.split_policy}` with group column `{config.group_column}`",
         "- Classifier: `LogisticRegression(class_weight=\"balanced\", C=1.0, solver=\"liblinear\")`",
+        (
+            "- Preprocessing: train-fold standardization before PCA and again on PCA scores before the probe."
+            if config.standardize
+            else "- Preprocessing: standardization disabled for all representations, including PCA input and PCA scores."
+        ),
         "- Metrics: AUC, PR-AUC / Average Precision, F1, Balanced Accuracy",
         "",
         "## Macro 结果",
@@ -607,7 +622,7 @@ def _write_report(
             "",
             "- `Stable Core SAE` 是独立 baseline，不参与 Top-n 曲线。",
             "- `Top-n SAE` 的 top 是训练折内正向 Cohen's d 排名，避免测试折信息泄漏。",
-            "- `PCA-n` 在每个训练折单独拟合 PCA，不在全量数据上预拟合。",
+            "- `PCA-n` 在每个训练折单独拟合 PCA，不在全量数据上预拟合；默认对 PCA score 再按训练折标准化后送入 probe。",
             "- `Random SAE-n` 从 filtered keep pool 抽样，误差带反映随机 latent 选择方差。",
             "- 本实验是线性可解码性比较，不证明 latent 具有因果机制或临床概念语义。",
         ]
@@ -775,6 +790,7 @@ def run_representation_probe_comparison(
                 test_idx,
                 max_n=max_top_n,
                 random_state=config.random_state,
+                standardize=config.standardize,
             )
             for n in top_ns:
                 effective_n = min(int(n), pca_train_max.shape[1])

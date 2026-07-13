@@ -1,0 +1,15 @@
+{
+  "latent_idx": 28269,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["linguistic_structure"],
+  "open_behavior_code": "therapist_reflection",
+  "behavior_component_name_zh": "治疗师反思性复述",
+  "behavior_component_name_en": "therapist reflective paraphrase",
+  "behavior_definition": "Therapist utterances that begin with 'So' or 'Okay so' and restate or reflect the client's prior statement, often using second-person 'you' and hedges, to check understanding or encourage elaboration.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s001", "s004", "s010"],
+  "contradicting_evidence_ids": ["s022", "s023"],
+  "coding_rationale": "The pattern is consistent across 48/50 sentences, with clear pragmatic function of therapeutic reflection. The linguistic form (starting with 'So', second-person, paraphrasing) supports a behavioral grouping. Outliers are narrative or fragmentary, not reflections.",
+  "confidence": 4,
+  "boundary_note": "The pattern is robust but may be specific to motivational interviewing or similar therapeutic contexts. Outliers suggest some heterogeneity."
+}

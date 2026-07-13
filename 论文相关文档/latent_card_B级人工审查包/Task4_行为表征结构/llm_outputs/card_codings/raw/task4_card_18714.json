@@ -1,0 +1,15 @@
+{
+  "latent_idx": 18714,
+  "primary_evidence_class": "linguistic_structure",
+  "secondary_evidence_classes": ["behavioral_function"],
+  "open_behavior_code": "",
+  "behavior_component_name_zh": "",
+  "behavior_component_name_en": "",
+  "behavior_definition": "",
+  "allow_behavior_grouping": false,
+  "supporting_evidence_ids": ["s002", "s007", "s016"],
+  "contradicting_evidence_ids": ["s015", "s019", "s020", "s022", "s042"],
+  "coding_rationale": "The primary pattern is a linguistic structure: a scale question template with explicit anchors. The cited utterances (s002, s007, s016) clearly show the template. The behavioral function (eliciting self-reported ratings) is inferred but not directly supported by pragmatic evidence in the utterances; the utterances are questions, but the function is not explicitly stated. Outliers (s015, s019, s020, s022, s042) deviate semantically or are garbled. Thus, primary class is linguistic_structure, and behavioral grouping is not allowed due to insufficient direct evidence of consistent communicative action.",
+  "confidence": 4,
+  "boundary_note": "The pattern is robust for the majority, but outliers show that not all scale questions follow the exact template; some are garbled or use the scale differently."
+}

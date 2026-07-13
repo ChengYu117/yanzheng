@@ -1,0 +1,15 @@
+{
+  "latent_idx": 2550,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["linguistic_structure"],
+  "open_behavior_code": "scale_rating_request",
+  "behavior_component_name_zh": "量表评分请求",
+  "behavior_component_name_en": "scale rating request",
+  "behavior_definition": "Utterances that explicitly ask the interlocutor to provide a numerical rating on a scale (e.g., 0-10 or 1-10) to quantify a subjective state, attitude, or behavior, often with or without anchors.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s002", "s005", "s009"],
+  "contradicting_evidence_ids": ["s046", "s047"],
+  "coding_rationale": "The majority of utterances (46/50) follow a clear pattern of requesting a scale rating, as shown in s002, s005, s009. Outliers s014 and s040 are follow-up probes about a previous rating, not initial requests, but still relate to scaling. s046 and s047 are unrelated topics. The behavioral function is consistent: eliciting a self-assessment via a numerical scale. The linguistic structure (scale phrase) is a secondary feature.",
+  "confidence": 4,
+  "boundary_note": "Follow-up probes (e.g., s014, s040) are borderline; they do not request a new rating but refer to a prior scale. They are included in the pattern but not as primary evidence."
+}

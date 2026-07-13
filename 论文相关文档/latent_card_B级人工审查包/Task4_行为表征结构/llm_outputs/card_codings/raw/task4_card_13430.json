@@ -1,0 +1,15 @@
+{
+  "latent_idx": 13430,
+  "primary_evidence_class": "behavioral_function",
+  "secondary_evidence_classes": ["linguistic_structure"],
+  "open_behavior_code": "clinical_information_gathering",
+  "behavior_component_name_zh": "临床信息收集",
+  "behavior_component_name_en": "clinical information gathering",
+  "behavior_definition": "The speaker uses direct questions to gather information about the patient's substance use, mental health, and readiness for change, typical of clinical assessment or motivational interviewing.",
+  "allow_behavior_grouping": true,
+  "supporting_evidence_ids": ["s001", "s003", "s011"],
+  "contradicting_evidence_ids": [],
+  "coding_rationale": "The cited utterances are all questions that serve the pragmatic function of information gathering in a clinical context. s001 asks about anti-depressant prescription, s003 about drug use, and s011 about readiness to quit. These directly support a consistent behavioral function of clinical information gathering. The linguistic form (questions) is secondary. No contradicting evidence is present.",
+  "confidence": 4,
+  "boundary_note": "The pattern is consistent across all 50 samples, but the exact clinical setting (e.g., therapy vs. research interview) is uncertain. Some utterances like s032 could be confrontational but still fit therapeutic probing."
+}
