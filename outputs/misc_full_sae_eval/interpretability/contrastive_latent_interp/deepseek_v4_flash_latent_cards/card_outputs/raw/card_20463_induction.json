@@ -1,0 +1,56 @@
+{
+  "latent_idx": 20463,
+  "short_name": "are_you_questions",
+  "primary_explanation": "The majority of sentences are questions beginning with 'are you' or 'are you' variants (e.g., 'are you', 'are we', 'aren't you'), often used to inquire about personal states, actions, or preferences. The pattern is a recurring interrogative structure with second-person subject.",
+  "candidate_behavioral_explanation": "The sentences function as direct questions seeking information about the addressee's current state, past behavior, or preferences, typical of intake interviews or counseling contexts.",
+  "explanation_type": "linguistic_structure",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s001","s010","s041"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Starts with 'are you'",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s010",
+      "evidence": "Starts with 'are you'",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s041",
+      "evidence": "Starts with 'What are you'",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s045",
+      "evidence": "Starts with 'are we'",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s047",
+      "evidence": "Starts with 'aren't you'",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences may be part of a structured interview or questionnaire about health behaviors (e.g., diet, smoking, medication adherence).",
+    "The sentences could reflect a therapeutic or counseling discourse where the speaker probes the client's feelings and actions."
+  ],
+  "possible_confounds": [
+    "Some sentences include discourse markers like 'okay', 'so', 'yeah' that may indicate conversational context rather than a fixed template.",
+    "A few sentences (e.g., s029, s036) are incomplete or fragmented, possibly due to transcription errors."
+  ],
+  "limitations": [
+    "The pattern is primarily structural; behavioral function is inferred but not directly evidenced.",
+    "Some sentences (e.g., s024, s038) contain multiple clauses that deviate from the simple 'are you' question form."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The 'are you' question pattern covers all 50 sentences, with only minor variations (e.g., 'are we', 'aren't you', 'what are you'). The pattern is highly consistent and stable, though the behavioral function is less certain."
+}

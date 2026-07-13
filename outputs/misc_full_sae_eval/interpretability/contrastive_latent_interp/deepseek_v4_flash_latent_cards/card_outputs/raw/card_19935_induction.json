@@ -1,0 +1,58 @@
+{
+  "latent_idx": 19935,
+  "short_name": "helping_intent_and_reflection",
+  "primary_explanation": "The sentences predominantly express a helper's desire to assist (e.g., 'I want to help you') and reflective statements about the client's situation (e.g., 'it sounds like you...'). This pattern suggests a counseling or therapeutic discourse where the speaker offers help and reflects on the client's experiences.",
+  "candidate_behavioral_explanation": "The primary behavioral function is offering help and providing reflective listening, common in motivational interviewing or therapy sessions.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001", "s003", "s004", "s005", "s006", "s008", "s011", "s012", "s015", "s018", "s021", "s023", "s029", "s030", "s031", "s032", "s039", "s007", "s009", "s010", "s013", "s014", "s016", "s017", "s019", "s020", "s022", "s024", "s027", "s033", "s034", "s035", "s036", "s038", "s040", "s041", "s042", "s043", "s045", "s046", "s047", "s048", "s050"],
+  "outlier_sample_ids": ["s002", "s025", "s026", "s028", "s037", "s044", "s049"],
+  "representative_evidence_ids": ["s004", "s011", "s007"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s004",
+      "evidence": "Explicit statement 'I want to help you' directly expresses helping intent.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s011",
+      "evidence": "Variation 'I really want to help you' intensifies the helping intent.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s007",
+      "evidence": "Reflective statement 'sounds like a real passion for this type of work' demonstrates reflective listening.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s002",
+      "evidence": "Incomplete sentence 'I'm now counselor helping' lacks clear helping or reflective function.",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s037",
+      "evidence": "Self-introduction about being a student does not fit the helping/reflective pattern.",
+      "evidence_level": "topical",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be part of a scripted role-play for counseling training, explaining the repetitive helping phrases.",
+    "The pattern might reflect a specific therapeutic technique (e.g., motivational interviewing) with consistent use of affirmations and reflections.",
+    "The set could be from a single conversation where the helper repeatedly offers assistance and summarizes the client's statements."
+  ],
+  "possible_confounds": [
+    "The dataset may include multiple speakers or sessions, mixing different discourse functions.",
+    "Some sentences are fragments or incomplete, making interpretation ambiguous.",
+    "The presence of both helping offers and reflections could be an artifact of the transcription process rather than a genuine behavioral pattern."
+  ],
+  "limitations": [
+    "Outlier sentences (e.g., s002, s037) suggest the pattern is not universal across all samples.",
+    "The analysis relies on surface-level lexical cues without deeper context of the conversation."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of helping intent and reflective listening is clear and consistent across a large majority of sentences, with only a few outliers. The behavioral function is well-supported by explicit statements and discourse markers."
+}

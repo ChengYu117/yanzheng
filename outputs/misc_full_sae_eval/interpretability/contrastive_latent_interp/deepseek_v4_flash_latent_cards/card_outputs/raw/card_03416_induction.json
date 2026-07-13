@@ -1,0 +1,62 @@
+{
+  "latent_idx": 3416,
+  "short_name": "therapist reflective listening",
+  "primary_explanation": "The sentences predominantly feature a therapist or counselor using reflective listening, paraphrasing, and summarizing to mirror the client's statements, often starting with 'so', 'okay', 'it sounds like', or 'it seems like'.",
+  "candidate_behavioral_explanation": "The primary behavioral function is reflective listening and summarizing in a therapeutic or counseling context, aimed at validating the client's experience and checking understanding.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s010","s013","s014","s018","s019","s020","s021","s022","s025","s027","s030","s031","s033","s035","s036","s038","s040","s042","s043","s046","s047","s048"],
+  "outlier_sample_ids": ["s009","s011","s012","s015","s016","s017","s023","s024","s026","s028","s029","s032","s034","s037","s039","s041","s044","s045","s049","s050"],
+  "representative_evidence_ids": ["s001","s002","s003"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Starts with 'oh okay' and uses 'it's about sharing' and 'that piece of connectedness' – reflective paraphrase.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s002",
+      "evidence": "Begins with 'okay so if I understand you correctly' – classic reflective listening opener.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s003",
+      "evidence": "Starts with 'okay so' and paraphrases a client's experience with 'a portion of the time...'.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s009",
+      "evidence": "Long narrative about recording a show – no reflective listening structure.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s011",
+      "evidence": "Describes cooking methods – factual statement, not reflective.",
+      "evidence_level": "topical",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s012",
+      "evidence": "Question 'is that just me or does it seem that way to you' – client perspective, not therapist.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "contradict"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be from a coaching or motivational interviewing session, focusing on change talk and goal setting.",
+    "Some sentences may be from a medical or health consultation, discussing symptoms, medications, and lifestyle changes."
+  ],
+  "possible_confounds": [
+    "The dataset may include both therapist and client utterances, but the pattern is strongest for therapist turns.",
+    "Transcription artifacts like 'um', 'okay', 'so' may inflate the appearance of a single pattern."
+  ],
+  "limitations": [
+    "Outliers include client statements, factual descriptions, and questions that do not fit the reflective listening pattern.",
+    "The pattern is based on discourse markers and pragmatic function, which may overlap with other conversational contexts."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The reflective listening pattern is clear and consistent across a majority of sentences, with clear outliers that are likely client utterances or factual statements. Alternative interpretations are weaker."
+}

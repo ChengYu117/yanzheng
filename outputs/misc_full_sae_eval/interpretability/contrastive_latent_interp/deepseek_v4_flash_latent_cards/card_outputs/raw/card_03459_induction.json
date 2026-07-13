@@ -1,0 +1,70 @@
+{
+  "latent_idx": 3459,
+  "short_name": "Wh-questions with repetition and hesitation",
+  "primary_explanation": "The majority of sentences are wh-questions, primarily starting with 'what', often containing repetitions (e.g., 'what what', 'what are what are') and hesitation markers (e.g., 'if, if', 'and, and, and'). These features suggest spontaneous speech or conversational discourse.",
+  "candidate_behavioral_explanation": "The sentences function as requests for information or clarification, typical of interview or counseling contexts where the speaker prompts the interlocutor to elaborate.",
+  "explanation_type": "linguistic_structure",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s031","s032","s033","s034","s035","s036","s037","s038","s039","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": ["s029","s030","s040","s041"],
+  "representative_evidence_ids": ["s001","s005","s026"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Starts with 'What what', showing repetition.",
+      "evidence_level": "surface_form",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s005",
+      "evidence": "Contains 'what, what' and 'and, and, and', indicating hesitation.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s026",
+      "evidence": "Starts with 'what do what do', a repeated wh-question fragment.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s029",
+      "evidence": "Begins with 'from what I'm hearing', not a direct wh-question.",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s030",
+      "evidence": "Starts with 'from what I can gather', a declarative statement.",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s040",
+      "evidence": "Uses 'Who' instead of 'What', and is a rhetorical question.",
+      "evidence_level": "lexical",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s041",
+      "evidence": "Uses 'Who' instead of 'What', and lacks repetition.",
+      "evidence_level": "lexical",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences are all questions, but the pattern is simply 'wh-questions' without emphasis on repetition.",
+    "The sentences are from a transcript of a medical or counseling interview, where the interviewer asks open-ended questions.",
+    "The pattern is a surface artifact of speech disfluencies transcribed verbatim."
+  ],
+  "possible_confounds": [
+    "The dataset may be a mix of different speakers or contexts, causing variation in question types.",
+    "Some sentences are incomplete or fragmented, making pattern detection harder.",
+    "The presence of 'what' in many sentences may be coincidental due to the topic."
+  ],
+  "limitations": [
+    "The analysis is based solely on surface form and does not account for deeper pragmatic functions.",
+    "Outliers like s029 and s030 show that not all sentences are direct questions, limiting coverage."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of wh-questions with repetition and hesitation covers a large majority of sentences (46 out of 50), with only a few outliers. The pattern is clear and consistent, though alternative interpretations exist."
+}

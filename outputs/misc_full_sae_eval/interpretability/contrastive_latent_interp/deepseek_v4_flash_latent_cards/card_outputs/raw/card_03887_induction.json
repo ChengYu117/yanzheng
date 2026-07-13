@@ -1,0 +1,44 @@
+{
+  "latent_idx": 3887,
+  "short_name": "therapeutic_questioning",
+  "primary_explanation": "The sentences are predominantly open-ended questions used in a therapeutic or counseling context to elicit detailed personal information about habits, feelings, and behaviors.",
+  "candidate_behavioral_explanation": "The primary behavioral function is to prompt the client to elaborate on their experiences, motivations, and challenges, facilitating exploration and reflection.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001", "s002", "s003", "s004", "s005", "s006", "s007", "s008", "s009", "s010", "s011", "s012", "s013", "s014", "s015", "s016", "s017", "s018", "s019", "s020", "s021", "s022", "s023", "s024", "s025", "s026", "s027", "s028", "s029", "s030", "s031", "s032", "s033", "s034", "s035", "s036", "s037", "s038", "s039", "s040", "s041", "s042", "s043", "s044", "s045", "s046", "s047", "s048", "s049", "s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s001", "s005", "s012"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "so tell me a little bit about your routine and and what your pain is like",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s005",
+      "evidence": "okay so why don't we start by having you tell me a bit about your day and what seems to be getting in the way of you exercising right now",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s012",
+      "evidence": "Well why don't you tell me a little bit about what brings you here today.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be seen as a collection of interview questions from a structured clinical intake or health behavior assessment.",
+    "Alternatively, they might represent a coaching or motivational interviewing style aimed at behavior change."
+  ],
+  "possible_confounds": [
+    "The sentences are drawn from multiple speakers and contexts, but all appear to be from a similar therapeutic or counseling setting.",
+    "Some sentences include reflections or summaries (e.g., s024, s044) that could be interpreted as separate functions, but they still serve the overall questioning pattern."
+  ],
+  "limitations": [
+    "The analysis is based solely on text without prosodic or contextual cues.",
+    "Some sentences are incomplete or contain transcription artifacts (e.g., s040)."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of open-ended questioning is highly consistent across all 50 sentences, with no clear outliers. Alternative interpretations are weaker and subsumed under the primary behavioral function."
+}

@@ -1,0 +1,50 @@
+{
+  "latent_idx": 7037,
+  "short_name": "scale_question_template",
+  "primary_explanation": "The sentences predominantly follow a template: a discourse marker (e.g., 'okay', 'so') followed by a question asking the listener to rate something on a numerical scale (e.g., 0-10, 1-10), often with explicit anchors defining the endpoints. The pattern is a request for a self-report rating.",
+  "candidate_behavioral_explanation": "The sentences function as requests for subjective ratings, likely in a clinical or coaching context to assess motivation, confidence, importance, or readiness for behavior change.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": ["s042"],
+  "representative_evidence_ids": ["s001","s005","s016"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Contains 'on a scale of 1 to 10' with anchors and a question about motivation.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s005",
+      "evidence": "Uses 'on a scale of zero to ten' with anchors and asks about importance.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s016",
+      "evidence": "Includes 'on a scale of zero to ten' with anchors and asks about confidence.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s042",
+      "evidence": "Does not contain a scale question; it is a statement about a score.",
+      "evidence_level": "semantic",
+      "evidence_role": "contradict"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences are all from a structured interview or questionnaire about behavior change, using a consistent format.",
+    "The pattern is a surface artifact of a transcription template where interviewers use a fixed phrasing for rating questions."
+  ],
+  "possible_confounds": [
+    "Some sentences have incomplete or garbled text (e.g., s011, s033) which may obscure the pattern.",
+    "The scale endpoints vary (0-10, 1-10, 0-100) but the core template remains similar."
+  ],
+  "limitations": [
+    "One sentence (s042) does not fit the pattern, but it is a clear outlier.",
+    "The exact wording varies, but the functional template is consistent."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern covers 49 out of 50 sentences, with only one clear outlier. The template is highly consistent in structure and function, though minor variations exist."
+}

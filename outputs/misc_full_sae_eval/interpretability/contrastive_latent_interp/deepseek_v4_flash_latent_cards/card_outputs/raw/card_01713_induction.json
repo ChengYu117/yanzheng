@@ -1,0 +1,326 @@
+{
+  "latent_idx": 1713,
+  "short_name": "medical_consultation_discourse",
+  "primary_explanation": "The sentences predominantly consist of utterances from medical consultations, involving discussions of risk factors, medications, symptoms, lifestyle advice, and patient history. The pattern includes explanations, instructions, and questions typical of doctor-patient interactions.",
+  "candidate_behavioral_explanation": "The primary behavioral function is providing medical information, advice, and instructions, as well as eliciting patient information through questions. This is evident in sentences like s004 (medication instructions) and s034 (asking about medical history).",
+  "explanation_type": "topic",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s004","s016","s034"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s004",
+      "evidence": "Medication instructions: 'this medication is for your cholesterol you're gonna take it once a day'",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s016",
+      "evidence": "Introduction and reason for visit: 'I understand that you were referred to me by your GP because you've been experiencing some anxiety difficulties'",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s034",
+      "evidence": "Question about medical history: 'are there any changes to your medical history such as any new medications you might be taking'",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s001",
+      "evidence": "Risk factor explanation: 'one of the primary risk factors for multiple ear infections and kids is actually smoke exposure'",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s002",
+      "evidence": "Risk factor and warning: 'smoking is a major risk factor for DVT... if you don't quit smoking I'm afraid the blood clots will return'",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s003",
+      "evidence": "Patient issue: 'what patients have a lot issues taken all those medications dude'",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s005",
+      "evidence": "Health education: 'just because you feel fine doesn't mean you're healthy having diabetes affects you more than you realize'",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s006",
+      "evidence": "Patient statement: 'you said that your doctor mentioned that you should come here today'",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s007",
+      "evidence": "Advice and outcome: 'with anxiety reduction your chances of stopping marijuana increase and then you could take the child that you want'",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s008",
+      "evidence": "Prescription explanation: 'that's why he wrote you this prescription so it's greater cholesterol you're just gonna take it once a day'",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s009",
+      "evidence": "Medication review: 'I was taking a look at your medication profile earlier and it looks like you're on two different strengths of lipitor'",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s010",
+      "evidence": "Referral and concern: 'he's concerned that your alcohol consumption may be a part of that increase'",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s011",
+      "evidence": "Question about symptoms: 'So your symptoms may be because you stopped your drug?'",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s012",
+      "evidence": "Medication review repeated: 'I was taking a look at your medication profile earlier and it looks like you're on two different strengths of lipitor'",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s013",
+      "evidence": "Test explanation: 'It measures the amount of sugar that's been on your hemoglobin in the last three months'",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s014",
+      "evidence": "Side effects: 'other side effects you might experience you might have a little bit of stomach upset'",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s015",
+      "evidence": "Question about medication use: 'how did your doctor tell you that you're going to use this medication'",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s017",
+      "evidence": "Test explanation repeated: 'your ac it measures the amount of sugar that's been on your hemoglobin'",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s018",
+      "evidence": "Diabetes education: 'Having diabetes affects you more than you realize and some people feel fine when they have a big ulcer on their foot.'",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s019",
+      "evidence": "Follow-up plan: 'will recheck your blood pressure and see how you're doing with all this.'",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s020",
+      "evidence": "Reflection on symptoms: 'it sounds as though over the last few years your life has really changed quite a lot because of these symptoms'",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s021",
+      "evidence": "Medication comparison: 'heart medications and diabetic medications are very different you can't generalize the experience your grandfather had'",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s022",
+      "evidence": "Treatment plan summary: 'we've talked about changing your medication stopping the medication you're on changing you to this ACE inhibitor'",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s023",
+      "evidence": "Side effects: 'this medication does not cause any major side effects however it may cause nausea or vomiting'",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s024",
+      "evidence": "Risk reduction advice: 'for a man your age in this high risk category it is recommended that you actually cut out drinking altogether'",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s025",
+      "evidence": "Symptom interpretation: 'the fact that he's having these ear infections is indicating to me that he is being exposed to smoke'",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s026",
+      "evidence": "Symptom and test explanation: 'those are symptoms of high blood sugar but you can have the high blood sugar without those symptoms'",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s027",
+      "evidence": "Treatment plan summary repeated: 'we've talked about changing your medication stopping the medication you're on changing you to this ACE inhibitor'",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s028",
+      "evidence": "Medication trial: 'So you've tried the medication you've been willing once'",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s029",
+      "evidence": "Question about tobacco: 'And your doctor knows about it that you chew tobacco?'",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s030",
+      "evidence": "Weight and blood pressure: 'it may take more than five pounds to get the desired effect on your blood pressure'",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s031",
+      "evidence": "Substance use inquiry: 'okay so you you're taking the oxy you're smoking some weed'",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s032",
+      "evidence": "Alcohol risk: 'your level of drinking puts you in what we call a high-risk group'",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s033",
+      "evidence": "Information sharing: 'thanks for sharing a bit of information within this patient this kind of gives us a better idea of what you throughout the day'",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s035",
+      "evidence": "Diet recommendation: 'there's a couple out there one called protein power and but a lot of my patients have had a lot of luck with South Beach diet'",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s036",
+      "evidence": "Progress and symptoms: 'you're making some progress so in a group therapy improving with your depression but you're experiencing some symptoms from your asthma'",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s037",
+      "evidence": "Symptom inquiry: 'let me ask you about some symptoms nice let me know if you've been having them or not'",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s038",
+      "evidence": "Alcohol and stomach problems: 'drinking at the level that you're drinking could be directly related to the stomach problems'",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s039",
+      "evidence": "Patient value: 'taking care of your blood pressure is is very important to you'",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s040",
+      "evidence": "Risk factor repeated: 'one of the primary risk factors for multiple ear infections in kids is actually smoke exposure.'",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s041",
+      "evidence": "Cholesterol issue: 'your doctor saying you have an issue a health issue at your cholesterol'",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s042",
+      "evidence": "Diabetes and exercise: 'i have type  diabetes and i know i need to exercise to help man to my diabetes but i just cannot make time for it'",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s043",
+      "evidence": "Marijuana risk: 'using marijuana thought times a week the way you are ... put you in this category of being at risk'",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s044",
+      "evidence": "Question about medications: 'any other medications you're taking?'",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s045",
+      "evidence": "Patient history: 'I remember when you first came in last week you told me that when you were younger you used to be very very flexible'",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s046",
+      "evidence": "Blood pressure and drinking: 'your blood pressure has gone up since July and you said that you've been drinking more recently'",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s047",
+      "evidence": "Counseling recommendation: 'I think as important certainly perhaps more important than medication is counseling'",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s048",
+      "evidence": "Nutrition and baby teeth: 'nutrition is important but the baby teeth are also important in speech and in space maintenance'",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s049",
+      "evidence": "Anxiety and cutting back: 'you were feeling anxious ... was this a result of you cutting back'",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s050",
+      "evidence": "Medication adherence: 'doesn't sound like it's working well ... have you tell me about how you're taking the medication'",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be interpreted as a collection of health-related advice and warnings, focusing on risk factors and behavior change.",
+    "Another interpretation is that the sentences represent a mix of patient education and clinical inquiry, with a strong emphasis on medication management."
+  ],
+  "possible_confounds": [
+    "The sentences may come from multiple different medical consultations, leading to variation in specific topics (e.g., diabetes, smoking, anxiety).",
+    "Some sentences contain transcription errors or informal language that might obscure the pattern."
+  ],
+  "limitations": [
+    "The analysis does not account for the conversational context or speaker roles, which could affect interpretation.",
+    "Some sentences are incomplete or contain unclear references, making it difficult to fully ascertain their function."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The medical consultation topic is highly consistent across all sentences, with clear evidence of health-related discussions. No outliers were identified, and alternative interpretations are weaker. However, minor variations in specific medical conditions and some informal language slightly reduce confidence."
+}

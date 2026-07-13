@@ -1,0 +1,50 @@
+{
+  "latent_idx": 17793,
+  "short_name": "thank_you_for_coming",
+  "primary_explanation": "The majority of sentences express gratitude for the interlocutor's participation, typically using the template 'thank you/thanks for [verb+ing]' with variations like 'coming in', 'talking to me', or 'sharing'. This pattern is stable across diverse contexts.",
+  "candidate_behavioral_explanation": "The sentences serve a discourse function of expressing appreciation and establishing rapport, often at the beginning or end of an interaction. This is a politeness strategy to acknowledge the interlocutor's effort.",
+  "explanation_type": "linguistic_structure",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": ["s042"],
+  "representative_evidence_ids": ["s003","s008","s011"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s003",
+      "evidence": "thanks so much for coming in today",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s008",
+      "evidence": "so thank you for coming in today Jamie",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s011",
+      "evidence": "well thank you so much for coming in today",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s042",
+      "evidence": "and I really want to say also congratulations to taking this first step...",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences may be part of a clinical or counseling setting where the speaker thanks the patient for attending or participating.",
+    "The pattern could reflect a transcription of spoken language with discourse markers like 'well', 'so', 'okay' that are typical of conversational openings."
+  ],
+  "possible_confounds": [
+    "The dataset may be drawn from a specific domain (e.g., healthcare, interviews) where thanking is a routine opening/closing.",
+    "Transcription artifacts like repeated 'and' or 'um' may obscure the core pattern."
+  ],
+  "limitations": [
+    "Sentence s042 is a longer congratulatory statement that does not fit the simple gratitude template.",
+    "Some sentences (e.g., s020, s025) include 'thank you for seeing me' which reverses the direction of gratitude, but still fits the broader pattern of thanking for interaction."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of expressing thanks for participation covers 49 out of 50 sentences, with only one clear outlier. The structure is consistent across varied phrasings, and alternative interpretations are weaker."
+}

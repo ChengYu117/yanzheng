@@ -1,0 +1,74 @@
+{
+  "latent_idx": 26968,
+  "short_name": "therapeutic_emotion_focus",
+  "primary_explanation": "The sentences predominantly involve a therapist or counselor reflecting, validating, or probing a client's emotional states (e.g., feeling overwhelmed, depressed, anxious, sad) and related experiences, often using phrases like 'you're feeling', 'it sounds like', or 'tell me about'.",
+  "candidate_behavioral_explanation": "The primary behavioral function appears to be therapeutic reflection and exploration: the speaker (likely a clinician) mirrors the client's reported feelings, asks clarifying questions, and encourages elaboration on emotional and behavioral patterns.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s002","s007","s011"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s002",
+      "evidence": "Direct reflection of client's feeling: 'you're just feeling totally overwhelmed'",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s007",
+      "evidence": "Reflective listening: 'what I hear you saying is that you're feeling really stressed'",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s011",
+      "evidence": "Validation and reflection: 'you're feeling a little overwhelmed'",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s003",
+      "evidence": "Question about ill effects from dairy, slightly off-topic but still within health context",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s014",
+      "evidence": "Question about anger and hand actions, exploring coping behaviors",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s025",
+      "evidence": "Self-disclosure: 'I've been exactly where you have been'",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s040",
+      "evidence": "Question about self-evaluation around alcohol, fits therapeutic assessment",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s047",
+      "evidence": "Labeling depression: 'So depression huh? The big D.'",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be from a structured clinical interview or diagnostic assessment, focusing on symptom checklists and severity ratings.",
+    "Alternatively, they might represent a motivational interviewing session, emphasizing client ambivalence and change talk."
+  ],
+  "possible_confounds": [
+    "Some sentences (e.g., s003, s014, s040) are more specific to physical health or behavioral habits, which may reflect a broader health counseling context rather than pure mental health therapy.",
+    "The presence of self-disclosure (s025) and direct advice (s022) suggests some variation in therapeutic style."
+  ],
+  "limitations": [
+    "The dataset lacks speaker labels and full conversational context, making it impossible to confirm the exact therapeutic modality or setting.",
+    "Some sentences (e.g., s048) are fragmentary and may be misattributed."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of emotional reflection and exploration is highly consistent across the majority of sentences, with only minor topical variations that still fit a therapeutic context. The evidence strongly supports a behavioral-function interpretation of therapeutic discourse."
+}

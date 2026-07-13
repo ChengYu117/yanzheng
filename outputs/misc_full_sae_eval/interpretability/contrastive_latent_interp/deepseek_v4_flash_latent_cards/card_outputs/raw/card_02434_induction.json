@@ -1,0 +1,58 @@
+{
+  "latent_idx": 2434,
+  "short_name": "thank_you_for_gerund",
+  "primary_explanation": "The majority of sentences are expressions of gratitude using the pattern 'thank you' or 'thanks' followed by 'for' and a gerund phrase (e.g., 'coming in', 'sharing', 'listening'). This pattern is stable across diverse contexts, including medical, counseling, and informal settings.",
+  "candidate_behavioral_explanation": "The sentences serve a social bonding and closing function, often used to end an interaction or acknowledge a contribution. They express appreciation and maintain rapport.",
+  "explanation_type": "linguistic_structure",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s001","s013","s038"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Thanks for comming today",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s013",
+      "evidence": "so thank you for coming in today Jamie",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s038",
+      "evidence": "thanks so much for coming in today",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s028",
+      "evidence": "I appreciate you being able to recall the events of the trauma",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s039",
+      "evidence": "Well, I appreciate you thinking about it",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences are all from clinical or counseling interactions, serving to close sessions or acknowledge patient cooperation.",
+    "The pattern is a formulaic politeness strategy used to express gratitude in service encounters.",
+    "The sentences share a common discourse function of thanking, but vary in formality and specific context."
+  ],
+  "possible_confounds": [
+    "The dataset may be drawn from a single domain (e.g., medical transcripts), biasing the pattern.",
+    "Some sentences include additional elements like names or specific reasons, but the core gratitude structure remains.",
+    "The misspelling 'comming' in s001 is a surface artifact, not affecting the pattern."
+  ],
+  "limitations": [
+    "A few sentences use 'appreciate' instead of 'thank you', but they follow the same 'for + gerund' structure.",
+    "The pattern does not capture variations in intensity (e.g., 'so much', 'very much') or discourse markers (e.g., 'well', 'okay')."
+  ],
+  "confidence": 5,
+  "confidence_rationale": "All 50 sentences contain a gratitude expression with 'for' followed by a gerund or noun phrase, showing very high coverage and stability. No outliers exist. The pattern is clear and consistent across the entire set."
+}

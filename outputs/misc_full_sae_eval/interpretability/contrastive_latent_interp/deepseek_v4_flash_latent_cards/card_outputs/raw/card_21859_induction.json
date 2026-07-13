@@ -1,0 +1,92 @@
+{
+  "latent_idx": 21859,
+  "short_name": "wh-questions about personal history and habits",
+  "primary_explanation": "The majority of sentences are wh-questions (how, what, when, why, do) asking about personal history, habits, or experiences, often in a clinical or counseling context.",
+  "candidate_behavioral_explanation": "The sentences function as diagnostic or exploratory questions, likely from a healthcare or therapy setting, aimed at gathering information about a patient's behavior, history, or feelings.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s005","s006","s007","s008","s010","s011","s013","s014","s015","s016","s017","s019","s021","s022","s023","s024","s025","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s039","s040","s041","s042","s043","s044","s045","s046","s047","s049","s050"],
+  "outlier_sample_ids": ["s004","s009","s012","s018","s020","s026","s038","s048"],
+  "representative_evidence_ids": ["s002","s005","s028"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s002",
+      "evidence": "Starts with 'do you' forming a yes/no question about alcohol consumption.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s005",
+      "evidence": "Starts with 'when did you' forming a wh-question about start time.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s028",
+      "evidence": "Starts with 'how much do you' forming a wh-question about drinking amount.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s004",
+      "evidence": "Contains 'where was the stake character relation to her unit thought' which is ungrammatical and unclear.",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s009",
+      "evidence": "Mixes a question with a personal statement about losing job, breaking the pattern.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s012",
+      "evidence": "Contains a statement 'oh I've not heard you talk ice before' after a question.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s018",
+      "evidence": "Includes a long explanation after 'why did you say', deviating from simple question form.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s020",
+      "evidence": "Starts with 'vegetables' then a question, possibly a fragment.",
+      "evidence_level": "surface_form",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s026",
+      "evidence": "Incomplete sentence 'how long has'.",
+      "evidence_level": "surface_form",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s038",
+      "evidence": "Contains 'what time on thursday time Jepsen afternoon two o'clock' which is fragmented.",
+      "evidence_level": "surface_form",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s048",
+      "evidence": "Long question with embedded clause 'how did I make you feel to be able to change a behavior like that because ordinarily you would have been cursing'.",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences are from a clinical interview about substance use and mental health, with questions about alcohol, drugs, and feelings.",
+    "The sentences are a mix of scripted and spontaneous questions from a medical or therapy session, with some transcription errors or interruptions."
+  ],
+  "possible_confounds": [
+    "Transcription artifacts (e.g., incomplete sentences, repetitions) may obscure the pattern.",
+    "The presence of patient responses embedded in some questions (e.g., s009, s012) suggests mixed speaker turns."
+  ],
+  "limitations": [
+    "Some sentences are ungrammatical or fragmented, making pattern identification difficult.",
+    "The set includes a few sentences that are not questions (e.g., s020 fragment) or are complex narratives."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of wh-questions is clear and covers the majority of sentences, with only a few outliers due to transcription issues or mixed speaker turns."
+}

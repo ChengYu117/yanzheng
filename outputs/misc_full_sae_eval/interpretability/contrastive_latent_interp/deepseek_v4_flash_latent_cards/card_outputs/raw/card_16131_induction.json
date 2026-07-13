@@ -1,0 +1,56 @@
+{
+  "latent_idx": 16131,
+  "short_name": "medication_dosing_instructions",
+  "primary_explanation": "The majority of sentences involve healthcare professionals providing instructions or information about medication dosing, administration, and adherence, often using directive language and specific medication names.",
+  "candidate_behavioral_explanation": "The primary behavioral function is giving medication instructions or advice, including dosing frequency, timing, and interactions, as well as checking patient understanding or adherence.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001", "s002", "s003", "s004", "s005", "s006", "s008", "s009", "s010", "s011", "s012", "s013", "s016", "s017", "s018", "s019", "s020", "s021", "s022", "s023", "s024", "s025", "s026", "s027", "s028", "s029", "s030", "s031", "s032", "s033", "s034", "s035", "s036", "s037", "s038", "s039", "s040", "s042", "s045", "s046", "s047", "s048", "s049", "s050"],
+  "outlier_sample_ids": ["s007", "s014", "s015", "s041", "s043", "s044"],
+  "representative_evidence_ids": ["s001", "s005", "s011"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "yeah I'm the pharmacist on duty citalopram okay it's an antidepressant and it comes in   and  milligram strength it's excreted in the urine and it has a half-life of about  hours for side effects there are sexual side effects heart side effects and stomachs side effects",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s005",
+      "evidence": "all right so this medication is for your cholesterol you're gonna take it once a day you can take it with a lot of water and you want to make sure you don't miss any doses okay",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s011",
+      "evidence": "and you're going to take it once a day it's really important that you take it every day all right and you can take it with her without food it doesn't really matters yes once a day",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s007",
+      "evidence": "me  you can buy em over the counter Laura doors lower doors tablets II don't need a prescription for them anymore",
+      "evidence_level": "semantic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s015",
+      "evidence": "You know, handsome guys lurking around clubs, selling pills to drunken -somethings who don't know any better.",
+      "evidence_level": "topical",
+      "evidence_role": "contradict"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be seen as a collection of medication-related dialogues from a healthcare setting, but some are patient questions or statements about non-prescription drugs.",
+    "Alternatively, the pattern might be about medication adherence discussions, but several sentences focus on side effects or drug interactions rather than adherence."
+  ],
+  "possible_confounds": [
+    "Some sentences are incomplete or contain transcription errors (e.g., missing numbers), which may obscure the pattern.",
+    "The dataset includes both professional instructions and patient responses, mixing discourse roles."
+  ],
+  "limitations": [
+    "Outliers include sentences about over-the-counter purchases and illicit drug sales, which differ in context.",
+    "A few sentences are questions about medication knowledge rather than instructions."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The primary pattern of medication dosing instructions covers a large majority of sentences, with clear exceptions that are topically related but functionally different. The pattern is stable and consistent."
+}

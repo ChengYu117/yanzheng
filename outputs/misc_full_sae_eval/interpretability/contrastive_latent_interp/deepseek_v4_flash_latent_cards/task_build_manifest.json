@@ -1,0 +1,36 @@
+{
+  "analysis": "deepseek_v4_flash_latent_cards",
+  "step": "build-latent-card-tasks",
+  "inputs": {
+    "stable_latents": "outputs/cross_val/stable_topk_selection/stable_topk_latent_set.csv",
+    "feature_store": "outputs/misc_full_sae_eval/feature_store/utterance_features.pt",
+    "records": "outputs/misc_full_sae_eval/records.jsonl"
+  },
+  "outputs": {
+    "tasks": "outputs\\misc_full_sae_eval\\interpretability\\contrastive_latent_interp\\deepseek_v4_flash_latent_cards\\llm_tasks\\latent_card_tasks.jsonl",
+    "packs": "outputs\\misc_full_sae_eval\\interpretability\\contrastive_latent_interp\\deepseek_v4_flash_latent_cards\\evidence_packs\\latent_card_sentence_packs.jsonl",
+    "task_index": "outputs\\misc_full_sae_eval\\interpretability\\contrastive_latent_interp\\deepseek_v4_flash_latent_cards\\evidence_packs\\latent_card_task_index.csv"
+  },
+  "parameters": {
+    "model": "deepseek-v4-flash",
+    "concurrency": 225,
+    "max_retries": 2,
+    "timeout_seconds": 180.0,
+    "temperature": 0.1,
+    "max_tokens": 4096,
+    "top_n": 50
+  },
+  "n_unique_latents": 225,
+  "n_tasks": 225,
+  "model_visible_fields": [
+    "latent_idx",
+    "sample_id",
+    "text"
+  ],
+  "model_hidden_fields": [
+    "MISC labels",
+    "activation values",
+    "activation ranks",
+    "comparison groups"
+  ]
+}

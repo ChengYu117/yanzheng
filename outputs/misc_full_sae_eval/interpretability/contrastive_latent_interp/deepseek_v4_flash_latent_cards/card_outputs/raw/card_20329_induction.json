@@ -1,0 +1,68 @@
+{
+  "latent_idx": 20329,
+  "short_name": "health_discourse",
+  "primary_explanation": "The sentences predominantly discuss health conditions, symptoms, treatments, and risk factors, often in a clinical or advisory context. The pattern involves medical terminology and advice-giving, with many sentences addressing diabetes, smoking, anxiety, and related issues.",
+  "candidate_behavioral_explanation": "The available sentences do not support a stable behavioral-function interpretation.",
+  "explanation_type": "topic",
+  "supporting_sample_ids": ["s001", "s002", "s003", "s004", "s005", "s006", "s009", "s010", "s011", "s012", "s013", "s014", "s015", "s016", "s018", "s019", "s020", "s021", "s022", "s023", "s024", "s025", "s026", "s027", "s028", "s029", "s030", "s031", "s032", "s033", "s034", "s035", "s036", "s037", "s038", "s039", "s040", "s041", "s042", "s044", "s045", "s046", "s047", "s048", "s049", "s050"],
+  "outlier_sample_ids": ["s007", "s008", "s017", "s043"],
+  "representative_evidence_ids": ["s001", "s016", "s032"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "mentions diabetes and physical activity as treatment",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s016",
+      "evidence": "lists smoking-related diseases (COPD, bronchitis, etc.)",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s032",
+      "evidence": "lists complications of diabetes (hypertension, nerve damage, kidney disease)",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s007",
+      "evidence": "discusses lack of joy, not health-related",
+      "evidence_level": "topical",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s008",
+      "evidence": "focuses on anxiety and marijuana, but still health-related",
+      "evidence_level": "topical",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s017",
+      "evidence": "ambiguous question, not clearly health-related",
+      "evidence_level": "topical",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s043",
+      "evidence": "vague statement about dealing with something, not clearly health",
+      "evidence_level": "topical",
+      "evidence_role": "contradict"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences may represent a mix of patient-provider dialogues, with some sentences being questions or advice, but the primary pattern remains topical.",
+    "Some sentences could be interpreted as having an affective content of concern or urgency, but this is not consistent across the set."
+  ],
+  "possible_confounds": [
+    "The dataset may be drawn from medical transcripts, leading to a natural clustering around health topics.",
+    "Some sentences are incomplete or contain transcription errors, making interpretation difficult."
+  ],
+  "limitations": [
+    "A few sentences (s007, s017, s043) do not clearly fit the health topic, but they are a minority.",
+    "The pattern is broad and may not capture subtle differences in sub-topics."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The health topic is very consistent across the majority of sentences, with only a few outliers. The pattern is clear and stable, though the broadness of the topic reduces confidence slightly."
+}

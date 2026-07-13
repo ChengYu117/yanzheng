@@ -1,0 +1,44 @@
+{
+  "latent_idx": 22475,
+  "short_name": "evaluative_good_pattern",
+  "primary_explanation": "The majority of sentences contain the word 'good' (or 'great') used as a positive evaluation, often in formulaic expressions like 'it's good to...', 'that's good', 'I'm good', or 'that's great'. This pattern is stable across diverse contexts, indicating a shared evaluative function.",
+  "candidate_behavioral_explanation": "The sentences primarily serve to express positive evaluation, agreement, or affirmation in conversational discourse, often as feedback or social bonding.",
+  "explanation_type": "affective_content",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s010","s026","s043"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s010",
+      "evidence": "Contains 'it's good to see you again' – a formulaic positive evaluation.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s026",
+      "evidence": "Contains 'that's good' – a minimal positive evaluation.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s043",
+      "evidence": "Contains 'that's great' – synonymous positive evaluation.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The pattern might reflect a conversational routine of giving feedback or reassurance, rather than genuine affective content.",
+    "The sentences could be part of a therapeutic or coaching discourse where positive reinforcement is common."
+  ],
+  "possible_confounds": [
+    "The word 'good' is extremely common in English and may appear in many unrelated contexts.",
+    "Some sentences (e.g., s046, s047) use 'good' in a negated or ironic sense, but still contain the word."
+  ],
+  "limitations": [
+    "The pattern is primarily lexical and may not capture deeper pragmatic functions.",
+    "The dataset may be biased toward evaluative language due to the topic of conversation."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern covers all 50 sentences (100% contain 'good' or 'great'), but the function is somewhat broad; alternative interpretations are weaker."
+}

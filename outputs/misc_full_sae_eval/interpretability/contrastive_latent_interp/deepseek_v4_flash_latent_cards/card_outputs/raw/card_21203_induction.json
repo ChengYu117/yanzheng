@@ -1,0 +1,68 @@
+{
+  "latent_idx": 21203,
+  "short_name": "therapeutic_questioning_pattern",
+  "primary_explanation": "The sentences predominantly consist of open-ended questions used in a therapeutic or counseling context to explore client behaviors, feelings, and plans, often starting with 'how', 'what', or 'so'.",
+  "candidate_behavioral_explanation": "The primary behavioral function is to elicit reflection, explore ambivalence, and guide behavior change, typical of motivational interviewing or cognitive-behavioral therapy.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s006","s007","s008","s009","s010","s011","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": ["s005","s012","s025","s042"],
+  "representative_evidence_ids": ["s001","s016","s035"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Open-ended question exploring weight concerns and smoking cessation.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s016",
+      "evidence": "Question linking drinking to self-respect and boundaries.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s035",
+      "evidence": "Future-oriented question about drinking and life goals.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s005",
+      "evidence": "Imperative sentence, not a question.",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s012",
+      "evidence": "Statement of worry, not a question.",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s025",
+      "evidence": "Incomplete thought, not a question.",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s042",
+      "evidence": "Fragmented and unclear, not a coherent question.",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences may reflect a general pattern of exploratory questioning in any conversational context, not specifically therapeutic.",
+    "The pattern could be an artifact of transcription from a structured interview protocol with fixed question templates."
+  ],
+  "possible_confounds": [
+    "The dataset may be drawn from a specific therapeutic session, biasing the pattern toward counseling questions.",
+    "Transcription errors or incomplete utterances (e.g., s042) may obscure the pattern."
+  ],
+  "limitations": [
+    "A few sentences are not questions (s005, s012, s025, s042), indicating the pattern is not universal.",
+    "The behavioral function interpretation relies on pragmatic inference; without context, the exact function is uncertain."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of open-ended therapeutic questions is highly consistent across 46 of 50 sentences, with only 4 outliers. The behavioral function is strongly supported by the content and structure, though minor confounds exist."
+}

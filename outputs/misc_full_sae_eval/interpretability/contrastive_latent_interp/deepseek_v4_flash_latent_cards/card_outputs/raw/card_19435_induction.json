@@ -1,0 +1,44 @@
+{
+  "latent_idx": 19435,
+  "short_name": "so_you_statements",
+  "primary_explanation": "The sentences predominantly begin with 'so you' followed by a verb phrase, forming a pattern of reflective or summarizing statements that appear to be therapist or counselor utterances in a clinical or motivational interviewing context.",
+  "candidate_behavioral_explanation": "The sentences likely function as reflective listening or summarizing statements used in therapeutic settings to validate, clarify, or prompt further discussion from the client.",
+  "explanation_type": "linguistic_structure",
+  "supporting_sample_ids": ["s001", "s002", "s003", "s004", "s005", "s006", "s007", "s008", "s009", "s010", "s011", "s012", "s013", "s014", "s015", "s016", "s017", "s018", "s019", "s020", "s021", "s022", "s023", "s024", "s025", "s026", "s027", "s028", "s029", "s030", "s031", "s032", "s033", "s034", "s035", "s036", "s037", "s038", "s039", "s040", "s041", "s042", "s043", "s044", "s045", "s046", "s047", "s048", "s049", "s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s004", "s012", "s024"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s004",
+      "evidence": "Starts with 'so you're concerned'",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s012",
+      "evidence": "Starts with 'so you're testing'",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s024",
+      "evidence": "Starts with 'so you need'",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be part of a structured interview or questionnaire where the interviewer paraphrases the respondent's answers.",
+    "The pattern might reflect a specific therapeutic technique (e.g., motivational interviewing) where the therapist uses 'so you' to reflect the client's statements."
+  ],
+  "possible_confounds": [
+    "The sentences are extracted from a larger dialogue, so the pattern may be an artifact of the transcription or annotation process focusing on therapist turns.",
+    "Some sentences (e.g., s002) are longer and more complex, but still follow the 'so you' pattern."
+  ],
+  "limitations": [
+    "The analysis is based solely on the provided sentences without context of the full conversation.",
+    "The pattern is primarily structural; the behavioral function is inferred but not directly confirmed."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The 'so you' pattern is highly consistent across all 50 sentences, with no outliers. The structural pattern is clear, and the behavioral function is plausible given the content. However, without full conversational context, the function remains inferred."
+}

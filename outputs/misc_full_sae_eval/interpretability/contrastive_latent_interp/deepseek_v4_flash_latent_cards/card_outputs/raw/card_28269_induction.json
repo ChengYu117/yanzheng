@@ -1,0 +1,56 @@
+{
+  "latent_idx": 28269,
+  "short_name": "therapist_paraphrase_so_okay",
+  "primary_explanation": "The sentences predominantly consist of therapist paraphrases or reflections, often beginning with 'So' or 'Okay so', followed by a restatement of the client's prior utterance, frequently including second-person 'you' and hedges like 'kind of' or 'sort of'.",
+  "candidate_behavioral_explanation": "The primary behavioral function is therapeutic reflection or summarizing, where the therapist checks understanding or encourages elaboration by restating the client's statements.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": ["s022","s023"],
+  "representative_evidence_ids": ["s001","s004","s010"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Starts with 'So' and uses second-person 'you' to reflect a client's decision.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s004",
+      "evidence": "Begins with 'So' and paraphrases client's confidence about change.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s010",
+      "evidence": "Starts with 'So' and reflects client's contradictory desires.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s022",
+      "evidence": "Third-person narrative about a therapist, not a reflection.",
+      "evidence_level": "semantic",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s023",
+      "evidence": "Fragment with 'uh no because you don't need them' does not fit the reflection pattern.",
+      "evidence_level": "syntactic",
+      "evidence_role": "contradict"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be interpreted as a collection of motivational interviewing reflections, where the therapist uses 'So' to summarize and affirm client statements.",
+    "Alternatively, they might represent a linguistic template for summarizing client speech in clinical settings, with 'okay so' as a discourse marker."
+  ],
+  "possible_confounds": [
+    "The dataset may be drawn from a single therapeutic context, limiting generalizability.",
+    "Transcription artifacts like repetitions ('I, I, I') and hesitations may obscure the pattern."
+  ],
+  "limitations": [
+    "Two sentences (s022, s023) do not fit the primary pattern, indicating some heterogeneity.",
+    "The behavioral function is inferred from linguistic form; actual context is unknown."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of therapist reflections with 'So' or 'Okay so' covers 48 out of 50 sentences, with only two clear outliers. The pattern is consistent and stable, but alternative interpretations (e.g., motivational interviewing) are plausible, and the lack of full context slightly reduces confidence."
+}

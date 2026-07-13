@@ -1,0 +1,56 @@
+{
+  "latent_idx": 13966,
+  "short_name": "you're statements about health and emotions",
+  "primary_explanation": "The sentences predominantly use the second-person pronoun 'you' followed by a form of 'be' (are/'re) to make statements about the addressee's emotional state, health behaviors, or personal circumstances, often in a counseling or advice context.",
+  "candidate_behavioral_explanation": "The sentences likely function as reflections, affirmations, or advice in a therapeutic or coaching dialogue, where the speaker mirrors or evaluates the listener's feelings or actions.",
+  "explanation_type": "linguistic_structure",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s003","s016","s036"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s003",
+      "evidence": "Starts with 'You're putting yourself at risk' – typical second-person present tense statement about health risk.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s016",
+      "evidence": "'you're not feeling like a normal person should be feeling' – describes emotional state.",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s036",
+      "evidence": "'you're really frustrated because...' – directly addresses emotional state.",
+      "evidence_level": "affective",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s002",
+      "evidence": "'you are disturbing I office' – contains grammatical error but still uses 'you are' structure.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s041",
+      "evidence": "Contains 'you are determined' and 'you not really sure' – mixed but still second-person statements.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be from a medical or counseling intake interview, focusing on patient health behaviors and emotional states.",
+    "The pattern might reflect a specific annotation template where all sentences begin with 'you' followed by a verb, possibly from a corpus of motivational interviewing transcripts."
+  ],
+  "possible_confounds": [
+    "Some sentences are fragments or contain transcription errors (e.g., s002, s028), which may obscure the pattern.",
+    "The set includes a few questions (s006, s032, s043) that deviate from the declarative pattern but still use 'you'."
+  ],
+  "limitations": [
+    "The behavioral function is inferred from content but not explicitly labeled; the exact discourse context is unknown.",
+    "Some sentences (e.g., s010 'you're welcome') are formulaic and may not fit the health/emotion topic."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of second-person present tense statements is highly consistent across all sentences, with only minor variations in topic and sentence type. The primary interpretation covers all sentences, and alternative explanations are weaker."
+}

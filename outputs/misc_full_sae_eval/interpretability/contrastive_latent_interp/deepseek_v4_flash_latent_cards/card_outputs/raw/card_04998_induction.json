@@ -1,0 +1,68 @@
+{
+  "latent_idx": 4998,
+  "short_name": "therapeutic_questioning",
+  "primary_explanation": "The sentences predominantly consist of questions asked by a therapist or counselor to a client, exploring behaviors, feelings, and goals related to substance use, health, and personal change.",
+  "candidate_behavioral_explanation": "The primary behavioral function is therapeutic probing: the speaker uses questions to elicit self-reflection, assess readiness for change, and guide the client toward considering alternatives.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s024","s025","s026","s027","s028","s029","s030","s031","s033","s034","s035","s036","s037","s038","s039","s041","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": ["s023","s032","s040","s042"],
+  "representative_evidence_ids": ["s001","s009","s015"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Question exploring impact of an inconvenience vs. major life event, typical of motivational interviewing.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s009",
+      "evidence": "Presents a choice between continuing marijuana use and taking a job, with pros and cons, reflecting decisional balance.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s015",
+      "evidence": "Asks about symptom frequency and duration, typical of clinical assessment.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s023",
+      "evidence": "Contains non-question narrative and seems like a therapist's comment, but deviates from the question pattern.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s032",
+      "evidence": "Instructional or descriptive, not a question; about behaviors to do on purpose.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s040",
+      "evidence": "Apologetic question about allergies, not clearly therapeutic.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s042",
+      "evidence": "Quoting a band, likely off-topic or humorous aside.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "contradict"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be from a structured interview or questionnaire about substance use and health behaviors.",
+    "They might represent a mix of motivational interviewing and cognitive-behavioral therapy techniques."
+  ],
+  "possible_confounds": [
+    "The dataset may include multiple speakers or contexts (e.g., therapy, medical intake, casual conversation).",
+    "Some sentences are incomplete or contain transcription artifacts (e.g., repetitions, false starts)."
+  ],
+  "limitations": [
+    "A few sentences are not questions or are ambiguous, reducing coverage slightly.",
+    "The exact therapeutic modality cannot be determined from these sentences alone."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of therapeutic questioning is clear and consistent across the vast majority of sentences, with only four outliers that do not fit. The evidence strongly supports a behavioral-function interpretation."
+}

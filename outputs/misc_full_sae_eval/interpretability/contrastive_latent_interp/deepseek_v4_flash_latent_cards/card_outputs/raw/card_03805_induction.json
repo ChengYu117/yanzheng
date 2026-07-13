@@ -1,0 +1,56 @@
+{
+  "latent_idx": 3805,
+  "short_name": "therapeutic_discourse_mixed",
+  "primary_explanation": "The sentences predominantly feature a mix of self-disclosure, reflection, and therapist-like paraphrasing or questioning, often using second-person 'you' to address the speaker or client, with frequent discourse markers like 'so', 'okay', 'it sounds like', and 'you know'. The pattern is a blend of personal narrative and therapeutic reframing, but no single function or structure dominates across all sentences.",
+  "candidate_behavioral_explanation": "The available sentences do not support a stable behavioral-function interpretation.",
+  "explanation_type": "unclear_or_mixed",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s001","s017","s031"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "First-person narrative with 'I' and discourse markers 'and', 'I guess', 'so'.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s017",
+      "evidence": "Therapist-like paraphrase: 'so it sounds like you're feeling this contradiction...'",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s031",
+      "evidence": "Reflective summary with 'okay so it sounds like' and second-person 'you'.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s044",
+      "evidence": "Third-person observation: 'you asked a depressed person when they were happy...'",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s048",
+      "evidence": "Direct speech from a doctor: 'as a doctor I'm not prepared...'",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences may represent a corpus of psychotherapy sessions, with alternating client self-disclosure and therapist reflections.",
+    "The pattern could be a mix of personal narratives and advice-giving, with no single discourse function dominating."
+  ],
+  "possible_confounds": [
+    "The sentences are likely extracted from different parts of conversations, mixing client and therapist turns.",
+    "Transcription artifacts like 'you know', 'like', and hesitations may obscure functional patterns."
+  ],
+  "limitations": [
+    "The set is heterogeneous, with no single pattern covering all sentences.",
+    "Lack of context (e.g., speaker identity) limits functional interpretation."
+  ],
+  "confidence": 3,
+  "confidence_rationale": "A majority of sentences share therapeutic discourse features (reflection, self-disclosure, second-person address), but the mix of functions and lack of a single stable pattern reduce confidence."
+}

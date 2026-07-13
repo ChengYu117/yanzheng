@@ -1,0 +1,68 @@
+{
+  "latent_idx": 12555,
+  "short_name": "do_you_questions",
+  "primary_explanation": "The majority of sentences are questions beginning with 'do you' (or 'do' followed by a pronoun), often preceded by discourse markers like 'so', 'okay', 'and', or 'then'. These are typically yes/no questions about personal experiences, opinions, or actions, common in counseling or medical interviews.",
+  "candidate_behavioral_explanation": "The sentences function as probing questions to gather information about the addressee's behaviors, beliefs, or experiences, typical of a therapeutic or medical assessment context.",
+  "explanation_type": "linguistic_structure",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s046","s047","s048"],
+  "outlier_sample_ids": ["s018","s045","s049","s050"],
+  "representative_evidence_ids": ["s005","s032","s035"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s005",
+      "evidence": "Starts with 'do you' and is a yes/no question about priorities.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s032",
+      "evidence": "Simple 'do you' question about alcohol consumption.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s035",
+      "evidence": "Repeats 'do you know all the bad stuff about alcohol' from s020, showing template reuse.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s018",
+      "evidence": "Contains 'do it tomorrow' but is not a question; includes incoherent text.",
+      "evidence_level": "syntactic",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s045",
+      "evidence": "Declarative sentence about dehydration, no 'do you' structure.",
+      "evidence_level": "syntactic",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s049",
+      "evidence": "Declarative explanation about hemoglobin test, no question form.",
+      "evidence_level": "syntactic",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s050",
+      "evidence": "Fragment with 'do to get stitches', not a standard question.",
+      "evidence_level": "syntactic",
+      "evidence_role": "contradict"
+    }
+  ],
+  "alternative_explanations": [
+    "The pattern could be a discourse function of information gathering in a clinical interview, with 'do you' questions serving as probes.",
+    "Alternatively, the pattern might reflect a specific annotation bias where transcribers consistently marked questions with 'do you' regardless of context."
+  ],
+  "possible_confounds": [
+    "Some sentences (e.g., s018, s045, s049, s050) are not questions or are garbled, possibly due to transcription errors or mixed data sources.",
+    "The presence of discourse markers like 'so', 'okay', 'and' may be artifacts of conversational style rather than part of the stable pattern."
+  ],
+  "limitations": [
+    "The analysis is based solely on surface form; deeper pragmatic functions may vary across sentences.",
+    "Outliers may indicate that the pattern is not perfectly stable across the entire set."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The 'do you' question pattern covers 46 out of 50 sentences, with only 4 clear outliers. The pattern is syntactically consistent and semantically coherent as probing questions. Alternative explanations are weaker, and confounds are limited."
+}

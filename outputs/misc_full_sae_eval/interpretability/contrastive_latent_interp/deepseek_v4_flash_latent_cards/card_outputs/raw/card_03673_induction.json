@@ -1,0 +1,44 @@
+{
+  "latent_idx": 3673,
+  "short_name": "therapeutic_discourse_markers",
+  "primary_explanation": "The sentences predominantly feature discourse markers such as 'so', 'okay', 'yeah', 'well', and 'you know', which are characteristic of therapeutic or counseling conversations where a therapist reflects, summarizes, or probes a client's statements.",
+  "candidate_behavioral_explanation": "The sentences function as reflective listening, summarizing, or probing statements typical of a therapist or counselor engaging with a client, often using 'so' to rephrase or 'okay' to transition.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s001","s002","s006"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Starts with 'so' and uses 'you know' and 'we call', typical of therapeutic reflection.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s002",
+      "evidence": "Uses 'yeah well so' and 'it sounds like', common in counseling to paraphrase.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s006",
+      "evidence": "Begins with 'yeah I understand so you you like having fun', reflecting client's words.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be from a motivational interviewing session, focusing on health behavior change (e.g., drinking, smoking).",
+    "The pattern might reflect a general conversational style with frequent backchanneling and reformulation, not limited to therapy."
+  ],
+  "possible_confounds": [
+    "The dataset may be artificially constructed or transcribed from a specific context (e.g., therapy role-play), leading to overrepresentation of certain markers.",
+    "Some sentences appear fragmented or contain transcription errors, which may obscure the pattern."
+  ],
+  "limitations": [
+    "The interpretation is based on discourse markers and pragmatic function, but the exact setting (therapy, coaching, etc.) is inferred.",
+    "A few sentences (e.g., s015, s016) are less coherent but still contain markers like 'okay' or 'so'."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of therapeutic discourse markers is highly consistent across all 50 sentences, with every sentence containing at least one such marker. Alternative interpretations are weaker, and confounds are manageable."
+}

@@ -1,0 +1,89 @@
+{
+  "latent_idx": 17827,
+  "short_name": "health_discourse_mixed",
+  "primary_explanation": "The sentences predominantly revolve around health-related topics such as cholesterol, blood sugar, weight, medication, and lifestyle advice, often in a conversational or educational tone. However, the set is heterogeneous, mixing explanations, questions, personal anecdotes, and advice without a single stable pattern.",
+  "candidate_behavioral_explanation": "The available sentences do not support a stable behavioral-function interpretation.",
+  "explanation_type": "topic",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s007","s008","s009","s010","s011","s012","s014","s015","s016","s019","s020","s022","s023","s024","s025","s026","s027","s029","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": ["s006","s013","s017","s018","s021","s028","s030"],
+  "representative_evidence_ids": ["s007","s015","s024"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s007",
+      "evidence": "Discusses hemoglobin and blood sugar control, typical of health education.",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s015",
+      "evidence": "Lists health risks of smoking, common in health advice.",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s024",
+      "evidence": "Explicitly mentions medication for cholesterol, a health topic.",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s006",
+      "evidence": "Personal complaint about sinus headache, not clearly health advice.",
+      "evidence_level": "topical",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s013",
+      "evidence": "Personal reflection on lifestyle, less typical of the health education pattern.",
+      "evidence_level": "topical",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s017",
+      "evidence": "Fragment about sinus headache, unclear context.",
+      "evidence_level": "topical",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s018",
+      "evidence": "Mentions hormones and antibodies but in a vague way.",
+      "evidence_level": "topical",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s021",
+      "evidence": "Very short fragment, unclear.",
+      "evidence_level": "topical",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s028",
+      "evidence": "Short comment about post-nasal drip, not clearly part of a health discussion.",
+      "evidence_level": "topical",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s030",
+      "evidence": "Describes weather and biking, not directly health-related.",
+      "evidence_level": "topical",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences might be from a medical consultation transcript, with a mix of doctor explanations and patient responses.",
+    "The set could represent a collection of health-related questions and answers from an online forum or educational material.",
+    "Some sentences may be from a conversation about diet and nutrition, while others are about medication management."
+  ],
+  "possible_confounds": [
+    "The sentences are likely extracted from different parts of a longer conversation, leading to varied topics.",
+    "Transcription errors or incomplete sentences (e.g., s021) obscure the pattern.",
+    "The presence of personal anecdotes (s006, s013) may reflect patient speech, not a single discourse function."
+  ],
+  "limitations": [
+    "The set is too diverse to identify a single stable pattern beyond the broad health topic.",
+    "Outliers indicate that not all sentences fit the health education or advice pattern.",
+    "The lack of consistent discourse markers or syntactic structures prevents a more specific interpretation."
+  ],
+  "confidence": 2,
+  "confidence_rationale": "Only a weak topical pattern (health-related) covers a majority, but clear outliers and mixed discourse functions reduce confidence."
+}

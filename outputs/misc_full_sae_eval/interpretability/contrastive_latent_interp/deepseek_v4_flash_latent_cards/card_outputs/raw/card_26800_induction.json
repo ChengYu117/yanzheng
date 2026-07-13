@@ -1,0 +1,50 @@
+{
+  "latent_idx": 26800,
+  "short_name": "therapist_reflection_pattern",
+  "primary_explanation": "The majority of sentences follow a pattern where the speaker (likely a therapist or counselor) reflects back or interprets the client's statements using phrases like 'sounds like', 'it seems like', 'clearly', or 'obviously', followed by a summary of the client's situation or feelings. This pattern serves to validate the client's experience and encourage further discussion.",
+  "candidate_behavioral_explanation": "The primary behavioral function is reflective listening or empathic reflection, a common therapeutic technique used to show understanding and to help the client articulate their thoughts and feelings.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": ["s025"],
+  "representative_evidence_ids": ["s002","s011","s022"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s002",
+      "evidence": "Uses 'obviously' to reflect the client's self-awareness.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s011",
+      "evidence": "Uses 'it sounds like' to reflect the client's feeling of confidence.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s022",
+      "evidence": "Uses 'it sounds like' to reflect the client's anger.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s025",
+      "evidence": "This sentence is a client statement, not a therapist reflection, breaking the pattern.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "contradict"
+    }
+  ],
+  "alternative_explanations": [
+    "The pattern could be a linguistic template used in motivational interviewing, where the therapist uses reflective statements to build rapport and elicit change talk.",
+    "Alternatively, the pattern might be a surface artifact of a specific therapy session transcript where the therapist consistently uses 'sounds like' as a discourse marker."
+  ],
+  "possible_confounds": [
+    "The sentences may come from multiple therapy sessions with different clients, but the reflective pattern remains consistent.",
+    "Some sentences (e.g., s025) are client utterances, which could indicate that the dataset includes both therapist and client speech, but the pattern is predominantly therapist reflections."
+  ],
+  "limitations": [
+    "The analysis is based solely on the provided sentences without context of the full conversation.",
+    "The pattern may not generalize to other therapy contexts or datasets."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern is clear and consistent across 49 out of 50 sentences, with only one outlier (s025). The behavioral function of reflective listening is well-supported by the linguistic evidence. Alternative interpretations are weaker and confounds are minimal."
+}

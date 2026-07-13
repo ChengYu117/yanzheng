@@ -1,0 +1,56 @@
+{
+  "latent_idx": 24761,
+  "short_name": "open-ended_question_pattern",
+  "primary_explanation": "The sentences are predominantly open-ended questions that ask for the listener's thoughts, actions, or experiences, often using 'what' or 'tell me about' constructions.",
+  "candidate_behavioral_explanation": "The sentences function as probes to elicit elaboration, reflection, or information from the listener, typical of therapeutic or coaching discourse.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s001","s004","s012"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Starts with 'any other thoughts of what you might do' – open-ended question about thoughts/actions.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s004",
+      "evidence": "Starts with 'have you had any thoughts yourself about what you think might be causing it' – open-ended probe for causal attribution.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s012",
+      "evidence": "Starts with 'okay so tell me what you know about' – direct request for information.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s021",
+      "evidence": "Starts with 'okay what questions do you have' – open-ended question inviting questions.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s038",
+      "evidence": "Starts with 'so what do you think' – minimal open-ended question.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences are all questions, but some are more specific (e.g., about diet) while others are general (e.g., 'what do you think'), so the pattern may be simply 'question-asking' without a consistent behavioral function.",
+    "The sentences may reflect a specific therapeutic technique (e.g., motivational interviewing) where open-ended questions are used to explore ambivalence or elicit change talk."
+  ],
+  "possible_confounds": [
+    "The sentences are extracted from a corpus of counseling or therapy sessions, so the pattern may be an artifact of that context rather than a general linguistic feature.",
+    "Some sentences include discourse markers like 'okay', 'so', 'well' that may be transcription artifacts or conversational fillers."
+  ],
+  "limitations": [
+    "The analysis is based solely on the text without prosodic or contextual information.",
+    "The sample IDs are sequential and may not represent independent utterances."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of open-ended questions is highly consistent across all 50 sentences, with no clear outliers. The behavioral function as probes for elaboration is strongly supported by the pragmatic function of the sentences. Alternative interpretations are weaker, and confounds are acknowledged but do not undermine the primary pattern."
+}

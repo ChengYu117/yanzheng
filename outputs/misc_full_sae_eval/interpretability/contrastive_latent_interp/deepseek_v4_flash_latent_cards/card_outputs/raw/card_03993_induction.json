@@ -1,0 +1,140 @@
+{
+  "latent_idx": 3993,
+  "short_name": "therapist reflective listening",
+  "primary_explanation": "The sentences predominantly function as therapist or counselor reflections, using phrases like 'it sounds like', 'so it seems like', and 'I hear you saying' to summarize or interpret the client's statements, often followed by a paraphrase of the client's experience or situation.",
+  "candidate_behavioral_explanation": "The primary behavioral function is reflective listening, a therapeutic technique where the therapist mirrors the client's statements to show understanding and encourage elaboration.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s011","s012","s014","s015","s016","s018","s019","s021","s022","s023","s025","s026","s027","s029","s032","s034","s035","s038","s040","s042","s045","s046","s048","s049","s050"],
+  "outlier_sample_ids": ["s010","s013","s017","s020","s024","s028","s030","s031","s033","s036","s037","s039","s041","s043","s044","s047"],
+  "representative_evidence_ids": ["s001","s005","s008"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Uses 'it sounds like' to reflect the client's pain as a big role and barrier.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s005",
+      "evidence": "Uses 'sounds like' to summarize client's pain and difficulty.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s008",
+      "evidence": "Uses 'it sounds like' to reflect client's values about family.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s010",
+      "evidence": "Lacks reflective listening phrase; instead provides factual feedback about marijuana use and risk category.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s013",
+      "evidence": "States factual information about medication profile without reflective listening.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s017",
+      "evidence": "Offers praise ('shows a lot of inner strength') rather than reflection.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s020",
+      "evidence": "Simple affirmation ('well you say cheerful funny so it's a lot of fun yes') without reflective structure.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s024",
+      "evidence": "States observation about medication discrepancy without reflective listening.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s028",
+      "evidence": "Client self-report without therapist reflection.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s030",
+      "evidence": "Positive affirmation ('it's good to see') rather than reflection.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s031",
+      "evidence": "Direct evaluation ('well you clearly have a lot of weight to lose') without reflective phrasing.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s033",
+      "evidence": "Summarizes guilt and frustration but lacks typical reflective discourse marker.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s036",
+      "evidence": "Factual observation about weight category without reflection.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s037",
+      "evidence": "Personal opinion about a place and program, not a reflection.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s039",
+      "evidence": "Lists client's issues without reflective framing.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s041",
+      "evidence": "Direct question about smoking habits, not a reflection.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s043",
+      "evidence": "Incomplete and unclear, but appears to be a directive or suggestion rather than reflection.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s044",
+      "evidence": "Duplicate of s024, factual observation.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s047",
+      "evidence": "Factual summary of drinking history without reflective listening.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be interpreted as a mix of therapeutic reflections and clinical information-gathering, where some utterances provide feedback or education rather than reflection.",
+    "Alternatively, the pattern might be a linguistic template used in motivational interviewing, where reflections are combined with affirmations and summaries."
+  ],
+  "possible_confounds": [
+    "The dataset may include multiple speakers (therapist vs. client) or different therapeutic styles, leading to variation in utterance types.",
+    "Transcription artifacts such as incomplete sentences or overlapping speech could obscure the intended function."
+  ],
+  "limitations": [
+    "The primary interpretation does not cover all sentences; outliers include factual statements, affirmations, and questions that serve different functions.",
+    "The behavioral function is inferred from linguistic markers but may not reflect actual therapeutic intent without context."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The primary pattern of reflective listening is clear and covers a majority of sentences (34 out of 50). The outliers are distinct in function (factual, evaluative, questioning) and are well-identified. Alternative interpretations are weaker, and confounds are manageable."
+}

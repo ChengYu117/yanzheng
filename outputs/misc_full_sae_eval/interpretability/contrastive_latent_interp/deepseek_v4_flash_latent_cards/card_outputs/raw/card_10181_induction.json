@@ -1,0 +1,68 @@
+{
+  "latent_idx": 10181,
+  "short_name": "therapeutic reflection on ambivalence",
+  "primary_explanation": "The sentences predominantly reflect a therapeutic or counseling discourse where the speaker (likely a clinician) reflects back the client's mixed feelings, concerns, or progress regarding health behaviors (e.g., substance use, diet, exercise) and social relationships, often using tentative language like 'kind of', 'a little', 'sounds like', and 'I hear you'.",
+  "candidate_behavioral_explanation": "The primary behavioral function is reflective listening and motivational interviewing, where the clinician summarizes, validates, and gently challenges the client's ambivalence to promote behavior change.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s014","s015","s016","s018","s019","s020","s021","s022","s023","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": ["s013","s017","s024","s039"],
+  "representative_evidence_ids": ["s001","s011","s033"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Reflects negative consequences of substance use with tentative language 'so some of the negative things would be'",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s011",
+      "evidence": "Uses 'on one hand... on the other hand' to frame ambivalence, a classic motivational interviewing technique",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s033",
+      "evidence": "Summarizes client's conflicting desires and low confidence, typical of reflective listening",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s013",
+      "evidence": "Short, vague phrase 'yeah kind of tight balled up tan' does not fit the reflective pattern",
+      "evidence_level": "semantic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s017",
+      "evidence": "Incomplete utterance 'I'm okay but you' lacks the reflective structure",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s024",
+      "evidence": "Client self-report without clinician reflection, breaks the pattern",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s039",
+      "evidence": "Fragment about a scary event, not clearly part of therapeutic reflection",
+      "evidence_level": "semantic",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be from a health coaching session focusing on behavior change, with the clinician using open-ended questions and affirmations.",
+    "Alternatively, they might represent a mix of client and clinician turns in a counseling session, where the pattern is the conversational structure of motivational interviewing."
+  ],
+  "possible_confounds": [
+    "The dataset may include both clinician and client utterances, making it hard to isolate a single speaker's pattern.",
+    "Some sentences are incomplete or fragmented due to transcription artifacts, obscuring the intended function."
+  ],
+  "limitations": [
+    "A few sentences (e.g., s013, s017, s024, s039) do not clearly fit the therapeutic reflection pattern, possibly due to transcription errors or different contexts.",
+    "The pattern is inferred from content and discourse markers, but without speaker labels, the behavioral function remains somewhat speculative."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of reflective listening and motivational interviewing is highly consistent across the majority of sentences, with only four outliers that are either fragments or self-reports. The linguistic evidence strongly supports the behavioral function interpretation."
+}

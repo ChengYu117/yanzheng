@@ -1,0 +1,56 @@
+{
+  "latent_idx": 7148,
+  "short_name": "health_advice_with_numbers",
+  "primary_explanation": "The sentences predominantly involve health-related advice or observations that include numerical values (e.g., number of tries, minutes of exercise, teaspoons of sugar, pounds, blood pressure readings, ounces, days, cost, BMI, percentile, years, scale ratings). The numbers are often presented with placeholders or approximations.",
+  "candidate_behavioral_explanation": "The sentences appear to be excerpts from healthcare consultations or health coaching dialogues, where professionals provide information, recommendations, or ask questions involving specific metrics.",
+  "explanation_type": "topic",
+  "supporting_sample_ids": ["s001", "s002", "s003", "s004", "s005", "s006", "s007", "s008", "s009", "s010", "s011", "s012", "s013", "s014", "s015", "s016", "s017", "s018", "s019", "s020", "s021", "s022", "s023", "s024", "s025", "s026", "s027", "s028", "s029", "s030", "s031", "s032", "s033", "s034", "s035", "s036", "s037", "s038", "s039", "s040", "s041", "s042", "s043", "s044", "s045", "s046", "s047", "s048", "s049", "s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s001", "s004", "s008"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Contains 'about  tries' with a numerical placeholder.",
+      "evidence_level": "surface_form",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s004",
+      "evidence": "Contains 'about  teaspoons of sugar' with numerical placeholder.",
+      "evidence_level": "surface_form",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s008",
+      "evidence": "Contains 'blood pressure is  over' with numerical placeholder.",
+      "evidence_level": "surface_form",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s030",
+      "evidence": "Greeting without numbers, but still part of health dialogue.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s043",
+      "evidence": "Non-lexical utterance 'your person laughing' may be a transcription artifact.",
+      "evidence_level": "surface_form",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences are from a corpus of transcribed medical or health coaching conversations, with many containing numerical values due to the nature of health metrics.",
+    "The pattern is a surface artifact of transcription where numbers are often omitted or replaced with placeholders, but the underlying topic is health advice."
+  ],
+  "possible_confounds": [
+    "Some sentences lack explicit numbers but are still part of the same health dialogue context.",
+    "The presence of placeholders (e.g., blank spaces) may be a transcription convention rather than a genuine linguistic pattern."
+  ],
+  "limitations": [
+    "The analysis is based on text only and may not capture the full conversational context.",
+    "Some sentences are incomplete or contain transcription errors, making pattern detection harder."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The health topic with numerical references is highly consistent across the majority of sentences, with only a few sentences lacking explicit numbers but still fitting the health dialogue context. Alternative interpretations are weaker."
+}

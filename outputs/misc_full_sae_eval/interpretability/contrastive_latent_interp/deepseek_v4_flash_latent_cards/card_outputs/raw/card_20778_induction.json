@@ -1,0 +1,44 @@
+{
+  "latent_idx": 20778,
+  "short_name": "therapeutic_discourse_markers",
+  "primary_explanation": "The sentences predominantly feature discourse markers and hedging expressions typical of therapeutic or counseling conversations, such as 'well', 'I think', 'I guess', 'I wonder', 'okay', 'so', and 'you know'. They often include tentative suggestions, reflections, and collaborative planning.",
+  "candidate_behavioral_explanation": "The primary behavioral function appears to be therapeutic guidance and motivational interviewing, characterized by open-ended questions, affirmations, reflective listening, and summarizing.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s003","s011","s020"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s003",
+      "evidence": "Uses 'okay okay', 'I mean', 'from my perspective', and asks about the client's thoughts, typical of motivational interviewing.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s011",
+      "evidence": "Contains 'okay', 'if it's okay with you', 'I wonder if we could talk', showing tentative suggestion and collaborative framing.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s020",
+      "evidence": "Includes 'well', 'I appreciate', 'I hope you'll think about it', 'I'm going to continue to ask', reflecting persistence and encouragement.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be interpreted as a collection of advice-giving or health coaching dialogues, with a focus on behavior change (smoking, drinking, exercise).",
+    "Alternatively, they may represent a mix of different therapeutic modalities, but the consistent use of hedging and collaborative language suggests a client-centered approach."
+  ],
+  "possible_confounds": [
+    "The dataset may be drawn from a single therapy session or a specific corpus of motivational interviewing, which would inflate the apparent pattern.",
+    "Some sentences (e.g., s029) include humor or off-topic remarks, but they still use discourse markers like 'You know'."
+  ],
+  "limitations": [
+    "The analysis is based solely on text without prosodic or contextual cues, which are important in therapeutic discourse.",
+    "The sample IDs are sequential and may not represent independent utterances; some are near-duplicates (e.g., s005 and s006)."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of therapeutic discourse markers and motivational interviewing functions is highly consistent across all 50 sentences, with no clear outliers. The near-duplicates (s005/s006, s018/s019, s035/s036, s044/s045/s046) reinforce the pattern. Alternative interpretations are weaker, and confounds are acknowledged but do not undermine the primary interpretation."
+}

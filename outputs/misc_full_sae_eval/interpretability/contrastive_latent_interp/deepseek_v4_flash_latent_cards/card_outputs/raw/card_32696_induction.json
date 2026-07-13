@@ -1,0 +1,47 @@
+{
+  "latent_idx": 32696,
+  "short_name": "healthcare_discourse_mixed",
+  "primary_explanation": "The sentences are a mix of questions, statements, and fragments typical of healthcare or counseling dialogues, covering topics like diabetes, medication, exercise, and personal concerns, but no single pattern covers a majority.",
+  "candidate_behavioral_explanation": "The available sentences do not support a stable behavioral-function interpretation.",
+  "explanation_type": "unclear_or_mixed",
+  "supporting_sample_ids": ["s001", "s002", "s003", "s004", "s005", "s006", "s007", "s008", "s009", "s010", "s011", "s012", "s013", "s014", "s015", "s016", "s017", "s018", "s019", "s020", "s021", "s022", "s023", "s024", "s025", "s026", "s027", "s028", "s029", "s030", "s031", "s032", "s033", "s034", "s035", "s036", "s037", "s038", "s039", "s040", "s041", "s042", "s043", "s044", "s045", "s046", "s047", "s048", "s049", "s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s001", "s007", "s035"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Discusses diabetes and foot ulcer, a health topic.",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s007",
+      "evidence": "Mentions clinical trial and slowing progression, typical of medical advice.",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s035",
+      "evidence": "References patient education kit and risk reduction, healthcare discourse.",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences may represent a collection of patient-provider interactions with a focus on chronic disease management.",
+    "They could be excerpts from motivational interviewing sessions, with reflections and open-ended questions.",
+    "The set might be a mix of clinical notes and patient quotes, lacking a unified pattern."
+  ],
+  "possible_confounds": [
+    "The sentences are decontextualized, making it hard to infer function.",
+    "Variation in sentence length and type (questions, statements, fragments) suggests multiple sources.",
+    "Some sentences appear to be from different speakers or roles (patient vs. provider)."
+  ],
+  "limitations": [
+    "No single pattern covers a majority of sentences.",
+    "Behavioral function is ambiguous without conversational context.",
+    "The set may be artificially combined from different dialogues."
+  ],
+  "confidence": 2,
+  "confidence_rationale": "Only a weak topical pattern (healthcare) is present, but many sentences are generic or unrelated, and alternative interpretations are equally plausible."
+}

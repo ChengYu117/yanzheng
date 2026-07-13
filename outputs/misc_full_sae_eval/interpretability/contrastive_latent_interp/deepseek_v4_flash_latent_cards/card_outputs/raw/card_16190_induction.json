@@ -1,0 +1,44 @@
+{
+  "latent_idx": 16190,
+  "short_name": "help_offers_and_inquiries",
+  "primary_explanation": "The majority of sentences contain the verb 'help' in constructions where the speaker offers assistance or asks how they can assist, often using modals like 'can', 'will', or 'want to'.",
+  "candidate_behavioral_explanation": "The primary behavioral function is offering help or inquiring about the listener's needs, serving as a service-oriented discourse move.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s001","s012","s030"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Contains 'help' in a present-tense offer: 'I'm here to help'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s012",
+      "evidence": "Contains 'help' in a question offering assistance: 'is there anything else that I can help you with today?'",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s030",
+      "evidence": "Contains 'help' in a direct inquiry: 'how can I help you'.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The pattern could be a surface artifact of a customer service or healthcare interaction corpus, where 'help' is a frequent lexical item.",
+    "Alternatively, the pattern might reflect a therapeutic or coaching discourse where the speaker expresses willingness to assist with personal issues."
+  ],
+  "possible_confounds": [
+    "The sentences come from diverse contexts (pharmacy, counseling, general assistance), but all involve 'help'.",
+    "Some sentences (e.g., s019) are garbled but still contain 'help', suggesting possible transcription errors."
+  ],
+  "limitations": [
+    "The analysis does not distinguish between different types of help (e.g., informational vs. emotional).",
+    "The pattern is very broad and may not capture nuanced differences in function."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern is highly consistent across all 50 sentences, with every sentence containing the word 'help' in a context of offering or inquiring about assistance. No outliers exist. Alternative explanations are weaker because the behavioral function is clear and stable."
+}

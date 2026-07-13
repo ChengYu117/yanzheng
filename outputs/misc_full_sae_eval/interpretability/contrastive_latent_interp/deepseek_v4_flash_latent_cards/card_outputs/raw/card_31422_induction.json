@@ -1,0 +1,56 @@
+{
+  "latent_idx": 31422,
+  "short_name": "medical_history_questions",
+  "primary_explanation": "The majority of sentences are questions asked by a healthcare provider to a patient, covering medical history, symptoms, lifestyle, and readiness for change. The pattern is a clinical interview with open-ended and scaled questions.",
+  "candidate_behavioral_explanation": "The sentences function as diagnostic or motivational interviewing questions, aiming to gather patient information and assess readiness for behavior change.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001", "s002", "s003", "s004", "s005", "s006", "s007", "s008", "s009", "s010", "s012", "s013", "s014", "s015", "s016", "s017", "s018", "s019", "s020", "s021", "s022", "s023", "s024", "s025", "s026", "s028", "s029", "s030", "s031", "s032", "s033", "s034", "s035", "s036", "s037", "s038", "s039", "s040", "s041", "s042", "s043", "s044", "s045", "s046", "s047", "s048", "s049", "s050"],
+  "outlier_sample_ids": ["s011", "s027"],
+  "representative_evidence_ids": ["s001", "s004", "s018"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Imperative 'Please describe your symptoms' is a direct clinical request.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s004",
+      "evidence": "Complex question about prescription drug misuse, typical in medical history.",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s018",
+      "evidence": "Scale question about importance of blood pressure control, common in motivational interviewing.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s011",
+      "evidence": "Reflection and affirmation about patient's goals, not a question.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s027",
+      "evidence": "Question about type of dog, unrelated to medical context.",
+      "evidence_level": "topical",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences are a collection of questions from a patient intake form or script, with some personal questions mixed in.",
+    "The pattern is a mix of medical history questions and motivational interviewing questions, with a few outliers about personal interests."
+  ],
+  "possible_confounds": [
+    "The dataset may include multiple speakers or contexts (e.g., primary care vs. counseling).",
+    "Transcription artifacts like 'um' or repeated phrases may obscure the pattern."
+  ],
+  "limitations": [
+    "Two sentences (s011, s027) do not fit the question pattern, suggesting some variability.",
+    "The exact clinical setting is not specified, so the function may vary."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of clinical questions is very consistent across 48 out of 50 sentences, with only two clear outliers. The behavioral function as diagnostic/motivational interviewing is well-supported."
+}

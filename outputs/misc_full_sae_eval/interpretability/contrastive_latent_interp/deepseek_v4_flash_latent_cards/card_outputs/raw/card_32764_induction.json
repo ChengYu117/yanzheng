@@ -1,0 +1,62 @@
+{
+  "latent_idx": 32764,
+  "short_name": "evaluative responses with 'that'",
+  "primary_explanation": "The majority of sentences are evaluative responses using a demonstrative pronoun (typically 'that' or 'this') followed by a copula and an adjective or noun phrase expressing a positive or negative evaluation (e.g., 'that's really good', 'that sounds upsetting').",
+  "candidate_behavioral_explanation": "The sentences function as affirmations, validations, or assessments in a conversational context, likely from a therapist or supportive listener.",
+  "explanation_type": "linguistic_structure",
+  "supporting_sample_ids": ["s001","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s028","s029","s030","s031","s032","s033","s034","s035","s036","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": ["s002","s027","s037"],
+  "representative_evidence_ids": ["s006","s012","s019"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s006",
+      "evidence": "Wow yeah wow that is awesome",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s012",
+      "evidence": "oh ok that's really good",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s019",
+      "evidence": "that's really good",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s002",
+      "evidence": "oh those look to me like they they did you go",
+      "evidence_level": "syntactic",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s027",
+      "evidence": "Isn't that feeling",
+      "evidence_level": "syntactic",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s037",
+      "evidence": "well I don't like them it's very weird when it happens but I think it's what I've got to deal with you know",
+      "evidence_level": "syntactic",
+      "evidence_role": "contradict"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences are all from a therapeutic or coaching dialogue, with the speaker providing reflective listening and positive reinforcement.",
+    "The pattern is a surface artifact of a specific transcription or annotation template that captures evaluative responses."
+  ],
+  "possible_confounds": [
+    "The dataset may be drawn from a single conversation type (e.g., counseling), limiting generalizability.",
+    "Some sentences (e.g., s002, s027, s037) are incomplete or grammatically irregular, possibly due to transcription errors."
+  ],
+  "limitations": [
+    "Three sentences (s002, s027, s037) do not fit the pattern, indicating some variability.",
+    "The pattern is structural but may also reflect a behavioral function; however, the function is not uniquely identifiable from structure alone."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern covers 47 out of 50 sentences, with clear structural consistency. The three outliers are distinct and do not undermine the primary interpretation."
+}

@@ -1,0 +1,56 @@
+{
+  "latent_idx": 26485,
+  "short_name": "how_questions",
+  "primary_explanation": "The majority of sentences are questions beginning with 'how', 'what', or 'can', often used to elicit information, opinions, or feelings from the addressee.",
+  "candidate_behavioral_explanation": "The sentences function as requests for information or reflection, typical of counseling or coaching contexts.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s024","s025","s026","s027","s028","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": ["s023","s029"],
+  "representative_evidence_ids": ["s005","s013","s032"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s005",
+      "evidence": "Starts with 'how do you feel about that'",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s013",
+      "evidence": "Starts with 'how do you think you might use it?'",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s032",
+      "evidence": "Starts with 'How do those thoughts make you feel?'",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s023",
+      "evidence": "Declarative sentence starting with 'I would like to know'",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s029",
+      "evidence": "Short question 'what do I need' with first-person subject",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences are all questions, but some are self-directed (e.g., s001, s029) while most are other-directed.",
+    "The sentences are from a therapeutic or motivational interviewing setting, focusing on behavior change (e.g., alcohol, exercise)."
+  ],
+  "possible_confounds": [
+    "The dataset may be from a specific domain (e.g., addiction counseling) which influences the question types.",
+    "Some sentences are incomplete or contain disfluencies (e.g., s003, s028) which may be transcription artifacts."
+  ],
+  "limitations": [
+    "Two sentences (s023, s029) do not fit the primary pattern of second-person questions.",
+    "The behavioral function is inferred from the question form but not explicitly confirmed."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of second-person questions is very consistent across 48 out of 50 sentences, with only two clear outliers. The behavioral function as information-seeking is plausible but not definitive."
+}

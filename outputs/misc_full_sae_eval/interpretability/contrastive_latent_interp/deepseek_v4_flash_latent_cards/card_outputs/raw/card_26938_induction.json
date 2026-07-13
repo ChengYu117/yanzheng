@@ -1,0 +1,50 @@
+{
+  "latent_idx": 26938,
+  "short_name": "great_affirmation_discourse_marker",
+  "primary_explanation": "The majority of sentences begin with or contain the word 'great' used as a discourse marker to affirm, acknowledge, or transition in a conversational context, often in health or counseling dialogues.",
+  "candidate_behavioral_explanation": "The sentences serve to affirm, acknowledge, or transition in a conversational setting, likely in healthcare or coaching interactions, using 'great' as a positive reinforcement or discourse marker.",
+  "explanation_type": "linguistic_structure",
+  "supporting_sample_ids": ["s001", "s003", "s004", "s005", "s006", "s007", "s008", "s009", "s010", "s011", "s012", "s013", "s014", "s015", "s016", "s017", "s018", "s019", "s020", "s021", "s022", "s023", "s024", "s025", "s026", "s027", "s028", "s029", "s030", "s031", "s032", "s033", "s034", "s035", "s036", "s037", "s038", "s039", "s040", "s041", "s042", "s043", "s044", "s045", "s046", "s047", "s048", "s049", "s050"],
+  "outlier_sample_ids": ["s002"],
+  "representative_evidence_ids": ["s003", "s008", "s036"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s003",
+      "evidence": "Great well thank you so much for talking to me",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s008",
+      "evidence": "okay well great thanks for coming in",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s036",
+      "evidence": "okay great so you're doing well",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s002",
+      "evidence": "and there's great selfie right",
+      "evidence_level": "semantic",
+      "evidence_role": "contradict"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences are from a healthcare or counseling setting where 'great' is used to encourage or validate patient responses.",
+    "The pattern is a surface artifact of transcription where 'great' is a common filler or transition word in spoken dialogue."
+  ],
+  "possible_confounds": [
+    "The word 'great' may be used in different contexts (e.g., compliment, evaluation) across sentences, but the majority function as discourse markers.",
+    "Sentence s002 uses 'great' as an adjective describing a selfie, which is a different usage."
+  ],
+  "limitations": [
+    "The analysis is based on text only, without prosodic or contextual cues.",
+    "The dataset may be from a specific domain (e.g., healthcare) which influences the pattern."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of 'great' as a discourse marker is highly consistent across 49 out of 50 sentences, with only one clear outlier (s002). The pattern remains stable after considering alternative interpretations and confounds."
+}

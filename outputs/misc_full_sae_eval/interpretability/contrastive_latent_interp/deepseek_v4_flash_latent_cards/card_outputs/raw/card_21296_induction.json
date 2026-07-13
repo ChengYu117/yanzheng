@@ -1,0 +1,56 @@
+{
+  "latent_idx": 21296,
+  "short_name": "scale_question_template",
+  "primary_explanation": "The sentences predominantly follow a template where the speaker asks a question using a numeric scale (e.g., 1 to 10, 0 to 10) to rate a subjective attribute such as confidence, importance, readiness, or motivation. The pattern includes phrases like 'on a scale of X to Y' followed by a question about the attribute.",
+  "candidate_behavioral_explanation": "The primary behavioral function is to elicit a self-reported rating from the respondent on a specific dimension, commonly used in motivational interviewing or clinical assessment contexts.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s048","s049","s050"],
+  "outlier_sample_ids": ["s019","s047"],
+  "representative_evidence_ids": ["s002","s014","s039"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s002",
+      "evidence": "so using that same scale from zero to ten how confident are you that you'll be able to stay consistent with this new exercise regime",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s014",
+      "evidence": "okay so how confident are you that you can make these changes on a scale of one to ten one being not confident at all and ten being the most confident you've ever felt",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s039",
+      "evidence": "so let me ask you on a scale of zero to ten zero being not confident at all and ten being 100% confident how confident are you that you will be able to stay consistent with this new exercise regime",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s019",
+      "evidence": "okay so from from 0 to 100 where are you",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s047",
+      "evidence": "so how many times you guys have sex that night on a scale of one to five five being the lowest how many times did you guys have sex that night",
+      "evidence_level": "semantic",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be interpreted as a collection of prompts from a structured interview or questionnaire, where the scale is used to quantify subjective experiences.",
+    "Alternatively, the pattern might reflect a therapeutic technique (e.g., motivational interviewing) where scaling questions help assess readiness or confidence."
+  ],
+  "possible_confounds": [
+    "The dataset may be drawn from a specific domain (e.g., health behavior change) where scaling questions are common, limiting generalizability.",
+    "Some sentences have incomplete or garbled text (e.g., s011, s042), which may affect pattern detection."
+  ],
+  "limitations": [
+    "Two sentences (s019, s047) deviate from the typical 0-10 or 1-10 scale, using 0-100 or 1-5, and s047 asks about frequency rather than a subjective rating.",
+    "The pattern is primarily syntactic and functional; affective content varies across sentences."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The primary pattern covers 48 out of 50 sentences, with only two outliers that still use a scale but differ in range or question type. The template is highly consistent in structure and function."
+}

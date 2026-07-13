@@ -1,0 +1,62 @@
+{
+  "latent_idx": 28603,
+  "short_name": "help_offering_and_health_advice",
+  "primary_explanation": "The majority of sentences express a speaker's desire or offer to help, often in a health or wellness context, using phrases like 'I want to help you' or 'how can I help you'.",
+  "candidate_behavioral_explanation": "The sentences primarily function as offers of assistance, advice, or support, typical of a healthcare provider or counselor.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001", "s002", "s003", "s004", "s005", "s006", "s007", "s008", "s009", "s010", "s011", "s012", "s013", "s014", "s015", "s016", "s017", "s018", "s019", "s020", "s021", "s022", "s023", "s024", "s025", "s026", "s027", "s028", "s029", "s030", "s031", "s032", "s033", "s034", "s036", "s037", "s040", "s041", "s042", "s043", "s044", "s045", "s046", "s047", "s048", "s049", "s050"],
+  "outlier_sample_ids": ["s035", "s038", "s039"],
+  "representative_evidence_ids": ["s008", "s014", "s020"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s008",
+      "evidence": "I really try to help you",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s014",
+      "evidence": "I really want to help you",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s020",
+      "evidence": "I want to help you",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s035",
+      "evidence": "you want you and clarity want clarity",
+      "evidence_level": "semantic",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s038",
+      "evidence": "you it's good to see it",
+      "evidence_level": "semantic",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s039",
+      "evidence": "we are you said you were hurting in the first place",
+      "evidence_level": "semantic",
+      "evidence_role": "contradict"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences may reflect a motivational interviewing style, with open questions and affirmations.",
+    "The pattern could be a transcription artifact from healthcare conversations, with repeated phrases due to turn-taking."
+  ],
+  "possible_confounds": [
+    "The dataset may be drawn from a specific domain (e.g., dietitian or dental consultations), biasing the topic.",
+    "Some sentences are fragments or contain disfluencies, making interpretation ambiguous."
+  ],
+  "limitations": [
+    "A few sentences (s035, s038, s039) do not clearly fit the help-offering pattern.",
+    "The behavioral function is inferred from content, not from actual discourse context."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of help-offering is very frequent and consistent across the majority of sentences, with only three outliers that are unclear or unrelated."
+}

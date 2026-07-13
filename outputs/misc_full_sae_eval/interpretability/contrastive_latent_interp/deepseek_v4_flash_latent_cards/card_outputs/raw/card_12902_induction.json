@@ -1,0 +1,122 @@
+{
+  "latent_idx": 12902,
+  "short_name": "scale_question_template",
+  "primary_explanation": "The sentences predominantly follow a template that introduces a numeric scale (typically 0-10 or 1-10) with anchor descriptions, then asks the respondent to rate themselves on that scale. The pattern includes phrases like 'on a scale of X to Y', 'zero being... and ten being...', and a question about where the respondent falls.",
+  "candidate_behavioral_explanation": "The sentences function as requests for self-assessment or rating, commonly used in clinical or motivational interviewing contexts to quantify subjective states like readiness, confidence, importance, or pain.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s007","s009","s011","s012","s013","s014","s016","s018","s019","s020","s021","s022","s025","s026","s028","s029","s032","s034","s035","s036","s037","s038","s039","s040","s041","s042","s044","s045","s046","s047","s048","s049"],
+  "outlier_sample_ids": ["s006","s008","s010","s015","s017","s023","s024","s027","s030","s031","s033","s043","s050"],
+  "representative_evidence_ids": ["s001","s002","s007"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Uses 'scale' with anchors 'zero being not ready at all and ten being like yeah I'm really ready to quit' and asks 'where are you on that'.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s002",
+      "evidence": "Explicitly says 'tell me a scale of zero to ten where zero is no pain at all on ten is like take me to the emergency room where would you say the pain is?'.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s007",
+      "evidence": "Contains 'using a scale again... from scale of zero to ten zero being I'm not confident whatsoever and 10 being I'm super confident how confident are you'.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s006",
+      "evidence": "Has garbled text and incomplete scale description, deviating from the clear template.",
+      "evidence_level": "surface_form",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s008",
+      "evidence": "Reverses anchor order ('most confident one is the least confident') and uses 'imaginary scale', which is atypical.",
+      "evidence_level": "semantic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s010",
+      "evidence": "Incomplete and unclear ('on a scale of 1 to 10 where one is not at all antennas completely when').",
+      "evidence_level": "surface_form",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s015",
+      "evidence": "Does not specify scale endpoints clearly ('if if they your success rate at the moment is?').",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s017",
+      "evidence": "Incomplete ('on a scale of one to ten where one is not at all antennas completely what number').",
+      "evidence_level": "surface_form",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s023",
+      "evidence": "Asks 'tell me what that probably means' instead of a rating question.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s024",
+      "evidence": "Contains garbled text ('detective birth control every time every time we is sick correctly as its prescribed').",
+      "evidence_level": "surface_form",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s027",
+      "evidence": "Has garbled text ('he'll conference are you').",
+      "evidence_level": "surface_form",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s030",
+      "evidence": "Does not follow the scale template ('what if anything will bring up too late online on that scale').",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s031",
+      "evidence": "Unclear and does not match the template ('would you agree skittles on save the scale that it's important to stop skills').",
+      "evidence_level": "surface_form",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s033",
+      "evidence": "Comment about using scales, not a scale question itself.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s043",
+      "evidence": "Incomplete ('on a scale of  to , how dark?').",
+      "evidence_level": "surface_form",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s050",
+      "evidence": "Only a fragment ('on that same scale from one to ten') without a question.",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be interpreted as a collection of prompts from motivational interviewing or clinical assessment interviews, where the scale is used to elicit self-reported readiness, confidence, or importance.",
+    "Alternatively, the pattern might reflect a transcription artifact where incomplete or garbled sentences are outliers, but the core template remains a request for a numeric self-rating."
+  ],
+  "possible_confounds": [
+    "Transcription errors or incomplete utterances (e.g., s006, s010, s017) may obscure the pattern.",
+    "Some sentences (e.g., s008, s033) are meta-commentary about scales rather than actual scale questions."
+  ],
+  "limitations": [
+    "The analysis is based solely on text; prosody and context are unavailable.",
+    "Outliers may represent different sub-types of scale questions or errors."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The primary pattern covers a clear majority of sentences (37 out of 50) with consistent lexical and syntactic features. Outliers are mostly garbled or incomplete, supporting the pattern's stability. Alternative interpretations are weaker."
+}

@@ -1,0 +1,56 @@
+{
+  "latent_idx": 27857,
+  "short_name": "scale_rating_questions",
+  "primary_explanation": "The sentences predominantly follow a template asking the respondent to rate something (e.g., confidence, importance, readiness, pain) on a numeric scale, typically 1-10 or 0-10, often with explicit anchors for the endpoints.",
+  "candidate_behavioral_explanation": "The sentences function as requests for self-assessment or rating, likely used in motivational interviewing, clinical assessment, or survey contexts to quantify subjective states.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s001","s005","s021"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Explicit scale from 1 to 10 with anchors for confidence.",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s005",
+      "evidence": "Scale from 0 to 10 with anchors for importance.",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s021",
+      "evidence": "Scale from 0 to 10 with anchors for readiness.",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s009",
+      "evidence": "Scale from 1 to 5, but still a numeric rating request.",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s022",
+      "evidence": "Scale from 0 to 100, still a numeric rating.",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be interpreted as a collection of questions from different domains (health, behavior, pain) unified only by the use of a numeric scale.",
+    "The pattern might reflect a specific interview protocol or questionnaire (e.g., motivational interviewing readiness rulers) rather than a general linguistic phenomenon."
+  ],
+  "possible_confounds": [
+    "Some sentences have incomplete scale anchors or missing numbers (e.g., s028, s029), possibly due to transcription errors.",
+    "The set includes variations in scale range (0-10, 1-10, 0-100) and topic (pain, confidence, importance, readiness), but the core structure remains consistent."
+  ],
+  "limitations": [
+    "The analysis does not account for the specific context or purpose of the questions, which may vary across samples.",
+    "Some sentences (e.g., s045) are ambiguous and may not fit the rating request pattern as clearly."
+  ],
+  "confidence": 5,
+  "confidence_rationale": "All 50 sentences follow the same basic pattern of asking for a numeric rating on a scale, with only minor variations in scale endpoints and topics. The pattern is highly stable and covers the entire set."
+}

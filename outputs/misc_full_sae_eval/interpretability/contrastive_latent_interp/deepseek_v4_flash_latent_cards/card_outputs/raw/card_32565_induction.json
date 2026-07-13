@@ -1,0 +1,44 @@
+{
+  "latent_idx": 32565,
+  "short_name": "scale_question_template",
+  "primary_explanation": "The sentences predominantly follow a template: a discourse marker (e.g., 'so', 'okay', 'and') followed by a phrase like 'on a scale of X to Y' (where X and Y are numbers, often 0 and 10, 1 and 10, or 0 and 100), optionally with an anchor description (e.g., 'zero being not important and ten being very important'), and then a question about importance, confidence, readiness, or pain. This pattern covers the majority of sentences.",
+  "candidate_behavioral_explanation": "The sentences function as requests for a self-report rating on a numerical scale, typically used in motivational interviewing or clinical assessment to gauge a patient's importance, confidence, readiness, or pain level.",
+  "explanation_type": "linguistic_structure",
+  "supporting_sample_ids": ["s001", "s002", "s003", "s004", "s005", "s006", "s007", "s008", "s009", "s010", "s011", "s012", "s013", "s014", "s015", "s016", "s017", "s018", "s019", "s020", "s021", "s022", "s023", "s024", "s025", "s026", "s027", "s028", "s029", "s030", "s031", "s032", "s033", "s034", "s035", "s036", "s037", "s038", "s039", "s040", "s041", "s042", "s043", "s044", "s045", "s046", "s047", "s048", "s049", "s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s004", "s006", "s015"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s004",
+      "evidence": "Contains the full template: 'so let me ask you on a scale of zero to ten zero being not confident at all and ten being 100% confident how confident are you...'",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s006",
+      "evidence": "Includes 'okay so can I ask you on a scale of zero to ten... zero being not important whatsoever and ten being super uber important how important is it...'",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s015",
+      "evidence": "Shows 'so on a scale of zero to ten ten being really ready to make a change zero being really not ready at all where do you think you are...'",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be interpreted as a behavioral function of eliciting a self-assessment for behavior change, common in motivational interviewing.",
+    "Alternatively, they might be seen as a surface artifact of a data collection protocol where interviewers use a fixed scale question template."
+  ],
+  "possible_confounds": [
+    "Some sentences have missing numbers (e.g., s012, s018, s022, s033, s037) or vary the scale endpoints (e.g., s014 uses 0 to 100), but the core template remains.",
+    "A few sentences (e.g., s044, s048) are less clear but still fit the scale question pattern."
+  ],
+  "limitations": [
+    "The analysis does not capture variations in the exact wording of anchors or the specific question asked.",
+    "Some sentences (e.g., s005, s044) are fragmentary but still fit the overall pattern."
+  ],
+  "confidence": 5,
+  "confidence_rationale": "The pattern is extremely consistent across all 50 sentences, with every sentence containing a scale question. The template is stable even with minor variations in numbers or anchors. No outliers exist."
+}

@@ -1,0 +1,56 @@
+{
+  "latent_idx": 111,
+  "short_name": "it-cleft and discourse marker 'so'",
+  "primary_explanation": "The majority of sentences begin with 'it' as a dummy subject (e.g., 'It sounds like', 'It's', 'It measures') or start with discourse markers like 'so' or 'okay so', often followed by a clause summarizing or reflecting the interlocutor's situation. This pattern suggests a reflective or summarizing discourse function.",
+  "candidate_behavioral_explanation": "The sentences appear to function as reflections, summaries, or confirmations of the interlocutor's statements, common in therapeutic or counseling contexts.",
+  "explanation_type": "linguistic_structure",
+  "supporting_sample_ids": ["s001", "s002", "s003", "s004", "s005", "s006", "s007", "s008", "s009", "s010", "s011", "s012", "s013", "s014", "s015", "s016", "s017", "s018", "s019", "s020", "s021", "s022", "s023", "s024", "s025", "s026", "s027", "s028", "s029", "s030", "s031", "s032", "s033", "s034", "s035", "s036", "s037", "s038", "s039", "s040", "s041", "s042", "s043", "s044", "s045", "s046", "s047", "s048", "s049", "s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s005", "s030", "s035"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s005",
+      "evidence": "Starts with 'So it sounds that' – discourse marker 'so' + dummy 'it' + reflective verb.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s030",
+      "evidence": "Starts with 'Wow okay so it sounds like' – multiple discourse markers + dummy 'it'.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s035",
+      "evidence": "Starts with 'okay so it feels like' – discourse markers + dummy 'it' + reflective verb.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s001",
+      "evidence": "Starts with 'As it says' – dummy 'it' in a fixed expression.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s028",
+      "evidence": "Starts with 'It's Friday' – dummy 'it' in a simple statement.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences may be from a medical or counseling dialogue, as many refer to health behaviors (e.g., smoking, drinking, exercise).",
+    "The pattern could be an artifact of transcription, where speakers use fillers like 'so' and 'okay' frequently."
+  ],
+  "possible_confounds": [
+    "The dataset may be drawn from a single domain (e.g., motivational interviewing), biasing the discourse markers and reflective structure.",
+    "The dummy 'it' pattern is extremely common in English, so the pattern may be too broad to be distinctive."
+  ],
+  "limitations": [
+    "Some sentences (e.g., s028 'It's Friday') are simple statements that fit the dummy 'it' pattern but lack the reflective function.",
+    "The analysis does not account for sentence length or specific lexical choices beyond the initial structure."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of dummy 'it' and discourse markers 'so'/'okay' covers all sentences, but the behavioral function is less uniform; some sentences are simple statements. Confidence is high for linguistic structure but moderate for behavioral function."
+}

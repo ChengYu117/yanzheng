@@ -1,0 +1,56 @@
+{
+  "latent_idx": 12544,
+  "short_name": "wh-word repetitions and false starts",
+  "primary_explanation": "The sentences frequently contain repeated wh-words (e.g., 'what what', 'why why', 'how how') and false starts or self-corrections, suggesting a pattern of disfluent questioning or exploratory speech.",
+  "candidate_behavioral_explanation": "The available sentences do not support a stable behavioral-function interpretation.",
+  "explanation_type": "linguistic_structure",
+  "supporting_sample_ids": ["s001", "s002", "s003", "s004", "s005", "s006", "s007", "s008", "s009", "s010", "s011", "s012", "s013", "s014", "s015", "s016", "s017", "s018", "s019", "s020", "s021", "s022", "s023", "s024", "s025", "s026", "s027", "s028", "s029", "s030", "s031", "s032", "s033", "s034", "s035", "s036", "s037", "s038", "s039", "s040", "s041", "s042", "s043", "s044", "s045", "s046", "s047", "s048", "s049", "s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s004", "s012", "s035"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s004",
+      "evidence": "Repeated 'what what's' and 'what do'",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s012",
+      "evidence": "Repeated 'why why'",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s035",
+      "evidence": "Repeated 'what what' and false start 'what ideas i mean i guess'",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s001",
+      "evidence": "False start 'going to the why yeah I'm really'",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s020",
+      "evidence": "Repeated 'how' and false start 'how will privacy what is how does cutting'",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences may be transcriptions of spontaneous speech with disfluencies, reflecting natural conversational repair.",
+    "The pattern could be an artifact of transcription where repeated words are captured verbatim."
+  ],
+  "possible_confounds": [
+    "The dataset may consist of clinical or counseling interviews where questions are rephrased for clarity.",
+    "Some sentences (e.g., s008, s017) are short and lack obvious repetitions, but still fit the overall pattern of informal questioning."
+  ],
+  "limitations": [
+    "The pattern is primarily structural and does not capture semantic or functional consistency.",
+    "Some sentences (e.g., s031, s038) contain repetitions but are not questions, slightly broadening the pattern."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of wh-word repetitions and false starts is highly consistent across the majority of sentences, with clear syntactic evidence. Alternative interpretations are weaker, and confounds are manageable."
+}

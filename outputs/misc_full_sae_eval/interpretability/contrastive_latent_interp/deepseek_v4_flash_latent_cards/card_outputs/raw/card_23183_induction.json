@@ -1,0 +1,68 @@
+{
+  "latent_idx": 23183,
+  "short_name": "what-initial questions",
+  "primary_explanation": "The majority of sentences are questions beginning with 'what', often with repetition or hesitation, and are used to elicit information, opinions, or reflections from an interlocutor.",
+  "candidate_behavioral_explanation": "The sentences function as open-ended probes or requests for information, typical of counseling, interviewing, or coaching contexts.",
+  "explanation_type": "linguistic_structure",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s028","s029","s030","s031","s032","s033","s034","s035","s037","s038","s039","s040","s041","s042","s043","s044","s045","s047","s048","s049","s050"],
+  "outlier_sample_ids": ["s026","s027","s036","s046"],
+  "representative_evidence_ids": ["s001","s005","s006"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Starts with 'What, what are your thoughts' – repetition and question form.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s005",
+      "evidence": "'What are, what are you thinking about?' – typical 'what' question with repetition.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s006",
+      "evidence": "'What do you think?' – simple 'what' question.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s026",
+      "evidence": "Begins with 'but but what I know' – not a question, but a statement.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s027",
+      "evidence": "'ok so what's nothing to me is that' – garbled, not a clear question.",
+      "evidence_level": "surface_form",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s036",
+      "evidence": "'but what I'm the point I'm trying to make' – statement, not a question.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s046",
+      "evidence": "'I understand that... but what's really important is' – statement, not a question.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences may reflect a therapeutic or motivational interviewing style, with open-ended questions to explore client perspectives.",
+    "The pattern could be a transcription artifact where many 'what' questions are from a single speaker in a dialogue, but the context is not provided."
+  ],
+  "possible_confounds": [
+    "The dataset may be drawn from a specific domain (e.g., counseling, health coaching) that naturally uses many 'what' questions.",
+    "Transcription errors or disfluencies (repetitions, false starts) may obscure the underlying pattern."
+  ],
+  "limitations": [
+    "The analysis is based solely on surface form; without context, behavioral function is inferred but not confirmed.",
+    "A few sentences are statements or garbled, indicating the pattern is not universal."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The 'what' question pattern is highly consistent across 46 of 50 sentences, with only 4 clear outliers. The pattern is stable and easily identifiable."
+}

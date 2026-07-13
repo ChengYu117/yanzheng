@@ -1,0 +1,56 @@
+{
+  "latent_idx": 1211,
+  "short_name": "therapist_reframing_and_summarizing",
+  "primary_explanation": "The sentences predominantly function as therapist or counselor utterances that summarize, reframe, or validate a client's reported experiences, often using 'so', 'okay', 'it sounds like', or 'what I hear you saying' to introduce a restatement or interpretation of the client's situation.",
+  "candidate_behavioral_explanation": "The primary behavioral function is reflective listening and summarizing, a core therapeutic technique used to demonstrate understanding and encourage further disclosure.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s001","s003","s016"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Starts with 'and so' and summarizes the client's avoidance and resulting fear.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s003",
+      "evidence": "Uses 'so it sounds like' to summarize the client's workload and parental nagging.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s016",
+      "evidence": "Uses 'okay so from what I hear you saying' to reflect the client's difficulty and knowledge.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s020",
+      "evidence": "Direct question 'you ever feel like you're choking' is a therapeutic probe, consistent with the pattern.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s033",
+      "evidence": "Uses 'so at this point as you wake up' to describe a hypothetical scenario, still a reflective summary.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be seen as a collection of motivational interviewing techniques, including affirmations and reflections.",
+    "Alternatively, they might represent a data annotation artifact where all sentences are from a single therapy session transcript, leading to uniform discourse style."
+  ],
+  "possible_confounds": [
+    "All sentences are from a single domain (therapy/counseling), so the pattern may not generalize to other contexts.",
+    "The pattern is heavily reliant on discourse markers like 'so' and 'okay', which could be an artifact of the transcription style."
+  ],
+  "limitations": [
+    "The analysis does not account for the client's responses, which are absent from the sample.",
+    "Some sentences (e.g., s020) are direct questions, which slightly differ from the summarizing pattern but still serve a therapeutic function."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of reflective summarizing is highly consistent across all 50 sentences, with clear discourse markers and pragmatic function. Alternative explanations are weaker, and confounds are acknowledged but do not undermine the primary interpretation."
+}

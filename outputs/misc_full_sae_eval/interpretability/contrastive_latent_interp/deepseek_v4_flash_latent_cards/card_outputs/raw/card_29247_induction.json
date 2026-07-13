@@ -1,0 +1,56 @@
+{
+  "latent_idx": 29247,
+  "short_name": "scale_rating_questions",
+  "primary_explanation": "The sentences predominantly follow a template asking for a rating on a numerical scale (typically 1-10 or 0-10) regarding confidence, importance, readiness, or other subjective states, often with explicit anchors for endpoints.",
+  "candidate_behavioral_explanation": "The sentences function as structured questions eliciting self-reported ratings on a Likert-type scale, commonly used in motivational interviewing or clinical assessment contexts.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s003","s016","s027"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s003",
+      "evidence": "Contains the phrase 'on a scale of one to ten how confident are you' with explicit anchors.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s016",
+      "evidence": "Uses 'on a scale of zero to ten' with anchors 'zero being not important whatsoever and ten being super uber important'.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s027",
+      "evidence": "Includes 'on a scale of zero to ten zero being not confident at all and ten being 100% confident'.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s033",
+      "evidence": "Uses 'on a scale of one to five five being the lowest' which deviates from the typical 1-10 or 0-10 range.",
+      "evidence_level": "surface_form",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s050",
+      "evidence": "Uses 'on a scale of zero to 100' which is an outlier scale range.",
+      "evidence_level": "surface_form",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences are all questions, but the primary pattern is the scale-rating template rather than just being interrogative.",
+    "The sentences could be seen as examples of motivational interviewing techniques, but the scale template is more specific and stable."
+  ],
+  "possible_confounds": [
+    "Some sentences have incomplete or garbled text (e.g., s005, s015) which may obscure the pattern.",
+    "The scale endpoints vary (1-10, 0-10, 1-5, 0-100) but the core template remains similar."
+  ],
+  "limitations": [
+    "A few sentences (e.g., s017, s025, s030, s036, s038, s039, s044, s049) do not contain the explicit 'on a scale of...' phrase but still refer to scale numbers, so they are included as supporting but are less prototypical.",
+    "The analysis does not distinguish between different attributes being rated (confidence, importance, readiness, etc.), but the structural pattern is consistent."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The scale-rating template is highly consistent across the majority of sentences, with only minor variations in scale range and wording. The pattern is clear and stable, though a few sentences lack the explicit phrase but still fit the overall function."
+}

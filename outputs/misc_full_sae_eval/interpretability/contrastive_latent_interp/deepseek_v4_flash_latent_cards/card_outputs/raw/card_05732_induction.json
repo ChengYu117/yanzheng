@@ -1,0 +1,56 @@
+{
+  "latent_idx": 5732,
+  "short_name": "therapeutic_discourse_markers",
+  "primary_explanation": "The sentences predominantly feature first-person singular pronouns ('I', 'I've', 'I'm') combined with discourse markers like 'Well' and verbs expressing cognitive states ('think', 'know', 'understand', 'appreciate'), suggesting a pattern of reflective or therapeutic dialogue where a speaker expresses personal thoughts, feelings, or plans.",
+  "candidate_behavioral_explanation": "The sentences appear to function as therapeutic or counseling discourse, where the speaker (likely a therapist or counselor) uses reflective statements, affirmations, and planning language to engage with a client.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s012", "s013", "s014", "s015", "s016", "s017", "s018", "s021", "s022", "s023", "s024", "s025", "s027", "s028", "s031", "s032", "s033", "s034", "s035", "s036", "s037", "s038", "s039", "s040", "s041", "s042", "s043", "s044", "s045", "s046", "s047", "s048", "s049", "s050"],
+  "outlier_sample_ids": ["s001", "s002", "s003", "s004", "s005", "s006", "s007", "s008", "s009", "s010", "s011", "s019", "s020", "s026", "s029", "s030"],
+  "representative_evidence_ids": ["s012", "s033", "s041"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s012",
+      "evidence": "Starts with 'Well, I, I really appreciate again your coming in today' – uses 'Well' discourse marker and first-person appreciation.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s033",
+      "evidence": "Starts with 'I understand you've come here today to the agency because you have a recent arrest' – uses 'I understand' to acknowledge client's situation.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s041",
+      "evidence": "Starts with 'I understand you don't have very much time but I really appreciate you stopping by' – combines understanding and appreciation.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s001",
+      "evidence": "Lacks first-person singular pronoun and discourse marker; fragmented and unclear.",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s002",
+      "evidence": "Narrative about a mall visit; no first-person singular pronoun or therapeutic language.",
+      "evidence_level": "topical",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be from a medical or clinical intake interview, focusing on patient history and treatment planning.",
+    "The pattern might reflect a general conversational style where speakers use 'I' statements to express personal experiences or opinions, not necessarily therapeutic."
+  ],
+  "possible_confounds": [
+    "The dataset may include multiple speakers or contexts (e.g., therapy, medical, casual conversation) that are not distinguished.",
+    "Transcription artifacts or incomplete sentences may obscure the intended function."
+  ],
+  "limitations": [
+    "The primary interpretation covers about 68% of sentences (34 out of 50), but outliers include diverse topics and structures.",
+    "Without speaker labels or context, the behavioral function is inferred from linguistic cues alone."
+  ],
+  "confidence": 3,
+  "confidence_rationale": "The pattern of first-person singular pronouns and therapeutic discourse markers is consistent across a majority of sentences, but a significant minority (16 sentences) do not fit, and alternative interpretations (e.g., general conversation) are plausible."
+}

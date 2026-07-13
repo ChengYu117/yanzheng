@@ -1,0 +1,104 @@
+{
+  "latent_idx": 32596,
+  "short_name": "therapeutic reflection with 'you're'",
+  "primary_explanation": "The majority of sentences are therapist or counselor reflections that use the second-person pronoun 'you're' followed by a present participle or adjective to describe the client's current state or behavior, often prefaced by discourse markers like 'so', 'okay', or 'it sounds like'.",
+  "candidate_behavioral_explanation": "The sentences function as reflective listening statements, a core therapeutic technique where the therapist paraphrases or summarizes the client's feelings or experiences to show understanding and encourage further disclosure.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001", "s002", "s003", "s004", "s005", "s006", "s007", "s008", "s009", "s010", "s011", "s012", "s013", "s014", "s016", "s017", "s018", "s020", "s021", "s024", "s025", "s027", "s028", "s029", "s030", "s031", "s032", "s035", "s036", "s037", "s039", "s041", "s042", "s044", "s045", "s046", "s047", "s048", "s049", "s050"],
+  "outlier_sample_ids": ["s015", "s019", "s022", "s023", "s026", "s033", "s034", "s038", "s040", "s043"],
+  "representative_evidence_ids": ["s001", "s003", "s014"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Uses 'you're feeling' to reflect the client's emotional state.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s003",
+      "evidence": "Uses 'sounds like you're noticing' to summarize client's observations.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s014",
+      "evidence": "Uses 'it sounds like your sleep has really been affected you're not getting good quality sleep' to reflect client's experience.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s015",
+      "evidence": "Contains 'no no no no no no' and 'we got hope heaps of time' which are not reflective listening; appears to be client speech or a different interaction.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s019",
+      "evidence": "Uses 'we don't really recommend' which is advice-giving, not reflection.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s022",
+      "evidence": "Contains 'things seem to be going pretty special you are you' which is fragmented and not a clear reflection.",
+      "evidence_level": "syntactic",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s023",
+      "evidence": "Uses 'last time we talked' to recall past events, not a reflection of current state.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s026",
+      "evidence": "Contains 'I think just really stupid' which appears to be client self-report, not therapist reflection.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s033",
+      "evidence": "Uses 'can we make a follow up appointment' which is a scheduling question, not reflection.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s034",
+      "evidence": "Uses 'I was taking a look at your medication profile' which is a factual statement, not reflection.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s038",
+      "evidence": "Uses 'we have some new medication we can try' which is offering a solution, not reflection.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s040",
+      "evidence": "Uses 'I would just like to hear about some of your personal goals' which is an agenda-setting statement, not reflection.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s043",
+      "evidence": "Uses 'The idea is that you would use the nicotine replacement' which is giving advice, not reflection.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "contradict"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be part of a motivational interviewing session where the therapist uses reflective listening to build rapport and elicit change talk.",
+    "The pattern might be a linguistic artifact of transcribed therapy sessions where the therapist frequently uses 'you're' to paraphrase client statements."
+  ],
+  "possible_confounds": [
+    "Some sentences may be from different speakers (therapist vs. client) or different stages of the session, affecting the pattern.",
+    "Transcription errors or incomplete sentences may obscure the intended function."
+  ],
+  "limitations": [
+    "The outlier sentences include a mix of client speech, advice-giving, and administrative talk, which are not covered by the primary interpretation.",
+    "The pattern is based on surface-level linguistic features and may not capture deeper discourse functions."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The primary pattern of reflective listening using 'you're' is highly consistent across 40 out of 50 sentences, with clear exceptions that are easily identifiable as different speech acts. The pattern remains stable after considering potential confounds."
+}

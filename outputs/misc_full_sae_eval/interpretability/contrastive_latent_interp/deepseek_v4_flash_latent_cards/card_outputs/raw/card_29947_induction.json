@@ -1,0 +1,68 @@
+{
+  "latent_idx": 29947,
+  "short_name": "how_long_questions",
+  "primary_explanation": "The majority of sentences are questions about duration, frequency, or time intervals, typically starting with 'how long' or 'how many' and often using present perfect or past tense. The pattern is a recurring interrogative structure probing temporal aspects of experiences or behaviors.",
+  "candidate_behavioral_explanation": "The sentences function as requests for temporal information, likely in a clinical or counseling context (e.g., assessing smoking, drinking, exercise, or symptoms). They are probing questions aimed at gathering quantitative time-related data.",
+  "explanation_type": "linguistic_structure",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s045","s047","s049","s050"],
+  "outlier_sample_ids": ["s043","s044","s046","s048"],
+  "representative_evidence_ids": ["s004","s014","s024"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s004",
+      "evidence": "Starts with 'how long have you been' – typical duration question structure.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s014",
+      "evidence": "'how long have you been married for' – duration question with present perfect.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s024",
+      "evidence": "'how long has this been going on' – common clinical question about symptom duration.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s043",
+      "evidence": "'Wow that's a long time' – exclamation, not a question.",
+      "evidence_level": "syntactic",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s044",
+      "evidence": "'no no no I listen I only have a certain amount of time' – statement about time, not a question.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s046",
+      "evidence": "'yes yes yeah it's not that long since you were last here' – declarative, not interrogative.",
+      "evidence_level": "syntactic",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s048",
+      "evidence": "'um I have ten minutes that I can maybe sit down and talk' – statement, not a question.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "contradict"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be interpreted as a mix of clinical assessment questions and conversational fillers, but the dominant pattern remains temporal questions.",
+    "Some sentences (e.g., s036-s041) use 'how many' or 'how often' instead of 'how long', but still fit the temporal information request pattern."
+  ],
+  "possible_confounds": [
+    "The dataset may be drawn from a specific domain (e.g., medical interviews) where temporal questions are common, biasing the pattern.",
+    "Transcription artifacts (e.g., incomplete sentences like s035 'how long has') may inflate the count of temporal questions."
+  ],
+  "limitations": [
+    "A few sentences (s043, s044, s046, s048) are not questions and do not fit the primary pattern, but they are a small minority.",
+    "The pattern is broad; some sentences (e.g., s049 about depth) are only loosely temporal."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of temporal questions is clear and covers the vast majority of sentences. Exceptions are few and clearly identifiable. Alternative interpretations are weaker."
+}

@@ -1,0 +1,62 @@
+{
+  "latent_idx": 30517,
+  "short_name": "health_diet_discourse",
+  "primary_explanation": "The sentences form a health counseling or educational dialogue, focusing on diet, sugar, alcohol, and chronic disease management (e.g., diabetes, cholesterol, blood pressure). The pattern includes questions, advice, and information exchange about nutrition and health risks.",
+  "candidate_behavioral_explanation": "The primary behavioral function is health education and counseling, with speakers providing information, asking about habits, and giving advice on diet and lifestyle changes.",
+  "explanation_type": "topic",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s001","s003","s012"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Discusses calorie content of fruit juice, a diet-related topic.",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s003",
+      "evidence": "Compares calories in orange juice and cola, typical health education.",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s012",
+      "evidence": "States sugar content in soda, common in dietary advice.",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s013",
+      "evidence": "Explains A1C test for blood sugar control, medical education.",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s024",
+      "evidence": "Labels drinking level as high-risk, counseling language.",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s041",
+      "evidence": "Mentions high blood pressure from physical exam, clinical context.",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be from a motivational interviewing session, with open-ended questions and reflective listening.",
+    "Alternatively, they might be part of a patient education script covering multiple health topics like diabetes, hypertension, and substance use."
+  ],
+  "possible_confounds": [
+    "Some sentences (e.g., s022, s032) mention pets as asthma triggers, which is a different health topic but still within health counseling.",
+    "Sentence s042 ('vegetables what kind of apples do you like') seems slightly off-topic but could be part of dietary discussion."
+  ],
+  "limitations": [
+    "The set includes many different health sub-topics, making it broad rather than narrowly focused.",
+    "Some sentences are incomplete or fragmented, possibly from conversational speech."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The health/diet topic is consistent across all sentences, with no clear outliers. The pattern is stable and covers the entire set, though sub-topics vary."
+}

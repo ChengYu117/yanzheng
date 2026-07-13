@@ -1,0 +1,68 @@
+{
+  "latent_idx": 30224,
+  "short_name": "therapeutic reflection and questioning",
+  "primary_explanation": "The sentences predominantly consist of therapist-like reflections, paraphrases, and open-ended questions that restate or explore the client's statements, often using discourse markers like 'so', 'okay', 'it sounds like', and 'what I'm hearing is'.",
+  "candidate_behavioral_explanation": "The primary behavioral function is therapeutic reflection and probing, where the speaker mirrors the client's words to encourage elaboration or insight.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s009","s010","s011","s012","s013","s014","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": ["s008","s015","s030","s043"],
+  "representative_evidence_ids": ["s005","s020","s025"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s005",
+      "evidence": "Uses 'it sounds like you really feel like you let yourself and your children down' – a classic reflective listening statement.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s020",
+      "evidence": "Starts with 'so it sounds like you're saying that' – a discourse marker introducing a paraphrase.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s025",
+      "evidence": "Begins with 'okay so what I'm hearing you say is that' – a template for summarizing client statements.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s008",
+      "evidence": "Contains disjointed and incoherent speech ('well well the 1i really talk about uh when I got it she says she's depressed...') that does not follow the reflective pattern.",
+      "evidence_level": "semantic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s015",
+      "evidence": "Describes a third-person scenario ('you asked a depressed person when they were happy...') rather than reflecting the client's own words.",
+      "evidence_level": "semantic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s030",
+      "evidence": "Contains informal, possibly non-therapeutic language ('and you told her heart she's she's hard work isn't she') that deviates from the reflective style.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s043",
+      "evidence": "Is a personal statement ('yeah see online all the time about how sugars really bad for your teeth...') without reflective or questioning structure.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be part of a motivational interviewing script, focusing on eliciting change talk.",
+    "They might represent a collection of counseling session transcripts with a mix of therapist and client turns, but the majority are therapist turns."
+  ],
+  "possible_confounds": [
+    "Some sentences (e.g., s008, s015, s030, s043) may be client utterances or contain transcription errors, breaking the pattern.",
+    "The pattern may be an artifact of the data source (e.g., therapy transcripts) rather than a designed feature."
+  ],
+  "limitations": [
+    "The interpretation is based on surface-level discourse markers and may not capture deeper therapeutic techniques.",
+    "Outliers suggest the set may include both therapist and client speech, but the majority are therapist-like."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of reflective listening and questioning is highly consistent across 46 out of 50 sentences, with only 4 clear outliers. The evidence is strong for a behavioral function interpretation."
+}

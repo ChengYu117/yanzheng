@@ -1,0 +1,56 @@
+{
+  "latent_idx": 20743,
+  "short_name": "second-person advice and evaluation",
+  "primary_explanation": "The majority of sentences use second-person pronouns (you/your) to directly address the listener, often in the context of health advice, evaluation, or personal reflection. This pattern is consistent across many sentences, though some use first-person plural (we) or third-person (it) constructions.",
+  "candidate_behavioral_explanation": "The sentences appear to function as therapeutic or medical counseling dialogue, where the speaker gives advice, asks questions, or makes observations about the listener's health behaviors (e.g., smoking, diabetes, dental care).",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001", "s002", "s003", "s004", "s005", "s006", "s007", "s008", "s009", "s010", "s011", "s012", "s013", "s014", "s015", "s016", "s017", "s018", "s019", "s020", "s021", "s022", "s023", "s024", "s025", "s026", "s027", "s028", "s029", "s030", "s031", "s032", "s033", "s034", "s035", "s036", "s037", "s038", "s039", "s040", "s041", "s042", "s043", "s044", "s045", "s046", "s047", "s048", "s049", "s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s016", "s020", "s038"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s016",
+      "evidence": "Second-person pronoun 'you' and health-related topic (diabetes).",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s020",
+      "evidence": "Second-person pronoun and advice about smoking cessation.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s038",
+      "evidence": "Direct imperative 'You need to quit' addressing the listener.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s001",
+      "evidence": "First-person plural 'We've' and question about foods, deviating from second-person pattern.",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s005",
+      "evidence": "First-person plural 'We know' and clinical trial reference, not directly addressing listener.",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences may be from a medical or counseling transcript, with a mix of patient-centered (you) and clinician-centered (we) language.",
+    "The pattern could reflect a motivational interviewing style, where the speaker uses both affirmations and direct advice."
+  ],
+  "possible_confounds": [
+    "The dataset may include multiple speakers or contexts, mixing different discourse functions.",
+    "Some sentences are incomplete or fragmented, making pattern detection harder."
+  ],
+  "limitations": [
+    "The analysis is based solely on text without speaker or context metadata.",
+    "Some sentences (e.g., s023 'It's Friday.') are generic and do not clearly fit the health advice theme."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The second-person address pattern is highly consistent across the majority of sentences, with clear health-related content. Exceptions are minor and do not undermine the overall interpretation."
+}

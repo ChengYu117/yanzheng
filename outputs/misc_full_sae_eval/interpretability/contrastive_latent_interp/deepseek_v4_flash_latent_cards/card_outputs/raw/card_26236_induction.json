@@ -1,0 +1,56 @@
+{
+  "latent_idx": 26236,
+  "short_name": "cholesterol_and_blood_pressure_discourse",
+  "primary_explanation": "The sentences predominantly discuss cholesterol and blood pressure management, often in a clinical or counseling context, using discourse markers like 'okay' and 'so' to structure explanations or instructions.",
+  "candidate_behavioral_explanation": "The available sentences do not support a stable behavioral-function interpretation.",
+  "explanation_type": "topic",
+  "supporting_sample_ids": ["s001", "s002", "s003", "s004", "s005", "s006", "s007", "s008", "s009", "s010", "s011", "s012", "s013", "s014", "s015", "s016", "s017", "s018", "s019", "s020", "s021", "s022", "s023", "s024", "s025", "s026", "s027", "s028", "s029", "s030", "s031", "s032", "s033", "s034", "s035", "s036", "s037", "s038", "s039", "s040", "s041", "s042", "s043", "s044", "s045", "s046", "s047", "s048", "s049", "s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s001", "s002", "s003"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "okay okay so this medication is for your cholesterol",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s002",
+      "evidence": "he's right this medicine is designed to help lower your cholesterol and that means that it will help lower your risk of having a heart attack or a stroke",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s003",
+      "evidence": "all right so this medication is for your cholesterol you're gonna take it once a day you can take it with a lot of water and you want to make sure you don't miss any doses okay",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s018",
+      "evidence": "sometimes just a loss of 10 pounds can make a tremendous impact on your on your blood pressure",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s039",
+      "evidence": "You're putting yourself at risk for lung cancer, for Emphysema, for oral cancers, for heart disease.",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences may reflect a clinical counseling or patient education discourse, with frequent use of 'okay' and 'so' as discourse markers.",
+    "The sentences could be part of a medical interview or health coaching session, focusing on medication adherence and lifestyle changes."
+  ],
+  "possible_confounds": [
+    "The dataset may be drawn from multiple conversations or sources, leading to varied topics like cholesterol, blood pressure, and general health risks.",
+    "Some sentences appear to be incomplete or contain transcription errors, which may obscure the intended pattern."
+  ],
+  "limitations": [
+    "The primary interpretation is broad (topic-based) and does not capture subtle differences in discourse function or linguistic structure.",
+    "There is no clear behavioral function that applies to all sentences; some are questions, some are statements, some are instructions."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The topic of cholesterol and blood pressure management is present in a large majority of sentences, with consistent lexical items (e.g., 'cholesterol', 'blood pressure', 'medication'). However, some sentences (e.g., s039, s044) introduce other health topics, and the discourse function varies, so confidence is high but not maximal."
+}

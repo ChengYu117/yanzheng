@@ -1,0 +1,56 @@
+{
+  "latent_idx": 8191,
+  "short_name": "wh-questions about topics",
+  "primary_explanation": "The majority of sentences are wh-questions (what, how, can you) asking about topics such as actions, experiences, preferences, or problems. They typically start with 'what kind of', 'what sorts of', 'how are you', or 'what would'.",
+  "candidate_behavioral_explanation": "The sentences function as open-ended questions, likely from a clinical or counseling context, aimed at eliciting information or reflection from a respondent.",
+  "explanation_type": "linguistic_structure",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s003","s006","s021"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s003",
+      "evidence": "Starts with 'what kind of'",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s006",
+      "evidence": "Starts with 'what kind of'",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s021",
+      "evidence": "Starts with 'how are you'",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s020",
+      "evidence": "Contains 'how does' and a statement, but still a question",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s048",
+      "evidence": "Contains 'what kind of'",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences are all questions, but some are more conversational (e.g., 'how are you') while others are more specific (e.g., 'what kind of grades').",
+    "The sentences may be from a medical or therapeutic interview, focusing on health behaviors and feelings."
+  ],
+  "possible_confounds": [
+    "Some sentences are incomplete or contain disfluencies (e.g., s005, s015, s031).",
+    "The set includes a few sentences that are not strictly questions (e.g., s020 includes a statement)."
+  ],
+  "limitations": [
+    "The analysis does not capture the specific topic variation across sentences.",
+    "Some sentences are fragments or have mixed structures."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of wh-questions is very consistent across all 50 sentences; no outliers. However, there is some variation in the specific wh-word and structure, but all are questions."
+}

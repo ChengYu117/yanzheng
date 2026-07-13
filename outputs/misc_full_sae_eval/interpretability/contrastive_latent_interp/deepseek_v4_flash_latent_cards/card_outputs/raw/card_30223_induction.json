@@ -1,0 +1,56 @@
+{
+  "latent_idx": 30223,
+  "short_name": "apology_and_permission_request",
+  "primary_explanation": "The majority of sentences contain either an apology (e.g., 'I'm sorry', 'sorry') or a polite permission-seeking phrase (e.g., 'do you mind if', 'is it okay if', 'would it be okay if'). These two patterns together cover most sentences, though they are distinct in function.",
+  "candidate_behavioral_explanation": "The sentences serve to mitigate face-threatening acts: apologies express regret or repair social rapport, while permission requests seek consent before proceeding, both common in service or counseling interactions.",
+  "explanation_type": "unclear_or_mixed",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s014","s015","s016","s017","s018","s020","s021","s022","s023","s025","s026","s027","s028","s029","s031","s032","s033","s035","s036","s037","s038","s039","s040","s041","s044","s045","s047","s050"],
+  "outlier_sample_ids": ["s012","s013","s019","s024","s030","s034","s042","s043","s046","s048","s049"],
+  "representative_evidence_ids": ["s001","s027","s033"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "I'm really sorry for your loss",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s027",
+      "evidence": "is it okay if I share some thoughts with you as well",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s033",
+      "evidence": "sorry",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s012",
+      "evidence": "I don't mean to be pushing you but I do want to talk about maybe what the the next steps would be",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s024",
+      "evidence": "I don't wanted to change and you can kind of cool gorgeous your teeth are lovely",
+      "evidence_level": "semantic",
+      "evidence_role": "contradict"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences are from a healthcare or counseling context, with many involving patient interactions (e.g., discussing medications, diet, smoking).",
+    "The sentences show a pattern of hedging and politeness markers (e.g., 'I think', 'maybe', 'just') to soften directives or questions."
+  ],
+  "possible_confounds": [
+    "The dataset may be drawn from multiple conversation types (e.g., apologies in condolences vs. apologies in service encounters), mixing different pragmatic functions.",
+    "Transcription artifacts (e.g., false starts, repetitions) may obscure the underlying pattern."
+  ],
+  "limitations": [
+    "The two main patterns (apology and permission request) are functionally distinct, making a single behavioral interpretation difficult.",
+    "Some sentences lack clear apology or permission markers, reducing coverage."
+  ],
+  "confidence": 3,
+  "confidence_rationale": "The apology/permission pattern covers 39 out of 50 sentences, but the two subpatterns are distinct, and 11 outliers remain. Alternative interpretations (healthcare context, hedging) are plausible but less specific."
+}

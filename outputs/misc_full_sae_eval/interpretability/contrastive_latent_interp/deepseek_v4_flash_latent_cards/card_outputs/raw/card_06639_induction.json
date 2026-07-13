@@ -1,0 +1,74 @@
+{
+  "latent_idx": 6639,
+  "short_name": "scale_questions",
+  "primary_explanation": "The sentences predominantly follow a template: a discourse marker (e.g., 'okay', 'so', 'um') followed by a request for a rating on a numeric scale (e.g., 0-10, 1-10, 0-100) about importance, confidence, readiness, or pain, often with anchor descriptions.",
+  "candidate_behavioral_explanation": "The sentences function as structured questions eliciting self-reported ratings on a scale, commonly used in clinical or motivational interviewing contexts.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s016","s017","s018","s019","s020","s021","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s047","s048","s049"],
+  "outlier_sample_ids": ["s015","s022","s023","s046","s050"],
+  "representative_evidence_ids": ["s004","s005","s010"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s004",
+      "evidence": "Contains scale (0-10), anchors, and question about importance.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s005",
+      "evidence": "Includes discourse marker 'okay all right', scale (0-10), anchors, and confidence question.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s010",
+      "evidence": "Starts with 'so let me ask you', scale (0-10), anchors, and confidence question.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s015",
+      "evidence": "Scale endpoints are missing (blank), deviating from the template.",
+      "evidence_level": "surface_form",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s022",
+      "evidence": "Only a fragment 'on that same scale from one to ten' without a full question.",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s023",
+      "evidence": "Scale endpoints are missing, and question is about darkness, not typical topic.",
+      "evidence_level": "surface_form",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s046",
+      "evidence": "No scale question; instead discusses frequency and risk category.",
+      "evidence_level": "topical",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s050",
+      "evidence": "No scale question; suggests a range of times for journaling.",
+      "evidence_level": "topical",
+      "evidence_role": "contradict"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences are all part of a structured interview or questionnaire, possibly from a health behavior change intervention.",
+    "The pattern reflects a specific discourse genre: motivational interviewing, where scaling questions are used to assess readiness, importance, and confidence."
+  ],
+  "possible_confounds": [
+    "Some sentences have missing scale endpoints (e.g., s015, s023) due to transcription errors or incomplete utterances.",
+    "A few sentences (s046, s050) are not scale questions but still part of the same conversation, possibly from a different phase."
+  ],
+  "limitations": [
+    "The analysis is based solely on text without context of the full conversation.",
+    "Outliers may be due to transcription artifacts or different interviewers."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The primary pattern covers 45 out of 50 sentences, with clear exceptions that are either fragments or different question types. The pattern is stable and consistent across diverse topics (importance, confidence, readiness, pain)."
+}

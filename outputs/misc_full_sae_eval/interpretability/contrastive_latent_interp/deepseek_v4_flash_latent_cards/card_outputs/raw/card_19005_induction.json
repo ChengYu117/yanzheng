@@ -1,0 +1,44 @@
+{
+  "latent_idx": 19005,
+  "short_name": "therapeutic_discourse_markers",
+  "primary_explanation": "The sentences predominantly feature discourse markers typical of therapeutic or counseling conversations, such as 'so', 'okay', 'yeah', 'um', and 'you know', along with reflective or probing questions about personal experiences, feelings, and behaviors.",
+  "candidate_behavioral_explanation": "The sentences function as therapeutic dialogue, including reflections, questions, and affirmations aimed at exploring client experiences, emotions, and behaviors.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001", "s002", "s003", "s004", "s005", "s006", "s007", "s008", "s009", "s010", "s011", "s012", "s013", "s014", "s015", "s016", "s017", "s018", "s019", "s020", "s021", "s022", "s023", "s024", "s025", "s026", "s027", "s028", "s029", "s030", "s031", "s032", "s033", "s034", "s035", "s036", "s037", "s038", "s039", "s040", "s041", "s042", "s043", "s044", "s045", "s046", "s047", "s048", "s049", "s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s001", "s009", "s042"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Uses 'okay so' to frame a reflective question about decision-making, typical of therapeutic probing.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s009",
+      "evidence": "Begins with 'well given that you've sort of noticed all these changes' – a reflective summary common in therapy.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s042",
+      "evidence": "Contains 'so when you reflect back now' – a reflective question about perception change, typical of cognitive-behavioral therapy.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be from a motivational interviewing session, focusing on ambivalence and change talk.",
+    "They might represent a peer support group conversation, with shared experiences and advice."
+  ],
+  "possible_confounds": [
+    "The dataset may include multiple speakers (therapist and client), but the pattern of discourse markers remains consistent.",
+    "Some sentences are incomplete or contain transcription errors, but the overall therapeutic tone persists."
+  ],
+  "limitations": [
+    "The analysis is based solely on text, lacking prosodic and contextual cues that could refine the interpretation.",
+    "The sample IDs are sequential, but the order may not reflect actual conversation flow."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of therapeutic discourse markers is highly consistent across all sentences, with no clear outliers. Alternative interpretations are weaker and subsumed under the primary explanation."
+}

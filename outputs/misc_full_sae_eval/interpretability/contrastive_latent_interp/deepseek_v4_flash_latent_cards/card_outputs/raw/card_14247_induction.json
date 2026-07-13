@@ -1,0 +1,52 @@
+{
+  "latent_idx": 14247,
+  "short_name": "therapeutic_elicitation_requests",
+  "primary_explanation": "The sentences are predominantly requests for the interlocutor to provide personal information or elaborate on a topic, typically using phrases like 'tell me a little bit about' or 'can you tell me', often with discourse markers like 'okay' or 'so'.",
+  "candidate_behavioral_explanation": "The primary behavioral function is eliciting information or narrative from a client in a therapeutic or counseling context, using open-ended prompts.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": ["s035"],
+  "representative_evidence_ids": ["s001","s007","s016"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Contains 'could you tell me a little bit about' and discourse marker 'okay so so'.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s007",
+      "evidence": "Uses 'why don't we start by just having you tell me a little bit about yourself'.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s016",
+      "evidence": "Contains 'can you tell me what you eat in a regular day?'.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s035",
+      "evidence": "This is a pharmacist asking for name and birth date, a different register and function.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The pattern could be a linguistic template for interview questions, not necessarily therapeutic.",
+    "The sentences might reflect a specific data collection protocol with fixed phrasing.",
+    "The pattern could be an artifact of transcription conventions that omit responses."
+  ],
+  "possible_confounds": [
+    "The dataset may be from a single domain (e.g., addiction counseling), limiting generalizability.",
+    "The pattern may be influenced by the interviewer's style rather than a universal feature.",
+    "Some sentences are incomplete or contain transcription errors, affecting pattern detection."
+  ],
+  "limitations": [
+    "One sentence (s035) is a clear outlier with a different function.",
+    "The pattern is robust but may not cover all nuances of individual sentences."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern is highly consistent across 49 out of 50 sentences, with only one clear outlier. The behavioral function is well-supported by the linguistic evidence."
+}

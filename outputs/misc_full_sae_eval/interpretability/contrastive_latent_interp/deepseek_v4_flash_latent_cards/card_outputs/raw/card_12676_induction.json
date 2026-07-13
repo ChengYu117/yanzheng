@@ -1,0 +1,92 @@
+{
+  "latent_idx": 12676,
+  "short_name": "do_you_questions",
+  "primary_explanation": "The majority of sentences are questions beginning with 'do you', often in a clinical or counseling context, asking about behaviors, feelings, or experiences.",
+  "candidate_behavioral_explanation": "The sentences function as diagnostic or therapeutic questions, likely from a healthcare provider assessing a patient's alcohol use, mental health, or lifestyle.",
+  "explanation_type": "linguistic_structure",
+  "supporting_sample_ids": ["s002","s003","s004","s005","s006","s008","s009","s010","s011","s012","s013","s015","s018","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": ["s001","s007","s014","s016","s017","s019","s020","s021"],
+  "representative_evidence_ids": ["s029","s035","s040"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s029",
+      "evidence": "Exact phrase 'do you drink alcohol' is a clear 'do you' question.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s035",
+      "evidence": "Exact phrase 'do you have any questions' is a standard 'do you' question.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s040",
+      "evidence": "Exact phrase 'do you think you can do that' is a 'do you' question.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s001",
+      "evidence": "Does not start with 'do you'; contains fragmented speech.",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s007",
+      "evidence": "Short declarative 'Doing great.' not a question.",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s014",
+      "evidence": "Question but starts with 'why didn't' not 'do you'.",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s016",
+      "evidence": "Declarative statement, not a question.",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s017",
+      "evidence": "Long rambling sentence, not a clear 'do you' question.",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s019",
+      "evidence": "Declarative statement, not a question.",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s020",
+      "evidence": "Declarative statement, not a question.",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s021",
+      "evidence": "Declarative statement, not a question.",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences are from a clinical interview about substance use and mental health, with some outliers being patient responses or off-topic remarks.",
+    "The pattern is a mix of assessment questions and conversational fragments, possibly from a transcript of a motivational interviewing session."
+  ],
+  "possible_confounds": [
+    "Transcription errors or disfluencies may obscure the pattern in some sentences.",
+    "The dataset may include both clinician and patient speech, mixing question and answer formats."
+  ],
+  "limitations": [
+    "Outliers include declarative statements and non-'do you' questions that do not fit the primary pattern.",
+    "The behavioral function is inferred but not explicitly confirmed by context."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The 'do you' question pattern covers 42 out of 50 sentences (84%), with clear syntactic evidence. Outliers are mostly declarative or fragmented. Alternative interpretations are weaker."
+}

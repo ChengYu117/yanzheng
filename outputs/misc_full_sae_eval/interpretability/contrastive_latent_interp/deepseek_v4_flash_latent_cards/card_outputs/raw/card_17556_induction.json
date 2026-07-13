@@ -1,0 +1,50 @@
+{
+  "latent_idx": 17556,
+  "short_name": "medication_counseling_dialogue",
+  "primary_explanation": "The sentences predominantly involve a pharmacist or healthcare provider counseling a patient about medications, covering topics such as prescription requirements, side effects, dosage, and drug interactions.",
+  "candidate_behavioral_explanation": "The available sentences do not support a stable behavioral-function interpretation.",
+  "explanation_type": "topic",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": ["s020"],
+  "representative_evidence_ids": ["s005","s011","s031"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s005",
+      "evidence": "Describes medication details: name, strength, excretion, half-life, side effects.",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s011",
+      "evidence": "Discusses side effects of a medication.",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s031",
+      "evidence": "Asks about questions regarding medication.",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s020",
+      "evidence": "Unclear, possibly about alcohol use but not clearly medication-related.",
+      "evidence_level": "semantic",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences may represent a mix of patient questions and pharmacist responses in a healthcare consultation.",
+    "Some sentences could be from a medical advice forum or chat transcript."
+  ],
+  "possible_confounds": [
+    "Transcription errors or typos (e.g., 'gem fib Raziel' for gemfibrozil) may obscure meaning.",
+    "Some sentences are incomplete or fragmented, making interpretation difficult."
+  ],
+  "limitations": [
+    "Sentence s020 is an outlier with unclear relevance to medication counseling.",
+    "The set includes both statements and questions, but the dominant topic remains medication."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The vast majority of sentences clearly relate to medication counseling, with only one outlier (s020). The pattern is consistent and covers 49 out of 50 sentences."
+}

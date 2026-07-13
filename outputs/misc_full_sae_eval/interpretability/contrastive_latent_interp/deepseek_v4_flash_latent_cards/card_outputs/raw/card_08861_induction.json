@@ -1,0 +1,56 @@
+{
+  "latent_idx": 8861,
+  "short_name": "how_much_questions",
+  "primary_explanation": "The majority of sentences are questions beginning with 'how much' or 'how many', inquiring about quantities, frequencies, or degrees of behaviors such as drinking, smoking, eating, or spending.",
+  "candidate_behavioral_explanation": "The sentences function as requests for information, often in a health or lifestyle counseling context, aiming to elicit specific numerical or scaled responses.",
+  "explanation_type": "linguistic_structure",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s001","s004","s028"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Starts with 'how much' and asks about time spent walking dog.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s004",
+      "evidence": "Begins with 'how much' and asks about drinking quantity.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s028",
+      "evidence": "Direct 'how much' question about drinking.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s037",
+      "evidence": "Uses 'how many' to ask about exercise frequency.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s050",
+      "evidence": "Uses 'how many' to ask about sex frequency.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences are part of a structured interview or questionnaire about health behaviors, with a focus on substance use and diet.",
+    "The pattern reflects a therapeutic or coaching dialogue where the speaker probes for specific behavioral metrics."
+  ],
+  "possible_confounds": [
+    "Some sentences (e.g., s020, s025, s033) are not direct questions but contain 'how much' in a reflective or affirming context, which may indicate a mix of discourse functions.",
+    "The dataset may be drawn from multiple conversations, leading to slight variations in phrasing."
+  ],
+  "limitations": [
+    "The analysis does not account for the full conversational context, which could clarify the function of each sentence.",
+    "Some sentences are fragments or incomplete, making interpretation ambiguous."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of 'how much/how many' questions is highly consistent across the majority of sentences, with only a few sentences deviating slightly in function but still containing the key phrase. The coverage is strong, and alternative interpretations are weaker."
+}

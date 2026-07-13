@@ -1,0 +1,98 @@
+{
+  "latent_idx": 12337,
+  "short_name": "what_do_you_do_questions",
+  "primary_explanation": "The majority of sentences are questions asking about actions, preferences, or plans, often using the pattern 'what do you [verb]' or 'what can I/we do'. They are typically open-ended inquiries about what the listener does, likes, or intends to do.",
+  "candidate_behavioral_explanation": "The sentences function as probing questions in a conversational or therapeutic context, aimed at eliciting information about the listener's behaviors, preferences, or plans.",
+  "explanation_type": "linguistic_structure",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s010","s011","s012","s013","s014","s015","s017","s018","s019","s020","s021","s022","s023","s025","s027","s028","s029","s030","s031","s032","s033","s034","s037","s038","s039","s041","s042","s043","s044","s045","s046","s047","s048"],
+  "outlier_sample_ids": ["s009","s016","s024","s026","s035","s036","s040","s049","s050"],
+  "representative_evidence_ids": ["s005","s010","s017"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s005",
+      "evidence": "what do you like to do for fun",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s010",
+      "evidence": "what would you like me to do for you today",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s017",
+      "evidence": "what have you tried doing to lose the weight",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s009",
+      "evidence": "think about all the things that can happen to you",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s016",
+      "evidence": "I suppose there are some things you could do to help yourself stop then",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s024",
+      "evidence": "your boy true changes us when you start talking about the right that you have and what you're able to do with what you feel like might not be a lot",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s026",
+      "evidence": "we can do to help you with this change well like was thinking about it maybe like I don't want nothing to do with exercise",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s035",
+      "evidence": "anything else going on in terms of symptoms",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s036",
+      "evidence": "anything else going on in terms of symptoms no just this overall lack of energy which I know my wife doesn't particularly care for",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s040",
+      "evidence": "really you know you're really frustrated because they fell anything's going on in your life that you feel like you don't even have control",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s049",
+      "evidence": "you also mentioned that smoking is a way to manage your weight and concern that if you are we're going to quit smoking what that would do in terms of gaining weight and that smoking after meals is pleasurable that it's something that would be really hard to give up",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s050",
+      "evidence": "Unless there's anything else I can do to help.",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences are all from a counseling or coaching dialogue, focusing on behavior change and goal setting.",
+    "The sentences are predominantly questions about the listener's actions or preferences, but some are statements or incomplete utterances."
+  ],
+  "possible_confounds": [
+    "The dataset may be from a specific domain (e.g., therapy, health coaching) that naturally elicits such questions.",
+    "Some sentences are fragments or contain transcription errors, making pattern detection harder."
+  ],
+  "limitations": [
+    "Outliers include statements, incomplete sentences, and non-question forms that do not fit the primary pattern.",
+    "The pattern is broad and may not distinguish between different subtypes of questions."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The primary pattern covers a large majority of sentences (41 out of 50) with clear syntactic similarity. Outliers are mostly statements or non-question forms, but they are a minority. Alternative interpretations are weaker."
+}

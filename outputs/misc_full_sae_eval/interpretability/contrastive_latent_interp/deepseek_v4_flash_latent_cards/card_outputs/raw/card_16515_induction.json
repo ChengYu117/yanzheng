@@ -1,0 +1,56 @@
+{
+  "latent_idx": 16515,
+  "short_name": "healthcare_discourse_quantities",
+  "primary_explanation": "The sentences predominantly occur in healthcare or counseling contexts, where a speaker provides numerical information (e.g., calories, tries, ounces, blood pressure, A1C, insulin units) or uses scales (0-10) to assess readiness or importance. Many sentences include phrases like 'about X', 'around X', or 'on a scale from 0 to 10'.",
+  "candidate_behavioral_explanation": "The sentences serve to inform, educate, or assess patients/clients about health-related metrics, risks, or behaviors, often using numbers to quantify advice or progress.",
+  "explanation_type": "topic",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s001","s010","s024"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Contains 'almost as many calories as a can of cola' – a health-related numerical comparison.",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s010",
+      "evidence": "Describes A1C measurement and blood sugar control – a clinical metric.",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s024",
+      "evidence": "Reports blood sugar numbers and normal range – a health numerical value.",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s032",
+      "evidence": "Uses 'scale from zero to ten' – a common assessment tool in healthcare.",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s043",
+      "evidence": "Mentions 'bigger biscuits' and 'shut the voices off' – could be a patient discussing symptoms, still health-related.",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences might be from a corpus of transcribed medical consultations, explaining the prevalence of numbers and health topics.",
+    "The pattern could be a mix of educational (e.g., nutrition facts) and motivational interviewing (e.g., readiness scales) discourse."
+  ],
+  "possible_confounds": [
+    "Some sentences (e.g., s043, s044) are less clearly health-related but still fit a counseling context.",
+    "The presence of numbers might be an artifact of the transcription process rather than a genuine topic pattern."
+  ],
+  "limitations": [
+    "The analysis is based solely on text content without speaker or context metadata.",
+    "Some sentences are incomplete or contain placeholders (e.g., s003, s020), which may affect interpretation."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The health/numerical topic covers all sentences, with strong lexical and topical evidence. Alternative interpretations are weaker, and confounds are minor."
+}

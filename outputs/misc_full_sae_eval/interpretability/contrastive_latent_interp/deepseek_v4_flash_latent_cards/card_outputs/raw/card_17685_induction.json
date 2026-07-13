@@ -1,0 +1,56 @@
+{
+  "latent_idx": 17685,
+  "short_name": "health_behavior_discourse",
+  "primary_explanation": "The sentences predominantly discuss health-related behaviors (smoking, diabetes, exercise, diet, condom use) in a conversational or counseling context, often using second-person pronouns and addressing misconceptions or providing advice.",
+  "candidate_behavioral_explanation": "The sentences function as health counseling or educational discourse, including questioning, advising, and reflecting on patient experiences.",
+  "explanation_type": "topic",
+  "supporting_sample_ids": ["s001", "s002", "s003", "s004", "s005", "s007", "s008", "s009", "s011", "s012", "s015", "s016", "s017", "s022", "s026", "s028", "s029", "s030", "s031", "s032", "s033", "s034", "s035", "s036", "s037", "s038", "s041", "s042", "s043", "s045", "s046", "s047", "s048", "s049", "s050"],
+  "outlier_sample_ids": ["s006", "s010", "s013", "s014", "s018", "s019", "s020", "s021", "s023", "s024", "s025", "s027", "s039", "s040", "s044"],
+  "representative_evidence_ids": ["s001", "s005", "s009"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Discusses smoking behavior and perceived benefits.",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s005",
+      "evidence": "Mentions research on quit attempts.",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s009",
+      "evidence": "Links feeling fine with diabetes complications.",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s006",
+      "evidence": "Focuses on condom usage counseling, but uses first-person narrative rather than general health advice.",
+      "evidence_level": "topical",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s014",
+      "evidence": "Mentions depression and Star Wars, not health behavior.",
+      "evidence_level": "topical",
+      "evidence_role": "contradict"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences may represent a collection of motivational interviewing or patient-provider interactions, with a focus on behavior change.",
+    "The pattern could be an artifact of a corpus focused on health communication, with some unrelated conversational snippets."
+  ],
+  "possible_confounds": [
+    "The dataset may include multiple speakers or contexts (e.g., counseling vs. casual conversation), diluting the pattern.",
+    "Some sentences are incomplete or contain transcription errors, making topic identification ambiguous."
+  ],
+  "limitations": [
+    "Not all sentences fit the health behavior topic; outliers include general statements or unrelated topics.",
+    "The behavioral function is not uniformly present; some sentences are purely informational."
+  ],
+  "confidence": 3,
+  "confidence_rationale": "A clear majority of sentences discuss health behaviors in a conversational style, but a substantial minority (15 out of 50) are outliers, and the behavioral function is not consistently identifiable across all supporting sentences."
+}

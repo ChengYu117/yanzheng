@@ -1,0 +1,50 @@
+{
+  "latent_idx": 32727,
+  "short_name": "second-person health advice",
+  "primary_explanation": "The sentences predominantly use second-person 'you' to address the listener directly, often in contexts of health, habits, or personal advice, with frequent use of epistemic markers like 'I'm sure', 'I know', 'you know', and 'probably'.",
+  "candidate_behavioral_explanation": "The sentences appear to function as conversational turns in a counseling or medical advice setting, where the speaker assesses the listener's situation, offers reassurance, or gives recommendations.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": ["s027"],
+  "representative_evidence_ids": ["s003","s009","s029"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s003",
+      "evidence": "Second-person 'you' with list of negative consequences (legal citations, health problems, etc.) typical of advice/warning.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s009",
+      "evidence": "Direct address with empathetic assessment: 'you're feeling a little overwhelmed'.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s029",
+      "evidence": "Second-person warning about health risks: 'You're putting yourself at risk for lung cancer...'.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s027",
+      "evidence": "Only two words 'Your AC.' lacks full sentence structure and context, deviating from the pattern.",
+      "evidence_level": "surface_form",
+      "evidence_role": "contradict"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be from a corpus of motivational interviewing or health coaching sessions, where the therapist uses reflective listening and open-ended prompts.",
+    "Alternatively, they might be examples of 'you' as a generic pronoun in instructional or persuasive texts, though the personal context suggests direct address."
+  ],
+  "possible_confounds": [
+    "The sentences are extracted from longer dialogues, so the pattern may reflect the specific conversational role of the speaker (e.g., counselor) rather than a general linguistic feature.",
+    "The presence of many health-related terms (dentist, diabetes, smoking, alcohol) may bias the topic interpretation."
+  ],
+  "limitations": [
+    "The analysis is based on isolated sentences without full conversational context, which may obscure the exact behavioral function.",
+    "Sample s027 is too short to determine its function, but it still uses 'your'."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of second-person address with health advice is highly consistent across 49 out of 50 sentences, with only one outlier (s027) that is too brief to contradict. The behavioral function as counseling or advice is strongly supported by pragmatic markers."
+}

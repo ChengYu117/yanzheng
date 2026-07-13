@@ -1,0 +1,44 @@
+{
+  "latent_idx": 2055,
+  "short_name": "healthcare_discourse_markers",
+  "primary_explanation": "The sentences predominantly feature discourse markers such as 'so', 'okay', 'um', 'you know', and 'right', often initiating or framing a turn in a healthcare or counseling interaction. Many sentences include references to medication, symptoms, or lifestyle advice, suggesting a clinical or therapeutic setting.",
+  "candidate_behavioral_explanation": "The sentences appear to function as conversational turns in a healthcare context, including checking understanding, providing information, and eliciting patient responses.",
+  "explanation_type": "linguistic_structure",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s001","s003","s012"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Uses 'um' and 'so' as discourse markers, and references medication profile and Lipitor.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s003",
+      "evidence": "Contains 'okay so' and 'um', and repeats the same medication check as s001.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s012",
+      "evidence": "Starts with 'okay and now' and discusses cholesterol and doctor visit.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences may be from a corpus of doctor-patient conversations, with a mix of clinical and casual topics.",
+    "The pattern could reflect a transcription artifact where speakers use fillers and discourse markers frequently."
+  ],
+  "possible_confounds": [
+    "Some sentences (e.g., s005, s010) include non-healthcare topics like Apple support or depression, but still use similar discourse markers.",
+    "The variety of topics (e.g., tennis, bus, fire house) may dilute the healthcare focus."
+  ],
+  "limitations": [
+    "The pattern is broad and may not distinguish this feature from other conversational datasets.",
+    "No single behavioral function is consistently present across all sentences."
+  ],
+  "confidence": 3,
+  "confidence_rationale": "The discourse marker pattern covers all sentences, but the healthcare context is not universal; some sentences are ambiguous. Alternative interpretations are plausible but weaker."
+}

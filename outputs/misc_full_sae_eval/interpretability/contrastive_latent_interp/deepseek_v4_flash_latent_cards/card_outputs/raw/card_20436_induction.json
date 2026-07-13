@@ -1,0 +1,116 @@
+{
+  "latent_idx": 20436,
+  "short_name": "ambivalence_reflection",
+  "primary_explanation": "The sentences predominantly reflect a therapist or counselor summarizing a client's ambivalence, using contrastive discourse markers like 'on one hand... on the other hand' or 'but' to highlight conflicting feelings or thoughts.",
+  "candidate_behavioral_explanation": "The primary behavioral function is reflective listening and validation, where the speaker mirrors the client's internal conflict to foster insight and exploration.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s001","s004","s007"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Uses 'on one hand... on the other hand' to contrast relief vs. lack of time.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s004",
+      "evidence": "Repeats 'on one hand... on the other hand' structure for confidence vs. uncertainty.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s007",
+      "evidence": "Uses 'contradiction' and 'but' to frame pleasing dad vs. enjoying oneself.",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s002",
+      "evidence": "Contrasts importance of smoking vs. not ready to change, with 'but'.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s005",
+      "evidence": "Uses 'although... but' to contrast desire to quit vs. lack of confidence.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s006",
+      "evidence": "Uses 'but on the other hand' to contrast wanting to do it alone vs. willingness to talk.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s011",
+      "evidence": "Uses 'but on the other hand' to contrast importance of exercise vs. lack of confidence.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s024",
+      "evidence": "Uses 'but' to contrast getting more done vs. not relaxing.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s025",
+      "evidence": "Uses 'but' to contrast wanting to move out vs. not thinking it can work.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s027",
+      "evidence": "Uses 'but at the same time' to contrast positive stress vs. recognizing it's not good.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s034",
+      "evidence": "Uses 'stuck between' and 'but' to express indecision.",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s038",
+      "evidence": "Uses 'not so much that... it's almost how' to reframe reluctance as practical concern.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s042",
+      "evidence": "Uses 'but after a chance to reflect' to contrast initial excitement vs. reconsideration.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s045",
+      "evidence": "Uses 'if you stay and don't make this change' to present a dilemma.",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s050",
+      "evidence": "Uses 'but also' to contrast thinking about break vs. worrying about response.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be seen as a collection of motivational interviewing reflections, focusing on change talk and sustain talk.",
+    "Alternatively, they might represent a therapeutic technique of summarizing client statements to build rapport and clarify issues."
+  ],
+  "possible_confounds": [
+    "The sentences are drawn from a therapeutic context, which may introduce a consistent reflective style that is not a stable pattern of the text feature itself.",
+    "Some sentences (e.g., s008, s009, s016, s017, s018, s029, s031, s035, s036, s046, s047, s048, s049) are less clearly ambivalent but still fit the reflective summary pattern."
+  ],
+  "limitations": [
+    "The analysis is based on a single set of sentences without metadata about the original task or speaker roles.",
+    "The pattern may be an artifact of the data collection process (e.g., therapist utterances in a corpus)."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of ambivalence reflection is highly consistent across the majority of sentences, with clear discourse markers and semantic content. All 50 sentences support the primary interpretation, though a few are less prototypical. Alternative explanations are weaker and the pattern remains stable after deduplication."
+}

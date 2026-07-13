@@ -1,0 +1,326 @@
+{
+  "latent_idx": 29759,
+  "short_name": "therapeutic reflection and questioning",
+  "primary_explanation": "The sentences predominantly function as reflective statements or questions used in a therapeutic or counseling context, often summarizing, challenging, or exploring the speaker's experiences, feelings, or behaviors.",
+  "candidate_behavioral_explanation": "The sentences serve to elicit self-reflection, confirm understanding, or gently challenge the interlocutor's perspective, typical of motivational interviewing or therapy.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001", "s002", "s003", "s004", "s005", "s006", "s007", "s008", "s009", "s010", "s011", "s012", "s013", "s014", "s015", "s016", "s017", "s018", "s019", "s020", "s021", "s022", "s023", "s024", "s025", "s026", "s027", "s028", "s029", "s030", "s031", "s032", "s033", "s034", "s035", "s036", "s037", "s038", "s039", "s040", "s041", "s042", "s043", "s044", "s045", "s046", "s047", "s048", "s049", "s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s007", "s023", "s032"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s007",
+      "evidence": "So that means you want to quit now right",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s023",
+      "evidence": "So, you're gonna quit then?",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s032",
+      "evidence": "this is really tough for you the alcohol",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s001",
+      "evidence": "Well, they add up quick, you know.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s002",
+      "evidence": "Yeah, because that leaves you in a real bind, when you're, you're there and you don't have what you need.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s003",
+      "evidence": "well that's not a very proactive then",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s004",
+      "evidence": "it wouldn't happen to be about the eviction notice",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s005",
+      "evidence": "that kinda rings Bell does it",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s006",
+      "evidence": "no I didn't know that what if I just switched to diet soft drink instead there's no sugar in that right",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s008",
+      "evidence": "So, you're realizing too, how much it really takes to focus attention on the baby and to be able to do it and it's like I, I, I it's hard to do both.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s009",
+      "evidence": "okay great so if your mom  put the soda some where you didn't see  it you wouldn't want to drink it as much",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s010",
+      "evidence": "It really took you by surprise.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s011",
+      "evidence": "you did go to private school",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s012",
+      "evidence": "you don't want that to happen do you",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s013",
+      "evidence": "so the fact that your daughter won't even take your word for the fact that you won't drink kind of bites at you a little bit",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s014",
+      "evidence": "mmm so your mom made you come here today",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s015",
+      "evidence": "yeah the fact that you're drinking stands out from others is clearly not something you had ever really taken into consideration before thus far I am very",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s016",
+      "evidence": "yeah so I'm talking to you gee what I hear is your mother thinks you're on the computer too much yep you don't think that's true you seem to be enjoying yourself that around here yes",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s017",
+      "evidence": "wow you really are involved in music",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s018",
+      "evidence": "that's something you've been tossing around though this idea of isolating a little bit more and drinking a little less seems like all your options here kind of grim",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s019",
+      "evidence": "well no one says motherhood was going to be easy Harry",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s020",
+      "evidence": "Well, you do talk to me all the time, what you talking about.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s021",
+      "evidence": "yeah sometimes it is that simple is just making that commitment to yourself and just drawing the line",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s022",
+      "evidence": "yeah doesn't sound like it's working well too working too well for you",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s024",
+      "evidence": "well I don't think I'm giving you a lecture is really not what I meant",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s025",
+      "evidence": "well so you're doing your best but but pretty pretty disappointed in the way things are for you these nights not seeing a whole lot of its kind of kind it is kind of your life isn't it I mean you guys kids what it is",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s026",
+      "evidence": "You're kidding me, really,  to  years ago, oh my gosh.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s027",
+      "evidence": "okay so since you've had since the voices stopped you really haven't had any problems",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s028",
+      "evidence": "yeah yeah and it didn't didn't really seem to work because it's still happening",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s029",
+      "evidence": "doesn't sound like it's working well too working too well for you have you tell me about how you're taking the medication have you taking it very regular",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s030",
+      "evidence": "but you're working now is that right?",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s031",
+      "evidence": "yeah who's that fuzz it's kind of reverse roles like that you know",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s033",
+      "evidence": "well quite a few things going on for you there then the idea that you've been getting irritable we've been hurting people that you love even and and you mentioned also missing some job opportunities so some work opportunities",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s034",
+      "evidence": "you asked a depressed person when they were happy he's kind of rubbing it in her face that she's not happy",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s035",
+      "evidence": "Well you sound a bit surprised by that",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s036",
+      "evidence": "you don't feel anything at all now",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s037",
+      "evidence": "okay so looking ahead you kind of thik that drinking wouldn't really help you with those goals",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s038",
+      "evidence": "so from your family perspective the drinking is not something that fits very well",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s039",
+      "evidence": "so you're feeling anxious at the moment and like your only relief is in controlling what you eat",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s040",
+      "evidence": "you don't really want her to have to experience some of this embarrassin no she don't need to go through this ever p.m.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s041",
+      "evidence": "you know that's really why we're here is to talk about that and make sure that you come to that decision",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s042",
+      "evidence": "Well, your wife make you, how did she make you?",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s043",
+      "evidence": "this is tough for you",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s044",
+      "evidence": "so you're really worried again about the health consequences of not keeping your blood pressure under control",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s045",
+      "evidence": "I'm sure you could do it by yourself but a little assistance and some knowledge never hurts",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s046",
+      "evidence": "so when you go to parties most of the time there's alcohol there",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s047",
+      "evidence": "And you had said on your form that you're not a tobacco user, so...",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s048",
+      "evidence": "yeah yep yeah this information has opened your eyes in some ways and as you talked to your roommate about it she was even shocked to know that you were drinking as much as you as you realized when you did the questionnaire",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s049",
+      "evidence": "so so quite a few things going on then it's you know you've suggested it from Europe for your copious so you're not remembering things that you know you're putting yourself at risk and it's scary for you",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s050",
+      "evidence": "But you only use the leaf tobacco; you're not smoking or anything.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be from a structured interview or questionnaire about health behaviors, with the speaker summarizing or clarifying responses.",
+    "The pattern might reflect a conversational style where the speaker frequently uses 'you' to engage the listener, but the function varies across sentences."
+  ],
+  "possible_confounds": [
+    "The sentences are extracted from a larger dialogue, so the context of preceding and following turns is missing, which could alter the perceived function.",
+    "Transcription artifacts like false starts and repetitions may obscure the intended function."
+  ],
+  "limitations": [
+    "Some sentences (e.g., s006, s031) are more ambiguous and could be interpreted as simple statements rather than therapeutic reflections.",
+    "The analysis relies on pragmatic inference without access to prosody or non-verbal cues."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of reflective and questioning statements is highly consistent across all 50 sentences, with no clear outliers. The behavioral function is strongly supported by the use of second-person address, summarizing, and challenging statements typical of therapeutic discourse."
+}

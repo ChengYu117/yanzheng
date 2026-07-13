@@ -1,0 +1,92 @@
+{
+  "latent_idx": 11660,
+  "short_name": "wh_questions_with_would",
+  "primary_explanation": "The majority of sentences are wh-questions (what, how, where, when, why) that use the modal 'would' to ask about preferences, hypothetical actions, or opinions. This pattern is consistent across diverse topics and contexts.",
+  "candidate_behavioral_explanation": "The sentences function as probing questions, likely from a counselor or interviewer, aimed at eliciting the respondent's thoughts, feelings, or plans regarding behavior change or personal goals.",
+  "explanation_type": "linguistic_structure",
+  "supporting_sample_ids": ["s001","s002","s003","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s016","s017","s018","s019","s020","s021","s022","s023","s024","s026","s027","s028","s029","s031","s032","s034","s035","s036","s037","s038","s040","s041","s042","s043","s044","s046","s048","s049","s050"],
+  "outlier_sample_ids": ["s004","s015","s025","s030","s033","s039","s045","s047"],
+  "representative_evidence_ids": ["s002","s017","s035"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s002",
+      "evidence": "What would you say?",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s017",
+      "evidence": "what would you like to talk about",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s035",
+      "evidence": "okay so what would you like me to do for you today",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s004",
+      "evidence": "so you have your pencil where did you cut",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s015",
+      "evidence": "at this point what do we have to lose",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s025",
+      "evidence": "what do I need",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s030",
+      "evidence": "What have you thought about?",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s033",
+      "evidence": "you know this is just another little thing...",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s039",
+      "evidence": "okay are you comfortable writing or would you prefer me to",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s045",
+      "evidence": "so what have you come up with at this point do you sort of stick to a limit",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s047",
+      "evidence": "yeah so what do you want to go from here...",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences are all questions, but some use 'would' while others use other modals or tenses, suggesting a broader pattern of interrogative forms.",
+    "The sentences may reflect a therapeutic or coaching discourse where the speaker asks open-ended questions to explore the client's perspective."
+  ],
+  "possible_confounds": [
+    "The dataset may be drawn from a specific domain (e.g., counseling, health coaching) that naturally uses many 'would' questions.",
+    "Transcription artifacts or incomplete sentences may obscure the pattern."
+  ],
+  "limitations": [
+    "Outliers include statements, non-'would' questions, and fragments that do not fit the primary pattern.",
+    "The pattern is structural and does not capture the full functional diversity of the sentences."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of wh-questions with 'would' covers a clear majority (42 out of 50 sentences) and is consistent across diverse topics. Outliers are present but limited in number and do not undermine the primary interpretation."
+}

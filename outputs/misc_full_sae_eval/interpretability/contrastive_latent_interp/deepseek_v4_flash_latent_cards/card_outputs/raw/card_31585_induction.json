@@ -1,0 +1,44 @@
+{
+  "latent_idx": 31585,
+  "short_name": "healthcare_dialogue_mixed",
+  "primary_explanation": "The sentences appear to be from a healthcare or counseling dialogue, with a mix of patient education, motivational interviewing, and administrative tasks. The pattern is not stable across all sentences due to varied topics and functions.",
+  "candidate_behavioral_explanation": "The available sentences do not support a stable behavioral-function interpretation.",
+  "explanation_type": "unclear_or_mixed",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s001","s005","s024"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Reflective listening and empathy about anxiety.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s005",
+      "evidence": "Question about medication use, typical in healthcare.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s024",
+      "evidence": "Question about alcohol use, common in counseling.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences may represent a mix of patient-provider interactions and motivational interviewing techniques.",
+    "The set could be from a corpus of transcribed medical consultations with diverse sub-dialogues."
+  ],
+  "possible_confounds": [
+    "The sentences are decontextualized, making it hard to infer a single pattern.",
+    "Different speakers and topics (e.g., diabetes, alcohol, smoking) introduce variability."
+  ],
+  "limitations": [
+    "No single pattern covers all sentences due to topic and function diversity.",
+    "The sample size is large but lacks consistent linguistic markers."
+  ],
+  "confidence": 2,
+  "confidence_rationale": "Only a weak pattern exists (healthcare dialogue), but many sentences have different functions and topics, making a stable interpretation difficult."
+}

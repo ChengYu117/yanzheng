@@ -1,0 +1,44 @@
+{
+  "latent_idx": 16969,
+  "short_name": "do_you_questions",
+  "primary_explanation": "The majority of sentences are questions beginning with 'do you', often used in clinical or counseling contexts to ask about behaviors, beliefs, or experiences.",
+  "candidate_behavioral_explanation": "The sentences function as interview or assessment questions, likely from a healthcare or therapy setting, probing habits, opinions, and personal history.",
+  "explanation_type": "linguistic_structure",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s030","s034","s048"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s030",
+      "evidence": "Exact phrase 'do you drink alcohol'",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s034",
+      "evidence": "Exact phrase 'do you have any questions'",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s048",
+      "evidence": "Exact phrase 'do you know'",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be part of a structured interview or questionnaire about health behaviors, with 'do you' as a standard prompt.",
+    "The pattern might reflect a transcription artifact where only questions starting with 'do you' were selected, but the variety of topics suggests genuine diversity."
+  ],
+  "possible_confounds": [
+    "Some sentences contain transcription errors or disfluencies (e.g., 'veterinarians in' in s006) that obscure the pattern.",
+    "A few sentences (e.g., s038) are not questions but still start with 'do you', indicating a conditional or imperative use."
+  ],
+  "limitations": [
+    "The analysis is based solely on the provided sentences without context of the full conversation.",
+    "The pattern is robust but the behavioral function is inferred from content; the exact setting is unknown."
+  ],
+  "confidence": 5,
+  "confidence_rationale": "All 50 sentences contain 'do you' at or near the start, forming a clear and consistent linguistic pattern with no outliers."
+}

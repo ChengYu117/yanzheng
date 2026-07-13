@@ -1,0 +1,86 @@
+{
+  "latent_idx": 31133,
+  "short_name": "sounds_like_reflection",
+  "primary_explanation": "The majority of sentences use the construction 'it sounds like' or 'that sounds like' to reflect or paraphrase the speaker's understanding of the interlocutor's situation, often in a therapeutic or counseling context.",
+  "candidate_behavioral_explanation": "The sentences function as reflective listening statements, where the speaker mirrors or summarizes what the other person has said to show understanding and encourage further discussion.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s003","s004","s005","s006","s007","s008","s009","s010","s013","s014","s015","s016","s017","s018","s019","s021","s022","s023","s024","s025","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s047","s048","s050"],
+  "outlier_sample_ids": ["s002","s011","s012","s020","s026","s046","s049"],
+  "representative_evidence_ids": ["s003","s008","s022"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s003",
+      "evidence": "Uses 'It does sound like' to reflect a significant event.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s008",
+      "evidence": "Uses 'it sounds like' to paraphrase the importance of family.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s022",
+      "evidence": "Uses 'it sounds like' to assess readiness.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s002",
+      "evidence": "Uses 'seems like' instead of 'sounds like' and has a different narrative tone.",
+      "evidence_level": "lexical",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s011",
+      "evidence": "Uses 'seems like' and is incomplete, lacking the reflective function.",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s012",
+      "evidence": "Uses 'seems like' and evaluates options rather than reflecting.",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s020",
+      "evidence": "Uses 'seems like' and is a self-contained thought about diabetes.",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s026",
+      "evidence": "Uses 'seems like' and discusses lifestyle fit.",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s046",
+      "evidence": "Uses 'seems like' and is a longer, more complex statement.",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s049",
+      "evidence": "Uses 'doesn't seem like' and is a negative evaluation.",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The pattern may be a surface artifact of transcription conventions in therapy sessions, where 'sounds like' is a common discourse marker.",
+    "The sentences could be interpreted as evaluative statements where the speaker judges the interlocutor's situation, but the reflective function is more prominent."
+  ],
+  "possible_confounds": [
+    "The dataset may be drawn from a specific domain (e.g., counseling) where reflective listening is prevalent, limiting generalizability.",
+    "Some sentences use 'seems like' instead of 'sounds like', which may indicate a different but related pattern."
+  ],
+  "limitations": [
+    "The analysis is based solely on text without prosodic or contextual cues that could clarify function.",
+    "Outlier sentences may represent different sub-patterns or noise in the data."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern is highly consistent across a majority of sentences, with clear syntactic and functional similarity. Outliers are few and can be explained by lexical variation ('seems like') or incomplete utterances. The behavioral function of reflective listening is well-supported."
+}

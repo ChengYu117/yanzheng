@@ -1,0 +1,44 @@
+{
+  "latent_idx": 8760,
+  "short_name": "first-person discourse markers in therapeutic/counseling context",
+  "primary_explanation": "The majority of sentences begin with 'I' followed by a verb expressing cognitive or communicative acts (e.g., 'I understand', 'I think', 'I want'), typical of a therapist or counselor speaking to a client. The pattern reflects a stable linguistic structure of first-person epistemic or directive statements in a helping professional context.",
+  "candidate_behavioral_explanation": "The sentences function as therapeutic or counseling discourse, including reflections, affirmations, questions, and directives aimed at engaging the client and guiding the conversation.",
+  "explanation_type": "linguistic_structure",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s003","s005","s035"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s003",
+      "evidence": "Starts with 'I understand', a common therapeutic discourse marker.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s005",
+      "evidence": "Starts with 'I want you', a directive structure typical of counseling.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s035",
+      "evidence": "Starts with 'I understand you're having some difficulties', combining understanding with a prompt.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be from a single speaker in a monologue or interview, not necessarily a therapeutic interaction.",
+    "The pattern might be an artifact of the data collection method, such as transcripts of initial consultations in a medical or social work setting."
+  ],
+  "possible_confounds": [
+    "All sentences begin with 'I', which is a strong surface artifact that may overshadow other patterns.",
+    "The sentences vary in length and complexity, but the consistent first-person start may be a transcription or annotation bias."
+  ],
+  "limitations": [
+    "The analysis does not account for the second-person 'you' that appears in many sentences, which is also a key part of the pattern.",
+    "The behavioral function interpretation is inferred from content but not explicitly validated."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of first-person discourse markers is highly consistent across all 50 sentences, with every sentence starting with 'I'. The therapeutic/counseling context is strongly suggested by the content. However, alternative interpretations and potential confounds prevent a score of 5."
+}

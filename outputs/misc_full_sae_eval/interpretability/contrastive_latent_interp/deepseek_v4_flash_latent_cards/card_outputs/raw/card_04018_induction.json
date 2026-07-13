@@ -1,0 +1,86 @@
+{
+  "latent_idx": 4018,
+  "short_name": "seems_like_feel_pattern",
+  "primary_explanation": "The majority of sentences use perception verbs (seems, sounds, feels, looks) followed by a complement clause, often with 'like' or 'that', to express the speaker's inference or interpretation of the listener's state or situation.",
+  "candidate_behavioral_explanation": "The sentences function as reflective statements or empathetic inferences, commonly used in therapeutic or counseling contexts to validate or explore the listener's feelings and experiences.",
+  "explanation_type": "linguistic_structure",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s010","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s026","s027","s028","s029","s030","s031","s032","s034","s035","s037","s039","s040","s041","s042","s043","s044","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": ["s009","s011","s025","s033","s036","s038","s045"],
+  "representative_evidence_ids": ["s003","s017","s022"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s003",
+      "evidence": "Uses 'it seems like' to infer the listener's feeling of sadness and hopelessness.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s017",
+      "evidence": "Uses 'it seems like' to reflect the listener's willingness and frustration.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s022",
+      "evidence": "Uses 'it seems like' to infer commitment to controlling blood sugar.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s009",
+      "evidence": "Contains unrelated narrative about Apple support and ice cream, lacking perception verb structure.",
+      "evidence_level": "syntactic",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s011",
+      "evidence": "Asks a question about order, not an inference about the listener's state.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s025",
+      "evidence": "Asks a question about situations, not an inference.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s033",
+      "evidence": "Direct request for a plan, not an inference.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s036",
+      "evidence": "Short affirmation 'yes it sounds good' but lacks complement clause about listener's state.",
+      "evidence_level": "syntactic",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s038",
+      "evidence": "General statement about people with diabetes, not an inference about the listener.",
+      "evidence_level": "semantic",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s045",
+      "evidence": "Question about feeling lower, but lacks perception verb structure.",
+      "evidence_level": "syntactic",
+      "evidence_role": "contradict"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences may represent a therapeutic discourse pattern where the speaker uses tentative language to build rapport and encourage self-disclosure.",
+    "The pattern could be a surface artifact of a specific dialogue system or script that frequently uses 'seems like' and 'sounds like' as conversational fillers."
+  ],
+  "possible_confounds": [
+    "The dataset may be drawn from a specific domain (e.g., counseling, medical interviews) where such language is common, limiting generalizability.",
+    "Some sentences are incomplete or contain transcription errors, making pattern detection noisy."
+  ],
+  "limitations": [
+    "Outliers include questions, direct requests, and unrelated narratives that do not fit the primary pattern.",
+    "The pattern is primarily structural; behavioral function is inferred but not directly evidenced."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of perception verb + complement clause is highly consistent across a large majority of sentences, with clear outliers. The behavioral function is plausible but not definitively established."
+}

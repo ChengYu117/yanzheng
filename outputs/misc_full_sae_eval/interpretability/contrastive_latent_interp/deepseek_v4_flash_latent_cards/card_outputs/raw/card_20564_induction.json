@@ -1,0 +1,62 @@
+{
+  "latent_idx": 20564,
+  "short_name": "therapeutic_dialogue_advice",
+  "primary_explanation": "The sentences predominantly feature a therapist or counselor addressing a client, using second-person 'you' to discuss health behaviors, emotional states, and coping strategies, often with suggestions or reflections.",
+  "candidate_behavioral_explanation": "The primary behavioral function is therapeutic guidance: offering advice, exploring motivations, and reinforcing positive changes in a counseling context.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001", "s002", "s003", "s004", "s005", "s006", "s008", "s009", "s010", "s011", "s013", "s014", "s015", "s016", "s018", "s019", "s020", "s021", "s022", "s023", "s024", "s025", "s026", "s027", "s028", "s029", "s030", "s031", "s032", "s033", "s034", "s035", "s036", "s037", "s038", "s039", "s040", "s041", "s042", "s043", "s044", "s045", "s046", "s047", "s048", "s049", "s050"],
+  "outlier_sample_ids": ["s007", "s012", "s017"],
+  "representative_evidence_ids": ["s001", "s004", "s035"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Second-person 'you' and suggestion about healthy option for work lunch.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s004",
+      "evidence": "Expresses depression and asks for opinion on medication, typical of client sharing.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s035",
+      "evidence": "Reflective question about relaxation and marijuana use.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s007",
+      "evidence": "Discusses website and free session, not clearly therapeutic dialogue.",
+      "evidence_level": "topical",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s012",
+      "evidence": "Brief statement about writing helping process, lacks second-person address.",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s017",
+      "evidence": "Vague phrase 'associate for fulfillment', not typical of therapeutic advice.",
+      "evidence_level": "semantic",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be from a health coaching session focusing on lifestyle changes like diet and exercise.",
+    "They might represent a motivational interviewing session where the counselor explores ambivalence about substance use."
+  ],
+  "possible_confounds": [
+    "The dataset may be drawn from multiple counseling contexts (e.g., addiction, mental health, general health) which could introduce variability.",
+    "Transcription artifacts like filler words and repetitions may obscure the pattern."
+  ],
+  "limitations": [
+    "A few sentences (s007, s012, s017) do not clearly fit the therapeutic dialogue pattern, suggesting some noise.",
+    "The interpretation relies on pragmatic function, which can be subjective without full conversational context."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of second-person address and therapeutic content covers 47 out of 50 sentences, with only three outliers. The behavioral function is consistent across diverse health topics."
+}

@@ -1,0 +1,44 @@
+{
+  "latent_idx": 8294,
+  "short_name": "medication_discourse",
+  "primary_explanation": "The sentences predominantly involve discussions about medications, including their names, uses, side effects, dosing instructions, and patient concerns, often in a clinical or counseling context.",
+  "candidate_behavioral_explanation": "The sentences appear to function as medication counseling or education, with healthcare providers explaining medication details, addressing patient concerns, and providing instructions.",
+  "explanation_type": "topic",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s001","s007","s031"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Discusses a specific medication (citalopram), its strength, half-life, and side effects.",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s007",
+      "evidence": "States 'this medication is for your cholesterol'.",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s031",
+      "evidence": "Explains that the medicine is designed to lower cholesterol and reduce risk of heart attack or stroke.",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences may represent a mix of patient-provider interactions, including questions, instructions, and clarifications about medications.",
+    "Some sentences could be part of a medication reconciliation or adherence counseling session."
+  ],
+  "possible_confounds": [
+    "The dataset may be drawn from a specific clinical domain (e.g., pharmacy, primary care) which biases the topic.",
+    "Transcription artifacts or anonymization may obscure some context."
+  ],
+  "limitations": [
+    "The primary interpretation is broad (topic-based) and does not capture finer-grained discourse functions.",
+    "Some sentences (e.g., s005, s012) are more general statements about medications but still fit the topic."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "Nearly all sentences explicitly mention medications, their use, or related instructions, making the topic pattern very clear and consistent across the set."
+}

@@ -1,0 +1,56 @@
+{
+  "latent_idx": 11948,
+  "short_name": "therapist_empathic_support",
+  "primary_explanation": "The sentences predominantly express empathetic support, encouragement, or concern from a therapist or counselor to a client, often using phrases like 'I really want to help you' and 'I really commend you'.",
+  "candidate_behavioral_explanation": "The primary behavioral function is therapeutic support and motivation, including affirmations, reflections, and expressions of commitment to help.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001", "s002", "s003", "s004", "s005", "s009", "s010", "s013", "s014", "s015", "s016", "s018", "s019", "s020", "s021", "s022", "s023", "s024", "s025", "s026", "s028", "s029", "s031", "s032", "s033", "s034", "s037", "s038", "s041", "s042", "s045", "s048", "s050"],
+  "outlier_sample_ids": ["s006", "s007", "s008", "s011", "s012", "s017", "s027", "s030", "s035", "s036", "s039", "s040", "s043", "s044", "s046", "s047", "s049"],
+  "representative_evidence_ids": ["s001", "s015", "s026"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "I want to help you I really try to help you",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s015",
+      "evidence": "I really commend you for taking that first step towards change",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s026",
+      "evidence": "I really want to help you",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s006",
+      "evidence": "yeah I mean I kind of have a plan of what i want to do blood change changing",
+      "evidence_level": "topical",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s012",
+      "evidence": "it's his face was fresh like what I'm sorry I run you fish",
+      "evidence_level": "semantic",
+      "evidence_role": "contradict"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences may be from a smoking cessation counseling session, with many references to quitting smoking and health concerns.",
+    "The pattern could be a mix of therapeutic dialogue and casual conversation, with no single dominant function."
+  ],
+  "possible_confounds": [
+    "The dataset may include multiple speakers or contexts, mixing therapist and client utterances.",
+    "Some sentences are incomplete or contain transcription errors, obscuring their function."
+  ],
+  "limitations": [
+    "Outliers include client responses, off-topic remarks, and unclear utterances that do not fit the therapeutic support pattern.",
+    "The behavioral function interpretation is based on pragmatic cues but lacks explicit context."
+  ],
+  "confidence": 3,
+  "confidence_rationale": "The primary pattern covers a majority of sentences, but a significant minority are outliers, and alternative interpretations remain plausible."
+}

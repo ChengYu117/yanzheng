@@ -1,0 +1,44 @@
+{
+  "latent_idx": 16345,
+  "short_name": "medication_health_discourse",
+  "primary_explanation": "The sentences predominantly discuss medications, health conditions, and lifestyle factors (e.g., alcohol, smoking, exercise) in a conversational or explanatory tone, often involving a healthcare provider or patient interaction.",
+  "candidate_behavioral_explanation": "The available sentences do not support a stable behavioral-function interpretation.",
+  "explanation_type": "topic",
+  "supporting_sample_ids": ["s001", "s002", "s003", "s004", "s005", "s006", "s007", "s008", "s009", "s010", "s011", "s012", "s013", "s014", "s015", "s016", "s017", "s018", "s019", "s020", "s021", "s022", "s023", "s024", "s025", "s026", "s027", "s028", "s029", "s030", "s031", "s032", "s033", "s034", "s035", "s036", "s037", "s038", "s039", "s040", "s041", "s042", "s043", "s044", "s045", "s046", "s047", "s048", "s049", "s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s001", "s002", "s003"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Discusses cholesterol medication and its benefits.",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s002",
+      "evidence": "Pharmacist explains antidepressant details.",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s003",
+      "evidence": "Mentions medications for quitting smoking.",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences may represent a corpus of healthcare consultations, with a mix of provider explanations and patient responses.",
+    "The pattern could be a collection of advice or information-giving utterances about health behaviors and medications."
+  ],
+  "possible_confounds": [
+    "The sentences vary in speaker role (provider vs. patient) and discourse function (question, statement, advice), making a single behavioral function hard to isolate.",
+    "Some sentences are incomplete or truncated, potentially obscuring the intended function."
+  ],
+  "limitations": [
+    "The analysis is based solely on text without speaker labels or context, limiting functional interpretation.",
+    "The set includes diverse topics (medications, alcohol, smoking, exercise) under a broad health umbrella, but no single sub-topic dominates."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The topical pattern of health and medication discussions is highly consistent across all sentences, with no outliers. However, the diversity of specific sub-topics and discourse functions prevents a higher confidence in a more specific interpretation."
+}

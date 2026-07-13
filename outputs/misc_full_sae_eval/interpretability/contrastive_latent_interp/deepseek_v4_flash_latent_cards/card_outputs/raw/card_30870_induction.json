@@ -1,0 +1,56 @@
+{
+  "latent_idx": 30870,
+  "short_name": "affirmative_evaluation_of_goals_plans_ideas",
+  "primary_explanation": "The majority of sentences express positive evaluation (e.g., 'great', 'good', 'excellent', 'brilliant') of the interlocutor's goals, plans, ideas, or actions, often using the template 'that's a [adjective] [noun]' or 'sounds like a [adjective] [noun]'.",
+  "candidate_behavioral_explanation": "The sentences function as affirmations or positive reinforcements, likely in a coaching or counseling context, to encourage the interlocutor.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001", "s002", "s003", "s004", "s005", "s006", "s007", "s008", "s009", "s010", "s011", "s012", "s013", "s015", "s016", "s017", "s018", "s020", "s022", "s023", "s024", "s025", "s026", "s027", "s028", "s029", "s030", "s031", "s032", "s033", "s035", "s036", "s037", "s040", "s041", "s042", "s043", "s044", "s045", "s046", "s047", "s049", "s050"],
+  "outlier_sample_ids": ["s014", "s019", "s021", "s034", "s038", "s039", "s048"],
+  "representative_evidence_ids": ["s004", "s008", "s025"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s004",
+      "evidence": "that's a great goal to have for yourself",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s008",
+      "evidence": "that sounds like a great idea",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s025",
+      "evidence": "I think that's a great plan",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s014",
+      "evidence": "I I really wonder if you would I think that's an excellent question and if you're motivated to lose that kind of weight I'm with you I can't leave I this good",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s019",
+      "evidence": "yes because you know what if you live together is it important that you work together and get everything done nobody likes to do housework but you all have to do it so does she have a good point",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences are part of a motivational interviewing or health coaching dialogue, where the speaker uses positive reinforcement to support behavior change.",
+    "The pattern may reflect a specific annotation or transcription artifact where only positive evaluative statements were selected, rather than a natural discourse pattern."
+  ],
+  "possible_confounds": [
+    "The sentences may come from a single conversation or scripted interaction, limiting generalizability.",
+    "The presence of disfluencies (e.g., 'like I said', 'you know') suggests spontaneous speech, but the evaluative pattern may be overrepresented due to the feature selection criteria."
+  ],
+  "limitations": [
+    "Some sentences (e.g., s014, s019) are longer and more complex, mixing evaluation with other functions like questioning or advice, which are not fully captured by the primary pattern.",
+    "The pattern does not account for sentences that lack explicit positive adjectives (e.g., s038, s039) or that contain negative content (e.g., s034)."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The primary pattern of positive evaluation of goals/plans/ideas is clear and consistent across a large majority of sentences (43 out of 50). The outliers are few and often contain additional discourse functions or lack the evaluative template. Alternative interpretations are weaker or more specific."
+}

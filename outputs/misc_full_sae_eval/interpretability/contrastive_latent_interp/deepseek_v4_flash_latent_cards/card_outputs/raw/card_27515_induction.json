@@ -1,0 +1,44 @@
+{
+  "latent_idx": 27515,
+  "short_name": "medical_advice_and_history",
+  "primary_explanation": "The sentences predominantly involve a healthcare provider discussing treatment plans, medication changes, lifestyle modifications, and patient history, often using directive or advisory language.",
+  "candidate_behavioral_explanation": "The primary behavioral function is giving medical advice or recommendations, as seen in sentences like s001 (transitioning off oxy) and s005 (cut out drinking).",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001", "s002", "s003", "s004", "s005", "s006", "s007", "s008", "s009", "s010", "s011", "s012", "s013", "s014", "s015", "s016", "s017", "s018", "s019", "s020", "s021", "s022", "s023", "s024", "s025", "s026", "s027", "s028", "s029", "s030", "s031", "s032", "s033", "s034", "s035", "s036", "s037", "s038", "s039", "s040", "s041", "s042", "s043", "s044", "s045", "s046", "s047", "s048", "s049", "s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s001", "s005", "s010"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "at this point is to think about transitioning you off of the oxy onto one of these over-the-counter medications",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s005",
+      "evidence": "it is recommended that you actually cut out drinking altogether to reduce that risk",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s010",
+      "evidence": "diet modifications and some sort of exercise need to be implemented into your daily routine",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be interpreted as a mix of information gathering (history taking) and information giving (advice), but advice-giving dominates.",
+    "Another interpretation is that the sentences are part of a medical consultation transcript, with a focus on patient education and shared decision-making."
+  ],
+  "possible_confounds": [
+    "Some sentences (e.g., s008, s017) are more conversational or include patient quotes, but still fit the medical context.",
+    "The presence of transcription artifacts (e.g., s047 'ation') does not affect the functional interpretation."
+  ],
+  "limitations": [
+    "The analysis is based solely on text without speaker labels, so the exact role of each utterance is inferred.",
+    "Some sentences are incomplete or contain errors, but the overall pattern remains clear."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of medical advice and history-taking is consistent across all sentences, with no clear outliers. Alternative interpretations are weaker."
+}

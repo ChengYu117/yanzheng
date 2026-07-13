@@ -1,0 +1,44 @@
+{
+  "latent_idx": 8969,
+  "short_name": "healthcare_questions",
+  "primary_explanation": "The sentences are predominantly questions asked by a healthcare professional to a patient, covering topics like alcohol use, dental care, diet, exercise, and medical history.",
+  "candidate_behavioral_explanation": "The sentences function as diagnostic or motivational interviewing questions, aiming to assess patient knowledge, behaviors, and readiness to change.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001", "s002", "s003", "s004", "s005", "s006", "s007", "s008", "s009", "s010", "s011", "s012", "s013", "s014", "s015", "s016", "s017", "s018", "s019", "s020", "s021", "s022", "s023", "s024", "s025", "s026", "s027", "s028", "s029", "s030", "s031", "s032", "s033", "s034", "s035", "s036", "s037", "s038", "s039", "s040", "s041", "s042", "s043", "s044", "s045", "s046", "s047", "s048", "s049", "s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s001", "s007", "s021"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Question about alcohol knowledge.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s007",
+      "evidence": "Question about medical test.",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s021",
+      "evidence": "Question about quitting behavior.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be from a general survey or interview about lifestyle and health habits.",
+    "They might be part of a scripted role-play for training healthcare communication."
+  ],
+  "possible_confounds": [
+    "Some sentences (e.g., s016, s030) reference pop culture (The Smiths, Star Wars) which may not fit a strict healthcare context.",
+    "Sentence s050 is an off-topic social invitation, diverging from health topics."
+  ],
+  "limitations": [
+    "The analysis assumes a healthcare setting, but the context is not explicitly confirmed.",
+    "A few sentences (e.g., s028 'Like today?') are too short to fully interpret."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of healthcare-related questions is very consistent across the majority of sentences, with only minor deviations that do not undermine the primary interpretation."
+}

@@ -1,0 +1,56 @@
+{
+  "latent_idx": 29874,
+  "short_name": "seems_like_reflection",
+  "primary_explanation": "The majority of sentences use the construction 'it seems like' or 'it sounds like' to reflect or summarize the speaker's perception of the listener's situation, often in a therapeutic or counseling context.",
+  "candidate_behavioral_explanation": "The sentences function as reflective listening statements, where the speaker mirrors or checks their understanding of the listener's experience, common in motivational interviewing or therapy.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001", "s002", "s003", "s004", "s005", "s006", "s007", "s008", "s009", "s010", "s011", "s012", "s013", "s015", "s017", "s018", "s019", "s020", "s021", "s022", "s023", "s024", "s025", "s026", "s027", "s028", "s029", "s030", "s031", "s032", "s033", "s034", "s035", "s036", "s037", "s038", "s039", "s040", "s041", "s042", "s043", "s044", "s045", "s046", "s047", "s048", "s049", "s050"],
+  "outlier_sample_ids": ["s014", "s016"],
+  "representative_evidence_ids": ["s004", "s008", "s021"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s004",
+      "evidence": "it seems like it's helped you to identify what's going on a little bit",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s008",
+      "evidence": "and it seems like you're really committed to getting your blood Sugar's under control",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s021",
+      "evidence": "in fact it seems like you're feeling pretty sad and maybe even a little hopeless",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s014",
+      "evidence": "no no no video more where were you're just as important and you've got this seem to tell me about",
+      "evidence_level": "syntactic",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s016",
+      "evidence": "it looks like it's gonna protect you",
+      "evidence_level": "lexical",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences may be part of a structured interview or assessment where the clinician uses 'seems like' to probe the client's perspective.",
+    "The pattern could reflect a linguistic template for expressing tentative observations, common in professional helping contexts."
+  ],
+  "possible_confounds": [
+    "The dataset may be drawn from a single therapeutic session, leading to repetition of the same discourse strategy.",
+    "Transcription artifacts (e.g., false starts, repetitions) may obscure the underlying pattern."
+  ],
+  "limitations": [
+    "A few sentences (s014, s016) do not fit the primary pattern, suggesting some variability.",
+    "The behavioral function is inferred from context but not explicitly confirmed."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern is highly consistent across 48 out of 50 sentences, with clear lexical and syntactic markers. Alternative interpretations are weaker, and confounds are limited."
+}

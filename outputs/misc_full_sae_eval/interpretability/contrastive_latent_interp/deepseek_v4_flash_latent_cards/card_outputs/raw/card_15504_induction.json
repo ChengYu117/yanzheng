@@ -1,0 +1,58 @@
+{
+  "latent_idx": 15504,
+  "short_name": "so-initialed counseling questions",
+  "primary_explanation": "The majority of sentences begin with the discourse marker 'So' and function as questions or prompts in a counseling or coaching context, often addressing health behaviors, personal decisions, or relationship issues.",
+  "candidate_behavioral_explanation": "The sentences serve as therapeutic or motivational interviewing questions, aiming to elicit client reflection, commitment, or information about health-related behaviors (e.g., smoking, drinking, diet, exercise).",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001", "s002", "s003", "s004", "s005", "s006", "s007", "s008", "s009", "s010", "s011", "s012", "s013", "s014", "s015", "s016", "s017", "s018", "s019", "s020", "s021", "s022", "s023", "s024", "s025", "s026", "s027", "s028", "s029", "s030", "s031", "s032", "s033", "s034", "s035", "s036", "s037", "s038", "s039", "s040", "s041", "s042", "s043", "s044", "s045", "s046", "s047", "s048", "s049", "s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s005", "s018", "s025"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s005",
+      "evidence": "Starts with 'So' and is a direct question about quitting.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s018",
+      "evidence": "Starts with 'So' and asks an open-ended question about help.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s025",
+      "evidence": "Starts with 'So' and asks a confirmatory question about quitting.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s001",
+      "evidence": "Starts with 'if' but includes 'so' later; still fits counseling context.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s039",
+      "evidence": "Ends with 'so' but is a statement; still part of counseling discourse.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences are from a corpus of motivational interviewing sessions, where 'So' is used to transition between topics or summarize.",
+    "The pattern is a surface artifact of transcription conventions that include discourse markers like 'So' at utterance beginnings.",
+    "The sentences reflect a mix of question types (yes/no, wh-) and statements, all serving to guide a client through behavior change."
+  ],
+  "possible_confounds": [
+    "The dataset may be from a single domain (e.g., health coaching) which biases the topic and function.",
+    "The presence of 'So' may be a transcription artifact or a conversational filler rather than a deliberate therapeutic technique.",
+    "Some sentences (e.g., s001, s039) do not start with 'So' but still fit the counseling context, indicating the pattern is not purely structural."
+  ],
+  "limitations": [
+    "The analysis is based solely on text without prosodic or contextual information.",
+    "The sample IDs are not fully representative of all possible variations in counseling discourse."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of 'So'-initialed questions in a counseling context is highly consistent across the majority of sentences, with clear behavioral function. Alternative explanations are weaker, and confounds are acknowledged but do not undermine the primary interpretation."
+}

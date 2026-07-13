@@ -1,0 +1,80 @@
+{
+  "latent_idx": 28724,
+  "short_name": "thank_you_expressions",
+  "primary_explanation": "The majority of sentences contain expressions of gratitude, typically 'thanks for' or 'thank you for', often in conversational closings or acknowledgments.",
+  "candidate_behavioral_explanation": "The available sentences do not support a stable behavioral-function interpretation.",
+  "explanation_type": "linguistic_structure",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s046","s047","s048","s050"],
+  "outlier_sample_ids": ["s041","s042","s043","s044","s045","s049"],
+  "representative_evidence_ids": ["s001","s003","s010"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Contains 'thanks for coming in'",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s003",
+      "evidence": "Contains 'thanks for coming in today'",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s010",
+      "evidence": "Contains 'thanks for your time'",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s041",
+      "evidence": "Lacks explicit 'thanks' or 'thank you'; uses 'appreciate' instead",
+      "evidence_level": "lexical",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s042",
+      "evidence": "Lacks explicit 'thanks' or 'thank you'; uses 'appreciate' instead",
+      "evidence_level": "lexical",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s043",
+      "evidence": "Lacks explicit 'thanks' or 'thank you'; uses 'appreciate' instead",
+      "evidence_level": "lexical",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s044",
+      "evidence": "Lacks explicit 'thanks' or 'thank you'; uses 'appreciate' instead",
+      "evidence_level": "lexical",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s045",
+      "evidence": "Lacks explicit 'thanks' or 'thank you'; uses 'appreciate' instead",
+      "evidence_level": "lexical",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s049",
+      "evidence": "Lacks explicit 'thanks' or 'thank you'; uses 'appreciate' instead",
+      "evidence_level": "lexical",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences may represent closing or transition moves in a conversation, often signaling the end of an interaction.",
+    "The pattern could be a transcription artifact where interviewers consistently thank participants, reflecting a scripted or polite routine."
+  ],
+  "possible_confounds": [
+    "Some sentences use 'appreciate' instead of 'thanks', which may indicate a different register or function.",
+    "The dataset may be drawn from a specific context (e.g., clinical interviews) where thanking is conventional."
+  ],
+  "limitations": [
+    "The analysis does not account for the broader conversational context.",
+    "The distinction between 'thanks' and 'appreciate' may be functionally similar but is treated as a lexical difference."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of gratitude expressions is highly consistent across the majority of sentences, with only a few outliers using 'appreciate' instead. The pattern is clear and stable."
+}

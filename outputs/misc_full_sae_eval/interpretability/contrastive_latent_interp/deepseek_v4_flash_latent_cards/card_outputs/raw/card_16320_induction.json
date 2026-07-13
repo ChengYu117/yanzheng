@@ -1,0 +1,56 @@
+{
+  "latent_idx": 16320,
+  "short_name": "second-person address in counseling",
+  "primary_explanation": "The sentences predominantly use second-person pronouns (you/your/you're) in a therapeutic or counseling context, often reflecting, summarizing, or probing the client's experiences, feelings, or behaviors.",
+  "candidate_behavioral_explanation": "The sentences likely function as therapeutic reflections, affirmations, or exploratory questions used by a counselor to engage a client, validate their experiences, and encourage self-reflection.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s024","s026","s027","s028","s029","s030","s031","s032","s034","s037","s040","s041","s042","s044","s045","s046","s048","s049","s050"],
+  "outlier_sample_ids": ["s023","s025","s033","s035","s036","s038","s039","s043","s047"],
+  "representative_evidence_ids": ["s002","s008","s013"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s002",
+      "evidence": "Second-person conditional question about anxiety and motivation, typical of therapeutic exploration.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s008",
+      "evidence": "Reflective statement summarizing client's multiple responsibilities, using 'you're' and 'your'.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s013",
+      "evidence": "Direct second-person inquiry about health symptoms, common in clinical interviews.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s023",
+      "evidence": "Fragmentary and unclear; lacks second-person address or therapeutic context.",
+      "evidence_level": "surface_form",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s025",
+      "evidence": "Directional instructions ('take the right turn') unrelated to counseling discourse.",
+      "evidence_level": "semantic",
+      "evidence_role": "contradict"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be from a motivational interviewing session, focusing on client ambivalence and change talk.",
+    "The pattern may reflect a general conversational style with frequent use of 'you know' as a filler, not specific to counseling."
+  ],
+  "possible_confounds": [
+    "Some sentences are incomplete or contain transcription errors, obscuring the intended function.",
+    "The presence of 'you know' as a discourse marker may inflate the appearance of second-person address."
+  ],
+  "limitations": [
+    "Outliers include fragments, navigational instructions, and greetings that do not fit the counseling context.",
+    "The behavioral function is inferred from content and context, but no explicit metadata confirms the setting."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of second-person address in a therapeutic context is consistent across a large majority of sentences, with clear exceptions that are easily identifiable as outliers."
+}

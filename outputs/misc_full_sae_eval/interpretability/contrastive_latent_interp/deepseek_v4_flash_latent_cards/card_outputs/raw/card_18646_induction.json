@@ -1,0 +1,50 @@
+{
+  "latent_idx": 18646,
+  "short_name": "therapeutic questioning",
+  "primary_explanation": "The sentences predominantly consist of questions or indirect inquiries about personal circumstances, behaviors, or opinions, often framed with 'do you think', 'are you', 'is it', 'I wonder if', or 'if' clauses, typical of a therapeutic or counseling context.",
+  "candidate_behavioral_explanation": "The sentences function as therapeutic or counseling questions aimed at exploring the client's thoughts, feelings, and behaviors, often using tentative or exploratory language to encourage reflection.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s001","s005","s025"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "I wonder if it would be okay if we could talk about some of the options",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s005",
+      "evidence": "do you think that this is a problem for you",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s025",
+      "evidence": "what would you think about trying that slightly different approach",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s050",
+      "evidence": "does it",
+      "evidence_level": "surface_form",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be interpreted as a collection of interview questions from a structured clinical assessment, focusing on substance use, mental health, and lifestyle.",
+    "Alternatively, the pattern may reflect a linguistic template of conditional or hypothetical questioning, using 'if' and 'whether' to explore possibilities."
+  ],
+  "possible_confounds": [
+    "The sentences are extracted from a corpus of therapy sessions, so the pattern is heavily influenced by the domain.",
+    "Some sentences are incomplete or fragmented, which may affect interpretation."
+  ],
+  "limitations": [
+    "A few sentences (e.g., s047, s050) are too short or garbled to clearly fit the pattern, but they still appear to be questions.",
+    "The behavioral function is inferred from context; without metadata, the exact purpose remains speculative."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of therapeutic questioning is highly consistent across the majority of sentences, with clear linguistic markers. All sentences are questions or indirect inquiries, and the domain is strongly suggestive of a counseling setting. The few fragmented sentences do not contradict the pattern."
+}

@@ -1,0 +1,64 @@
+{
+  "latent_idx": 6651,
+  "short_name": "healthcare_discourse",
+  "primary_explanation": "The sentences predominantly involve healthcare-related discussions, including topics like blood pressure, blood sugar, diabetes, diet, exercise, and lifestyle advice, often in a conversational or counseling context.",
+  "candidate_behavioral_explanation": "The sentences appear to function as parts of healthcare consultations, including questions, advice, explanations, and reflections about health conditions and behaviors.",
+  "explanation_type": "topic",
+  "supporting_sample_ids": ["s001", "s003", "s005", "s006", "s007", "s010", "s011", "s012", "s013", "s014", "s017", "s020", "s022", "s023", "s026", "s027", "s030", "s033", "s034", "s035", "s036", "s037", "s038", "s040", "s041", "s045", "s046", "s047", "s048", "s050"],
+  "outlier_sample_ids": ["s002", "s004", "s008", "s009", "s015", "s016", "s018", "s019", "s021", "s024", "s025", "s028", "s029", "s031", "s032", "s039", "s042", "s043", "s044", "s049"],
+  "representative_evidence_ids": ["s003", "s014", "s036"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s003",
+      "evidence": "blood pressure is over",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s014",
+      "evidence": "talk about your diabetes",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s036",
+      "evidence": "blood pressure has gone up since July and you said that you've been drinking more",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s002",
+      "evidence": "Drive by the fire I have fire house on my way to work",
+      "evidence_level": "topical",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s004",
+      "evidence": "drink driving trouble with the police",
+      "evidence_level": "topical",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s008",
+      "evidence": "hang out with more kids in the youth group",
+      "evidence_level": "topical",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences may represent a mix of counseling sessions about various personal issues, not exclusively health.",
+    "The pattern could be an artifact of transcription from multiple different conversations stitched together.",
+    "Some sentences might be from a support group or therapy context, covering both health and personal life."
+  ],
+  "possible_confounds": [
+    "The dataset may include multiple speakers or contexts, leading to topic diversity.",
+    "Transcription errors or incomplete sentences may obscure the pattern.",
+    "Some sentences are fragments or contain disfluencies that make topic identification difficult."
+  ],
+  "limitations": [
+    "A significant number of sentences (20 out of 50) do not clearly relate to healthcare, indicating the pattern is not universal.",
+    "The healthcare topic is broad and includes various sub-topics, so the pattern is not highly specific."
+  ],
+  "confidence": 3,
+  "confidence_rationale": "The healthcare topic covers a majority (30/50) of sentences, but there are many outliers and the topic is broad, so confidence is moderate."
+}

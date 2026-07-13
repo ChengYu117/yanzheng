@@ -1,0 +1,56 @@
+{
+  "latent_idx": 26263,
+  "short_name": "counseling_dialogue_mixed_functions",
+  "primary_explanation": "The sentences predominantly reflect a counseling or healthcare dialogue where the speaker uses reflective listening, offers suggestions, and explores client experiences, often with first-person ('I') and second-person ('you') pronouns and discourse markers like 'so', 'yeah', 'and'.",
+  "candidate_behavioral_explanation": "The primary behavioral function is a mix of reflective listening, information gathering, and advice-giving typical of motivational interviewing or therapeutic discourse.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s001","s008","s028"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Offers appointment options and a referral, typical of healthcare scheduling.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s008",
+      "evidence": "Reflects client's statement about smoking, using 'I'm hearing you say'.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s028",
+      "evidence": "Empowers client with 'you are in the driver's seat', a motivational interviewing technique.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s010",
+      "evidence": "Question about client's knowledge, showing information gathering.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s017",
+      "evidence": "Client refusal to discuss God, indicating resistance in counseling.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be seen as a collection of unrelated fragments from different conversations, but the consistent use of counseling language suggests a unified context.",
+    "Alternatively, the pattern might be a mix of advice-giving and personal disclosure, but the reflective listening elements dominate."
+  ],
+  "possible_confounds": [
+    "The sentences are decontextualized, so the exact speaker roles (counselor vs. client) are not always clear.",
+    "Some sentences (e.g., s040) discuss travel logistics, which may be from a different domain but still fit a counseling context (e.g., scheduling)."
+  ],
+  "limitations": [
+    "The analysis relies on pragmatic cues that may be ambiguous without full conversational context.",
+    "Some sentences (e.g., s014) are garbled, making interpretation uncertain."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of counseling dialogue is consistent across the vast majority of sentences, with clear examples of reflective listening, questions, and advice. No strong outliers exist, and alternative interpretations are weaker."
+}

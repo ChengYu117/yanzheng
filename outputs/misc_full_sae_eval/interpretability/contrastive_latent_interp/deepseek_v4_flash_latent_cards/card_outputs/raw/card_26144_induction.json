@@ -1,0 +1,62 @@
+{
+  "latent_idx": 26144,
+  "short_name": "therapist_question_pattern",
+  "primary_explanation": "The sentences are predominantly questions beginning with 'so', 'and', or 'okay so', followed by 'what do you think', 'how do you feel', or similar interrogative phrases, characteristic of therapeutic or counseling discourse aimed at eliciting client reflection.",
+  "candidate_behavioral_explanation": "The sentences function as open-ended questions used by a therapist or counselor to prompt the client to explore thoughts, feelings, and behaviors, facilitating self-reflection and discussion.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s045","s046","s047","s048","s050"],
+  "outlier_sample_ids": ["s025","s044","s049"],
+  "representative_evidence_ids": ["s007","s014","s023"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s007",
+      "evidence": "Starts with 'So' and uses 'what do you think' structure.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s014",
+      "evidence": "Minimal form 'so what do you think' exemplifies the core pattern.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s023",
+      "evidence": "Begins with 'okay so' and uses 'how do you feel'.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s025",
+      "evidence": "Lacks discourse marker 'so' and uses first person 'I'.",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s044",
+      "evidence": "Uses 'we' instead of 'you' and is a rhetorical question.",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s049",
+      "evidence": "First person perspective and lacks typical discourse marker.",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be interpreted as a collection of interview questions from a structured assessment, focusing on behavior change and coping strategies.",
+    "Alternatively, they may represent a mixed set of therapeutic prompts and self-reflective questions, with some outliers being client statements rather than therapist questions."
+  ],
+  "possible_confounds": [
+    "The dataset may include both therapist and client utterances, but the majority appear to be therapist questions.",
+    "Transcription artifacts like repeated words ('what what') or fillers ('um') may obscure the pattern."
+  ],
+  "limitations": [
+    "Three sentences (s025, s044, s049) do not fit the primary pattern, suggesting minor heterogeneity.",
+    "The behavioral function is inferred from linguistic form; without context, the exact discourse role is uncertain."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of therapist-like questions is highly consistent across 47 of 50 sentences, with only three outliers. The evidence strongly supports a behavioral function of eliciting reflection, though alternative interpretations are possible."
+}

@@ -1,0 +1,68 @@
+{
+  "latent_idx": 10264,
+  "short_name": "health_behavior_counseling_dialogue",
+  "primary_explanation": "The sentences form a dialogue between a healthcare provider and a patient, focusing on lifestyle modifications (diet, exercise, alcohol, smoking) and health metrics (weight, blood sugar, cholesterol). The provider gives advice, asks about readiness, and uses motivational interviewing techniques.",
+  "candidate_behavioral_explanation": "The primary behavioral function is health behavior counseling, including advice-giving, goal-setting, and assessing readiness to change.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001", "s002", "s003", "s004", "s005", "s006", "s007", "s008", "s009", "s010", "s011", "s012", "s013", "s014", "s015", "s016", "s017", "s018", "s019", "s020", "s021", "s022", "s023", "s024", "s025", "s026", "s027", "s028", "s029", "s030", "s031", "s032", "s033", "s034", "s035", "s036", "s037", "s038", "s039", "s040", "s041", "s042", "s043", "s044", "s045", "s046", "s047", "s048", "s049", "s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s004", "s020", "s044"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s004",
+      "evidence": "it is recommended that you actually cut out drinking altogether to reduce that risk",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s020",
+      "evidence": "what can we do to get you at say like a nine or ten level of confidence",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s044",
+      "evidence": "on a scale of  to   being not ready at all and  being extremely ready how ready would you say you are",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s001",
+      "evidence": "the current recommendation for health is that everybody should do  minutes of moderate exercise",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s005",
+      "evidence": "your weight ... in the overweight range",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s007",
+      "evidence": "symptoms of high blood sugar ... your ac showed your blood sugar has them out of control",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s031",
+      "evidence": "do you have a goal of quitting smoking",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be interpreted as a collection of generic health tips and questions, lacking a coherent dialogue structure.",
+    "The pattern might reflect a scripted clinical interview template with standardized questions and advice."
+  ],
+  "possible_confounds": [
+    "The sentences are extracted from a longer conversation, so some context is missing, which may obscure the dialogue flow.",
+    "The presence of numerical placeholders (e.g., ' minutes', '  to  ') suggests transcription or anonymization artifacts."
+  ],
+  "limitations": [
+    "The analysis assumes a single speaker role (provider) and patient responses, but speaker labels are not provided.",
+    "Some sentences (e.g., s013, s017) discuss travel or bus rides, which are less directly health-related but still fit the broader lifestyle context."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of health behavior counseling is very consistent across the majority of sentences, with clear examples of advice, goal-setting, and readiness assessment. Alternative interpretations are weaker, and confounds are minor."
+}

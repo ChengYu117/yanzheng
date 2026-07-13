@@ -1,0 +1,71 @@
+{
+  "latent_idx": 2504,
+  "short_name": "yes/no questions with auxiliary fronting",
+  "primary_explanation": "The majority of sentences are yes/no questions formed by fronting an auxiliary verb (Are, Is, Do, Does, Did, Can, Could, Were) before the subject, often in a healthcare or counseling context.",
+  "candidate_behavioral_explanation": "The sentences function as diagnostic or information-gathering questions, typical of medical or therapeutic interviews.",
+  "explanation_type": "linguistic_structure",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s026","s027","s028","s029","s030","s032","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": ["s024","s025","s031","s033"],
+  "representative_evidence_ids": ["s001","s016","s038"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Starts with 'Are you'",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s016",
+      "evidence": "Starts with 'Do you'",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s038",
+      "evidence": "Starts with 'Can't you'",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s024",
+      "evidence": "Not a question; starts with 'Could be'",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s025",
+      "evidence": "Declarative sentence",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s031",
+      "evidence": "Starts with 'does look' (no subject-aux inversion)",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s033",
+      "evidence": "Starts with 'does it it doesn't' (fragment)",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences are all questions, but some are wh-questions (How, Did) and some are yes/no questions.",
+    "The sentences are from a medical or counseling dialogue, focusing on patient habits and symptoms.",
+    "The sentences exhibit a mix of auxiliary verbs (are, is, do, does, did, can, could, were) with no single dominant auxiliary."
+  ],
+  "possible_confounds": [
+    "The dataset may be extracted from a specific domain (e.g., healthcare) which biases the question types.",
+    "Transcription artifacts (e.g., fragments, repetitions) may obscure the underlying pattern.",
+    "Some sentences are incomplete or have unusual word order (e.g., s031, s033)."
+  ],
+  "limitations": [
+    "Four sentences (s024, s025, s031, s033) do not fit the yes/no question pattern.",
+    "The pattern is broad (any auxiliary-fronted yes/no question) and may not be distinctive.",
+    "The behavioral function is inferred from context but not directly observable from the sentences alone."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The yes/no question pattern covers 46 out of 50 sentences, with only 4 clear outliers. The pattern is syntactically stable and easily identifiable."
+}

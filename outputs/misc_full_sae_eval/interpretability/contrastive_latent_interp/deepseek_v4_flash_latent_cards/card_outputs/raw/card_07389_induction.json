@@ -1,0 +1,56 @@
+{
+  "latent_idx": 7389,
+  "short_name": "empathic_acknowledgment_of_difficulty",
+  "primary_explanation": "The majority of sentences express empathy or acknowledgment that a situation, activity, or feeling is difficult, hard, scary, or not fun. This pattern is realized through constructions like 'it is/was [adjective]' or 'that sounds/must be [adjective]'.",
+  "candidate_behavioral_explanation": "The sentences function as empathetic reflections or validations of the interlocutor's experience, often used in counseling or supportive conversations.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s026","s027","s028","s029","s030","s031","s032","s033","s034","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": ["s025","s035"],
+  "representative_evidence_ids": ["s001","s014","s018"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "yeah throwing up is never fun",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s014",
+      "evidence": "it must seem overwhelming to have to fit exercise into your life when you have so many other priorities",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s018",
+      "evidence": "it must be tough",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s025",
+      "evidence": "MS is different for everyone.",
+      "evidence_level": "semantic",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s035",
+      "evidence": "Heart medications and diabetic medications are very different.",
+      "evidence_level": "semantic",
+      "evidence_role": "contradict"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences are from a corpus of motivational interviewing or therapy sessions, where the therapist uses reflective listening.",
+    "The pattern is a surface artifact of a specific annotation task that prompted speakers to express empathy."
+  ],
+  "possible_confounds": [
+    "Some sentences (e.g., s025, s035) are factual statements without evaluative difficulty, suggesting the pattern is not universal.",
+    "The presence of discourse markers like 'yeah', 'well', 'so' may be artifacts of conversational data rather than part of the pattern."
+  ],
+  "limitations": [
+    "The pattern is broad and may overlap with other functions like advice-giving or information-sharing.",
+    "Outliers indicate that not all sentences fit the empathic acknowledgment pattern."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of acknowledging difficulty is clear and consistent across the vast majority of sentences, with only two clear outliers. The behavioral function of empathetic reflection is strongly supported by the semantic and pragmatic content."
+}

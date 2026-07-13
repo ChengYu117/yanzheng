@@ -1,0 +1,62 @@
+{
+  "latent_idx": 28795,
+  "short_name": "apologies_and_empathy",
+  "primary_explanation": "The majority of sentences contain expressions of apology (e.g., 'I'm sorry') or empathy (e.g., 'sorry to hear'), often in a healthcare or counseling context, with some sentences expressing concern or regret.",
+  "candidate_behavioral_explanation": "The sentences appear to serve a social or therapeutic function: expressing sympathy, apologizing for inconvenience, or acknowledging the patient's feelings, likely from a healthcare provider or counselor.",
+  "explanation_type": "affective_content",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s027","s028","s029","s030","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": ["s025","s026","s031"],
+  "representative_evidence_ids": ["s005","s016","s018"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s005",
+      "evidence": "I'm really sorry that I'm unable to help you today",
+      "evidence_level": "affective",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s016",
+      "evidence": "well I'm sorry to hear that",
+      "evidence_level": "affective",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s018",
+      "evidence": "I'm really sorry for your loss",
+      "evidence_level": "affective",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s025",
+      "evidence": "and hopefully we won't see any more injuries",
+      "evidence_level": "affective",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s026",
+      "evidence": "and hopefully you won't have the same issues with this one",
+      "evidence_level": "affective",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s031",
+      "evidence": "okay well hopefully you won't have any issues like that with this one",
+      "evidence_level": "affective",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences may be from a medical or counseling dialogue where the speaker is delivering bad news or expressing regret about treatment limitations.",
+    "The pattern could be a transcription artifact where 'sorry' is overrepresented due to the conversational context, but the underlying function is mixed (apology, advice, information)."
+  ],
+  "possible_confounds": [
+    "The dataset may be drawn from a specific domain (e.g., healthcare) where apologies are common, but the pattern may not generalize.",
+    "Some sentences without 'sorry' still express empathy or concern, blurring the boundary."
+  ],
+  "limitations": [
+    "Three sentences (s025, s026, s031) are hopeful statements without apology or empathy, reducing coverage slightly.",
+    "The pattern is primarily lexical (presence of 'sorry' or empathetic phrases) and may not capture deeper pragmatic functions."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of apologies and empathy is very consistent across 47 out of 50 sentences, with only three outliers. The evidence is strong, but alternative interpretations (e.g., domain-specific dialogue) are plausible, and the pattern is somewhat surface-level."
+}

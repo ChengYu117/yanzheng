@@ -1,0 +1,82 @@
+{
+  "latent_idx": 9578,
+  "short_name": "second-person address in counseling",
+  "primary_explanation": "The majority of sentences use second-person pronouns ('you', 'your') to directly address a client or patient, often in a therapeutic or medical counseling context, with topics including health behaviors, relationships, and personal experiences.",
+  "candidate_behavioral_explanation": "The sentences function as therapeutic or medical advice, questions, affirmations, and reflections typical of a counselor or healthcare provider interacting with a client.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001", "s002", "s003", "s004", "s005", "s006", "s007", "s008", "s009", "s010", "s011", "s012", "s013", "s014", "s015", "s016", "s017", "s018", "s019", "s020", "s021", "s022", "s023", "s024", "s025", "s027", "s029", "s030", "s031", "s033", "s035", "s036", "s037", "s039", "s040", "s041", "s042", "s043", "s044", "s045", "s046", "s047", "s048", "s049"],
+  "outlier_sample_ids": ["s026", "s028", "s032", "s034", "s038", "s050"],
+  "representative_evidence_ids": ["s002", "s012", "s037"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s002",
+      "evidence": "Second-person pronoun 'you' in a reflective statement about isolation.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s012",
+      "evidence": "Direct advice using 'you need to'.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s037",
+      "evidence": "Second-person address in a counseling context: 'I understand you've come here today...'",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s026",
+      "evidence": "First-person narrative without second-person address: 'I did have some auto refills...'",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s028",
+      "evidence": "First-person statement about personal desire: 'I've always wanted to be good at music'.",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s032",
+      "evidence": "First-person future action: 'I will talk about that...'",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s034",
+      "evidence": "First-person narrative with general statements: 'I mean realistically...'",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s038",
+      "evidence": "First-person speculation: 'I would think...'",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s050",
+      "evidence": "First-person assumption: 'I assume they go to school...'",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences may be from a mixed corpus of counseling dialogues and personal narratives, with no single stable pattern.",
+    "The pattern could be primarily linguistic: frequent use of second-person pronouns and present tense in direct address.",
+    "The pattern might be topical: health-related discussions including medication, addiction, and pregnancy."
+  ],
+  "possible_confounds": [
+    "The dataset may include multiple speakers (counselor vs. client) without clear labeling.",
+    "Some sentences are fragments or incomplete, making pattern detection harder.",
+    "The presence of first-person sentences (e.g., s026, s028) suggests a mix of perspectives."
+  ],
+  "limitations": [
+    "Outlier sentences (s026, s028, s032, s034, s038, s050) do not fit the second-person address pattern.",
+    "The behavioral function is inferred from context but not explicitly labeled."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The second-person address pattern covers a clear majority (44 out of 50 sentences) and is consistent with a counseling or healthcare interaction. Outliers are few and can be explained as shifts in speaker perspective. Alternative interpretations are weaker."
+}

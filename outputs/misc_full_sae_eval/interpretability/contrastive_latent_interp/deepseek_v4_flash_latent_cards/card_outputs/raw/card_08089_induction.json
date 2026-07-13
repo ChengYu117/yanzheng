@@ -1,0 +1,56 @@
+{
+  "latent_idx": 8089,
+  "short_name": "counseling_questions",
+  "primary_explanation": "The sentences predominantly consist of questions asked by a counselor or therapist to a client, covering topics such as behavior change, substance use, personal goals, and medical history. The pattern is characterized by interrogative forms, often starting with 'do you', 'are there', 'can I', or 'I'm wondering', and includes discourse markers like 'okay', 'so', 'um'.",
+  "candidate_behavioral_explanation": "The primary behavioral function is information gathering and therapeutic exploration, typical of a counseling or clinical interview setting. The questions aim to elicit client responses about behaviors, feelings, and circumstances.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s035","s036","s037","s038","s039","s040","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": ["s034","s041"],
+  "representative_evidence_ids": ["s005","s014","s028"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s005",
+      "evidence": "Question: 'so does either of those sound like they might work for you'",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s014",
+      "evidence": "Question: 'and do you have any friends that do not use marijuana that you could kind of associate with'",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s028",
+      "evidence": "Question: 'do you have any questions for me?'",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s034",
+      "evidence": "Unclear, possibly non-sequitur: 'oh it's so good have any way so you know hi study weeks what do you want is the end it's a really big baby this big you're looking so good from your desire it's wonderful'",
+      "evidence_level": "semantic",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s041",
+      "evidence": "Statement: 'well no one says motherhood was going to be easy Harry'",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "contradict"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be part of a scripted role-play for training counselors, explaining the repetitive question formats.",
+    "The pattern might reflect a specific therapeutic modality like motivational interviewing, which uses open-ended questions and reflective listening."
+  ],
+  "possible_confounds": [
+    "The dataset may be drawn from a single counseling session or a small number of sessions, limiting diversity.",
+    "Transcription artifacts (e.g., 'um', 'you know') may inflate the appearance of a pattern."
+  ],
+  "limitations": [
+    "Two sentences (s034, s041) do not fit the question pattern and may be errors or different contexts.",
+    "The behavioral function is inferred from the question forms but not confirmed by context."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of counseling questions is highly consistent across 48 of 50 sentences, with only two outliers. The evidence strongly supports a behavioral function of information gathering in a therapeutic setting."
+}

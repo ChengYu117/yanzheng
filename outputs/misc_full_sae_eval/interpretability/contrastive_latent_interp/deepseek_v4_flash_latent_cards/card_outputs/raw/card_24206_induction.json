@@ -1,0 +1,83 @@
+{
+  "latent_idx": 24206,
+  "short_name": "expressions_of_gratitude_and_appreciation",
+  "primary_explanation": "The majority of sentences express gratitude or appreciation, often using templates like 'thank you for' or 'I appreciate you/your', directed at the listener for actions such as attending, sharing, or participating.",
+  "candidate_behavioral_explanation": "The sentences primarily serve a social bonding or rapport-building function, acknowledging the listener's cooperation or effort in a therapeutic or supportive context.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001", "s002", "s004", "s005", "s006", "s007", "s008", "s009", "s010", "s011", "s012", "s014", "s015", "s016", "s017", "s018", "s019", "s020", "s021", "s023", "s024", "s025", "s026", "s027", "s028", "s029", "s030", "s031", "s032", "s033", "s034", "s035", "s036", "s037", "s038", "s039", "s040", "s041", "s042", "s045", "s046", "s047", "s048", "s049"],
+  "outlier_sample_ids": ["s003", "s013", "s022", "s043", "s044", "s050"],
+  "representative_evidence_ids": ["s001", "s006", "s015"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "so thank you so thank you for being here and congratulations again for taking that first step",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s006",
+      "evidence": "and I really appreciate you sharing this with me",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s015",
+      "evidence": "Thank you so much for calling me back, I sure appreciate it",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s003",
+      "evidence": "You have this relationship that's been kinda off and on and but he's been very supportive...",
+      "evidence_level": "topical",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s013",
+      "evidence": "so you know um I guess to figure out where i'm going to say my parents had offered her place...",
+      "evidence_level": "topical",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s022",
+      "evidence": "but before we get started I just wanted to tell you how proud I was a blue and group on Friday night...",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s043",
+      "evidence": "so I asked you and you ever ever see or hear things other people can't see or hear",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s044",
+      "evidence": "sometimes just thank you know the cookies over or katie jo should i say",
+      "evidence_level": "semantic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s050",
+      "evidence": "well because you've been doing it and you've been consistent and successful with it",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences are from a clinical or counseling setting where the provider uses gratitude to encourage patient engagement.",
+    "The pattern reflects a polite register common in service or help-oriented interactions, not necessarily genuine gratitude.",
+    "The sentences may be part of a data collection where interviewers thank participants for their time and responses."
+  ],
+  "possible_confounds": [
+    "The dataset may be drawn from a specific domain (e.g., therapy sessions) where thanking is a routine discourse move.",
+    "Some sentences are fragments or contain transcription errors, making interpretation ambiguous.",
+    "The presence of outliers (e.g., s003, s013) suggests the set is not entirely homogeneous."
+  ],
+  "limitations": [
+    "The primary interpretation does not cover all sentences; outliers include narrative or question forms.",
+    "The behavioral function may be confounded with politeness conventions rather than genuine appreciation.",
+    "The sample IDs are not deduplicated, so repeated patterns may inflate coverage."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of gratitude/appreciation is very frequent and consistent across a large majority of sentences, with clear lexical markers. Outliers are present but few, and alternative explanations are weaker given the strong lexical evidence."
+}

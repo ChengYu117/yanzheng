@@ -1,0 +1,56 @@
+{
+  "latent_idx": 9109,
+  "short_name": "apology expressions",
+  "primary_explanation": "The majority of sentences contain an apology expression, typically 'sorry' or 'I'm sorry', often used to express regret, empathy, or politeness in conversational contexts.",
+  "candidate_behavioral_explanation": "The primary behavioral function is apologizing or expressing sympathy, serving to maintain social rapport or acknowledge a mistake or unfortunate situation.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001", "s002", "s003", "s004", "s005", "s006", "s007", "s008", "s009", "s010", "s011", "s012", "s013", "s014", "s015", "s016", "s017", "s018", "s019", "s020", "s021", "s022", "s023", "s024", "s025", "s026"],
+  "outlier_sample_ids": ["s027", "s028", "s029", "s030", "s031", "s032", "s033", "s034", "s035", "s036", "s037", "s038", "s039", "s040", "s041", "s042", "s043", "s044", "s045", "s046", "s047", "s048", "s049", "s050"],
+  "representative_evidence_ids": ["s001", "s015", "s016"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Contains 'I'm sorry to hear that'",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s015",
+      "evidence": "Contains 'I'm really sorry for your loss'",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s016",
+      "evidence": "Contains 'I'm really sorry that I'm unable to help you today'",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s027",
+      "evidence": "No apology expression; contains 'I'm afraid' but not 'sorry'",
+      "evidence_level": "lexical",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s028",
+      "evidence": "No apology expression; reassurance statement",
+      "evidence_level": "lexical",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences may represent a mix of conversational openings and closings, with apologies being one type of politeness marker.",
+    "The pattern could be an artifact of transcription from customer service or therapy dialogues where apologies are frequent."
+  ],
+  "possible_confounds": [
+    "The dataset may be drawn from a specific domain (e.g., healthcare, customer service) where apologies are common.",
+    "Some sentences without 'sorry' may still have apologetic tone but lack the lexical marker."
+  ],
+  "limitations": [
+    "The outlier set is large (24 sentences) and includes diverse functions like greetings, thanks, and questions, indicating the pattern does not cover the entire set.",
+    "The primary pattern is lexical and may not capture deeper pragmatic functions in all cases."
+  ],
+  "confidence": 3,
+  "confidence_rationale": "The apology pattern is clear and consistent in 26 out of 50 sentences, but the remaining sentences show diverse other functions, reducing overall coverage."
+}

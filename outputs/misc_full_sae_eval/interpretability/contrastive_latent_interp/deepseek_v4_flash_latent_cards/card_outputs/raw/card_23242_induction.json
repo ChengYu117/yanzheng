@@ -1,0 +1,59 @@
+{
+  "latent_idx": 23242,
+  "short_name": "therapist_observation_and_affirmation",
+  "primary_explanation": "The sentences predominantly involve a therapist or counselor observing, noting, or affirming client behaviors, feelings, or progress, often using phrases like 'I noticed', 'I see', 'I understand', or 'it sounds like'.",
+  "candidate_behavioral_explanation": "The primary behavioral function is to build rapport, validate client experiences, and guide the conversation by reflecting observations and encouraging disclosure.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001", "s002", "s003", "s004", "s005", "s007", "s011", "s013", "s015", "s017", "s018", "s019", "s023", "s025", "s026", "s028", "s029", "s030", "s033", "s035", "s037", "s038", "s039", "s040", "s042", "s043", "s044", "s048", "s049", "s050"],
+  "outlier_sample_ids": ["s006", "s008", "s009", "s010", "s012", "s014", "s016", "s020", "s021", "s022", "s024", "s027", "s031", "s032", "s034", "s036", "s041", "s045", "s046", "s047"],
+  "representative_evidence_ids": ["s001", "s002", "s030"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "I noticed that you got a little tense",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s002",
+      "evidence": "I noticed that you filled out one of our drug questionnaires",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s030",
+      "evidence": "I noticed from your previous physical exam couple days ago that your blood pressure seems to be a little bit high",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s006",
+      "evidence": "oh my god your titties are amazing",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s008",
+      "evidence": "that would be super I'd really look forward to it I'm really glad you came in",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "contradict"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences are from a clinical or counseling setting where the speaker reviews client forms and medical history.",
+    "The sentences involve the speaker expressing surprise or appreciation about client actions or progress.",
+    "The sentences are a mix of observations, affirmations, and questions about client behavior and health."
+  ],
+  "possible_confounds": [
+    "The dataset may include multiple speakers or contexts (e.g., medical, counseling, casual conversation) that are not distinguished.",
+    "Some sentences are incomplete or contain transcription errors, making interpretation ambiguous.",
+    "The presence of outliers like s006 suggests the set may include non-therapeutic interactions."
+  ],
+  "limitations": [
+    "The primary pattern does not cover all sentences; outliers include compliments, greetings, and unrelated statements.",
+    "The behavioral function is inferred from context but not explicitly confirmed by the data.",
+    "The sample IDs are not ordered by time or speaker, so conversational flow is unknown."
+  ],
+  "confidence": 3,
+  "confidence_rationale": "The primary pattern of therapist observations and affirmations covers a majority of sentences, but there are clear outliers and potential confounds from mixed contexts."
+}

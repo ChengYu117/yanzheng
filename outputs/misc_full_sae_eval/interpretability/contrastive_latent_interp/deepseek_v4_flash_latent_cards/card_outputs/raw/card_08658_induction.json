@@ -1,0 +1,44 @@
+{
+  "latent_idx": 8658,
+  "short_name": "how_questions",
+  "primary_explanation": "The sentences are predominantly questions beginning with 'how' (often preceded by discourse markers like 'so', 'okay', 'um'), used to inquire about frequency, quantity, feelings, or processes in health or lifestyle contexts.",
+  "candidate_behavioral_explanation": "The sentences function as probing questions in a clinical or counseling interview, eliciting self-report on behaviors (drinking, smoking, exercise) and subjective states (confidence, motivation, feelings).",
+  "explanation_type": "linguistic_structure",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s001","s010","s030"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Starts with 'so' and contains 'how do you feel'",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s010",
+      "evidence": "Starts with 'okay and how often'",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s030",
+      "evidence": "Starts with 'so how many'",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences are all questions, but the pattern is simply interrogative form without a specific discourse function.",
+    "The sentences are part of a structured interview script with fixed question templates (e.g., 'how often', 'how many', 'how do you feel')."
+  ],
+  "possible_confounds": [
+    "The dataset may be from a single interview or counseling session, leading to topic homogeneity.",
+    "Transcription artifacts like repeated discourse markers ('so', 'okay') may inflate the pattern."
+  ],
+  "limitations": [
+    "The pattern is primarily structural; behavioral function is inferred but not directly observable.",
+    "Some sentences (e.g., s022, s039, s043) are simple greetings, which fit the 'how' question pattern but differ in context."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of 'how' questions is highly consistent across all 50 sentences, with no outliers. The behavioral function is plausible but not definitive, and alternative explanations are weaker."
+}

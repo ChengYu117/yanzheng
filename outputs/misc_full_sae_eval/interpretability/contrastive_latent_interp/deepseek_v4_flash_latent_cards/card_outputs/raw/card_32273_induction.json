@@ -1,0 +1,326 @@
+{
+  "latent_idx": 32273,
+  "short_name": "therapeutic_questioning",
+  "primary_explanation": "The sentences predominantly consist of questions and suggestions typical of a therapeutic or counseling context, often using modal verbs like 'would', 'can', 'could', and 'doesn't' to explore client experiences and propose actions.",
+  "candidate_behavioral_explanation": "The primary behavioral function is eliciting information, exploring client perspectives, and proposing collaborative goals, characteristic of motivational interviewing or therapy sessions.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s010","s011","s012"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s010",
+      "evidence": "okay would you mind if we explore this issue a little further",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s011",
+      "evidence": "so right now would you like to discuss the potential health risks associated with weight gain and overeating junk food",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s012",
+      "evidence": "okay well would it be okay if we met for the next couple weeks and kind of worked on this goal together",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s001",
+      "evidence": "no not at all doesn't sound like good quality sleep",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s002",
+      "evidence": "yeah doesn't sound like it's working well too working too well for you",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s003",
+      "evidence": "okay I saw you filled in one of the pink sheets might take a little bit",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s004",
+      "evidence": "if you really wanted to stop could you stop",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s005",
+      "evidence": "okay will sound like you have it this semester issue the food thing you are not great to give up but exercising to be a possible Avenue just to lower your cholesterol levels",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s006",
+      "evidence": "okay so could you tell me a little bit about what are some things that you don't really like about it",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s007",
+      "evidence": "didn't know we explained that early on",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s008",
+      "evidence": "wouldn't be already I'm",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s009",
+      "evidence": "wouldn't what to do",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s013",
+      "evidence": "okay I know you mentioned last week that you started smoking about a year ago would it be fair to assume that you stopped running around the same time you started some anything",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s014",
+      "evidence": "doesn't sound like it's working well too working too well for you have you tell me about how you're taking the medication have you taking it very regular",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s015",
+      "evidence": "doesn't feel good for you",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s016",
+      "evidence": "doesn't that concern you",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s017",
+      "evidence": "doesn't sound like good quality sleep",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s018",
+      "evidence": "before we get started would you like a bottle of water",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s019",
+      "evidence": "so if you'd like to get started would you mind if I take a look at your application paperwork and just make sure that there isn't anything that I may have a question about",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s020",
+      "evidence": "Oh didn't know you had an ankle pain",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s021",
+      "evidence": "so that seems pretty unlikely all right that's not something that maybe as you talk about geometrically maybe there's some way your car could find the bridge with physics now maybe could happen but it seems like it would be do you fairly like",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s022",
+      "evidence": "yeah all right so would you appreciate those as goals like avoiding those situations like going the court chug yeah goals that you could get behind home come in",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s023",
+      "evidence": "well would you mind taking a seat",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s024",
+      "evidence": "so doesn't sound like you're really worried about losing your social support if you stop using",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s025",
+      "evidence": "yeah yeah well and David honestly wherever you're at will work with it",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s026",
+      "evidence": "yeah why not I'll try it so over the next couple of weeks so if we were to set up a follow-up appointment would you be comfortable of keeping that journal and then coming to me after so we can review it together",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s027",
+      "evidence": "alright so you want to avoid those behaviors for sure so you know for sure you don't want to do those things would it be acceptable to do this thing's anyone",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s028",
+      "evidence": "you know can't you think of anything better to do",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s029",
+      "evidence": "and what if what if anything would you choose to do would be to cut down with a bit to quit just in case but",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s030",
+      "evidence": "and what if what if anything would you choose to do would be to cut down with a bit to quit",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s031",
+      "evidence": "all right so would you appreciate those as goals like avoiding those situations like going in the court drunk",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s032",
+      "evidence": "after your meal comes and just put half of the food in the box and you don't open the box can't get home it's kind of bang for your buck too right because then you can either other real later",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s033",
+      "evidence": "okay can you tell me a little bit about why you picked those three",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s034",
+      "evidence": "okay can I ask you do you see yourself as overweight",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s035",
+      "evidence": "okay can you tell me a little bit about that",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s036",
+      "evidence": "okay can you tell me a little bit about how alcohol fits into sort of your social scene",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s037",
+      "evidence": "okay can you tell me about how that talked you're talking to the chair talking to your dad",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s038",
+      "evidence": "okay can you give me an example of a recent situation maybe we can focus on that",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s039",
+      "evidence": "okay can you tell me a little bit about the difference a pleasure you get from the weekends you're drinking alcohol to the weekends you know I",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s040",
+      "evidence": "okay can you tell me a little bit about what that's like for you",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s041",
+      "evidence": "okay can you tell me a little bit about how alcohol fits into your overall social scene",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s042",
+      "evidence": "Haven't you heard the grin and tonic?",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s043",
+      "evidence": "yeah hmm so haven't really thought of yourself in that way",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s044",
+      "evidence": "okay well can I tell you a little bit about what being overweight means",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s045",
+      "evidence": "okay um would you let would you allow me to explore a little bit more about the drinking and alcohol",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s046",
+      "evidence": "and would you like you know other maybe more sessions to follow up",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s047",
+      "evidence": "so you could reduce your usage avoid driving and that might that might get you to your goal would that be enough usage to stop the anxiety in the pain",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s048",
+      "evidence": "so you could reduce your usage avoid driving and that might that might get you to your goal would that be enough usage to stop the anxiety in the name",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s049",
+      "evidence": "that's illegal perhaps would make that guilt feeling go away",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s050",
+      "evidence": "okay uh can you tell me how many times that this has happened to you we have these recurring thoughts about the CIA do you remember any other times",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences may be from a scripted role-play or training exercise for counseling, as they contain formulaic questioning patterns.",
+    "The pattern could reflect a specific therapeutic modality like motivational interviewing, characterized by open-ended questions and reflective statements."
+  ],
+  "possible_confounds": [
+    "The dataset may include multiple speakers or sessions, mixing different conversational roles.",
+    "Transcription errors or incomplete utterances (e.g., s008, s009) may obscure the intended function."
+  ],
+  "limitations": [
+    "Some sentences are fragmentary or ambiguous, making it difficult to assign a clear behavioral function.",
+    "The absence of speaker labels prevents distinguishing between therapist and client utterances."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of therapeutic questioning is highly consistent across the majority of sentences, with clear linguistic markers (e.g., 'would you', 'can you', 'doesn't sound like') and a coherent discourse function. Alternative explanations are weaker, and confounds are manageable."
+}

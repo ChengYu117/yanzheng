@@ -1,0 +1,44 @@
+{
+  "latent_idx": 31930,
+  "short_name": "So-prefixed therapeutic questions",
+  "primary_explanation": "The majority of sentences begin with the discourse marker 'So' followed by a question or reflective statement typical of therapeutic or counseling contexts, often addressing personal behaviors, health, or relationships.",
+  "candidate_behavioral_explanation": "The sentences function as therapeutic prompts or exploratory questions, likely from a clinician to a client, aimed at eliciting information or reflection.",
+  "explanation_type": "linguistic_structure",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s003","s016","s034"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s003",
+      "evidence": "Starts with 'So' and is a question about drinking history.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s016",
+      "evidence": "Starts with 'So basically' and is a clarifying question about behavior.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s034",
+      "evidence": "Starts with 'So' and is a follow-up question about patient's status.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be part of a structured interview or assessment protocol, with 'So' serving as a conversational opener.",
+    "The pattern might reflect a specific therapeutic technique (e.g., motivational interviewing) where 'So' is used to transition or summarize."
+  ],
+  "possible_confounds": [
+    "The dataset may be drawn from a single clinical setting, limiting generalizability.",
+    "Transcription artifacts (e.g., 'hmm', 'yeah') may obscure the pattern."
+  ],
+  "limitations": [
+    "Some sentences (e.g., s025, s032) are less clearly questions but still start with 'So'.",
+    "The behavioral function is inferred from context but not explicitly labeled."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The 'So' initial discourse marker is present in all sentences, and the therapeutic questioning context is consistent across the majority, with no clear outliers."
+}

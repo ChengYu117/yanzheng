@@ -1,0 +1,44 @@
+{
+  "latent_idx": 19359,
+  "short_name": "first-person singular with discourse markers",
+  "primary_explanation": "The majority of sentences begin with 'I' followed by a verb (e.g., 'I'm', 'I've', 'I want', 'I think'), often incorporating discourse markers like 'I mean', 'I know', 'I guess', indicating a conversational or therapeutic context where the speaker expresses personal thoughts, feelings, or actions.",
+  "candidate_behavioral_explanation": "The sentences appear to function as self-disclosure, reflection, or guidance in a counseling or coaching interaction, with the speaker using first-person statements to share experiences, ask questions, or direct the listener.",
+  "explanation_type": "linguistic_structure",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s001","s010","s039"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Starts with 'I'm guessing'",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s010",
+      "evidence": "Starts with 'I'm glad'",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s039",
+      "evidence": "Starts with 'I think'",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The pattern may reflect a specific discourse genre such as therapy or coaching sessions, where the speaker uses first-person statements to build rapport or guide the conversation.",
+    "The sentences could be from a single speaker in a dialogue, with the 'I' referring to the same person throughout, indicating a monologic or narrative style."
+  ],
+  "possible_confounds": [
+    "The sentences are extracted from a larger conversation, so the pattern may be an artifact of the speaker's idiolect rather than a general linguistic feature.",
+    "Some sentences are incomplete or contain disfluencies (e.g., s025, s043), which may affect pattern detection."
+  ],
+  "limitations": [
+    "The analysis does not account for the full conversational context, which could reveal additional functions or patterns.",
+    "The pattern is primarily structural and may not capture subtle variations in function across sentences."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of first-person singular subjects is highly consistent across all 50 sentences, with no outliers. The structural pattern is clear and stable, though the behavioral function is inferred from context and may have alternative interpretations."
+}

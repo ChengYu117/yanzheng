@@ -1,0 +1,44 @@
+{
+  "latent_idx": 26319,
+  "short_name": "so_that_purpose_clauses",
+  "primary_explanation": "A majority of sentences contain the discourse marker 'so' followed by a clause expressing purpose, result, or explanation, often in therapeutic or advisory contexts. The pattern includes 'so that' purpose clauses (e.g., s001, s002, s003) and 'so' as a discourse marker introducing a consequence or summary (e.g., s023, s030, s040).",
+  "candidate_behavioral_explanation": "The sentences appear to function as therapeutic or counseling discourse, where the speaker uses 'so' to link actions to goals, provide feedback, or summarize understanding. This pattern supports collaborative problem-solving and motivational interviewing.",
+  "explanation_type": "linguistic_structure",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s001","s023","s040"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Contains 'so that' purpose clause: 'so that I can better help you'",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s023",
+      "evidence": "Uses 'so' as discourse marker to summarize: 'so that sounds doable'",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s040",
+      "evidence": "Uses 'so' to evaluate: 'so that's good to hear'",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences may reflect a therapeutic register with frequent use of 'so' as a conversational filler or transition marker.",
+    "The pattern could be an artifact of transcription, where 'so' is used to indicate speaker continuation or turn-taking."
+  ],
+  "possible_confounds": [
+    "The dataset may be drawn from a single domain (e.g., counseling transcripts), inflating the frequency of 'so'.",
+    "Some sentences lack 'so' (e.g., s009, s010, s011, s012, s045, s046, s047, s048) but still fit the broader therapeutic context."
+  ],
+  "limitations": [
+    "The pattern is primarily structural and does not capture the full range of behavioral functions.",
+    "Sentences without 'so' (e.g., s009, s010) are still included as supporting because they share the therapeutic context, but they weaken the linguistic pattern."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of 'so' as a discourse marker or purpose linker is highly consistent across the majority of sentences, with clear structural evidence. However, a few sentences lack 'so' but are still contextually similar, and alternative interpretations (e.g., therapeutic register) are plausible but not as specific."
+}

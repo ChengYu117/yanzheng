@@ -1,0 +1,44 @@
+{
+  "latent_idx": 19470,
+  "short_name": "wh-questions_about_personal_experience",
+  "primary_explanation": "The majority of sentences are questions or prompts that ask for information about the listener's thoughts, actions, or experiences, often using 'what' or 'tell me about' constructions.",
+  "candidate_behavioral_explanation": "The sentences function as open-ended questions or requests for elaboration, typical of counseling or motivational interviewing contexts.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s005","s008","s026"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s005",
+      "evidence": "Direct question: 'tell me what you'd like to talk about today'",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s008",
+      "evidence": "Request for elaboration: 'can you tell me a little bit more about what you do?'",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s026",
+      "evidence": "Open-ended prompt: 'tell me a little bit about what you like to do on the computer'",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences may reflect a therapeutic or coaching discourse where the speaker guides the conversation by asking about the listener's perspective.",
+    "The pattern could be a surface artifact of a specific data collection protocol that uses scripted prompts."
+  ],
+  "possible_confounds": [
+    "The dataset may be drawn from a single domain (e.g., health counseling), limiting generalizability.",
+    "Some sentences are statements rather than questions, but they still relate to the listener's experience."
+  ],
+  "limitations": [
+    "A few sentences (e.g., s047) are declarative statements about rights, not questions, but they still address the listener's decision-making.",
+    "The interpretation may not capture the full range of discourse functions present."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of open-ended questions and prompts is highly consistent across the majority of sentences, with only minor deviations that still relate to the listener's experience."
+}

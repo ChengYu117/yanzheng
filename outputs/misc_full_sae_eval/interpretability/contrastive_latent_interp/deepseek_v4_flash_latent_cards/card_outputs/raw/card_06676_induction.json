@@ -1,0 +1,63 @@
+{
+  "latent_idx": 6676,
+  "short_name": "positive_evaluation_of_person_or_action",
+  "primary_explanation": "The majority of sentences express a positive evaluation (e.g., glad, good, great, wonderful, happy, nice, thrilled, awesome) directed at the addressee or their actions, often in a healthcare or supportive context.",
+  "candidate_behavioral_explanation": "The sentences function as affirmations, encouragements, or expressions of gratitude, likely used by healthcare providers to build rapport and reinforce positive patient behaviors.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s020","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": ["s019","s021","s022"],
+  "representative_evidence_ids": ["s003","s005","s032"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s003",
+      "evidence": "I'm glad you called.",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s005",
+      "evidence": "I'm glad you didn't come in today it shows that you really care about your health",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s032",
+      "evidence": "it's good to see you",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s019",
+      "evidence": "happy this is a glass I mean this is a typical glass which is five ounces of wine",
+      "evidence_level": "semantic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s021",
+      "evidence": "but at least you're willing to say that you're willing to try",
+      "evidence_level": "semantic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s022",
+      "evidence": "I'm quite happy it might be your decision if you want children",
+      "evidence_level": "semantic",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The pattern may be a surface artifact of transcription conventions where positive feedback is common in clinical dialogues.",
+    "The pattern could reflect a topic of health management and patient-provider interactions.",
+    "The pattern might be an affective expression of reassurance and support."
+  ],
+  "possible_confounds": [
+    "Some sentences (e.g., s019, s021, s022) use positive words but in a different context (e.g., describing a glass, hedging, or discussing life choices), which may not fit the affirmation function.",
+    "The dataset may be drawn from a specific domain (e.g., medical consultations) where such expressions are routine."
+  ],
+  "limitations": [
+    "The interpretation is based on semantic and pragmatic cues; without full context, the exact function may vary.",
+    "A few sentences (s019, s021, s022) are outliers that do not clearly express affirmation toward the addressee."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of positive evaluation is highly consistent across 47 out of 50 sentences, with clear lexical markers (glad, good, great, etc.) and a pragmatic function of affirmation. The three outliers are explainable as different uses of positive words. The behavioral function is well-supported by the context of healthcare interactions."
+}

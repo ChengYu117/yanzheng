@@ -1,0 +1,82 @@
+{
+  "latent_idx": 25210,
+  "short_name": "what_questions",
+  "primary_explanation": "The majority of sentences are questions or requests for information that begin with or contain 'what', often in the form 'what is' or 'what are', and are used in a conversational or therapeutic context to elicit details about the interlocutor's experiences, preferences, or goals.",
+  "candidate_behavioral_explanation": "The sentences primarily function as open-ended questions or probes, likely from a healthcare or counseling setting, aimed at gathering information or encouraging the patient to elaborate.",
+  "explanation_type": "linguistic_structure",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s012","s013","s014","s015","s016","s017","s019","s020","s021","s022","s023","s024","s025","s026","s029","s031","s032","s033","s034","s035","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": ["s011","s018","s027","s028","s030","s036"],
+  "representative_evidence_ids": ["s002","s010","s015"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s002",
+      "evidence": "Starts with 'What is' and asks for a specific piece of information.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s010",
+      "evidence": "Contains 'what is that like for you', a common therapeutic probe.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s015",
+      "evidence": "Uses 'what is it that's brought you to see me today', a typical opening question in clinical settings.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s011",
+      "evidence": "Is a statement of uncertainty, not a question.",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s018",
+      "evidence": "Contains garbled text and does not form a coherent question.",
+      "evidence_level": "surface_form",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s027",
+      "evidence": "Starts with 'can I tell you', which is an offer to inform rather than a question.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s028",
+      "evidence": "Contains a long narrative and is not primarily a question.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s030",
+      "evidence": "Garbled syntax, unclear meaning.",
+      "evidence_level": "surface_form",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s036",
+      "evidence": "Is a statement of understanding, not a question.",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences are all from a medical or therapeutic intake interview, focusing on patient history and lifestyle.",
+    "The pattern is simply the frequent use of the word 'what' in interrogative structures, which is a surface artifact of the data collection context.",
+    "The sentences represent a mix of open-ended questions and reflective statements, with no single dominant pattern."
+  ],
+  "possible_confounds": [
+    "The dataset may be from a specific domain (e.g., counseling, medical) that naturally uses many 'what' questions.",
+    "Some sentences are incomplete or garbled, possibly due to transcription errors.",
+    "The presence of statements like s011 and s036 suggests the pattern is not purely interrogative."
+  ],
+  "limitations": [
+    "The analysis is based solely on surface linguistic features without access to conversational context.",
+    "Some sentences are ambiguous or contain errors, making classification difficult."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of 'what' questions is very clear and covers the vast majority of sentences. Exceptions are few and can be explained as outliers or artifacts. The behavioral function is plausible but not definitively established without context."
+}

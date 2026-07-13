@@ -1,0 +1,56 @@
+{
+  "latent_idx": 14875,
+  "short_name": "therapeutic_discourse_markers",
+  "primary_explanation": "The majority of sentences begin with 'and so' or 'so', functioning as discourse markers that connect to prior talk, often in a therapeutic or counseling context. These sentences typically involve reflective listening, scaling questions, or exploratory prompts about feelings, behaviors, or motivations.",
+  "candidate_behavioral_explanation": "The sentences appear to be from a therapeutic or coaching interaction, where the speaker uses 'and so' to build rapport, summarize, or probe deeper into the client's experiences. Common functions include reflecting feelings, asking about readiness to change, and exploring barriers.",
+  "explanation_type": "linguistic_structure",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s012","s020","s029"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s012",
+      "evidence": "Begins with 'and so', a discourse marker linking to prior talk.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s020",
+      "evidence": "Starts with 'and so' and asks a direct question about stopping smoking, typical of motivational interviewing.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s029",
+      "evidence": "Uses 'and so' to introduce a scaling question about motivation, common in therapy.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s001",
+      "evidence": "Contains 'so' but also has grammatical errors and non-standard phrasing, which may indicate a different register or transcription artifact.",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s046",
+      "evidence": "Contains 'so' but the text is fragmented and less coherent, possibly a different speaker or context.",
+      "evidence_level": "surface_form",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be from a corpus of transcribed therapy sessions, with 'and so' being a common filler or transition used by therapists.",
+    "Alternatively, the pattern might reflect a specific annotation or transcription style where 'and so' is inserted to indicate a continuation of speech."
+  ],
+  "possible_confounds": [
+    "The presence of 'so' in all sentences might be an artifact of the data collection or transcription process, rather than a genuine linguistic pattern.",
+    "Some sentences (e.g., s001, s046) show grammatical errors or incoherence, suggesting possible transcription errors or non-native speech."
+  ],
+  "limitations": [
+    "The analysis assumes a single discourse context, but the sentences vary in coherence and may come from multiple speakers or settings.",
+    "The pattern is primarily structural (discourse marker) and may not capture deeper behavioral functions consistently."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of starting with 'and so' or 'so' is highly consistent across all 50 sentences, with only minor variations. The therapeutic context is strongly suggested by the content (scaling questions, reflective listening). However, a few sentences (s001, s046) are less coherent, and the behavioral function is inferred rather than directly observed, so confidence is high but not maximal."
+}

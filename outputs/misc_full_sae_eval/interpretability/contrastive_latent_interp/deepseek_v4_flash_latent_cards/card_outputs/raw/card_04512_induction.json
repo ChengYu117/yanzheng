@@ -1,0 +1,74 @@
+{
+  "latent_idx": 4512,
+  "short_name": "help_offers_and_discussions",
+  "primary_explanation": "The majority of sentences express offers, desires, or discussions about helping someone, often using the verb 'help' in first-person or second-person constructions, indicating a supportive or advisory discourse context.",
+  "candidate_behavioral_explanation": "The sentences primarily function as offers of assistance, expressions of willingness to help, or inquiries about how to help, suggesting a counseling or support interaction.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s005","s013","s028"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s005",
+      "evidence": "Contains 'I really want to help you', a direct offer of help.",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s013",
+      "evidence": "Contains 'let me know if there's any way I can help', an offer of assistance.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s028",
+      "evidence": "Contains 'is there anything else that I can help you with today?', a question offering help.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s001",
+      "evidence": "Contains 'no I'm not out there helping', a negation of helping, but still references help.",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s020",
+      "evidence": "Contains 'what do you think I've helped you move towards', a reflection on help given.",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s038",
+      "evidence": "Contains 'he's been very supportive and helpful', describing help from another person.",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s042",
+      "evidence": "Contains 'I really like some help', a request for help.",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s047",
+      "evidence": "Contains 'I appreciate your help', thanking for help.",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be part of a therapeutic or coaching dialogue where the speaker is guiding the client.",
+    "The pattern might reflect a customer service interaction where the agent offers assistance."
+  ],
+  "possible_confounds": [
+    "Some sentences (e.g., s001, s020) are not direct offers but still reference help, which may dilute the behavioral function.",
+    "The dataset may be from a specific domain (e.g., counseling) that naturally involves help-related language."
+  ],
+  "limitations": [
+    "The analysis does not account for the broader conversational context beyond these sentences.",
+    "Some sentences are incomplete or contain transcription artifacts (e.g., s050)."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of help offers and discussions is highly consistent across all sentences, with every sentence containing the word 'help' or a close variant. The behavioral function is clear, though a few sentences are more about reflecting on help given rather than offering it. Alternative interpretations are weaker."
+}

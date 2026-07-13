@@ -1,0 +1,110 @@
+{
+  "latent_idx": 4625,
+  "short_name": "therapist_reflective_listening",
+  "primary_explanation": "The sentences predominantly consist of therapist or counselor statements that use reflective listening, summarizing, or paraphrasing of a client's reported feelings, thoughts, or situations, often starting with 'so', 'okay so', 'it sounds like', or 'you seem'.",
+  "candidate_behavioral_explanation": "The primary behavioral function is reflective listening and validation, where the speaker mirrors or checks understanding of the client's emotional state or circumstances, common in therapeutic or counseling contexts.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s019","s020","s021","s023","s024","s025","s026","s027","s030","s032","s033","s034","s035","s037","s040","s041","s044","s045","s046","s048","s049","s050"],
+  "outlier_sample_ids": ["s018","s022","s028","s029","s031","s036","s038","s039","s042","s043","s047"],
+  "representative_evidence_ids": ["s001","s003","s013"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Starts with 'well it sounds like' and paraphrases client's busyness.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s003",
+      "evidence": "Uses 'okay so on one hand... on the other hand' to summarize client's ambivalence.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s013",
+      "evidence": "Reflects client's motivation and excitement with 'you seem very motivated and excited'.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s018",
+      "evidence": "Contains disjointed text about 'Alaska' and drinking, not reflective listening.",
+      "evidence_level": "semantic",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s022",
+      "evidence": "Asks a direct question ('do you notice...') rather than reflecting.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s028",
+      "evidence": "Short phrase 'so we're pretty good okay okay' seems self-referential, not client-focused.",
+      "evidence_level": "semantic",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s029",
+      "evidence": "Directive statement 'what we really need to discuss' is more advisory than reflective.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s031",
+      "evidence": "Question about 'glass is recent bigger' unclear and not reflective.",
+      "evidence_level": "semantic",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s036",
+      "evidence": "Self-referential statement about case transfer, not client reflection.",
+      "evidence_level": "semantic",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s038",
+      "evidence": "Short expression of concern 'I'm just so concerned' without reflection.",
+      "evidence_level": "affective",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s039",
+      "evidence": "Concern about 'something in your mouth' likely medical, not reflective listening.",
+      "evidence_level": "topical",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s042",
+      "evidence": "General health advice about dehydration, not client-specific reflection.",
+      "evidence_level": "topical",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s043",
+      "evidence": "Client self-report, not therapist reflective statement.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s047",
+      "evidence": "Client self-report about feeling sweaty and fat.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "contradict"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be from a motivational interviewing session, where the therapist uses reflective listening to elicit change talk.",
+    "Alternatively, they might represent a mix of therapist reflections and occasional client statements or administrative comments, but the majority are therapist reflections."
+  ],
+  "possible_confounds": [
+    "Some sentences may be from different speakers (therapist vs. client) or different contexts (counseling vs. medical), but the majority share the reflective listening pattern.",
+    "Transcription errors or incomplete sentences (e.g., s018, s031) may obscure the pattern."
+  ],
+  "limitations": [
+    "The dataset does not provide speaker labels, so the interpretation assumes a therapist-client dyad.",
+    "Outliers may represent different phases of the interaction or different therapeutic approaches."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The reflective listening pattern is clear and consistent across a large majority of sentences, with only a few outliers that are easily identifiable as different discourse functions or topics."
+}

@@ -1,0 +1,44 @@
+{
+  "latent_idx": 1455,
+  "short_name": "therapeutic reflection on behavior change",
+  "primary_explanation": "The sentences predominantly involve a therapist or counselor reflecting back a client's statements about behavior change, often using 'so' and 'it sounds like' to summarize and validate the client's experience, with a focus on ambivalence, social pressure, and practical challenges.",
+  "candidate_behavioral_explanation": "The primary behavioral function is reflective listening and summarizing in a therapeutic or coaching context, aimed at building rapport and encouraging client self-exploration.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s001","s008","s026"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Uses 'so' and 'it's a little bit of pressure but i like it' to reflect ambivalence.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s008",
+      "evidence": "Starts with 'okay so it's been quite a big step' summarizing client's change.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s026",
+      "evidence": "Uses 'so it sounds like you've been experiencing anxiety' to reflect client's history.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be part of a motivational interviewing session focusing on substance use or health behavior change.",
+    "The pattern might reflect a general conversational style of summarizing and validating in any supportive dialogue."
+  ],
+  "possible_confounds": [
+    "The sentences are extracted from a corpus of therapy or coaching sessions, which may introduce a consistent discourse style.",
+    "The presence of 'so' and 'it sounds like' may be an artifact of the transcription or annotation process."
+  ],
+  "limitations": [
+    "Some sentences (e.g., s045) are too short to clearly exhibit the pattern.",
+    "The interpretation assumes a therapeutic context, which may not be explicitly confirmed."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of reflective summarizing with 'so' and 'it sounds like' is highly consistent across the majority of sentences, with no clear outliers. The behavioral function is well-supported by linguistic evidence, though alternative interpretations exist."
+}

@@ -1,0 +1,44 @@
+{
+  "latent_idx": 32320,
+  "short_name": "positive_evaluative_adjectives",
+  "primary_explanation": "The majority of sentences contain positive evaluative adjectives (e.g., 'fabulous', 'wonderful', 'brilliant', 'gorgeous', 'awesome', 'excellent', 'nice', 'great', 'fantastic', 'perfect', 'cute', 'handsome') used as standalone exclamations or embedded in discourse, often as affirmations or compliments.",
+  "candidate_behavioral_explanation": "The available sentences do not support a stable behavioral-function interpretation.",
+  "explanation_type": "affective_content",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s001","s004","s030"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Contains the positive adjective 'fabulous'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s004",
+      "evidence": "Contains the positive adjective 'wonderful'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s030",
+      "evidence": "Contains the positive adjective 'Great'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences may reflect a conversational pattern of giving positive feedback or encouragement in a therapeutic or coaching context.",
+    "The pattern could be a surface artifact of a corpus focused on affective language, with many sentences being short evaluative responses."
+  ],
+  "possible_confounds": [
+    "Some sentences (e.g., s008 'awful', s024 'crazy idea', s027 'Worrying about simple things') contain negative or neutral content, but they are still evaluative adjectives or phrases.",
+    "The presence of longer, mixed sentences (e.g., s010, s016) includes positive adjectives but also other discourse elements."
+  ],
+  "limitations": [
+    "The pattern is broad and may not capture nuanced discourse functions.",
+    "Some sentences lack explicit positive adjectives but still convey positive sentiment (e.g., s017 'nice to meet you')."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of positive evaluative adjectives is highly consistent across the majority of sentences, with very few outliers. However, the exact function varies, and some sentences are longer or mixed, preventing a perfect score."
+}

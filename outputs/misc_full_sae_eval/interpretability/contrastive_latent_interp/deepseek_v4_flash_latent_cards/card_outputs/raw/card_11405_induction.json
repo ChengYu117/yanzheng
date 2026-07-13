@@ -1,0 +1,56 @@
+{
+  "latent_idx": 11405,
+  "short_name": "second-person advice and reflection",
+  "primary_explanation": "The sentences predominantly use second-person 'you' to address the listener directly, often in contexts of giving advice, reflecting on personal habits, or discussing health-related risks and changes. The pattern includes frequent discourse markers like 'you know' and 'so', and a mix of declarative and interrogative structures that engage the listener in a conversational, therapeutic, or coaching tone.",
+  "candidate_behavioral_explanation": "The sentences appear to function as advice-giving, reflective questioning, or motivational interviewing, likely from a counselor or coach to a client, focusing on behavior change (e.g., smoking, chewing tobacco, drinking, safety).",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001", "s002", "s003", "s004", "s005", "s006", "s007", "s008", "s009", "s010", "s011", "s012", "s013", "s014", "s015", "s016", "s017", "s018", "s019", "s020", "s021", "s022", "s023", "s024", "s025", "s026", "s027", "s028", "s029", "s030", "s031", "s032", "s033", "s034", "s035", "s036", "s037", "s038", "s039", "s040", "s041", "s042", "s043", "s044", "s045", "s046", "s047", "s048", "s049", "s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s002", "s007", "s030"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s002",
+      "evidence": "Direct address with 'you' and advice: 'don't forget what we talked about today, okay, about your chew tobacco and your mouth'",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s007",
+      "evidence": "Second-person declarative about risk: 'There's all these risks that you're putting yourself in'",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s030",
+      "evidence": "Imperative advice: 'you know I I just think you just need to make up your mind and just do it'",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s001",
+      "evidence": "First-person perspective with 'I' and 'me', but still addresses 'you' indirectly: 'everybody's looking up to me'",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s011",
+      "evidence": "First-person narrative but includes 'you know' and addresses listener: 'I just have a little in the morning and burn it off you know'",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be part of a therapeutic or counseling session transcript, with the speaker using reflective listening and open-ended questions.",
+    "Alternatively, they might represent a coaching or motivational interviewing style focused on behavior change, with frequent use of 'you' to personalize the message."
+  ],
+  "possible_confounds": [
+    "The sentences are extracted from a larger conversation, so the pattern may be influenced by the specific dialogue context (e.g., health intervention).",
+    "Some sentences include first-person narratives (e.g., s001, s011) that could be from the client rather than the counselor, mixing perspectives."
+  ],
+  "limitations": [
+    "The analysis is based solely on text without prosodic or contextual cues, which could affect interpretation of function.",
+    "The sample may not represent all discourse functions present in the full conversation."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of second-person address and advice-giving is highly consistent across all 50 sentences, with no clear outliers. The behavioral function is strongly supported by pragmatic markers and content. Alternative explanations are plausible but less parsimonious."
+}

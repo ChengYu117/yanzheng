@@ -1,0 +1,50 @@
+{
+  "latent_idx": 17315,
+  "short_name": "and so + question/reflection",
+  "primary_explanation": "Most sentences begin with 'and so' followed by a question or reflective statement, often in a therapeutic or counseling context.",
+  "candidate_behavioral_explanation": "The sentences function as therapeutic prompts or reflections, using 'and so' to connect to prior discourse and elicit client responses.",
+  "explanation_type": "linguistic_structure",
+  "supporting_sample_ids": ["s001", "s002", "s003", "s004", "s005", "s006", "s007", "s008", "s009", "s010", "s011", "s012", "s013", "s014", "s015", "s016", "s017", "s018", "s019", "s020", "s021", "s022", "s023", "s024", "s025", "s026", "s027", "s028", "s029", "s030", "s031", "s032", "s033", "s035", "s036", "s037", "s038", "s039", "s040", "s041", "s042", "s043", "s044", "s045", "s046", "s047", "s048", "s049", "s050"],
+  "outlier_sample_ids": ["s034"],
+  "representative_evidence_ids": ["s003", "s009", "s025"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s003",
+      "evidence": "Starts with 'And so' and is a question.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s009",
+      "evidence": "Starts with 'and so' and is a question.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s025",
+      "evidence": "Starts with 'and so' and is a question.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s034",
+      "evidence": "Does not start with 'and so'; begins with 'and your worry'.",
+      "evidence_level": "lexical",
+      "evidence_role": "contradict"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences are from a corpus of motivational interviewing sessions, characterized by open-ended questions and reflective listening.",
+    "The pattern is a surface artifact of transcription conventions where 'and so' is used to mark turn-taking or continuation."
+  ],
+  "possible_confounds": [
+    "The dataset may be from a single therapeutic context, limiting generalizability.",
+    "Some sentences lack 'and so' (e.g., s034) or have 'so' without 'and', but still fit the overall pattern."
+  ],
+  "limitations": [
+    "The analysis does not account for the full conversational context.",
+    "The pattern may be an artifact of the transcription style rather than a genuine linguistic feature."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The 'and so' + question/reflection pattern covers the vast majority of sentences, with only one clear outlier (s034). The pattern is consistent and stable across the set."
+}

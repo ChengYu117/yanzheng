@@ -1,0 +1,124 @@
+{
+  "latent_idx": 29931,
+  "short_name": "scale-based confidence/importance/readiness questions",
+  "primary_explanation": "The majority of sentences are questions asking the respondent to rate a construct (confidence, importance, readiness, seriousness, willingness, likelihood) on a numeric scale, typically 0-10 or 1-10, with anchor descriptions. The pattern includes a scale range, anchor labels, and the target construct.",
+  "candidate_behavioral_explanation": "The sentences function as structured interview questions to elicit self-reported ratings on motivational or behavioral constructs, commonly used in health behavior change assessments (e.g., motivational interviewing).",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s013","s014","s015","s016","s018","s019","s020","s021","s022","s025","s026","s027","s028","s030","s031","s033","s035","s036","s037","s038","s042","s043","s044","s046","s048","s049"],
+  "outlier_sample_ids": ["s012","s017","s023","s024","s029","s032","s034","s039","s040","s041","s045","s047","s050"],
+  "representative_evidence_ids": ["s002","s011","s025"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s002",
+      "evidence": "Contains scale range 'zero to ten', anchor descriptions, and target construct 'how important is it for you to get better control of your blood pressure'.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s011",
+      "evidence": "Contains scale range 'one to ten', anchor descriptions, and target construct 'how confident are you that you could quit smoking'.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s025",
+      "evidence": "Contains scale range 'zero to ten', anchor descriptions, and target construct 'how confident are you that you will be able to make this change'.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s012",
+      "evidence": "Asks about frequency of guilt/remorse, not a scale-based rating of a construct.",
+      "evidence_level": "semantic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s017",
+      "evidence": "Lacks explicit scale range and anchors; asks 'how confident would you say you are about making this change right now' without numeric scale.",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s023",
+      "evidence": "Open-ended question about next step, no scale.",
+      "evidence_level": "semantic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s024",
+      "evidence": "Yes/no question about suicidal thoughts, no scale.",
+      "evidence_level": "semantic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s029",
+      "evidence": "Open-ended question about perception of alcohol use, no scale.",
+      "evidence_level": "semantic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s032",
+      "evidence": "Yes/no question about interference, no scale.",
+      "evidence_level": "semantic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s034",
+      "evidence": "Yes/no question about prescription misuse, no scale.",
+      "evidence_level": "semantic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s039",
+      "evidence": "Open-ended importance question without scale.",
+      "evidence_level": "semantic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s040",
+      "evidence": "Same as s039, no scale.",
+      "evidence_level": "semantic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s041",
+      "evidence": "Importance question without scale.",
+      "evidence_level": "semantic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s045",
+      "evidence": "Fragment 'nearly every day or', not a complete question.",
+      "evidence_level": "surface_form",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s047",
+      "evidence": "Frequency question without scale.",
+      "evidence_level": "semantic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s050",
+      "evidence": "Yes/no question about depressed mood, no scale.",
+      "evidence_level": "semantic",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences are all questions from a structured interview or questionnaire, but the pattern is not limited to scale-based ratings; some are open-ended or yes/no questions.",
+    "The sentences are part of a motivational interviewing script, focusing on eliciting change talk through scaling questions.",
+    "The sentences are from a health assessment tool, with scaling questions for various constructs like confidence, importance, and readiness."
+  ],
+  "possible_confounds": [
+    "Transcription errors (e.g., missing numbers, typos) may obscure the scale pattern in some sentences.",
+    "Some sentences are fragments or incomplete, making pattern detection difficult.",
+    "The dataset may include multiple distinct interview protocols, mixing scale-based and non-scale questions."
+  ],
+  "limitations": [
+    "Outlier sentences (e.g., s012, s017, s023, s024, s029, s032, s034, s039, s040, s041, s045, s047, s050) do not fit the scale-based pattern, indicating the set is not homogeneous.",
+    "The pattern is primarily syntactic and topical; behavioral function is inferred but not directly observable."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The scale-based question pattern covers 37 out of 50 sentences (74%), with clear syntactic and semantic markers. Outliers are distinct (e.g., yes/no, open-ended, fragments). Alternative interpretations are weaker because they either subsume the pattern or are less specific."
+}

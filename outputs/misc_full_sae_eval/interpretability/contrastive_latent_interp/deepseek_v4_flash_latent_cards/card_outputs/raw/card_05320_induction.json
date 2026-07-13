@@ -1,0 +1,56 @@
+{
+  "latent_idx": 5320,
+  "short_name": "gratitude_and_greetings",
+  "primary_explanation": "The sentences predominantly express gratitude, thanks, or polite greetings, often in conversational or clinical contexts.",
+  "candidate_behavioral_explanation": "The available sentences do not support a stable behavioral-function interpretation.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s005","s006","s008","s010","s011","s012","s013","s016","s019","s021","s022","s023","s027","s028","s030","s031","s035","s036","s038","s040","s043","s044","s049"],
+  "outlier_sample_ids": ["s004","s007","s009","s014","s015","s017","s018","s020","s024","s025","s026","s029","s032","s033","s034","s037","s039","s041","s042","s045","s046","s047","s048","s050"],
+  "representative_evidence_ids": ["s001","s010","s021"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Contains 'thanks' and 'helpful'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s010",
+      "evidence": "Contains 'thank you very much' and 'appreciate'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s021",
+      "evidence": "Contains 'thank you so much'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s004",
+      "evidence": "Contains 'hi nice cute' which is a greeting but lacks gratitude.",
+      "evidence_level": "semantic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s014",
+      "evidence": "Contains 'thank you' but also unrelated content about Apple support and ice cream.",
+      "evidence_level": "semantic",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences are from a healthcare or counseling setting, with many containing greetings and expressions of appreciation.",
+    "The sentences show a mix of conversational openings and closings, with gratitude being a common element."
+  ],
+  "possible_confounds": [
+    "Some sentences contain both gratitude and other topics, making categorization ambiguous.",
+    "The dataset may include multiple speakers or contexts, leading to varied expressions."
+  ],
+  "limitations": [
+    "The primary pattern covers only 26 out of 50 sentences, leaving nearly half as outliers.",
+    "Outliers include questions, evaluations, and narrative statements that do not fit the gratitude/greeting pattern."
+  ],
+  "confidence": 3,
+  "confidence_rationale": "The gratitude/greeting pattern is clear in a majority (26/50) of sentences, but a substantial number of outliers and mixed-content sentences reduce confidence."
+}

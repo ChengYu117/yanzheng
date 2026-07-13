@@ -1,0 +1,68 @@
+{
+  "latent_idx": 29825,
+  "short_name": "empathic_validation_and_permission_requests",
+  "primary_explanation": "The sentences predominantly express understanding, validation, or normalization of the listener's feelings or behaviors, often using phrases like 'I can understand', 'that makes sense', 'it's okay', and 'do you mind if'. This pattern reflects a therapeutic or counseling discourse where the speaker empathizes and seeks permission to proceed.",
+  "candidate_behavioral_explanation": "The primary behavioral function is to build rapport and create a safe space for the listener by validating their experiences and asking for consent before sharing information or exploring topics further.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s013","s014","s016","s017","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": ["s012","s015","s018","s039"],
+  "representative_evidence_ids": ["s001","s006","s033"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "sure it's quite understandable to be nervous coming in to talk to it like this",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s006",
+      "evidence": "I can definitely understand that",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s033",
+      "evidence": "would it be okay with you if we talked a little bit about your smoking today",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s012",
+      "evidence": "okay  it's okay if I tell you a little bit  about soda",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s015",
+      "evidence": "okay so Chris it's okay if I share with you some of the things that I've learned about condom usage",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s018",
+      "evidence": "so you can imagine at some point in the future you know you don't want to be in a situation where you you know want to play with the grandchildren for example and you can't because you simply unfit",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s039",
+      "evidence": "And... Yes, of Course",
+      "evidence_level": "surface_form",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be part of a motivational interviewing script, where the speaker uses reflective listening and affirmation to encourage behavior change.",
+    "The pattern might reflect a general politeness strategy in healthcare or counseling settings, using hedges and permission requests to mitigate face threats."
+  ],
+  "possible_confounds": [
+    "The dataset may be drawn from a specific domain (e.g., therapy, health coaching) where such language is expected, limiting generalizability.",
+    "Some sentences (e.g., s018, s039) are more narrative or simple affirmations, which may dilute the pattern."
+  ],
+  "limitations": [
+    "A few sentences (s012, s015, s018, s039) do not clearly fit the empathic validation or permission request pattern, suggesting some heterogeneity.",
+    "The interpretation relies on pragmatic function, which may be context-dependent and not fully captured by isolated sentences."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of empathic validation and permission requests is highly consistent across the majority of sentences, with clear lexical and pragmatic markers. Only four sentences deviate, and alternative interpretations are weaker. The domain specificity is acknowledged but does not undermine the pattern's stability."
+}

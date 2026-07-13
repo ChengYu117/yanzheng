@@ -1,0 +1,50 @@
+{
+  "latent_idx": 29590,
+  "short_name": "how_long_how_much_how_often_questions",
+  "primary_explanation": "The majority of sentences are questions beginning with 'how long', 'how much', 'how often', or 'how many', often asking about duration, quantity, or frequency of behaviors like drinking, drug use, or exercise. A smaller subset starts with 'can you' and requests elaboration or examples.",
+  "candidate_behavioral_explanation": "The sentences function as interviewer questions probing patient history, habits, and attitudes, typical of clinical or counseling intake interviews.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s001","s016","s022"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Starts with 'how long' asking about duration of drinking.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s016",
+      "evidence": "Starts with 'how much' asking about quantity of drinking.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s022",
+      "evidence": "Starts with 'how often' asking about frequency.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s025",
+      "evidence": "Starts with 'can you' requesting elaboration.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences are all questions, but the specific interrogative phrases vary; the pattern could be described as 'open-ended clinical questions'.",
+    "The sentences may reflect a structured interview protocol with sections on duration, quantity, and frequency of substance use."
+  ],
+  "possible_confounds": [
+    "The set includes a few sentences that are not questions (e.g., s009 ends with 'I don't know I'), but these are still part of the same discourse.",
+    "Some sentences are incomplete (e.g., s008 'how long has'), but they still fit the pattern."
+  ],
+  "limitations": [
+    "The analysis does not account for the exact content of each question, only the initial interrogative phrase.",
+    "The behavioral function is inferred from the clinical context, but the actual function may vary."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of 'how long/how much/how often/can you' questions is highly consistent across all sentences, with no clear outliers. The behavioral function as clinical interview questions is strongly supported by the content."
+}

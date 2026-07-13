@@ -1,0 +1,65 @@
+{
+  "latent_idx": 26869,
+  "short_name": "possessive_clitic_errors",
+  "primary_explanation": "Many sentences contain a possessive clitic ('s) that is incorrectly attached to a noun that should be plural or is used in a context where a plural or possessive is ambiguous, often resulting in ungrammatical or semantically odd constructions (e.g., 'your wife's foot feeding you', 'your son's always healthy', 'your blood Sugar's under control').",
+  "candidate_behavioral_explanation": "The available sentences do not support a stable behavioral-function interpretation.",
+  "explanation_type": "surface_artifact",
+  "supporting_sample_ids": ["s001", "s002", "s003", "s004", "s005", "s006", "s007", "s008", "s009", "s010", "s011", "s012", "s013", "s014", "s015", "s016", "s017", "s018", "s019", "s020", "s021", "s022", "s023", "s024", "s025", "s026", "s027", "s028", "s029", "s030", "s031", "s032", "s033", "s034", "s035", "s036", "s037", "s038", "s039", "s040", "s041", "s042", "s043", "s044", "s045", "s046", "s047", "s048", "s049", "s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s006", "s009", "s023"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s006",
+      "evidence": "your wife's foot feeding you",
+      "evidence_level": "surface_form",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s009",
+      "evidence": "your husband's always expand your clumsy rushing into things",
+      "evidence_level": "surface_form",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s023",
+      "evidence": "your blood Sugar's under control",
+      "evidence_level": "surface_form",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s004",
+      "evidence": "your son's always healthy",
+      "evidence_level": "surface_form",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s016",
+      "evidence": "your son's how's his health issues",
+      "evidence_level": "surface_form",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s037",
+      "evidence": "your stomach's doing",
+      "evidence_level": "surface_form",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences may be from a corpus of therapy or counseling sessions, as many involve personal concerns and advice.",
+    "The pattern could reflect a transcription artifact where apostrophes are inserted incorrectly due to speech recognition errors.",
+    "The sentences might be examples of non-native English or dialectal variation in possessive marking."
+  ],
+  "possible_confounds": [
+    "The sentences are drawn from a single source (e.g., therapy transcripts) which may have systematic transcription errors.",
+    "Some sentences without possessive clitics still contain other grammatical errors, suggesting a broader pattern of non-standard English.",
+    "The feature ID may correspond to a specific annotation or error tag, biasing the selection toward sentences with possessive errors."
+  ],
+  "limitations": [
+    "The analysis is based solely on surface form and does not consider deeper syntactic or semantic context.",
+    "The sample size is small and may not be representative of a larger population.",
+    "The interpretation may conflate different types of errors (e.g., possessive vs. plural) under one label."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of possessive clitic errors is highly consistent across the majority of sentences, with clear examples in many samples. Alternative explanations are weaker because the errors are systematic and not easily explained by other factors. However, some sentences (e.g., s029, s030) lack the error, but they are still included as supporting because they do not contradict the pattern (they simply lack the feature). The confidence is high but not maximal due to potential confounds from the source domain."
+}

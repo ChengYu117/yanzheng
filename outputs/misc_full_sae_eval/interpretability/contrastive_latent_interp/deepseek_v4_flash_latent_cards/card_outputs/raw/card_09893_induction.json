@@ -1,0 +1,80 @@
+{
+  "latent_idx": 9893,
+  "short_name": "health_diet_exercise_discourse",
+  "primary_explanation": "The sentences predominantly involve discussions about health, diet, exercise, and lifestyle changes, often with references to specific diets (e.g., South Beach), smoking, alcohol, weight, and medical conditions. The discourse is conversational, with frequent hedges, approximations, and references to past conversations or personal experiences.",
+  "candidate_behavioral_explanation": "The sentences appear to be from a counseling or coaching session (e.g., dietitian, therapist, or health coach) where the speaker is discussing health behaviors, giving advice, and recalling patient history. The function includes information gathering, reflection, and suggestion.",
+  "explanation_type": "topic",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s004","s005","s010"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s004",
+      "evidence": "mentions 'protein power' and 'South Beach diet'",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s005",
+      "evidence": "discusses South Beach diet and registered dietician",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s010",
+      "evidence": "talks about developing a habit in '27 or 30 days'",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s003",
+      "evidence": "mentions smoking and chewing",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s009",
+      "evidence": "discusses cutting back on alcohol",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s026",
+      "evidence": "mentions BMI and overweight range",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s039",
+      "evidence": "mentions high blood pressure",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s046",
+      "evidence": "asks about switching to diet soft drink",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s050",
+      "evidence": "mentions chest pain and nausea",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences may be from a medical or therapeutic interview, with a focus on patient history and lifestyle advice.",
+    "The pattern could reflect a coaching session for behavior change, with frequent use of approximations and references to past discussions."
+  ],
+  "possible_confounds": [
+    "The sentences are from multiple speakers (e.g., patient and provider), making it hard to isolate a single discourse function.",
+    "Some sentences (e.g., s006, s022, s047) are more tangential or unclear, but still fit the general health/lifestyle topic."
+  ],
+  "limitations": [
+    "The analysis is based on text only, without prosodic or contextual cues.",
+    "The sample IDs are not ordered, so conversational flow is not fully captured."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The health and lifestyle topic is pervasive across all sentences, with clear references to diet, exercise, smoking, alcohol, weight, and medical conditions. While some sentences are more ambiguous, they still align with the overall theme. The pattern is stable and covers all sentences."
+}

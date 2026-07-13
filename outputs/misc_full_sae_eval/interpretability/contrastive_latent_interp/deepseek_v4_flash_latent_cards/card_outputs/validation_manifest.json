@@ -1,0 +1,20 @@
+{
+  "analysis": "deepseek_v4_flash_latent_cards",
+  "step": "validate-latent-cards",
+  "outputs": {
+    "validated_cards": "outputs\\misc_full_sae_eval\\interpretability\\contrastive_latent_interp\\deepseek_v4_flash_latent_cards\\card_outputs\\validated_cards.jsonl",
+    "quality_audit": "outputs\\misc_full_sae_eval\\interpretability\\contrastive_latent_interp\\deepseek_v4_flash_latent_cards\\card_outputs\\card_quality_audit.csv",
+    "retry_tasks": "outputs\\misc_full_sae_eval\\interpretability\\contrastive_latent_interp\\deepseek_v4_flash_latent_cards\\card_outputs\\retry_tasks.jsonl"
+  },
+  "n_tasks": 225,
+  "n_valid": 225,
+  "n_failed": 0,
+  "explanation_type_counts": {
+    "affective_content": 10,
+    "behavioral_function": 128,
+    "linguistic_structure": 57,
+    "surface_artifact": 1,
+    "topic": 17,
+    "unclear_or_mixed": 12
+  }
+}

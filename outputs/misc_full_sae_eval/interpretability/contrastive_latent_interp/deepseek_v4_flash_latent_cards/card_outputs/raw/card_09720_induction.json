@@ -1,0 +1,44 @@
+{
+  "latent_idx": 9720,
+  "short_name": "help_offers_and_inquiries",
+  "primary_explanation": "The majority of sentences express offers of help (e.g., 'I want to help you') or inquiries about how to help (e.g., 'how can I help you'), often with intensifiers like 'really' or 'try'.",
+  "candidate_behavioral_explanation": "The sentences primarily function as offers of assistance or requests for information on how to help, typical in service or counseling contexts.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s005","s014","s049"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s005",
+      "evidence": "listen I really want to help you",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s014",
+      "evidence": "how can I help you",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s049",
+      "evidence": "I want to help you",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The pattern might be a surface artifact of a specific dialogue corpus where 'help' is a frequent keyword.",
+    "The sentences could reflect a therapeutic or counseling register where offering help is a routine discourse move."
+  ],
+  "possible_confounds": [
+    "Some sentences are incomplete or contain disfluencies (e.g., s002, s020) that may obscure the pattern.",
+    "The dataset may be drawn from a single domain (e.g., customer service, healthcare) where 'help' is naturally frequent."
+  ],
+  "limitations": [
+    "The analysis does not account for the broader conversational context, which could alter the function of individual sentences.",
+    "Some sentences (e.g., s030, s038) are more about help having been received rather than offered, but still relate to the topic."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern is highly consistent across all 50 sentences, with every sentence containing the word 'help' or a close variant. The behavioral function of offering or inquiring about help is clear, though a few sentences (e.g., s030, s038) are more about past help or self-help, but still fit the overall topic."
+}

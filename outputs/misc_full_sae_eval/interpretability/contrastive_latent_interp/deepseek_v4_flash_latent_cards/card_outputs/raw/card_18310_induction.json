@@ -1,0 +1,80 @@
+{
+  "latent_idx": 18310,
+  "short_name": "open-ended questions about change and barriers",
+  "primary_explanation": "The majority of sentences are open-ended questions, often starting with 'what' or 'which', that ask about experiences, barriers, plans, or hypothetical scenarios related to behavior change, particularly in health or substance use contexts.",
+  "candidate_behavioral_explanation": "The sentences function as therapeutic or motivational interviewing probes, designed to elicit client reflection, explore ambivalence, and identify barriers to change.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001", "s002", "s003", "s004", "s005", "s006", "s007", "s008", "s009", "s010", "s011", "s012", "s013", "s014", "s015", "s016", "s017", "s018", "s019", "s020", "s021", "s022", "s023", "s024", "s025", "s026", "s027", "s028", "s029", "s030", "s031", "s032", "s033", "s034", "s035", "s036", "s037", "s038", "s039", "s040", "s041", "s042", "s043", "s044", "s045", "s046", "s047", "s048", "s049", "s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s001", "s008", "s025"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Starts with 'in what ways might your life be better if you succeed' – open-ended hypothetical question about change.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s008",
+      "evidence": "Starts with 'what was it that you know made you start back smoking again' – open-ended question about relapse.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s025",
+      "evidence": "Starts with 'what do you see as some of the barriers that might get in your way' – open-ended question about barriers.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s014",
+      "evidence": "Starts with 'what we want to focus on is' – declarative statement, not a question.",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s015",
+      "evidence": "Starts with 'which is you're feeling uncomfortable right now' – declarative statement, not a question.",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s021",
+      "evidence": "Starts with 'which I think it is really important' – declarative statement, not a question.",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s022",
+      "evidence": "Starts with 'which is trivial isn't it' – tag question, but still a question.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s037",
+      "evidence": "Starts with 'which is what in the long term we want to achieve' – declarative statement, not a question.",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s044",
+      "evidence": "Starts with 'what I'm hearing is' – declarative statement, not a question.",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences are all from a single therapeutic or coaching session transcript, with the therapist asking questions and occasionally making reflective statements.",
+    "The sentences are predominantly interrogative in form, with a subset being declarative statements that serve as reflections or summaries."
+  ],
+  "possible_confounds": [
+    "The dataset may be drawn from a specific domain (e.g., addiction counseling) that biases the topic and function.",
+    "Transcription artifacts (e.g., repeated words, incomplete sentences) may obscure the intended pattern."
+  ],
+  "limitations": [
+    "A few sentences are declarative statements rather than questions, but they still serve a therapeutic function.",
+    "The pattern is robust across the majority of sentences."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The primary pattern (open-ended questions about change and barriers) covers 46 out of 50 sentences, with only 4 declarative statements that still fit the therapeutic context. The behavioral function is clear and consistent."
+}

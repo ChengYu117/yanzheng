@@ -1,0 +1,44 @@
+{
+  "latent_idx": 23723,
+  "short_name": "discourse_marker_actually",
+  "primary_explanation": "The majority of sentences contain the discourse marker 'actually' used to emphasize, correct, or introduce new information, often in a conversational or counseling context.",
+  "candidate_behavioral_explanation": "The sentences appear to be from counseling or medical advice dialogues, where 'actually' functions to assert facts, give recommendations, or reframe patient perceptions.",
+  "explanation_type": "linguistic_structure",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s003","s011","s046"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s003",
+      "evidence": "Contains 'actually' used to introduce an observation: 'Actually, if you look up here...'",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s011",
+      "evidence": "Contains 'actually' used to emphasize a benefit: 'that would actually kind of take care of two of these things'",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s046",
+      "evidence": "Contains 'actually' used to assert a fact: 'carbohydrates actually do make us feel better'",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences may be from a corpus of health counseling sessions, with topics covering smoking, drinking, exercise, and weight loss.",
+    "The frequent use of 'actually' could be a transcription artifact or a conversational filler rather than a deliberate discourse strategy."
+  ],
+  "possible_confounds": [
+    "The pattern may be influenced by the specific domain (medical advice) rather than a general linguistic feature.",
+    "Some sentences lack 'actually' but still fit the conversational style, suggesting the pattern is not exclusive."
+  ],
+  "limitations": [
+    "The analysis does not account for sentences without 'actually' that still share the conversational context.",
+    "The behavioral function is inferred from context but not explicitly confirmed."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The presence of 'actually' in nearly all sentences is a clear and stable pattern, with high coverage and few outliers. The domain is consistent, supporting the interpretation."
+}

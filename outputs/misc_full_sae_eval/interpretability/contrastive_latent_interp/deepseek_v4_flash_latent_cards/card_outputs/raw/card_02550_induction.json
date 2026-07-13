@@ -1,0 +1,68 @@
+{
+  "latent_idx": 2550,
+  "short_name": "scale_rating_questions",
+  "primary_explanation": "The sentences predominantly ask the respondent to rate something (e.g., importance, confidence, anger, motivation, pain) on a numerical scale, typically from 1 to 10 or 0 to 10, often with explicit anchors for the endpoints.",
+  "candidate_behavioral_explanation": "The sentences function as requests for self-assessment or rating, commonly used in clinical, motivational interviewing, or survey contexts to quantify subjective states or attitudes.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s041","s042","s043","s044","s045","s048","s049","s050"],
+  "outlier_sample_ids": ["s014","s040","s046","s047"],
+  "representative_evidence_ids": ["s002","s005","s009"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s002",
+      "evidence": "Contains 'on a scale of zero to ten' with explicit anchors and asks about importance.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s005",
+      "evidence": "Directly asks 'How confident... on a scale of one to ten?' without anchors.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s009",
+      "evidence": "Includes 'on a scale of one to ten' with full anchors for confidence.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s014",
+      "evidence": "Asks about reasons for a specific rating ('why a 7 or an 8 and not 4 or 5') but does not itself request a scale rating.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s040",
+      "evidence": "Similar to s014, asks 'why is six and not a one' without requesting a new rating.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s046",
+      "evidence": "Asks 'How about on the th, Monday?' which is about scheduling, not a scale rating.",
+      "evidence_level": "topical",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s047",
+      "evidence": "Asks 'where were you on Tuesday...' about a past event, not a scale rating.",
+      "evidence_level": "topical",
+      "evidence_role": "contradict"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences are part of a structured interview or questionnaire using Likert-type scales to measure various constructs.",
+    "The sentences reflect a therapeutic or coaching technique (e.g., motivational interviewing) that uses scaling questions to elicit self-assessment and promote change talk."
+  ],
+  "possible_confounds": [
+    "Some sentences (e.g., s014, s040) are follow-up probes about a previous rating rather than initial scale questions.",
+    "A few sentences (s046, s047) are unrelated to scaling and may be from a different part of the conversation."
+  ],
+  "limitations": [
+    "The interpretation does not cover the few sentences that are follow-up probes or scheduling questions.",
+    "The exact scale endpoints vary (0-10 vs 1-10) and anchors differ, but the core pattern remains."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of scale-rating questions is highly consistent across the majority of sentences, with only a few outliers that are either follow-up probes or unrelated topics. The behavioral function as a request for self-assessment is clear."
+}

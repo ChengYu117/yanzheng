@@ -1,0 +1,80 @@
+{
+  "latent_idx": 25532,
+  "short_name": "affirmation_and_reflection",
+  "primary_explanation": "The majority of sentences are affirmations or reflections that validate the speaker's experiences, decisions, or emotions, often using the structure 'sounds like' or 'that is' followed by a positive or empathetic evaluation.",
+  "candidate_behavioral_explanation": "The sentences function as supportive reflections or affirmations, likely from a therapist or coach, to validate and encourage the speaker.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s013","s014","s015","s016","s017","s018","s019","s020","s022","s024","s025","s027","s029","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": ["s012","s021","s023","s026","s028","s030"],
+  "representative_evidence_ids": ["s001","s005","s018"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "that sounds like a great idea",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s005",
+      "evidence": "that sounds like a really good plan",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s018",
+      "evidence": "it sounds like you really feel like you let yourself and your children down and that's hard to accept",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s012",
+      "evidence": "Wow that she's been showing you and making you read",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s021",
+      "evidence": "well it must be difficult feeling that way and uncomfortable",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s023",
+      "evidence": "oh those look to me like they they did you go",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s026",
+      "evidence": "yeah sometimes it is that simple is just making that commitment to yourself and just drawing the line",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s028",
+      "evidence": "Oh didn't know you had an ankle pain",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s030",
+      "evidence": "oh gosh I'm sorry it's getting that point pretty pretty pretty helpless",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be part of a motivational interviewing session, where the therapist uses reflective listening to reinforce the client's statements.",
+    "The pattern might be a linguistic template where 'sounds like' introduces a paraphrase of the client's own words, serving as a confirmation check."
+  ],
+  "possible_confounds": [
+    "Some sentences are incomplete or contain transcription errors, making interpretation ambiguous.",
+    "The dataset may include multiple speakers or contexts, diluting the pattern."
+  ],
+  "limitations": [
+    "A few sentences (e.g., s012, s023) are grammatically odd or incomplete, possibly due to transcription errors.",
+    "The behavioral function is inferred but not explicitly confirmed by the data."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of affirmation/reflection covers a large majority of sentences, with clear linguistic markers like 'sounds like' and positive evaluations. Outliers are few and often appear to be transcription artifacts or different speech acts."
+}

@@ -1,0 +1,27 @@
+{
+  "analysis": "deepseek_latent_card_quality_by_label",
+  "inputs": {
+    "cards": "outputs\\misc_full_sae_eval\\interpretability\\contrastive_latent_interp\\deepseek_v4_flash_latent_cards\\card_outputs\\validated_cards.jsonl",
+    "packs": "outputs\\misc_full_sae_eval\\interpretability\\contrastive_latent_interp\\deepseek_v4_flash_latent_cards\\evidence_packs\\latent_card_sentence_packs.jsonl",
+    "stable_latents": "outputs\\cross_val\\stable_topk_selection\\stable_topk_latent_set.csv"
+  },
+  "outputs": {
+    "report": "outputs\\misc_full_sae_eval\\interpretability\\contrastive_latent_interp\\deepseek_v4_flash_latent_cards\\quality_report\\latent_card_quality_report.md",
+    "by_label": "outputs\\misc_full_sae_eval\\interpretability\\contrastive_latent_interp\\deepseek_v4_flash_latent_cards\\quality_report\\latent_card_quality_by_label.csv",
+    "by_latent": "outputs\\misc_full_sae_eval\\interpretability\\contrastive_latent_interp\\deepseek_v4_flash_latent_cards\\quality_report\\latent_card_quality_by_latent.csv",
+    "associations": "outputs\\misc_full_sae_eval\\interpretability\\contrastive_latent_interp\\deepseek_v4_flash_latent_cards\\quality_report\\label_latent_card_associations.csv",
+    "sentence_details": "outputs\\misc_full_sae_eval\\interpretability\\contrastive_latent_interp\\deepseek_v4_flash_latent_cards\\quality_report\\sentence_quality_details.csv",
+    "review_sample": "outputs\\misc_full_sae_eval\\interpretability\\contrastive_latent_interp\\deepseek_v4_flash_latent_cards\\quality_report\\stratified_quality_review_sample.csv"
+  },
+  "counts": {
+    "unique_latents": 225,
+    "label_latent_associations": 303,
+    "sentence_rows": 11250,
+    "labels": 9
+  },
+  "heuristic_thresholds": {
+    "low_support": 0.75,
+    "very_short_words": 3,
+    "near_duplicate_similarity": 0.92
+  }
+}

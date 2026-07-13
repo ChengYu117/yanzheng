@@ -1,0 +1,50 @@
+{
+  "latent_idx": 22411,
+  "short_name": "affirmative_evaluations",
+  "primary_explanation": "The sentences predominantly contain positive evaluations or affirmations, often using adjectives like 'good', 'great', 'nice', 'lovely', 'wonderful', 'terrific', and phrases like 'sounds like', 'that's a', 'you have great goals'. The pattern is a recurring template of praising or validating the interlocutor's actions, traits, or plans.",
+  "candidate_behavioral_explanation": "The sentences likely function as therapeutic or coaching affirmations, providing positive reinforcement and encouragement. The consistent use of evaluative language suggests a supportive discourse role.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001", "s002", "s003", "s004", "s005", "s006", "s007", "s008", "s009", "s010", "s011", "s012", "s013", "s014", "s015", "s016", "s017", "s018", "s019", "s020", "s021", "s022", "s024", "s025", "s026", "s027", "s028", "s029", "s030", "s031", "s032", "s033", "s034", "s035", "s036", "s037", "s038", "s039", "s040", "s041", "s042", "s043", "s044", "s045", "s046", "s047", "s048", "s049", "s050"],
+  "outlier_sample_ids": ["s023"],
+  "representative_evidence_ids": ["s002", "s010", "s021"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s002",
+      "evidence": "sounds like you have like I said really good goals and you're working hard in school",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s010",
+      "evidence": "it's obvious that you're a good mom",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s021",
+      "evidence": "that's great i think that you know you you have a lot of really great goals",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s023",
+      "evidence": "well I suspect I don't know of course but I suspect it's not really the equivalent of a good March for ten continuum minutes",
+      "evidence_level": "semantic",
+      "evidence_role": "contradict"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences may be part of a motivational interviewing or coaching script, where the speaker uses reflective listening and positive reinforcement.",
+    "The pattern could be a surface artifact of a specific dataset (e.g., therapy transcripts) where affirmations are common, rather than a genuine behavioral function."
+  ],
+  "possible_confounds": [
+    "The dataset may be from a specific domain (e.g., healthcare, coaching) where positive language is expected, limiting generalizability.",
+    "Some sentences (e.g., s023) are more neutral or speculative, suggesting the pattern is not universal."
+  ],
+  "limitations": [
+    "The analysis is based solely on text without context of the conversation or speaker roles.",
+    "The pattern may be influenced by transcription conventions or annotation biases."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of positive evaluations is highly consistent across 49 out of 50 sentences, with only one outlier (s023). The behavioral function as affirmation is plausible but not definitively proven without conversational context."
+}

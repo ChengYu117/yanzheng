@@ -1,0 +1,58 @@
+{
+  "latent_idx": 14003,
+  "short_name": "wh_questions_health_habits",
+  "primary_explanation": "The sentences are predominantly wh-questions (who, what, how, where, why) and yes/no questions about personal health behaviors, habits, and preferences, often in a clinical or counseling context.",
+  "candidate_behavioral_explanation": "The sentences function as diagnostic or exploratory questions in a medical or therapeutic interview, aimed at gathering information about a patient's lifestyle, substance use, and personal history.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s002","s003","s025"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s002",
+      "evidence": "how much are you drinking?",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s003",
+      "evidence": "what are you drinking?",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s025",
+      "evidence": "what's some of the good things about smoking marijuana? for you",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s016",
+      "evidence": "marijuana and other drugs new street drugs?",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s042",
+      "evidence": "Than your wife?",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be from a structured interview or questionnaire about substance use and health behaviors.",
+    "They might represent a corpus of doctor-patient interactions or counseling sessions.",
+    "The pattern could be an artifact of data collection focusing on interrogative forms in a specific domain."
+  ],
+  "possible_confounds": [
+    "The set includes some incomplete or fragmentary questions (e.g., s042 'Than your wife?') that may be conversational continuations.",
+    "Some sentences are not strictly questions (e.g., s032 'you've been here before?' is a declarative with rising intonation).",
+    "The topic is broad, covering alcohol, drugs, smoking, diet, sleep, and personal preferences."
+  ],
+  "limitations": [
+    "The interpretation assumes a clinical context, but the data does not explicitly confirm this.",
+    "Some sentences (e.g., s041 'what do we have here?') could be from other settings."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of wh-questions and yes/no questions about health habits is very consistent across all 50 sentences, with no clear outliers. The behavioral function as diagnostic questions is strongly supported, though the exact context (clinical vs. research) is inferred."
+}

@@ -1,0 +1,77 @@
+{
+  "latent_idx": 2167,
+  "short_name": "therapeutic_discourse_markers",
+  "primary_explanation": "The sentences predominantly feature discourse markers such as 'so', 'okay', 'it sounds like', and 'you mentioned', characteristic of therapeutic or counseling dialogue where the speaker reflects, summarizes, or probes the client's experiences.",
+  "candidate_behavioral_explanation": "The primary behavioral function is reflective listening and probing, used by a therapist or counselor to encourage elaboration, clarify client statements, and guide the conversation toward goals or insights.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s007","s008","s009","s012","s013","s015","s016","s017","s018","s019","s020","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": ["s006","s010","s011","s014","s021"],
+  "representative_evidence_ids": ["s003","s004","s012"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s003",
+      "evidence": "Starts with 'okay so it sounds like you felt...' – typical reflective summary.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s004",
+      "evidence": "Begins with 'okay so I guess just going back to...' – probing and summarizing.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s012",
+      "evidence": "Starts with 'so it sounds like you're saying that...' – reflective listening.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s006",
+      "evidence": "Simple declarative statement without discourse markers – 'you quit for two months...'",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s010",
+      "evidence": "First-person narrative without therapist framing – 'not yet but I feel like...'",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s011",
+      "evidence": "First-person report – 'socially everything is going well too...'",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s014",
+      "evidence": "Third-person narrative about someone else – 'she is in school at Spelman...'",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s021",
+      "evidence": "Short reflective statement but lacks typical discourse marker – 'so it sounds like you're pretty ready to do that' (still fits pattern, but borderline; included as outlier due to brevity and lack of elaboration).",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be part of a motivational interviewing session, focusing on change talk and ambivalence.",
+    "The pattern might reflect a structured clinical intake interview with standardized prompts.",
+    "The sentences could be from a coaching or advising context, not necessarily therapeutic."
+  ],
+  "possible_confounds": [
+    "The dataset may be drawn from multiple sources (e.g., therapy, medical consultation, coaching) that share similar discourse markers.",
+    "Transcription artifacts like 'um' and repetitions may inflate the appearance of a single pattern.",
+    "Some sentences are client responses rather than therapist utterances, which may follow different patterns."
+  ],
+  "limitations": [
+    "The analysis is based solely on text without speaker labels, so it is unclear who is speaking.",
+    "The pattern is robust but may not generalize to all therapeutic contexts.",
+    "Outliers may represent client speech or different phases of the interaction."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of reflective listening and probing discourse markers is highly consistent across 45 out of 50 sentences, with only 5 outliers that are either client narratives or simple statements. The pattern remains stable after considering alternative explanations and confounds, though speaker identity is unknown."
+}

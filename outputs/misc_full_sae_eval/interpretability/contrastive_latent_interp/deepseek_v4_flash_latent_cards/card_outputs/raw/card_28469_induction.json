@@ -1,0 +1,58 @@
+{
+  "latent_idx": 28469,
+  "short_name": "affirmative_evaluative_responses",
+  "primary_explanation": "The majority of sentences express positive evaluation, affirmation, or encouragement, often using words like 'great', 'awesome', 'wonderful', 'good', and phrases like 'that sounds like a great idea' or 'I am so proud of you'. This pattern is consistent across many sentences, suggesting a supportive or therapeutic discourse context.",
+  "candidate_behavioral_explanation": "The sentences function as affirmations, validations, or positive reinforcements, typical of a counselor, coach, or supportive interlocutor providing encouragement and positive feedback.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001", "s002", "s003", "s004", "s005", "s007", "s009", "s014", "s015", "s016", "s017", "s018", "s020", "s021", "s022", "s023", "s024", "s025", "s027", "s028", "s029", "s030", "s034", "s036", "s038", "s040", "s041", "s043", "s044", "s045", "s047", "s048"],
+  "outlier_sample_ids": ["s006", "s008", "s010", "s011", "s012", "s013", "s019", "s026", "s031", "s032", "s033", "s035", "s037", "s039", "s042", "s046", "s049", "s050"],
+  "representative_evidence_ids": ["s002", "s009", "s025"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s002",
+      "evidence": "I am so proud of you that is awesome Taylor think I am just that couldn't be happier",
+      "evidence_level": "affective",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s009",
+      "evidence": "that sounds like a great idea",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s025",
+      "evidence": "Wow yeah wow that is awesome",
+      "evidence_level": "affective",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s008",
+      "evidence": "It's Friday.",
+      "evidence_level": "semantic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s035",
+      "evidence": "You know, I find it so surprising that people can be depressed nowadays when there's new Star Wars movies coming out, like this guy.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences may be part of a therapeutic or coaching dialogue where the speaker provides positive reinforcement and schedules follow-up appointments.",
+    "The pattern could reflect a linguistic template of evaluative adjectives ('great', 'awesome') combined with future-oriented scheduling phrases ('see you next week', 'look forward to').",
+    "The sentences might be extracted from a corpus of motivational interviewing or health coaching sessions, where affirmations and goal-setting are common."
+  ],
+  "possible_confounds": [
+    "The dataset may include multiple speakers or contexts (e.g., clinical, casual), leading to mixed patterns.",
+    "Some sentences are fragments or incomplete, making interpretation ambiguous.",
+    "The presence of scheduling phrases (e.g., 'see you next week') may indicate a separate pattern not fully captured by the primary interpretation."
+  ],
+  "limitations": [
+    "The primary interpretation does not cover sentences that are neutral or factual (e.g., 'It's Friday.') or those with negative or mixed affect (e.g., s035).",
+    "The behavioral function is inferred from content but lacks explicit discourse context (e.g., turn-taking, speaker roles)."
+  ],
+  "confidence": 3,
+  "confidence_rationale": "The primary pattern of positive evaluation covers a majority of sentences, but there are several outliers that are neutral, factual, or mixed in affect, and the dataset may include multiple discourse contexts."
+}

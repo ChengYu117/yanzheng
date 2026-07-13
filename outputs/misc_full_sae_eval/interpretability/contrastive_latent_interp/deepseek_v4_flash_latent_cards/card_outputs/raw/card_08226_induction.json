@@ -1,0 +1,80 @@
+{
+  "latent_idx": 8226,
+  "short_name": "healthcare_discourse_advice",
+  "primary_explanation": "The sentences predominantly reflect a healthcare or counseling discourse where a professional (e.g., doctor, therapist) discusses treatment options, lifestyle changes, or emotional support with a patient, using collaborative language and summarizing next steps.",
+  "candidate_behavioral_explanation": "The primary behavioral function is providing advice, summarizing plans, and eliciting patient agreement or reflection, as seen in sentences like s002 (transitioning medication) and s010 (summarizing treatment plan).",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s002","s010","s007"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s002",
+      "evidence": "Discusses transitioning off oxy to over-the-counter medications and using techniques for pain management.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s010",
+      "evidence": "Summarizes a treatment plan including medication change and exercise program, ending with 'is that about right' to elicit agreement.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s007",
+      "evidence": "Evaluates a plan as a 'good fit' to improve asthma and cut down smoking, seeking confirmation.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s003",
+      "evidence": "Asks patient for thoughts on balancing, reflecting a collaborative counseling style.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s005",
+      "evidence": "Reflects patient's overwhelm and identifies things to think about, typical of therapeutic summarizing.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s017",
+      "evidence": "Uses metaphor 'house of cards' to describe instability, common in counseling to illustrate consequences.",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s019",
+      "evidence": "Extends the house of cards metaphor, linking to feelings about self and physical health.",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s025",
+      "evidence": "Duplicate of s010, reinforces the summarizing pattern.",
+      "evidence_level": "surface_form",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s050",
+      "evidence": "Uses hypothetical 'if you could' to discuss desired changes, fitting advice discourse.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be interpreted as a mix of motivational interviewing and patient education, with frequent use of reflective listening and summarizing.",
+    "Alternatively, they may represent a corpus of clinical consultations where the professional guides decision-making through questions and affirmations."
+  ],
+  "possible_confounds": [
+    "The sentences are decontextualized, lacking speaker identity and full conversational turns, which may obscure the exact behavioral function.",
+    "Some sentences (e.g., s027, s034) are more generic and could fit other contexts like general advice or casual conversation."
+  ],
+  "limitations": [
+    "The analysis is based solely on text without prosody or non-verbal cues, which are important in healthcare discourse.",
+    "The sample includes possible transcription artifacts (e.g., repeated words, fillers) that may not reflect intentional patterns."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of healthcare advice and collaborative planning is consistent across a large majority of sentences, with clear pragmatic markers like summarizing, questioning, and reflecting. Alternative interpretations are weaker, and confounds are limited."
+}

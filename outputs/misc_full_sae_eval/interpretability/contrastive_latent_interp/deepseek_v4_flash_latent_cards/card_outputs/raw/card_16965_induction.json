@@ -1,0 +1,52 @@
+{
+  "latent_idx": 16965,
+  "short_name": "good_positive_evaluation",
+  "primary_explanation": "The majority of sentences contain the word 'good' used as a positive evaluative adjective, often in phrases like 'good things', 'good idea', 'good question', or as a standalone affirmation ('good', 'OK so good'). This pattern spans diverse topics (smoking, drinking, diet, motivation) and discourse functions (questions, reflections, advice).",
+  "candidate_behavioral_explanation": "The sentences frequently serve to elicit or affirm positive aspects of behaviors (e.g., 'good things about smoking/drinking') or to provide positive feedback ('that's a good idea', 'good question'). This suggests a motivational interviewing or counseling discourse function, where the speaker reinforces positive statements or explores benefits of change.",
+  "explanation_type": "linguistic_structure",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": ["s014"],
+  "representative_evidence_ids": ["s001","s013","s026"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Contains 'good things' in a question about smoking.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s013",
+      "evidence": "Contains 'good things about smoking' in a reflective statement.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s026",
+      "evidence": "Contains 'good things about quitting' in a question.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s014",
+      "evidence": "Contains 'goodnight' as a farewell, not an evaluative 'good'.",
+      "evidence_level": "lexical",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences may be drawn from a corpus of motivational interviewing sessions, where 'good' is used to reinforce client statements.",
+    "The pattern could reflect a general positivity bias in the dataset, with 'good' serving as a filler or discourse marker.",
+    "Some sentences focus on eliciting pros and cons of behaviors (e.g., smoking, drinking), suggesting a decisional balance exercise."
+  ],
+  "possible_confounds": [
+    "The word 'good' is extremely common in English, so the pattern may be a surface artifact of the topic domain rather than a stable linguistic structure.",
+    "The dataset may include multiple speakers (counselor vs. client), but the pattern persists across both roles.",
+    "Sentence s014 ('goodnight') is a formulaic expression that does not fit the evaluative pattern."
+  ],
+  "limitations": [
+    "The pattern is primarily lexical (presence of 'good') and may not capture deeper syntactic or pragmatic regularities.",
+    "Some sentences (e.g., s002, s019) are partially incoherent, making interpretation difficult."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of 'good' as a positive evaluative adjective is present in 49 out of 50 sentences, with only one clear outlier (s014). The pattern is stable across diverse topics and discourse functions, though it is primarily lexical and may be influenced by the domain."
+}

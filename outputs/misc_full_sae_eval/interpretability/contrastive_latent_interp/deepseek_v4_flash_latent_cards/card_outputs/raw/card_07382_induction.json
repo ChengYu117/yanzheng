@@ -1,0 +1,70 @@
+{
+  "latent_idx": 7382,
+  "short_name": "affective evaluation with 'it'",
+  "primary_explanation": "The majority of sentences use an impersonal 'it' subject followed by a copula and an affective adjective or evaluative phrase, expressing a subjective emotional or evaluative stance (e.g., 'it's so stressful', 'it must be tough', 'it sounds very frustrating'). This pattern covers sentences that describe feelings or judgments about situations, often in a therapeutic or reflective context.",
+  "candidate_behavioral_explanation": "The sentences appear to function as empathetic reflections, validations, or summaries of a speaker's emotional state, commonly used in counseling or supportive conversations. However, the evidence is insufficient to confirm a stable behavioral function across all sentences.",
+  "explanation_type": "affective_content",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s025","s026","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": ["s007","s024","s027","s039"],
+  "representative_evidence_ids": ["s001","s003","s004"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "it's so stressful",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s003",
+      "evidence": "it must be tough",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s004",
+      "evidence": "ya know it sounds very frustrating",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s007",
+      "evidence": "hey yo girl yeah it was cool all right I gotta do with anything all right oh hey sorry it was a long night and I'm not feeling so great right now hi what's your name again sorry",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s024",
+      "evidence": "okay Don it's been really good to talking with you today thank you",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s027",
+      "evidence": "what's it like now for you",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s039",
+      "evidence": "what was it like",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The pattern may reflect a discourse function of empathetic reflection or summarizing in therapeutic conversations, as many sentences appear to validate or reframe a speaker's experience.",
+    "The pattern could be a surface artifact of transcription conventions where 'it' is used as a placeholder for a previously mentioned topic, but the affective adjectives are genuine.",
+    "The pattern might be a mix of two subtypes: one where the speaker evaluates their own experience (e.g., 'it's so stressful') and another where the speaker reflects on the listener's experience (e.g., 'it must be tough')."
+  ],
+  "possible_confounds": [
+    "Some sentences are questions or contain multiple clauses, breaking the simple 'it + copula + adjective' structure.",
+    "The dataset may be drawn from a specific domain (e.g., counseling transcripts) which introduces a consistent discourse style.",
+    "Outlier sentences (s007, s024, s027, s039) have different pragmatic functions (greeting, closing, question) that do not fit the affective evaluation pattern."
+  ],
+  "limitations": [
+    "The pattern is primarily syntactic and affective, but the behavioral function is not uniformly supported across all sentences.",
+    "Some sentences (e.g., s028, s043) include additional narrative content that extends beyond a simple evaluation."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The primary pattern of 'it' + copula + affective adjective covers the vast majority of sentences (46 out of 50), with clear syntactic and semantic consistency. The four outliers are easily identifiable and have distinct discourse functions. Alternative interpretations are weaker because they either apply to fewer sentences or are subsumed by the primary pattern."
+}

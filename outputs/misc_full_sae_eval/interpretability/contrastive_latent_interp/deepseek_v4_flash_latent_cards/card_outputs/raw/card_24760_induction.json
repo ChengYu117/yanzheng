@@ -1,0 +1,44 @@
+{
+  "latent_idx": 24760,
+  "short_name": "empathic understanding",
+  "primary_explanation": "The majority of sentences express understanding or empathy, often using the phrase 'I understand' or 'I can understand', followed by a restatement or acknowledgment of the other person's situation or feelings.",
+  "candidate_behavioral_explanation": "The sentences function as empathic reflections or acknowledgments in a counseling or supportive conversation, aiming to validate the speaker's perspective.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001", "s002", "s003", "s004", "s005", "s006", "s007", "s008", "s009", "s010", "s011", "s012", "s013", "s014", "s015", "s016", "s017", "s018", "s019", "s020", "s021", "s022", "s023", "s024", "s025", "s026", "s027", "s028", "s029", "s030", "s031", "s032", "s033", "s034", "s035", "s036", "s037", "s038", "s039", "s040", "s041", "s042", "s043", "s044", "s045", "s046", "s047", "s048", "s049", "s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s001", "s008", "s013"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "I completely understand your you have a busy lifestyle",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s008",
+      "evidence": "yeah I understand exactly what you're saying",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s013",
+      "evidence": "I understand you've come here today to the agency because you have a recent arrest",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The pattern may be a discourse marker of active listening in therapeutic or motivational interviewing contexts.",
+    "The pattern could be a formulaic expression of politeness or agreement in service encounters."
+  ],
+  "possible_confounds": [
+    "Some sentences include questions or directives (e.g., s041, s043) that shift the function from understanding to checking comprehension.",
+    "A few sentences use 'I see' or 'I hear' instead of 'I understand', which may indicate a slightly different cognitive process."
+  ],
+  "limitations": [
+    "The dataset may be drawn from a single domain (e.g., health counseling), limiting generalizability.",
+    "The pattern is heavily reliant on the lexical item 'understand', which may be an artifact of the transcription context."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of expressing understanding is highly consistent across the majority of sentences, with clear lexical and pragmatic evidence. However, a few sentences (e.g., s041, s043) introduce questions that slightly deviate, and the domain specificity is a confound."
+}

@@ -1,0 +1,56 @@
+{
+  "latent_idx": 30091,
+  "short_name": "therapeutic_discourse_markers",
+  "primary_explanation": "The sentences predominantly feature discourse markers and reflective statements typical of therapeutic or counseling dialogue, such as 'so it sounds like', 'okay', 'so what I'm wondering', and 'it seems like', often followed by paraphrasing or summarizing the interlocutor's experience.",
+  "candidate_behavioral_explanation": "The sentences function as therapeutic reflections, clarifications, and prompts, aiming to explore the speaker's feelings, relationships, and behaviors, particularly around alcohol use, family dynamics, and emotional conflicts.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s002","s013","s020"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s002",
+      "evidence": "so it sounds like there's very similar stories to you",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s013",
+      "evidence": "so just to summarize the less good things that you mentioned",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s020",
+      "evidence": "so it seems like you're kind of conflicted about what's going on",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s008",
+      "evidence": "how do you think that the drinking fits in with that",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s036",
+      "evidence": "so what I'm wondering is since we know that it's fear that we're dealing with",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be part of a structured interview or assessment about substance use and family relationships, with a focus on eliciting personal narratives.",
+    "The pattern might reflect a specific therapeutic modality, such as motivational interviewing, characterized by open-ended questions and reflective listening."
+  ],
+  "possible_confounds": [
+    "The sentences are extracted from a single conversation or session, so the pattern may be specific to that context rather than a general linguistic feature.",
+    "Some sentences appear incomplete or contain transcription errors, which may obscure the intended function."
+  ],
+  "limitations": [
+    "The analysis is based on text only, without prosodic or contextual cues that could clarify the discourse function.",
+    "The sample size is small and may not represent the full range of therapeutic discourse."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of therapeutic discourse markers is highly consistent across all sentences, with clear examples of reflective statements and probing questions. No outliers were identified, and alternative explanations are weaker given the uniformity of the linguistic features."
+}

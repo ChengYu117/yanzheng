@@ -1,0 +1,68 @@
+{
+  "latent_idx": 31915,
+  "short_name": "counseling reflections and summaries",
+  "primary_explanation": "The sentences predominantly feature a therapist or counselor reflecting back, summarizing, or validating a client's statements, often using 'so', 'sounds like', 'you're saying', and second-person 'you' to paraphrase the client's experiences, concerns, or goals.",
+  "candidate_behavioral_explanation": "The primary behavioral function is therapeutic reflection and summarization, used to demonstrate active listening, clarify client statements, and guide the conversation.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s030","s032","s033","s034","s035","s036","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": ["s016","s029","s031","s037"],
+  "representative_evidence_ids": ["s006","s013","s033"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s006",
+      "evidence": "Uses 'it sounds like you know you really have a reason that you really want to be here' – a classic therapeutic reflection.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s013",
+      "evidence": "Starts with 'so it sounds like your sleep has really been affected' – summarizing client's issue.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s033",
+      "evidence": "Begins with 'okay so right now what you have so much going on that you're just feeling totally overwhelmed' – reflective summary.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s016",
+      "evidence": "Contains 'I tell you what if I was you I would definitely be doing that' – personal opinion, not reflection.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s029",
+      "evidence": "Narrative about others, not a reflection on the client.",
+      "evidence_level": "topical",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s031",
+      "evidence": "Directive suggestion 'why don't we just make sure we're doing that' – not a reflection.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s037",
+      "evidence": "Client speaking about themselves, not a therapist reflection.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "contradict"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be part of a motivational interviewing session, where the therapist uses reflective listening and affirmations.",
+    "Alternatively, they might be from a coaching or advice-giving context, with some sentences offering suggestions rather than reflections."
+  ],
+  "possible_confounds": [
+    "Some sentences are client utterances rather than therapist reflections, which may blur the pattern.",
+    "Transcription artifacts like filler words ('um', 'you know') are common but not diagnostic."
+  ],
+  "limitations": [
+    "The analysis is based solely on text without speaker labels, so distinguishing therapist from client is inferential.",
+    "A few sentences (e.g., s016, s029) deviate from the reflective pattern, indicating some heterogeneity."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The reflective pattern is clear and consistent across the majority of sentences, with only four outliers that do not fit. The behavioral function is well-supported by linguistic evidence."
+}

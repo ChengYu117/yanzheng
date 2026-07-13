@@ -1,0 +1,68 @@
+{
+  "latent_idx": 10916,
+  "short_name": "health-related open-ended questions",
+  "primary_explanation": "The majority of sentences are open-ended questions about health behaviors, habits, or personal experiences, often using discourse markers like 'okay', 'so', and 'how' or 'what' to elicit information.",
+  "candidate_behavioral_explanation": "The sentences function as probing questions in a clinical or counseling context, aimed at assessing patient motivation, confidence, or behavior change readiness.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001", "s002", "s003", "s005", "s006", "s007", "s008", "s009", "s010", "s011", "s012", "s013", "s014", "s015", "s016", "s017", "s018", "s019", "s020", "s021", "s022", "s023", "s024", "s027", "s028", "s029", "s030", "s031", "s032", "s033", "s034", "s035", "s036", "s037", "s038", "s039", "s040", "s041", "s042", "s043", "s044", "s045", "s046", "s047", "s048", "s049"],
+  "outlier_sample_ids": ["s004", "s025", "s026", "s050"],
+  "representative_evidence_ids": ["s001", "s014", "s041"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Starts with 'okay so' and asks 'what other things can you tell me about that might affect your blood pressure' – a health-related open-ended question.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s014",
+      "evidence": "Asks 'how confident are you that you can make these changes on a scale of one to ten' – a scaled confidence question about behavior change.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s041",
+      "evidence": "Asks 'how often do you think you drink alcohol?' – a direct health behavior question.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s004",
+      "evidence": "Longer, more complex sentence about court proceedings and bad impression, not clearly health-related.",
+      "evidence_level": "topical",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s025",
+      "evidence": "Very short 'How late?' – lacks health context and discourse markers typical of others.",
+      "evidence_level": "surface_form",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s026",
+      "evidence": "A statement rather than a question: 'um so yeah I mean it's worth a shot...'",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s050",
+      "evidence": "Conditional statement about consequences, not a direct question.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "contradict"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences are all questions, but some are not health-related (e.g., s004, s025), suggesting a broader interview context.",
+    "The pattern may be an artifact of a specific data collection protocol (e.g., motivational interviewing) rather than a stable linguistic feature."
+  ],
+  "possible_confounds": [
+    "The dataset may include multiple interviewers or contexts, leading to variation in question style.",
+    "Some sentences are incomplete or truncated, making interpretation ambiguous."
+  ],
+  "limitations": [
+    "A few sentences deviate from the health-question pattern, indicating the pattern is not universal.",
+    "The behavioral function is inferred from content and discourse markers, but actual context is unknown."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of health-related open-ended questions is clear and consistent across the majority of sentences, with only a few outliers. The behavioral function as clinical probing is strongly supported by the content and discourse markers."
+}

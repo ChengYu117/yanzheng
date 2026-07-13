@@ -1,0 +1,44 @@
+{
+  "latent_idx": 12340,
+  "short_name": "do_you_questions",
+  "primary_explanation": "All sentences begin with 'do you' and are questions, forming a stable linguistic pattern of interrogative structures used to ask about personal experiences, opinions, or actions.",
+  "candidate_behavioral_explanation": "The sentences function as interview or clinical assessment questions, eliciting information about the addressee's thoughts, feelings, behaviors, or medical history.",
+  "explanation_type": "linguistic_structure",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s001","s008","s013"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Starts with 'do you' and is a question.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s008",
+      "evidence": "Starts with 'do you' and is a question.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s013",
+      "evidence": "Starts with 'do you' and is a question.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences are all questions but vary in topic, suggesting a mixed topical pattern.",
+    "The sentences may reflect a specific discourse context such as therapy or medical intake, but this is not directly observable from the text alone."
+  ],
+  "possible_confounds": [
+    "The pattern may be an artifact of data collection focusing on question-answer pairs.",
+    "Some sentences contain transcription errors or incomplete phrases (e.g., s004, s048) that do not affect the initial 'do you' pattern."
+  ],
+  "limitations": [
+    "The behavioral function is inferred but not explicitly confirmed by context.",
+    "The pattern is purely structural and does not capture semantic or pragmatic variation."
+  ],
+  "confidence": 5,
+  "confidence_rationale": "All 50 sentences begin with 'do you' and are questions, providing a highly consistent and stable linguistic pattern with no outliers."
+}

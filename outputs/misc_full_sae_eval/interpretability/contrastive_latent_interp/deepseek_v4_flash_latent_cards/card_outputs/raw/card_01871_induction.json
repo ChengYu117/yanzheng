@@ -1,0 +1,56 @@
+{
+  "latent_idx": 1871,
+  "short_name": "affective_evaluative_expressions",
+  "primary_explanation": "The sentences predominantly express affective or evaluative reactions (e.g., surprise, gladness, worry, concern, disappointment) using templates like 'I'm [emotion]' or 'it's [adjective]'.",
+  "candidate_behavioral_explanation": "The available sentences do not support a stable behavioral-function interpretation.",
+  "explanation_type": "affective_content",
+  "supporting_sample_ids": ["s001", "s002", "s003", "s004", "s005", "s006", "s007", "s008", "s009", "s010", "s011", "s012", "s013", "s014", "s015", "s016", "s017", "s018", "s019", "s020", "s021", "s022", "s023", "s024", "s025", "s026", "s027", "s028", "s029", "s030", "s031", "s032", "s033", "s034", "s035", "s036", "s037", "s038", "s039", "s040", "s041", "s042", "s043", "s044", "s045", "s046", "s047", "s048", "s049", "s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s001", "s007", "s016"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "I'm kind of surprised",
+      "evidence_level": "affective",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s007",
+      "evidence": "I'm really glad you came in",
+      "evidence_level": "affective",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s016",
+      "evidence": "I'm just really taken aback",
+      "evidence_level": "affective",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s017",
+      "evidence": "it really worries me",
+      "evidence_level": "affective",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s036",
+      "evidence": "pretty disappointed",
+      "evidence_level": "affective",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences may reflect a therapeutic or counseling discourse where the speaker responds to client disclosures with empathy and validation.",
+    "The pattern could be a surface artifact of transcription conventions that capture emotional reactions in conversational data."
+  ],
+  "possible_confounds": [
+    "The dataset may be drawn from a specific domain (e.g., healthcare, counseling) where affective expressions are common.",
+    "Some sentences (e.g., s028, s050) are longer and more narrative, but still contain affective language."
+  ],
+  "limitations": [
+    "The interpretation is broad and covers nearly all sentences, but does not capture subtle differences in function (e.g., question vs. statement).",
+    "No behavioral function is clearly dominant across the set."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of affective/evaluative expressions is highly consistent across all 50 sentences, with no clear outliers. Alternative interpretations are weaker or domain-specific."
+}

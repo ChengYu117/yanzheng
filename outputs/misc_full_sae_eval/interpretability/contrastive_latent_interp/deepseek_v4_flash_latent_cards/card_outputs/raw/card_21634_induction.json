@@ -1,0 +1,50 @@
+{
+  "latent_idx": 21634,
+  "short_name": "medication_discourse",
+  "primary_explanation": "The sentences predominantly involve discussions about medications, including their names, usage instructions, side effects, and patient history, often in a clinical or counseling context.",
+  "candidate_behavioral_explanation": "The available sentences do not support a stable behavioral-function interpretation.",
+  "explanation_type": "topic",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": ["s020"],
+  "representative_evidence_ids": ["s003","s005","s037"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s003",
+      "evidence": "Instructions for taking a medication: 'take one tablet... once a day by mouth'",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s005",
+      "evidence": "Listing medications: 'taking simvastatin amlodipine and sertraline'",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s037",
+      "evidence": "Medication purpose and instructions: 'this medication is for your cholesterol you're gonna take it once a day'",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s020",
+      "evidence": "Discusses lack of energy and wife's opinion, no medication reference",
+      "evidence_level": "topical",
+      "evidence_role": "contradict"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences may represent a mix of patient education and medication reconciliation dialogues.",
+    "Some sentences focus on side effects and risks, suggesting a risk communication pattern."
+  ],
+  "possible_confounds": [
+    "Transcription errors (e.g., 'gem fib Raziel' for gemfibrozil) may obscure patterns.",
+    "The set includes both statements and questions, mixing discourse functions."
+  ],
+  "limitations": [
+    "One outlier (s020) does not mention medication, but the majority strongly supports the medication topic.",
+    "The pattern is broad and may not capture finer sub-topics."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The medication topic covers 49 out of 50 sentences, with only one clear outlier. The pattern is consistent and stable across diverse sentence types."
+}

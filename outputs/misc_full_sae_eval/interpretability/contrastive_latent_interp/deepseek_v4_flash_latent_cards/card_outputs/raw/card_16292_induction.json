@@ -1,0 +1,56 @@
+{
+  "latent_idx": 16292,
+  "short_name": "therapist_reflection_pattern",
+  "primary_explanation": "The majority of sentences use the discourse marker 'so it sounds like' or 'it sounds like' to reflect or paraphrase the speaker's (client's) statements, functioning as a therapeutic reflection or summarizing technique.",
+  "candidate_behavioral_explanation": "The sentences serve as reflective listening or paraphrasing, a common therapeutic technique to show understanding and encourage elaboration.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s003", "s004", "s005", "s006", "s008", "s009", "s011", "s012", "s013", "s014", "s015", "s017", "s018", "s019", "s020", "s021", "s022", "s023", "s024", "s025", "s026", "s027", "s028", "s029", "s030", "s031", "s032", "s033", "s034", "s035", "s036", "s037", "s038", "s039", "s040", "s041", "s042", "s043", "s045", "s047", "s048", "s050"],
+  "outlier_sample_ids": ["s001", "s002", "s007", "s010", "s016", "s044", "s046", "s049"],
+  "representative_evidence_ids": ["s011", "s018", "s021"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s011",
+      "evidence": "so Jane it sounds like you're angry with your supervisor",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s018",
+      "evidence": "so it sounds like you really want to go to Black Friday with your friends you're feeling a little anxious about it",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s021",
+      "evidence": "so it sounds like you're feeling this contradiction of pleasing your dad and meeting his expectations but you also want to enjoy yourself and be young",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s001",
+      "evidence": "okay so nothing's changed wonderful um now I was taking a look at your medication profile earlier and it looks like you're on two different strengths of lipitor so that obviously can't be right",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s016",
+      "evidence": "so it looks to me like something and you're motivated scream and they will help you along your certain tone actual target any feel like if they're there with you then to improve monopoly entire thing",
+      "evidence_level": "semantic",
+      "evidence_role": "contradict"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences may be part of a medical or counseling intake interview, where the speaker summarizes or checks understanding of patient information.",
+    "The pattern could be a linguistic template used by a specific speaker or in a specific context, such as a therapy session transcript."
+  ],
+  "possible_confounds": [
+    "Some sentences use 'it looks like' instead of 'it sounds like', which may indicate a different function (e.g., factual verification vs. reflective listening).",
+    "A few sentences are incoherent or contain transcription errors, making pattern identification difficult."
+  ],
+  "limitations": [
+    "The outlier sentences (e.g., s001, s002, s016) do not fit the reflective pattern and may represent different discourse functions.",
+    "The dataset may be drawn from multiple contexts or speakers, reducing pattern stability."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The primary pattern covers a large majority of sentences (42 out of 50), with clear linguistic markers ('so it sounds like'). Outliers are few and can be explained as different functions or artifacts."
+}

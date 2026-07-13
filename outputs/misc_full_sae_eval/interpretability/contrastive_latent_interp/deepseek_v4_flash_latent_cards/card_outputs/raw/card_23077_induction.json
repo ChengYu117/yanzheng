@@ -1,0 +1,59 @@
+{
+  "latent_idx": 23077,
+  "short_name": "healthcare_discourse_mixed",
+  "primary_explanation": "The sentences appear to be fragments from healthcare or counseling conversations, covering topics like symptoms, medications, lifestyle, and risk assessment, but they lack a single stable linguistic or functional pattern.",
+  "candidate_behavioral_explanation": "The available sentences do not support a stable behavioral-function interpretation.",
+  "explanation_type": "unclear_or_mixed",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s027","s017","s025"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s027",
+      "evidence": "Discusses marijuana use frequency and risk category, typical of healthcare screening.",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s017",
+      "evidence": "Mentions caffeine constricting blood vessels and relieving migraine pain, medical explanation.",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s025",
+      "evidence": "Compares heart and diabetic medications, advising against generalization.",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s046",
+      "evidence": "Expresses gratitude for helpful information, a conversational closing.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s029",
+      "evidence": "Open-ended question about anything else on mind, typical of counseling.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences are from a medical advice or therapy session transcript, with a mix of questions, advice, and patient responses.",
+    "The sentences are fragments from a health risk assessment questionnaire or interview guide.",
+    "The sentences are from a corpus of spoken medical consultations, showing varied discourse functions."
+  ],
+  "possible_confounds": [
+    "The sentences are short and decontextualized, making it hard to infer a single pattern.",
+    "The set includes both patient and clinician utterances, mixing perspectives.",
+    "Some sentences are incomplete or contain transcription artifacts (e.g., 'years.')."
+  ],
+  "limitations": [
+    "No single pattern covers all sentences; the set is heterogeneous.",
+    "The sample size is large but lacks clear clustering.",
+    "Behavioral function is not consistently identifiable across sentences."
+  ],
+  "confidence": 2,
+  "confidence_rationale": "The sentences share a healthcare/counseling topic but vary widely in function and structure, so only a weak topical pattern exists."
+}

@@ -1,0 +1,62 @@
+{
+  "latent_idx": 24856,
+  "short_name": "evaluative_that-copula-adjective",
+  "primary_explanation": "The majority of sentences follow a template: 'that' + copula (is/was) + evaluative adjective (e.g., great, good, hard, terrible), often preceded by discourse markers like 'and', 'so', 'okay', or 'yeah'. This pattern expresses a subjective evaluation of a previously mentioned situation.",
+  "candidate_behavioral_explanation": "The sentences function as therapist or counselor reflections, affirmations, or empathetic responses, providing positive or negative evaluations to validate the client's experience.",
+  "explanation_type": "linguistic_structure",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s010","s036","s045"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s010",
+      "evidence": "and that's great",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s036",
+      "evidence": "that's good",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s045",
+      "evidence": "that's great",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s004",
+      "evidence": "that would be tough to bear",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s021",
+      "evidence": "that's terrible",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s039",
+      "evidence": "that's interesting",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences are all therapist responses that use evaluative language to encourage or empathize with clients.",
+    "The pattern is a discourse marker sequence where 'that's' + adjective serves as a backchannel or acknowledgment."
+  ],
+  "possible_confounds": [
+    "The sentences come from a single conversation type (therapy/counseling), so the pattern may be domain-specific.",
+    "The evaluative adjectives vary widely in valence, but the syntactic template remains consistent."
+  ],
+  "limitations": [
+    "Some sentences include additional clauses (e.g., s002, s008) that extend beyond the core template.",
+    "The pattern does not capture the full range of sentence structures present (e.g., questions, imperatives)."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The syntactic pattern 'that' + copula + evaluative adjective is present in all 50 sentences, with only minor variations (e.g., 'that would be', 'that sounds'). The pattern is stable and covers the entire set, though the behavioral function is inferred from context."
+}

@@ -1,0 +1,56 @@
+{
+  "latent_idx": 11511,
+  "short_name": "appreciation_expression",
+  "primary_explanation": "The majority of sentences express appreciation or gratitude, often using the phrase 'I appreciate' followed by a noun phrase or gerund clause, directed at the listener's actions or qualities.",
+  "candidate_behavioral_explanation": "The primary behavioral function is expressing gratitude or positive acknowledgment, which serves to build rapport, encourage cooperation, or soften face-threatening acts in conversational contexts.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025"],
+  "outlier_sample_ids": ["s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "representative_evidence_ids": ["s002","s005","s016"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s002",
+      "evidence": "Contains 'I appreciate you' – direct expression of appreciation.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s005",
+      "evidence": "Contains 'I appreciate how difficult it must be' – appreciation with empathy.",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s016",
+      "evidence": "Contains 'I really appreciate you sharing this' – appreciation with intensifier.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s027",
+      "evidence": "Greeting 'hey Monica how are you doing today' – no appreciation.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s039",
+      "evidence": "Self-introduction 'hi my name is Laura' – no appreciation.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The pattern may reflect a politeness strategy common in service or therapeutic interactions, rather than genuine gratitude.",
+    "Some sentences use 'appreciate' in a questioning form (e.g., 'would you appreciate those as goals'), which shifts the function to seeking agreement."
+  ],
+  "possible_confounds": [
+    "The dataset may be drawn from multiple conversational contexts (e.g., therapy, pharmacy, casual talk), mixing appreciation with other speech acts.",
+    "Transcription artifacts like 'your person laughing' (s040) are outliers that do not fit any linguistic pattern."
+  ],
+  "limitations": [
+    "The primary pattern covers exactly 25 sentences, meeting the threshold but leaving half the set unexplained.",
+    "Outliers include diverse functions (questions, greetings, instructions) that prevent a single unified interpretation."
+  ],
+  "confidence": 3,
+  "confidence_rationale": "The appreciation pattern is clear and consistent in half the sentences, but the other half are heterogeneous, reducing overall confidence."
+}

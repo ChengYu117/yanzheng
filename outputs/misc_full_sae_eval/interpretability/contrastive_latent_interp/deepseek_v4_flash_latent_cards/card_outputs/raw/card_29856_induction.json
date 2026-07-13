@@ -1,0 +1,59 @@
+{
+  "latent_idx": 29856,
+  "short_name": "therapeutic_discourse_I_centered",
+  "primary_explanation": "The sentences predominantly feature first-person singular pronouns ('I', 'I'm', 'I've') and are set in a therapeutic or counseling context, discussing personal experiences, emotions, and behavioral changes.",
+  "candidate_behavioral_explanation": "The sentences serve various therapeutic functions: reflection, affirmation, advice, and exploration of client issues, as seen in s001 (reflection on relapse), s045 (affirmation), and s046 (advice).",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s001","s045","s046"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "First-person narrative describing relapse and recovery efforts.",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s045",
+      "evidence": "Affirmative statement with 'I am so proud of you'.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s046",
+      "evidence": "Directive advice using 'I want you this week to make a list'.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s003",
+      "evidence": "Grammatically unusual but still first-person and contextually therapeutic.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s025",
+      "evidence": "Fragment with first-person pronoun, fits therapeutic discourse.",
+      "evidence_level": "surface_form",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be from a corpus of addiction counseling sessions, with a focus on relapse prevention and motivation.",
+    "The pattern might reflect a general conversational style with high use of 'I' statements, common in personal narratives.",
+    "The sentences could be from a dataset of transcribed therapy sessions, explaining the mixture of client and therapist utterances."
+  ],
+  "possible_confounds": [
+    "The sentences vary in completeness and grammaticality, possibly due to transcription errors or spontaneous speech.",
+    "Some sentences (e.g., s003, s025) are fragments that may obscure the intended function.",
+    "The presence of both client and therapist voices could mix different behavioral functions."
+  ],
+  "limitations": [
+    "The analysis assumes a therapeutic context, but not all sentences explicitly confirm this.",
+    "The behavioral function interpretation is broad and may not capture specific sub-functions.",
+    "Some sentences (e.g., s027 'amber I suppose') are too short to confidently assign a function."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of first-person pronouns and therapeutic context is consistent across nearly all sentences, with clear examples of behavioral functions. However, a few fragments and mixed voices slightly reduce confidence."
+}

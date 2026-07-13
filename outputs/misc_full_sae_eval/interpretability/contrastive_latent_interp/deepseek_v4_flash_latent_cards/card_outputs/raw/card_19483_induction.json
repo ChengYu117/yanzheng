@@ -1,0 +1,56 @@
+{
+  "latent_idx": 19483,
+  "short_name": "healthcare_advice_dialogue",
+  "primary_explanation": "The sentences predominantly consist of healthcare-related advice, instructions, or counseling dialogues, covering medication management, lifestyle changes (diet, exercise, smoking cessation), and patient concerns. The pattern includes directive language, explanations of risks/benefits, and reflective listening.",
+  "candidate_behavioral_explanation": "The primary behavioral function is providing professional advice or counseling, often in a healthcare setting (pharmacist, doctor, counselor). Sentences include instructions (e.g., s001, s005, s030), risk communication (s004, s016, s035), and motivational interviewing (s024, s026, s034).",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s008","s009","s011","s012","s014","s016","s017","s019","s023","s024","s026","s027","s030","s031","s032","s034","s035","s036","s039","s040","s043","s044","s045","s047","s050"],
+  "outlier_sample_ids": ["s007","s010","s013","s015","s018","s020","s021","s022","s025","s028","s029","s033","s037","s038","s041","s042","s046","s048","s049"],
+  "representative_evidence_ids": ["s004","s005","s030"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s004",
+      "evidence": "Discusses health risks of smoking (lung cancer, emphysema, heart disease).",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s005",
+      "evidence": "Directive: 'you're going to take it once a day' with adherence emphasis.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s030",
+      "evidence": "Medication instruction: 'this medication is for your cholesterol' with dosing and adherence advice.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s007",
+      "evidence": "Describes Florida weather and biking, unrelated to healthcare advice.",
+      "evidence_level": "topical",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s010",
+      "evidence": "Concern about drinking and police trouble, but not clearly healthcare advice.",
+      "evidence_level": "topical",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be part of a corpus of transcribed medical consultations or health coaching sessions, with some outliers being unrelated or from different contexts.",
+    "Alternatively, the pattern might be instructional discourse more broadly, including non-healthcare instructions (e.g., cooking in s003, travel in s015)."
+  ],
+  "possible_confounds": [
+    "Some sentences (e.g., s007, s015, s037) discuss travel or weather, which may be from different dialogue contexts or represent small talk within healthcare visits.",
+    "The presence of legal/criminal topics (s010, s029, s033) may indicate a mixed corpus including counseling for substance abuse or legal issues."
+  ],
+  "limitations": [
+    "The outlier set is substantial (19 out of 50), indicating the pattern does not cover all sentences.",
+    "The behavioral function may be an artifact of the corpus selection rather than a stable linguistic feature."
+  ],
+  "confidence": 3,
+  "confidence_rationale": "The primary pattern covers a majority (31/50) of sentences, but clear outliers and potential confounds (mixed topics) reduce confidence. The pattern is consistent within the supporting set."
+}

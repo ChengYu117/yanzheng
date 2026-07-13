@@ -1,0 +1,18 @@
+{
+  "task_id": "card_05828_induction",
+  "model": "deepseek-v4-flash",
+  "request_id": "29709d00-b872-42b9-83b0-a1422c024e0f",
+  "usage": {
+    "prompt_tokens": 2519,
+    "completion_tokens": 833,
+    "total_tokens": 3352,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 2519
+  },
+  "finish_reason": "stop",
+  "attempt": 1,
+  "timestamp": "2026-07-13T13:17:19.691663+00:00"
+}

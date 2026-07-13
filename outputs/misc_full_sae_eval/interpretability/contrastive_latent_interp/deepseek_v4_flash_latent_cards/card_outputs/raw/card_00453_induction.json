@@ -1,0 +1,58 @@
+{
+  "latent_idx": 453,
+  "short_name": "positive_evaluation_and_praise",
+  "primary_explanation": "The majority of sentences express positive evaluation, praise, or encouragement, often using adjectives like 'great', 'good', 'awesome', 'amazing', 'wonderful', 'brilliant', 'cool', 'lovely', and phrases like 'you did a great job', 'sounds brilliant', 'that's awesome'. The pattern is stable across diverse contexts (e.g., health, personal achievement, appearance).",
+  "candidate_behavioral_explanation": "The sentences primarily function as affirmations, compliments, or positive feedback, likely in supportive or therapeutic interactions (e.g., counseling, coaching, or personal encouragement).",
+  "explanation_type": "affective_content",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s010","s011","s012","s013","s014","s015","s017","s018","s019","s020","s021","s022","s024","s025","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s042","s043","s044","s045","s046","s048","s049"],
+  "outlier_sample_ids": ["s009","s016","s023","s026","s027","s040","s041","s047","s050"],
+  "representative_evidence_ids": ["s001","s005","s011"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "sounds brilliant you know",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s005",
+      "evidence": "you did a great job",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s011",
+      "evidence": "I am so proud of you that is awesome",
+      "evidence_level": "affective",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s023",
+      "evidence": "that sounds exhausting",
+      "evidence_level": "affective",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s050",
+      "evidence": "those are really bad for you",
+      "evidence_level": "affective",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences may reflect a therapeutic or coaching discourse where the speaker provides supportive feedback and encouragement.",
+    "The pattern could be a surface artifact of a dataset focused on positive reinforcement in health interventions.",
+    "Some sentences express neutral or negative evaluations, suggesting the pattern is not universal but dominant."
+  ],
+  "possible_confounds": [
+    "The dataset may be drawn from specific contexts (e.g., smoking cessation, weight loss) that naturally elicit praise.",
+    "Transcription artifacts or incomplete utterances may obscure the intended function.",
+    "Some sentences are ambiguous (e.g., 'food okay') and may not fit the positive pattern."
+  ],
+  "limitations": [
+    "Outliers include neutral statements (s009, s016, s027), negative evaluations (s023, s047, s050), and minimal responses (s026, s041).",
+    "The pattern is based on lexical and affective cues; behavioral function is inferred but not directly observed."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The positive evaluation pattern covers a clear majority (41 out of 50 sentences) with strong lexical and affective evidence. Outliers are present but limited, and alternative explanations are weaker."
+}

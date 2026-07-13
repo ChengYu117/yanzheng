@@ -1,0 +1,50 @@
+{
+  "latent_idx": 11872,
+  "short_name": "difficulty_expressions",
+  "primary_explanation": "The majority of sentences contain expressions of difficulty, hardship, or challenge (e.g., 'hard', 'difficult', 'harder', 'tough'), often in the context of personal struggles such as diet, exercise, smoking cessation, or emotional pain. The pattern is lexical and semantic, centered on the adjective 'hard' or 'difficult'.",
+  "candidate_behavioral_explanation": "The sentences appear to function as empathetic reflections or acknowledgments of a client's difficulties, typical of motivational interviewing or therapeutic discourse. However, the evidence is insufficient to confirm a stable behavioral function across all sentences.",
+  "explanation_type": "affective_content",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": ["s039"],
+  "representative_evidence_ids": ["s001","s005","s021"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Contains 'hard' in 'it's been hard for you to cook meals'",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s005",
+      "evidence": "Contains 'hard' in 'it's hard for you to quit smoking'",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s021",
+      "evidence": "Contains 'hard' and 'difficult' in 'it's really been hard it's really been difficult'",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s039",
+      "evidence": "Contains 'It's not hard' which negates the difficulty pattern",
+      "evidence_level": "semantic",
+      "evidence_role": "contradict"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences may reflect a therapeutic or coaching discourse where the speaker validates the client's struggles.",
+    "The pattern could be a transcription artifact from a specific type of counseling session, with repeated use of 'hard' as a discourse marker."
+  ],
+  "possible_confounds": [
+    "The sentences may come from a single domain (e.g., health coaching) which biases the topic.",
+    "The word 'hard' is common in English and may appear in many contexts unrelated to a specific pattern."
+  ],
+  "limitations": [
+    "The analysis is based solely on lexical presence of 'hard'/'difficult' without deeper syntactic or pragmatic analysis.",
+    "The dataset may contain duplicate or near-duplicate sentences (e.g., s008 and s014) which could inflate pattern strength."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of difficulty expressions is clear and consistent across 49 out of 50 sentences, with only one outlier (s039). The lexical evidence is strong, but the behavioral function is less certain, and alternative interpretations exist."
+}

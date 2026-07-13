@@ -1,0 +1,59 @@
+{
+  "latent_idx": 23464,
+  "short_name": "affirmative_evaluations",
+  "primary_explanation": "The majority of sentences are positive evaluations or affirmations, often beginning with 'that's' or 'that sounds' followed by a positive adjective (e.g., great, good, wonderful, interesting, awesome). They express approval, agreement, or encouragement in conversational contexts.",
+  "candidate_behavioral_explanation": "The sentences primarily function as positive feedback, affirmations, or supportive responses in dialogue, likely from a therapist, coach, or supportive interlocutor.",
+  "explanation_type": "affective_content",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s014","s016","s019","s020","s021","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s038","s039","s041","s043","s044","s045","s046","s049"],
+  "outlier_sample_ids": ["s013","s015","s017","s018","s022","s037","s040","s042","s047","s048","s050"],
+  "representative_evidence_ids": ["s002","s010","s016"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s002",
+      "evidence": "that's good to hear",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s010",
+      "evidence": "that's great",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s016",
+      "evidence": "that's a good idea",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s013",
+      "evidence": "yeah I understand exactly what you're saying",
+      "evidence_level": "semantic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s022",
+      "evidence": "I'm really sorry for your loss",
+      "evidence_level": "affective",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences are all conversational responses, but some express empathy or gratitude rather than positive evaluation.",
+    "The pattern may reflect a specific discourse role (e.g., therapist) using affirmations to encourage client speech.",
+    "The sentences could be from a dataset of polite or supportive utterances, with the positive evaluation being a surface artifact of the collection."
+  ],
+  "possible_confounds": [
+    "The dataset may be biased toward positive responses due to the conversational context (e.g., therapy, coaching).",
+    "Some sentences are incomplete or contain disfluencies (e.g., 'you know'), which may obscure the pattern.",
+    "The presence of gratitude expressions (e.g., 'thank you') and empathetic statements (e.g., 'sorry for your loss') suggests multiple functions."
+  ],
+  "limitations": [
+    "Outlier sentences include expressions of understanding, gratitude, and empathy, which are not positive evaluations.",
+    "The pattern is based on surface form and affective content, but behavioral function may vary across sentences.",
+    "The dataset may contain multiple speakers or contexts, reducing pattern stability."
+  ],
+  "confidence": 3,
+  "confidence_rationale": "The primary pattern covers a clear majority of sentences, but there are notable outliers with different functions (e.g., empathy, gratitude). The pattern is consistent in form and affect, but alternative interpretations and confounds reduce confidence."
+}

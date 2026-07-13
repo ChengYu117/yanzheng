@@ -1,0 +1,76 @@
+{
+  "latent_idx": 18990,
+  "short_name": "therapeutic_what_questions",
+  "primary_explanation": "The majority of sentences are open-ended questions beginning with 'what' (often 'what would', 'what do you think', 'what might'), used in a therapeutic or counseling context to explore patient perspectives, possibilities, and consequences.",
+  "candidate_behavioral_explanation": "The sentences function as exploratory or motivational interviewing questions, designed to elicit patient reflection, self-assessment, and commitment to change.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001", "s002", "s003", "s004", "s005", "s006", "s007", "s008", "s009", "s010", "s011", "s012", "s013", "s014", "s015", "s016", "s017", "s018", "s019", "s020", "s021", "s022", "s023", "s024", "s025", "s026", "s027", "s028", "s029", "s030", "s031", "s032", "s033", "s034", "s035", "s036", "s037", "s038", "s039", "s040", "s041", "s042", "s043", "s044", "s045", "s046", "s047", "s048", "s049", "s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s001", "s003", "s016"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Starts with 'and I'm wondering what would make that difference' – typical exploratory question.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s003",
+      "evidence": "Begins with 'so what would have to happen' – classic motivational interviewing question.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s016",
+      "evidence": "Starts with 'so what would be some of the positives' – eliciting pros of change.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s020",
+      "evidence": "Contains 'what will happen to you to keep smoking' – still a 'what' question about consequences.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s025",
+      "evidence": "Begins with 'okay so it sounds like you know what can happen' – includes 'what' but is a statement, not a question.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s037",
+      "evidence": "Starts with 'and I think what'll be helpful' – statement, not a question, but still uses 'what'.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s048",
+      "evidence": "Contains 'I can't really figure out what could be causing it' – patient response, not a question.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s050",
+      "evidence": "Starts with 'would what would I be right in saying that' – a question but with unusual syntax.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences are all from a single therapeutic session transcript, showing a consistent interviewer style.",
+    "The pattern is purely linguistic: sentences predominantly start with 'so what' or 'and what', forming a template for open-ended questions.",
+    "The sentences reflect a specific stage in motivational interviewing (evoking change talk)."
+  ],
+  "possible_confounds": [
+    "Some sentences are statements or patient responses, not questions (e.g., s025, s037, s048).",
+    "The dataset may be from a single domain (health counseling), limiting generalizability.",
+    "Transcription artifacts (e.g., repetitions, false starts) may obscure the pattern."
+  ],
+  "limitations": [
+    "The analysis is based on text only, without prosodic or contextual cues.",
+    "The sample IDs are sequential, suggesting a single conversation, which may inflate pattern consistency."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of open-ended 'what' questions is highly consistent across the majority of sentences, with only a few statements that still contain 'what'. The behavioral function (motivational interviewing) is well-supported by the content. Alternative explanations are weaker."
+}

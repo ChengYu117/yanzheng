@@ -1,0 +1,44 @@
+{
+  "latent_idx": 4662,
+  "short_name": "you're statements with evaluation or advice",
+  "primary_explanation": "The majority of sentences contain the contracted form 'you're' followed by a predicate that evaluates, advises, or describes the listener's state or action, often in a conversational or therapeutic context.",
+  "candidate_behavioral_explanation": "The sentences function as reflections, evaluations, or advice-giving in a counseling or coaching discourse, where the speaker comments on the listener's behavior or feelings.",
+  "explanation_type": "linguistic_structure",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s001","s010","s036"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Contains 'you're getting peer pressure' – 'you're' + present participle describing listener's experience.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s010",
+      "evidence": "Contains 'you're going to have to cut the fast food down' – 'you're' + future directive.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s036",
+      "evidence": "Contains 'you're actually really drinking quite a lot' – 'you're' + adverb + verb phrase evaluating behavior.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences are from a therapeutic or counseling setting, focusing on the client's behaviors and feelings.",
+    "The sentences are characterized by the use of second-person pronouns and present tense, indicating direct address."
+  ],
+  "possible_confounds": [
+    "Some sentences lack 'you're' but still address the listener (e.g., s033, s035).",
+    "The dataset may be drawn from a specific domain (e.g., addiction counseling) that biases the pattern."
+  ],
+  "limitations": [
+    "The pattern is primarily syntactic; behavioral function is inferred but not directly confirmed.",
+    "Some sentences (e.g., s016, s026) are less clearly evaluative or advisory."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The 'you're' pattern is highly consistent across the majority of sentences, with only a few exceptions that still involve second-person address. The pattern is stable and clearly identifiable."
+}

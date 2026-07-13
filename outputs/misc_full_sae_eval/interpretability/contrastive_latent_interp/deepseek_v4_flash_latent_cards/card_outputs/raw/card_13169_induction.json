@@ -1,0 +1,56 @@
+{
+  "latent_idx": 13169,
+  "short_name": "therapeutic_reflection_and_advice",
+  "primary_explanation": "The sentences predominantly involve a speaker reflecting on a client's or interlocutor's experiences, feelings, or behaviors, often using phrases like 'it sounds like' or 'I think', and offering advice, encouragement, or interpretation in a therapeutic or counseling context.",
+  "candidate_behavioral_explanation": "The primary behavioral function appears to be reflective listening and motivational interviewing, where the speaker mirrors the client's statements, validates emotions, and gently guides toward change.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s012","s013","s014","s015","s017","s019","s020","s021","s023","s024","s025","s027","s030","s031","s032","s033","s034","s035","s037","s038","s041","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": ["s010","s011","s016","s018","s022","s026","s028","s029","s036","s039","s040","s042","s043","s044","s045"],
+  "representative_evidence_ids": ["s001","s007","s025"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Uses 'it sounds to me like' to reflect the interlocutor's desire, a classic motivational interviewing technique.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s007",
+      "evidence": "Repeated 'it sounds like' to label judgments, showing reflective listening.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s025",
+      "evidence": "Reflects emotional state ('sounds like the thought...is more uncomfortable') and offers insight.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s010",
+      "evidence": "Fragmentary and lacks reflective or advising structure; appears to be a client statement.",
+      "evidence_level": "semantic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s022",
+      "evidence": "Informal greeting and apology, not reflective or advising.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be from a general conversation about health behaviors, with some being client statements and others counselor statements, but the reflective pattern is dominant.",
+    "The pattern might be an artifact of transcription from a therapy session, where the counselor uses reflective statements and the client responds with personal narratives."
+  ],
+  "possible_confounds": [
+    "The dataset may include both counselor and client utterances, mixing reflective and non-reflective sentences.",
+    "Some sentences are incomplete or fragmented, making interpretation ambiguous."
+  ],
+  "limitations": [
+    "The primary interpretation covers about 70% of sentences; outliers include greetings, fragments, and client narratives.",
+    "The behavioral function is inferred from linguistic cues but not independently verified."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of reflective listening and advice is clear and consistent across a majority of sentences, with strong linguistic evidence. Outliers are present but explainable as client utterances or off-topic remarks."
+}

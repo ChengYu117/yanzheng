@@ -1,0 +1,62 @@
+{
+  "latent_idx": 22730,
+  "short_name": "deictic_this_that_evaluation",
+  "primary_explanation": "The majority of sentences begin with a deictic pronoun 'this' or 'that' followed by a copula and an evaluative or identifying predicate, often in a conversational or therapeutic context. The pattern is a presentational structure that introduces or comments on a topic.",
+  "candidate_behavioral_explanation": "The sentences appear to serve a discourse function of topic introduction, evaluation, or clarification, common in counseling or instructional dialogues. However, the evidence is insufficient to assign a single stable behavioral function across all sentences.",
+  "explanation_type": "linguistic_structure",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s028","s029","s030","s031","s032","s033","s034","s035","s037","s038","s039","s040","s041","s043","s044","s045","s046","s047","s048","s050"],
+  "outlier_sample_ids": ["s022","s023","s024","s025","s026","s027","s036","s042","s049"],
+  "representative_evidence_ids": ["s001","s005","s010"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Starts with 'This is the first time' – deictic 'this' + copula + evaluative/identifying phrase.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s005",
+      "evidence": "'this is tough for you' – deictic 'this' + copula + evaluative adjective.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s010",
+      "evidence": "'this is a big stuff for you' – deictic 'this' + copula + evaluative noun phrase.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s022",
+      "evidence": "Starts with 'That's certainly not what I meant' – uses 'that' instead of 'this', but still deictic + copula + evaluative. However, it is a negation and not a simple presentational structure.",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s036",
+      "evidence": "'Those are really bad for you' – uses plural 'those' instead of singular 'this/that', deviating from the primary pattern.",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s042",
+      "evidence": "'that's terrible John asbestos...' – starts with 'that's' but includes a proper name and a different topic structure.",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences may reflect a therapeutic or counseling discourse where the speaker is reflecting on or evaluating the listener's experiences, often using 'this' to refer to a specific issue.",
+    "The pattern could be a transcription artifact where speakers frequently use 'this is' as a filler or discourse marker to introduce a topic, without a consistent behavioral function."
+  ],
+  "possible_confounds": [
+    "The dataset may be drawn from a specific domain (e.g., therapy sessions, instructional videos) that biases the use of deictic expressions.",
+    "Transcription conventions may have normalized sentence boundaries, making the pattern appear more consistent than it is in natural speech."
+  ],
+  "limitations": [
+    "The pattern does not cover sentences starting with 'that's' or 'those are' as consistently, and some sentences lack an evaluative component.",
+    "The behavioral function is not clearly identifiable from the text alone without context."
+  ],
+  "confidence": 3,
+  "confidence_rationale": "The primary linguistic pattern (deictic 'this' + copula + predicate) covers a clear majority of sentences, but there are several outliers and the behavioral function remains ambiguous. The pattern is stable but not universal."
+}

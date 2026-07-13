@@ -1,0 +1,68 @@
+{
+  "latent_idx": 18730,
+  "short_name": "exploratory_questioning_about_patient_experience",
+  "primary_explanation": "The majority of sentences are questions or prompts from a healthcare provider exploring a patient's symptoms, behaviors, or thoughts, often using 'what' clauses (e.g., 'what's going on', 'what you think'). The pattern reflects a collaborative diagnostic or therapeutic inquiry.",
+  "candidate_behavioral_explanation": "The primary behavioral function is exploratory questioning: the speaker (likely a clinician) asks open-ended questions to gather information, understand the patient's perspective, and guide discussion toward problem-solving or self-reflection.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001", "s002", "s003", "s004", "s005", "s006", "s007", "s008", "s009", "s010", "s011", "s012", "s013", "s014", "s015", "s016", "s017", "s018", "s019", "s020", "s021", "s022", "s023", "s024", "s025", "s026", "s027", "s028", "s029", "s030", "s031", "s032", "s033", "s034", "s035", "s036", "s037", "s038", "s039", "s040", "s041", "s042", "s043", "s044", "s045", "s046", "s047", "s048", "s049", "s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s003", "s013", "s035"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s003",
+      "evidence": "Contains 'what the problem might be' – a prototypical exploratory question.",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s013",
+      "evidence": "Contains 'figure out what's going on with you' – direct inquiry about patient condition.",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s035",
+      "evidence": "Contains 'I'm just wondering what's going on' – explicit exploratory wondering.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s009",
+      "evidence": "Contains 'nobody has the right to tell you what to do' – a statement rather than a question, but still addresses patient autonomy.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s014",
+      "evidence": "Contains 'for you to be able to make healthy food choices' – goal-oriented discussion, fits exploratory pattern.",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s022",
+      "evidence": "Contains 'we need to discuss what your problem is' – directive but still exploratory in intent.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s048",
+      "evidence": "Contains 'I don't know what else might be causing it' – expression of uncertainty, fits exploratory context.",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The pattern could be interpreted as a linguistic structure: frequent use of 'what' clauses in interrogative or embedded forms, reflecting a template for asking about patient experiences.",
+    "Alternatively, the pattern might reflect a topic of healthcare consultations, specifically discussions about symptoms, behaviors, and treatment plans."
+  ],
+  "possible_confounds": [
+    "All sentences appear to come from a single domain (healthcare), which may inflate the apparent coherence of the pattern.",
+    "The dataset may have been pre-selected for sentences containing 'what', introducing a surface artifact bias."
+  ],
+  "limitations": [
+    "The analysis is based solely on text without speaker or context metadata, limiting certainty about behavioral function.",
+    "Some sentences (e.g., s009, s014) are statements rather than questions, but still fit the broader exploratory theme."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of exploratory questioning is highly consistent across all 50 sentences, with no clear outliers. The behavioral function is well-supported by pragmatic and semantic evidence. Alternative interpretations are weaker, though domain specificity and potential selection bias slightly reduce confidence."
+}

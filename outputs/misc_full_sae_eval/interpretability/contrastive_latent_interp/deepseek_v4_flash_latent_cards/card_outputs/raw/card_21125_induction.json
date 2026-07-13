@@ -1,0 +1,44 @@
+{
+  "latent_idx": 21125,
+  "short_name": "interviewer_questions_about_behavior_change",
+  "primary_explanation": "The sentences are predominantly interviewer questions probing personal experiences, behaviors, and motivations related to health, lifestyle, and behavior change, often using open-ended prompts like 'can you tell me a little bit about' or 'what about'.",
+  "candidate_behavioral_explanation": "The sentences function as interview questions designed to elicit detailed narratives from respondents about their behaviors, decisions, and attitudes, particularly around health-related topics such as drinking, smoking, exercise, and diabetes management.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s001","s005","s013"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Starts with 'okay so you said that you were a big runner what role did running play in your life' – a follow-up question referencing prior statement.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s005",
+      "evidence": "Uses 'can you tell me a little bit more about what you do?' – a common open-ended prompt.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s013",
+      "evidence": "Asks 'can you tell me a little bit about how alcohol fits into sort of your social scene' – probes a specific behavior.",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be seen as a collection of therapeutic or counseling prompts aimed at exploring client issues.",
+    "Alternatively, they might represent a structured interview guide for a health behavior study."
+  ],
+  "possible_confounds": [
+    "The sentences are drawn from multiple interviews, so some variation in style and topic is expected.",
+    "The presence of repeated phrases like 'can you tell me a little bit about' may reflect a transcription artifact or interviewer training."
+  ],
+  "limitations": [
+    "The analysis does not account for the respondent's answers, which could provide additional context.",
+    "Some sentences (e.g., s039) include informational statements rather than pure questions, but still serve an interview function."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of interviewer questions is highly consistent across all 50 sentences, with no clear outliers. The behavioral function is stable, though alternative interpretations are possible but weaker."
+}

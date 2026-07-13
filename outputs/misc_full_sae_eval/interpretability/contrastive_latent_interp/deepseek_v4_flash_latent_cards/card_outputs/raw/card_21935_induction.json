@@ -1,0 +1,76 @@
+{
+  "latent_idx": 21935,
+  "short_name": "health-behavior questions",
+  "primary_explanation": "The majority of sentences are questions about health-related behaviors (sleep, weight, alcohol, drugs, diet, exercise) and attitudes, often using 'do you' or 'have you' structures.",
+  "candidate_behavioral_explanation": "The sentences function as clinical or counseling interview questions, assessing patient behaviors and readiness to change.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s005","s006","s007","s008","s009","s010","s011","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s049","s050"],
+  "outlier_sample_ids": ["s004","s012","s031","s032","s048"],
+  "representative_evidence_ids": ["s001","s005","s009"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Question about sleep and weight changes, typical health assessment.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s005",
+      "evidence": "Direct question about self-perception of weight.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s009",
+      "evidence": "Question about perceived benefits of behavior change.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s004",
+      "evidence": "Narrative about a cut-out question, not a direct question.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s012",
+      "evidence": "Statement about time and client meeting, not a health question.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s031",
+      "evidence": "Response to check availability, not a question.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s032",
+      "evidence": "Question about family/marriage, not health behavior.",
+      "evidence_level": "topical",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s048",
+      "evidence": "Question about a fashion shoot, unrelated to health.",
+      "evidence_level": "topical",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences are all questions, but the topics vary; the pattern may be purely interrogative syntax.",
+    "The sentences could be from a motivational interviewing session, focusing on change talk.",
+    "Some sentences are about substance use (alcohol, marijuana, smoking) specifically, suggesting a substance abuse counseling context."
+  ],
+  "possible_confounds": [
+    "The dataset may be from multiple different interviews or contexts, mixing health topics.",
+    "Transcription artifacts like 'um' and 'mm-hmm' may obscure the pattern.",
+    "Some sentences are incomplete or contain disfluencies, making categorization difficult."
+  ],
+  "limitations": [
+    "Outliers include narrative statements and non-health questions, indicating the pattern is not universal.",
+    "The behavioral function interpretation relies on pragmatic inference; explicit labeling is absent."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The primary pattern of health-behavior questions covers a large majority of sentences, with clear outliers that are easily identifiable. The pattern is stable and consistent, though alternative interpretations exist."
+}

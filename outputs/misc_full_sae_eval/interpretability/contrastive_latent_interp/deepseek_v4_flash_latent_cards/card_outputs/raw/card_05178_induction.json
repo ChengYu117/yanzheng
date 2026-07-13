@@ -1,0 +1,44 @@
+{
+  "latent_idx": 5178,
+  "short_name": "scale_question_template",
+  "primary_explanation": "The sentences predominantly follow a template that asks a question using a numeric scale (e.g., 1 to 10, 0 to 10) to rate a subjective state such as readiness, confidence, importance, or motivation. The pattern includes phrases like 'on a scale of X to Y' followed by a question about a personal attribute or behavior.",
+  "candidate_behavioral_explanation": "The sentences function as requests for self-assessment or rating, commonly used in motivational interviewing or clinical settings to quantify a person's readiness, confidence, or importance regarding a behavior change.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s001","s008","s026"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Contains 'on a scale of one to ten' and asks about readiness to drink less soda.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s008",
+      "evidence": "Asks 'How confident are you that you want to change in a scale of one to ten?'",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s026",
+      "evidence": "Includes 'on the scale of one to ten' with anchors for readiness to quit.",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be interpreted as a collection of motivational interviewing techniques, where the scale is used to elicit change talk.",
+    "Alternatively, they might be seen as a data collection tool for research on behavior change, with the scale serving as a quantitative measure."
+  ],
+  "possible_confounds": [
+    "Some sentences have incomplete or garbled text (e.g., s002, s016) which may obscure the pattern.",
+    "The scales vary (1-10, 0-10, 0-100) and the attributes rated differ (readiness, confidence, importance, pain), but the core template remains consistent."
+  ],
+  "limitations": [
+    "The analysis does not account for the specific context or speaker intent beyond the surface form.",
+    "Some sentences (e.g., s036) use a different scale (0-100) but still fit the pattern."
+  ],
+  "confidence": 5,
+  "confidence_rationale": "All 50 sentences follow the same template of asking a question with a numeric scale, with no outliers. The pattern is highly consistent and stable."
+}

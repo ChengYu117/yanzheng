@@ -1,0 +1,50 @@
+{
+  "latent_idx": 15396,
+  "short_name": "it-cleft and evaluative constructions",
+  "primary_explanation": "The majority of sentences begin with 'it is/was' or a contraction, followed by an adjective, noun phrase, or clause that evaluates or describes a situation, often in a conversational or advisory context.",
+  "candidate_behavioral_explanation": "The available sentences do not support a stable behavioral-function interpretation.",
+  "explanation_type": "linguistic_structure",
+  "supporting_sample_ids": ["s001","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": ["s002"],
+  "representative_evidence_ids": ["s001","s005","s021"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Starts with 'but it is' followed by a noun phrase and evaluative content.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s005",
+      "evidence": "Starts with 'it is' followed by an evaluative statement.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s021",
+      "evidence": "Starts with 'it was' followed by an adjective expressing emotion.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s002",
+      "evidence": "Does not start with 'it is/was' or a contraction; begins with 'alright so'.",
+      "evidence_level": "syntactic",
+      "evidence_role": "contradict"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences are from counseling or medical advice dialogues, often using 'it is' to frame recommendations or reflections.",
+    "The pattern reflects a discourse strategy of using dummy 'it' to introduce topics or evaluations in conversational speech."
+  ],
+  "possible_confounds": [
+    "The dataset may be drawn from a specific domain (e.g., therapy, medical advice) that naturally uses 'it is' constructions.",
+    "Transcription artifacts or sentence segmentation might create artificial patterns."
+  ],
+  "limitations": [
+    "One sentence (s002) does not follow the pattern, but it may be a transcription error or outlier.",
+    "The pattern is structural and does not capture semantic or functional diversity."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern covers 49 out of 50 sentences, with only one clear outlier. The structure is consistent across diverse topics and contexts."
+}

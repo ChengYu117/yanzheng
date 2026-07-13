@@ -1,0 +1,74 @@
+{
+  "latent_idx": 19654,
+  "short_name": "expressions_of_gratitude",
+  "primary_explanation": "The majority of sentences contain expressions of gratitude, such as 'thank you', 'thanks', or 'appreciate', often in closing or appreciative contexts.",
+  "candidate_behavioral_explanation": "The sentences primarily function as polite closings or acknowledgments in conversational settings, expressing gratitude for time, information, or assistance.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s008","s009","s010","s011","s012","s013","s014","s015","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s044","s045","s046","s047","s048","s049"],
+  "outlier_sample_ids": ["s007","s016","s031","s043","s050"],
+  "representative_evidence_ids": ["s004","s017","s041"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s004",
+      "evidence": "Contains 'thank you very much' and 'I really appreciate your time'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s017",
+      "evidence": "Contains 'thank you for your time'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s041",
+      "evidence": "Contains 'thanks so much for coming in today'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s007",
+      "evidence": "Contains 'I appreciate your time' but also expresses dissatisfaction and intent to leave.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s016",
+      "evidence": "Contains 'thank you' but is primarily a factual statement about drinking habits.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s031",
+      "evidence": "Contains 'I appreciate you thinking about' but is followed by a directive and lacks a clear gratitude function.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s043",
+      "evidence": "Contains 'thank you' but is fragmented and unclear.",
+      "evidence_level": "surface_form",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s050",
+      "evidence": "Contains 'thank you' but is part of a nonsensical or unrelated statement.",
+      "evidence_level": "semantic",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences may be part of a corpus of customer service or healthcare interactions where closing pleasantries are common.",
+    "The pattern could reflect a transcription artifact where only segments containing gratitude were selected."
+  ],
+  "possible_confounds": [
+    "Some sentences contain gratitude but also other functions (e.g., s007 expresses dissatisfaction), making the behavioral function mixed.",
+    "The dataset may be biased towards polite closings due to the context of collection."
+  ],
+  "limitations": [
+    "Outliers show that gratitude can co-occur with other discourse functions, limiting the purity of the pattern.",
+    "The interpretation does not account for the specific contexts (e.g., medical, tech support) that may influence phrasing."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of gratitude expressions is clear and covers 45 out of 50 sentences. Outliers are few and often still contain gratitude but with mixed functions. Alternative interpretations are weaker."
+}

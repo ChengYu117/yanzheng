@@ -1,0 +1,58 @@
+{
+  "latent_idx": 19038,
+  "short_name": "wh-questions with discourse markers",
+  "primary_explanation": "The majority of sentences are questions beginning with 'what' or other wh-words, often preceded by discourse markers like 'yeah', 'well', 'um', 'so', or 'but'. These questions typically seek information, clarification, or reflection on personal experiences, behaviors, or opinions.",
+  "candidate_behavioral_explanation": "The sentences function as probing questions, likely from a therapist or counselor, aimed at eliciting self-reflection or information from a client. The frequent use of 'what' questions and discourse markers suggests a conversational, exploratory style.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001", "s002", "s003", "s004", "s005", "s006", "s007", "s008", "s009", "s010", "s011", "s012", "s013", "s014", "s015", "s016", "s017", "s018", "s019", "s020", "s021", "s022", "s023", "s024", "s025", "s026", "s027", "s028", "s029", "s030", "s031", "s032", "s033", "s034", "s035", "s036", "s037", "s038", "s039", "s040", "s041", "s042", "s043", "s044", "s045", "s046", "s047", "s048", "s049", "s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s004", "s015", "s043"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s004",
+      "evidence": "Starts with 'yeah what do you think' – a wh-question with discourse marker.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s015",
+      "evidence": "Starts with 'Well, what can be more important' – rhetorical wh-question with discourse marker.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s043",
+      "evidence": "Starts with 'yes so what would it take' – wh-question with discourse markers.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s013",
+      "evidence": "Starts with 'I mean what differences' – wh-question with discourse marker.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s036",
+      "evidence": "Ends with 'what' – a standalone wh-word, but still a question.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences are all from a therapeutic or coaching context, focusing on behavior change and self-reflection.",
+    "The pattern is purely linguistic: sentences are questions starting with 'what' or other wh-words, often with initial discourse markers.",
+    "The sentences are fragments or incomplete questions, possibly due to transcription errors or conversational interruptions."
+  ],
+  "possible_confounds": [
+    "The dataset may be from a specific domain (e.g., motivational interviewing) that naturally uses many 'what' questions.",
+    "Transcription artifacts (e.g., missing punctuation, false starts) may obscure the pattern.",
+    "Some sentences are not complete questions (e.g., s042, s044) but still contain wh-words."
+  ],
+  "limitations": [
+    "A few sentences (e.g., s042, s044) are not clearly questions, but they still contain 'what' or other wh-words.",
+    "The behavioral function interpretation relies on context not provided in the sentences alone."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of wh-questions with discourse markers is highly consistent across the majority of sentences, with no clear outliers. The behavioral function is plausible but inferred from the question format and typical use in counseling contexts."
+}

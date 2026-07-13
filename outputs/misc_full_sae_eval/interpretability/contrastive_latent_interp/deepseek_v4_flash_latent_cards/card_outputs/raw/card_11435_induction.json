@@ -1,0 +1,65 @@
+{
+  "latent_idx": 11435,
+  "short_name": "healthcare_dialogue_mixed",
+  "primary_explanation": "The sentences are from a healthcare or counseling dialogue, featuring a mix of questions, statements, and affirmations typical of a clinician-patient interaction. The pattern is not uniform; it includes greetings, inquiries about symptoms, treatment discussions, and motivational talk.",
+  "candidate_behavioral_explanation": "The available sentences do not support a stable behavioral-function interpretation.",
+  "explanation_type": "unclear_or_mixed",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s001","s014","s049"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Greeting and inquiry: 'hey Monica how are you doing today'",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s014",
+      "evidence": "Medical inquiry: 'tell me about how you're using the insulin'",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s049",
+      "evidence": "Opening question: 'what brings you in'",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s002",
+      "evidence": "Affirmation: 'that sounds like a great idea'",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s028",
+      "evidence": "Empathetic statement: 'that's terrible John asbestos in your first day coming back from the hospital'",
+      "evidence_level": "affective",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s035",
+      "evidence": "Motivational question: 'but is it the hardest thing you've ever done'",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be from a customer service interaction, with greetings, requests, and confirmations.",
+    "They might be from a therapy session, focusing on patient experiences and emotional support.",
+    "The set could be a mix of different dialogue types, making a single pattern elusive."
+  ],
+  "possible_confounds": [
+    "The sentences are decontextualized, lacking speaker roles and turn order.",
+    "Some sentences are incomplete or contain transcription artifacts (e.g., 'it do did').",
+    "The presence of names (Monica, John, Rachel, Mark) suggests multiple conversations."
+  ],
+  "limitations": [
+    "No single pattern covers all sentences; the set is heterogeneous.",
+    "Behavioral function varies widely across sentences.",
+    "The sample size is large but the pattern is not uniform."
+  ],
+  "confidence": 2,
+  "confidence_rationale": "The sentences clearly come from a healthcare-related dialogue, but the pattern is mixed with multiple functions (questions, statements, affirmations) and no single behavioral function dominates. Confidence is low due to heterogeneity."
+}

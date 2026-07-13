@@ -1,0 +1,62 @@
+{
+  "latent_idx": 8468,
+  "short_name": "therapeutic_discourse_you",
+  "primary_explanation": "The sentences predominantly feature second-person 'you' in a reflective or confrontational discourse, typical of therapeutic or counseling settings where a therapist summarizes, challenges, or explores a client's statements and behaviors.",
+  "candidate_behavioral_explanation": "The primary behavioral function is to reflect, challenge, or clarify the client's reported experiences, often using summarizing statements, questions, or confrontational remarks to promote insight or accountability.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s047","s048","s049","s050"],
+  "outlier_sample_ids": ["s021","s033","s046"],
+  "representative_evidence_ids": ["s002","s005","s009"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s002",
+      "evidence": "and so because you were worried about them thinking that you were trying to avoid them you ended up using marijuana is that correct",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s005",
+      "evidence": "you also mentioned that smoking is a way to manage your weight and concern that if you are we're going to quit smoking what that would do in terms of gaining weight and that smoking after meals is pleasurable that it's something that would be really hard to give up",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s009",
+      "evidence": "you decided to drink more than you intended because you were disappointed at how the Vikings were playing and when your roommate couldn't give you a ride home you decided to drive yourself home",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s021",
+      "evidence": "Having diabetes affects you more than you realize and some people feel fine when they have a big ulcer on their foot.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s033",
+      "evidence": "did you know that a glass of orange juice has almost as many calories as a can of cola",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s046",
+      "evidence": "and we did your scaling and root planing just a few weeks ago",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be from a motivational interviewing session, focusing on eliciting change talk and exploring ambivalence.",
+    "Alternatively, they might represent a mix of counseling and medical advice, with some outliers being factual statements or general health information."
+  ],
+  "possible_confounds": [
+    "The dataset may be drawn from multiple sources (e.g., therapy transcripts, medical consultations) leading to topical variation.",
+    "Some sentences (e.g., s021, s033, s046) are more informational or educational, lacking the reflective/challenging tone."
+  ],
+  "limitations": [
+    "The interpretation relies on pragmatic function, which can be subjective without context.",
+    "Outliers may indicate a different discourse mode (e.g., patient education) within the same setting."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of second-person reflective/challenging discourse is highly consistent across 47 of 50 sentences, with only three outliers that are more informational. The behavioral function is clear and stable."
+}

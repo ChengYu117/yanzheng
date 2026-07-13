@@ -1,0 +1,56 @@
+{
+  "latent_idx": 24167,
+  "short_name": "healthcare_discourse_assessment",
+  "primary_explanation": "The sentences predominantly reflect a healthcare or counseling interaction where a clinician assesses a patient's well-being, progress, or adherence to treatment, often using evaluative phrases like 'sounds like', 'doing well', 'pretty good', and 'sounds good'.",
+  "candidate_behavioral_explanation": "The primary behavioral function is assessment and affirmation: the clinician checks on the patient's status and provides positive reinforcement or summarizes progress.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s002","s012","s017"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s002",
+      "evidence": "so um it sounds like in general your things are going pretty well for you",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s012",
+      "evidence": "okay great so you're doing well",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s017",
+      "evidence": "okay great  it sounds like you're eating pretty  healthy",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s041",
+      "evidence": "Having diabetes affects you more than you realize and some people feel fine when they have a big ulcer on their foot.",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s046",
+      "evidence": "well we're on the same page then because that's exactly why I'm talking to you about quitting smoking",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be from a therapy session focusing on patient self-report and clinician reflection.",
+    "Alternatively, they might represent a general check-in conversation in a medical setting, not limited to therapy."
+  ],
+  "possible_confounds": [
+    "The dataset may be drawn from a single clinical context, limiting generalizability.",
+    "Some sentences are short and lack context, making it hard to distinguish between different types of healthcare interactions."
+  ],
+  "limitations": [
+    "The analysis is based solely on text without speaker labels or turn-taking information.",
+    "The sample IDs are sequential, but the order may not reflect actual conversation flow."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of assessment and affirmation is highly consistent across all sentences, with no clear outliers. The healthcare context is evident from topical references (lab work, diabetes, smoking, grades, therapy). Alternative interpretations are weaker because the evaluative language and clinical topics are pervasive."
+}

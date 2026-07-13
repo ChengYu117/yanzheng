@@ -1,0 +1,326 @@
+{
+  "latent_idx": 16736,
+  "short_name": "difficulty_acknowledgment",
+  "primary_explanation": "The majority of sentences explicitly acknowledge or describe difficulty, hardship, or emotional challenge, often using words like 'difficult', 'hard', 'tough', 'rough', 'stressful', or 'uncomfortable'. This pattern appears across diverse contexts such as recovery, personal struggles, and social situations.",
+  "candidate_behavioral_explanation": "The sentences primarily function as empathetic acknowledgments or reflections of the interlocutor's difficult experiences, often used in therapeutic or supportive discourse to validate feelings.",
+  "explanation_type": "affective_content",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s001","s007","s015"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Contains 'difficult cases' and 'relapse' as part of recovery, acknowledging difficulty.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s007",
+      "evidence": "States 'it was the hardest point in my life'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s015",
+      "evidence": "Directly says 'this is tough for you'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s002",
+      "evidence": "Uses 'difficult situation'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s003",
+      "evidence": "Mentions 'very difficult time'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s004",
+      "evidence": "Refers to 'hardest foods'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s005",
+      "evidence": "Asks 'how difficult this is going to be'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s006",
+      "evidence": "States 'how difficult it is to lose the weight'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s008",
+      "evidence": "Mentions 'tough challenge'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s009",
+      "evidence": "Says 'sometimes difficult'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s010",
+      "evidence": "States 'how difficult it must be'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s011",
+      "evidence": "Uses 'hectic time frame' implying difficulty.",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s012",
+      "evidence": "Says 'difficult feeling that way'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s013",
+      "evidence": "Uses 'uncomfortable'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s014",
+      "evidence": "Says 'not the easiest things'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s016",
+      "evidence": "States 'how difficult it is'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s017",
+      "evidence": "Mentions 'traumatic experience'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s018",
+      "evidence": "Says 'really difficult to come in today'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s019",
+      "evidence": "Refers to 'hard things'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s020",
+      "evidence": "Says 'hard to talk about'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s021",
+      "evidence": "Mentions 'more difficult than the others'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s022",
+      "evidence": "Asks 'what was difficult about it'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s023",
+      "evidence": "Refers to 'harder cases'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s024",
+      "evidence": "Asks if quitting is 'the toughest thing'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s025",
+      "evidence": "Says 'really tough for you'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s026",
+      "evidence": "Mentions 'hard to accept'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s027",
+      "evidence": "Says 'hard to make a step'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s028",
+      "evidence": "Mentions 'scary experience'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s029",
+      "evidence": "States 'very difficult'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s030",
+      "evidence": "Says 'rough week'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s031",
+      "evidence": "Mentions 'hard work'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s032",
+      "evidence": "Repeats 'hard work'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s033",
+      "evidence": "Uses 'uncomfortable'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s034",
+      "evidence": "Mentions 'unpleasantness'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s035",
+      "evidence": "Says 'extremely stressful'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s036",
+      "evidence": "Says 'tough to bear'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s037",
+      "evidence": "States 'so stressful'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s038",
+      "evidence": "Mentions 'difficult' and 'rose to the challenge'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s039",
+      "evidence": "Says 'hard to do that'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s040",
+      "evidence": "Asks 'hardest thing you've ever done'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s041",
+      "evidence": "Uses 'rough'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s042",
+      "evidence": "Says 'that's hard'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s043",
+      "evidence": "Mentions 'stressful week'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s044",
+      "evidence": "Says 'frustrating'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s045",
+      "evidence": "States 'it was difficult'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s046",
+      "evidence": "Says 'frustrating'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s047",
+      "evidence": "Says 'difficult for me'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s048",
+      "evidence": "States 'difficult to cut them out'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s049",
+      "evidence": "Mentions 'risky' implying difficulty.",
+      "evidence_level": "semantic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s050",
+      "evidence": "Says 'really been hard' and 'difficult'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences may be part of a therapeutic or counseling dialogue where the speaker validates the client's struggles.",
+    "The pattern could reflect a general tendency to discuss negative experiences rather than a specific linguistic template."
+  ],
+  "possible_confounds": [
+    "The dataset may be drawn from a specific domain (e.g., addiction counseling) where difficulty is a common topic.",
+    "The high frequency of difficulty words could be an artifact of the sampling or annotation process."
+  ],
+  "limitations": [
+    "The interpretation is based solely on lexical cues and does not account for prosody or context.",
+    "Some sentences (e.g., s011, s049) imply difficulty without explicit keywords, relying on semantic inference."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of acknowledging difficulty is highly consistent across all 50 sentences, with explicit lexical markers in the vast majority. No outliers were identified. Alternative explanations are plausible but weaker given the uniformity of the lexical evidence."
+}

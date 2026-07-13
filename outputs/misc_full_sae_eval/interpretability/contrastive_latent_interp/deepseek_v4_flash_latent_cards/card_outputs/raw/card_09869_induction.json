@@ -1,0 +1,50 @@
+{
+  "latent_idx": 9869,
+  "short_name": "thank_you_formula",
+  "primary_explanation": "The majority of sentences are expressions of gratitude, typically following the template 'thank you/thanks for [gerund phrase]' or 'thank you/thanks for [noun phrase]', often with intensifiers like 'so much' or 'very much'.",
+  "candidate_behavioral_explanation": "The sentences serve a social ritual function of expressing appreciation, often used to close or acknowledge an interaction, such as a meeting, call, or conversation.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": ["s043"],
+  "representative_evidence_ids": ["s003","s005","s013"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s003",
+      "evidence": "Contains 'Thank you so much for calling me back' – a clear gratitude expression with intensifier and gerund phrase.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s005",
+      "evidence": "Contains 'thanks so much for coming in today' – typical template with 'thanks' and gerund.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s013",
+      "evidence": "Contains 'thank you for your time' – simple gratitude formula.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s043",
+      "evidence": "Contains 'I really commend you for taking that first step' – no gratitude expression, instead a commendation.",
+      "evidence_level": "semantic",
+      "evidence_role": "contradict"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences are part of a structured interaction (e.g., therapy, counseling, or service) where thanking is a routine closing move.",
+    "The pattern may reflect a data collection artifact where speakers were instructed to thank participants."
+  ],
+  "possible_confounds": [
+    "The dataset may be drawn from a specific domain (e.g., healthcare, interviews) where thanking is conventional.",
+    "Some sentences include additional discourse markers or personal names, but the core gratitude formula remains."
+  ],
+  "limitations": [
+    "One sentence (s043) lacks any gratitude expression, indicating the pattern is not universal.",
+    "The behavioral function is inferred from the semantic content; actual discourse context is unknown."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The gratitude pattern covers 49 out of 50 sentences, with only one clear outlier. The pattern is lexically and syntactically consistent, and alternative interpretations are weaker."
+}

@@ -1,0 +1,92 @@
+{
+  "latent_idx": 24744,
+  "short_name": "wh-questions",
+  "primary_explanation": "The majority of sentences are wh-questions (what, how, why, etc.) used to elicit information, thoughts, or feelings from an interlocutor, often in a therapeutic or counseling context.",
+  "candidate_behavioral_explanation": "The sentences function as probing questions to explore the interlocutor's experiences, beliefs, or behaviors, typical of motivational interviewing or clinical assessment.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s024","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s044","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": ["s005","s022","s023","s025","s026","s027","s043","s045"],
+  "representative_evidence_ids": ["s001","s009","s014"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Starts with 'um what do you think' - a wh-question asking for opinion.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s009",
+      "evidence": "'what were you feeling right then' - wh-question about emotions.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s014",
+      "evidence": "'what are you feeling right now' - wh-question about current feelings.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s005",
+      "evidence": "Contains a statement and imperative, not a question.",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s022",
+      "evidence": "Includes self-disclosure and opinion, not a question.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s023",
+      "evidence": "Rhetorical question with negative tone, not a genuine inquiry.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s025",
+      "evidence": "Question but expresses frustration, not a neutral probe.",
+      "evidence_level": "affective",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s026",
+      "evidence": "Greeting and apology, not a question.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s027",
+      "evidence": "Incomplete utterance, not a clear question.",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s043",
+      "evidence": "Incomplete question, ambiguous.",
+      "evidence_level": "syntactic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s045",
+      "evidence": "Statement with rhetorical question tag, not a genuine question.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences are all from a single conversation or interview, possibly a medical or counseling session, where the interviewer asks questions to guide the discussion.",
+    "The pattern may reflect a linguistic template of 'what' questions used to explore specific topics like feelings, thoughts, and behaviors."
+  ],
+  "possible_confounds": [
+    "Some sentences are not questions but statements or incomplete utterances, which may be due to transcription errors or overlapping speech.",
+    "The context of the conversation is unknown; the questions may serve different functions depending on the preceding discourse."
+  ],
+  "limitations": [
+    "The analysis is based solely on text without prosodic or contextual information.",
+    "Some sentences are ambiguous or incomplete, making classification difficult."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The primary pattern of wh-questions covers a large majority of sentences (42 out of 50), with clear exceptions that are either non-questions or have different pragmatic functions. The pattern is stable and consistent across the set."
+}

@@ -1,0 +1,56 @@
+{
+  "latent_idx": 30798,
+  "short_name": "it_sentences",
+  "primary_explanation": "The majority of sentences begin with 'It' followed by a verb (e.g., sounds, looks, is) and often include evaluative or descriptive content about a situation, feeling, or fact. This pattern is a linguistic structure where 'It' serves as a dummy subject or referent, and the sentence provides commentary or information.",
+  "candidate_behavioral_explanation": "The available sentences do not support a stable behavioral-function interpretation.",
+  "explanation_type": "linguistic_structure",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048"],
+  "outlier_sample_ids": ["s049","s050"],
+  "representative_evidence_ids": ["s001","s003","s009"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Starts with 'It' followed by 'does sound'",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s003",
+      "evidence": "Starts with 'It’s' (It is) followed by 'definitely more'",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s009",
+      "evidence": "Starts with 'It's' (It is) followed by 'Friday'",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s049",
+      "evidence": "Starts with 'They' instead of 'It'",
+      "evidence_level": "syntactic",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s050",
+      "evidence": "Starts with 'They' instead of 'It'",
+      "evidence_level": "syntactic",
+      "evidence_role": "contradict"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences may reflect a therapeutic or counseling discourse where 'It' is used to refer to a client's situation or feeling, but this is not consistent across all sentences.",
+    "The pattern could be a surface artifact of transcription where speakers frequently start utterances with 'It' as a filler or discourse marker, but this is less specific."
+  ],
+  "possible_confounds": [
+    "The dataset may be biased towards sentences beginning with 'It' due to the selection criteria for this feature.",
+    "Some sentences (e.g., s022, s047) contain multiple clauses or are fragmented, making the pattern less clear."
+  ],
+  "limitations": [
+    "The pattern is purely structural and does not capture semantic or functional commonalities.",
+    "Two sentences (s049, s050) do not start with 'It', indicating the pattern is not universal."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of starting with 'It' covers 48 out of 50 sentences, showing high consistency. The two outliers are clear exceptions. Alternative interpretations are weaker or less specific."
+}

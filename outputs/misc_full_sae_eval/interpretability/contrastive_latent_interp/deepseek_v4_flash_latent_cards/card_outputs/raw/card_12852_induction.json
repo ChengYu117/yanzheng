@@ -1,0 +1,44 @@
+{
+  "latent_idx": 12852,
+  "short_name": "therapeutic reflection and advice",
+  "primary_explanation": "The sentences predominantly feature a therapist or counselor reflecting the client's statements, summarizing ambivalence, or offering advice, often using 'so', 'okay', 'you feel', and 'it sounds like'.",
+  "candidate_behavioral_explanation": "The primary behavioral function is reflective listening and motivational interviewing, where the speaker mirrors the client's experiences and gently guides toward change.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s008","s009","s010","s011","s013","s014","s016","s017","s019","s020","s021","s025","s027","s028","s029","s031","s032","s034","s035","s037","s038","s039","s040","s041","s043","s048","s049"],
+  "outlier_sample_ids": ["s007","s012","s015","s018","s022","s023","s024","s026","s030","s033","s036","s042","s044","s045","s046","s047","s050"],
+  "representative_evidence_ids": ["s002","s010","s016"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s002",
+      "evidence": "Uses 'okay so on one hand... and then on the other hand' to reflect ambivalence.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s010",
+      "evidence": "Uses 'so what I know of you is that when you're faced with a tough challenge... you rise to the occasion' to affirm client's strengths.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s016",
+      "evidence": "Uses 'it sounds like you've been smoking for such a long time and then this diagnosis... causing you to be afraid' to reflect client's fear.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be part of a structured interview or assessment where the interviewer summarizes client responses.",
+    "The pattern may reflect a specific therapeutic modality like cognitive-behavioral therapy, focusing on identifying thoughts and behaviors."
+  ],
+  "possible_confounds": [
+    "Some sentences are direct advice or rules (e.g., s007, s050), which differ from reflective statements.",
+    "A few sentences are incomplete or fragmented (e.g., s026, s042), possibly due to transcription errors."
+  ],
+  "limitations": [
+    "Outlier sentences include direct advice, questions about past, and incomplete thoughts, which do not fit the reflective pattern.",
+    "The dataset may mix different speakers or contexts, reducing pattern consistency."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The reflective listening pattern is clear and covers a majority of sentences, with outliers being explainable as different discourse moves or artifacts."
+}

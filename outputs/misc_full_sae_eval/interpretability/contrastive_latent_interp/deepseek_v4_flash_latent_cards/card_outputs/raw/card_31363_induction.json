@@ -1,0 +1,56 @@
+{
+  "latent_idx": 31363,
+  "short_name": "therapeutic_discourse_markers",
+  "primary_explanation": "The sentences predominantly feature discourse markers (e.g., 'so', 'and', 'but', 'and then') and second-person pronouns ('you', 'your'), characteristic of therapeutic or counseling dialogue where the speaker guides, advises, or reflects on the listener's experiences.",
+  "candidate_behavioral_explanation": "The sentences function as therapeutic or coaching utterances: they include reflections (s004, s041), advice (s029, s036), affirmations (s042, s048), and exploratory questions (s002, s049), all common in clinical or motivational interviewing contexts.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s004","s029","s041"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s004",
+      "evidence": "Reflective listening: 'it sounds like you're kind of feeling not so great about your resume'",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s029",
+      "evidence": "Advice: 'I would probably say maybe to stay away from the lemon shallot butter'",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s041",
+      "evidence": "Summarizing and affirming: 'it sounds like you know you really have a reason that you really want to be here'",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s002",
+      "evidence": "Exploratory question: 'if you didn't have any anxiety would that change your motivation'",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s012",
+      "evidence": "Informational reminder: 'just a reminder too that because of legislation prohibits gathering genetic information'",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be from a single conversation transcript, with the pattern being the use of discourse markers like 'and', 'so', 'but' to connect turns, but this is less specific.",
+    "The pattern might be the frequent use of second-person pronouns ('you', 'your') indicating direct address, but this is a surface feature rather than a behavioral function."
+  ],
+  "possible_confounds": [
+    "The sentences are extracted from a larger transcript, so the pattern may reflect the overall conversation style rather than a stable feature of these sentences alone.",
+    "Some sentences (e.g., s045) are fragmentary and may not clearly exhibit the therapeutic function, but they still contain second-person pronouns."
+  ],
+  "limitations": [
+    "The analysis assumes a therapeutic context, but without metadata, the setting could be other types of counseling or coaching.",
+    "The pattern is based on pragmatic function, which can be subjective; different annotators might label functions differently."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of therapeutic discourse markers and functions is consistent across the vast majority of sentences, with no clear outliers. The alternative interpretations are weaker or less specific."
+}

@@ -1,0 +1,59 @@
+{
+  "latent_idx": 9827,
+  "short_name": "question_formats_varied",
+  "primary_explanation": "The sentences are predominantly questions, but they vary widely in syntactic form (yes/no, wh-, tag, embedded), discourse markers (okay, um, so), and topic (health, habits, preferences). No single stable pattern covers a majority beyond being interrogative.",
+  "candidate_behavioral_explanation": "The available sentences do not support a stable behavioral-function interpretation.",
+  "explanation_type": "unclear_or_mixed",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s001","s010","s028"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Starts with 'okay so' and is a yes/no question about preferences.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s010",
+      "evidence": "Starts with 'Can't you understand' – a negative question expressing concern.",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s028",
+      "evidence": "Short yes/no question 'okay does that make sense' – common comprehension check.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s035",
+      "evidence": "Not a question but a statement: 'Could be contributing to this...'",
+      "evidence_level": "syntactic",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s047",
+      "evidence": "Fragment with 'and what if what if anything' – incomplete question.",
+      "evidence_level": "surface_form",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences are all questions used in a counseling or medical interview context, with many checking understanding or readiness to change.",
+    "The sentences share a pattern of hedging (okay, um, so) and indirectness, softening the interrogative force.",
+    "The sentences are diverse in topic but consistently use question forms, possibly reflecting a data collection artifact from a question-answering dataset."
+  ],
+  "possible_confounds": [
+    "The set includes one statement (s035) that is not a question, breaking the interrogative pattern.",
+    "Many sentences contain transcription artifacts like 'um', 'okay', and repetitions that may obscure underlying structure.",
+    "The topics range widely (smoking, drinking, exercise, mental health), making a unified topic interpretation difficult."
+  ],
+  "limitations": [
+    "The analysis is based solely on surface form; deeper pragmatic functions may be more consistent but are not directly observable.",
+    "The sample size is large but the pattern is too broad to be informative.",
+    "No behavioral function can be reliably assigned due to the diversity of question types and contexts."
+  ],
+  "confidence": 2,
+  "confidence_rationale": "The only stable pattern is that most sentences are questions, but the variation in form, topic, and function is too high to assign a more specific interpretation. One sentence is not a question, and many are incomplete or fragmented."
+}

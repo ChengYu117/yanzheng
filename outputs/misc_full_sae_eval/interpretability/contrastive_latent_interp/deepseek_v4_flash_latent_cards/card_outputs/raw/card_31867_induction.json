@@ -1,0 +1,44 @@
+{
+  "latent_idx": 31867,
+  "short_name": "healthcare_discourse_markers",
+  "primary_explanation": "The sentences predominantly feature discourse markers and reflective statements typical of healthcare or counseling dialogues, such as 'so', 'okay', 'that makes sense', and 'it sounds like', often used to summarize, affirm, or guide the conversation.",
+  "candidate_behavioral_explanation": "The sentences appear to serve a therapeutic or medical consultation function, including summarizing patient statements, providing feedback, and offering advice or explanations.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001", "s002", "s003", "s004", "s005", "s006", "s007", "s008", "s009", "s010", "s011", "s012", "s013", "s014", "s015", "s016", "s017", "s018", "s019", "s020", "s021", "s022", "s023", "s024", "s025", "s026", "s027", "s028", "s029", "s030", "s031", "s032", "s033", "s034", "s035", "s036", "s037", "s038", "s039", "s040", "s041", "s042", "s043", "s044", "s045", "s046", "s047", "s048", "s049", "s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s008", "s026", "s042"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s008",
+      "evidence": "what I'm hearing says you don't want your bad health to affect the way to affect your career",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s026",
+      "evidence": "but before getting to that I'd like to put that aside and begin just by hearing from you brings you here",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s042",
+      "evidence": "so I five believes so if I understand it correctly you're considering to make that change because you don't want to develop a chronic illness later on the life in essentially avoiding conflict with your mother is that correct",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences may be from a single conversation transcript, with no specific pattern beyond being part of a dialogue.",
+    "The pattern could be an artifact of transcription, such as filler words and false starts, rather than a deliberate behavioral function."
+  ],
+  "possible_confounds": [
+    "The sentences are extracted from a longer conversation, so the pattern may reflect the overall dialogue structure rather than a stable feature of the sentences themselves.",
+    "The presence of many discourse markers could be due to the conversational nature of the data, not a specific behavioral function."
+  ],
+  "limitations": [
+    "The analysis is based on a small sample of sentences from a single conversation, limiting generalizability.",
+    "The behavioral function interpretation is inferred from linguistic cues and may not reflect the actual intent of the speakers."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of healthcare-related discourse markers and reflective statements is consistent across a majority of sentences, with clear examples supporting the behavioral function interpretation. However, the possibility of alternative explanations and confounds slightly reduces confidence."
+}

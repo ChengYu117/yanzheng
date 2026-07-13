@@ -1,0 +1,56 @@
+{
+  "latent_idx": 2995,
+  "short_name": "counseling_dialogue_mixed",
+  "primary_explanation": "The sentences appear to be from a counseling or healthcare dialogue, characterized by frequent use of discourse markers (e.g., 'um', 'yeah', 'so', 'I mean'), second-person address ('you'), and expressions of empathy, advice, or reflection. The pattern is a mix of therapist/healthcare provider statements and client/patient responses, but no single behavioral function or linguistic structure dominates across all sentences.",
+  "candidate_behavioral_explanation": "The available sentences do not support a stable behavioral-function interpretation.",
+  "explanation_type": "unclear_or_mixed",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s002","s006","s022"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s002",
+      "evidence": "Contains second-person address ('you') and empathetic tone ('I know it's hard'), typical of counseling dialogue.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s006",
+      "evidence": "Uses discourse markers ('well', 'I just') and a reflective question ('what do you think you should do'), common in therapeutic settings.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s022",
+      "evidence": "References past discussion ('you've mentioned that') and uses 'yeah' as a discourse marker, showing continuity in conversation.",
+      "evidence_level": "discourse_marker",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s017",
+      "evidence": "Self-deprecating statement ('I might not know my name') is atypical of a provider role, possibly a client response.",
+      "evidence_level": "semantic",
+      "evidence_role": "limit"
+    },
+    {
+      "sample_id": "s012",
+      "evidence": "Off-topic social invitation ('would you ever want to get together sometime?') diverges from typical healthcare advice.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "limit"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be from a motivational interviewing session, with many examples of reflective listening and open-ended questions.",
+    "Alternatively, they might be from a general conversation about health behavior change, with both provider and patient turns."
+  ],
+  "possible_confounds": [
+    "The sentences are decontextualized, making it hard to distinguish speaker roles.",
+    "Transcription artifacts (e.g., 'um', 'yeah') may overrepresent discourse markers."
+  ],
+  "limitations": [
+    "No single pattern covers all sentences; some are questions, some are statements, some are advice.",
+    "The mix of topics (dental, exercise, drinking, etc.) suggests multiple sub-dialogues."
+  ],
+  "confidence": 3,
+  "confidence_rationale": "A clear conversational context (counseling/healthcare) is evident, but the variety of functions and topics prevents a more specific interpretation."
+}

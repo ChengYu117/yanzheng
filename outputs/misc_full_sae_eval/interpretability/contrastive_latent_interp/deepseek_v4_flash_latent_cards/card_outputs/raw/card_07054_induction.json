@@ -1,0 +1,44 @@
+{
+  "latent_idx": 7054,
+  "short_name": "second-person advice and evaluation",
+  "primary_explanation": "The sentences predominantly use second-person 'you' to give advice, evaluate behavior, or describe consequences in a counseling or coaching context. They often include conditionals, imperatives, or evaluative statements about the addressee's actions or state.",
+  "candidate_behavioral_explanation": "The sentences function as advice, warnings, or motivational statements typical of a health or addiction counselor addressing a client.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s001","s003","s027"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Second-person 'you' with conditional advice about drinking.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s003",
+      "evidence": "Second-person 'you' explaining reason for attendance.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s027",
+      "evidence": "Second-person 'you' with imperative warning about health risks.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be part of a motivational interviewing transcript, where the counselor reflects and guides the client.",
+    "They might represent a collection of self-talk or internal monologue, but the consistent 'you' suggests direct address."
+  ],
+  "possible_confounds": [
+    "The sentences are extracted from a larger dialogue, so context is missing; some may be questions or statements from the client rather than the counselor.",
+    "The presence of 'yeah' and 'well' suggests conversational turns, but the function may vary by speaker role."
+  ],
+  "limitations": [
+    "Without speaker labels, it is unclear whether all sentences are from the same speaker (e.g., counselor) or mixed.",
+    "Some sentences (e.g., s022 'I think you're wrong') could be client responses, but still fit the 'you' pattern."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of second-person address with advice/evaluation is highly consistent across all 50 sentences, with no clear outliers. The behavioral function is strongly supported, though speaker role ambiguity slightly reduces confidence."
+}

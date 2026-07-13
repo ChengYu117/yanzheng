@@ -1,0 +1,44 @@
+{
+  "latent_idx": 20808,
+  "short_name": "second-person address",
+  "primary_explanation": "All sentences begin with or contain the second-person pronoun 'you', often followed by a verb phrase, forming direct address or statements about the addressee. This pattern is consistent across the majority of sentences, though some include discourse markers like 'you know' or contractions like 'you're'.",
+  "candidate_behavioral_explanation": "The sentences appear to function as conversational turns in a dialogue, likely from a counseling or medical interview context, where the speaker addresses the listener directly, making observations, asking questions, or giving advice.",
+  "explanation_type": "linguistic_structure",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s002","s011","s023"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s002",
+      "evidence": "Starts with 'You've' (second-person pronoun + verb contraction).",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s011",
+      "evidence": "Starts with 'You're' (second-person pronoun + verb contraction).",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s023",
+      "evidence": "Starts with 'You' followed by verb 'did'.",
+      "evidence_level": "lexical",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences may reflect a therapeutic or counseling discourse where the speaker reflects the client's feelings or behaviors.",
+    "The sentences could be from a health advice or motivational interviewing context, focusing on the addressee's habits or health."
+  ],
+  "possible_confounds": [
+    "The dataset may be sampled from a specific genre (e.g., therapy transcripts) where second-person address is common.",
+    "Some sentences are fragments or contain disfluencies (e.g., s026, s038) that may reflect spoken language artifacts."
+  ],
+  "limitations": [
+    "The pattern is purely structural; behavioral function is inferred but not strongly evidenced.",
+    "Some sentences are incomplete or ambiguous (e.g., s016, s026), making interpretation less certain."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The second-person address pattern is extremely consistent across all 50 sentences, with no outliers. However, the behavioral function is less certain, and the pattern is primarily linguistic structure."
+}

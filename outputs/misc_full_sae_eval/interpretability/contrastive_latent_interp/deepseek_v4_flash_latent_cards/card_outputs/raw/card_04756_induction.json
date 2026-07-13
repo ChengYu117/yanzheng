@@ -1,0 +1,50 @@
+{
+  "latent_idx": 4756,
+  "short_name": "empathic_understanding",
+  "primary_explanation": "The majority of sentences express understanding, agreement, or validation of the interlocutor's perspective, often using phrases like 'I understand', 'I can see where you're coming from', 'that sounds reasonable', or 'you're right'. This pattern reflects a supportive, empathic stance common in counseling or therapeutic discourse.",
+  "candidate_behavioral_explanation": "The primary behavioral function is to build rapport and validate the speaker's experiences, often through reflective listening and affirmation. This is typical of motivational interviewing or therapeutic communication.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001", "s002", "s003", "s004", "s005", "s006", "s007", "s008", "s009", "s010", "s011", "s012", "s013", "s014", "s015", "s016", "s017", "s018", "s019", "s020", "s021", "s022", "s023", "s024", "s025", "s026", "s027", "s028", "s029", "s030", "s031", "s032", "s033", "s034", "s035", "s036", "s037", "s038", "s039", "s040", "s041", "s043", "s044", "s045", "s046", "s047", "s048", "s049", "s050"],
+  "outlier_sample_ids": ["s042"],
+  "representative_evidence_ids": ["s004", "s007", "s030"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s004",
+      "evidence": "I do get where you're coming from",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s007",
+      "evidence": "I can understand that",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s030",
+      "evidence": "I can definitely understand where they're coming from",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s042",
+      "evidence": "Bush won last year why yes sure are you do you have a family are you married",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "contradict"
+    }
+  ],
+  "alternative_explanations": [
+    "The pattern could be a linguistic template used in a specific dialogue system or scripted interaction, where the speaker consistently uses phrases like 'I understand' and 'that sounds' to maintain a neutral, supportive role.",
+    "Alternatively, the sentences might reflect a general politeness strategy in conversation, where the speaker acknowledges the other's viewpoint before offering their own, though this is less specific."
+  ],
+  "possible_confounds": [
+    "The sentences may come from a single domain (e.g., therapy, coaching) where empathic language is expected, limiting generalizability.",
+    "Some sentences (e.g., s042) are outliers that do not fit the pattern, possibly due to transcription errors or different conversational contexts."
+  ],
+  "limitations": [
+    "The analysis is based solely on text without prosodic or contextual cues, which could affect interpretation of empathy.",
+    "The pattern is inferred from a single cluster; cross-validation with other clusters is needed to confirm stability."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of empathic understanding is highly consistent across 49 out of 50 sentences, with only one clear outlier (s042). The linguistic evidence is strong and the behavioral function is well-supported, though domain specificity and lack of context slightly reduce confidence."
+}

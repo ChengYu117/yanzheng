@@ -1,0 +1,44 @@
+{
+  "latent_idx": 17507,
+  "short_name": "healthcare_intake_questions",
+  "primary_explanation": "The sentences are predominantly questions asked during a healthcare or counseling intake interview, covering topics such as medical history, lifestyle, mental health, and social habits.",
+  "candidate_behavioral_explanation": "The primary behavioral function is information gathering through direct questioning, typical of clinical or diagnostic interviews.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s001","s006","s014"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Question about stressful events and work situation, typical of mental health screening.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s006",
+      "evidence": "Question about seeing a dentist, indicating medical history inquiry.",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s014",
+      "evidence": "Question about recent symptoms, common in medical interviews.",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be part of a structured survey or questionnaire on health behaviors.",
+    "They might represent a collection of questions from various contexts, but the majority align with healthcare interviews."
+  ],
+  "possible_confounds": [
+    "Some questions (e.g., s002 about dog, s005 about hanging out) are less clinical but still fit a broader biopsychosocial assessment.",
+    "The presence of multiple topics (diet, exercise, smoking, alcohol, school) could suggest a general interview rather than a specific medical one."
+  ],
+  "limitations": [
+    "The analysis assumes a single context; the sentences could originate from different interviews or surveys.",
+    "No response data is available to confirm the actual function."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of interrogative sentences covering health-related topics is highly consistent across all 50 sentences, with no clear outliers. The behavioral function of information gathering is strongly supported."
+}

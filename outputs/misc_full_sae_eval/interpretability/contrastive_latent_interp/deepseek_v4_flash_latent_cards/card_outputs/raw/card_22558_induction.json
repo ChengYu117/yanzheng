@@ -1,0 +1,64 @@
+{
+  "latent_idx": 22558,
+  "short_name": "therapist reflection with 'pretty'",
+  "primary_explanation": "The sentences predominantly consist of therapist-like reflective statements that summarize or validate a client's reported experience, frequently using the intensifier 'pretty' (e.g., 'pretty confident', 'pretty frustrated', 'pretty important'). The pattern involves a discourse marker (e.g., 'okay so', 'so it sounds like') followed by a paraphrase of the client's state, often with an affective or evaluative adjective modified by 'pretty'.",
+  "candidate_behavioral_explanation": "The sentences appear to serve a therapeutic reflective listening function, where the speaker mirrors the client's feelings or situation to show understanding and encourage further disclosure.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001", "s002", "s003", "s005", "s006", "s007", "s008", "s009", "s010", "s011", "s014", "s015", "s016", "s017", "s018", "s019", "s020", "s021", "s023", "s024", "s025", "s026", "s028", "s030", "s031", "s032", "s034", "s035", "s036", "s037", "s038", "s040", "s042", "s044", "s048", "s050"],
+  "outlier_sample_ids": ["s004", "s012", "s013", "s022", "s027", "s029", "s033", "s039", "s041", "s043", "s045", "s046", "s047", "s049"],
+  "representative_evidence_ids": ["s001", "s003", "s009"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Uses 'sounds like' and 'pretty confident' – typical reflective listening with intensifier.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s003",
+      "evidence": "Starts with 'okay so it feels like' and includes 'pretty discouraged and frustrated'.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s009",
+      "evidence": "Contains 'it seems like you're feeling pretty sad' – reflective statement with 'pretty'.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s004",
+      "evidence": "Lacks reflective structure; discusses geometry and physics, no 'pretty' or client paraphrase.",
+      "evidence_level": "semantic",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s012",
+      "evidence": "Narrative about past flexibility, not a reflective summary of current state.",
+      "evidence_level": "semantic",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s013",
+      "evidence": "Direct quote of someone else's speech, not a therapist reflection.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "contradict"
+    }
+  ],
+  "alternative_explanations": [
+    "The pattern may be a linguistic template used in motivational interviewing, where the therapist uses 'okay so' and 'sounds like' to introduce reflections.",
+    "The frequent use of 'pretty' could be a conversational filler or hedging device rather than a deliberate therapeutic technique.",
+    "Some sentences may be from a client rather than a therapist, as in s041 and s046, which express personal feelings without reflective framing."
+  ],
+  "possible_confounds": [
+    "The dataset may mix therapist and client utterances, as some sentences (e.g., s041, s046) appear to be from a client's perspective.",
+    "The presence of incomplete sentences (s007, s008) and transcription artifacts may obscure the pattern.",
+    "The word 'pretty' is polysemous; in some contexts it may mean 'attractive' rather than 'fairly'."
+  ],
+  "limitations": [
+    "The behavioral function interpretation relies on pragmatic inference; without context, the exact role of each utterance is uncertain.",
+    "Outliers include narrative, question, and direct quote sentences that do not fit the reflective pattern."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The primary pattern (therapist reflection with 'pretty') covers a clear majority (36 of 50 sentences) and is consistent in structure and function. Outliers are identifiable and do not undermine the pattern. Alternative explanations are weaker, though confounds like speaker role ambiguity slightly reduce confidence."
+}

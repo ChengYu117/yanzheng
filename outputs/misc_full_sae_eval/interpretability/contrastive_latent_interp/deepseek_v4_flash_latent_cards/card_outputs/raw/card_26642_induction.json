@@ -1,0 +1,56 @@
+{
+  "latent_idx": 26642,
+  "short_name": "second-person address with health/advice discourse",
+  "primary_explanation": "The majority of sentences use second-person pronouns ('you', 'your') to address a listener, often in a healthcare or counseling context involving advice, questions, or observations about the listener's behavior or health.",
+  "candidate_behavioral_explanation": "The sentences likely function as therapeutic or medical interview turns, including questions, affirmations, advice, and reflective statements directed at a patient or client.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": ["s033","s034"],
+  "representative_evidence_ids": ["s016","s017","s049"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s016",
+      "evidence": "Second-person pronoun 'you' with health risk warning",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s017",
+      "evidence": "Direct advice using 'you need to'",
+      "evidence_level": "syntactic",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s049",
+      "evidence": "Question about drinking frequency using 'you'",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s033",
+      "evidence": "Incomplete phrase 'I also' lacks second-person address",
+      "evidence_level": "surface_form",
+      "evidence_role": "contradict"
+    },
+    {
+      "sample_id": "s034",
+      "evidence": "First-person statement about personal desire, no second-person",
+      "evidence_level": "semantic",
+      "evidence_role": "contradict"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences could be from a motivational interviewing session, with a mix of open questions, affirmations, and reflective listening.",
+    "The pattern might reflect a general conversational corpus where speakers frequently use 'you' to engage the listener, but the health-related topics are coincidental."
+  ],
+  "possible_confounds": [
+    "The dataset may be drawn from a specific clinical or counseling context, biasing toward second-person address and health topics.",
+    "Some sentences (e.g., s033, s034) are fragments or first-person statements that do not fit the pattern, possibly due to transcription errors or mixed sources."
+  ],
+  "limitations": [
+    "The interpretation is based on surface-level pronoun usage and topic; deeper discourse function may vary across sentences.",
+    "Two sentences (s033, s034) are outliers, but they are short and may be incomplete, reducing their weight."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of second-person address and health-related discourse is consistent across 48 out of 50 sentences, with only two clear outliers. The behavioral function (therapeutic interview) is plausible but not definitively proven without context."
+}

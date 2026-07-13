@@ -1,0 +1,55 @@
+{
+  "latent_idx": 28816,
+  "short_name": "health-related questions",
+  "primary_explanation": "The sentences are predominantly questions about health, lifestyle, or personal habits, often asked in a clinical or counseling context. They include yes/no questions, wh-questions, and declarative questions seeking information or confirmation.",
+  "candidate_behavioral_explanation": "The sentences function as diagnostic or exploratory questions in a healthcare or counseling setting, aimed at gathering patient information or assessing readiness for change.",
+  "explanation_type": "behavioral_function",
+  "supporting_sample_ids": ["s001","s002","s003","s004","s005","s006","s007","s008","s009","s010","s011","s012","s013","s014","s015","s016","s017","s018","s019","s020","s021","s022","s023","s024","s025","s026","s027","s028","s029","s030","s031","s032","s033","s034","s035","s036","s037","s038","s039","s040","s041","s042","s043","s044","s045","s046","s047","s048","s049","s050"],
+  "outlier_sample_ids": [],
+  "representative_evidence_ids": ["s001","s011","s025"],
+  "linguistic_evidence": [
+    {
+      "sample_id": "s001",
+      "evidence": "Question about reordering prescription, typical of healthcare interaction.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s011",
+      "evidence": "Direct yes/no question about smoking, common in health screening.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s025",
+      "evidence": "Question about stressful events and work changes, typical of health assessment.",
+      "evidence_level": "pragmatic_function",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s045",
+      "evidence": "Declarative statement about health concern, but still health-related.",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    },
+    {
+      "sample_id": "s048",
+      "evidence": "Question about 'grin and tonic' (likely a pun), still health-related.",
+      "evidence_level": "topical",
+      "evidence_role": "support"
+    }
+  ],
+  "alternative_explanations": [
+    "The sentences are all questions (or question-like) used to gather information, regardless of topic.",
+    "The sentences reflect a motivational interviewing style, with open-ended and closed questions about behavior change."
+  ],
+  "possible_confounds": [
+    "Some sentences are not questions (e.g., s045, s050), but they still relate to health topics.",
+    "The dataset may be from a specific domain (e.g., medical or counseling transcripts), biasing the topic."
+  ],
+  "limitations": [
+    "The primary interpretation covers all sentences, but the behavioral function is inferred from context; without actual dialogue, the exact function is uncertain."
+  ],
+  "confidence": 4,
+  "confidence_rationale": "The pattern of health-related questions is very consistent across all sentences, with only a few declarative statements that still fit the topic. The behavioral function is plausible but not definitively confirmed without context."
+}
