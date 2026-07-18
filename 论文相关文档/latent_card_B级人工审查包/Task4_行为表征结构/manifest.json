@@ -1,31 +1,52 @@
 {
   "analysis": "task4_behavior_representation_structure",
+  "status": "current_ai_grouping_human_review_deferred",
   "inputs": {
     "cards": "论文相关文档\\latent_card_B级人工审查包\\frozen_all_cards\\validated_cards.jsonl",
-    "packs": "论文相关文档\\latent_card_B级人工审查包\\frozen_all_cards\\sentence_packs.jsonl",
+    "sentence_packs": "论文相关文档\\latent_card_B级人工审查包\\frozen_all_cards\\sentence_packs.jsonl",
     "stable_latents": "论文相关文档\\latent_card_B级人工审查包\\frozen_all_cards\\stable_topk_latent_set.csv"
   },
   "outputs": {
-    "report": "论文相关文档\\latent_card_B级人工审查包\\Task4_行为表征结构\\task4_behavior_representation_report.md",
     "feature_codings": "论文相关文档\\latent_card_B级人工审查包\\Task4_行为表征结构\\task4_feature_codings.csv",
     "behavior_components": "论文相关文档\\latent_card_B级人工审查包\\Task4_行为表征结构\\task4_behavior_components.csv",
-    "behavior_singletons": "论文相关文档\\latent_card_B级人工审查包\\Task4_行为表征结构\\task4_behavior_singletons_unresolved.csv",
+    "all_representation_components": "论文相关文档\\latent_card_B级人工审查包\\Task4_行为表征结构\\task4_all_representation_components.csv",
+    "nonbehavior_components": "论文相关文档\\latent_card_B级人工审查包\\Task4_行为表征结构\\task4_nonbehavior_components.csv",
+    "behavior_unassigned": "论文相关文档\\latent_card_B级人工审查包\\Task4_行为表征结构\\task4_behavior_singletons_unresolved.csv",
     "nonbehavior_features": "论文相关文档\\latent_card_B级人工审查包\\Task4_行为表征结构\\task4_nonbehavior_features.csv",
+    "isolated_nonbehavior_features": "论文相关文档\\latent_card_B级人工审查包\\Task4_行为表征结构\\task4_isolated_nonbehavior_features.csv",
     "cross_label_components": "论文相关文档\\latent_card_B级人工审查包\\Task4_行为表征结构\\task4_cross_label_components.csv",
+    "cross_label_all_modes": "论文相关文档\\latent_card_B级人工审查包\\Task4_行为表征结构\\task4_cross_label_all_modes.csv",
+    "label_specific_components": "论文相关文档\\latent_card_B级人工审查包\\Task4_行为表征结构\\task4_label_specific_components.csv",
     "exact_shared_latents": "论文相关文档\\latent_card_B级人工审查包\\Task4_行为表征结构\\task4_exact_shared_latents.csv",
-    "reviewer_A": "论文相关文档\\latent_card_B级人工审查包\\Task4_行为表征结构\\reviewer_A_blind_coding_sheet.csv",
-    "reviewer_B": "论文相关文档\\latent_card_B级人工审查包\\Task4_行为表征结构\\reviewer_B_blind_coding_sheet.csv"
+    "label_summary": "论文相关文档\\latent_card_B级人工审查包\\Task4_行为表征结构\\task4_label_summary.csv",
+    "report": "论文相关文档\\latent_card_B级人工审查包\\Task4_行为表征结构\\task4_behavior_representation_report.md"
   },
   "counts": {
     "unique_cards": 225,
     "label_latent_associations": 303,
-    "candidate_behavior_components": 31,
-    "behavior_singletons_or_unresolved": 6,
-    "nonbehavior_groups": 38,
-    "cross_label_component_types": 8,
-    "exact_shared_latents": 67
+    "behavior_associations": 174,
+    "nonbehavior_associations": 129,
+    "behavior_components": 29,
+    "nonbehavior_components": 31,
+    "all_representation_components": 60,
+    "behavior_unassigned": 25,
+    "nonbehavior_isolated_or_unresolved": 14,
+    "cross_label_behavior_families": 6,
+    "cross_label_all_mode_families": 12,
+    "label_specific_components": 28,
+    "exact_shared_latents": 67,
+    "evidence_class_associations": {
+      "behavioral_function": 174,
+      "linguistic_structure": 84,
+      "topic": 17,
+      "unclear_or_mixed": 15,
+      "affective_content": 11,
+      "surface_artifact": 2
+    }
   },
-  "reviewer_agreement": {
-    "status": "pending_two_independent_human_reviews"
+  "provenance": {
+    "card_coding": "existing validated feature cards, extracted unchanged",
+    "component_grouping": "current AI evidence review, no external API",
+    "human_review": "deferred by user"
   }
 }

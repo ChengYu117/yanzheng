@@ -1,0 +1,13 @@
+﻿shared_component,evidence_class,component_refs,labels,sharing_scope,shared_evidence_basis,label_specific_differences,status
+反映式重构与总结,behavioral_function,RE:reflective_reformulation|RES:reflection_clarification|REC:reflective_reformulation,RE|RES|REC,parent_child,均以重述、概括或核对对方表述为核心。,RES 更偏简短核对；REC/RE 包含更丰富的总结候选。,current_ai_cross_label_candidate
+矛盾与双面反映,behavioral_function,RE:ambivalence_reflection|REC:ambivalence_reflection,RE|REC,parent_child,均组织冲突目标、利弊或一方面/另一方面结构。,现有数据无 client 前文，不能比较反映准确性与复杂程度。,current_ai_cross_label_candidate
+直接建议与风险指导,behavioral_function,RE:directive_risk_guidance|RES:directive_risk_guidance|REC:directive_plan_feedback|GI:health_recommendation|SU:directive_risk_guidance,RE|RES|REC|GI|SU,cross_family,均直接提供建议、行动方向或风险反馈。,GI 更偏专业健康建议；SU、RE 家族中的此类证据更可能代表标签内异质或共享 latent。,current_ai_cross_label_candidate
+开放式探索,behavioral_function,QU:open_exploration|QUO:open_exploration|QUC:general_probing,QU|QUO|QUC,parent_child,均邀请说明经历、观点、感受或原因。,QUC 组更偏澄清，QUO 组的展开性证据更集中。,current_ai_cross_label_candidate
+改变动机与障碍唤起,behavioral_function,QU:change_evocation|QUO:change_evocation,QU|QUO,parent_child,均探索改变理由、障碍、差距或两面性。,QU 是父标签汇总，QUO 是叶级候选。,current_ai_cross_label_candidate
+聚焦式事实评估,behavioral_function,QU:focused_assessment|QUO:focused_assessment|QUC:focused_health_assessment,QU|QUO|QUC,parent_child,均收集病史、数量、频率或明确行为状态。,该功能在 QUO 中属于标签内异质证据，在 QUC 中支持最集中。,current_ai_cross_label_candidate
+反映式表层模板,linguistic_structure,RE:reflection_surface_template|REC:reflection_surface_template,RE|REC,parent_child,两个标签均集中出现 sounds/seems/looks like 与 okay so 等模板。,该共享首先是语言实现证据，不证明两标签具有同一行为机制。,current_ai_cross_label_candidate
+so 引导的话语启动,linguistic_structure,RE:so_discourse_launch|REC:so_discourse_launch,RE|REC,parent_child,多个 latent 重复编码 so/okay so 引导的问题、总结或回应。,so 是通用会话标记，标签特异性弱。,current_ai_cross_label_candidate
+第二人称指向结构,linguistic_structure,RE:second_person_evaluation|RES:second_person_address,RE|RES,parent_child,均以 you/you're 指向对方经历、状态或行为。,RE 组包含更多评价结构，RES 组规模较小。,current_ai_cross_label_candidate
+未解析的混合咨询话语,unclear_or_mixed,RE:mixed_counseling_discourse|RES:mixed_healthcare_discourse|REC:mixed_counseling_discourse,RE|RES|REC,parent_child,三个标签均有多个 stable-core 卡片无法从咨询/医疗会谈语体中分离单一模式。,这是共享的不确定性证据，不是共享行为成分。,current_ai_cross_label_candidate
+疑问句表层实现,linguistic_structure,QU:wh_question_form|QUO:what_question_template|QUC:auxiliary_yes_no_form,QU|QUO|QUC,parent_child,三个标签均由明确疑问句模板构成重要表征成分。,QUO 更偏 what/WH 模板，QUC 更偏助动词前置的是非问法。,current_ai_cross_label_candidate
+问句重复与不流利,linguistic_structure,QU:question_disfluency|QUO:wh_question_disfluency,QU|QUO,parent_child,两个标签均出现疑问词重复、重启和犹豫。,该模式可能来自口语或转录过程，而非标签功能。,current_ai_cross_label_candidate

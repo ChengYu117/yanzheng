@@ -1,5 +1,11 @@
 # LLM 对 MI/MISC 概念理解模式的方法技术流程文档
 
+> Status: Superseded
+>
+> Replaced by: `docs/current/experiment_workflow.md`
+>
+> Do not use this document for implementation or experiment decisions.
+
 ## 1. 文档目的
 
 本文档定义一个完整的方法技术流程，用于研究以下核心问题：
@@ -27,22 +33,23 @@
 - 行级数据：`outputs/misc_full_sae_eval/records.jsonl`
 - 标签矩阵：`outputs/misc_full_sae_eval/label_matrix.csv`
 - SAE feature store：`outputs/misc_full_sae_eval/feature_store/utterance_features.pt`
-- stable-core latent：`outputs/cross_val/stable_topk_selection/stable_topk_latent_set.csv` 中 `stable_set_role == stable_core`
-- P3 唯一执行规范：`doc/P3_stable_core对比式latent解释_Claude_Code执行工作流.md`
+- stable-core latent：`outputs/rerun_new_dataset_20260716/min5_words/cross_val/stable_topk_selection_n20_relaxed_leaf7/stable_topk_latent_set.csv` 中 `stable_set_role == stable_core`
+- 当前唯一执行规范：`docs/current/experiment_workflow.md`
 - 旧 Top20 / feature-card 目录和旧 P3 文档只作历史对照，不作为新实验输入或执行依据。
 
 当前核心标签范围：
 
 `RE, RES, REC, QU, QUO, QUC, GI, SU, AF`
 
-当前 P3 已有状态（2026-07-10）：
+当前解释评估状态（2026-07-18）：
 
-- stable-core 输入已固定为 303 条 label-latent 关系、225 个 unique latent；
-- 旧 180 feature cards 只作历史快照；
-- 新对比式 P3 的无效自动运行已删除，等待按 canonical 工作流修复并重跑；
+- 当前 7-leaf stable-core 固定为 228 条 label–latent 边、218 个去重 latent；
+- 当前采用 10 强＋10 弱发现材料与独立 20 条 held-out Scorer；
+- SAE 全量参考运行已完成 214/214 个有效解释、207/207 个有效 Scorer；
+- SAE–PCA 冻结抽样参考运行已完成 48/48 个有效 Explainer 和 48/48 个有效 Scorer；
 - 当前 evidence 只包含 counselor current utterance。
 - 缺少前一句 client utterance，因此 RES、REC、RE 的 context-relation 结论必须降级。
-- 在新流程通过 Explainer、Scorer 和 minimal-pair 阶段门禁前，不存在可固定的 P3 自动解释结论。
+- 只有通过采样隔离、结构验证和零工具调用门禁的解释及 held-out 指标可进入当前结果；旧 minimal-pair 不属于本轮正式评分协议。
 
 ## 3. 核心研究问题
 
@@ -1003,7 +1010,7 @@ Mixed / unclear：
 
 第一步：按 canonical 工作流重建 P3。
 
-- 使用 stable-core 303 条 label-latent 关系作为唯一候选输入；
+- 使用当前 7-leaf stable-core 的 228 条 label–latent 关系（218 个去重 latent）作为唯一候选输入；
 - 先修复文本重复泄漏、Scorer tag 泄漏和 sample ID 映射；
 - 不复用旧 180 cards 或已删除的无效自动结果；
 - 每个阶段通过 manifest、质量审计和 stage gate 后再进入下游。

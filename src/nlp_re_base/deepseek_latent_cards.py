@@ -276,7 +276,12 @@ def _string_list(value: Any, field: str) -> list[str]:
 
 
 def validate_latent_card_outputs(
-    *, tasks_path: str | Path, execution_manifest_path: str | Path, output_dir: str | Path
+    *,
+    tasks_path: str | Path,
+    execution_manifest_path: str | Path,
+    output_dir: str | Path,
+    expected_execution_mode: str = DEEPSEEK_EXECUTION_MODE,
+    analysis_name: str = "deepseek_v4_flash_latent_cards",
 ) -> dict[str, Any]:
     tasks = read_jsonl(tasks_path)
     manifest_rows = read_jsonl(execution_manifest_path) if Path(execution_manifest_path).exists() else []
@@ -304,7 +309,7 @@ def validate_latent_card_outputs(
                     reasons.append("prompt_hash_mismatch")
                 if execution.get("raw_output_sha256") != _sha256_bytes(raw_path.read_bytes()):
                     reasons.append("raw_output_hash_mismatch")
-                if execution.get("execution_mode") != DEEPSEEK_EXECUTION_MODE:
+                if execution.get("execution_mode") != expected_execution_mode:
                     reasons.append("execution_mode_mismatch")
             payload = parse_llm_json_file(raw_path)
             missing = [field for field in LATENT_CARD_FIELDS if field not in payload]
@@ -407,7 +412,7 @@ def validate_latent_card_outputs(
     pd.DataFrame(audit).to_csv(audit_path, index=False, encoding="utf-8-sig")
     write_jsonl(retry_path, retry)
     manifest = {
-        "analysis": "deepseek_v4_flash_latent_cards",
+        "analysis": analysis_name,
         "step": "validate-latent-cards",
         "outputs": {"validated_cards": str(cards_path), "quality_audit": str(audit_path), "retry_tasks": str(retry_path)},
         "n_tasks": len(tasks),
@@ -458,11 +463,170 @@ Retry consistency check:
     return manifest
 
 
+def _md_text(value: Any) -> str:
+    return str(value).replace("\r", " ").replace("\n", " ").replace("|", "\\|").strip()
+
+
+def _md_list(values: Any, empty: str = "无") -> list[str]:
+    if not isinstance(values, list) or not values:
+        return [f"- {empty}"]
+    return [f"- {_md_text(value)}" for value in values]
+
+
+def render_stable_core_top5_human_review_document(
+    *,
+    output_dir: str | Path,
+    stable_latents_path: str | Path,
+    document_path: str | Path | None = None,
+    labels: tuple[str, ...] = ("RES", "REC", "QUO", "QUC", "GI", "SU", "AF"),
+    latents_per_label: int = 5,
+) -> Path:
+    """Render stable-core Top-50 cards sampled by within-label rank for human review."""
+
+    output = Path(output_dir)
+    destination = (
+        Path(document_path)
+        if document_path
+        else output / "human_review" / "stable_core_leaf7_top5_human_review.md"
+    )
+    stable = pd.read_csv(stable_latents_path)
+    stable = stable.loc[
+        stable["label"].isin(labels) & stable["stable_set_role"].eq("stable_core")
+    ].copy()
+    stable = stable.sort_values(["label", "rank_within_label", "latent_idx"])
+    selected = stable.groupby("label", sort=False).head(latents_per_label)
+    counts = selected.groupby("label")["latent_idx"].size().to_dict()
+    missing = {label: counts.get(label, 0) for label in labels if counts.get(label, 0) != latents_per_label}
+    if missing:
+        raise ValueError(f"Expected {latents_per_label} stable-core latents per label: {missing}")
+
+    cards = {
+        int(row["latent_idx"]): row
+        for row in read_jsonl(output / "card_outputs" / "validated_cards.jsonl")
+    }
+    packs = {
+        int(row["latent_idx"]): row
+        for row in read_jsonl(output / "evidence_packs" / "latent_card_sentence_packs.jsonl")
+    }
+    missing_cards = sorted(set(selected["latent_idx"].astype(int)) - set(cards))
+    missing_packs = sorted(set(selected["latent_idx"].astype(int)) - set(packs))
+    if missing_cards or missing_packs:
+        raise ValueError(f"Missing cards={missing_cards}; missing sentence packs={missing_packs}")
+
+    label_order = {label: i for i, label in enumerate(labels)}
+    selected = selected.assign(_label_order=selected["label"].map(label_order)).sort_values(
+        ["_label_order", "rank_within_label", "latent_idx"]
+    )
+    lines = [
+        "# Stable Core SAE latent Top-50 Card 人工审核",
+        "",
+        f"> 7 个叶级标签，每个标签按 `rank_within_label` 取前 {latents_per_label} 个 stable-core latent，共 {len(selected)} 个标签-latent 审核条目。",
+        "",
+        "## 索引",
+        "",
+        "| 标签 | 标签内排名 | Latent | Card 名称 | 置信度 |",
+        "|---|---:|---:|---|---:|",
+    ]
+    for row in selected.itertuples(index=False):
+        latent_idx = int(row.latent_idx)
+        card = cards[latent_idx]
+        anchor = f"{row.label.lower()}-latent-{latent_idx}"
+        lines.append(
+            f"| {row.label} | {int(row.rank_within_label)} | [{latent_idx}](#{anchor}) | "
+            f"{_md_text(card['short_name'])} | {int(card['confidence'])}/5 |"
+        )
+
+    current_label = None
+    for row in selected.itertuples(index=False):
+        label = str(row.label)
+        latent_idx = int(row.latent_idx)
+        card = cards[latent_idx]
+        packet = packs[latent_idx]
+        samples = list(packet.get("samples_for_model", []))
+        provenance = {
+            str(item["id"]): item for item in packet.get("selection_provenance_internal", [])
+        }
+        if len(samples) != 50:
+            raise ValueError(f"Latent {latent_idx} has {len(samples)} Top-50 sentences")
+        supporting = set(card.get("supporting_sample_ids", []))
+        if label != current_label:
+            current_label = label
+            lines.extend(["", f"## 标签 {label}", ""])
+        lines.extend(
+            [
+                f'<a id="{label.lower()}-latent-{latent_idx}"></a>',
+                f"### Latent {latent_idx}",
+                "",
+                f"- 标签内排名：`{int(row.rank_within_label)}`",
+                f"- Cohen's d：`{float(row.cohens_d):.4f}`",
+                f"- Card 名称：`{_md_text(card['short_name'])}`",
+                f"- 解释类型：`{card['explanation_type']}`",
+                f"- 模型置信度：`{int(card['confidence'])}/5`",
+                f"- 模型自报支持比例：`{float(card['support_fraction']):.0%}`",
+                "",
+                "#### 输入模型的完整 Top-50 句子簇",
+                "",
+                "| ID | 排名 | 激活值 | 模型划分 | 句子内容 |",
+                "|---|---:|---:|---|---|",
+            ]
+        )
+        for sample in samples:
+            sample_id = str(sample["id"])
+            source = provenance.get(sample_id, {})
+            role = "support" if sample_id in supporting else "outlier"
+            rank = source.get("rank", "")
+            activation = source.get("activation", "")
+            activation_text = f"{float(activation):.6g}" if activation != "" else ""
+            lines.append(
+                f"| {sample_id} | {rank} | {activation_text} | {role} | {_md_text(sample['text'])} |"
+            )
+        lines.extend(
+            [
+                "",
+                "#### DeepSeek 归纳结果",
+                "",
+                "**主要模式**",
+                "",
+                _md_text(card["primary_explanation"]),
+                "",
+                "**候选行为或话语功能**",
+                "",
+                _md_text(card["candidate_behavioral_explanation"]),
+                "",
+                "**替代解释**",
+                "",
+                *_md_list(card.get("alternative_explanations")),
+                "",
+                "**可能混淆因素**",
+                "",
+                *_md_list(card.get("possible_confounds")),
+                "",
+                "**局限**",
+                "",
+                *_md_list(card.get("limitations")),
+                "",
+                "#### 人工审核",
+                "",
+                "- 多数句子是否支持主要模式：`待审核`",
+                "- 归纳是否准确：`待审核`",
+                "- 是否存在过度外推：`待审核`",
+                "- 人工备注：",
+                "",
+                "---",
+            ]
+        )
+
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    destination.write_text("\n".join(lines).rstrip() + "\n", encoding="utf-8")
+    return destination
+
+
 __all__ = [
     "LATENT_CARD_FIELDS",
     "LATENT_CARD_SYSTEM_PROMPT",
     "build_latent_card_prompt",
     "build_latent_card_tasks",
     "build_refined_latent_card_retry_tasks",
+    "render_stable_core_top5_human_review_document",
     "validate_latent_card_outputs",
 ]

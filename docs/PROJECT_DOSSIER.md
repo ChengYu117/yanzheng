@@ -1,5 +1,11 @@
 # PROJECT DOSSIER
 
+> Status: Superseded for experiment decisions
+>
+> Replaced by: `docs/current/experiment_workflow.md`
+>
+> Do not use this document for implementation or experiment decisions. It is retained only as a broad repository inventory.
+
 ## 一句话项目目标
 
 本项目用 Llama-3.1-8B 的中间层激活和 OpenMOSS / Llama Scope Sparse Autoencoder（SAE）latent，分析心理咨询 MISC 行为标签在模型内部表征空间中的结构化映射关系，并为后续因果干预与人工语义审查提供候选 latent。
@@ -160,22 +166,19 @@ outputs/misc_full_sae_eval/interpretability/mapping_structure
 - `compute_hierarchy_alignment()`
 - `write_top20_mapping_structure_report()`
 
-当前正式解释口径：
+历史 mapping 口径：
 
-- `DEFAULT_INTERPRETABILITY_TOP_K = 20`
-- 每个核心 MISC 标签取 Top20 latent 作为候选解释空间
+- `DEFAULT_INTERPRETABILITY_TOP_K = 20` 仍用于旧 mapping structure 报告和历史敏感性分析；
+- 当前正式解释候选改为 stable-core，不能把固定 Top20 当作稳定集合。
 
-### 后续可解释性分析
+### 当前自然语言解释忠实度评估
 
-入口：
-
-```bash
-python run_misc_interpretability_analysis.py
-```
-
-核心函数：
-
-- `src/nlp_re_base/behavior_interpretability.py::run_followup_interpretability_analysis()`
+- 唯一规范：`docs/current/experiment_workflow.md`
+- SAE stable-core 入口：`run_contrastive_faithfulness_v2.py`
+- SAE–PCA 冻结抽样入口：`run_task5_sae_pca_contrastive_faithfulness.py`
+- 发现材料：每单元 10 条强响应句＋10 条弱正响应句；
+- 评估材料：独立请求预测 20 条 held-out 句子的 0–100 相对匹配分；
+- 默认模型：GPT-5.5、`reasoning_effort=low`、每单元独立 `codex exec --ephemeral`、零工具调用。
 
 默认输出：
 
@@ -547,6 +550,7 @@ python -m unittest test_pipeline_smoke.py
 - `deploy/gce/run_full_pipeline.sh`
 ### 当前主线文档
 
+- `docs/current/experiment_workflow.md`
 - `doc/云服务器部署运行教程.md`
 - `doc/本地实验运行说明.md`
 - `doc/MISC研究目标流程与指标设计说明.md`
@@ -566,13 +570,13 @@ python -m unittest test_pipeline_smoke.py
 1. README 仍偏早期 SAE-RE / RE vs NonRE 项目说明，和当前 MISC 全量主线不完全同步。
    - 文件：`README.md`
 
-2. 文档体系仍有新旧口径混杂。
-   - 当前主线在 `doc/MISC*.md`、`doc/云服务器部署运行教程.md`
-   - 旧文档已归档到 `doc/old/`
+2. 历史结果报告中仍保留 Top20、DeepSeek card 和旧 P3 术语。
+   - 这些内容用于追溯既有结果，不是当前执行规范。
+   - 当前执行入口统一由 `docs/current/experiment_workflow.md` 定义。
 
-3. 当前正式解释口径是 Top20 candidate space，不应把全量 `latent_label_matrix.csv` 直接写成完整机制证明。
-   - 默认值：`src/nlp_re_base/mapping_structure.py::DEFAULT_INTERPRETABILITY_TOP_K`
-   - 入口参数：`run_misc_mapping_structure_analysis.py --analysis-top-k`
+3. 固定 Top20 仅是旧 mapping candidate budget；当前正式解释对象来自 stable-core，并须通过强弱对比与独立 held-out 忠实度门禁。
+   - 唯一规范：`docs/current/experiment_workflow.md`
+   - 任何口径都不得把 `latent_label_matrix.csv` 直接写成完整机制证明。
 
 4. 当前 MISC 映射和 Mapping Structure 属于相关性 / 结构性证据，不是因果证明。
    - 因果候选导出：`run_misc_causal_candidate_export.py`
@@ -589,7 +593,7 @@ python -m unittest test_pipeline_smoke.py
 
 ## 不确定问题
 
-1. 当前论文最终主结论是否只采用 Top20 candidate space，还是同时报告全量 FDR 显著 latent-label 边？代码两者都支持。
+1. 旧 Top20 mapping 和 full FDR matrix 是否还进入论文附录或敏感性分析？二者都不能替代当前 stable-core 主口径。
 
 2. `OTHER` 标签是否应该进入论文主表，还是只作为异质辅助标签保留？当前 `DEFAULT_CORE_LABELS` 不包含 `OTHER`。
 
@@ -617,9 +621,9 @@ python -m unittest test_pipeline_smoke.py
    - 本地以 `run_sae_evaluation.py --data-dir data/mi_quality_counseling_misc --data-format misc_full --label-mode misc_multilabel` 为准。
    - 云端以 `deploy/gce/run_full_pipeline.sh` 为准。
 
-4. 为论文结果固定一个统计口径。
-   - 明确 Top20 candidate space 与 full FDR matrix 的关系。
-   - 在 `mapping_structure_report.md` 和老师版汇报中统一表述。
+4. 在论文与汇报中统一说明 stable-core、旧 Top20 mapping 和 full FDR matrix 的层级关系。
+   - stable-core 是当前解释候选主口径；Top20 和 full FDR matrix 只作为历史结构结果或敏感性分析。
+   - 自然语言解释质量按独立 held-out 忠实度报告，不用 card 的表面合理性替代。
 
 5. 对因果验证做小范围正式复跑。
    - 首选 `RE` 的 `G1/G5/G10/G20`

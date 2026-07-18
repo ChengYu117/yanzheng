@@ -1,8 +1,14 @@
 ﻿# MISC 研究目标、实验流程与指标设计说明
 
+> Status: Superseded
+>
+> Replaced by: `docs/current/experiment_workflow.md`
+>
+> Do not use this document for implementation or experiment decisions.
+
 生成日期：2026-05-03
 对应项目：MISC 全量数据驱动的 SAE 表征映射与可解释性分析
-当前正式口径：全量矩阵用于排序，每个核心 MISC 标签的 Top20 latent 用于正式可解释性分析。
+本文记录 2026-05-03 的历史研究设计。当前全部需求见 `docs/current/experiment_workflow.md`。
 
 ## 1. 导师的核心目的
 

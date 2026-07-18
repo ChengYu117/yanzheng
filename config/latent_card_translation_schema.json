@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "task_id": {"type": "string"},
+    "markdown": {"type": "string", "minLength": 100}
+  },
+  "required": ["task_id", "markdown"],
+  "additionalProperties": false
+}

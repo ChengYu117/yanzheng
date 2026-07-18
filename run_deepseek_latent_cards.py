@@ -11,6 +11,7 @@ from src.nlp_re_base.deepseek_latent_cards import (
     LATENT_CARD_SYSTEM_PROMPT,
     build_latent_card_tasks,
     build_refined_latent_card_retry_tasks,
+    render_stable_core_top5_human_review_document,
     validate_latent_card_outputs,
 )
 from src.nlp_re_base.deepseek_top50_induction import DeepSeekTop50Config, run_deepseek_top50_tasks
@@ -38,7 +39,7 @@ def _api_key() -> str:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("action", choices=("build", "run", "validate", "retry", "all"), nargs="?", default="all")
+    parser.add_argument("action", choices=("build", "run", "validate", "retry", "render-review", "all"), nargs="?", default="all")
     parser.add_argument("--stable-latents", default="outputs/cross_val/stable_topk_selection/stable_topk_latent_set.csv")
     parser.add_argument("--feature-store", default="outputs/misc_full_sae_eval/feature_store/utterance_features.pt")
     parser.add_argument("--records", default="outputs/misc_full_sae_eval/records.jsonl")
@@ -108,6 +109,15 @@ def main() -> None:
             execution_manifest_path=execution_manifest,
             output_dir=args.output_dir,
         )
+    if args.action in {"render-review", "all"}:
+        results["render_review"] = {
+            "document": str(
+                render_stable_core_top5_human_review_document(
+                    output_dir=args.output_dir,
+                    stable_latents_path=args.stable_latents,
+                )
+            )
+        }
     print(json.dumps(results, ensure_ascii=False, indent=2))
 
 

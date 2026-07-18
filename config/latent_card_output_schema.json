@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "latent_idx": { "type": "integer" },
+    "short_name": { "type": "string" },
+    "primary_explanation": { "type": "string" },
+    "candidate_behavioral_explanation": { "type": "string" },
+    "explanation_type": {
+      "type": "string",
+      "enum": [
+        "behavioral_function",
+        "linguistic_structure",
+        "affective_content",
+        "topic",
+        "surface_artifact",
+        "unclear_or_mixed"
+      ]
+    },
+    "supporting_sample_ids": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "outlier_sample_ids": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "representative_evidence_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 2,
+      "maxItems": 3
+    },
+    "linguistic_evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "sample_id": { "type": "string" },
+          "evidence": { "type": "string" },
+          "evidence_level": {
+            "type": "string",
+            "enum": [
+              "lexical",
+              "syntactic",
+              "discourse_marker",
+              "semantic",
+              "pragmatic_function",
+              "affective",
+              "topical",
+              "surface_form"
+            ]
+          },
+          "evidence_role": {
+            "type": "string",
+            "enum": ["support", "limit", "contradict"]
+          }
+        },
+        "required": ["sample_id", "evidence", "evidence_level", "evidence_role"],
+        "additionalProperties": false
+      }
+    },
+    "alternative_explanations": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1,
+      "maxItems": 3
+    },
+    "possible_confounds": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "limitations": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "confidence": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 5
+    },
+    "confidence_rationale": { "type": "string" }
+  },
+  "required": [
+    "latent_idx",
+    "short_name",
+    "primary_explanation",
+    "candidate_behavioral_explanation",
+    "explanation_type",
+    "supporting_sample_ids",
+    "outlier_sample_ids",
+    "representative_evidence_ids",
+    "linguistic_evidence",
+    "alternative_explanations",
+    "possible_confounds",
+    "limitations",
+    "confidence",
+    "confidence_rationale"
+  ],
+  "additionalProperties": false
+}

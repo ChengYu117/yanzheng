@@ -1,6 +1,12 @@
 # Gemma3-4B + GemmaScope Layer-18 SAE 对照实验说明
 
-本文档固定 Gemma3-4B 对照实验的代码入口、运行口径、输出目录和当前全量结果。该实验用于检验当前 MISC-SAE 结构性发现是否只依赖 Llama-3.1-8B 与 OpenMOSS SAE。
+> Status: Superseded
+>
+> Replaced by: `docs/current/experiment_workflow.md`
+>
+> Do not use this document for implementation or experiment decisions. The current experiment does not run Gemma.
+
+本文档仅保留旧 Gemma 对照实验记录。
 
 ## 1. 实验口径
 

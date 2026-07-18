@@ -1,5 +1,9 @@
 # MISC SAE Interpretability Pipeline
 
+> Current experiment SSOT: `docs/current/experiment_workflow.md`
+>
+> All model, layer, dataset, stable-core, evaluation, command, and completion decisions are defined there. Do not assemble the current workflow from older reports.
+
 本项目面向心理咨询 MISC 行为单元，使用 Llama-3.1-8B 的中间层 hidden states 和 Sparse Autoencoder（SAE）特征，分析人工行为标签与模型内部 latent 表征之间的结构关系。
 
 当前主线问题不是训练分类器，而是回答：

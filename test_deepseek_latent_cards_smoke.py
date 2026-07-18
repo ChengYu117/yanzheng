@@ -11,6 +11,7 @@ from src.nlp_re_base.contrastive_evidence_pack import read_jsonl, write_jsonl
 from src.nlp_re_base.deepseek_latent_cards import (
     LATENT_CARD_SYSTEM_PROMPT,
     build_latent_card_tasks,
+    render_stable_core_top5_human_review_document,
     validate_latent_card_outputs,
 )
 from src.nlp_re_base.deepseek_top50_induction import DeepSeekTop50Config, run_deepseek_top50_tasks
@@ -77,6 +78,21 @@ def main() -> None:
         result = validate_latent_card_outputs(tasks_path=build["outputs"]["tasks"], execution_manifest_path=root / "llm_execution_manifest.jsonl", output_dir=root)
         assert result["n_valid"] == 1
         assert read_jsonl(result["outputs"]["validated_cards"])[0]["confidence"] == 4
+        stable.write_text(
+            "label,latent_idx,stable_set_role,rank_within_label,cohens_d\n"
+            "RE,1,stable_core,1,1.0\n",
+            encoding="utf-8",
+        )
+        review_path = render_stable_core_top5_human_review_document(
+            output_dir=root,
+            stable_latents_path=stable,
+            labels=("RE",),
+            latents_per_label=1,
+        )
+        review = review_path.read_text(encoding="utf-8")
+        assert "## 标签 RE" in review
+        assert "### Latent 1" in review
+        assert review.count("| s") >= 50
     finally:
         shutil.rmtree(root, ignore_errors=True)
     print("test_deepseek_latent_cards_smoke passed")
