@@ -116,39 +116,7 @@ python run_misc_causal_candidate_export.py `
   --output-dir outputs/misc_full_sae_eval/causal_candidates
 ```
 
-### 5. 最小充分 latent 子空间 v2
-
-```powershell
-python run_misc_minimal_sufficient_subspace_v2.py
-```
-
-该入口回答“每个 MISC 标签至少需要多少个 SAE latents 才能接近完整候选池的预测表现”。它不是因果充分性实验，而是 probe-space 的预测充分性实验；输出的 `S*` 用作后续 ablation / steering 的优先候选组。
-
-方法口径：
-
-- 候选池使用已配置的历史候选输入与 `association_rank <= 100` 的备份候选；字段名保持兼容，不作为当前结论口径展示。
-- 每个标签使用 `5-fold Stratified CV`。
-- 每折训练 full-candidate logistic probe，再用 full probe 的线性贡献做 additive greedy selection。
-- 最小充分 K 需同时满足 `AUC >= 0.70`、`AUC >= full_candidate_auc - 0.02`、`AUPRC >= full_candidate_auprc - 0.03`、`Precision@50 lift >= full_candidate_precision_lift_at_50 - 0.05`。
-- `RE/QU` 只作 parent-child consistency，不进入 leaf-label 主结论。
-
-关键输出：
-
-```text
-outputs/misc_full_sae_eval/interpretability/minimal_sufficient_subspace_v2/
-  minimal_sufficient_summary_v2.csv
-  minimal_sufficient_selected_latents_v2.csv
-  minimal_sufficient_fold_results_v2.csv
-  minimal_sufficient_selection_steps_v2.csv
-  minimal_sufficient_redundancy_audit_v2.csv
-  minimal_sufficient_curves_v2.csv
-  candidate_pool_v2.csv
-  minimal_sufficient_summary.json
-  minimal_sufficient_subspace_report.md
-  figures/
-```
-
-### 6. Gemma3-4B + GemmaScope Layer-18 对照实验
+### 5. Gemma3-4B + GemmaScope Layer-18 对照实验
 
 ```powershell
 python run_gemma_scope_sae_evaluation.py `
@@ -178,7 +146,6 @@ outputs/gemma3_l18_gemmascope_sae_eval/
   functional/misc_label_mapping/
     latent_label_matrix.csv
   interpretability/
-    minimal_sufficient_subspace_v2/
     baseline_comparison_step6/
     model_specificity_comparison/
   validation/
@@ -187,21 +154,10 @@ outputs/gemma3_l18_gemmascope_sae_eval/
 下游闭环：
 
 ```powershell
-python run_misc_minimal_sufficient_subspace_v2.py `
-  --feature-store outputs/gemma3_l18_gemmascope_sae_eval/feature_store/utterance_features.pt `
-  --label-matrix outputs/gemma3_l18_gemmascope_sae_eval/label_matrix.csv `
-  --output-dir outputs/gemma3_l18_gemmascope_sae_eval/interpretability/minimal_sufficient_subspace_v2
-
-python run_cross_model_sae_comparison.py `
-  --llama-root outputs/misc_full_sae_eval `
-  --gemma-root outputs/gemma3_l18_gemmascope_sae_eval `
-  --output-dir outputs/gemma3_l18_gemmascope_sae_eval/interpretability/model_specificity_comparison
-
-python run_gemma_scope_validation.py `
-  --root outputs/gemma3_l18_gemmascope_sae_eval
+python run_gemma_scope_sae_evaluation.py `
+  --layer-idx 18 `
+  --output-dir outputs/gemma3_l18_gemmascope_sae_eval
 ```
-
-`run_gemma_scope_validation.py` 会检查 GemmaScope 主产物、下游结构分析、最小充分子空间、Step6 对照和跨模型汇总是否完整，并输出 `validation/gemma_scope_validation_summary.json` 与 `validation/gemma_scope_validation_report.md`。
 
 ## 关键代码结构
 
@@ -217,7 +173,6 @@ src/nlp_re_base/
   mapping_structure.py            # Mapping Structure 结构分析
   behavior_interpretability.py    # 后续解释性统计
   causal_candidates.py            # 因果验证候选 latent 导出
-  minimal_sufficient_subspace_v2.py # 最小充分 latent 子空间搜索 v2
   gemma_scope_sae.py              # GemmaScope JumpReLU SAE 加载与前向
   gemma_scope_pipeline.py         # Gemma3 layer-18 + GemmaScope SAE 主评估
 ```
@@ -232,11 +187,8 @@ python test_misc_label_mapping_smoke.py
 python test_mapping_structure_analysis.py
 python test_behavior_interpretability.py
 python test_causal_candidate_export.py
-python test_minimal_sufficient_subspace_v2_smoke.py
 python test_gemma_scope_sae_smoke.py
 python test_gemma_scope_pipeline_smoke.py
-python test_cross_model_sae_comparison_smoke.py
-python run_gemma_scope_validation.py
 python test_deploy_smoke.py
 ```
 

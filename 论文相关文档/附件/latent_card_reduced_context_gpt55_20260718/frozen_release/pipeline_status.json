@@ -1,0 +1,16 @@
+{
+  "stage": "complete",
+  "scope": "reduced_context_scorer_full207",
+  "model": "gpt-5.5",
+  "reasoning_effort": "low",
+  "concurrency": 20,
+  "n_tasks": 207,
+  "n_valid": 207,
+  "n_failed": 0,
+  "n_predictions": 4140,
+  "primary_requests": 207,
+  "retry_requests": 11,
+  "final_replacements": 8,
+  "non_verbatim_evidence_spans": 0,
+  "pending_human_review": true
+}

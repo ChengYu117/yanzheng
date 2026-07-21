@@ -14,6 +14,7 @@ from run_misc_representation_probe_comparison import (
     _fit_pca_max,
     _topn_fold_order,
     run_representation_probe_comparison,
+    run_stable_core_refresh_with_reused_nonstable,
 )
 
 
@@ -224,8 +225,72 @@ def test_representation_probe_comparison_smoke() -> None:
         assert pca_rows["pca_post_standardized"].fillna(False).astype(bool).all()
 
 
+def test_reuse_nonstable_recomputes_only_stable_core() -> None:
+    with tempfile.TemporaryDirectory() as tmp:
+        root = Path(tmp)
+        data = _make_synthetic_inputs(root)
+        source = root / "source"
+        refreshed = root / "refreshed"
+        config = RepresentationProbeComparisonConfig(
+            labels=("RE", "QU"),
+            top_ns=(2, 4),
+            random_repeats=2,
+            folds=3,
+            random_state=42,
+            quiet=True,
+        )
+        run_representation_probe_comparison(
+            sae_features=data["sae"],
+            raw_hidden=data["hidden"],
+            label_df=data["labels"],
+            filtered_association_path=data["association"],
+            feature_filter_audit_path=data["audit"],
+            stable_core_path=data["stable"],
+            output_dir=source,
+            config=config,
+        )
+        relaxed = root / "stable_core_relaxed.csv"
+        pd.DataFrame(
+            [
+                {"label": "RE", "latent_idx": 0, "stable_set_role": "stable_core", "full_data_rank": 1},
+                {"label": "QU", "latent_idx": 2, "stable_set_role": "stable_core", "full_data_rank": 1},
+            ]
+        ).to_csv(relaxed, index=False)
+        result = run_stable_core_refresh_with_reused_nonstable(
+            sae_features=data["sae"],
+            label_df=data["labels"],
+            filtered_association_path=data["association"],
+            feature_filter_audit_path=data["audit"],
+            stable_core_path=relaxed,
+            source_output_dir=source,
+            output_dir=refreshed,
+            raw_hidden_path=root / "hidden.pt",
+            config=config,
+        )
+
+        source_fold = pd.read_csv(source / "probe_fold_metrics.csv")
+        refreshed_fold = result["fold_metrics"]
+        source_nonstable = source_fold[source_fold["representation"] != "Stable Core SAE"].reset_index(drop=True)
+        refreshed_nonstable = refreshed_fold[
+            refreshed_fold["representation"] != "Stable Core SAE"
+        ].reset_index(drop=True)
+        pd.testing.assert_frame_equal(
+            source_nonstable,
+            refreshed_nonstable[source_nonstable.columns],
+            check_dtype=False,
+        )
+        assert result["reuse_audit"]["status"] == "pass"
+        assert result["reuse_audit"]["n_recomputed_stable_fold_rows"] == 6
+        assert (refreshed / "reuse_and_refresh_audit.json").exists()
+        stable_selected = result["selected_latents"]
+        assert set(
+            stable_selected[stable_selected["representation"] == "Stable Core SAE"]["latent_idx"].astype(int)
+        ) == {0, 2}
+
+
 if __name__ == "__main__":
     test_topn_fold_order_uses_positive_cohens_d()
     test_pca_scores_are_standardized_from_train_fold_only()
     test_representation_probe_comparison_smoke()
+    test_reuse_nonstable_recomputes_only_stable_core()
     print("test_representation_probe_comparison_smoke passed")

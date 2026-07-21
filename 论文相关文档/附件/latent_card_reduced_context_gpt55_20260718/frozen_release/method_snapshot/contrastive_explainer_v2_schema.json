@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "feature_id": {"type": "string"},
+    "short_name": {"type": "string"},
+    "contrastive_explanation": {"type": "string"},
+    "necessary_or_characteristic_condition": {"type": "string"},
+    "insufficient_conditions": {"type": "array", "items": {"type": "string"}},
+    "surface_or_linguistic_hypothesis": {"type": "string"},
+    "behavioral_or_discourse_hypothesis": {"type": "string"},
+    "primary_explanation": {"type": "string"},
+    "explanation_type": {
+      "type": "string",
+      "enum": ["behavioral_function", "linguistic_structure", "affective_content", "topic", "surface_artifact", "unclear_or_mixed"]
+    },
+    "strong_supporting_sample_ids": {"type": "array", "items": {"type": "string"}},
+    "strong_outlier_sample_ids": {"type": "array", "items": {"type": "string"}},
+    "weak_boundary_supporting_sample_ids": {"type": "array", "items": {"type": "string"}},
+    "weak_counterexample_sample_ids": {"type": "array", "items": {"type": "string"}},
+    "representative_evidence_ids": {"type": "array", "items": {"type": "string"}, "minItems": 2, "maxItems": 3},
+    "contrastive_evidence": {
+      "type": "array", "minItems": 4, "maxItems": 8,
+      "items": {
+        "type": "object",
+        "properties": {
+          "sample_id": {"type": "string"},
+          "group": {"type": "string", "enum": ["strong", "weak"]},
+          "evidence": {"type": "string"},
+          "evidence_level": {"type": "string", "enum": ["lexical", "syntactic", "discourse_marker", "semantic", "pragmatic_function", "affective", "topical", "surface_form"]},
+          "evidence_role": {"type": "string", "enum": ["support", "limit", "contradict"]}
+        },
+        "required": ["sample_id", "group", "evidence", "evidence_level", "evidence_role"],
+        "additionalProperties": false
+      }
+    },
+    "alternative_explanations": {"type": "array", "items": {"type": "string"}, "minItems": 1, "maxItems": 3},
+    "possible_confounds": {"type": "array", "items": {"type": "string"}},
+    "limitations": {"type": "array", "items": {"type": "string"}},
+    "confidence": {"type": "integer", "minimum": 1, "maximum": 5},
+    "confidence_rationale": {"type": "string"}
+  },
+  "required": ["feature_id", "short_name", "contrastive_explanation", "necessary_or_characteristic_condition", "insufficient_conditions", "surface_or_linguistic_hypothesis", "behavioral_or_discourse_hypothesis", "primary_explanation", "explanation_type", "strong_supporting_sample_ids", "strong_outlier_sample_ids", "weak_boundary_supporting_sample_ids", "weak_counterexample_sample_ids", "representative_evidence_ids", "contrastive_evidence", "alternative_explanations", "possible_confounds", "limitations", "confidence", "confidence_rationale"],
+  "additionalProperties": false
+}

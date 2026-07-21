@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "feature_id": {"type": "string"},
+    "predictions": {
+      "type": "array", "minItems": 20, "maxItems": 20,
+      "items": {
+        "type": "object",
+        "properties": {
+          "sample_id": {"type": "string"},
+          "predicted_feature_score": {"type": "integer", "minimum": 0, "maximum": 100},
+          "matching_evidence_span": {"type": "string"},
+          "reason": {"type": "string"}
+        },
+        "required": ["sample_id", "predicted_feature_score", "matching_evidence_span", "reason"],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": ["feature_id", "predictions"],
+  "additionalProperties": false
+}

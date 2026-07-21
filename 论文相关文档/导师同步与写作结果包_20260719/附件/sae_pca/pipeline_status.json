@@ -1,0 +1,18 @@
+{
+  "stage": "complete",
+  "explainer_validation": {
+    "n_tasks": 48,
+    "n_valid": 48,
+    "n_failed": 0
+  },
+  "scorer_validation": {
+    "n_tasks": 48,
+    "n_valid": 48,
+    "n_failed": 0
+  },
+  "report": {
+    "n_metrics": 48,
+    "n_pair_comparisons": 32,
+    "report": "outputs\\rerun_new_dataset_20260716\\min5_words\\interpretability\\task5_sae_pca_contrastive_faithfulness_v3_randomized_packets_build_20260719\\analysis\\sae_pca_contrastive_faithfulness_report.md"
+  }
+}

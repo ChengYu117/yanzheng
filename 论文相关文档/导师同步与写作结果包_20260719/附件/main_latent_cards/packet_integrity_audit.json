@@ -1,0 +1,16 @@
+{
+  "packet_version": "v3-randomized-heldout",
+  "presentation_seed": "v3-heldout-order",
+  "n_master_packets": 214,
+  "n_scorer_eligible": 207,
+  "n_randomized_nonblock_packets": 207,
+  "public_scorer_fields": [
+    "sample_id",
+    "text"
+  ],
+  "id_assignment": "after_deterministic_permutation",
+  "scorer_alignment": "sample_id_join",
+  "n_failures": 0,
+  "failures": [],
+  "status": "pass"
+}

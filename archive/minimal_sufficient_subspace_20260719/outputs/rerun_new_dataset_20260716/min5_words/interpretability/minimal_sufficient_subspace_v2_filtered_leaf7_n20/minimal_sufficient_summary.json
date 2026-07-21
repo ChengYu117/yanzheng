@@ -1,0 +1,82 @@
+{
+  "analysis_version": "minimal_sufficient_subspace_v2",
+  "config": {
+    "labels": [
+      "RES",
+      "REC",
+      "QUO",
+      "QUC",
+      "GI",
+      "SU",
+      "AF"
+    ],
+    "leaf_labels": [
+      "RES",
+      "REC",
+      "QUO",
+      "QUC",
+      "GI",
+      "SU",
+      "AF"
+    ],
+    "candidate_policy": "filtered_topk_only",
+    "candidate_top_k": 200,
+    "cv_folds": 5,
+    "min_auc": 0.7,
+    "auc_tolerance": 0.02,
+    "auprc_tolerance": 0.03,
+    "precision_lift_tolerance": 0.05,
+    "precision_k": 50,
+    "precision_k_values": [
+      50,
+      100
+    ],
+    "max_search_k": 200,
+    "stability_jaccard_threshold": 0.4,
+    "redundant_auc_epsilon": 0.005,
+    "redundant_auprc_epsilon": 0.005,
+    "activation_threshold": 0.0,
+    "random_state": 13,
+    "max_iter": 1000
+  },
+  "inputs": {
+    "association_matrix": "outputs\\rerun_new_dataset_20260716\\min5_words\\functional\\misc_label_mapping_filtered\\latent_label_matrix.csv",
+    "thresholded_sets": null,
+    "feature_store": "outputs\\rerun_new_dataset_20260716\\min5_words\\feature_store\\utterance_features.pt",
+    "label_matrix": "outputs\\rerun_new_dataset_20260716\\min5_words\\label_matrix.csv",
+    "feature_filter_audit": "outputs\\rerun_new_dataset_20260716\\min5_words\\functional\\misc_label_mapping_filtered\\feature_filter_audit.csv"
+  },
+  "candidate_policy": "filtered_topk_only",
+  "keep_pool_audit": {
+    "audit_rows": 32768,
+    "keep_true_latents": 12589,
+    "association_unique_latents": 12589,
+    "association_latents_all_keep_true": true
+  },
+  "candidate_checks": {
+    "labels": 7,
+    "candidate_pool_rows": 1400,
+    "candidate_pool_max_per_label": 200,
+    "candidate_pool_limit": 200,
+    "candidate_pool_within_limit": true,
+    "all_candidate_latents_keep_true": true
+  },
+  "n_labels": 7,
+  "fragmentation_class_counts": {
+    "distributed": 5,
+    "moderate": 2
+  },
+  "formal_status_counts": {
+    "minimal_sufficient_found": 7
+  },
+  "files": {
+    "minimal_sufficient_summary_v2": "D:\\project\\NLP_re_dataset_model_base\\outputs\\rerun_new_dataset_20260716\\min5_words\\interpretability\\minimal_sufficient_subspace_v2_filtered_leaf7_n20\\minimal_sufficient_summary_v2.csv",
+    "minimal_sufficient_selected_latents_v2": "D:\\project\\NLP_re_dataset_model_base\\outputs\\rerun_new_dataset_20260716\\min5_words\\interpretability\\minimal_sufficient_subspace_v2_filtered_leaf7_n20\\minimal_sufficient_selected_latents_v2.csv",
+    "minimal_sufficient_fold_results_v2": "D:\\project\\NLP_re_dataset_model_base\\outputs\\rerun_new_dataset_20260716\\min5_words\\interpretability\\minimal_sufficient_subspace_v2_filtered_leaf7_n20\\minimal_sufficient_fold_results_v2.csv",
+    "minimal_sufficient_selection_steps_v2": "D:\\project\\NLP_re_dataset_model_base\\outputs\\rerun_new_dataset_20260716\\min5_words\\interpretability\\minimal_sufficient_subspace_v2_filtered_leaf7_n20\\minimal_sufficient_selection_steps_v2.csv",
+    "minimal_sufficient_redundancy_audit_v2": "D:\\project\\NLP_re_dataset_model_base\\outputs\\rerun_new_dataset_20260716\\min5_words\\interpretability\\minimal_sufficient_subspace_v2_filtered_leaf7_n20\\minimal_sufficient_redundancy_audit_v2.csv",
+    "minimal_sufficient_curves_v2": "D:\\project\\NLP_re_dataset_model_base\\outputs\\rerun_new_dataset_20260716\\min5_words\\interpretability\\minimal_sufficient_subspace_v2_filtered_leaf7_n20\\minimal_sufficient_curves_v2.csv",
+    "candidate_pool_v2": "D:\\project\\NLP_re_dataset_model_base\\outputs\\rerun_new_dataset_20260716\\min5_words\\interpretability\\minimal_sufficient_subspace_v2_filtered_leaf7_n20\\candidate_pool_v2.csv"
+  },
+  "report": "D:\\project\\NLP_re_dataset_model_base\\outputs\\rerun_new_dataset_20260716\\min5_words\\interpretability\\minimal_sufficient_subspace_v2_filtered_leaf7_n20\\minimal_sufficient_subspace_report.md"
+}

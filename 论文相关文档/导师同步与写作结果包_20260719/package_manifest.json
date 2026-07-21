@@ -1,0 +1,279 @@
+{
+  "status": "complete",
+  "package_version": "mentor-writing-sync-20260720-v4",
+  "generated_on": "2026-07-20",
+  "ssot": "docs/current/experiment_workflow.md",
+  "source_roots": {
+    "stable_core": "outputs/rerun_new_dataset_20260716/min5_words/cross_val/stable_topk_selection_n20_relaxed_leaf7",
+    "representation_probe": "outputs/rerun_new_dataset_20260716/min5_words/interpretability/representation_probe_comparison_stable_core_leaf7_n20_relaxed",
+    "main_latent_cards": "outputs/rerun_new_dataset_20260716/min5_words/interpretability/contrastive_latent_faithfulness_v3_gpt55_low_full218_randomized_packets_20260719",
+    "sae_pca": "outputs/rerun_new_dataset_20260716/min5_words/interpretability/task5_sae_pca_contrastive_faithfulness_v3_randomized_packets_build_20260719",
+    "minimal_sufficient_archive": "archive/minimal_sufficient_subspace_20260719"
+  },
+  "frozen_counts": {
+    "samples": 5018,
+    "stable_edges": 228,
+    "unique_stable_latents": 218,
+    "valid_explanations": 214,
+    "main_scorer_metrics": 207,
+    "task5_units": 48,
+    "task5_pairs": 32
+  },
+  "package_files": [
+    {
+      "path": "00_产物索引.md",
+      "sha256": "0537960b4872d08f16350ea43196bfe4cc11946366b99ddfb53f83fff7f8ec47",
+      "bytes": 3352
+    },
+    {
+      "path": "README.md",
+      "sha256": "d0cbe4a21ee63b605706f49ac69eace112c031fbf855dbb0cec6299dd1cdcea7",
+      "bytes": 1937
+    },
+    {
+      "path": "冻结产物清单.csv",
+      "sha256": "6ac179cdb52922dd51ed1e1b46df9531cd897433a0978ed23201c594ea47c9a4",
+      "bytes": 5657
+    },
+    {
+      "path": "文档/01_研究问题与证据链.md",
+      "sha256": "f1f2c8b2c242437a174a5ddaf6638d6baae944597467b903c6a0be9f723992b6",
+      "bytes": 2133
+    },
+    {
+      "path": "文档/02_实验设置冻结摘要.md",
+      "sha256": "6933c87a53b18bf60a6da195a144ac656311c3bbc0a0f5f0926af728b34c3bcd",
+      "bytes": 3945
+    },
+    {
+      "path": "文档/03_结果总览与科学说明.md",
+      "sha256": "f43b3a7b8a34b7562713360cd7779069ae6928106e63448efd2c1469463249f1",
+      "bytes": 2375
+    },
+    {
+      "path": "文档/04_Stable_Core结果说明.md",
+      "sha256": "2571d1cde73cff80cdd117509351d716ca46192c383b76d487cc9224547c6068",
+      "bytes": 1222
+    },
+    {
+      "path": "文档/05_表示信息验证结果说明.md",
+      "sha256": "148f3169fa8e23ff3df1f289dc2a1281312f05ae0c2cadac6b614943b0b316ae",
+      "bytes": 1286
+    },
+    {
+      "path": "文档/06_主latent_card解释与可靠性.md",
+      "sha256": "52b26f4d9fa4d48d56178364bab0b6233c87a9e327f4eb57a9f37311994a223e",
+      "bytes": 1592
+    },
+    {
+      "path": "文档/07_SAE_PCA解释忠实度对照.md",
+      "sha256": "2da721888d783668f31fb8a135d5e3032261b00d830b924671c426a3028003c0",
+      "bytes": 1282
+    },
+    {
+      "path": "文档/08_代表性latent_card.md",
+      "sha256": "71dd59d0fcafc177594284142df2f7e62c51d8057aa079251d4296b9a449e82d",
+      "bytes": 11092
+    },
+    {
+      "path": "文档/09_人工子概念编码计划.md",
+      "sha256": "00e7c2452d16a4eb615935e2a36af58fc75466450d7a3f80d8e061af51733e58",
+      "bytes": 1338
+    },
+    {
+      "path": "文档/10_论文主张限制与禁止引用.md",
+      "sha256": "39ee48a2f42d1fc97d92181a08411bde9d0d8bd6b7e6c0cbe82a607ca8226caa",
+      "bytes": 1815
+    },
+    {
+      "path": "文档/11_决策日志.md",
+      "sha256": "c27ac2cffcbee179762351598aa3f51b649caf234c53faf2c3f7479169591abb",
+      "bytes": 1515
+    },
+    {
+      "path": "文档/12_主实验与SAE_PCA_Card可审计全集.md",
+      "sha256": "5f2c84d2514f4ca9c7b4e7d430db48ea6852017c22595eead79e3b08a77e704d",
+      "bytes": 1609519
+    },
+    {
+      "path": "文档/实验设置/结果阅读指南_导师版.md",
+      "sha256": "e04a44f7b5d44eef906675ee04b6375b25c4c862970528adf805bdadcd00197e",
+      "bytes": 15126
+    },
+    {
+      "path": "文档/实验设置/阶段1_数据范围与Layer19特征.md",
+      "sha256": "c19fe2b0749a5045f597169f4d7974865d490ce038e89ffc308679d259635ecf",
+      "bytes": 3647
+    },
+    {
+      "path": "文档/实验设置/阶段2_Filtered_Latent_Pool.md",
+      "sha256": "1ef2c0ef367e36b520171526feef1ca46c2319af82825495825ccd072438ac07",
+      "bytes": 3072
+    },
+    {
+      "path": "文档/实验设置/阶段3_Stable_Core筛选.md",
+      "sha256": "4c9e0ecab70e3ff2c4d6ae63d4912fb6b9a53944831d776246a5de637aa8cf52",
+      "bytes": 3786
+    },
+    {
+      "path": "文档/实验设置/阶段4_表示信息验证.md",
+      "sha256": "abbbac9f74c67ec2602613b4baa51b15548c0ca2ee804fa5956b85a37dc5b9c5",
+      "bytes": 3820
+    },
+    {
+      "path": "文档/实验设置/阶段5_Latent_Card与Heldout评分.md",
+      "sha256": "8ce1d90ae5e8534e38d4146c6b77a0f83215ae46af2c9468693d498b1f83be71",
+      "bytes": 4727
+    },
+    {
+      "path": "文档/实验设置/阶段6_SAE_PCA解释忠实度对照.md",
+      "sha256": "56cd7e511aa341e36808ef90caa2590107a94318f7709a8ce5bfc2aced2fa5af",
+      "bytes": 3452
+    },
+    {
+      "path": "文档/实验设置/阶段7_人工子概念编码_待执行.md",
+      "sha256": "351550d1ec71412ab9ed7f283577b0a20d752ca8630fe3bab95b1d6f520ba3be",
+      "bytes": 3063
+    },
+    {
+      "path": "结果表/data_label_summary.csv",
+      "sha256": "5e125ce2cf40385896e39870dd7220fd3c446141e78749aed20ba7fd9c77c433",
+      "bytes": 277
+    },
+    {
+      "path": "结果表/main_card_faithfulness_by_label.csv",
+      "sha256": "ed45633bcf40c79664dd1993e24883885e87f64a786159dfaa23f79aa7dc3ff5",
+      "bytes": 803
+    },
+    {
+      "path": "结果表/main_card_faithfulness_overall.csv",
+      "sha256": "55ce1aad67bbdef1a5d858b49cec71788f27ea220de4efa31a116442922cd355",
+      "bytes": 204
+    },
+    {
+      "path": "结果表/representation_key_results.csv",
+      "sha256": "589898045a52e2125f0cf080c7bbcd6741ce4ed157b04716991a7ea1ccd0268e",
+      "bytes": 793
+    },
+    {
+      "path": "结果表/representative_card_index.csv",
+      "sha256": "9b6812be3e024b338fd6ccc93db81060c1f7e691121c2e74146edd209c9e6cb1",
+      "bytes": 892
+    },
+    {
+      "path": "结果表/stable_core_pair_overlap.csv",
+      "sha256": "ddf074eeeb3c37fd97a01fa92e4c22291d4cddcce621d4bdad8ea3435f23b715",
+      "bytes": 214
+    },
+    {
+      "path": "结果表/stable_core_sharing_distribution.csv",
+      "sha256": "988e6fa21acaf57f90ba01eeaec5714de65538c380684ed8bb5efd0ff7214538",
+      "bytes": 45
+    },
+    {
+      "path": "结果表/stable_core_summary_by_label.csv",
+      "sha256": "3040eed17ed68becb9095b1be5c785cbed9fe9fe4317038e40f6cf9490c32e99",
+      "bytes": 474
+    },
+    {
+      "path": "结果表/task5_paired_summary.csv",
+      "sha256": "a3510da0f003d4ca4b93b41c451326b91df0279b89282bf0195b0e0af4682b29",
+      "bytes": 210
+    },
+    {
+      "path": "结果表/task5_paired_summary_by_label.csv",
+      "sha256": "fecce2c5469a5cdabb9acaf4ffba56eff926e95857a13746da4736c0ef11667c",
+      "bytes": 336
+    },
+    {
+      "path": "附件/main_latent_cards/faithfulness_metrics.csv",
+      "sha256": "a80997d8a1c91610d5a70c12e50312b4ceff15f9a245ccb9baa192da6cad222f",
+      "bytes": 14758
+    },
+    {
+      "path": "附件/main_latent_cards/final_completion_audit.json",
+      "sha256": "63d95d18fb3399dc95c6f4c250aaa274e1faee58fc333fb4cce95e7a67de2cfe",
+      "bytes": 273
+    },
+    {
+      "path": "附件/main_latent_cards/packet_integrity_audit.json",
+      "sha256": "2d879dde525f0a089b83072d67e41cb2d7188e1da1fffbdc7a9f3a0ab45af03a",
+      "bytes": 412
+    },
+    {
+      "path": "附件/main_latent_cards/validated_explanations.jsonl",
+      "sha256": "f9e3db90e4912051cadef893459c5e7e39be376461f52a1031ab273ac4dfd37b",
+      "bytes": 1144559
+    },
+    {
+      "path": "附件/representation_probe/manifest.json",
+      "sha256": "9359406743ed505597158e6b447f56147cab398bedc78e6c0ebe79e46bfc55b6",
+      "bytes": 2961
+    },
+    {
+      "path": "附件/representation_probe/performance_curves_macro.png",
+      "sha256": "fccd93b18ae2d5db7b338e49653a1be7cc8109d82245f323976d9549834874ab",
+      "bytes": 210827
+    },
+    {
+      "path": "附件/representation_probe/probe_macro_summary.csv",
+      "sha256": "28b2bf3696842f17ffd166b90269571fadd9750644ea87d2078c73c1296206a3",
+      "bytes": 4602
+    },
+    {
+      "path": "附件/representation_probe/probe_summary_by_label.csv",
+      "sha256": "1c1fa56e1b2fd54c1d59b8d0c78f38981625231c67bda2c27f5392f7ed2f9649",
+      "bytes": 34049
+    },
+    {
+      "path": "附件/representation_probe/representation_probe_comparison_report.md",
+      "sha256": "e136b48d7e26d1fed636cee2843f775146c747b42061720090ac8ed8f6bd3e57",
+      "bytes": 2736
+    },
+    {
+      "path": "附件/representation_probe/reuse_and_refresh_audit.json",
+      "sha256": "58e901dcf643a8195e4a162308b5fe1f1f2e324020b489a4cd20cca2765f6b61",
+      "bytes": 10875
+    },
+    {
+      "path": "附件/sae_pca/faithfulness_metrics.csv",
+      "sha256": "d4a4a6b1463c7031c6d7e2bf921e6832c281f1d2c6ee6129ca484feeaeb5b573",
+      "bytes": 3764
+    },
+    {
+      "path": "附件/sae_pca/family_summary.csv",
+      "sha256": "def83d8ab9b57cb38b8374e6020025bfd8a92f7cac3ee0ad5af2e07652a6e454",
+      "bytes": 315
+    },
+    {
+      "path": "附件/sae_pca/packet_integrity_audit.json",
+      "sha256": "5e8e3c57a89f55fcb37e7775dcff9cd2e3ead10d0fdbfac566f0ffb4568bee3e",
+      "bytes": 409
+    },
+    {
+      "path": "附件/sae_pca/paired_comparison.csv",
+      "sha256": "6b4e0df1ac56e439fb056b400abe8cf315ecaeeb4ce436609007422f8883ec9e",
+      "bytes": 3575
+    },
+    {
+      "path": "附件/sae_pca/pipeline_status.json",
+      "sha256": "1d1f526c13bdf38d51f5e1f2f1dc397ddfcb4134bcae5eeaa05082dac9cf3883",
+      "bytes": 502
+    },
+    {
+      "path": "附件/sae_pca/sae_pca_contrastive_faithfulness_report.md",
+      "sha256": "1df3b06949aaac438108d8d2f0dd618135da7d8a8665e6ae618b2394f8dcbd70",
+      "bytes": 4927
+    },
+    {
+      "path": "附件/stable_core/stable_topk_latent_set.csv",
+      "sha256": "1ea0e4592b2a5a89eaa8ded304408388123a333d420990905c8a2def988da6fe",
+      "bytes": 121011
+    },
+    {
+      "path": "附件/stable_core/stable_topk_selection_report.md",
+      "sha256": "b52b22409f7570350579106b5e88b012d3b95efd4b84eae98dc1cf95dd374be4",
+      "bytes": 1226
+    }
+  ]
+}

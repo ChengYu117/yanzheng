@@ -913,7 +913,7 @@ def _write_report(
         "",
         "This experiment evaluates whether MISC labels are linearly decodable from complete representation vectors.",
         "",
-        "It differs from Step 6 `Mean Label AUC`, which measures strongest single-feature association, and from minimal sufficient subspace `Full AUC`, which uses a per-label candidate pool.",
+        "It differs from Step 6 `Mean Label AUC`, which measures strongest single-feature association.",
         "",
         "## Configuration",
         "",

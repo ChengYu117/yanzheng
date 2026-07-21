@@ -1,0 +1,60 @@
+{
+  "analysis": "representation_probe_comparison_stable_core_refresh",
+  "elapsed_seconds": 3.857645034790039,
+  "config": {
+    "labels": [
+      "RES",
+      "REC",
+      "QUO",
+      "QUC",
+      "GI",
+      "SU",
+      "AF"
+    ],
+    "top_ns": [
+      10,
+      20,
+      50,
+      100,
+      200
+    ],
+    "random_repeats": 20,
+    "random_state": 42,
+    "folds": 5,
+    "split_policy": "stratified-group-kfold",
+    "group_column": "file_id",
+    "C": 1.0,
+    "solver": "liblinear",
+    "max_iter": 1000,
+    "standardize": true,
+    "association_chunk_size": 512,
+    "quiet": true
+  },
+  "execution_policy": "reused unchanged non-stable rows; recomputed Stable Core SAE only",
+  "inputs": {
+    "n_samples": 5018,
+    "sae_shape": [
+      5018,
+      32768
+    ],
+    "raw_hidden": "outputs/rerun_new_dataset_20260716/min5_words/feature_store/utterance_activations.pt",
+    "raw_hidden_shape": [
+      5018,
+      4096
+    ],
+    "filtered_association": "outputs/rerun_new_dataset_20260716/min5_words/functional/misc_label_mapping_filtered/latent_label_matrix.csv",
+    "feature_filter_audit": "outputs/rerun_new_dataset_20260716/min5_words/functional/misc_label_mapping_filtered/feature_filter_audit.csv",
+    "stable_core": "outputs/rerun_new_dataset_20260716/min5_words/cross_val/stable_topk_selection_n20_relaxed_leaf7/stable_topk_latent_set.csv",
+    "reused_source_output_dir": "outputs\\rerun_new_dataset_20260716\\min5_words\\interpretability\\representation_probe_comparison_stable_core_leaf7_n20"
+  },
+  "outputs": {
+    "probe_fold_metrics": "outputs\\rerun_new_dataset_20260716\\min5_words\\interpretability\\representation_probe_comparison_stable_core_leaf7_n20_relaxed\\probe_fold_metrics.csv",
+    "probe_summary_by_label": "outputs\\rerun_new_dataset_20260716\\min5_words\\interpretability\\representation_probe_comparison_stable_core_leaf7_n20_relaxed\\probe_summary_by_label.csv",
+    "probe_macro_summary": "outputs\\rerun_new_dataset_20260716\\min5_words\\interpretability\\representation_probe_comparison_stable_core_leaf7_n20_relaxed\\probe_macro_summary.csv",
+    "selected_latents_by_label_n": "outputs\\rerun_new_dataset_20260716\\min5_words\\interpretability\\representation_probe_comparison_stable_core_leaf7_n20_relaxed\\selected_latents_by_label_n.csv",
+    "performance_curves_macro": "outputs\\rerun_new_dataset_20260716\\min5_words\\interpretability\\representation_probe_comparison_stable_core_leaf7_n20_relaxed\\figures\\performance_curves_macro.png",
+    "report": "outputs\\rerun_new_dataset_20260716\\min5_words\\interpretability\\representation_probe_comparison_stable_core_leaf7_n20_relaxed\\representation_probe_comparison_report.md",
+    "reuse_and_refresh_audit": "outputs\\rerun_new_dataset_20260716\\min5_words\\interpretability\\representation_probe_comparison_stable_core_leaf7_n20_relaxed\\reuse_and_refresh_audit.json"
+  },
+  "warnings": []
+}

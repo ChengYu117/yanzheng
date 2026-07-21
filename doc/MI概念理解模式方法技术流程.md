@@ -47,8 +47,6 @@
 - 当前采用 10 强＋10 弱发现材料与独立 20 条 held-out Scorer；
 - SAE 全量参考运行已完成 214/214 个有效解释、207/207 个有效 Scorer；
 - SAE–PCA 冻结抽样参考运行已完成 48/48 个有效 Explainer 和 48/48 个有效 Scorer；
-- 当前 evidence 只包含 counselor current utterance。
-- 缺少前一句 client utterance，因此 RES、REC、RE 的 context-relation 结论必须降级。
 - 只有通过采样隔离、结构验证和零工具调用门禁的解释及 held-out 指标可进入当前结果；旧 minimal-pair 不属于本轮正式评分协议。
 
 ## 3. 核心研究问题
@@ -260,10 +258,6 @@ counselor utterance 与前一句或前几句 client utterance 的关系。
 - 推断 client 的情绪。
 - 总结前文。
 
-当前限制：
-
-当前第一阶段 evidence packet 没有前一句 client utterance。因此对 RES、REC、RE 的 context-relation 只能记为“待验证”，不能强判。
-
 #### Artifact pattern
 
 定义：
@@ -442,11 +436,6 @@ triggering-token 检查用于区分：
 - 数据合同说明。
 - 标签分布摘要。
 - 缺失值、重复文本、来源 split 摘要。
-- 当前阶段 context limitation 声明。
-
-当前项目特别限制：
-
-当前第一阶段没有前一句 client utterance，因此 context-relation 类判断不能作为主结论。
 
 ### Phase 1：层与表征空间固定
 
@@ -723,8 +712,7 @@ QUC：
 
 RES/REC：
 
-- 当前没有 client context 时，只能测试 reflective phrasing。
-- 若加入 client context，应测试简单复述、复杂改写、情绪/意义推断。
+- 结合句内表面形式与话语功能，分别检验简单反映与复杂反映的区分模式。
 
 GI：
 
@@ -797,7 +785,6 @@ GI：
 - 是否存在 artifact risk。
 - 是否支持 target label。
 - 是否更像 family-level pattern，而不是 label-specific pattern。
-- 对 RES/REC 是否因缺少 client context 而无法判断。
 
 建议 final status：
 
@@ -886,9 +873,7 @@ MI-principle latent：
 
 Context-relation latent：
 
-- 必须有 client context。
 - 能显示 counselor utterance 与 client utterance 的复述、改写、意义推断关系。
-- 当前无 client context 时不能强判。
 
 Artifact latent：
 
@@ -918,7 +903,7 @@ Mixed / unclear：
 预期标签级解释：
 
 - QU/QUO/QUC：更容易出现 question-form 与 elaboration/closed-question function 的混合。
-- RES/REC/RE：若无 client context，容易退化为 reflective phrasing，而非真实 reflection。
+- RES/REC/RE：重点检查 reflective phrasing 与反映功能相关模式的区分。
 - GI：可能同时包含信息提供功能、医学主题词和建议模板。
 - SU：可能同时包含支持功能、安慰短语和礼貌模板。
 - AF：可能同时包含肯定功能和正向评价词。
@@ -951,7 +936,6 @@ Mixed / unclear：
 - top activating examples 证明了模型的临床推理机制。
 - Cohen's d 高就表示该 latent 是核心概念。
 - P3 自动解释可以替代 MI coder 审核。
-- 没有 client context 时可以确认 RES/REC 的上下文反射功能。
 
 可以说：
 
@@ -1020,7 +1004,7 @@ Mixed / unclear：
 - 优先审查 `robust_code_candidate`。
 - 对 `surface_artifact` 和 `mixed_unclear` 抽样复核。
 - 重点审查 QUO、QU、QUC、GI、SU、AF。
-- RES、REC、RE 等待 client context 或降低结论强度。
+- RES、REC、RE 与其他叶标签一样，按冻结协议进入表征、预测充分性和解释忠实度分析。
 
 第三步：设计 minimal pairs。
 

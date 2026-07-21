@@ -1,0 +1,68 @@
+{
+  "analysis_version": "minimal_sufficient_subspace_v2",
+  "config": {
+    "labels": [
+      "RE",
+      "RES",
+      "REC",
+      "QU",
+      "QUO",
+      "QUC",
+      "GI",
+      "SU",
+      "AF"
+    ],
+    "leaf_labels": [
+      "RES",
+      "REC",
+      "QUO",
+      "QUC",
+      "GI",
+      "SU",
+      "AF"
+    ],
+    "candidate_top_k": 100,
+    "cv_folds": 5,
+    "min_auc": 0.7,
+    "auc_tolerance": 0.02,
+    "auprc_tolerance": 0.03,
+    "precision_lift_tolerance": 0.05,
+    "precision_k": 50,
+    "precision_k_values": [
+      50,
+      100
+    ],
+    "max_search_k": 100,
+    "stability_jaccard_threshold": 0.4,
+    "redundant_auc_epsilon": 0.005,
+    "redundant_auprc_epsilon": 0.005,
+    "activation_threshold": 0.0,
+    "random_state": 13,
+    "max_iter": 1000
+  },
+  "inputs": {
+    "association_matrix": "outputs/gemma3_l18_gemmascope_sae_eval/interpretability/latent_space_search_v2/latent_label_association_v2.csv",
+    "thresholded_sets": "outputs/gemma3_l18_gemmascope_sae_eval/interpretability/latent_space_search_v2/thresholded_latent_sets_v2.csv",
+    "feature_store": "outputs/gemma3_l18_gemmascope_sae_eval/feature_store/utterance_features.pt",
+    "label_matrix": "outputs/gemma3_l18_gemmascope_sae_eval/label_matrix.csv"
+  },
+  "n_labels": 9,
+  "fragmentation_class_counts": {
+    "distributed": 6,
+    "parent_consistency_only": 2,
+    "moderate": 1
+  },
+  "formal_status_counts": {
+    "minimal_sufficient_found": 9
+  },
+  "files": {
+    "minimal_sufficient_summary_v2": "outputs\\gemma3_l18_gemmascope_sae_eval\\interpretability\\minimal_sufficient_subspace_v2\\minimal_sufficient_summary_v2.csv",
+    "minimal_sufficient_selected_latents_v2": "outputs\\gemma3_l18_gemmascope_sae_eval\\interpretability\\minimal_sufficient_subspace_v2\\minimal_sufficient_selected_latents_v2.csv",
+    "minimal_sufficient_fold_results_v2": "outputs\\gemma3_l18_gemmascope_sae_eval\\interpretability\\minimal_sufficient_subspace_v2\\minimal_sufficient_fold_results_v2.csv",
+    "minimal_sufficient_selection_steps_v2": "outputs\\gemma3_l18_gemmascope_sae_eval\\interpretability\\minimal_sufficient_subspace_v2\\minimal_sufficient_selection_steps_v2.csv",
+    "minimal_sufficient_redundancy_audit_v2": "outputs\\gemma3_l18_gemmascope_sae_eval\\interpretability\\minimal_sufficient_subspace_v2\\minimal_sufficient_redundancy_audit_v2.csv",
+    "minimal_sufficient_curves_v2": "outputs\\gemma3_l18_gemmascope_sae_eval\\interpretability\\minimal_sufficient_subspace_v2\\minimal_sufficient_curves_v2.csv",
+    "candidate_pool_v2": "outputs\\gemma3_l18_gemmascope_sae_eval\\interpretability\\minimal_sufficient_subspace_v2\\candidate_pool_v2.csv"
+  },
+  "report": "outputs\\gemma3_l18_gemmascope_sae_eval\\interpretability\\minimal_sufficient_subspace_v2\\minimal_sufficient_subspace_report.md"
+}

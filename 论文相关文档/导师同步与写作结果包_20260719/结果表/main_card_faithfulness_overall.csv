@@ -1,0 +1,2 @@
+﻿n_scored_latents,mean_spearman,mean_pearson_log_activation,mean_positive_vs_zero_auroc,mean_high_vs_weak_pair_accuracy
+207,0.6169556945649868,0.6101377905266608,0.8484702093397746,0.7831884057971015

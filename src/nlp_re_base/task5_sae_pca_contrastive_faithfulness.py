@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import shutil
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
@@ -16,10 +17,17 @@ from sklearn.metrics import roc_auc_score
 
 from .contrastive_evidence_pack import normalise_text, read_jsonl, write_json, write_jsonl
 from .contrastive_faithfulness_v2 import (
-    _format_samples,
+    SCORER_FROZEN_FIELDS,
+    _canonical_sha256,
+    _private_truth_path,
+    _public_scorer_packets_path,
     _rank_bands,
     _unique_pick,
+    _validate_public_samples,
+    align_scorer_predictions_by_id,
     build_explainer_prompt,
+    build_scorer_prompt,
+    freeze_randomized_heldout_packet,
 )
 
 
@@ -31,6 +39,8 @@ class SamplingConfig:
     n_group: int = 10
     n_heldout_stratum: int = 5
     random_seed: str = "task5-sae-pca-contrastive-v1"
+    presentation_seed: str = "v3-heldout-order"
+    packet_version: str = "v3-randomized-heldout"
 
 
 def _load_tensor(path: str | Path, keys: tuple[str, ...]) -> torch.Tensor:
@@ -55,25 +65,7 @@ def _public_samples(rows: list[int], texts: list[str], prefix: str) -> list[dict
 
 
 def _scorer_prompt(feature_id: str, explanation: dict[str, Any], heldout: list[dict[str, Any]]) -> str:
-    fields = (
-        "short_name", "contrastive_explanation", "necessary_or_characteristic_condition",
-        "insufficient_conditions", "surface_or_linguistic_hypothesis",
-        "behavioral_or_discourse_hypothesis", "primary_explanation", "explanation_type",
-        "possible_confounds", "limitations",
-    )
-    frozen = {key: explanation[key] for key in fields}
-    public = [{"sample_id": row["sample_id"], "text": row["text"]} for row in heldout]
-    return f"""Use the frozen explanation below to predict how strongly each held-out spoken/transcribed-dialogue sentence matches the anonymous text feature.
-
-Feature ID: {feature_id}
-
-Frozen explanation:
-{json.dumps(frozen, ensure_ascii=False, indent=2)}
-
-Held-out sentences:
-{_format_samples(public)}
-
-For each complete sentence output an integer predicted_feature_score from 0 to 100: 0–10 absent/contradicted; 11–30 weak/incidental; 31–60 partial/ambiguous; 61–80 clear; 81–100 strong and specific. Do not revise the explanation, infer hidden groups, or rely on broad domain membership. matching_evidence_span must be copied from the sentence or empty. Return all 20 IDs exactly once and in input order. Return only JSON matching the supplied schema."""
+    return build_scorer_prompt(feature_id, explanation, heldout)
 
 
 def _canonical_units(mapping: pd.DataFrame, seed: str) -> tuple[pd.DataFrame, pd.DataFrame]:
@@ -170,6 +162,7 @@ def build_packets(
             continue
 
         held_rows: list[tuple[str, int]] = []
+        selected_by_stratum: dict[str, list[int]] = {}
         heldout_reason = ""
         try:
             weak_band, mid_band, strong_band = _rank_bands(values, test_pos)
@@ -177,24 +170,48 @@ def build_packets(
                 picked = _unique_pick(candidates, texts, config.n_heldout_stratum, key=f"{unit.canonical_key}|held|{stratum}", used=used)
                 if len(picked) != config.n_heldout_stratum:
                     raise ValueError(f"lacks 5 unique held-out {stratum} sentences")
+                selected_by_stratum[stratum] = picked
                 held_rows.extend((stratum, row) for row in picked)
         except ValueError as exc:
-            held_rows = []; heldout_reason = str(exc)
+            held_rows = []; selected_by_stratum = {}; heldout_reason = str(exc)
             scorer_ineligible.append({"feature_id": unit.feature_id, "reason": heldout_reason, "n_train_positive": len(train_pos), "n_test_positive": len(test_pos)})
 
         strong = _public_samples(strong_rows, texts, "A")
         weak = _public_samples(weak_rows, texts, "B")
-        held_public = _public_samples([row for _, row in held_rows], texts, "H")
+        frozen = freeze_randomized_heldout_packet(
+            selected_by_stratum, texts, unit.feature_id, config.presentation_seed,
+        ) if selected_by_stratum else {
+            "public_samples": [], "private_truth": [], "packet_sha256": "",
+            "private_truth_sha256": "", "selected_rows_sha256": "",
+        }
         held_private = [
-            {**sample, "row_idx": int(row), "stratum": stratum, "true_response": float(values[row])}
-            for sample, (stratum, row) in zip(held_public, held_rows)
+            {
+                **truth,
+                "true_response": float(values[int(truth["row_idx"])]),
+                "source_file": str(labels.iloc[int(truth["row_idx"])]["source_file"]),
+                "normalized_text_sha256": hashlib.sha256(
+                    normalise_text(texts[int(truth["row_idx"])]).encode("utf-8")
+                ).hexdigest(),
+            }
+            for truth in frozen["private_truth"]
+        ]
+        discovery_private = [
+            {
+                "public_sample_id": sample["sample_id"], "row_idx": int(row), "group": group,
+                "source_file": str(labels.iloc[int(row)]["source_file"]),
+                "normalized_text_sha256": hashlib.sha256(normalise_text(texts[int(row)]).encode("utf-8")).hexdigest(),
+            }
+            for group, samples, rows in (("strong", strong, strong_rows), ("weak", weak, weak_rows))
+            for sample, row in zip(samples, rows)
         ]
         packets.append({
             "feature_id": unit.feature_id, "unit_order": int(unit.unit_order),
             "strong_samples": strong, "weak_samples": weak,
+            "discovery_samples_private": discovery_private,
             "heldout_samples_private": held_private,
             "scorer_eligible": not heldout_reason,
             "scorer_ineligible_reason": heldout_reason,
+            "packet_version": config.packet_version,
         })
         task_id = f"{unit.feature_id}_explainer"
         tasks.append({
@@ -222,6 +239,37 @@ def build_packets(
         })
     pd.DataFrame(pair_rows).to_csv(private / "pair_index.csv", index=False, encoding="utf-8-sig")
     pd.DataFrame(audit).to_csv(output / "sampling_audit.csv", index=False, encoding="utf-8-sig")
+    public_explainer_packets = [
+        {"feature_id": packet["feature_id"], "strong_samples": packet["strong_samples"], "weak_samples": packet["weak_samples"]}
+        for packet in packets
+    ]
+    public_scorer_packets = []
+    private_truth_packets = []
+    packet_entries = []
+    for packet, explainer_packet in zip(packets, public_explainer_packets):
+        public_samples = [
+            {"sample_id": truth["public_sample_id"], "text": texts[int(truth["row_idx"])]}
+            for truth in packet["heldout_samples_private"]
+        ]
+        public_scorer_packets.append({"feature_id": packet["feature_id"], "samples": public_samples})
+        private_truth_packets.append({
+            "feature_id": packet["feature_id"], "unit_order": packet["unit_order"],
+            "samples": packet["heldout_samples_private"],
+        })
+        packet_entries.append({
+            "feature_id": packet["feature_id"],
+            "explainer_packet_sha256": _canonical_sha256(explainer_packet),
+            "scorer_packet_sha256": _canonical_sha256(public_samples) if public_samples else "",
+            "private_truth_sha256": _canonical_sha256(packet["heldout_samples_private"]),
+            "selected_rows_sha256": _canonical_sha256(sorted(
+                ({"row_idx": int(item["row_idx"]), "stratum": item["stratum"]} for item in packet["heldout_samples_private"]),
+                key=lambda item: item["row_idx"],
+            )) if packet["heldout_samples_private"] else "",
+        })
+    write_jsonl(output / "private" / "master_packets.jsonl", packets)
+    write_jsonl(output / "private" / "heldout_truth.jsonl", private_truth_packets)
+    write_jsonl(output / "public_packets" / "explainer_packets.jsonl", public_explainer_packets)
+    write_jsonl(output / "public_packets" / "scorer_packets.jsonl", public_scorer_packets)
     write_jsonl(output / "private_packets.jsonl", packets)
     write_jsonl(output / "explainer" / "tasks.jsonl", tasks)
     manifest = {
@@ -234,8 +282,16 @@ def build_packets(
         "heldout": {"high": 5, "mid": 5, "weak_positive": 5, "nonpositive_control": 5},
         "label_blind": True, "representation_blind": True, "model_visible_numeric_response": False,
         "excluded": ["shuffled_explanation_baseline", "empty_explanation_baseline", "bootstrap_confidence_intervals"],
+        "packet_version": config.packet_version, "presentation_seed": config.presentation_seed,
     }
     write_json(output / "sampling_manifest.json", manifest)
+    write_json(output / "packet_manifest.json", {
+        "packet_version": config.packet_version,
+        "presentation_seed": config.presentation_seed,
+        "id_assignment": "after_deterministic_permutation",
+        "scorer_alignment": "sample_id_join",
+        "entries": packet_entries,
+    })
     return manifest
 
 
@@ -243,43 +299,131 @@ def make_scorer_tasks(*, output_dir: str | Path) -> dict[str, Any]:
     output = Path(output_dir)
     explanations = {row["feature_id"]: row for row in read_jsonl(output / "explainer" / "validated_explanations.jsonl")}
     packets = {row["feature_id"]: row for row in read_jsonl(output / "private_packets.jsonl")}
+    public_packets_path = _public_scorer_packets_path(output)
+    if not public_packets_path.exists():
+        raise FileNotFoundError(f"Frozen public scorer packets are required: {public_packets_path}")
+    public_packets = {row["feature_id"]: row["samples"] for row in read_jsonl(public_packets_path)}
     raw = output / "scorer" / "raw"; raw.mkdir(parents=True, exist_ok=True)
     tasks = []
     for feature_id in sorted(explanations):
         packet = packets[feature_id]
         if not packet["scorer_eligible"]:
             continue
+        heldout = public_packets[feature_id]
+        _validate_public_samples(heldout, feature_id)
         task_id = f"{feature_id}_scorer"
+        prompt = _scorer_prompt(feature_id, explanations[feature_id], heldout)
         tasks.append({
             "task_id": task_id, "latent_idx": int(packet["unit_order"]), "feature_id": feature_id,
-            "prompt": _scorer_prompt(feature_id, explanations[feature_id], packet["heldout_samples_private"]),
+            "prompt": prompt,
+            "prompt_sha256": hashlib.sha256(prompt.encode("utf-8")).hexdigest(),
+            "scorer_packet_sha256": _canonical_sha256(heldout),
             "expected_output_path": str(raw / f"{task_id}.json"),
         })
     write_jsonl(output / "scorer" / "tasks.jsonl", tasks)
-    result = {"n_tasks": len(tasks)}; write_json(output / "scorer" / "task_manifest.json", result)
+    result = {
+        "n_tasks": len(tasks),
+        "packet_source": "public_packets/scorer_packets.jsonl",
+        "alignment": "sample_id_join",
+        "frozen_fields_exposed": list(SCORER_FROZEN_FIELDS),
+        "excluded_fields": [
+            "contrastive_explanation", "necessary_or_characteristic_condition",
+            "insufficient_conditions", "possible_confounds", "limitations",
+            "alternative_explanations", "confidence", "confidence_rationale",
+            "discovery_sample_partitions", "contrastive_evidence",
+        ],
+    }
+    write_json(output / "scorer" / "task_manifest.json", result)
+    return result
+
+
+def make_reduced_context_scorer_reassessment(
+    *, source_output_dir: str | Path, output_dir: str | Path,
+) -> dict[str, Any]:
+    """Create a non-overwriting Task 5 scorer rerun from frozen source artifacts."""
+    source, output = Path(source_output_dir), Path(output_dir)
+    if output.exists():
+        raise FileExistsError(f"Refusing to overwrite reassessment directory: {output}")
+    required_v3 = [
+        source / "private" / "master_packets.jsonl",
+        _private_truth_path(source),
+        _public_scorer_packets_path(source),
+        source / "public_packets" / "explainer_packets.jsonl",
+        source / "packet_manifest.json",
+    ]
+    if any(not path.exists() for path in required_v3):
+        raise ValueError("Source predates randomized frozen packets; rebuild Task 5 packets before reassessment")
+    (output / "explainer").mkdir(parents=True)
+    (output / "private").mkdir(parents=True)
+
+    required = {
+        source / "explainer" / "validated_explanations.jsonl": output / "explainer" / "validated_explanations.jsonl",
+        source / "explainer" / "validation_manifest.json": output / "explainer" / "validation_manifest.json",
+        source / "private_packets.jsonl": output / "private_packets.jsonl",
+        source / "private" / "master_packets.jsonl": output / "private" / "master_packets.jsonl",
+        _private_truth_path(source): _private_truth_path(output),
+        _public_scorer_packets_path(source): _public_scorer_packets_path(output),
+        source / "public_packets" / "explainer_packets.jsonl": output / "public_packets" / "explainer_packets.jsonl",
+        source / "packet_manifest.json": output / "packet_manifest.json",
+        source / "private" / "unit_mapping.csv": output / "private" / "unit_mapping.csv",
+        source / "private" / "pair_index.csv": output / "private" / "pair_index.csv",
+        source / "sampling_manifest.json": output / "sampling_manifest.json",
+        source / "sampling_audit.csv": output / "sampling_audit.csv",
+    }
+    for source_path, output_path in required.items():
+        if not source_path.exists():
+            raise FileNotFoundError(source_path)
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(source_path, output_path)
+
+    result = make_scorer_tasks(output_dir=output)
+    result.update({
+        "analysis": "task5_sae_pca_reduced_context_scorer_reassessment",
+        "source_output_dir": str(source),
+        "source_explanations_reused_verbatim": True,
+        "source_heldout_packets_reused_verbatim": True,
+        "source_pairing_reused_verbatim": True,
+    })
+    write_json(output / "scorer" / "task_manifest.json", result)
     return result
 
 
 def validate_scorer_and_score(*, output_dir: str | Path) -> dict[str, Any]:
     output = Path(output_dir)
     tasks = read_jsonl(output / "scorer" / "tasks.jsonl")
-    packets = {row["feature_id"]: row for row in read_jsonl(output / "private_packets.jsonl")}
+    public_packets = {row["feature_id"]: row["samples"] for row in read_jsonl(_public_scorer_packets_path(output))}
+    truth_packets = {row["feature_id"]: row for row in read_jsonl(_private_truth_path(output))}
     mapping = pd.read_csv(output / "private" / "unit_mapping.csv")
     mapping_by_id = mapping.set_index("feature_id").to_dict("index")
     predictions, metrics, failures = [], [], []
     for task in tasks:
+        retry_path = output / "scorer" / "raw_retry" / f'{task["task_id"]}.json'
+        response_path = retry_path if retry_path.exists() else Path(task["expected_output_path"])
         try:
-            row = json.loads(Path(task["expected_output_path"]).read_text(encoding="utf-8"))
+            row = json.loads(response_path.read_text(encoding="utf-8"))
         except Exception as exc:
             failures.append({"task_id": task["task_id"], "reason": f"read:{exc}"}); continue
-        expected = [f"H{i:03d}" for i in range(1, 21)]
-        got = [item.get("sample_id") for item in row.get("predictions", [])]
-        if row.get("feature_id") != task["feature_id"] or got != expected:
-            failures.append({"task_id": task["task_id"], "reason": "id_or_order_mismatch"}); continue
-        truth = packets[task["feature_id"]]["heldout_samples_private"]
-        y = np.asarray([float(item["true_response"]) for item in truth])
-        p = np.asarray([float(item["predicted_feature_score"]) for item in row["predictions"]])
-        strata = np.asarray([item["stratum"] for item in truth])
+        if row.get("feature_id") != task["feature_id"]:
+            failures.append({"task_id": task["task_id"], "reason": "feature_id_mismatch"}); continue
+        feature_id = task["feature_id"]
+        try:
+            aligned = align_scorer_predictions_by_id(
+                public_samples=public_packets[feature_id],
+                private_truth=truth_packets[feature_id]["samples"],
+                predictions=row.get("predictions", []), feature_id=feature_id,
+            )
+        except (KeyError, ValueError) as exc:
+            failures.append({"task_id": task["task_id"], "reason": str(exc)}); continue
+        bad_spans = [
+            pred.get("sample_id")
+            for pred, _, sample in aligned
+            if pred.get("matching_evidence_span", "") and pred["matching_evidence_span"] not in sample["text"]
+        ]
+        if bad_spans:
+            failures.append({"task_id": task["task_id"], "reason": "non_verbatim_evidence_span", "sample_ids": bad_spans}); continue
+        y = np.asarray([float(truth["true_response"]) for _, truth, _ in aligned])
+        p = np.asarray([float(pred["predicted_feature_score"]) for pred, _, _ in aligned])
+        strata = np.asarray([truth["stratum"] for _, truth, _ in aligned])
         rho = float(spearmanr(p, y).statistic)
         pear = float(pearsonr(p, y).statistic)
         binary = (strata != "control").astype(int)
@@ -294,9 +438,9 @@ def validate_scorer_and_score(*, output_dir: str | Path) -> dict[str, Any]:
             "high_vs_weak_pair_accuracy": pair,
         })
         predictions.extend({
-            "feature_id": task["feature_id"], **pred, "true_response": truth[i]["true_response"],
-            "stratum": truth[i]["stratum"],
-        } for i, pred in enumerate(row["predictions"]))
+            "feature_id": task["feature_id"], **pred, "true_response": truth["true_response"],
+            "stratum": truth["stratum"],
+        } for pred, truth, _ in aligned)
     write_jsonl(output / "scorer" / "validated_predictions_private.jsonl", predictions)
     pd.DataFrame(metrics).to_csv(output / "scorer" / "faithfulness_metrics.csv", index=False, encoding="utf-8-sig")
     write_jsonl(output / "scorer" / "validation_failures.jsonl", failures)
@@ -360,4 +504,7 @@ def render_report(*, output_dir: str | Path) -> dict[str, Any]:
     return result
 
 
-__all__ = ["ANALYSIS_NAME", "SamplingConfig", "build_packets", "make_scorer_tasks", "render_report", "validate_scorer_and_score"]
+__all__ = [
+    "ANALYSIS_NAME", "SamplingConfig", "build_packets", "make_reduced_context_scorer_reassessment",
+    "make_scorer_tasks", "render_report", "validate_scorer_and_score",
+]

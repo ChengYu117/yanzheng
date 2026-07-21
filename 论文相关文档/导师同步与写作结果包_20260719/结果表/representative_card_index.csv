@@ -1,0 +1,8 @@
+﻿label,feature_id,latent_idx,short_name,explanation_type,spearman_rho,positive_vs_zero_auroc,high_vs_weak_pair_accuracy
+RES,F006,19435,Utterance-initial so plus you-address,linguistic_structure,0.9373575286107384,0.9866666666666667,1.0
+REC,F022,15068,Declarative abstract-it framing,linguistic_structure,0.9281713910840508,0.9666666666666667,1.0
+QUO,F080,6129,Formulaic “what do you think” question,linguistic_structure,0.9445547648554565,0.9333333333333333,1.0
+QUC,F124,2550,one-to-ten scale framing,linguistic_structure,0.9074836752686998,0.9666666666666667,0.96
+GI,F142,26236,cardiometabolic risk marker talk,linguistic_structure,0.8410222809196602,1.0,0.8
+SU,F166,19359,utterance-initial first-person singular,linguistic_structure,0.9749101555988586,0.9666666666666667,1.0
+AF,F182,2434,thanks_for_construction,linguistic_structure,0.9136478394836854,0.9266666666666667,0.98

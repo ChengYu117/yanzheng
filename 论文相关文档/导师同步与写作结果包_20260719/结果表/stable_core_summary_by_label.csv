@@ -1,0 +1,8 @@
+﻿label,k_star,stable_core_edges,selection_status,mean_inclusion_frequency,min_inclusion_frequency
+RES,55,14,performance_only_unstable,0.8696428571428572,0.7
+REC,58,46,stable_topk_found,0.9271739130434783,0.7
+QUO,45,42,stable_topk_found,0.9636904761904762,0.7
+QUC,50,40,stable_topk_found,0.91625,0.7
+GI,85,26,performance_only_unstable,0.864423076923077,0.7
+SU,30,17,performance_only_unstable,0.8014705882352942,0.7
+AF,58,43,stable_topk_found,0.9476744186046512,0.7

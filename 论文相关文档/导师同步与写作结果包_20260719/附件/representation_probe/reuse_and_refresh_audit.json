@@ -1,0 +1,469 @@
+{
+  "status": "pass",
+  "policy": "copy_nonstable_recompute_stable_core_only",
+  "source_output_dir": "outputs\\rerun_new_dataset_20260716\\min5_words\\interpretability\\representation_probe_comparison_stable_core_leaf7_n20",
+  "source_manifest_sha256": "55c090788e769b843135d76b64d6a01984bf60af1e82a6c169e104922cbbc6f0",
+  "source_probe_fold_metrics_sha256": "6ca42c105b773f30df7868a0358089e2e83f23f637d98cbc76deb53d52d1f86b",
+  "source_selected_latents_sha256": "5f129c4e033864b3b988a9b2e76f2a74e9b10baf02bb329461cfcadb0dde2642",
+  "stable_core_sha256": "1ea0e4592b2a5a89eaa8ded304408388123a333d420990905c8a2def988da6fe",
+  "config_checks": {
+    "labels": {
+      "source": [
+        "RES",
+        "REC",
+        "QUO",
+        "QUC",
+        "GI",
+        "SU",
+        "AF"
+      ],
+      "current": [
+        "RES",
+        "REC",
+        "QUO",
+        "QUC",
+        "GI",
+        "SU",
+        "AF"
+      ],
+      "status": "pass"
+    },
+    "top_ns": {
+      "source": [
+        10,
+        20,
+        50,
+        100,
+        200
+      ],
+      "current": [
+        10,
+        20,
+        50,
+        100,
+        200
+      ],
+      "status": "pass"
+    },
+    "random_repeats": {
+      "source": 20,
+      "current": 20,
+      "status": "pass"
+    },
+    "random_state": {
+      "source": 42,
+      "current": 42,
+      "status": "pass"
+    },
+    "folds": {
+      "source": 5,
+      "current": 5,
+      "status": "pass"
+    },
+    "split_policy": {
+      "source": "stratified-group-kfold",
+      "current": "stratified-group-kfold",
+      "status": "pass"
+    },
+    "group_column": {
+      "source": "file_id",
+      "current": "file_id",
+      "status": "pass"
+    },
+    "C": {
+      "source": 1.0,
+      "current": 1.0,
+      "status": "pass"
+    },
+    "solver": {
+      "source": "liblinear",
+      "current": "liblinear",
+      "status": "pass"
+    },
+    "max_iter": {
+      "source": 1000,
+      "current": 1000,
+      "status": "pass"
+    },
+    "standardize": {
+      "source": true,
+      "current": true,
+      "status": "pass"
+    },
+    "association_chunk_size": {
+      "source": 512,
+      "current": 512,
+      "status": "pass"
+    }
+  },
+  "fold_contract_checks": [
+    {
+      "label": "RES",
+      "fold": 1,
+      "n_train": 4015,
+      "n_test": 1003,
+      "train_positive": 334,
+      "test_positive": 82,
+      "split_policy": "stratified-group-kfold",
+      "status": "pass"
+    },
+    {
+      "label": "RES",
+      "fold": 2,
+      "n_train": 4015,
+      "n_test": 1003,
+      "train_positive": 333,
+      "test_positive": 83,
+      "split_policy": "stratified-group-kfold",
+      "status": "pass"
+    },
+    {
+      "label": "RES",
+      "fold": 3,
+      "n_train": 4014,
+      "n_test": 1004,
+      "train_positive": 333,
+      "test_positive": 83,
+      "split_policy": "stratified-group-kfold",
+      "status": "pass"
+    },
+    {
+      "label": "RES",
+      "fold": 4,
+      "n_train": 4015,
+      "n_test": 1003,
+      "train_positive": 330,
+      "test_positive": 86,
+      "split_policy": "stratified-group-kfold",
+      "status": "pass"
+    },
+    {
+      "label": "RES",
+      "fold": 5,
+      "n_train": 4013,
+      "n_test": 1005,
+      "train_positive": 334,
+      "test_positive": 82,
+      "split_policy": "stratified-group-kfold",
+      "status": "pass"
+    },
+    {
+      "label": "REC",
+      "fold": 1,
+      "n_train": 4021,
+      "n_test": 997,
+      "train_positive": 666,
+      "test_positive": 163,
+      "split_policy": "stratified-group-kfold",
+      "status": "pass"
+    },
+    {
+      "label": "REC",
+      "fold": 2,
+      "n_train": 4013,
+      "n_test": 1005,
+      "train_positive": 664,
+      "test_positive": 165,
+      "split_policy": "stratified-group-kfold",
+      "status": "pass"
+    },
+    {
+      "label": "REC",
+      "fold": 3,
+      "n_train": 4025,
+      "n_test": 993,
+      "train_positive": 666,
+      "test_positive": 163,
+      "split_policy": "stratified-group-kfold",
+      "status": "pass"
+    },
+    {
+      "label": "REC",
+      "fold": 4,
+      "n_train": 3998,
+      "n_test": 1020,
+      "train_positive": 656,
+      "test_positive": 173,
+      "split_policy": "stratified-group-kfold",
+      "status": "pass"
+    },
+    {
+      "label": "REC",
+      "fold": 5,
+      "n_train": 4015,
+      "n_test": 1003,
+      "train_positive": 664,
+      "test_positive": 165,
+      "split_policy": "stratified-group-kfold",
+      "status": "pass"
+    },
+    {
+      "label": "QUO",
+      "fold": 1,
+      "n_train": 4020,
+      "n_test": 998,
+      "train_positive": 910,
+      "test_positive": 224,
+      "split_policy": "stratified-group-kfold",
+      "status": "pass"
+    },
+    {
+      "label": "QUO",
+      "fold": 2,
+      "n_train": 4018,
+      "n_test": 1000,
+      "train_positive": 909,
+      "test_positive": 225,
+      "split_policy": "stratified-group-kfold",
+      "status": "pass"
+    },
+    {
+      "label": "QUO",
+      "fold": 3,
+      "n_train": 4018,
+      "n_test": 1000,
+      "train_positive": 909,
+      "test_positive": 225,
+      "split_policy": "stratified-group-kfold",
+      "status": "pass"
+    },
+    {
+      "label": "QUO",
+      "fold": 4,
+      "n_train": 4008,
+      "n_test": 1010,
+      "train_positive": 905,
+      "test_positive": 229,
+      "split_policy": "stratified-group-kfold",
+      "status": "pass"
+    },
+    {
+      "label": "QUO",
+      "fold": 5,
+      "n_train": 4008,
+      "n_test": 1010,
+      "train_positive": 903,
+      "test_positive": 231,
+      "split_policy": "stratified-group-kfold",
+      "status": "pass"
+    },
+    {
+      "label": "QUC",
+      "fold": 1,
+      "n_train": 4010,
+      "n_test": 1008,
+      "train_positive": 550,
+      "test_positive": 137,
+      "split_policy": "stratified-group-kfold",
+      "status": "pass"
+    },
+    {
+      "label": "QUC",
+      "fold": 2,
+      "n_train": 4025,
+      "n_test": 993,
+      "train_positive": 554,
+      "test_positive": 133,
+      "split_policy": "stratified-group-kfold",
+      "status": "pass"
+    },
+    {
+      "label": "QUC",
+      "fold": 3,
+      "n_train": 4015,
+      "n_test": 1003,
+      "train_positive": 547,
+      "test_positive": 140,
+      "split_policy": "stratified-group-kfold",
+      "status": "pass"
+    },
+    {
+      "label": "QUC",
+      "fold": 4,
+      "n_train": 4013,
+      "n_test": 1005,
+      "train_positive": 550,
+      "test_positive": 137,
+      "split_policy": "stratified-group-kfold",
+      "status": "pass"
+    },
+    {
+      "label": "QUC",
+      "fold": 5,
+      "n_train": 4009,
+      "n_test": 1009,
+      "train_positive": 547,
+      "test_positive": 140,
+      "split_policy": "stratified-group-kfold",
+      "status": "pass"
+    },
+    {
+      "label": "GI",
+      "fold": 1,
+      "n_train": 4013,
+      "n_test": 1005,
+      "train_positive": 481,
+      "test_positive": 123,
+      "split_policy": "stratified-group-kfold",
+      "status": "pass"
+    },
+    {
+      "label": "GI",
+      "fold": 2,
+      "n_train": 4013,
+      "n_test": 1005,
+      "train_positive": 485,
+      "test_positive": 119,
+      "split_policy": "stratified-group-kfold",
+      "status": "pass"
+    },
+    {
+      "label": "GI",
+      "fold": 3,
+      "n_train": 4018,
+      "n_test": 1000,
+      "train_positive": 483,
+      "test_positive": 121,
+      "split_policy": "stratified-group-kfold",
+      "status": "pass"
+    },
+    {
+      "label": "GI",
+      "fold": 4,
+      "n_train": 4019,
+      "n_test": 999,
+      "train_positive": 485,
+      "test_positive": 119,
+      "split_policy": "stratified-group-kfold",
+      "status": "pass"
+    },
+    {
+      "label": "GI",
+      "fold": 5,
+      "n_train": 4009,
+      "n_test": 1009,
+      "train_positive": 482,
+      "test_positive": 122,
+      "split_policy": "stratified-group-kfold",
+      "status": "pass"
+    },
+    {
+      "label": "SU",
+      "fold": 1,
+      "n_train": 4013,
+      "n_test": 1005,
+      "train_positive": 118,
+      "test_positive": 29,
+      "split_policy": "stratified-group-kfold",
+      "status": "pass"
+    },
+    {
+      "label": "SU",
+      "fold": 2,
+      "n_train": 4016,
+      "n_test": 1002,
+      "train_positive": 118,
+      "test_positive": 29,
+      "split_policy": "stratified-group-kfold",
+      "status": "pass"
+    },
+    {
+      "label": "SU",
+      "fold": 3,
+      "n_train": 4016,
+      "n_test": 1002,
+      "train_positive": 118,
+      "test_positive": 29,
+      "split_policy": "stratified-group-kfold",
+      "status": "pass"
+    },
+    {
+      "label": "SU",
+      "fold": 4,
+      "n_train": 4014,
+      "n_test": 1004,
+      "train_positive": 116,
+      "test_positive": 31,
+      "split_policy": "stratified-group-kfold",
+      "status": "pass"
+    },
+    {
+      "label": "SU",
+      "fold": 5,
+      "n_train": 4013,
+      "n_test": 1005,
+      "train_positive": 118,
+      "test_positive": 29,
+      "split_policy": "stratified-group-kfold",
+      "status": "pass"
+    },
+    {
+      "label": "AF",
+      "fold": 1,
+      "n_train": 4016,
+      "n_test": 1002,
+      "train_positive": 213,
+      "test_positive": 52,
+      "split_policy": "stratified-group-kfold",
+      "status": "pass"
+    },
+    {
+      "label": "AF",
+      "fold": 2,
+      "n_train": 4015,
+      "n_test": 1003,
+      "train_positive": 212,
+      "test_positive": 53,
+      "split_policy": "stratified-group-kfold",
+      "status": "pass"
+    },
+    {
+      "label": "AF",
+      "fold": 3,
+      "n_train": 4017,
+      "n_test": 1001,
+      "train_positive": 213,
+      "test_positive": 52,
+      "split_policy": "stratified-group-kfold",
+      "status": "pass"
+    },
+    {
+      "label": "AF",
+      "fold": 4,
+      "n_train": 4008,
+      "n_test": 1010,
+      "train_positive": 209,
+      "test_positive": 56,
+      "split_policy": "stratified-group-kfold",
+      "status": "pass"
+    },
+    {
+      "label": "AF",
+      "fold": 5,
+      "n_train": 4016,
+      "n_test": 1002,
+      "train_positive": 213,
+      "test_positive": 52,
+      "split_policy": "stratified-group-kfold",
+      "status": "pass"
+    }
+  ],
+  "n_reused_nonstable_fold_rows": 3920,
+  "n_recomputed_stable_fold_rows": 35,
+  "reused_representation_counts": {
+    "Full SAE": 35,
+    "Hidden State": 35,
+    "PCA-n": 175,
+    "Random SAE-n": 3500,
+    "Top-n SAE": 175
+  },
+  "stable_core_counts": {
+    "RES": 14,
+    "REC": 46,
+    "QUO": 42,
+    "QUC": 40,
+    "GI": 26,
+    "SU": 17,
+    "AF": 43
+  }
+}

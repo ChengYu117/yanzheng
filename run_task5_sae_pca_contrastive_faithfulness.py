@@ -7,12 +7,15 @@ import json
 from pathlib import Path
 
 from src.nlp_re_base.contrastive_faithfulness_v2 import (
+    audit_frozen_packet_integrity,
     make_explainer_retry_tasks,
+    make_scorer_retry_tasks,
     run_stage,
     validate_explanations,
 )
 from src.nlp_re_base.task5_sae_pca_contrastive_faithfulness import (
     build_packets,
+    make_reduced_context_scorer_reassessment,
     make_scorer_tasks,
     render_report,
     validate_scorer_and_score,
@@ -26,8 +29,9 @@ def _status(output: Path, payload: dict) -> None:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("action", choices=("build", "run-all", "run-explainer", "validate-explainer", "make-scorer", "run-scorer", "validate-scorer", "render"))
+    parser.add_argument("action", choices=("build", "run-all", "run-explainer", "validate-explainer", "make-scorer", "make-scorer-reassessment", "make-scorer-retry", "run-scorer-retry", "run-scorer", "validate-scorer", "render"))
     parser.add_argument("--output-dir", required=True, type=Path)
+    parser.add_argument("--source-output-dir", type=Path)
     parser.add_argument("--task5-root", type=Path, default=Path("outputs/rerun_new_dataset_20260716/min5_words/interpretability/task5_matched_sae_pca_human_eval_n20"))
     parser.add_argument("--sae-features", default="outputs/rerun_new_dataset_20260716/min5_words/feature_store/utterance_features.pt")
     parser.add_argument("--raw-hidden", default="outputs/rerun_new_dataset_20260716/min5_words/feature_store/utterance_activations.pt")
@@ -51,6 +55,13 @@ def main() -> int:
     elif args.action == "run-explainer": result = run_explainer()
     elif args.action == "validate-explainer": result = validate_explanations(output_dir=output)
     elif args.action == "make-scorer": result = make_scorer_tasks(output_dir=output)
+    elif args.action == "make-scorer-reassessment":
+        if args.source_output_dir is None:
+            parser.error("--source-output-dir is required for make-scorer-reassessment")
+        result = make_reduced_context_scorer_reassessment(source_output_dir=args.source_output_dir, output_dir=output)
+    elif args.action == "make-scorer-retry": result = make_scorer_retry_tasks(output_dir=output)
+    elif args.action == "run-scorer-retry":
+        result = run_stage(stage_dir=output / "scorer_retry", tasks_path=output / "scorer" / "retry_tasks.jsonl", schema_path="config/contrastive_scorer_v2_schema.json", instructions_path="config/contrastive_scorer_v2_base_instructions.txt", model=args.model, reasoning_effort=args.reasoning_effort, concurrency=args.concurrency, timeout_seconds=args.timeout_seconds)
     elif args.action == "run-scorer": result = run_scorer()
     elif args.action == "validate-scorer": result = validate_scorer_and_score(output_dir=output)
     elif args.action == "render":
@@ -60,6 +71,7 @@ def main() -> int:
         _status(output, {"stage": "complete", "explainer_validation": explainer, "scorer_validation": scorer, "report": result})
     else:
         if not (output / "explainer" / "tasks.jsonl").exists(): build()
+        audit_frozen_packet_integrity(output_dir=output, expected_strata=("high", "mid", "weak", "control"))
         _status(output, {"stage": "explainer_running"}); run_explainer()
         validation = validate_explanations(output_dir=output)
         if validation["n_failed"]:
@@ -71,6 +83,12 @@ def main() -> int:
         _status(output, {"stage": "scorer_running", "explainer_validation": validation})
         make_scorer_tasks(output_dir=output); run_scorer()
         scorer = validate_scorer_and_score(output_dir=output)
+        if scorer["n_failed"]:
+            retry = make_scorer_retry_tasks(output_dir=output)
+            if retry["n_retry_tasks"]:
+                _status(output, {"stage": "scorer_retry_running", **retry})
+                run_stage(stage_dir=output / "scorer_retry", tasks_path=output / "scorer" / "retry_tasks.jsonl", schema_path="config/contrastive_scorer_v2_schema.json", instructions_path="config/contrastive_scorer_v2_base_instructions.txt", model=args.model, reasoning_effort=args.reasoning_effort, concurrency=args.concurrency, timeout_seconds=args.timeout_seconds)
+                scorer = validate_scorer_and_score(output_dir=output)
         report = render_report(output_dir=output) if scorer["n_valid"] else {}
         result = {"explainer_validation": validation, "scorer_validation": scorer, "report": report}
         _status(output, {"stage": "complete", **result})

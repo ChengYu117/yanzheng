@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import math
 import sys
@@ -636,6 +637,280 @@ def _write_report(
     return path
 
 
+def _sha256_file(path: str | Path) -> str:
+    digest = hashlib.sha256()
+    with Path(path).open("rb") as handle:
+        for block in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(block)
+    return digest.hexdigest()
+
+
+def _validate_reused_fold_contract(
+    *,
+    source_fold_df: pd.DataFrame,
+    label_df: pd.DataFrame,
+    config: RepresentationProbeComparisonConfig,
+) -> list[dict[str, Any]]:
+    """Verify that the reused rows were produced with the current deterministic folds."""
+    checks: list[dict[str, Any]] = []
+    for label in config.labels:
+        y = label_df[label].astype(int).to_numpy()
+        splits, split_policy_used, split_warnings = _make_splits(y, label_df, config)
+        if split_warnings:
+            raise ValueError(f"Cannot reuse source with split warnings for {label}: {split_warnings}")
+        for fold_id, (train_idx, test_idx) in enumerate(splits, start=1):
+            reference = source_fold_df[
+                (source_fold_df["representation"].astype(str) == "Hidden State")
+                & (source_fold_df["label"].astype(str) == label)
+                & (pd.to_numeric(source_fold_df["fold"], errors="coerce") == fold_id)
+            ]
+            if len(reference) != 1:
+                raise ValueError(
+                    f"Expected one source Hidden State row for {label} fold {fold_id}, found {len(reference)}"
+                )
+            row = reference.iloc[0]
+            expected = {
+                "n_train": int(len(train_idx)),
+                "n_test": int(len(test_idx)),
+                "train_positive": int(y[train_idx].sum()),
+                "test_positive": int(y[test_idx].sum()),
+                "split_policy": split_policy_used,
+            }
+            observed = {
+                "n_train": int(row["n_train"]),
+                "n_test": int(row["n_test"]),
+                "train_positive": int(row["train_positive"]),
+                "test_positive": int(row["test_positive"]),
+                "split_policy": str(row["split_policy"]),
+            }
+            if observed != expected:
+                raise ValueError(
+                    f"Source fold contract mismatch for {label} fold {fold_id}: "
+                    f"observed={observed}, expected={expected}"
+                )
+            checks.append({"label": label, "fold": fold_id, **expected, "status": "pass"})
+    return checks
+
+
+def run_stable_core_refresh_with_reused_nonstable(
+    *,
+    sae_features: np.ndarray,
+    label_df: pd.DataFrame,
+    filtered_association_path: str | Path,
+    feature_filter_audit_path: str | Path,
+    stable_core_path: str | Path,
+    source_output_dir: str | Path,
+    output_dir: str | Path,
+    raw_hidden_path: str | Path,
+    config: RepresentationProbeComparisonConfig,
+) -> dict[str, Any]:
+    """Reuse unchanged baselines and recompute only the relaxed Stable Core SAE rows."""
+    start_time = time.time()
+    source = Path(source_output_dir)
+    output_path = Path(output_dir)
+    if source.resolve() == output_path.resolve():
+        raise ValueError("source_output_dir and output_dir must differ")
+    if output_path.exists() and any(output_path.iterdir()):
+        raise FileExistsError(f"Refusing to overwrite non-empty output directory: {output_path}")
+    output_path.mkdir(parents=True, exist_ok=True)
+
+    source_manifest_path = source / "manifest.json"
+    source_fold_path = source / "probe_fold_metrics.csv"
+    source_selected_path = source / "selected_latents_by_label_n.csv"
+    for required in (source_manifest_path, source_fold_path, source_selected_path):
+        if not required.exists():
+            raise FileNotFoundError(required)
+
+    source_manifest = json.loads(source_manifest_path.read_text(encoding="utf-8"))
+    source_config = source_manifest.get("config", {})
+    contract_fields = (
+        "labels", "top_ns", "random_repeats", "random_state", "folds",
+        "split_policy", "group_column", "C", "solver", "max_iter",
+        "standardize", "association_chunk_size",
+    )
+    current_config = asdict(config)
+    config_checks: dict[str, dict[str, Any]] = {}
+    for field in contract_fields:
+        observed = source_config.get(field)
+        expected = current_config.get(field)
+        if field in {"labels", "top_ns"}:
+            observed = list(observed or [])
+            expected = list(expected or [])
+        passed = observed == expected
+        config_checks[field] = {"source": observed, "current": expected, "status": "pass" if passed else "fail"}
+        if not passed:
+            raise ValueError(f"Cannot reuse source: config mismatch for {field}: {observed!r} != {expected!r}")
+
+    sae_features = _as_float32(sae_features)
+    if sae_features.shape[0] != len(label_df):
+        raise ValueError(f"Row mismatch: labels={len(label_df)}, sae={sae_features.shape[0]}")
+    source_inputs = source_manifest.get("inputs", {})
+    if int(source_inputs.get("n_samples", -1)) != len(label_df):
+        raise ValueError("Cannot reuse source: n_samples mismatch")
+    if list(source_inputs.get("sae_shape", [])) != list(map(int, sae_features.shape)):
+        raise ValueError("Cannot reuse source: SAE shape mismatch")
+
+    source_fold_df = pd.read_csv(source_fold_path)
+    fold_contract = _validate_reused_fold_contract(
+        source_fold_df=source_fold_df,
+        label_df=label_df,
+        config=config,
+    )
+    source_nonstable = source_fold_df[
+        source_fold_df["representation"].astype(str) != "Stable Core SAE"
+    ].copy()
+    required_representations = {"Hidden State", "Full SAE", "Top-n SAE", "PCA-n", "Random SAE-n"}
+    observed_representations = set(source_nonstable["representation"].astype(str).unique())
+    if observed_representations != required_representations:
+        raise ValueError(
+            f"Source non-stable representation set mismatch: {sorted(observed_representations)}"
+        )
+
+    stable_by_label = _stable_core_by_label(stable_core_path, config.labels, sae_features.shape[1])
+    full_rank_lookup = _full_data_rank_lookup(filtered_association_path, config.labels)
+    stable_fold_records: list[dict[str, Any]] = []
+    stable_selection_records: list[dict[str, Any]] = []
+    warnings: list[str] = []
+    for label in config.labels:
+        y = label_df[label].astype(int).to_numpy()
+        splits, split_policy_used, split_warnings = _make_splits(y, label_df, config)
+        warnings.extend(f"{label}: {warning}" for warning in split_warnings)
+        stable_latents = stable_by_label.get(label, np.array([], dtype=np.int32))
+        for rank, latent_idx in enumerate(stable_latents, start=1):
+            stable_selection_records.append(
+                {
+                    "representation": "Stable Core SAE",
+                    "selection_type": "stable_core",
+                    "label": label,
+                    "fold": "",
+                    "top_n": BASELINE_TOP_N,
+                    "seed": "",
+                    "rank": int(rank),
+                    "latent_idx": int(latent_idx),
+                    "train_fold_cohens_d": math.nan,
+                    **_selection_lookup(full_rank_lookup, label, int(latent_idx)),
+                }
+            )
+        for fold_id, (train_idx, test_idx) in enumerate(splits, start=1):
+            stable_train, stable_test = _prepare_features(
+                sae_features,
+                train_idx,
+                test_idx,
+                columns=stable_latents,
+                standardize=config.standardize,
+            )
+            stable_fold_records.append(
+                _score_probe(
+                    representation="Stable Core SAE",
+                    label=label,
+                    fold=fold_id,
+                    top_n=BASELINE_TOP_N,
+                    seed=None,
+                    x_train=stable_train,
+                    x_test=stable_test,
+                    y_train=y[train_idx],
+                    y_test=y[test_idx],
+                    split_policy_used=split_policy_used,
+                    config=config,
+                    extra={"stable_core_latents": int(stable_latents.size)},
+                )
+            )
+
+    stable_fold_df = pd.DataFrame(stable_fold_records)
+    fold_df = pd.concat([source_nonstable, stable_fold_df], ignore_index=True, sort=False)
+    source_selected = pd.read_csv(source_selected_path)
+    source_nonstable_selected = source_selected[
+        source_selected["representation"].astype(str) != "Stable Core SAE"
+    ].copy()
+    selected = pd.concat(
+        [source_nonstable_selected, pd.DataFrame(stable_selection_records)],
+        ignore_index=True,
+        sort=False,
+    )
+    by_label = _summarize_by_label(fold_df)
+    macro = _summarize_macro(by_label, fold_df)
+
+    fold_path = output_path / "probe_fold_metrics.csv"
+    by_label_path = output_path / "probe_summary_by_label.csv"
+    macro_path = output_path / "probe_macro_summary.csv"
+    selected_path = output_path / "selected_latents_by_label_n.csv"
+    fold_df.to_csv(fold_path, index=False, encoding="utf-8-sig")
+    by_label.to_csv(by_label_path, index=False, encoding="utf-8-sig")
+    macro.to_csv(macro_path, index=False, encoding="utf-8-sig")
+    selected.to_csv(selected_path, index=False, encoding="utf-8-sig")
+    figure_path = _write_macro_plot(macro, output_path)
+    report_path = _write_report(
+        output_dir=output_path,
+        macro=macro,
+        by_label=by_label,
+        config=config,
+        warnings=warnings,
+    )
+
+    reuse_audit = {
+        "status": "pass",
+        "policy": "copy_nonstable_recompute_stable_core_only",
+        "source_output_dir": str(source),
+        "source_manifest_sha256": _sha256_file(source_manifest_path),
+        "source_probe_fold_metrics_sha256": _sha256_file(source_fold_path),
+        "source_selected_latents_sha256": _sha256_file(source_selected_path),
+        "stable_core_sha256": _sha256_file(stable_core_path),
+        "config_checks": config_checks,
+        "fold_contract_checks": fold_contract,
+        "n_reused_nonstable_fold_rows": int(len(source_nonstable)),
+        "n_recomputed_stable_fold_rows": int(len(stable_fold_df)),
+        "reused_representation_counts": {
+            key: int(value)
+            for key, value in source_nonstable["representation"].value_counts().sort_index().items()
+        },
+        "stable_core_counts": {label: int(len(stable_by_label[label])) for label in config.labels},
+    }
+    reuse_audit_path = output_path / "reuse_and_refresh_audit.json"
+    reuse_audit_path.write_text(
+        json.dumps(reuse_audit, ensure_ascii=False, indent=2, default=_json_default),
+        encoding="utf-8",
+    )
+    manifest = {
+        "analysis": "representation_probe_comparison_stable_core_refresh",
+        "elapsed_seconds": float(time.time() - start_time),
+        "config": current_config,
+        "execution_policy": "reused unchanged non-stable rows; recomputed Stable Core SAE only",
+        "inputs": {
+            "n_samples": int(len(label_df)),
+            "sae_shape": list(map(int, sae_features.shape)),
+            "raw_hidden": str(raw_hidden_path),
+            "raw_hidden_shape": source_inputs.get("raw_hidden_shape"),
+            "filtered_association": str(filtered_association_path),
+            "feature_filter_audit": str(feature_filter_audit_path),
+            "stable_core": str(stable_core_path),
+            "reused_source_output_dir": str(source),
+        },
+        "outputs": {
+            "probe_fold_metrics": str(fold_path),
+            "probe_summary_by_label": str(by_label_path),
+            "probe_macro_summary": str(macro_path),
+            "selected_latents_by_label_n": str(selected_path),
+            "performance_curves_macro": str(figure_path),
+            "report": str(report_path),
+            "reuse_and_refresh_audit": str(reuse_audit_path),
+        },
+        "warnings": sorted(set(warnings)),
+    }
+    manifest_path = output_path / "manifest.json"
+    manifest_path.write_text(
+        json.dumps(manifest, ensure_ascii=False, indent=2, default=_json_default),
+        encoding="utf-8",
+    )
+    return {
+        "fold_metrics": fold_df,
+        "summary_by_label": by_label,
+        "macro_summary": macro,
+        "selected_latents": selected,
+        "reuse_audit": reuse_audit,
+        "manifest": manifest,
+    }
+
+
 def run_representation_probe_comparison(
     *,
     sae_features: np.ndarray,
@@ -1000,6 +1275,14 @@ def parse_args() -> argparse.Namespace:
         "--output-dir",
         default="outputs/misc_full_sae_eval/interpretability/representation_probe_comparison_stable_core",
     )
+    parser.add_argument(
+        "--reuse-nonstable-from",
+        default=None,
+        help=(
+            "Reuse Hidden State, Full SAE, Top-n SAE, PCA-n, and Random SAE-n fold rows "
+            "from this completed output directory and recompute only Stable Core SAE."
+        ),
+    )
     parser.add_argument("--labels", nargs="+", default=list(DEFAULT_LABELS))
     parser.add_argument("--top-ns", nargs="+", default=[str(n) for n in DEFAULT_TOP_NS])
     parser.add_argument("--random-repeats", type=int, default=20)
@@ -1036,21 +1319,36 @@ def main() -> int:
     print(f"[load] SAE features: {args.sae_features}")
     sae_features = load_matrix(args.sae_features)
     print(f"[load] SAE shape: {sae_features.shape}")
-    print(f"[load] raw hidden: {args.raw_hidden}")
-    raw_hidden = load_matrix(args.raw_hidden)
-    print(f"[load] raw hidden shape: {raw_hidden.shape}")
     print(f"[load] labels: {args.label_matrix}")
     label_df = pd.read_csv(args.label_matrix)
-    result = run_representation_probe_comparison(
-        sae_features=sae_features,
-        raw_hidden=raw_hidden,
-        label_df=label_df,
-        filtered_association_path=args.filtered_association,
-        feature_filter_audit_path=args.feature_filter_audit,
-        stable_core_path=args.stable_core,
-        output_dir=args.output_dir,
-        config=config,
-    )
+    if args.reuse_nonstable_from:
+        print(f"[reuse] unchanged representations: {args.reuse_nonstable_from}")
+        print("[run] recomputing Stable Core SAE only")
+        result = run_stable_core_refresh_with_reused_nonstable(
+            sae_features=sae_features,
+            label_df=label_df,
+            filtered_association_path=args.filtered_association,
+            feature_filter_audit_path=args.feature_filter_audit,
+            stable_core_path=args.stable_core,
+            source_output_dir=args.reuse_nonstable_from,
+            output_dir=args.output_dir,
+            raw_hidden_path=args.raw_hidden,
+            config=config,
+        )
+    else:
+        print(f"[load] raw hidden: {args.raw_hidden}")
+        raw_hidden = load_matrix(args.raw_hidden)
+        print(f"[load] raw hidden shape: {raw_hidden.shape}")
+        result = run_representation_probe_comparison(
+            sae_features=sae_features,
+            raw_hidden=raw_hidden,
+            label_df=label_df,
+            filtered_association_path=args.filtered_association,
+            feature_filter_audit_path=args.feature_filter_audit,
+            stable_core_path=args.stable_core,
+            output_dir=args.output_dir,
+            config=config,
+        )
     print("[done] Macro summary:")
     print(result["macro_summary"].to_string(index=False))
     print(f"[done] outputs: {args.output_dir}")
